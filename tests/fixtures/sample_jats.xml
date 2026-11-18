@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<article><front><article-meta><abstract><p>FICTIONAL TEST ABSTRACT about a plastic-eating enzyme.</p></abstract></article-meta></front>
+<body>
+<sec><title>Introduction</title><p>Plastic waste is a growing problem. INTRO_MARKER.</p></sec>
+<sec><title>Methods</title><p>We tested 48 enzyme variants at 25 degrees Celsius. METHODS_MARKER.</p>
+  <sec><title>Statistics</title><p>Each test was repeated three times.</p></sec>
+  <fig><caption><p>Breakdown rate over time.</p></caption></fig></sec>
+<sec><title>Results</title><p>The best variant broke down 90 percent of the sample in 10 hours. RESULTS_MARKER.</p></sec>
+<sec><title>Acknowledgements</title><p>SHOULD_BE_SKIPPED</p></sec>
+</body><back><ref-list><ref>SHOULD_ALSO_BE_SKIPPED</ref></ref-list></back></article>

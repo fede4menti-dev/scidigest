@@ -1,0 +1,33 @@
+# Daily Science Digest: {{ day.strftime("%A, %B %-d, %Y") }}
+
+{{ entries|length }} of the most significant new papers, picked from {{ scanned }} recent research articles across {{ journals|length }} journal{{ "s" if journals|length != 1 }}.
+{% if not ai %}
+> **Note:** generated without AI. Summaries below are the publisher's own abstract, quoted, not paraphrased.
+{% endif %}
+{% for e in entries %}
+---
+
+## {{ e.n }}. {{ e.s.headline }}
+
+**Field:** {{ e.pick.field }} · **Journal:** *{{ e.article.journal }}* · **Significance:** {{ e.pick.score }}/10{% if e.s.based_on %} · *Summarised from {{ e.s.based_on }}*{% endif %}
+*Original title: "{{ e.article.title }}"*
+
+{{ e.s.summary }} [{{ e.n }}]
+
+**Why it matters:** {{ e.s.why_it_matters }}
+{% if e.s.limitations %}
+**Caveats:** {{ e.s.limitations }}
+{% endif %}{% if e.s.key_terms %}
+**Key terms:**
+{% for t in e.s.key_terms %}- **{{ t.term }}**: {{ t.meaning }}
+{% endfor %}{% endif %}
+**Read the original:** {{ e.url }}{% if e.free %}
+**Free to read:** {{ e.free.url }} ({{ e.free.version }}, via {{ e.free.host }}{% if e.free.license %}, {{ e.free.license }}{% endif %}){% endif %}
+{% endfor %}
+---
+
+## References
+
+{% for e in entries %}{{ e.n }}. {{ e.citation }}
+{% endfor %}
+*Summaries are paraphrased{% if ai %} by an AI model{% endif %} from each paper's abstract, plus its full text when a free, legal copy was available. Preprints and accepted manuscripts can differ slightly from the final published paper. Always check the original paper before citing it in your own work.*

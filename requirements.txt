@@ -1,0 +1,5 @@
+anthropic>=2.10
+feedparser>=6.0
+requests>=2.31
+jinja2>=3.1
+pypdf>=4.0

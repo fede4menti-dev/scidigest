@@ -1,0 +1,25 @@
+{
+ "format": 1,
+ "updated": "2026-11-19T15:09:13+00:00",
+ "days": [
+  {
+   "date": "2026-11-19",
+   "count": 8,
+   "fields": [
+    "Digital Health",
+    "Human Evolution",
+    "Infectious Disease",
+    "Marine Ecology",
+    "Medicine / Immunotherapy",
+    "Neuroscience / Aging",
+    "Oncology",
+    "Particle Physics"
+   ],
+   "top_headlines": [
+    "A short journal item on using a meningitis B vaccine against gonorrhea",
+    "Enfortumab vedotin plus pembrolizumab for bladder cancer patients who can take cisplatin",
+    "Today's older adults keep their memory longer than earlier generations did"
+   ]
+  }
+ ]
+}

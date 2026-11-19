@@ -1,0 +1,368 @@
+{
+ "format": 1,
+ "date": "2026-11-19",
+ "generated_at": "2026-11-19T15:09:13+00:00",
+ "scanned": 84,
+ "journals": [
+  "Nature",
+  "Nature Biotechnology",
+  "Nature Communications",
+  "Nature Medicine",
+  "PLOS Biology",
+  "Physical Review Letters",
+  "Science Advances",
+  "The New England Journal of Medicine",
+  "eLife"
+ ],
+ "ai_summaries": true,
+ "papers": [
+  {
+   "rank": 1,
+   "headline": "A short journal item on using a meningitis B vaccine against gonorrhea",
+   "original_title": "Meningococcal B Vaccine to Prevent Gonorrhea",
+   "journal": "The New England Journal of Medicine",
+   "field": "Infectious Disease",
+   "significance": 8,
+   "reason": "Repurposing the meningococcal B vaccine to prevent gonorrhea offers a new tool against a common STI with rising antibiotic resistance.",
+   "summary": "This entry in The New England Journal of Medicine (November 2026) is titled \"Meningococcal B Vaccine to Prevent Gonorrhea.\" The title shows the topic: whether a vaccine designed against meningococcal group B bacteria, a cause of meningitis, could also help prevent gonorrhea, a common sexually transmitted infection.\n\nThe publisher's description gives only citation details (volume 395, issue 20, pages 2075–2076). It does not say what kind of article this is, what was studied, who took part, or what was found. Its two-page length suggests a short piece such as a commentary or brief report, but this cannot be confirmed from the information provided.",
+   "why_it_matters": "The title points to the idea of reusing an existing vaccine against a different, widespread infection. Because the summary includes no methods or results, it is not possible to say from this entry whether the vaccine works against gonorrhea or how well.",
+   "limitations": "The available text has no abstract, so the study design, size, findings, and level of evidence are unknown. Any conclusions require reading the full article.",
+   "key_terms": [
+    {
+     "term": "Meningococcal B vaccine",
+     "meaning": "A vaccine that protects against group B strains of the bacterium Neisseria meningitidis, which can cause meningitis (infection of the membranes around the brain and spinal cord) and blood infections."
+    },
+    {
+     "term": "Gonorrhea",
+     "meaning": "A sexually transmitted infection caused by the bacterium Neisseria gonorrhoeae."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [],
+   "published": "2026-11-18T10:00:01+00:00",
+   "doi": "10.1056/NEJMc2611609",
+   "url": "https://doi.org/10.1056/NEJMc2611609",
+   "citation": "Meningococcal B Vaccine to Prevent Gonorrhea. (2026). The New England Journal of Medicine, 395(20), 2075-2076. https://doi.org/10.1056/NEJMc2611609",
+   "free_copy": null
+  },
+  {
+   "rank": 2,
+   "headline": "Enfortumab vedotin plus pembrolizumab for bladder cancer patients who can take cisplatin",
+   "original_title": "Enfortumab Vedotin and Pembrolizumab for Cisplatin-Eligible Bladder Cancer",
+   "journal": "The New England Journal of Medicine",
+   "field": "Oncology",
+   "significance": 8,
+   "reason": "Enfortumab vedotin plus pembrolizumab in cisplatin-eligible bladder cancer could reshape standard treatment for a common cancer.",
+   "summary": "This short NEJM piece (three pages) looks at using two drugs together, enfortumab vedotin and pembrolizumab, to treat bladder cancer in people who are well enough to receive cisplatin, a standard chemotherapy drug. The title points to the question of whether this pairing has a role for these patients, who would usually be offered cisplatin-based treatment.\n\nThe publisher's description gives only the journal, volume, issue and page numbers. It does not say what kind of article this is, such as a trial report, editorial or letter, or what data or conclusions it contains. No findings can be reported from the information available.",
+   "why_it_matters": "Bladder cancer treatment often depends on whether a patient can tolerate cisplatin. Discussion of a non-cisplatin drug combination for patients who can take cisplatin suggests interest in whether newer therapies could join or change standard care for this group. Without the article's content, its specific implications are unclear.",
+   "limitations": "The supplied description contains no abstract, methods or results. The article type, the evidence behind it and any conclusions cannot be determined from the information given.",
+   "key_terms": [
+    {
+     "term": "Enfortumab vedotin",
+     "meaning": "A cancer drug named in the title. It is an antibody-drug conjugate, meaning an antibody that delivers a toxic payload to cancer cells."
+    },
+    {
+     "term": "Pembrolizumab",
+     "meaning": "A cancer drug named in the title. It is an immunotherapy that helps the immune system attack tumours."
+    },
+    {
+     "term": "Cisplatin-eligible",
+     "meaning": "Describes patients healthy enough, for example in kidney function, to safely receive cisplatin, a platinum-based chemotherapy."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [],
+   "published": "2026-11-18T10:00:01+00:00",
+   "doi": "10.1056/NEJMc2610895",
+   "url": "https://doi.org/10.1056/NEJMc2610895",
+   "citation": "Enfortumab Vedotin and Pembrolizumab for Cisplatin-Eligible Bladder Cancer. (2026). The New England Journal of Medicine, 395(20), 2073-2075. https://doi.org/10.1056/NEJMc2610895",
+   "free_copy": null
+  },
+  {
+   "rank": 3,
+   "headline": "Today's older adults keep their memory longer than earlier generations did",
+   "original_title": "People entering old age now have better memory than their parents did",
+   "journal": "Nature",
+   "field": "Neuroscience / Aging",
+   "significance": 7,
+   "reason": "A study of 219,000 adults shows that today's older people keep their memory longer than earlier generations, with broad public-health implications.",
+   "summary": "This short Nature news item describes a study that asked whether memory in old age has changed across generations, that is, whether people reaching later life now remember things as well as their parents' generation did at the same stage.\n\nAccording to the description, the researchers drew on data from about 219,000 adults. They report that older people today hold on to their memory function for longer than people in earlier generations. The summary does not explain how memory was tested, which countries or birth years were included, or what might be causing the difference.",
+   "why_it_matters": "With populations ageing in many places, how well memory holds up in later life shapes people's independence and the care they may need. If memory decline is arriving later in newer generations, that suggests memory ageing is not fixed and may respond to changes in how people live. That idea could guide future work on protecting the ageing brain.",
+   "limitations": "This is a brief news summary, so the study design, the memory measures used and the size of the improvement are not given. The reasons behind the change are also not stated.",
+   "key_terms": [
+    {
+     "term": "Memory function",
+     "meaning": "How well a person can take in, store and later recall information, usually measured with standard tests."
+    },
+    {
+     "term": "Generation (cohort)",
+     "meaning": "A group of people born around the same period. Comparing cohorts shows how a trait changes over historical time."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Miryam Naddaf"
+   ],
+   "published": "2026-11-19T00:00:00+00:00",
+   "doi": "10.1038/d41586-026-03783-9",
+   "url": "https://doi.org/10.1038/d41586-026-03783-9",
+   "citation": "Naddaf, M. (2026). People entering old age now have better memory than their parents did. Nature. https://doi.org/10.1038/d41586-026-03783-9",
+   "free_copy": null
+  },
+  {
+   "rank": 4,
+   "headline": "Gut inflammation after a myeloma CAR T therapy often fails to resolve",
+   "original_title": "Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy",
+   "journal": "Nature Medicine",
+   "field": "Medicine / Immunotherapy",
+   "significance": 7,
+   "reason": "A large multicenter series characterizes a serious, often unresolved and sometimes fatal enterocolitis toxicity of BCMA CAR-T therapy.",
+   "summary": "CAR T cell therapy takes a patient's own immune T cells and engineers them to hunt cancer cells. One version targets BCMA, a protein found on certain blood cancer cells, and is used mainly for multiple myeloma, a cancer of antibody-producing plasma cells. Some patients develop inflammation of the small and large intestine after this treatment, a complication called immune effector cell-associated enterocolitis. The researchers pooled cases from several hospitals to describe how this complication behaves.\n\nThis was a large case series, meaning the team collected and described patients who had the complication rather than running a controlled trial. At the most recent check-up, only 32% of affected patients had seen the enterocolitis clear up. Some patients died from problems caused directly by the condition.",
+   "why_it_matters": "BCMA-directed CAR T cells are an important option for people whose blood cancer has stopped responding to other treatments, so doctors need to know about serious side effects. Showing that this gut complication frequently persists and can be fatal may encourage earlier recognition, closer monitoring and research into better treatments for it.",
+   "limitations": "As a descriptive case series, the study cannot show how often this complication occurs among all treated patients or prove what causes it. The short summary also gives no details on patient numbers, follow-up length or which treatments were tried.",
+   "key_terms": [
+    {
+     "term": "CAR T cell therapy",
+     "meaning": "A treatment where a patient's T cells are genetically modified in the lab to carry a receptor that recognizes cancer cells, then infused back into the patient."
+    },
+    {
+     "term": "BCMA",
+     "meaning": "B-cell maturation antigen, a protein on the surface of plasma cells and many myeloma cells, used as the target for these engineered T cells."
+    },
+    {
+     "term": "Enterocolitis",
+     "meaning": "Inflammation affecting both the small intestine and the colon."
+    },
+    {
+     "term": "Multicenter case series",
+     "meaning": "A study that gathers and describes patients with a particular condition from several hospitals, without a comparison group."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Lekha Mikkilineni",
+    "Mark P. Hamilton",
+    "Alexandria Jensen",
+    "Kenneth JC Lim",
+    "Gliceida M. Galarza-Fortuna",
+    "Anupama D. Kumar",
+    "Christopher J. Ferreri",
+    "Andrew J. Portuguese",
+    "Hitomi Hosoya",
+    "Sharlene Dong",
+    "Nadine H. Abdallah",
+    "Jinming Song",
+    "Rebecca Gonzalez",
+    "Anna Shestakova",
+    "Navreet Chowla",
+    "Zongming Eric Chen",
+    "Amandeep Godara",
+    "Ghulam Rehman Mohyuddin",
+    "Max N. Brondfield",
+    "Dana Balitzer",
+    "Christopher J. Bowman",
+    "Omar Castaneda Puglianini",
+    "Michael G. Kattah",
+    "Frederick L. Locke",
+    "Louis S. Williams",
+    "Alaa Ali",
+    "Binod Dhakal",
+    "Rahul Banerjee",
+    "Metin Ozdemirli",
+    "David B. Miklos",
+    "Krina K. Patel",
+    "Douglas W. Sborov",
+    "Ajai Chari",
+    "Thomas Martin",
+    "Surbhi Sidana",
+    "Yi Lin",
+    "Francisco Vega",
+    "Sebastian Fernandez-Pol",
+    "Doris K. Hansen",
+    "David Y. Oh",
+    "Jeffrey L. Wolf"
+   ],
+   "published": "2026-11-19T00:00:00+00:00",
+   "doi": "10.1038/s41591-026-04783-y",
+   "url": "https://doi.org/10.1038/s41591-026-04783-y",
+   "citation": "Mikkilineni, L., Hamilton, M. P., Jensen, A., Lim, K. J., Galarza-Fortuna, G. M., Kumar, A. D., Ferreri, C. J., Portuguese, A. J., Hosoya, H., Dong, S., Abdallah, N. H., Song, J., Gonzalez, R., Shestakova, A., Chowla, N., Chen, Z. E., Godara, A., Mohyuddin, G. R., Brondfield, M. N., ... Wolf, J. L. (2026). Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy. Nature Medicine. https://doi.org/10.1038/s41591-026-04783-y",
+   "free_copy": null
+  },
+  {
+   "rank": 5,
+   "headline": "AI-assisted smartwatch matched clinic checks for flagging high blood pressure",
+   "original_title": "Harnessing smartwatches to spot undiagnosed hypertension",
+   "journal": "Nature Medicine",
+   "field": "Digital Health",
+   "significance": 7,
+   "reason": "In a prospective clinical study, an AI-assisted consumer smartwatch performed similarly to office-based hypertension measurement, suggesting a route to population-level screening.",
+   "summary": "High blood pressure (hypertension) often goes unnoticed because many people never have it measured. This short news piece from Nature Medicine describes a study that asked whether an ordinary consumer smartwatch, combined with artificial intelligence, could help identify people who have hypertension but don't know it.\n\nThe work was a prospective clinical study, meaning participants were enrolled and followed forward in time rather than examined through existing records. According to the summary, the smartwatch-plus-AI approach performed about as well as standard blood pressure measurement taken in a doctor's office. The authors suggest this could support a new way to screen large populations as people go about daily life.",
+   "why_it_matters": "Many people wear smartwatches already, so a reliable built-in check could reach people who rarely visit a doctor and catch high blood pressure earlier. Since untreated hypertension raises the risk of heart and blood vessel problems, wider and easier screening could have public health value.",
+   "limitations": "This is a brief news summary, so it gives no details on how many people took part, who they were, or exactly how accuracy was measured. 'Performed similarly' does not show how well the approach would work in large real-world populations or across different groups of people.",
+   "key_terms": [
+    {
+     "term": "Hypertension",
+     "meaning": "Persistently high blood pressure, a common condition that often has no symptoms."
+    },
+    {
+     "term": "Prospective clinical study",
+     "meaning": "A study that recruits people and collects new data going forward, rather than looking back at old records."
+    },
+    {
+     "term": "Opportunistic screening",
+     "meaning": "Checking for a disease using chances that arise anyway (like wearing a watch), rather than through a dedicated medical visit."
+    },
+    {
+     "term": "Office-based measurement",
+     "meaning": "Blood pressure taken with a standard cuff during a visit to a clinic or doctor."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Karen O’Leary"
+   ],
+   "published": "2026-11-19T00:00:00+00:00",
+   "doi": "10.1038/d41591-026-00058-8",
+   "url": "https://doi.org/10.1038/d41591-026-00058-8",
+   "citation": "O’Leary, K. (2026). Harnessing smartwatches to spot undiagnosed hypertension. Nature Medicine. https://doi.org/10.1038/d41591-026-00058-8",
+   "free_copy": null
+  },
+  {
+   "rank": 6,
+   "headline": "Bacteria sense virus-infected algae and help speed up bloom collapse",
+   "original_title": "Bacteria and viruses team up to hasten the demise of algal blooms",
+   "journal": "Nature",
+   "field": "Marine Ecology",
+   "significance": 6,
+   "reason": "Bacteria that sense virus-infected algae and act with viruses to speed bloom collapse reveal a new mechanism shaping ocean carbon cycling.",
+   "summary": "Algal blooms are sudden population explosions of tiny photosynthetic organisms in the ocean. They capture large amounts of carbon dioxide and provide food for much of marine life. These blooms often end suddenly when viruses infect and kill the algae. This piece asks whether other microbes also play a part in how blooms come to an end.\n\nAccording to the summary, some bacteria can detect algal cells that have already been infected by viruses. They then work together with the viruses so that the bloom collapses faster than it would through viral infection alone. The short description does not say which bacteria, algae or viruses were involved, how the bacteria detect infected cells, or what methods were used.",
+   "why_it_matters": "Algal blooms move a lot of carbon and support marine food webs, so what ends them affects where that carbon and energy go. If bacteria and viruses cooperate to end blooms, ocean models and our picture of marine ecosystems may need to include this interaction rather than viruses alone.",
+   "limitations": "This is a brief news-style summary, apparently describing a separate research study. It does not give the organisms, the experimental setting (lab or open ocean), or the size of the effect, so it is unclear how widespread this bacteria–virus teamwork is in nature.",
+   "key_terms": [
+    {
+     "term": "Algal bloom",
+     "meaning": "A rapid, large increase in the number of microscopic algae in a body of water."
+    },
+    {
+     "term": "Carbon fixation",
+     "meaning": "The conversion of carbon dioxide into organic matter by photosynthesis."
+    },
+    {
+     "term": "Marine food web",
+     "meaning": "The network of who-eats-whom in the ocean, which algae support at its base."
+    },
+    {
+     "term": "Synergy",
+     "meaning": "When two agents acting together have a larger effect than either would alone."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [],
+   "published": "2026-11-19T00:00:00+00:00",
+   "doi": "10.1038/d41586-026-03606-x",
+   "url": "https://doi.org/10.1038/d41586-026-03606-x",
+   "citation": "Bacteria and viruses team up to hasten the demise of algal blooms. (2026). Nature. https://doi.org/10.1038/d41586-026-03606-x",
+   "free_copy": null
+  },
+  {
+   "rank": 7,
+   "headline": "Simulation suggests modern humans, not climate alone, tipped Neanderthals toward extinction",
+   "original_title": "Interband connectivity and climate shaped Neanderthal extinction and Homo sapiens’ dispersal",
+   "journal": "Science Advances",
+   "field": "Human Evolution",
+   "significance": 6,
+   "reason": "Links climate and connectivity between regions to Neanderthal extinction and the spread of Homo sapiens, a long-standing question in human prehistory.",
+   "summary": "Researchers have long debated whether Neanderthals died out mainly because Europe's climate changed or because Homo sapiens (our species) moved in, and how either cause might have worked. In this study, the team used past climate to estimate how suitable different parts of Europe were for plant-eating animals and for predators, and how much plant growth the land supported. From these they worked out, place by place across time, how many people the land could sustain, how much prey was available, and how much competition humans faced from other meat-eating predators. They then fed these maps into a computer simulation that tracked groups of humans as individual units under several scenarios.\n\nThe simulations showed that shifts in how many people the land could support were not enough, on their own, to wipe out Neanderthals across the whole continent, although these shifts did help explain where and when each species lived. Adding the arrival of Homo sapiens made Neanderthal extinction much more likely. Because both populations repeatedly grew and shrank, how well groups stayed connected to one another turned out to be the main factor keeping populations stable. The authors conclude that Neanderthal decline and the spread of modern humans were linked population processes rather than separate events.",
+   "why_it_matters": "The work offers a way to test competing explanations for Neanderthal extinction by combining climate, ecology and population dynamics in one framework. It points to contact between scattered groups, not just food supply, as central to whether small human populations survived.",
+   "limitations": "These are results from a computer simulation built on estimated past conditions, so the conclusions depend on the assumptions and scenarios the authors chose. The abstract does not say exactly how Homo sapiens raised Neanderthal extinction risk.",
+   "key_terms": [
+    {
+     "term": "Carrying capacity",
+     "meaning": "The largest population an environment can support over time given its available resources."
+    },
+    {
+     "term": "Net primary productivity",
+     "meaning": "How much new plant material an area produces, which sets the base of the food supply."
+    },
+    {
+     "term": "Intraguild predation",
+     "meaning": "Competition and killing among predators that hunt the same prey, such as humans and large carnivores."
+    },
+    {
+     "term": "Agent-based model",
+     "meaning": "A computer simulation in which many individual units (here, human groups) follow rules and interact, so overall population patterns emerge from their behaviour."
+    },
+    {
+     "term": "Group connectivity",
+     "meaning": "How easily separate human groups could stay in contact, for example to exchange partners or move between areas."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Marco Vidal-Cordasco",
+    "Guillermo Rodríguez-Gómez",
+    "Ana B. Marín-Arroyo"
+   ],
+   "published": "2026-11-18T08:00:00+00:00",
+   "doi": "10.1126/sciadv.aej5212",
+   "url": "https://doi.org/10.1126/sciadv.aej5212",
+   "citation": "Vidal-Cordasco, M., Rodríguez-Gómez, G., & Marín-Arroyo, A. B. (2026). Interband connectivity and climate shaped Neanderthal extinction and Homo sapiens’ dispersal. Science Advances, 12(47), eaej5212. https://doi.org/10.1126/sciadv.aej5212",
+   "free_copy": null
+  },
+  {
+   "rank": 8,
+   "headline": "Exact formulas for how quark content of protons shifts with energy, at four loops",
+   "original_title": "Four-Loop Nonsinglet Splitting Functions in QCD",
+   "journal": "Physical Review Letters",
+   "field": "Particle Physics",
+   "significance": 6,
+   "reason": "Gives the first fully analytic four-loop nonsinglet QCD splitting functions, important for precision collider predictions.",
+   "summary": "Protons and neutrons are made of smaller constituents called partons (quarks and gluons). How these partons share a proton's momentum is described by parton distributions, and these distributions change depending on the energy scale at which the proton is probed. The rules for that change are set by 'splitting functions', which describe how one parton can split into others. In the theory of the strong force (QCD), splitting functions are calculated as a series of increasingly precise corrections, and each step, or 'loop', is much harder to compute than the last. This paper tackles the fourth step for the 'nonsinglet' case, which tracks differences between quark types rather than the total.\n\nThis is a theoretical calculation. The authors computed these four-loop splitting functions and checked that they agree with earlier partial results. For the first time, they give complete exact formulas for all nonsinglet pieces at this level. From these formulas they also obtained exact expressions for related quantities, called virtual and rapidity anomalous dimensions, which are used in techniques that sum up large logarithmic terms in predictions. They also supply accurate numerical versions of the splitting functions that can be plugged into the software physicists use to evolve parton distributions.",
+   "why_it_matters": "Predictions for proton collisions, such as those at the Large Hadron Collider, depend on knowing parton distributions accurately across many energies. Higher-order splitting functions reduce theoretical uncertainty in these predictions, which matters for precision tests of the Standard Model. The exact results also feed into other high-precision calculations through the derived anomalous dimensions.",
+   "limitations": "The work covers only the nonsinglet splitting functions at four loops; the abstract does not claim complete exact results for the singlet (quark–gluon mixing) case.",
+   "key_terms": [
+    {
+     "term": "Parton distributions",
+     "meaning": "Functions describing how likely it is to find a quark or gluon carrying a given fraction of a proton's momentum."
+    },
+    {
+     "term": "Splitting functions",
+     "meaning": "Quantities that describe how partons split into other partons, and so control how parton distributions change with energy scale."
+    },
+    {
+     "term": "Perturbative QCD / loops",
+     "meaning": "Calculating strong-force effects as a series of corrections; each 'loop' order is a further, more precise and more difficult correction."
+    },
+    {
+     "term": "Nonsinglet",
+     "meaning": "Combinations of quark distributions (such as differences between quark flavours) that evolve without mixing with gluons."
+    },
+    {
+     "term": "Anomalous dimensions",
+     "meaning": "Numbers that describe how a quantity changes with energy scale; the virtual and rapidity ones here are used in resummation."
+    },
+    {
+     "term": "Logarithmic resummation",
+     "meaning": "A technique that adds up large logarithmic terms to all orders to improve predictions in certain kinematic regions."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Thomas Gehrmann",
+    "Andreas von Manteuffel",
+    "Vasily Sotnikov",
+    "Tong-Zhi Yang"
+   ],
+   "published": "2026-11-18T10:00:00+00:00",
+   "doi": "10.1103/sgtd-c4zg",
+   "url": "https://doi.org/10.1103/sgtd-c4zg",
+   "citation": "Gehrmann, T., Manteuffel, A. v., Sotnikov, V., & Yang, T. (2026). Four-Loop Nonsinglet Splitting Functions in QCD. Physical Review Letters, 137(21), 211901. https://doi.org/10.1103/sgtd-c4zg",
+   "free_copy": {
+    "url": "https://doi.org/10.1103/sgtd-c4zg",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   }
+  }
+ ]
+}

@@ -99,5 +99,17 @@ def main(argv=None):
         print(f"  App data: {publish(args.site, digest, html_path).resolve()}")
 
 
+def run():
+    try:
+        main()
+    except ai.anthropic.AuthenticationError:
+        sys.exit("\nERROR: Anthropic rejected the API key (401). Check the ANTHROPIC_API_KEY secret: it should "
+                 "be one line starting with sk-ant-api03-, with no quotes or spaces. Create a new key at "
+                 "console.anthropic.com if unsure.")
+    except ai.anthropic.PermissionDeniedError:
+        sys.exit("\nERROR: the API key is valid but not allowed to use this model (403). Check the key's "
+                 "workspace/service-account permissions in console.anthropic.com.")
+
+
 if __name__ == "__main__":
-    main()
+    run()

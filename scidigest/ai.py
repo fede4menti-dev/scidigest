@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from concurrent.futures import ThreadPoolExecutor
 
@@ -16,7 +17,9 @@ _client: anthropic.Anthropic | None = None
 def client() -> anthropic.Anthropic:
     global _client
     if _client is None:
-        _client = anthropic.Anthropic()
+        key = os.environ.get("ANTHROPIC_API_KEY", "").strip().strip('"').strip("'")
+        # Strip stray spaces, newlines or quotes that sneak in when pasting a secret.
+        _client = anthropic.Anthropic(api_key=key) if key else anthropic.Anthropic()
     return _client
 
 

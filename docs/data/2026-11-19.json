@@ -1,8 +1,8 @@
 {
  "format": 1,
  "date": "2026-11-19",
- "generated_at": "2026-11-19T15:09:13+00:00",
- "scanned": 84,
+ "generated_at": "2026-11-19T15:23:46+00:00",
+ "scanned": 76,
  "journals": [
   "Nature",
   "Nature Biotechnology",
@@ -18,124 +18,108 @@
  "papers": [
   {
    "rank": 1,
-   "headline": "A short journal item on using a meningitis B vaccine against gonorrhea",
-   "original_title": "Meningococcal B Vaccine to Prevent Gonorrhea",
-   "journal": "The New England Journal of Medicine",
-   "field": "Infectious Disease",
-   "significance": 8,
-   "reason": "Repurposing the meningococcal B vaccine to prevent gonorrhea offers a new tool against a common STI with rising antibiotic resistance.",
-   "summary": "This entry in The New England Journal of Medicine (November 2026) is titled \"Meningococcal B Vaccine to Prevent Gonorrhea.\" The title shows the topic: whether a vaccine designed against meningococcal group B bacteria, a cause of meningitis, could also help prevent gonorrhea, a common sexually transmitted infection.\n\nThe publisher's description gives only citation details (volume 395, issue 20, pages 2075–2076). It does not say what kind of article this is, what was studied, who took part, or what was found. Its two-page length suggests a short piece such as a commentary or brief report, but this cannot be confirmed from the information provided.",
-   "why_it_matters": "The title points to the idea of reusing an existing vaccine against a different, widespread infection. Because the summary includes no methods or results, it is not possible to say from this entry whether the vaccine works against gonorrhea or how well.",
-   "limitations": "The available text has no abstract, so the study design, size, findings, and level of evidence are unknown. Any conclusions require reading the full article.",
+   "headline": "Chinese lunar missions reconstruct the history of the Moon's biggest crater",
+   "original_title": "Postimpact evolution of the South Pole–Aitken basin revealed by Chang’e-4 and Chang’e-6",
+   "journal": "Science Advances",
+   "field": "Planetary Science",
+   "significance": 9,
+   "reason": "The first ground-truth samples from the Moon's far-side South Pole–Aitken basin date its giant impact to about 4.34 billion years ago and reconstruct how the basin evolved afterwards.",
+   "summary": "The South Pole–Aitken (SPA) basin, on the Moon's far side, is the largest impact crater on the Moon and holds a record of its early geological history. Until recently no spacecraft had landed there. China's Chang'e-4 rover, which studies rocks on the surface, and the Chang'e-6 mission, which brought samples back to Earth, supplied the first direct measurements from inside the basin. The authors used these ground-level data and samples to piece together how the basin changed after it formed.\n\nThey conclude that the giant SPA impact happened about 4.34 billion years ago and melted so much rock that it produced a thick layer of molten material. As this layer cooled, it separated into different rock types, including norites with a moderate magnesium content. These rocks are exposed at the basin's central peaks, and a later impact (Finsen) threw some of them to the area Chang'e-4 is now exploring in Von Kármán crater. The team also identified rocks very rich in magnesium, probably formed by a separate episode of magma activity known as the Mg-suite. These were first dug up by the Apollo impact about 4.2 billion years ago and later carried to the Chang'e-6 landing site by a smaller impact (Chaffee S). Further events, such as the Orientale impact about 3.87 billion years ago, continued to reshape the basin.",
+   "why_it_matters": "Because the SPA basin is so old and so deep, it can reveal how the early Moon formed its crust and how giant impacts and volcanic activity changed it. Measurements taken on the ground and in returned samples give a firmer check on ideas that previously rested mostly on observations from orbit.",
+   "limitations": "The abstract describes a reconstructed sequence built from data at only two landing sites, and some links, such as the Mg-rich rocks coming from Mg-suite magmatism, are described as likely rather than certain. The exact methods and uncertainties on the ages are not given in the abstract.",
    "key_terms": [
     {
-     "term": "Meningococcal B vaccine",
-     "meaning": "A vaccine that protects against group B strains of the bacterium Neisseria meningitidis, which can cause meningitis (infection of the membranes around the brain and spinal cord) and blood infections."
+     "term": "Impact basin",
+     "meaning": "A very large crater, often hundreds to thousands of kilometres wide, made when a big asteroid or comet hits a planet or moon."
     },
     {
-     "term": "Gonorrhea",
-     "meaning": "A sexually transmitted infection caused by the bacterium Neisseria gonorrhoeae."
-    }
-   ],
-   "based_on": "abstract",
-   "authors": [],
-   "published": "2026-11-18T10:00:01+00:00",
-   "doi": "10.1056/NEJMc2611609",
-   "url": "https://doi.org/10.1056/NEJMc2611609",
-   "citation": "Meningococcal B Vaccine to Prevent Gonorrhea. (2026). The New England Journal of Medicine, 395(20), 2075-2076. https://doi.org/10.1056/NEJMc2611609",
-   "free_copy": null
-  },
-  {
-   "rank": 2,
-   "headline": "Enfortumab vedotin plus pembrolizumab for bladder cancer patients who can take cisplatin",
-   "original_title": "Enfortumab Vedotin and Pembrolizumab for Cisplatin-Eligible Bladder Cancer",
-   "journal": "The New England Journal of Medicine",
-   "field": "Oncology",
-   "significance": 8,
-   "reason": "Enfortumab vedotin plus pembrolizumab in cisplatin-eligible bladder cancer could reshape standard treatment for a common cancer.",
-   "summary": "This short NEJM piece (three pages) looks at using two drugs together, enfortumab vedotin and pembrolizumab, to treat bladder cancer in people who are well enough to receive cisplatin, a standard chemotherapy drug. The title points to the question of whether this pairing has a role for these patients, who would usually be offered cisplatin-based treatment.\n\nThe publisher's description gives only the journal, volume, issue and page numbers. It does not say what kind of article this is, such as a trial report, editorial or letter, or what data or conclusions it contains. No findings can be reported from the information available.",
-   "why_it_matters": "Bladder cancer treatment often depends on whether a patient can tolerate cisplatin. Discussion of a non-cisplatin drug combination for patients who can take cisplatin suggests interest in whether newer therapies could join or change standard care for this group. Without the article's content, its specific implications are unclear.",
-   "limitations": "The supplied description contains no abstract, methods or results. The article type, the evidence behind it and any conclusions cannot be determined from the information given.",
-   "key_terms": [
-    {
-     "term": "Enfortumab vedotin",
-     "meaning": "A cancer drug named in the title. It is an antibody-drug conjugate, meaning an antibody that delivers a toxic payload to cancer cells."
+     "term": "Melt sheet",
+     "meaning": "A layer of rock melted by the heat of a large impact that fills the floor of the crater."
     },
     {
-     "term": "Pembrolizumab",
-     "meaning": "A cancer drug named in the title. It is an immunotherapy that helps the immune system attack tumours."
+     "term": "Differentiation",
+     "meaning": "Separation of a cooling molten body into layers of different composition as different minerals crystallize."
     },
     {
-     "term": "Cisplatin-eligible",
-     "meaning": "Describes patients healthy enough, for example in kidney function, to safely receive cisplatin, a platinum-based chemotherapy."
-    }
-   ],
-   "based_on": "abstract",
-   "authors": [],
-   "published": "2026-11-18T10:00:01+00:00",
-   "doi": "10.1056/NEJMc2610895",
-   "url": "https://doi.org/10.1056/NEJMc2610895",
-   "citation": "Enfortumab Vedotin and Pembrolizumab for Cisplatin-Eligible Bladder Cancer. (2026). The New England Journal of Medicine, 395(20), 2073-2075. https://doi.org/10.1056/NEJMc2610895",
-   "free_copy": null
-  },
-  {
-   "rank": 3,
-   "headline": "Today's older adults keep their memory longer than earlier generations did",
-   "original_title": "People entering old age now have better memory than their parents did",
-   "journal": "Nature",
-   "field": "Neuroscience / Aging",
-   "significance": 7,
-   "reason": "A study of 219,000 adults shows that today's older people keep their memory longer than earlier generations, with broad public-health implications.",
-   "summary": "This short Nature news item describes a study that asked whether memory in old age has changed across generations, that is, whether people reaching later life now remember things as well as their parents' generation did at the same stage.\n\nAccording to the description, the researchers drew on data from about 219,000 adults. They report that older people today hold on to their memory function for longer than people in earlier generations. The summary does not explain how memory was tested, which countries or birth years were included, or what might be causing the difference.",
-   "why_it_matters": "With populations ageing in many places, how well memory holds up in later life shapes people's independence and the care they may need. If memory decline is arriving later in newer generations, that suggests memory ageing is not fixed and may respond to changes in how people live. That idea could guide future work on protecting the ageing brain.",
-   "limitations": "This is a brief news summary, so the study design, the memory measures used and the size of the improvement are not given. The reasons behind the change are also not stated.",
-   "key_terms": [
-    {
-     "term": "Memory function",
-     "meaning": "How well a person can take in, store and later recall information, usually measured with standard tests."
+     "term": "Norite",
+     "meaning": "A coarse-grained igneous rock made mostly of plagioclase feldspar and a magnesium- and iron-bearing mineral called pyroxene."
     },
     {
-     "term": "Generation (cohort)",
-     "meaning": "A group of people born around the same period. Comparing cohorts shows how a trait changes over historical time."
+     "term": "Mg-suite",
+     "meaning": "A group of ancient magnesium-rich lunar rocks thought to come from magma that rose into the early crust."
+    },
+    {
+     "term": "Central peak / peak ring",
+     "meaning": "Mountains or rings of mountains inside large craters, formed when the floor rebounds after impact, often bringing up deep material."
+    },
+    {
+     "term": "Ground truth",
+     "meaning": "Direct measurements on site, used to test conclusions drawn from remote observations."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Miryam Naddaf"
+    "Yuqi Qian",
+    "Wenlei Song",
+    "James Head",
+    "Mingyu Tian",
+    "Zhuang Guo",
+    "Harald Hiesinger",
+    "Carolyn H. van der Bogert",
+    "Le Zhang",
+    "Jingyou Chen",
+    "Wanfeng Zhang",
+    "Ziqing Li",
+    "Lingzhi Sun",
+    "Xiangsong Wang",
+    "Wei-Ran Li",
+    "Jiacheng Liu",
+    "Nicolas Dauphas",
+    "Yi-Gang Xu",
+    "Guochun Zhao"
    ],
-   "published": "2026-11-19T00:00:00+00:00",
-   "doi": "10.1038/d41586-026-03783-9",
-   "url": "https://doi.org/10.1038/d41586-026-03783-9",
-   "citation": "Naddaf, M. (2026). People entering old age now have better memory than their parents did. Nature. https://doi.org/10.1038/d41586-026-03783-9",
-   "free_copy": null
+   "published": "2026-11-18T08:00:00+00:00",
+   "doi": "10.1126/sciadv.aeh9798",
+   "url": "https://doi.org/10.1126/sciadv.aeh9798",
+   "citation": "Qian, Y., Song, W., Head, J., Tian, M., Guo, Z., Hiesinger, H., Bogert, C. H. v. d., Zhang, L., Chen, J., Zhang, W., Li, Z., Sun, L., Wang, X., Li, W., Liu, J., Dauphas, N., Xu, Y., & Zhao, G. (2026). Postimpact evolution of the South Pole–Aitken basin revealed by Chang’e-4 and Chang’e-6. Science Advances, 12(47), eaeh9798. https://doi.org/10.1126/sciadv.aeh9798",
+   "free_copy": {
+    "url": "https://doi.org/10.1126/sciadv.aeh9798",
+    "version": "Published version",
+    "host": "publisher",
+    "license": null
+   }
   },
   {
-   "rank": 4,
-   "headline": "Gut inflammation after a myeloma CAR T therapy often fails to resolve",
+   "rank": 2,
+   "headline": "Gut inflammation after a type of CAR T cell therapy often fails to resolve",
    "original_title": "Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy",
    "journal": "Nature Medicine",
-   "field": "Medicine / Immunotherapy",
-   "significance": 7,
-   "reason": "A large multicenter series characterizes a serious, often unresolved and sometimes fatal enterocolitis toxicity of BCMA CAR-T therapy.",
-   "summary": "CAR T cell therapy takes a patient's own immune T cells and engineers them to hunt cancer cells. One version targets BCMA, a protein found on certain blood cancer cells, and is used mainly for multiple myeloma, a cancer of antibody-producing plasma cells. Some patients develop inflammation of the small and large intestine after this treatment, a complication called immune effector cell-associated enterocolitis. The researchers pooled cases from several hospitals to describe how this complication behaves.\n\nThis was a large case series, meaning the team collected and described patients who had the complication rather than running a controlled trial. At the most recent check-up, only 32% of affected patients had seen the enterocolitis clear up. Some patients died from problems caused directly by the condition.",
-   "why_it_matters": "BCMA-directed CAR T cells are an important option for people whose blood cancer has stopped responding to other treatments, so doctors need to know about serious side effects. Showing that this gut complication frequently persists and can be fatal may encourage earlier recognition, closer monitoring and research into better treatments for it.",
-   "limitations": "As a descriptive case series, the study cannot show how often this complication occurs among all treated patients or prove what causes it. The short summary also gives no details on patient numbers, follow-up length or which treatments were tried.",
+   "field": "Medicine / Oncology",
+   "significance": 8,
+   "reason": "A large multicenter case series shows that enterocolitis after BCMA CAR-T therapy often does not resolve and can be fatal, which matters directly for patient safety.",
+   "summary": "CAR T cell therapy reprograms a patient's own immune cells to attack cancer. One version targets BCMA, a protein found on certain blood cells. This study asked what happens to patients who develop a serious inflammation of the intestines, called immune effector cell-associated enterocolitis, after receiving BCMA-directed CAR T cells. Researchers at several medical centers pooled cases into a large case series, a descriptive collection of patient records, to see how the condition behaved and how patients fared.\n\nThe condition was often persistent. By the most recent check-up, only about a third of affected patients (32%) had seen the enterocolitis clear up. Some patients died from complications that the researchers linked directly to this gut disorder.",
+   "why_it_matters": "CAR T cell therapies are used more and more, so doctors need to recognize their less familiar side effects. These results suggest that enterocolitis after BCMA-directed treatment can be long-lasting and sometimes fatal. That points to a need for better monitoring and treatment of this complication.",
+   "limitations": "This is a descriptive case series without a comparison group, so it shows how affected patients fared but cannot establish how common the condition is or what causes it. The summary available here gives no details on patient numbers, follow-up length, or treatments used.",
    "key_terms": [
     {
      "term": "CAR T cell therapy",
-     "meaning": "A treatment where a patient's T cells are genetically modified in the lab to carry a receptor that recognizes cancer cells, then infused back into the patient."
+     "meaning": "A treatment in which a patient's T cells (a type of immune cell) are engineered to carry a receptor that recognizes and attacks a chosen target on cancer cells."
     },
     {
      "term": "BCMA",
-     "meaning": "B-cell maturation antigen, a protein on the surface of plasma cells and many myeloma cells, used as the target for these engineered T cells."
+     "meaning": "A protein on the surface of certain blood cells, used as the target that the engineered T cells are directed against."
     },
     {
      "term": "Enterocolitis",
-     "meaning": "Inflammation affecting both the small intestine and the colon."
+     "meaning": "Inflammation of the small and large intestines."
     },
     {
-     "term": "Multicenter case series",
-     "meaning": "A study that gathers and describes patients with a particular condition from several hospitals, without a comparison group."
+     "term": "Immune effector cell-associated",
+     "meaning": "Caused by or linked to the activity of immune cells given as therapy, here the CAR T cells."
+    },
+    {
+     "term": "Case series",
+     "meaning": "A study that describes a group of patients with a particular condition, without a comparison group."
     }
    ],
    "based_on": "abstract",
@@ -189,112 +173,106 @@
    "free_copy": null
   },
   {
-   "rank": 5,
-   "headline": "AI-assisted smartwatch matched clinic checks for flagging high blood pressure",
-   "original_title": "Harnessing smartwatches to spot undiagnosed hypertension",
-   "journal": "Nature Medicine",
-   "field": "Digital Health",
-   "significance": 7,
-   "reason": "In a prospective clinical study, an AI-assisted consumer smartwatch performed similarly to office-based hypertension measurement, suggesting a route to population-level screening.",
-   "summary": "High blood pressure (hypertension) often goes unnoticed because many people never have it measured. This short news piece from Nature Medicine describes a study that asked whether an ordinary consumer smartwatch, combined with artificial intelligence, could help identify people who have hypertension but don't know it.\n\nThe work was a prospective clinical study, meaning participants were enrolled and followed forward in time rather than examined through existing records. According to the summary, the smartwatch-plus-AI approach performed about as well as standard blood pressure measurement taken in a doctor's office. The authors suggest this could support a new way to screen large populations as people go about daily life.",
-   "why_it_matters": "Many people wear smartwatches already, so a reliable built-in check could reach people who rarely visit a doctor and catch high blood pressure earlier. Since untreated hypertension raises the risk of heart and blood vessel problems, wider and easier screening could have public health value.",
-   "limitations": "This is a brief news summary, so it gives no details on how many people took part, who they were, or exactly how accuracy was measured. 'Performed similarly' does not show how well the approach would work in large real-world populations or across different groups of people.",
+   "rank": 3,
+   "headline": "Confined cobalt catalyst breaks down 'forever chemicals' without added energy",
+   "original_title": "Steering nanometric reductive-oxidative Fenton-like cycle for PFAS mineralization",
+   "journal": "Science Advances",
+   "field": "Environmental Chemistry",
+   "significance": 8,
+   "reason": "A confined single-atom cobalt catalyst breaks down 'forever chemical' PFAS completely without external energy input, offering a possible practical route to water remediation.",
+   "summary": "PFASs, nicknamed 'forever chemicals', contain carbon–fluorine bonds so strong that ordinary water treatment cannot break them. Most methods that do destroy them need an outside energy source such as light, electricity or heat. The authors asked whether a chemical reaction alone could do the job if it were run inside extremely narrow spaces. They built a catalyst by placing isolated single cobalt atoms on MXene, a material made of very thin stacked sheets, and used it to activate peroxymonosulfate, an oxidizing chemical, in a Fenton-like cycle (a repeating metal-driven reaction that generates reactive radicals).\n\nInside the nanometre-scale gaps between the sheets, one radical type (SO5•−) was protected from being destroyed by other substances in the water and stayed active long enough to pull fluorine off the PFAS molecule, a reductive step. A second, oxidizing radical (SO4•−) then stripped away carbon. By alternating these two steps, the process broke the PFAS down completely into simple minerals rather than into smaller fluorinated fragments. The team also built a packed-bed treatment unit (a 'Fenton bed') and report that it treated PFASs efficiently and cheaply in complex, realistic water.",
+   "why_it_matters": "PFAS contamination of drinking water is widespread and hard to clean up, and destroying the molecules usually costs a lot of energy. A method that fully mineralizes PFAS using only a catalyst and an added chemical could make treatment simpler and cheaper. It also shows that physically confining a reaction in tiny spaces can change which chemical pathways happen.",
+   "limitations": "The abstract does not give numbers for removal efficiency, cost, which PFAS types were tested, or how long the catalyst stays active, so its performance at real treatment-plant scale remains to be shown.",
    "key_terms": [
     {
-     "term": "Hypertension",
-     "meaning": "Persistently high blood pressure, a common condition that often has no symptoms."
+     "term": "PFAS (per- and polyfluoroalkyl substances)",
+     "meaning": "Human-made chemicals with many carbon–fluorine bonds, used in non-stick and water-repellent products, that persist in the environment."
     },
     {
-     "term": "Prospective clinical study",
-     "meaning": "A study that recruits people and collects new data going forward, rather than looking back at old records."
+     "term": "Mineralization",
+     "meaning": "Complete breakdown of an organic pollutant into simple inorganic products, rather than partial breakdown into other pollutants."
     },
     {
-     "term": "Opportunistic screening",
-     "meaning": "Checking for a disease using chances that arise anyway (like wearing a watch), rather than through a dedicated medical visit."
+     "term": "Peroxymonosulfate",
+     "meaning": "An oxidizing chemical that, when activated by a catalyst, releases highly reactive sulfur-containing radicals."
     },
     {
-     "term": "Office-based measurement",
-     "meaning": "Blood pressure taken with a standard cuff during a visit to a clinic or doctor."
+     "term": "Fenton-like reaction",
+     "meaning": "A catalytic cycle in which a metal (here cobalt) converts an oxidant into reactive radicals that attack pollutants."
+    },
+    {
+     "term": "Single-atom catalyst",
+     "meaning": "A catalyst where the active metal is spread out as individual atoms rather than clumped into particles."
+    },
+    {
+     "term": "MXene",
+     "meaning": "A family of very thin, layered materials made of transition metals combined with carbon or nitrogen."
+    },
+    {
+     "term": "Nanoconfinement",
+     "meaning": "Running a reaction inside spaces only nanometres wide, which can protect short-lived species and alter reaction pathways."
+    },
+    {
+     "term": "Defluorination",
+     "meaning": "Removing fluorine atoms from a molecule, the key step in destroying PFAS."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Karen O’Leary"
+    "Yichuan Wang",
+    "Jianfeng Zheng",
+    "Xinchun Ye",
+    "Tianlin Zhou",
+    "Ting Li",
+    "Menghan Feng",
+    "Dahong Huang",
+    "Seunghyun Weon",
+    "Menachem Elimelech",
+    "Xiaoxiong Wang",
+    "Shuo Zhang"
    ],
-   "published": "2026-11-19T00:00:00+00:00",
-   "doi": "10.1038/d41591-026-00058-8",
-   "url": "https://doi.org/10.1038/d41591-026-00058-8",
-   "citation": "O’Leary, K. (2026). Harnessing smartwatches to spot undiagnosed hypertension. Nature Medicine. https://doi.org/10.1038/d41591-026-00058-8",
-   "free_copy": null
+   "published": "2026-11-18T08:00:00+00:00",
+   "doi": "10.1126/sciadv.aei3786",
+   "url": "https://doi.org/10.1126/sciadv.aei3786",
+   "citation": "Wang, Y., Zheng, J., Ye, X., Zhou, T., Li, T., Feng, M., Huang, D., Weon, S., Elimelech, M., Wang, X., & Zhang, S. (2026). Steering nanometric reductive-oxidative Fenton-like cycle for PFAS mineralization. Science Advances, 12(47), eaei3786. https://doi.org/10.1126/sciadv.aei3786",
+   "free_copy": {
+    "url": "https://doi.org/10.1126/sciadv.aei3786",
+    "version": "Published version",
+    "host": "publisher",
+    "license": null
+   }
   },
   {
-   "rank": 6,
-   "headline": "Bacteria sense virus-infected algae and help speed up bloom collapse",
-   "original_title": "Bacteria and viruses team up to hasten the demise of algal blooms",
-   "journal": "Nature",
-   "field": "Marine Ecology",
-   "significance": 6,
-   "reason": "Bacteria that sense virus-infected algae and act with viruses to speed bloom collapse reveal a new mechanism shaping ocean carbon cycling.",
-   "summary": "Algal blooms are sudden population explosions of tiny photosynthetic organisms in the ocean. They capture large amounts of carbon dioxide and provide food for much of marine life. These blooms often end suddenly when viruses infect and kill the algae. This piece asks whether other microbes also play a part in how blooms come to an end.\n\nAccording to the summary, some bacteria can detect algal cells that have already been infected by viruses. They then work together with the viruses so that the bloom collapses faster than it would through viral infection alone. The short description does not say which bacteria, algae or viruses were involved, how the bacteria detect infected cells, or what methods were used.",
-   "why_it_matters": "Algal blooms move a lot of carbon and support marine food webs, so what ends them affects where that carbon and energy go. If bacteria and viruses cooperate to end blooms, ocean models and our picture of marine ecosystems may need to include this interaction rather than viruses alone.",
-   "limitations": "This is a brief news-style summary, apparently describing a separate research study. It does not give the organisms, the experimental setting (lab or open ocean), or the size of the effect, so it is unclear how widespread this bacteria–virus teamwork is in nature.",
-   "key_terms": [
-    {
-     "term": "Algal bloom",
-     "meaning": "A rapid, large increase in the number of microscopic algae in a body of water."
-    },
-    {
-     "term": "Carbon fixation",
-     "meaning": "The conversion of carbon dioxide into organic matter by photosynthesis."
-    },
-    {
-     "term": "Marine food web",
-     "meaning": "The network of who-eats-whom in the ocean, which algae support at its base."
-    },
-    {
-     "term": "Synergy",
-     "meaning": "When two agents acting together have a larger effect than either would alone."
-    }
-   ],
-   "based_on": "abstract",
-   "authors": [],
-   "published": "2026-11-19T00:00:00+00:00",
-   "doi": "10.1038/d41586-026-03606-x",
-   "url": "https://doi.org/10.1038/d41586-026-03606-x",
-   "citation": "Bacteria and viruses team up to hasten the demise of algal blooms. (2026). Nature. https://doi.org/10.1038/d41586-026-03606-x",
-   "free_copy": null
-  },
-  {
-   "rank": 7,
-   "headline": "Simulation suggests modern humans, not climate alone, tipped Neanderthals toward extinction",
+   "rank": 4,
+   "headline": "Simulations suggest modern humans' arrival, not climate alone, doomed Neanderthals",
    "original_title": "Interband connectivity and climate shaped Neanderthal extinction and Homo sapiens’ dispersal",
    "journal": "Science Advances",
-   "field": "Human Evolution",
-   "significance": 6,
-   "reason": "Links climate and connectivity between regions to Neanderthal extinction and the spread of Homo sapiens, a long-standing question in human prehistory.",
-   "summary": "Researchers have long debated whether Neanderthals died out mainly because Europe's climate changed or because Homo sapiens (our species) moved in, and how either cause might have worked. In this study, the team used past climate to estimate how suitable different parts of Europe were for plant-eating animals and for predators, and how much plant growth the land supported. From these they worked out, place by place across time, how many people the land could sustain, how much prey was available, and how much competition humans faced from other meat-eating predators. They then fed these maps into a computer simulation that tracked groups of humans as individual units under several scenarios.\n\nThe simulations showed that shifts in how many people the land could support were not enough, on their own, to wipe out Neanderthals across the whole continent, although these shifts did help explain where and when each species lived. Adding the arrival of Homo sapiens made Neanderthal extinction much more likely. Because both populations repeatedly grew and shrank, how well groups stayed connected to one another turned out to be the main factor keeping populations stable. The authors conclude that Neanderthal decline and the spread of modern humans were linked population processes rather than separate events.",
-   "why_it_matters": "The work offers a way to test competing explanations for Neanderthal extinction by combining climate, ecology and population dynamics in one framework. It points to contact between scattered groups, not just food supply, as central to whether small human populations survived.",
-   "limitations": "These are results from a computer simulation built on estimated past conditions, so the conclusions depend on the assumptions and scenarios the authors chose. The abstract does not say exactly how Homo sapiens raised Neanderthal extinction risk.",
+   "field": "Anthropology / Paleoecology",
+   "significance": 7,
+   "reason": "Climate-driven agent-based modelling addresses a long-standing debate, finding that the arrival of Homo sapiens, more than climate alone, drove Neanderthal extinction.",
+   "summary": "Scientists have long debated whether Neanderthals died out because Europe's climate changed or because Homo sapiens (our species) arrived and competed with them. This study tackled the question with computer modelling. The researchers used climate-driven changes in how suitable the land was for plant-eaters and meat-eaters, along with how much plant growth the land supported, to estimate how many people each region could sustain, how much prey was available, and how much pressure came from competing predators. They fed these map-based estimates into an agent-based model, a simulation in which individual human groups are represented and their populations grow, shrink and move under different scenarios.\n\nIn the simulations, shifts in how many people the land could support did not by themselves explain Neanderthals vanishing across Europe as a whole. They did, however, help explain where and when each species lived. Adding Homo sapiens to the picture made Neanderthal extinction much more likely. Because both species went through repeated cycles of population growth and decline, how well-connected their groups were to one another turned out to be the main factor deciding whether populations stayed stable.",
+   "why_it_matters": "The work suggests that the disappearance of Neanderthals and the spread of modern humans were linked population processes rather than separate events. It also points to contact between groups as a key ingredient for the survival of small, scattered human populations.",
+   "limitations": "These results come from simulations, so they depend on the assumptions and climate-based estimates built into the model rather than on direct evidence of what happened. The abstract does not say how the conclusions were checked against archaeological data.",
    "key_terms": [
     {
      "term": "Carrying capacity",
-     "meaning": "The largest population an environment can support over time given its available resources."
+     "meaning": "The largest population an area can support over time given its food and other resources."
+    },
+    {
+     "term": "Agent-based model",
+     "meaning": "A computer simulation that tracks many individual units (here, human groups) following rules, to see what overall patterns emerge."
     },
     {
      "term": "Net primary productivity",
-     "meaning": "How much new plant material an area produces, which sets the base of the food supply."
+     "meaning": "How much new plant material an environment produces, which sets the base of the food supply."
     },
     {
      "term": "Intraguild predation",
      "meaning": "Competition and killing among predators that hunt the same prey, such as humans and large carnivores."
     },
     {
-     "term": "Agent-based model",
-     "meaning": "A computer simulation in which many individual units (here, human groups) follow rules and interact, so overall population patterns emerge from their behaviour."
-    },
-    {
-     "term": "Group connectivity",
-     "meaning": "How easily separate human groups could stay in contact, for example to exchange partners or move between areas."
+     "term": "Interband connectivity",
+     "meaning": "How linked separate human groups (bands) are, for example through contact and movement between them."
     }
    ],
    "based_on": "abstract",
@@ -307,19 +285,157 @@
    "doi": "10.1126/sciadv.aej5212",
    "url": "https://doi.org/10.1126/sciadv.aej5212",
    "citation": "Vidal-Cordasco, M., Rodríguez-Gómez, G., & Marín-Arroyo, A. B. (2026). Interband connectivity and climate shaped Neanderthal extinction and Homo sapiens’ dispersal. Science Advances, 12(47), eaej5212. https://doi.org/10.1126/sciadv.aej5212",
-   "free_copy": null
+   "free_copy": {
+    "url": "https://doi.org/10.1126/sciadv.aej5212",
+    "version": "Published version",
+    "host": "publisher",
+    "license": null
+   }
   },
   {
-   "rank": 8,
-   "headline": "Exact formulas for how quark content of protons shifts with energy, at four loops",
+   "rank": 5,
+   "headline": "Bacteria glide using a protein belt that works like a moving walkway",
+   "original_title": "Structure and dynamics of the cellular belt driving bacterial gliding motility",
+   "journal": "Science Advances",
+   "field": "Microbiology / Structural Biology",
+   "significance": 7,
+   "reason": "A cryo-EM structure plus live imaging reveal the moving 'walkway' belt that powers gliding motility in ecologically and medically important bacteria.",
+   "summary": "Some bacteria can move across solid surfaces without flagella or other obvious appendages, a behaviour called gliding motility. In the bacterial group Bacteroidota, which includes both harmless gut residents and disease-causing species, gliding depends on the type IX secretion system (T9SS). This machine exports sticky surface proteins called adhesins, which then travel along a spiral path over the cell body and push the cell forward. The researchers wanted to know what physical structure carries the adhesins along that spiral track.\n\nThey isolated the filament responsible for this movement and determined its 3D shape using cryo-electron microscopy. They also filmed living cells. The filament turned out to be a belt made from core parts of the T9SS. It sits in the periplasm, the space between the bacterium's two membranes, and is attached to the outer membrane. Motor proteins of the T9SS drive it. The belt acts like an airport moving walkway, carrying complexes made of an adhesin bound to a barrel-shaped outer-membrane protein. In this way the motors' activity becomes directed motion of the adhesins across the cell surface.",
+   "why_it_matters": "Bacteroidota are important in many environments, both as harmless partners of animals and as pathogens, so understanding how they move helps explain how they spread and colonise surfaces. The study links two jobs of one machine, secreting proteins and moving them quickly in a set direction within the membrane. This kind of coupling had not been described before.",
+   "limitations": "The abstract does not say which bacterial species were studied or how widely the findings apply across gliding bacteria. It also does not explain exactly how the motors make the belt move.",
+   "key_terms": [
+    {
+     "term": "Gliding motility",
+     "meaning": "Movement of bacteria across a solid surface without swimming appendages such as flagella."
+    },
+    {
+     "term": "Type IX secretion system (T9SS)",
+     "meaning": "A protein-export machine found in Bacteroidota bacteria that moves proteins to the cell surface."
+    },
+    {
+     "term": "Adhesin",
+     "meaning": "A surface protein that lets a bacterium stick to a surface or to other cells."
+    },
+    {
+     "term": "Cryo-electron microscopy",
+     "meaning": "An imaging method in which samples are flash-frozen and viewed with an electron beam, used to work out the 3D structure of large molecules."
+    },
+    {
+     "term": "Periplasm",
+     "meaning": "The space between the inner and outer membranes of certain bacteria."
+    },
+    {
+     "term": "β barrel protein",
+     "meaning": "A membrane protein folded into a barrel shape that sits in the outer membrane."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Hanxiong Liu",
+    "Yaëlle Aouizerate",
+    "Xiangan Liu",
+    "Zihe Zhang",
+    "Caterina Comas Hervada",
+    "Yongtao Zhu",
+    "Maxence S. Vincent",
+    "Eric Cascales",
+    "Bo Hu",
+    "Thierry Doan"
+   ],
+   "published": "2026-11-18T08:00:00+00:00",
+   "doi": "10.1126/sciadv.aef5514",
+   "url": "https://doi.org/10.1126/sciadv.aef5514",
+   "citation": "Liu, H., Aouizerate, Y., Liu, X., Zhang, Z., Hervada, C. C., Zhu, Y., Vincent, M. S., Cascales, E., Hu, B., & Doan, T. (2026). Structure and dynamics of the cellular belt driving bacterial gliding motility. Science Advances, 12(47), eaef5514. https://doi.org/10.1126/sciadv.aef5514",
+   "free_copy": {
+    "url": "https://doi.org/10.1126/sciadv.aef5514",
+    "version": "Published version",
+    "host": "publisher",
+    "license": null
+   }
+  },
+  {
+   "rank": 6,
+   "headline": "Ordinary graphite helps anode-free sodium batteries charge fast and last long",
+   "original_title": "Engineering interfacial nucleation and growth for long-life, ultrahigh-rate anode-free sodium batteries",
+   "journal": "Science Advances",
+   "field": "Energy Storage",
+   "significance": 7,
+   "reason": "Ampere-hour-scale anode-free sodium pouch cells with stable high-rate cycling, using ordinary graphite, are a practical advance toward cheaper batteries.",
+   "summary": "Anode-free sodium batteries skip a separate negative electrode: during charging, sodium metal deposits directly onto a thin metal foil (the current collector), and during discharge it dissolves back off. This saves weight and space, but the deposition and removal tend to be uneven and wasteful, so the batteries lose capacity quickly. The researchers asked whether a common material, graphite, could make this process more controlled and reversible.\n\nThey report that graphite does so unexpectedly well. It moves both ions and electrons very quickly, it lets molecules of the ether-based electrolyte solvent slip in and out between its layers reversibly, and its flat, flake-like shape means sodium tends to start growing at the flake edges. Together these effects produce a very thin but sturdy protective film on the surface, which keeps sodium deposition stable at charging rates from 1C to 10C (roughly a full charge in one hour down to about six minutes). Pouch cells holding about one ampere-hour of charge kept 92.3% of the charge on the first cycle and still had 84.9% of their capacity after 1,100 cycles at 3C. They also warmed only slightly at high rates and did not catch fire or overheat uncontrollably when pierced with a nail.",
+   "why_it_matters": "Sodium is cheaper and more abundant than lithium, and removing the anode can pack more energy into a cell, but poor cycle life has held these designs back. Showing that a cheap, familiar material can steer how sodium metal grows, at practical cell sizes and high charging speeds, points toward low-cost, fast-charging and safer batteries.",
+   "limitations": "The abstract reports results from laboratory-built pouch cells with a specific ether electrolyte. It does not say how the design behaves under other conditions, at larger scales, or over longer lifetimes than about 1,100 cycles.",
+   "key_terms": [
+    {
+     "term": "Anode-free battery",
+     "meaning": "A battery built without a pre-made negative electrode; the metal (here sodium) forms directly on a bare current collector during the first charge."
+    },
+    {
+     "term": "Plating and stripping",
+     "meaning": "Depositing metal onto a surface while charging (plating) and dissolving it back into the electrolyte while discharging (stripping)."
+    },
+    {
+     "term": "Current collector",
+     "meaning": "The conductive foil or layer that carries electrons into and out of the electrode."
+    },
+    {
+     "term": "Nucleation",
+     "meaning": "The first stage of growth, where tiny seeds of new metal begin to form on a surface."
+    },
+    {
+     "term": "Cointercalation",
+     "meaning": "When ions slip between graphite's layers together with the solvent molecules attached to them."
+    },
+    {
+     "term": "SEI (solid electrolyte interphase)",
+     "meaning": "A thin film that forms on the electrode surface from electrolyte breakdown; a good one protects the metal while still letting ions pass."
+    },
+    {
+     "term": "C-rate",
+     "meaning": "How fast a battery is charged or discharged relative to its capacity; 1C is about one hour, 10C about six minutes."
+    },
+    {
+     "term": "Coulombic efficiency",
+     "meaning": "The fraction of charge put into a battery that you get back out in the same cycle."
+    },
+    {
+     "term": "Thermal runaway",
+     "meaning": "A self-reinforcing overheating that can lead to fire or explosion."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Chunlin Xie",
+    "Jiaming Zhang",
+    "Shengfang Liu",
+    "Junhui Lu",
+    "Peiyu Wang",
+    "Xianghui Meng",
+    "Yougen Tang",
+    "Xiaobo Ji",
+    "Haiyan Wang"
+   ],
+   "published": "2026-11-18T08:00:00+00:00",
+   "doi": "10.1126/sciadv.aeh3524",
+   "url": "https://doi.org/10.1126/sciadv.aeh3524",
+   "citation": "Xie, C., Zhang, J., Liu, S., Lu, J., Wang, P., Meng, X., Tang, Y., Ji, X., & Wang, H. (2026). Engineering interfacial nucleation and growth for long-life, ultrahigh-rate anode-free sodium batteries. Science Advances, 12(47), eaeh3524. https://doi.org/10.1126/sciadv.aeh3524",
+   "free_copy": {
+    "url": "https://doi.org/10.1126/sciadv.aeh3524",
+    "version": "Published version",
+    "host": "publisher",
+    "license": null
+   }
+  },
+  {
+   "rank": 7,
+   "headline": "Exact formulas for how quark distributions inside protons change with energy",
    "original_title": "Four-Loop Nonsinglet Splitting Functions in QCD",
    "journal": "Physical Review Letters",
    "field": "Particle Physics",
-   "significance": 6,
-   "reason": "Gives the first fully analytic four-loop nonsinglet QCD splitting functions, important for precision collider predictions.",
-   "summary": "Protons and neutrons are made of smaller constituents called partons (quarks and gluons). How these partons share a proton's momentum is described by parton distributions, and these distributions change depending on the energy scale at which the proton is probed. The rules for that change are set by 'splitting functions', which describe how one parton can split into others. In the theory of the strong force (QCD), splitting functions are calculated as a series of increasingly precise corrections, and each step, or 'loop', is much harder to compute than the last. This paper tackles the fourth step for the 'nonsinglet' case, which tracks differences between quark types rather than the total.\n\nThis is a theoretical calculation. The authors computed these four-loop splitting functions and checked that they agree with earlier partial results. For the first time, they give complete exact formulas for all nonsinglet pieces at this level. From these formulas they also obtained exact expressions for related quantities, called virtual and rapidity anomalous dimensions, which are used in techniques that sum up large logarithmic terms in predictions. They also supply accurate numerical versions of the splitting functions that can be plugged into the software physicists use to evolve parton distributions.",
-   "why_it_matters": "Predictions for proton collisions, such as those at the Large Hadron Collider, depend on knowing parton distributions accurately across many energies. Higher-order splitting functions reduce theoretical uncertainty in these predictions, which matters for precision tests of the Standard Model. The exact results also feed into other high-precision calculations through the derived anomalous dimensions.",
-   "limitations": "The work covers only the nonsinglet splitting functions at four loops; the abstract does not claim complete exact results for the singlet (quark–gluon mixing) case.",
+   "significance": 7,
+   "reason": "The first fully analytic four-loop quark nonsinglet splitting functions sharpen the precision of QCD predictions used at colliders.",
+   "summary": "Protons and neutrons are made of quarks and gluons, collectively called partons. How the momentum of a proton is shared among its partons is described by parton distributions, and these distributions shift depending on the energy scale at which the proton is probed. The rules for that shift are set by splitting functions, which describe how one parton can turn into others. This paper calculates these splitting functions at the fourth level of approximation (four loops) in quantum chromodynamics (QCD), the theory of the strong force. It focuses on the 'nonsinglet' part, which tracks differences between quark types rather than the overall mix with gluons.\n\nThis is a theoretical calculation, not an experiment. The authors reproduce earlier results that covered only parts of this problem. They also obtain, for the first time, complete exact (analytic) formulas for every nonsinglet piece at this order. From these they derive exact forms of two further quantities, called the virtual and rapidity anomalous dimensions, which are used in techniques that sum up large logarithmic terms in predictions. They also give accurate numerical versions of the splitting functions that are ready for practical use.",
+   "why_it_matters": "Predictions for particle collisions, such as those at the Large Hadron Collider, depend on knowing how parton distributions change with energy. More precise splitting functions reduce theoretical uncertainty in these predictions, which helps when comparing theory with high-precision measurements.",
+   "limitations": "The results cover only the nonsinglet sector. The abstract does not report complete exact results for the singlet case, which mixes quarks and gluons.",
    "key_terms": [
     {
      "term": "Parton distributions",
@@ -327,23 +443,27 @@
     },
     {
      "term": "Splitting functions",
-     "meaning": "Quantities that describe how partons split into other partons, and so control how parton distributions change with energy scale."
+     "meaning": "Quantities that describe how partons branch into other partons, setting how parton distributions change with energy scale."
     },
     {
-     "term": "Perturbative QCD / loops",
-     "meaning": "Calculating strong-force effects as a series of corrections; each 'loop' order is a further, more precise and more difficult correction."
+     "term": "Four-loop",
+     "meaning": "The fourth level of refinement in a step-by-step approximation (perturbation theory). Each level adds smaller corrections and requires much harder calculations."
     },
     {
      "term": "Nonsinglet",
-     "meaning": "Combinations of quark distributions (such as differences between quark flavours) that evolve without mixing with gluons."
+     "meaning": "Combinations of quark distributions, such as differences between quark flavours, whose evolution does not mix with gluons."
+    },
+    {
+     "term": "Perturbative QCD",
+     "meaning": "Approximating strong-force calculations as a series of increasingly small corrections."
     },
     {
      "term": "Anomalous dimensions",
-     "meaning": "Numbers that describe how a quantity changes with energy scale; the virtual and rapidity ones here are used in resummation."
+     "meaning": "Numbers that control how quantities change with energy scale. Here, the virtual and rapidity types feed into resummation."
     },
     {
      "term": "Logarithmic resummation",
-     "meaning": "A technique that adds up large logarithmic terms to all orders to improve predictions in certain kinematic regions."
+     "meaning": "A method that adds up large logarithmic terms to all orders so that predictions stay reliable."
     }
    ],
    "based_on": "abstract",
@@ -362,6 +482,54 @@
     "version": "Published version",
     "host": "publisher",
     "license": "cc-by"
+   }
+  },
+  {
+   "rank": 8,
+   "headline": "Sending a message through a brick wall using gravity",
+   "original_title": "Unblockable communication with gravity",
+   "journal": "Science Advances",
+   "field": "Physics / Communications",
+   "significance": 6,
+   "reason": "An experiment demonstrates the novel idea of sending a message through a brick wall using gravitational signals from a moving mass, an essentially unblockable channel.",
+   "summary": "Almost all wireless communication, from Wi-Fi to radio, relies on electromagnetic waves. These signals can be shielded or blocked by walls, metal or other obstacles, so they may not get through in difficult environments. The researchers asked whether information could instead travel through a channel that nothing can block, and they proposed gravity. Every mass pulls on every other mass, and no known material screens out that pull.\n\nThey designed and built a simple system to test the idea. A sender encodes a message in binary (a string of 0s and 1s) by moving a mass. A receiver uses a gravimeter, a very sensitive instrument that measures tiny changes in gravitational pull, to pick up the resulting changes and decode the bits. In a lab experiment, they sent a message about 0.7 meters through a brick wall at a speed of one bit per minute.",
+   "why_it_matters": "This experiment shows that gravity can carry information under realistic conditions, giving a communication route that walls and shielding cannot stop. A channel like this could be useful where ordinary radio signals are unreliable or blocked.",
+   "limitations": "This is a first demonstration over a short distance, under a meter, and at a very slow rate of one bit per minute. The abstract does not say how the method might scale to longer distances or faster speeds.",
+   "key_terms": [
+    {
+     "term": "Electromagnetic signals",
+     "meaning": "Waves of electric and magnetic fields, such as radio waves and light, that carry most wireless communication today."
+    },
+    {
+     "term": "Gravimeter",
+     "meaning": "An instrument that measures very small changes in the strength of gravity at a location."
+    },
+    {
+     "term": "Binary message",
+     "meaning": "Information written as a sequence of two symbols, usually 0 and 1, each called a bit."
+    },
+    {
+     "term": "Bit rate",
+     "meaning": "How many bits of information are sent per unit of time. Here it was one bit per minute."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Andrew J. Groszek",
+    "Charles W. Woffinden",
+    "Michael D. Harvey",
+    "Andrew G. White",
+    "Matthew J. Davis"
+   ],
+   "published": "2026-11-18T08:00:00+00:00",
+   "doi": "10.1126/sciadv.aee0802",
+   "url": "https://doi.org/10.1126/sciadv.aee0802",
+   "citation": "Groszek, A. J., Woffinden, C. W., Harvey, M. D., White, A. G., & Davis, M. J. (2026). Unblockable communication with gravity. Science Advances, 12(47), eaee0802. https://doi.org/10.1126/sciadv.aee0802",
+   "free_copy": {
+    "url": "https://doi.org/10.1126/sciadv.aee0802",
+    "version": "Published version",
+    "host": "publisher",
+    "license": null
    }
   }
  ]

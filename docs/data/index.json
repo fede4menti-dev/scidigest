@@ -1,24 +1,24 @@
 {
  "format": 1,
- "updated": "2026-11-19T15:09:13+00:00",
+ "updated": "2026-11-19T15:23:46+00:00",
  "days": [
   {
    "date": "2026-11-19",
    "count": 8,
    "fields": [
-    "Digital Health",
-    "Human Evolution",
-    "Infectious Disease",
-    "Marine Ecology",
-    "Medicine / Immunotherapy",
-    "Neuroscience / Aging",
-    "Oncology",
-    "Particle Physics"
+    "Anthropology / Paleoecology",
+    "Energy Storage",
+    "Environmental Chemistry",
+    "Medicine / Oncology",
+    "Microbiology / Structural Biology",
+    "Particle Physics",
+    "Physics / Communications",
+    "Planetary Science"
    ],
    "top_headlines": [
-    "A short journal item on using a meningitis B vaccine against gonorrhea",
-    "Enfortumab vedotin plus pembrolizumab for bladder cancer patients who can take cisplatin",
-    "Today's older adults keep their memory longer than earlier generations did"
+    "Chinese lunar missions reconstruct the history of the Moon's biggest crater",
+    "Gut inflammation after a type of CAR T cell therapy often fails to resolve",
+    "Confined cobalt catalyst breaks down 'forever chemicals' without added energy"
    ]
   }
  ]

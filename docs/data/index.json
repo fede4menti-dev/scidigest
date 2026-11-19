@@ -1,24 +1,23 @@
 {
  "format": 1,
- "updated": "2026-11-19T15:23:46+00:00",
+ "updated": "2026-11-19T22:48:38+00:00",
  "days": [
   {
    "date": "2026-11-19",
    "count": 8,
    "fields": [
-    "Anthropology / Paleoecology",
-    "Energy Storage",
-    "Environmental Chemistry",
-    "Medicine / Oncology",
-    "Microbiology / Structural Biology",
-    "Particle Physics",
-    "Physics / Communications",
-    "Planetary Science"
+    "Developmental Biology",
+    "Materials Science and Energy",
+    "Medicine and Oncology",
+    "Neuroscience",
+    "Ocean and Atmospheric Science",
+    "Physics",
+    "Physics and Fluid Dynamics"
    ],
    "top_headlines": [
-    "Chinese lunar missions reconstruct the history of the Moon's biggest crater",
-    "Gut inflammation after a type of CAR T cell therapy often fails to resolve",
-    "Confined cobalt catalyst breaks down 'forever chemicals' without added energy"
+    "Molecular recorder traces family tree of over a million mouse embryo cells",
+    "A small patch of the brain's 'listening' area helps plan spoken words",
+    "Organic nitrogen falling from the air feeds the oceans more than thought"
    ]
   }
  ]

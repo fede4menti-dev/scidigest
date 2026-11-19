@@ -1,125 +1,362 @@
 {
  "format": 1,
  "date": "2026-11-19",
- "generated_at": "2026-11-19T15:23:46+00:00",
- "scanned": 76,
+ "generated_at": "2026-11-19T22:48:38+00:00",
+ "scanned": 74,
  "journals": [
+  "Cell",
   "Nature",
   "Nature Biotechnology",
   "Nature Communications",
   "Nature Medicine",
   "PLOS Biology",
-  "Physical Review Letters",
-  "Science Advances",
-  "The New England Journal of Medicine",
+  "Science",
   "eLife"
  ],
  "ai_summaries": true,
  "papers": [
   {
    "rank": 1,
-   "headline": "Chinese lunar missions reconstruct the history of the Moon's biggest crater",
-   "original_title": "Postimpact evolution of the South Pole–Aitken basin revealed by Chang’e-4 and Chang’e-6",
-   "journal": "Science Advances",
-   "field": "Planetary Science",
+   "headline": "Molecular recorder traces family tree of over a million mouse embryo cells",
+   "original_title": "A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis",
+   "journal": "Science",
+   "field": "Developmental Biology",
    "significance": 9,
-   "reason": "The first ground-truth samples from the Moon's far-side South Pole–Aitken basin date its giant impact to about 4.34 billion years ago and reconstruct how the basin evolved afterwards.",
-   "summary": "The South Pole–Aitken (SPA) basin, on the Moon's far side, is the largest impact crater on the Moon and holds a record of its early geological history. Until recently no spacecraft had landed there. China's Chang'e-4 rover, which studies rocks on the surface, and the Chang'e-6 mission, which brought samples back to Earth, supplied the first direct measurements from inside the basin. The authors used these ground-level data and samples to piece together how the basin changed after it formed.\n\nThey conclude that the giant SPA impact happened about 4.34 billion years ago and melted so much rock that it produced a thick layer of molten material. As this layer cooled, it separated into different rock types, including norites with a moderate magnesium content. These rocks are exposed at the basin's central peaks, and a later impact (Finsen) threw some of them to the area Chang'e-4 is now exploring in Von Kármán crater. The team also identified rocks very rich in magnesium, probably formed by a separate episode of magma activity known as the Mg-suite. These were first dug up by the Apollo impact about 4.2 billion years ago and later carried to the Chang'e-6 landing site by a smaller impact (Chaffee S). Further events, such as the Orientale impact about 3.87 billion years ago, continued to reshape the basin.",
-   "why_it_matters": "Because the SPA basin is so old and so deep, it can reveal how the early Moon formed its crust and how giant impacts and volcanic activity changed it. Measurements taken on the ground and in returned samples give a firmer check on ideas that previously rested mostly on observations from orbit.",
-   "limitations": "The abstract describes a reconstructed sequence built from data at only two landing sites, and some links, such as the Mg-rich rocks coming from Mg-suite magmatism, are described as likely rather than certain. The exact methods and uncertainties on the ages are not given in the abstract.",
+   "reason": "A first zygote-rooted, time-calibrated lineage tree of 1.28 million cells from a single mouse embryo, a long-sought map of mammalian development.",
+   "summary": "How does a single fertilized egg give rise to all the cell types of a mammal? Watching this directly is hard because development happens deep inside tissues we cannot easily see into. The researchers used a tool called DNA Typewriter, which writes a running record of events into a cell's DNA in a fixed order, so that later cells carry a readable history of their ancestry. They let it record in a mouse embryo for almost two weeks, from the fertilized egg (zygote) through the stage when organs are forming, and then read both the recorded DNA edits and the active genes of each cell.\n\nFrom one embryo they built a family tree of about 1.28 million cells, rooted at the zygote and calibrated in time. A burst of edits clearly tagged the two cells made by the very first cell division, letting the two halves of the embryo act as built-in repeats of each other. They measured how some cell families came to dominate during gastrulation, the stage when the main body layers form. Closely related cells on the tree usually shared the same cell type far more often than chance, and sister cells of different types pointed to final steps of specialization. By tracking which cell types appeared together within branches over time, they recovered a dated order in which cell types separated, and their inferred identities for ancestral cells matched known developmental routes.",
+   "why_it_matters": "Building a complete, timed family tree of mammalian development has long been out of reach, and this work shows it can be done at the scale of a whole embryo. Such maps can reveal when and from which ancestors different tissues arise, a basic question for understanding development and its disorders.",
+   "limitations": "The tree comes from a single mouse embryo, so how much it varies between individuals is not established from this abstract. Identities of ancestral cells are inferred (imputed) rather than directly observed.",
    "key_terms": [
     {
-     "term": "Impact basin",
-     "meaning": "A very large crater, often hundreds to thousands of kilometres wide, made when a big asteroid or comet hits a planet or moon."
+     "term": "DNA Typewriter",
+     "meaning": "A molecular recording system that adds edits to a stretch of DNA one after another in order, so cells inherit a readable log of their lineage."
     },
     {
-     "term": "Melt sheet",
-     "meaning": "A layer of rock melted by the heat of a large impact that fills the floor of the crater."
+     "term": "Cell lineage / phylogeny",
+     "meaning": "The family tree showing which cells descended from which ancestors."
     },
     {
-     "term": "Differentiation",
-     "meaning": "Separation of a cooling molten body into layers of different composition as different minerals crystallize."
+     "term": "Parsimony",
+     "meaning": "A tree-building principle that prefers the tree needing the fewest changes to explain the data."
     },
     {
-     "term": "Norite",
-     "meaning": "A coarse-grained igneous rock made mostly of plagioclase feldspar and a magnesium- and iron-bearing mineral called pyroxene."
+     "term": "Transcriptionally profiled",
+     "meaning": "Each cell's active genes were measured, which identifies its cell type."
     },
     {
-     "term": "Mg-suite",
-     "meaning": "A group of ancient magnesium-rich lunar rocks thought to come from magma that rose into the early crust."
+     "term": "Gastrulation",
+     "meaning": "An early embryo stage when cells reorganize into the main layers that form the body."
     },
     {
-     "term": "Central peak / peak ring",
-     "meaning": "Mountains or rings of mountains inside large craters, formed when the floor rebounds after impact, often bringing up deep material."
+     "term": "Clonal dominance",
+     "meaning": "When descendants of a few ancestor cells make up an outsized share of the tissue."
     },
     {
-     "term": "Ground truth",
-     "meaning": "Direct measurements on site, used to test conclusions drawn from remote observations."
+     "term": "Heterotypic siblings",
+     "meaning": "Closely related sister cells that ended up as different cell types."
+    },
+    {
+     "term": "Clade",
+     "meaning": "A branch of the tree: one ancestor and all its descendants."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Yuqi Qian",
-    "Wenlei Song",
-    "James Head",
-    "Mingyu Tian",
-    "Zhuang Guo",
-    "Harald Hiesinger",
-    "Carolyn H. van der Bogert",
-    "Le Zhang",
-    "Jingyou Chen",
-    "Wanfeng Zhang",
-    "Ziqing Li",
-    "Lingzhi Sun",
-    "Xiangsong Wang",
-    "Wei-Ran Li",
-    "Jiacheng Liu",
-    "Nicolas Dauphas",
-    "Yi-Gang Xu",
-    "Guochun Zhao"
+    "Qi Yu",
+    "Haedong Kim",
+    "Sophie Seidel",
+    "James F. Acosta-Clark",
+    "Beth K. Martin",
+    "Kyle O’Connor",
+    "Riza M. Daza",
+    "Molly Gasperini",
+    "Jenny F. Nathans",
+    "Maggie Lam",
+    "Elena Gamo",
+    "Shruthi VijayKumar",
+    "Lauren Kuo",
+    "Jean-Benoît Lalanne",
+    "Kamen P. Simeonov",
+    "Marion Pepper",
+    "Cole Trapnell",
+    "Jesse M. Gray",
+    "Junhong Choi",
+    "Chengxiang Qiu",
+    "Jay Shendure"
    ],
-   "published": "2026-11-18T08:00:00+00:00",
-   "doi": "10.1126/sciadv.aeh9798",
-   "url": "https://doi.org/10.1126/sciadv.aeh9798",
-   "citation": "Qian, Y., Song, W., Head, J., Tian, M., Guo, Z., Hiesinger, H., Bogert, C. H. v. d., Zhang, L., Chen, J., Zhang, W., Li, Z., Sun, L., Wang, X., Li, W., Liu, J., Dauphas, N., Xu, Y., & Zhao, G. (2026). Postimpact evolution of the South Pole–Aitken basin revealed by Chang’e-4 and Chang’e-6. Science Advances, 12(47), eaeh9798. https://doi.org/10.1126/sciadv.aeh9798",
+   "published": "2026-11-19T08:00:00+00:00",
+   "doi": "10.1126/science.ael0508",
+   "url": "https://doi.org/10.1126/science.ael0508",
+   "citation": "Yu, Q., Kim, H., Seidel, S., Acosta-Clark, J. F., Martin, B. K., O’Connor, K., Daza, R. M., Gasperini, M., Nathans, J. F., Lam, M., Gamo, E., VijayKumar, S., Kuo, L., Lalanne, J., Simeonov, K. P., Pepper, M., Trapnell, C., Gray, J. M., Choi, J., ... Shendure, J. (2026). A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis. Science, 394(6826), eael0508. https://doi.org/10.1126/science.ael0508",
    "free_copy": {
-    "url": "https://doi.org/10.1126/sciadv.aeh9798",
+    "url": "https://doi.org/10.1126/science.ael0508",
     "version": "Published version",
     "host": "publisher",
-    "license": null
+    "license": "cc-by"
    }
   },
   {
    "rank": 2,
-   "headline": "Gut inflammation after a type of CAR T cell therapy often fails to resolve",
+   "headline": "A small patch of the brain's 'listening' area helps plan spoken words",
+   "original_title": "A neural code for generative speech production in human Wernicke’s area",
+   "journal": "Science",
+   "field": "Neuroscience",
+   "significance": 9,
+   "reason": "Direct brain recordings, stimulation and lesion analysis resolve a classic paradox by finding a Wernicke's-area subregion that is causally needed for generating speech, with potential use in speech-decoding devices for paralysis.",
+   "summary": "Wernicke's area, a region toward the back of the left temporal lobe (the side of the brain near the ear), has long been viewed as the hub for understanding speech. That leaves a puzzle: people with damage there often have serious trouble speaking, not just understanding. The researchers asked whether part of this region actually takes part in producing speech. They used three kinds of evidence from people: recordings made directly from the brain surface, mild electrical stimulation of the cortex to see what disrupts speech, and analysis of where brain injuries were located in people with speech problems.\n\nThey found a distinct subregion, the left posterior superior temporal gyrus (lpSTG), that switches on before a person starts talking. Interfering with it disrupted speech, which suggests it is needed for speaking rather than just active alongside it. Its activity reflected properties of the whole word about to be said, not basic sound features or mouth and tongue movements. This signal differed from nearby activity that responds to hearing one's own voice. It could also be used to decode the words that people with paralysis were trying to say.",
+   "why_it_matters": "The work helps explain why damage to a so-called comprehension area also impairs speaking. It points to a dedicated speech-generating zone within auditory cortex. Because its signals carry information about intended words, it could be a useful target for brain-computer interfaces that restore communication to paralysed people.",
+   "limitations": "The abstract does not say how many people were studied or how accurate the decoding was. Direct brain recordings are typically possible only in patients already undergoing brain procedures, which may limit how broadly the results apply.",
+   "key_terms": [
+    {
+     "term": "Wernicke's area",
+     "meaning": "A region at the back of the left temporal lobe traditionally linked to understanding spoken language."
+    },
+    {
+     "term": "Left posterior superior temporal gyrus (lpSTG)",
+     "meaning": "The rear part of the upper fold of the left temporal lobe; the specific subzone identified here as involved in producing speech."
+    },
+    {
+     "term": "Cortical stimulation",
+     "meaning": "Applying small electrical currents to the brain surface to briefly disrupt a region and test whether it is needed for a task."
+    },
+    {
+     "term": "Lesion analysis",
+     "meaning": "Studying people with brain damage to link the location of the injury to the abilities they have lost."
+    },
+    {
+     "term": "Auditory feedback",
+     "meaning": "The brain's response to hearing one's own voice while speaking."
+    },
+    {
+     "term": "Decode",
+     "meaning": "Using recorded brain activity to work out what a person intends to say."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Alexander B. Silva",
+    "Matthew K. Leonard",
+    "Patrick W. Hullett",
+    "Deborah F. Levy",
+    "Catherine Wang",
+    "Duo Xu",
+    "Ilina Bhaya-Grossman",
+    "Edward F. Chang"
+   ],
+   "published": "2026-11-19T08:00:00+00:00",
+   "doi": "10.1126/science.aef8963",
+   "url": "https://doi.org/10.1126/science.aef8963",
+   "citation": "Silva, A. B., Leonard, M. K., Hullett, P. W., Levy, D. F., Wang, C., Xu, D., Bhaya-Grossman, I., & Chang, E. F. (2026). A neural code for generative speech production in human Wernicke’s area. Science, 394(6826), eaef8963. https://doi.org/10.1126/science.aef8963",
+   "free_copy": null
+  },
+  {
+   "rank": 3,
+   "headline": "Organic nitrogen falling from the air feeds the oceans more than thought",
+   "original_title": "Atmospheric organic nitrogen is a major nutrient source to global oceans",
+   "journal": "Science",
+   "field": "Ocean and Atmospheric Science",
+   "significance": 8,
+   "reason": "Measurements from 21 research cruises combined with global modeling show organic nitrogen makes up about 27% of atmospheric nitrogen deposition to the oceans, reshaping marine nutrient budgets.",
+   "summary": "Nitrogen is a key nutrient for ocean life, and some of it reaches the sea from the air. Most of this airborne supply is inorganic nitrogen (such as nitrate and ammonium), but some comes as organic nitrogen, meaning nitrogen built into carbon-containing molecules. That organic portion has been poorly measured. The researchers collected airborne particles over the sea on 21 research cruises that crossed several ocean basins and reached high latitudes in both hemispheres. They measured the organic nitrogen in these samples, then used the measurements to tune and check a computer model of atmospheric chemistry, which they had updated with better descriptions of where organic nitrogen comes from and how it is removed from the air.\n\nThe model estimates that about 12.8 teragrams (million tonnes) of organic nitrogen settles onto the oceans each year, with a wide uncertainty range of roughly 4 to 23 teragrams. That is about 27% of all nitrogen deposited from the air to the sea (range 11–40%). Around 70% of this organic nitrogen comes from land sources and about 30% from the ocean itself. In regions where a shortage of nitrogen limits growth, such as the central Atlantic and the seas around Indonesia, organic nitrogen makes up about half of the nitrogen arriving from the atmosphere.",
+   "why_it_matters": "If roughly a quarter of airborne nitrogen reaching the oceans is organic, budgets that leave it out underestimate how much nutrient the air delivers to marine ecosystems. This is especially relevant in nitrogen-starved waters, where extra nitrogen can control how much plankton grows. Because most of the organic nitrogen comes from land, human activity on land may affect distant oceans through this route.",
+   "limitations": "The global numbers come from a model constrained by ship measurements, not from direct measurement everywhere, and the uncertainty ranges are wide (for example, 4 to 23 Tg N per year for total organic nitrogen deposition). The abstract also does not say how much of this deposited organic nitrogen marine organisms can actually use.",
+   "key_terms": [
+    {
+     "term": "Atmospheric nitrogen deposition",
+     "meaning": "Nitrogen compounds in the air that settle onto land or sea, either as dry particles or carried down by rain."
+    },
+    {
+     "term": "Organic nitrogen (ON)",
+     "meaning": "Nitrogen that is part of carbon-based molecules, as opposed to simple inorganic forms like nitrate or ammonium."
+    },
+    {
+     "term": "Aerosols",
+     "meaning": "Tiny solid or liquid particles suspended in the air."
+    },
+    {
+     "term": "Teragram (Tg)",
+     "meaning": "A trillion grams, which equals one million tonnes."
+    },
+    {
+     "term": "N-limited region",
+     "meaning": "An ocean area where a lack of nitrogen is the main factor holding back the growth of algae and other organisms."
+    },
+    {
+     "term": "Atmospheric chemistry model",
+     "meaning": "A computer simulation of how chemicals are emitted, transformed, moved, and removed in the atmosphere."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Xu Yu",
+    "Yumin Li",
+    "Guitao Shi",
+    "Liuqian Yu",
+    "Yujue Wang",
+    "Senchao Lai",
+    "Yang Zhou",
+    "Yingyi Zhang",
+    "Ningning Sun",
+    "Bo Zhang",
+    "Ye Hu",
+    "Zhe Li",
+    "Yue Jiang",
+    "Wenshuai Li",
+    "Tzung-May Fu",
+    "Jian Zhen Yu"
+   ],
+   "published": "2026-11-19T07:00:11+00:00",
+   "doi": "10.1126/science.aeg4265",
+   "url": "https://doi.org/10.1126/science.aeg4265",
+   "citation": "Yu, X., Li, Y., Shi, G., Yu, L., Wang, Y., Lai, S., Zhou, Y., Zhang, Y., Sun, N., Zhang, B., Hu, Y., Li, Z., Jiang, Y., Li, W., Fu, T., & Yu, J. Z. (2026). Atmospheric organic nitrogen is a major nutrient source to global oceans. Science, 394(6826), 901-906. https://doi.org/10.1126/science.aeg4265",
+   "free_copy": null
+  },
+  {
+   "rank": 4,
+   "headline": "A molecular 'glue' layer helps large perovskite solar panels hold together",
+   "original_title": "Molecular adhesion for durable metal halide perovskite modules",
+   "journal": "Science",
+   "field": "Materials Science and Energy",
+   "significance": 8,
+   "reason": "A molecular adhesion layer gives full-size perovskite solar modules over 21% efficiency, with independently verified stability over 105 days outdoors, a key step toward commercialization.",
+   "summary": "Perovskite solar cells convert sunlight to electricity efficiently and cheaply, but they tend to degrade, partly because the layers inside them can weaken or come apart at their boundaries. This study tackled the hidden bottom boundary where the perovskite light-absorbing layer sits on the layer that carries positive charges (holes). The researchers inserted a thin molecular layer made from an aromatic (ring-shaped, carbon-based) molecule that can attach at two sites. It interacts with the hole-carrying layer below and forms strong chemical bonds, tying the two layers together.\n\nThe authors report that this layer makes the perovskite stick better and relieves built-up mechanical strain, so devices cope better with stresses from heating and cooling. They built panels far larger than typical lab cells: 900 cm² submodules reached 22.7% efficiency, and full-size 7200 cm² modules reached 21.3%. The best full-size module kept steady performance through 105 days outdoors, with measurements taken by an independent testing center (PACT).",
+   "why_it_matters": "A key obstacle to selling perovskite solar panels is making them last, not just making them efficient in small lab samples. This work shows that strengthening one internal interface can deliver both good efficiency and early outdoor stability at commercial panel sizes, with independent verification.",
+   "limitations": "105 days of outdoor testing is short next to the decades that commercial panels must last, and the outdoor result is reported for the single best module. The abstract does not give how much performance changed or how long devices last under accelerated stress tests.",
+   "key_terms": [
+    {
+     "term": "Perovskite (metal halide)",
+     "meaning": "A family of crystalline materials, containing metal and halogen ions, that absorb light well and can be made into cheap, efficient solar cells."
+    },
+    {
+     "term": "Hole-selective layer",
+     "meaning": "A layer that lets positive charge carriers (holes) pass to the electrode while blocking electrons."
+    },
+    {
+     "term": "Buried interface",
+     "meaning": "The boundary under the perovskite layer, hidden beneath it and hard to reach once the device is built."
+    },
+    {
+     "term": "Dual-site-binding ligand",
+     "meaning": "A molecule with two parts that can each attach to a surface, letting it link two materials."
+    },
+    {
+     "term": "Thermomechanical stress",
+     "meaning": "Strain from materials expanding and contracting as temperature changes, which can crack or separate layers."
+    },
+    {
+     "term": "Aperture area",
+     "meaning": "The part of a panel that actually collects light, used when calculating efficiency."
+    },
+    {
+     "term": "Power conversion efficiency",
+     "meaning": "The percentage of incoming sunlight energy turned into electrical energy."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Chenglin Yang",
+    "Tian Hou",
+    "Yafeng Xu",
+    "Charles Robinson",
+    "Joshua S. Stein",
+    "Yingtong Guo",
+    "Qingchao Chang",
+    "Hong Li",
+    "Lang Yu",
+    "Yuanyuan Qin",
+    "Omar F. Mohammed",
+    "Yuelong Huang",
+    "Shuai You",
+    "Xiaopeng Zheng"
+   ],
+   "published": "2026-11-19T08:00:00+00:00",
+   "doi": "10.1126/science.aej5001",
+   "url": "https://doi.org/10.1126/science.aej5001",
+   "citation": "Yang, C., Hou, T., Xu, Y., Robinson, C., Stein, J. S., Guo, Y., Chang, Q., Li, H., Yu, L., Qin, Y., Mohammed, O. F., Huang, Y., You, S., & Zheng, X. (2026). Molecular adhesion for durable metal halide perovskite modules. Science, 394(6826), eaej5001. https://doi.org/10.1126/science.aej5001",
+   "free_copy": null
+  },
+  {
+   "rank": 5,
+   "headline": "Twisted laser light makes a trapped ion spin in measurable steps",
+   "original_title": "Angular momentum transfer from an optical vortex to an atomic rotor",
+   "journal": "Science",
+   "field": "Physics",
+   "significance": 7,
+   "reason": "Directly observes coherent transfer of orbital angular momentum from twisted light into the quantized rotation of a trapped ion, settling a debated question about light-matter interaction.",
+   "summary": "Light can carry angular momentum, a measure of rotation, in two ways. One is spin, tied to the beam's polarization, and it is well known to govern which atomic transitions are allowed. The other is orbital angular momentum (OAM), which comes from a beam whose wavefront twists like a corkscrew (a 'vortex' beam). How OAM actually exchanges with matter is still debated. This experiment asked whether OAM from a vortex laser can be handed over directly to the rotational motion of a single trapped calcium ion (40Ca+), set up so that it behaves as a quantum rotor that can only rotate in fixed, discrete amounts.\n\nThe team drove a weak transition of the ion called an electric quadrupole transition and looked at 'rotational sidebands', which are extra spectral lines that appear when the light changes the ion's rotation as well as its internal state. They saw the beam's OAM converted coherently into quantized rotation of the ion. Different sidebands followed different selection rules, meaning different patterns of which changes are permitted. The authors read this as evidence that the light's angular momentum takes different routes into matter depending on scale: some goes into the electron's internal state and some into the motion of the whole ion. They say this also explains unusual selection rules reported in earlier trapped-ion experiments.",
+   "why_it_matters": "The result helps settle an open question about how light's twisting wavefront interacts with atoms, and it brings earlier puzzling observations into one framework. A clearer picture of how light's angular momentum is shared out could help researchers who use twisted light to control atoms and quantum systems.",
+   "limitations": "The abstract covers a single-ion experiment with one atomic species and transition. It does not say how far the proposed 'unified framework' has been tested in other systems.",
+   "key_terms": [
+    {
+     "term": "Orbital angular momentum (OAM)",
+     "meaning": "Angular momentum carried by light whose wavefronts spiral around the beam axis, separate from the spin linked to polarization."
+    },
+    {
+     "term": "Optical vortex",
+     "meaning": "A laser beam with a corkscrew-shaped wavefront and a dark center, which carries OAM."
+    },
+    {
+     "term": "Trapped-ion quantum rotor",
+     "meaning": "A single charged atom held by electromagnetic fields and set up so its rotation can only take discrete, quantized values."
+    },
+    {
+     "term": "Electric quadrupole transition",
+     "meaning": "A weaker type of atomic transition than the usual dipole kind, more sensitive to how the light field varies across space."
+    },
+    {
+     "term": "Rotational sidebands",
+     "meaning": "Extra spectral lines next to the main transition that correspond to the ion also gaining or losing rotational quanta."
+    },
+    {
+     "term": "Selection rules",
+     "meaning": "Rules stating which changes in a quantum system's state are allowed when it absorbs light."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Yu-Lung Tang",
+    "Ryan Tollefsen",
+    "Neha Yadav",
+    "Michael W. Zuerch",
+    "Hartmut Häffner"
+   ],
+   "published": "2026-11-19T07:00:11+00:00",
+   "doi": "10.1126/science.aeh0182",
+   "url": "https://doi.org/10.1126/science.aeh0182",
+   "citation": "Tang, Y., Tollefsen, R., Yadav, N., Zuerch, M. W., & Häffner, H. (2026). Angular momentum transfer from an optical vortex to an atomic rotor. Science, 394(6826), 890-894. https://doi.org/10.1126/science.aeh0182",
+   "free_copy": null
+  },
+  {
+   "rank": 6,
+   "headline": "Gut inflammation after a myeloma CAR T therapy often persists and can be fatal",
    "original_title": "Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy",
    "journal": "Nature Medicine",
-   "field": "Medicine / Oncology",
-   "significance": 8,
-   "reason": "A large multicenter case series shows that enterocolitis after BCMA CAR-T therapy often does not resolve and can be fatal, which matters directly for patient safety.",
-   "summary": "CAR T cell therapy reprograms a patient's own immune cells to attack cancer. One version targets BCMA, a protein found on certain blood cells. This study asked what happens to patients who develop a serious inflammation of the intestines, called immune effector cell-associated enterocolitis, after receiving BCMA-directed CAR T cells. Researchers at several medical centers pooled cases into a large case series, a descriptive collection of patient records, to see how the condition behaved and how patients fared.\n\nThe condition was often persistent. By the most recent check-up, only about a third of affected patients (32%) had seen the enterocolitis clear up. Some patients died from complications that the researchers linked directly to this gut disorder.",
-   "why_it_matters": "CAR T cell therapies are used more and more, so doctors need to recognize their less familiar side effects. These results suggest that enterocolitis after BCMA-directed treatment can be long-lasting and sometimes fatal. That points to a need for better monitoring and treatment of this complication.",
-   "limitations": "This is a descriptive case series without a comparison group, so it shows how affected patients fared but cannot establish how common the condition is or what causes it. The summary available here gives no details on patient numbers, follow-up length, or treatments used.",
+   "field": "Medicine and Oncology",
+   "significance": 7,
+   "reason": "A large multicenter case series reveals a serious, often unresolved and sometimes fatal gut complication of BCMA-directed CAR-T therapy, which matters for patient safety.",
+   "summary": "CAR T cell therapy reprograms a patient's own immune cells to attack cancer. One version targets BCMA, a protein found on the cancer cells of multiple myeloma, a blood cancer. Some patients given this treatment later develop inflammation of the intestines, called immune effector cell-associated enterocolitis. This study set out to describe that complication across several hospitals.\n\nThe researchers pulled together a case series, meaning a collection of patients who had the complication, drawn from multiple treatment centers. At the most recent check-up, the enterocolitis had cleared in only about a third of patients (32%). Some deaths were judged to be caused directly by complications of the gut inflammation.",
+   "why_it_matters": "BCMA-directed CAR T cells are an important option for patients with multiple myeloma, so doctors need to know about serious side effects that can appear afterward. The findings suggest this gut complication is often long-lasting and sometimes deadly, which argues for watching for it closely and finding better treatments.",
+   "limitations": "A case series describes only patients who developed the complication, so it cannot show how common enterocolitis is or establish what causes it. The short summary also gives no detail on patient numbers, follow-up length, or which treatments were tried.",
    "key_terms": [
     {
      "term": "CAR T cell therapy",
-     "meaning": "A treatment in which a patient's T cells (a type of immune cell) are engineered to carry a receptor that recognizes and attacks a chosen target on cancer cells."
+     "meaning": "A treatment that takes a patient's T cells (a type of immune cell), engineers them to recognize a target on cancer cells, and returns them to the body."
     },
     {
      "term": "BCMA",
-     "meaning": "A protein on the surface of certain blood cells, used as the target that the engineered T cells are directed against."
+     "meaning": "B-cell maturation antigen, a protein on the surface of myeloma cells that these CAR T cells are designed to recognize."
     },
     {
      "term": "Enterocolitis",
-     "meaning": "Inflammation of the small and large intestines."
-    },
-    {
-     "term": "Immune effector cell-associated",
-     "meaning": "Caused by or linked to the activity of immune cells given as therapy, here the CAR T cells."
+     "meaning": "Inflammation of the small intestine and colon, which can cause symptoms such as diarrhea."
     },
     {
      "term": "Case series",
-     "meaning": "A study that describes a group of patients with a particular condition, without a comparison group."
+     "meaning": "A study that describes a group of patients who share a condition, without a comparison group."
+    },
+    {
+     "term": "Disease resolution",
+     "meaning": "The condition clearing up completely."
     }
    ],
    "based_on": "abstract",
@@ -173,364 +410,113 @@
    "free_copy": null
   },
   {
-   "rank": 3,
-   "headline": "Confined cobalt catalyst breaks down 'forever chemicals' without added energy",
-   "original_title": "Steering nanometric reductive-oxidative Fenton-like cycle for PFAS mineralization",
-   "journal": "Science Advances",
-   "field": "Environmental Chemistry",
-   "significance": 8,
-   "reason": "A confined single-atom cobalt catalyst breaks down 'forever chemical' PFAS completely without external energy input, offering a possible practical route to water remediation.",
-   "summary": "PFASs, nicknamed 'forever chemicals', contain carbon–fluorine bonds so strong that ordinary water treatment cannot break them. Most methods that do destroy them need an outside energy source such as light, electricity or heat. The authors asked whether a chemical reaction alone could do the job if it were run inside extremely narrow spaces. They built a catalyst by placing isolated single cobalt atoms on MXene, a material made of very thin stacked sheets, and used it to activate peroxymonosulfate, an oxidizing chemical, in a Fenton-like cycle (a repeating metal-driven reaction that generates reactive radicals).\n\nInside the nanometre-scale gaps between the sheets, one radical type (SO5•−) was protected from being destroyed by other substances in the water and stayed active long enough to pull fluorine off the PFAS molecule, a reductive step. A second, oxidizing radical (SO4•−) then stripped away carbon. By alternating these two steps, the process broke the PFAS down completely into simple minerals rather than into smaller fluorinated fragments. The team also built a packed-bed treatment unit (a 'Fenton bed') and report that it treated PFASs efficiently and cheaply in complex, realistic water.",
-   "why_it_matters": "PFAS contamination of drinking water is widespread and hard to clean up, and destroying the molecules usually costs a lot of energy. A method that fully mineralizes PFAS using only a catalyst and an added chemical could make treatment simpler and cheaper. It also shows that physically confining a reaction in tiny spaces can change which chemical pathways happen.",
-   "limitations": "The abstract does not give numbers for removal efficiency, cost, which PFAS types were tested, or how long the catalyst stays active, so its performance at real treatment-plant scale remains to be shown.",
-   "key_terms": [
-    {
-     "term": "PFAS (per- and polyfluoroalkyl substances)",
-     "meaning": "Human-made chemicals with many carbon–fluorine bonds, used in non-stick and water-repellent products, that persist in the environment."
-    },
-    {
-     "term": "Mineralization",
-     "meaning": "Complete breakdown of an organic pollutant into simple inorganic products, rather than partial breakdown into other pollutants."
-    },
-    {
-     "term": "Peroxymonosulfate",
-     "meaning": "An oxidizing chemical that, when activated by a catalyst, releases highly reactive sulfur-containing radicals."
-    },
-    {
-     "term": "Fenton-like reaction",
-     "meaning": "A catalytic cycle in which a metal (here cobalt) converts an oxidant into reactive radicals that attack pollutants."
-    },
-    {
-     "term": "Single-atom catalyst",
-     "meaning": "A catalyst where the active metal is spread out as individual atoms rather than clumped into particles."
-    },
-    {
-     "term": "MXene",
-     "meaning": "A family of very thin, layered materials made of transition metals combined with carbon or nitrogen."
-    },
-    {
-     "term": "Nanoconfinement",
-     "meaning": "Running a reaction inside spaces only nanometres wide, which can protect short-lived species and alter reaction pathways."
-    },
-    {
-     "term": "Defluorination",
-     "meaning": "Removing fluorine atoms from a molecule, the key step in destroying PFAS."
-    }
-   ],
-   "based_on": "abstract",
-   "authors": [
-    "Yichuan Wang",
-    "Jianfeng Zheng",
-    "Xinchun Ye",
-    "Tianlin Zhou",
-    "Ting Li",
-    "Menghan Feng",
-    "Dahong Huang",
-    "Seunghyun Weon",
-    "Menachem Elimelech",
-    "Xiaoxiong Wang",
-    "Shuo Zhang"
-   ],
-   "published": "2026-11-18T08:00:00+00:00",
-   "doi": "10.1126/sciadv.aei3786",
-   "url": "https://doi.org/10.1126/sciadv.aei3786",
-   "citation": "Wang, Y., Zheng, J., Ye, X., Zhou, T., Li, T., Feng, M., Huang, D., Weon, S., Elimelech, M., Wang, X., & Zhang, S. (2026). Steering nanometric reductive-oxidative Fenton-like cycle for PFAS mineralization. Science Advances, 12(47), eaei3786. https://doi.org/10.1126/sciadv.aei3786",
-   "free_copy": {
-    "url": "https://doi.org/10.1126/sciadv.aei3786",
-    "version": "Published version",
-    "host": "publisher",
-    "license": null
-   }
-  },
-  {
-   "rank": 4,
-   "headline": "Simulations suggest modern humans' arrival, not climate alone, doomed Neanderthals",
-   "original_title": "Interband connectivity and climate shaped Neanderthal extinction and Homo sapiens’ dispersal",
-   "journal": "Science Advances",
-   "field": "Anthropology / Paleoecology",
-   "significance": 7,
-   "reason": "Climate-driven agent-based modelling addresses a long-standing debate, finding that the arrival of Homo sapiens, more than climate alone, drove Neanderthal extinction.",
-   "summary": "Scientists have long debated whether Neanderthals died out because Europe's climate changed or because Homo sapiens (our species) arrived and competed with them. This study tackled the question with computer modelling. The researchers used climate-driven changes in how suitable the land was for plant-eaters and meat-eaters, along with how much plant growth the land supported, to estimate how many people each region could sustain, how much prey was available, and how much pressure came from competing predators. They fed these map-based estimates into an agent-based model, a simulation in which individual human groups are represented and their populations grow, shrink and move under different scenarios.\n\nIn the simulations, shifts in how many people the land could support did not by themselves explain Neanderthals vanishing across Europe as a whole. They did, however, help explain where and when each species lived. Adding Homo sapiens to the picture made Neanderthal extinction much more likely. Because both species went through repeated cycles of population growth and decline, how well-connected their groups were to one another turned out to be the main factor deciding whether populations stayed stable.",
-   "why_it_matters": "The work suggests that the disappearance of Neanderthals and the spread of modern humans were linked population processes rather than separate events. It also points to contact between groups as a key ingredient for the survival of small, scattered human populations.",
-   "limitations": "These results come from simulations, so they depend on the assumptions and climate-based estimates built into the model rather than on direct evidence of what happened. The abstract does not say how the conclusions were checked against archaeological data.",
-   "key_terms": [
-    {
-     "term": "Carrying capacity",
-     "meaning": "The largest population an area can support over time given its food and other resources."
-    },
-    {
-     "term": "Agent-based model",
-     "meaning": "A computer simulation that tracks many individual units (here, human groups) following rules, to see what overall patterns emerge."
-    },
-    {
-     "term": "Net primary productivity",
-     "meaning": "How much new plant material an environment produces, which sets the base of the food supply."
-    },
-    {
-     "term": "Intraguild predation",
-     "meaning": "Competition and killing among predators that hunt the same prey, such as humans and large carnivores."
-    },
-    {
-     "term": "Interband connectivity",
-     "meaning": "How linked separate human groups (bands) are, for example through contact and movement between them."
-    }
-   ],
-   "based_on": "abstract",
-   "authors": [
-    "Marco Vidal-Cordasco",
-    "Guillermo Rodríguez-Gómez",
-    "Ana B. Marín-Arroyo"
-   ],
-   "published": "2026-11-18T08:00:00+00:00",
-   "doi": "10.1126/sciadv.aej5212",
-   "url": "https://doi.org/10.1126/sciadv.aej5212",
-   "citation": "Vidal-Cordasco, M., Rodríguez-Gómez, G., & Marín-Arroyo, A. B. (2026). Interband connectivity and climate shaped Neanderthal extinction and Homo sapiens’ dispersal. Science Advances, 12(47), eaej5212. https://doi.org/10.1126/sciadv.aej5212",
-   "free_copy": {
-    "url": "https://doi.org/10.1126/sciadv.aej5212",
-    "version": "Published version",
-    "host": "publisher",
-    "license": null
-   }
-  },
-  {
-   "rank": 5,
-   "headline": "Bacteria glide using a protein belt that works like a moving walkway",
-   "original_title": "Structure and dynamics of the cellular belt driving bacterial gliding motility",
-   "journal": "Science Advances",
-   "field": "Microbiology / Structural Biology",
-   "significance": 7,
-   "reason": "A cryo-EM structure plus live imaging reveal the moving 'walkway' belt that powers gliding motility in ecologically and medically important bacteria.",
-   "summary": "Some bacteria can move across solid surfaces without flagella or other obvious appendages, a behaviour called gliding motility. In the bacterial group Bacteroidota, which includes both harmless gut residents and disease-causing species, gliding depends on the type IX secretion system (T9SS). This machine exports sticky surface proteins called adhesins, which then travel along a spiral path over the cell body and push the cell forward. The researchers wanted to know what physical structure carries the adhesins along that spiral track.\n\nThey isolated the filament responsible for this movement and determined its 3D shape using cryo-electron microscopy. They also filmed living cells. The filament turned out to be a belt made from core parts of the T9SS. It sits in the periplasm, the space between the bacterium's two membranes, and is attached to the outer membrane. Motor proteins of the T9SS drive it. The belt acts like an airport moving walkway, carrying complexes made of an adhesin bound to a barrel-shaped outer-membrane protein. In this way the motors' activity becomes directed motion of the adhesins across the cell surface.",
-   "why_it_matters": "Bacteroidota are important in many environments, both as harmless partners of animals and as pathogens, so understanding how they move helps explain how they spread and colonise surfaces. The study links two jobs of one machine, secreting proteins and moving them quickly in a set direction within the membrane. This kind of coupling had not been described before.",
-   "limitations": "The abstract does not say which bacterial species were studied or how widely the findings apply across gliding bacteria. It also does not explain exactly how the motors make the belt move.",
-   "key_terms": [
-    {
-     "term": "Gliding motility",
-     "meaning": "Movement of bacteria across a solid surface without swimming appendages such as flagella."
-    },
-    {
-     "term": "Type IX secretion system (T9SS)",
-     "meaning": "A protein-export machine found in Bacteroidota bacteria that moves proteins to the cell surface."
-    },
-    {
-     "term": "Adhesin",
-     "meaning": "A surface protein that lets a bacterium stick to a surface or to other cells."
-    },
-    {
-     "term": "Cryo-electron microscopy",
-     "meaning": "An imaging method in which samples are flash-frozen and viewed with an electron beam, used to work out the 3D structure of large molecules."
-    },
-    {
-     "term": "Periplasm",
-     "meaning": "The space between the inner and outer membranes of certain bacteria."
-    },
-    {
-     "term": "β barrel protein",
-     "meaning": "A membrane protein folded into a barrel shape that sits in the outer membrane."
-    }
-   ],
-   "based_on": "abstract",
-   "authors": [
-    "Hanxiong Liu",
-    "Yaëlle Aouizerate",
-    "Xiangan Liu",
-    "Zihe Zhang",
-    "Caterina Comas Hervada",
-    "Yongtao Zhu",
-    "Maxence S. Vincent",
-    "Eric Cascales",
-    "Bo Hu",
-    "Thierry Doan"
-   ],
-   "published": "2026-11-18T08:00:00+00:00",
-   "doi": "10.1126/sciadv.aef5514",
-   "url": "https://doi.org/10.1126/sciadv.aef5514",
-   "citation": "Liu, H., Aouizerate, Y., Liu, X., Zhang, Z., Hervada, C. C., Zhu, Y., Vincent, M. S., Cascales, E., Hu, B., & Doan, T. (2026). Structure and dynamics of the cellular belt driving bacterial gliding motility. Science Advances, 12(47), eaef5514. https://doi.org/10.1126/sciadv.aef5514",
-   "free_copy": {
-    "url": "https://doi.org/10.1126/sciadv.aef5514",
-    "version": "Published version",
-    "host": "publisher",
-    "license": null
-   }
-  },
-  {
-   "rank": 6,
-   "headline": "Ordinary graphite helps anode-free sodium batteries charge fast and last long",
-   "original_title": "Engineering interfacial nucleation and growth for long-life, ultrahigh-rate anode-free sodium batteries",
-   "journal": "Science Advances",
-   "field": "Energy Storage",
-   "significance": 7,
-   "reason": "Ampere-hour-scale anode-free sodium pouch cells with stable high-rate cycling, using ordinary graphite, are a practical advance toward cheaper batteries.",
-   "summary": "Anode-free sodium batteries skip a separate negative electrode: during charging, sodium metal deposits directly onto a thin metal foil (the current collector), and during discharge it dissolves back off. This saves weight and space, but the deposition and removal tend to be uneven and wasteful, so the batteries lose capacity quickly. The researchers asked whether a common material, graphite, could make this process more controlled and reversible.\n\nThey report that graphite does so unexpectedly well. It moves both ions and electrons very quickly, it lets molecules of the ether-based electrolyte solvent slip in and out between its layers reversibly, and its flat, flake-like shape means sodium tends to start growing at the flake edges. Together these effects produce a very thin but sturdy protective film on the surface, which keeps sodium deposition stable at charging rates from 1C to 10C (roughly a full charge in one hour down to about six minutes). Pouch cells holding about one ampere-hour of charge kept 92.3% of the charge on the first cycle and still had 84.9% of their capacity after 1,100 cycles at 3C. They also warmed only slightly at high rates and did not catch fire or overheat uncontrollably when pierced with a nail.",
-   "why_it_matters": "Sodium is cheaper and more abundant than lithium, and removing the anode can pack more energy into a cell, but poor cycle life has held these designs back. Showing that a cheap, familiar material can steer how sodium metal grows, at practical cell sizes and high charging speeds, points toward low-cost, fast-charging and safer batteries.",
-   "limitations": "The abstract reports results from laboratory-built pouch cells with a specific ether electrolyte. It does not say how the design behaves under other conditions, at larger scales, or over longer lifetimes than about 1,100 cycles.",
-   "key_terms": [
-    {
-     "term": "Anode-free battery",
-     "meaning": "A battery built without a pre-made negative electrode; the metal (here sodium) forms directly on a bare current collector during the first charge."
-    },
-    {
-     "term": "Plating and stripping",
-     "meaning": "Depositing metal onto a surface while charging (plating) and dissolving it back into the electrolyte while discharging (stripping)."
-    },
-    {
-     "term": "Current collector",
-     "meaning": "The conductive foil or layer that carries electrons into and out of the electrode."
-    },
-    {
-     "term": "Nucleation",
-     "meaning": "The first stage of growth, where tiny seeds of new metal begin to form on a surface."
-    },
-    {
-     "term": "Cointercalation",
-     "meaning": "When ions slip between graphite's layers together with the solvent molecules attached to them."
-    },
-    {
-     "term": "SEI (solid electrolyte interphase)",
-     "meaning": "A thin film that forms on the electrode surface from electrolyte breakdown; a good one protects the metal while still letting ions pass."
-    },
-    {
-     "term": "C-rate",
-     "meaning": "How fast a battery is charged or discharged relative to its capacity; 1C is about one hour, 10C about six minutes."
-    },
-    {
-     "term": "Coulombic efficiency",
-     "meaning": "The fraction of charge put into a battery that you get back out in the same cycle."
-    },
-    {
-     "term": "Thermal runaway",
-     "meaning": "A self-reinforcing overheating that can lead to fire or explosion."
-    }
-   ],
-   "based_on": "abstract",
-   "authors": [
-    "Chunlin Xie",
-    "Jiaming Zhang",
-    "Shengfang Liu",
-    "Junhui Lu",
-    "Peiyu Wang",
-    "Xianghui Meng",
-    "Yougen Tang",
-    "Xiaobo Ji",
-    "Haiyan Wang"
-   ],
-   "published": "2026-11-18T08:00:00+00:00",
-   "doi": "10.1126/sciadv.aeh3524",
-   "url": "https://doi.org/10.1126/sciadv.aeh3524",
-   "citation": "Xie, C., Zhang, J., Liu, S., Lu, J., Wang, P., Meng, X., Tang, Y., Ji, X., & Wang, H. (2026). Engineering interfacial nucleation and growth for long-life, ultrahigh-rate anode-free sodium batteries. Science Advances, 12(47), eaeh3524. https://doi.org/10.1126/sciadv.aeh3524",
-   "free_copy": {
-    "url": "https://doi.org/10.1126/sciadv.aeh3524",
-    "version": "Published version",
-    "host": "publisher",
-    "license": null
-   }
-  },
-  {
    "rank": 7,
-   "headline": "Exact formulas for how quark distributions inside protons change with energy",
-   "original_title": "Four-Loop Nonsinglet Splitting Functions in QCD",
-   "journal": "Physical Review Letters",
-   "field": "Particle Physics",
+   "headline": "Early-life stress primes a brain pathway that worsens pain in female mice",
+   "original_title": "A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress",
+   "journal": "Science",
+   "field": "Neuroscience",
    "significance": 7,
-   "reason": "The first fully analytic four-loop quark nonsinglet splitting functions sharpen the precision of QCD predictions used at colliders.",
-   "summary": "Protons and neutrons are made of quarks and gluons, collectively called partons. How the momentum of a proton is shared among its partons is described by parton distributions, and these distributions shift depending on the energy scale at which the proton is probed. The rules for that shift are set by splitting functions, which describe how one parton can turn into others. This paper calculates these splitting functions at the fourth level of approximation (four loops) in quantum chromodynamics (QCD), the theory of the strong force. It focuses on the 'nonsinglet' part, which tracks differences between quark types rather than the overall mix with gluons.\n\nThis is a theoretical calculation, not an experiment. The authors reproduce earlier results that covered only parts of this problem. They also obtain, for the first time, complete exact (analytic) formulas for every nonsinglet piece at this order. From these they derive exact forms of two further quantities, called the virtual and rapidity anomalous dimensions, which are used in techniques that sum up large logarithmic terms in predictions. They also give accurate numerical versions of the splitting functions that are ready for practical use.",
-   "why_it_matters": "Predictions for particle collisions, such as those at the Large Hadron Collider, depend on knowing how parton distributions change with energy. More precise splitting functions reduce theoretical uncertainty in these predictions, which helps when comparing theory with high-precision measurements.",
-   "limitations": "The results cover only the nonsinglet sector. The abstract does not report complete exact results for the singlet case, which mixes quarks and gluons.",
+   "reason": "Identifies a female-specific thalamus-to-amygdala circuit in mice through which early-life stress primes vulnerability to chronic pain, offering a mechanism for a known sex difference.",
+   "summary": "Children who experience adversity are more likely to develop chronic pain and anxiety as adults, and this link appears stronger in women. This mouse study asked what brain wiring might carry that risk forward in time. Researchers combined an early-life stressor (social isolation) with a later nerve injury and tracked a specific connection between the paraventricular thalamus (a relay hub involved in arousal and threat) and the central amygdala (a region handling fear and the emotional side of pain).\n\nIn female mice, but not males, the two hits combined to strengthen signalling along this pathway, and the pathway became active in anticipation of an unpleasant event rather than only during it. These females showed greater sensitivity to touch and more avoidance behaviour. Using chemogenetics — engineered receptors that let researchers switch neurons on or off with a drug — damping the pathway reversed these behaviours, but only in animals that had experienced both stress and injury. Turning the pathway on artificially produced the symptoms: steady activation caused touch hypersensitivity, while brief bursts caused avoidance. The authors describe this as a hidden, 'primed' state created by early stress that stays silent until an injury reveals it.",
+   "why_it_matters": "It offers a concrete circuit-level explanation for why early adversity can translate into chronic pain and anxiety years later, and why the effect may differ by sex. It also suggests that treatments might need to target the combination of past stress plus current injury, rather than either alone. Studies like this are a reminder that sex differences in pain are biological as well as social.",
+   "limitations": "This is a mouse study, so whether the same circuit explains human sex differences in chronic pain is untested. The abstract also uses one specific early-life stressor (social isolation) and one injury model, so it is unclear how broadly the finding generalises.",
    "key_terms": [
     {
-     "term": "Parton distributions",
-     "meaning": "Functions describing how likely it is to find a quark or gluon carrying a given fraction of a proton's momentum."
+     "term": "Paraventricular thalamus",
+     "meaning": "A small brain relay region involved in arousal, stress and signalling threat or salience."
     },
     {
-     "term": "Splitting functions",
-     "meaning": "Quantities that describe how partons branch into other partons, setting how parton distributions change with energy scale."
+     "term": "Central amygdala",
+     "meaning": "An amygdala region that handles fear responses and the emotional, unpleasant aspect of pain."
     },
     {
-     "term": "Four-loop",
-     "meaning": "The fourth level of refinement in a step-by-step approximation (perturbation theory). Each level adds smaller corrections and requires much harder calculations."
+     "term": "Chemogenetics",
+     "meaning": "A technique where neurons are genetically engineered to carry a custom receptor, so a specific drug can silence or activate just those cells."
     },
     {
-     "term": "Nonsinglet",
-     "meaning": "Combinations of quark distributions, such as differences between quark flavours, whose evolution does not mix with gluons."
+     "term": "Synaptic gain",
+     "meaning": "How strongly a connection between neurons amplifies incoming signals; higher gain means a bigger output for the same input."
     },
     {
-     "term": "Perturbative QCD",
-     "meaning": "Approximating strong-force calculations as a series of increasingly small corrections."
-    },
-    {
-     "term": "Anomalous dimensions",
-     "meaning": "Numbers that control how quantities change with energy scale. Here, the virtual and rapidity types feed into resummation."
-    },
-    {
-     "term": "Logarithmic resummation",
-     "meaning": "A method that adds up large logarithmic terms to all orders so that predictions stay reliable."
+     "term": "Mechanical hypersensitivity",
+     "meaning": "Exaggerated pain or withdrawal in response to light touch or pressure."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Thomas Gehrmann",
-    "Andreas von Manteuffel",
-    "Vasily Sotnikov",
-    "Tong-Zhi Yang"
+    "Anna Maria Borruto",
+    "Tabea Kohlund",
+    "Lukas Rettig",
+    "Martin von Renesse",
+    "Christian Alexander Hammer",
+    "Nikolas Leonhardt",
+    "Barbara Kurpiers",
+    "Claudia Calpe-López",
+    "Luca Benn",
+    "Hans-Christoph Friederich",
+    "Thomas Kuner",
+    "Rainer Spanagel",
+    "Sebastian Wieland"
    ],
-   "published": "2026-11-18T10:00:00+00:00",
-   "doi": "10.1103/sgtd-c4zg",
-   "url": "https://doi.org/10.1103/sgtd-c4zg",
-   "citation": "Gehrmann, T., Manteuffel, A. v., Sotnikov, V., & Yang, T. (2026). Four-Loop Nonsinglet Splitting Functions in QCD. Physical Review Letters, 137(21), 211901. https://doi.org/10.1103/sgtd-c4zg",
-   "free_copy": {
-    "url": "https://doi.org/10.1103/sgtd-c4zg",
-    "version": "Published version",
-    "host": "publisher",
-    "license": "cc-by"
-   }
+   "published": "2026-11-19T07:00:11+00:00",
+   "doi": "10.1126/science.adx5757",
+   "url": "https://doi.org/10.1126/science.adx5757",
+   "citation": "Borruto, A. M., Kohlund, T., Rettig, L., Renesse, M. v., Hammer, C. A., Leonhardt, N., Kurpiers, B., Calpe-López, C., Benn, L., Friederich, H., Kuner, T., Spanagel, R., & Wieland, S. (2026). A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress. Science, 394(6826), 864-869. https://doi.org/10.1126/science.adx5757",
+   "free_copy": null
   },
   {
    "rank": 8,
-   "headline": "Sending a message through a brick wall using gravity",
-   "original_title": "Unblockable communication with gravity",
-   "journal": "Science Advances",
-   "field": "Physics / Communications",
-   "significance": 6,
-   "reason": "An experiment demonstrates the novel idea of sending a message through a brick wall using gravitational signals from a moving mass, an essentially unblockable channel.",
-   "summary": "Almost all wireless communication, from Wi-Fi to radio, relies on electromagnetic waves. These signals can be shielded or blocked by walls, metal or other obstacles, so they may not get through in difficult environments. The researchers asked whether information could instead travel through a channel that nothing can block, and they proposed gravity. Every mass pulls on every other mass, and no known material screens out that pull.\n\nThey designed and built a simple system to test the idea. A sender encodes a message in binary (a string of 0s and 1s) by moving a mass. A receiver uses a gravimeter, a very sensitive instrument that measures tiny changes in gravitational pull, to pick up the resulting changes and decode the bits. In a lab experiment, they sent a message about 0.7 meters through a brick wall at a speed of one bit per minute.",
-   "why_it_matters": "This experiment shows that gravity can carry information under realistic conditions, giving a communication route that walls and shielding cannot stop. A channel like this could be useful where ordinary radio signals are unreliable or blocked.",
-   "limitations": "This is a first demonstration over a short distance, under a meter, and at a very slow rate of one bit per minute. The abstract does not say how the method might scale to longer distances or faster speeds.",
+   "headline": "Hollow shells with one opening use turbulence to sort and trap particles",
+   "original_title": "Quiet within, chaos without: Turbulence shelters drive selective particle capture and release",
+   "journal": "Science",
+   "field": "Physics and Fluid Dynamics",
+   "significance": 7,
+   "reason": "Introduces 'turbulence shelters' that use geometry to harness turbulent fluctuations for selective particle capture across three orders of magnitude in size, a new design principle for filtration.",
+   "summary": "Turbulent flow looks random, but its swirls (eddies) pass energy from large scales down to small ones in an organised way that is not in thermal equilibrium. In a gas at equilibrium, basic physics laws prevent you from passively extracting useful work from random molecular motion. The authors asked whether turbulence, which is not bound by those laws, could instead be used to move particles in a chosen direction without pumping any fluid. They designed 'turbulence shelters': hollow shells with a single hole that let in only eddies of certain sizes, so the inside stays calmer than the churning flow outside.\n\nThis difference in how strongly the fluid fluctuates inside versus outside pushed particles in a consistent direction, even though there was no overall net flow of fluid into or out of the shell. Shelters built over a thousandfold range of sizes produced different particle concentrations inside compared with outside. Which particles were captured or released depended on their shape, their inertia (how hard they are to speed up or slow down), random thermal jiggling, and electric charge effects. At the smallest scale, shelters could tell apart particles whose sizes differed by only tens of nanometres, regardless of what the particles were made of.",
+   "why_it_matters": "The work suggests a new way to filter or sort particles that relies on the shape of a container and the energy already present in turbulent surroundings, rather than on pumps or membranes. Because separation at the microscale depended on size rather than material, it could apply to particles that are chemically similar but slightly different in size.",
+   "limitations": "The abstract does not say how fast or efficient the separation is, or how well it would scale up for practical filtration. Details of the experimental conditions and particle types are not given.",
    "key_terms": [
     {
-     "term": "Electromagnetic signals",
-     "meaning": "Waves of electric and magnetic fields, such as radio waves and light, that carry most wireless communication today."
+     "term": "Turbulence",
+     "meaning": "Chaotic fluid motion made of many swirling eddies of different sizes."
     },
     {
-     "term": "Gravimeter",
-     "meaning": "An instrument that measures very small changes in the strength of gravity at a location."
+     "term": "Energy cascade",
+     "meaning": "The process by which energy in turbulence moves from large eddies to progressively smaller ones."
     },
     {
-     "term": "Binary message",
-     "meaning": "Information written as a sequence of two symbols, usually 0 and 1, each called a bit."
+     "term": "Nonequilibrium",
+     "meaning": "A system with a steady flow of energy through it, so it does not settle into the balanced state that ordinary thermodynamics laws describe."
     },
     {
-     "term": "Bit rate",
-     "meaning": "How many bits of information are sent per unit of time. Here it was one bit per minute."
+     "term": "Turbulence shelter",
+     "meaning": "A hollow shell with one opening that admits only some eddy sizes, creating a quieter interior."
+    },
+    {
+     "term": "Inertia",
+     "meaning": "A particle's resistance to changes in its motion, which depends mainly on its mass."
+    },
+    {
+     "term": "Zero mean fluid flux",
+     "meaning": "No net flow of fluid in or out on average, even though the fluid is moving locally."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Andrew J. Groszek",
-    "Charles W. Woffinden",
-    "Michael D. Harvey",
-    "Andrew G. White",
-    "Matthew J. Davis"
+    "Matteo Sabato",
+    "Sarah Chong",
+    "Yaocheng Li",
+    "Zhe Xu",
+    "Daqian Gao",
+    "Martin J. Falk",
+    "Stefano Sacanna",
+    "William T. M. Irvine"
    ],
-   "published": "2026-11-18T08:00:00+00:00",
-   "doi": "10.1126/sciadv.aee0802",
-   "url": "https://doi.org/10.1126/sciadv.aee0802",
-   "citation": "Groszek, A. J., Woffinden, C. W., Harvey, M. D., White, A. G., & Davis, M. J. (2026). Unblockable communication with gravity. Science Advances, 12(47), eaee0802. https://doi.org/10.1126/sciadv.aee0802",
-   "free_copy": {
-    "url": "https://doi.org/10.1126/sciadv.aee0802",
-    "version": "Published version",
-    "host": "publisher",
-    "license": null
-   }
+   "published": "2026-11-19T07:00:11+00:00",
+   "doi": "10.1126/science.aee9889",
+   "url": "https://doi.org/10.1126/science.aee9889",
+   "citation": "Sabato, M., Chong, S., Li, Y., Xu, Z., Gao, D., Falk, M. J., Sacanna, S., & Irvine, W. T. M. (2026). Quiet within, chaos without: Turbulence shelters drive selective particle capture and release. Science, 394(6826), 884-889. https://doi.org/10.1126/science.aee9889",
+   "free_copy": null
   }
  ]
 }

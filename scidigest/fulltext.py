@@ -82,6 +82,13 @@ def jats_to_text(xml: bytes | str) -> str:
     return "\n\n".join(p for p in out if p)
 
 
+def europe_pmc_abstract(doi: str) -> str:
+    r = _get(f"{EPMC}/search", params={
+        "query": f'DOI:"{doi}"', "format": "json", "resultType": "core", "pageSize": 1})
+    results = r.json().get("resultList", {}).get("result", [])
+    return _clean(results[0].get("abstractText", "")) if results else ""
+
+
 def from_europe_pmc(doi: str) -> tuple[FreeCopy | None, str]:
     """Returns (free copy with text, or None; abstract from Europe PMC, or "")."""
     r = _get(f"{EPMC}/search", params={

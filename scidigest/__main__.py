@@ -10,10 +10,32 @@ from pathlib import Path
 from . import ai
 from .citations import enrich
 from .fetch import fetch_all, parse_feed
-from .fulltext import find_free_copy
+from .fulltext import europe_pmc_abstract, find_free_copy
+from concurrent.futures import ThreadPoolExecutor
 from .publish import day_json, publish
 from .report import build_entries, render
 from .sources import SOURCES
+
+
+MIN_ABSTRACT = 300  # characters; shorter means the feed gave a teaser or just citation details
+
+
+def fill_abstracts(articles, use_crossref=True, workers=8):
+    """Look up missing or very short abstracts (Crossref, then Europe PMC) so papers are ranked on substance."""
+    def fill(a):
+        if len(a.abstract) >= MIN_ABSTRACT or not a.doi:
+            return
+        if use_crossref:
+            enrich(a)
+        if len(a.abstract) < MIN_ABSTRACT:
+            try:
+                alt = europe_pmc_abstract(a.doi)
+                if len(alt) > len(a.abstract):
+                    a.abstract = alt
+            except Exception:
+                pass
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        list(pool.map(fill, articles))
 
 
 def heuristic_rank(articles, top):
@@ -64,6 +86,17 @@ def main(argv=None):
     print(f"Found {len(articles)} research articles in {len(journals)} journals.")
 
     candidates = sorted(articles, key=lambda a: a.prior, reverse=True)[: args.max_candidates]
+    if not args.feed_file:
+        short = sum(1 for a in candidates if len(a.abstract) < MIN_ABSTRACT)
+        if short:
+            print(f"Looking up abstracts for {short} papers whose feed had none...")
+            fill_abstracts(candidates, use_crossref=not args.no_crossref)
+    with_abstract = [a for a in candidates if len(a.abstract) >= MIN_ABSTRACT]
+    if len(with_abstract) >= args.top:
+        dropped = len(candidates) - len(with_abstract)
+        if dropped:
+            print(f"  skipping {dropped} papers with no usable abstract")
+        candidates = with_abstract
     if use_ai:
         print("Ranking by significance with Claude...")
         picks = ai.rank(candidates, args.top)

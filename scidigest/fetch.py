@@ -75,9 +75,16 @@ def _authors(entry) -> list[str]:
     return out
 
 
-def is_research(title: str) -> bool:
+# Journals whose DOIs reveal the article type. NEJM: oa = original article, ra = review,
+# sa = special article; c = letter, e = editorial, p = perspective, etc.
+NON_RESEARCH_DOI = re.compile(r"^10\.1056/NEJM(?!oa|ra|sa)", re.I)
+
+
+def is_research(title: str, doi: str | None = None) -> bool:
     t = title.lower().strip()
-    return bool(t) and not t.startswith(NON_RESEARCH_PREFIXES)
+    if not t or t.startswith(NON_RESEARCH_PREFIXES):
+        return False
+    return not (doi and NON_RESEARCH_DOI.match(doi))
 
 
 def parse_feed(raw: bytes | str, source: dict) -> list[Article]:
@@ -85,7 +92,7 @@ def parse_feed(raw: bytes | str, source: dict) -> list[Article]:
     items = []
     for e in feed.entries:
         title = _clean(e.get("title", ""))
-        if not is_research(title):
+        if not is_research(title, _doi(e)):
             continue
         abstract = _clean(e.get("summary", "") or e.get("description", ""))
         if e.get("content"):

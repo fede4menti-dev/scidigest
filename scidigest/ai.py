@@ -52,7 +52,11 @@ Judge significance by: how big a step forward it is for its field; how broadly i
 direct observation and replication beat small or preliminary studies); and novelty (a first, a
 surprising result, or a long-standing question answered). Prefer variety across fields when
 papers are close. Base your judgement only on the title and abstract provided; do not invent
-details."""
+details.
+
+Only choose original research or major reviews. Skip anything that is a letter, correspondence,
+commentary, editorial, news item, or correction, and skip items whose abstract is missing or only
+gives citation details, since readers need real findings."""
 
 RANK_SCHEMA = {
     "type": "object",

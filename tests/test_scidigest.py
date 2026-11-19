@@ -120,3 +120,33 @@ def test_one_failed_summary_does_not_break_report(monkeypatch):
     monkeypatch.setattr(ai, "summarize", boom)
     out = ai.summarize_many([(arts[0], "", "")])
     assert out[0]["headline"] == arts[0].title and "not paraphrased" in out[0]["based_on"]
+
+
+def test_nejm_letters_and_editorials_filtered():
+    from scidigest.fetch import is_research
+    assert is_research("Trial of X", "10.1056/NEJMoa2512345")
+    assert is_research("Review of Y", "10.1056/NEJMra2400001")
+    assert not is_research("Meningococcal B Vaccine to Prevent Gonorrhea", "10.1056/NEJMc2611609")
+    assert not is_research("Some editorial", "10.1056/NEJMe2600001")
+    assert not is_research("Some perspective", "10.1056/NEJMp2600001")
+    assert is_research("Nature paper", "10.1038/s41586-026-01234-5")
+
+
+def test_short_abstract_papers_skipped_before_ranking(tmp_path):
+    from scidigest.fetch import Article
+    long = "x " * 200
+    arts = [Article(id=str(i), title=f"T{i}", journal="Nature", link="", abstract=(long if i < 3 else "cite only"),
+                    published=None, doi=None, prior=1.0) for i in range(5)]
+    from scidigest import __main__ as cli
+    seen = {}
+    def fake_rank(cands, top):
+        seen["n"] = len(cands)
+        return [(a, {"score": 5, "field": "X", "reason": ""}) for a in cands[:top]]
+    with mock.patch.object(cli, "fetch_all", return_value=arts), \
+         mock.patch.object(cli.ai, "rank", fake_rank), \
+         mock.patch.object(cli.ai, "summarize_many", lambda jobs, **k: [
+             {"headline": "h", "summary": "s", "why_it_matters": "w", "key_terms": [], "limitations": "", "based_on": "abstract"}
+             for _ in jobs]), \
+         mock.patch.dict("os.environ", {"ANTHROPIC_API_KEY": "x"}):
+        cli.main(["--top", "2", "--no-crossref", "--no-fulltext", "--out", str(tmp_path)])
+    assert seen["n"] == 3

@@ -41,14 +41,24 @@ jobs:
             echo "ready=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create the account storage (first deploy only) and connect it
+      - name: Show which Cloudflare account and permissions the token has
         if: steps.check.outputs.ready == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
+          npx wrangler whoami || echo "::warning::The token couldn't be verified. Check CLOUDFLARE_API_TOKEN."
+          echo "Account ID secret has ${#CLOUDFLARE_ACCOUNT_ID} characters (a Cloudflare account ID has 32)."
+
+      - name: Create the account storage (first deploy only) and connect it
+        if: steps.check.outputs.ready == 'true'
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
           find_id() {
-            npx wrangler kv namespace list 2>/dev/null | node -e '
+            npx wrangler kv namespace list 2>/tmp/kv-list-errors.txt | node -e '
               let s = ""; process.stdin.on("data", d => s += d).on("end", () => {
                 const i = s.indexOf("["); if (i < 0) return;
                 const list = JSON.parse(s.slice(i));
@@ -58,10 +68,13 @@ jobs:
           }
           id="$(find_id)"
           if [ -z "$id" ]; then
-            npx wrangler kv namespace create scidigest-data
+            npx wrangler kv namespace create scidigest-data || true
             id="$(find_id)"
           fi
-          if [ -z "$id" ]; then echo "::error::Couldn't create the KV namespace"; exit 1; fi
+          if [ -z "$id" ]; then
+            echo "::warning::Couldn't create the account storage (Workers KV). The idea checker will still deploy, but accounts stay off. Give the API token the permission 'Account > Workers KV Storage > Edit' and run this workflow again."
+            exit 1
+          fi
           printf '\n[[kv_namespaces]]\nbinding = "DATA"\nid = "%s"\n' "$id" >> wrangler.toml
           echo "Account storage: $id"
 

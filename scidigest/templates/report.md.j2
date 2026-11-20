@@ -1,6 +1,9 @@
-# Daily Science Digest: {{ day.strftime("%A, %B %-d, %Y") }}
+# {{ title }}
 
-{{ entries|length }} of the most significant new papers, picked from {{ scanned }} recent research articles across {{ journals|length }} journal{{ "s" if journals|length != 1 }}.
+{{ subtitle }}
+{% if intro %}
+{{ intro }}
+{% endif %}
 {% if not ai %}
 > **Note:** generated without AI. Summaries below are the publisher's own abstract, quoted, not paraphrased.
 {% endif %}
@@ -11,6 +14,7 @@
 
 **Field:** {{ e.pick.field }} · **Journal:** *{{ e.article.journal }}* · **Significance:** {{ e.pick.score }}/10{% if e.s.based_on %} · *Summarised from {{ e.s.based_on }}*{% endif %}
 *Original title: "{{ e.article.title }}"*
+{{ e.published_label }}{% if e.featured_label %} · {{ e.featured_label }}{% endif %}
 
 {{ e.s.summary }} [{{ e.n }}]
 

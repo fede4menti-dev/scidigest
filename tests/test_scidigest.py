@@ -97,13 +97,16 @@ def test_site_publish_json_contract(tmp_path):
     assert idx["format"] == 1 and len(idx["days"]) == 1
     day = idx["days"][0]
     assert set(day) == {"date", "count", "fields", "top_headlines"}
+    assert idx["weekly"] == [] and idx["monthly"] == []
     d = json.loads((site / "data" / f"{day['date']}.json").read_text())
     assert d == json.loads((site / "data" / "latest.json").read_text())
-    assert set(d) == {"format", "date", "generated_at", "scanned", "journals", "ai_summaries", "papers"}
+    assert set(d) == {"format", "kind", "id", "title", "date", "period_start", "period_end", "generated_at",
+                      "scanned", "journals", "ai_summaries", "intro", "papers"}
+    assert d["kind"] == "daily" and d["id"] == d["date"]
     p = d["papers"][0]
     assert set(p) == {"rank", "headline", "original_title", "journal", "field", "significance", "reason",
                       "summary", "why_it_matters", "limitations", "key_terms", "based_on", "authors",
-                      "published", "doi", "url", "citation", "free_copy"}
+                      "published", "doi", "url", "citation", "free_copy", "featured_on"}
     assert "*" not in p["citation"] and isinstance(p["significance"], int)
     assert (site / "reports" / f"{day['date']}.html").exists() and (site / "index.html").exists()
     assert "does not collect" in (site / "privacy.html").read_text()
@@ -139,7 +142,7 @@ def test_short_abstract_papers_skipped_before_ranking(tmp_path):
                     published=None, doi=None, prior=1.0) for i in range(5)]
     from scidigest import __main__ as cli
     seen = {}
-    def fake_rank(cands, top):
+    def fake_rank(cands, top, **kw):
         seen["n"] = len(cands)
         return [(a, {"score": 5, "field": "X", "reason": ""}) for a in cands[:top]]
     with mock.patch.object(cli, "fetch_all", return_value=arts), \
@@ -178,3 +181,66 @@ def test_lancet_tags():
     assert not is_research("[Comment] Malaria vaccines at scale")
     assert not is_research("[Correspondence] A reply")
     assert strip_tag("[Articles] Seasonal mass vaccination") == "Seasonal mass vaccination"
+
+
+def _run(tmp_path, today, *extra):
+    site = tmp_path / "site"
+    main(["--no-ai", "--no-fulltext", "--no-crossref", "--feed-file", "Nature", str(FIX),
+          "--out", str(tmp_path / "r"), "--site", str(site), "--today", today, *extra])
+    return site
+
+
+def _day(site, d):
+    return json.loads((site / "data" / f"{d}.json").read_text())
+
+
+def test_repeat_rules(tmp_path):
+    site = _run(tmp_path, "2026-11-16")
+    assert len(_day(site, "2026-11-16")["papers"]) == 2
+    _run(tmp_path, "2026-11-16")                                  # same-day rerun: same picks, no "repeat"
+    assert all(p["featured_on"] == [] for p in _day(site, "2026-11-16")["papers"])
+    _run(tmp_path, "2026-11-17")                                  # next day: blocked, no empty digest written
+    assert not (site / "data" / "2026-11-17.json").exists()
+    _run(tmp_path, "2026-11-19")                                  # 3 days later: allowed once more
+    d = _day(site, "2026-11-19")
+    assert d["papers"] and all(p["featured_on"] == ["2026-11-16"] for p in d["papers"])
+    _run(tmp_path, "2026-11-25")                                  # already shown twice: never again
+    assert not (site / "data" / "2026-11-25.json").exists()
+
+
+def test_weekly_and_monthly_reviews(tmp_path):
+    site = _run(tmp_path, "2026-11-16")
+    _run(tmp_path, "2026-11-22")                                  # Sunday -> weekly review Nov 16-22
+    idx = json.loads((site / "data" / "index.json").read_text())
+    w = json.loads((site / "data" / "weekly-2026-11-22.json").read_text())
+    assert idx["weekly"][0]["id"] == "weekly-2026-11-22" and w["kind"] == "weekly"
+    assert (w["period_start"], w["period_end"]) == ("2026-11-16", "2026-11-22")
+    assert w["title"] == "Weekly Review: Nov 16 to Nov 22, 2026"
+    assert len(w["papers"]) == 2 and all(p["featured_on"] == ["2026-11-16", "2026-11-22"] for p in w["papers"])
+    assert "From the daily digest of" in (site / "reports" / "weekly-2026-11-22.html").read_text()
+    assert not idx["monthly"]
+    _run(tmp_path, "2026-12-01", "--no-reviews")                  # --no-reviews: no monthly
+    assert not list((site / "data").glob("monthly-*"))
+    site = _run(tmp_path, "2026-12-01", "--review", "monthly")    # monthly review of November
+    m = json.loads((site / "data" / "monthly-2026-11.json").read_text())
+    assert m["title"] == "Monthly Review: November 2026" and m["period_end"] == "2026-11-30"
+    assert "Monthly reviews" in (site / "index.html").read_text()
+    # latest.json stays the newest *daily* digest
+    assert json.loads((site / "data" / "latest.json").read_text())["kind"] == "daily"
+
+
+def test_due_reviews():
+    from datetime import date
+    from scidigest.reviews import due_reviews, monthly_period
+    assert due_reviews(date(2026, 11, 22)) == ["weekly"]            # Sunday
+    assert due_reviews(date(2026, 11, 23)) == []
+    assert due_reviews(date(2026, 12, 1)) == ["monthly"]
+    assert due_reviews(date(2027, 8, 1)) == ["weekly", "monthly"]   # a Sunday the 1st
+    assert monthly_period(date(2027, 1, 1)) == (date(2026, 12, 1), date(2026, 12, 31))
+
+
+def test_paper_dates_shown(tmp_path):
+    site = _run(tmp_path, "2026-11-18")
+    html = (site / "reports" / "2026-11-18.html").read_text()
+    assert "Published Nov 18, 2026" in html and "Published Nov 17, 2026" in html
+    assert "Wednesday, November 18, 2026" in html

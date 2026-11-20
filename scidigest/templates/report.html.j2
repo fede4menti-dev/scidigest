@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Science Digest {{ day.isoformat() }}</title>
+<title>{{ title }}</title>
 <style>
 :root{--bg:#fbfaf7;--card:#fff;--ink:#1d1d1f;--muted:#5f6368;--line:#e6e2da;--accent:#2f5d8a;--chip:#eef3f8;--okbg:#e8f4ec;--ok:#2d6a3e}
 @media (prefers-color-scheme:dark){:root{--bg:#141517;--card:#1c1d20;--ink:#ececec;--muted:#a3a7ad;--line:#2c2e33;--accent:#8db6e0;--chip:#24303d;--okbg:#1f3326;--ok:#8fd0a2}}
@@ -21,7 +21,9 @@ article{background:var(--card);border:1px solid var(--line);border-radius:12px;p
 .chip{background:var(--chip);color:var(--accent);padding:3px 9px;border-radius:99px}
 .chip.ok{background:var(--okbg);color:var(--ok)}
 article h2{font-size:1.4rem;line-height:1.3;margin:4px 0 6px}
-.orig{color:var(--muted);font-style:italic;font-size:.92rem;margin:0 0 14px}
+.orig{color:var(--muted);font-style:italic;font-size:.92rem;margin:0 0 4px}
+.dates{color:var(--muted);font-family:system-ui,sans-serif;font-size:.82rem;margin:0 0 14px}
+.intro{font-size:1.05rem;margin:16px 0 0}
 h3{font-family:system-ui,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 4px}
 dl{margin:0;font-size:.95rem}dt{font-weight:bold;display:inline}dd{display:inline;margin:0}dd::after{content:"";display:block;margin-bottom:4px}
 sup a{color:var(--accent);text-decoration:none;font-family:system-ui,sans-serif;font-size:.75rem}
@@ -33,11 +35,12 @@ footer{color:var(--muted);font-size:.85rem;margin-top:30px;font-family:system-ui
 </head>
 <body><main>
 <header>
-  <h1>Daily Science Digest</h1>
-  <div class="sub">{{ day.strftime("%A, %B %-d, %Y") }} · {{ entries|length }} papers chosen from {{ scanned }} new research articles in {{ journals|length }} journal{{ "s" if journals|length != 1 }}</div>
+  <h1>{{ title }}</h1>
+  <div class="sub">{{ subtitle }}</div>
+  {% if intro %}<p class="intro">{{ intro }}</p>{% endif %}
   {% if not ai %}<div class="note">Generated without AI: the text under each paper is the publisher's abstract, quoted rather than paraphrased.</div>{% endif %}
 </header>
-<nav><strong>Today's picks</strong><ol>
+<nav><strong>{{ "Top papers" if is_review else "Today's picks" }}</strong><ol>
 {% for e in entries %}<li><a href="#p{{ e.n }}">{{ e.s.headline }}</a> <span class="sub">({{ e.pick.field }})</span></li>{% endfor %}
 </ol></nav>
 {% for e in entries %}
@@ -45,6 +48,7 @@ footer{color:var(--muted);font-size:.85rem;margin-top:30px;font-family:system-ui
   <div class="meta"><span class="chip">{{ e.pick.field }}</span><span class="chip">{{ e.article.journal }}</span><span class="chip">Significance {{ e.pick.score }}/10</span>{% if e.s.based_on %}<span class="chip {{ 'ok' if e.s.based_on == 'full text' else '' }}">Summarised from {{ e.s.based_on }}</span>{% endif %}</div>
   <h2>{{ e.n }}. {{ e.s.headline }}</h2>
   <p class="orig">Original title: “{{ e.article.title }}”</p>
+  <p class="dates">{{ e.published_label }}{% if e.featured_label %} · {{ e.featured_label }}{% endif %}</p>
   {% for para in e.s.summary.split("\n") if para.strip() %}<p>{{ para }}{% if loop.last %}<sup><a href="#ref{{ e.n }}">[{{ e.n }}]</a></sup>{% endif %}</p>{% endfor %}
   <h3>Why it matters</h3><p>{{ e.s.why_it_matters }}</p>
   {% if e.s.limitations %}<h3>Caveats</h3><p>{{ e.s.limitations }}</p>{% endif %}

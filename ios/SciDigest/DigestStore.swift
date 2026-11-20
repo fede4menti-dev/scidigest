@@ -43,15 +43,21 @@ final class DigestStore {
         }
     }
 
-    /// One day's digest, from memory, disk cache, or the network.
-    func digest(for date: String) async throws -> Digest {
-        if let d = days[date] { return d }
-        if let d = Self.readCache(date, as: Digest.self) {
-            days[date] = d
+    /// The newest weekly and monthly reviews, if any.
+    var latestReviews: [ReviewEntry] {
+        [index?.weekly?.first, index?.monthly?.first].compactMap { $0 }
+    }
+
+    /// One digest by file name: a date ("2026-11-20") or a review id ("weekly-2026-11-22").
+    /// Comes from memory, the disk cache, or the network.
+    func digest(for name: String) async throws -> Digest {
+        if let d = days[name] { return d }
+        if let d = Self.readCache(name, as: Digest.self) {
+            days[name] = d
             return d
         }
-        let d: Digest = try await fetch("data/\(date).json", cacheAs: date)
-        days[date] = d
+        let d: Digest = try await fetch("data/\(name).json", cacheAs: name)
+        days[name] = d
         return d
     }
 

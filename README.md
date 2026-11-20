@@ -2,12 +2,21 @@
 
 A daily report of the most significant new scientific research. Each morning it:
 
-1. **Scans** the latest research from Nature, Science, Cell, PNAS, NEJM, The Lancet, Nature Communications, Science Advances, Physical Review Letters, eLife, PLOS Biology and several Nature field journals (list in `scidigest/sources.py`). News, corrections, editorials and opinion pieces are filtered out.
-2. **Ranks** them by significance with Claude (size of the advance, how broadly it matters, strength of evidence, novelty), keeping a mix of fields.
+1. **Scans** recent research (the last two weeks, newest preferred) from Nature, Science, Cell, PNAS, NEJM, The Lancet, Nature Communications, Science Advances, Physical Review Letters, eLife, PLOS Biology and several Nature field journals (list in `scidigest/sources.py`). News, corrections, editorials and opinion pieces are filtered out.
+2. **Ranks** them by significance with Claude (size of the advance, how broadly it matters, strength of evidence, novelty, and timeliness on the day), keeping a mix of fields. Most picks are new; an older paper can be chosen if it is especially important or relevant that day, and a standout paper can appear on a second day (never more than twice, never on back-to-back days; its earlier summary is reused).
 3. **Looks up citation details** (full author list, volume, pages, abstract) from Crossref using each paper's DOI.
 4. **Finds a free, legal full-text copy** when one exists (see below), so summaries can use the real methods and results instead of just the abstract.
 5. **Paraphrases** each paper for an average undergrad science student: plain headline, summary, why it matters, caveats, and a mini glossary of key terms. It only uses facts from the abstract, and an automatic check rewrites any summary that copies too much original wording.
 6. **Writes the report** as HTML and Markdown, with numbered in-text citations, a source link on every item and an APA-style reference list.
+
+## Weekly and monthly reviews
+
+When run with `--site`, it also publishes:
+
+- **Weekly review, every Sunday:** the 8 most important papers featured in that week's daily digests, with a short overview of the week.
+- **Monthly review, on the 1st:** the same for the whole previous month.
+
+Build one by hand with `python -m scidigest --site docs --review weekly` (or `monthly`). Every paper shows its publication date, and repeats show the other days they were featured.
 
 ## iPhone app
 
@@ -37,7 +46,9 @@ Options:
 | Flag | Default | What it does |
 |---|---|---|
 | `--top N` | 8 | papers in the report |
-| `--hours H` | 36 | how far back to look |
+| `--hours H` | 336 | how far back papers can come from (newest preferred) |
+| `--review weekly\|monthly` | | only build that review now (needs `--site`) |
+| `--no-reviews` | off | skip the automatic Sunday/1st-of-month reviews |
 | `--out DIR` | `reports` | output folder |
 | `--no-ai` | off | no API key needed; ranks by journal and quotes abstracts instead of paraphrasing |
 | `--no-crossref` | off | skip the Crossref metadata lookup |

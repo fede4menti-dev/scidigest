@@ -7,7 +7,7 @@ struct TodayView: View {
         NavigationStack {
             Group {
                 if let digest = store.latest {
-                    DigestView(digest: digest)
+                    DigestView(digest: digest, reviews: store.latestReviews)
                 } else if store.isLoading {
                     ProgressView("Loading today's research...")
                 } else if !store.isConfigured {
@@ -27,6 +27,8 @@ struct TodayView: View {
                 }
             }
             .navigationTitle("Today")
+            .navigationDestination(for: Paper.self) { PaperDetailView(paper: $0) }
+            .navigationDestination(for: ReviewEntry.self) { DigestLoaderView(name: $0.id, title: $0.badge) }
             .refreshable { await store.refresh() }
             .task { await store.refresh() }
             .safeAreaInset(edge: .bottom) {

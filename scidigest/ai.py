@@ -45,7 +45,7 @@ def _ask_json(system: str, prompt: str, schema: dict, effort: str = "medium",
 # ---------------------------------------------------------------- ranking
 
 RANK_SYSTEM = """You are the editor of a daily science digest for undergraduate science students.
-From a list of newly published journal papers, choose the ones that matter most.
+From a list of recent journal papers, choose the ones that matter most today.
 
 Judge significance by: how big a step forward it is for its field; how broadly it matters
 (health, climate, technology, fundamental understanding); strength of evidence (large trials,
@@ -53,6 +53,14 @@ direct observation and replication beat small or preliminary studies); and novel
 surprising result, or a long-standing question answered). Prefer variety across fields when
 papers are close. Base your judgement only on the title and abstract provided; do not invent
 details.
+
+Freshness: papers from the last two days are the default choice. An older paper (up to two weeks)
+can be picked if it is clearly more important than the new ones, or especially relevant on today's
+date (for example tied to the season, a recurring event, or a topic with obvious public attention
+at this time of year). Most of each day's picks should be new.
+
+Repeats: a paper marked "already featured" may be picked again only if it is exceptionally
+important (one of the standout papers of the month), and at most for one or two slots per day.
 
 Only choose original research or major reviews. Skip anything that is a letter, correspondence,
 commentary, editorial, news item, or correction, and skip items whose abstract is missing or only
@@ -69,7 +77,7 @@ RANK_SCHEMA = {
                     "index": {"type": "integer"},
                     "score": {"type": "integer", "description": "significance 1-10"},
                     "field": {"type": "string", "description": "e.g. Astronomy, Neuroscience"},
-                    "reason": {"type": "string", "description": "one sentence on why it was chosen"},
+                    "reason": {"type": "string", "description": "one sentence on why it was chosen (mention timeliness if that was the reason)"},
                 },
                 "required": ["index", "score", "field", "reason"],
                 "additionalProperties": False,
@@ -81,13 +89,27 @@ RANK_SCHEMA = {
 }
 
 
-def rank(articles: list[Article], top: int) -> list[tuple[Article, dict]]:
-    listing = "\n\n".join(
-        f"[{i}] {a.journal}: {a.title}\n{a.abstract[:900]}" for i, a in enumerate(articles)
-    )
+def _age(a: Article, today) -> str:
+    if not a.published:
+        return "publication date not listed"
+    days = (today - a.published.date()).days
+    when = a.published.date().isoformat()
+    return f"published {when} ({'today' if days <= 0 else f'{days} day' + ('s' if days != 1 else '') + ' ago'})"
+
+
+def rank(articles: list[Article], top: int, today=None, featured: dict | None = None) -> list[tuple[Article, dict]]:
+    """featured: index -> list of dates the paper was already a daily pick."""
+    from datetime import date as _date
+    today = today or _date.today()
+    featured = featured or {}
+    lines = []
+    for i, a in enumerate(articles):
+        note = f" | already featured on {', '.join(featured[i])}" if featured.get(i) else ""
+        lines.append(f"[{i}] {a.journal}: {a.title}\n({_age(a, today)}{note})\n{a.abstract[:900]}")
     data = _ask_json(
         RANK_SYSTEM,
-        f"Here are {len(articles)} new papers. Pick the {top} most significant, best first.\n\n{listing}",
+        f"Today is {today:%A, %B %d, %Y}. Here are {len(articles)} recent papers. "
+        f"Pick the {top} most significant for today's digest, best first.\n\n" + "\n\n".join(lines),
         RANK_SCHEMA,
         effort="high",
     )
@@ -98,6 +120,61 @@ def rank(articles: list[Article], top: int) -> list[tuple[Article, dict]]:
             used.add(i)
             picks.append((articles[i], p))
     return picks[:top]
+
+
+# -------------------------------------------------------- weekly/monthly
+
+REVIEW_SYSTEM = """You are the editor of a science digest for undergraduate science students, writing
+the {span} review. You get every paper that appeared in the daily digests during the {span}, each with
+its plain-language summary. Choose the most important ones overall: the biggest advances, the
+strongest evidence and the widest relevance, with variety across fields when papers are close.
+Then write a short overview (3 to 5 sentences) that tells a student what the {span} in science looked
+like: the main themes and the standout results, in plain language, without hype and without
+introducing any facts that are not in the summaries."""
+
+REVIEW_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "intro": {"type": "string", "description": "3-5 sentence overview of the period"},
+        "picks": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "index": {"type": "integer"},
+                    "score": {"type": "integer", "description": "significance 1-10"},
+                    "reason": {"type": "string", "description": "one sentence on why it is one of the most important of the period"},
+                },
+                "required": ["index", "score", "reason"],
+                "additionalProperties": False,
+            },
+        },
+    },
+    "required": ["intro", "picks"],
+    "additionalProperties": False,
+}
+
+
+def rank_review(papers: list[dict], top: int, span: str, label: str) -> tuple[str, list[tuple[dict, dict]]]:
+    """papers are published paper JSON objects. Returns (intro, [(paper, pick)])."""
+    listing = "\n\n".join(
+        f"[{i}] {p['field']} | {p['journal']} | daily significance {p['significance']}/10\n"
+        f"{p['headline']}\n{p['summary']}\nWhy it matters: {p['why_it_matters']}"
+        for i, p in enumerate(papers))
+    data = _ask_json(
+        REVIEW_SYSTEM.format(span=span),
+        f"The {span}: {label}. Here are the {len(papers)} papers featured. "
+        f"Pick the {top} most important, best first, and write the overview.\n\n{listing}",
+        REVIEW_SCHEMA,
+        effort="high",
+    )
+    picks, used = [], set()
+    for p in data["picks"]:
+        i = p["index"]
+        if 0 <= i < len(papers) and i not in used:
+            used.add(i)
+            picks.append((papers[i], p))
+    return data["intro"], picks[:top]
 
 
 # ---------------------------------------------------------- summarising

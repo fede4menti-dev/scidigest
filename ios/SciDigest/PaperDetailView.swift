@@ -23,6 +23,14 @@ struct PaperDetailView: View {
                         .font(.subheadline)
                         .italic()
                         .foregroundStyle(.secondary)
+                    Label(paper.publishedLabel, systemImage: "calendar")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                    if !paper.featuredDates.isEmpty {
+                        Label("In the daily digest on \(paper.featuredLabel)", systemImage: "arrow.clockwise")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
                     if !paper.authorLine.isEmpty {
                         Text(paper.authorLine)
                             .font(.footnote)

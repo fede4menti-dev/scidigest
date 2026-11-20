@@ -12,8 +12,10 @@ from .citations import enrich
 from .fetch import fetch_all, parse_feed
 from .fulltext import europe_pmc_abstract, find_free_copy
 from concurrent.futures import ThreadPoolExecutor
-from .publish import day_json, publish
+from .fulltext import FreeCopy
+from .publish import day_json, featured_history, paper_key, publish
 from .report import build_entries, render
+from .reviews import build_review, due_reviews
 from .sources import SOURCES
 
 
@@ -49,10 +51,28 @@ def quoted_summary(a):
             "why_it_matters": "Not available without AI mode.", "key_terms": [], "limitations": ""}
 
 
+MAX_APPEARANCES = 2     # a paper can be a daily pick on at most two days
+MIN_REPEAT_GAP = 3      # ...and not again within 3 days (so never on back-to-back days)
+
+
+def freshness(a, today) -> float:
+    if not a.published:
+        return 0.2
+    age = (today - a.published.date()).days
+    return 0.6 if age <= 2 else 0.3 if age <= 7 else 0.0
+
+
+def summary_from_paper(p: dict) -> dict:
+    return {"headline": p["headline"], "summary": p["summary"], "why_it_matters": p["why_it_matters"],
+            "limitations": p.get("limitations", ""), "key_terms": p.get("key_terms", []),
+            "based_on": p.get("based_on", "abstract")}
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="scidigest", description="Daily digest of significant new research.")
-    p.add_argument("--top", type=int, default=8, help="number of papers in the report (default 8)")
-    p.add_argument("--hours", type=int, default=36, help="how far back to look (default 36)")
+    p.add_argument("--top", type=int, default=8, help="number of papers per report (default 8)")
+    p.add_argument("--hours", type=int, default=336,
+                   help="how far back papers can come from (default 336 = 14 days; newest are preferred)")
     p.add_argument("--out", type=Path, default=Path("reports"), help="output folder")
     p.add_argument("--no-ai", action="store_true", help="skip Claude; quote abstracts instead of paraphrasing")
     p.add_argument("--no-crossref", action="store_true", help="skip Crossref metadata lookup")
@@ -62,15 +82,27 @@ def main(argv=None):
     p.add_argument("--max-fulltext-chars", type=int, default=150_000,
                    help="cap on full-text characters sent per paper (default 150000, about 37K tokens)")
     p.add_argument("--site", type=Path, help="also publish JSON + HTML for the iPhone app into this folder")
+    p.add_argument("--review", choices=["weekly", "monthly"],
+                   help="only build this review now (needs --site with past daily digests)")
+    p.add_argument("--no-reviews", action="store_true",
+                   help="don't build the automatic Sunday weekly / 1st-of-month monthly reviews")
+    p.add_argument("--today", type=date.fromisoformat, default=None, help=argparse.SUPPRESS)
     p.add_argument("--feed-file", nargs=2, action="append", metavar=("JOURNAL", "PATH"),
                    help="read a saved feed file instead of the web (repeatable; for testing)")
-    p.add_argument("--max-candidates", type=int, default=120,
-                   help="cap on papers sent to the AI ranker (highest journal weight first)")
+    p.add_argument("--max-candidates", type=int, default=150,
+                   help="cap on papers sent to the AI ranker (freshest and best journals first)")
     args = p.parse_args(argv)
 
+    today = args.today or date.today()
     use_ai = not args.no_ai
     if use_ai and not (os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")):
         sys.exit("No ANTHROPIC_API_KEY set. Export one, or run with --no-ai.")
+
+    if args.review:
+        if not args.site:
+            sys.exit("--review needs --site (the folder with past daily digests).")
+        make_review(args, args.review, today, use_ai)
+        return
 
     print("Scanning journals...")
     if args.feed_file:
@@ -81,11 +113,29 @@ def main(argv=None):
     else:
         articles = fetch_all(hours=args.hours)
     if not articles:
-        sys.exit("No new research articles found. Try a larger --hours window.")
+        sys.exit("No recent research articles found. Try a larger --hours window.")
     journals = sorted({a.journal for a in articles})
     print(f"Found {len(articles)} research articles in {len(journals)} journals.")
 
-    candidates = sorted(articles, key=lambda a: a.prior, reverse=True)[: args.max_candidates]
+    # What earlier daily digests already featured (ignoring today's, so a rerun can pick the same).
+    history = {k: h for k, h in featured_history(args.site).items()}
+    for h in history.values():
+        h["dates"] = [d for d in h["dates"] if d != today.isoformat()]
+    history = {k: h for k, h in history.items() if h["dates"]}
+
+    def key(a):
+        return paper_key(a.doi, a.link, a.title)
+
+    def allowed(a):
+        h = history.get(key(a))
+        if not h:
+            return True
+        last = max(date.fromisoformat(d) for d in h["dates"])
+        return len(h["dates"]) < MAX_APPEARANCES and (today - last).days >= MIN_REPEAT_GAP
+
+    candidates = [a for a in articles if allowed(a)]
+    candidates.sort(key=lambda a: a.prior + freshness(a, today), reverse=True)
+    candidates = candidates[: args.max_candidates]
     if not args.feed_file:
         short = sum(1 for a in candidates if len(a.abstract) < MIN_ABSTRACT)
         if short:
@@ -97,39 +147,82 @@ def main(argv=None):
         if dropped:
             print(f"  skipping {dropped} papers with no usable abstract")
         candidates = with_abstract
+
+    if not candidates:
+        print("No eligible papers today (all were featured recently); skipping the daily digest.")
+        if args.site and not args.no_reviews:
+            for kind in due_reviews(today):
+                make_review(args, kind, today, use_ai)
+        return
+
+    featured = {i: history[key(a)]["dates"] for i, a in enumerate(candidates) if key(a) in history}
     if use_ai:
-        print("Ranking by significance with Claude...")
-        picks = ai.rank(candidates, args.top)
+        print(f"Ranking {len(candidates)} papers by significance with Claude...")
+        picks = ai.rank(candidates, args.top, today=today, featured=featured)
     else:
         picks = heuristic_rank(candidates, args.top)
 
+    repeats = {i for i, (a, _) in enumerate(picks) if key(a) in history}
+    new = [i for i in range(len(picks)) if i not in repeats]
+    if repeats:
+        print(f"  {len(repeats)} pick(s) featured before; reusing their summaries")
+
     if not args.no_crossref:
         print("Looking up citation details on Crossref...")
-        for a, _ in picks:
-            enrich(a)
+        for i in new:
+            enrich(picks[i][0])
 
     free = [None] * len(picks)
-    if not args.no_fulltext:
+    for i in repeats:
+        fc = history[key(picks[i][0])]["paper"].get("free_copy")
+        free[i] = FreeCopy(**fc) if fc else None
+    if not args.no_fulltext and new:
         print("Looking for free, legal full-text copies (Europe PMC" + (", Unpaywall" if args.email else "") + ")...")
         if not args.email:
             print("  (set SCIDIGEST_EMAIL or --email to also search Unpaywall)")
-        free = [find_free_copy(a, args.email) for a, _ in picks]
-        print(f"  full text found for {sum(1 for c in free if c and c.text)} of {len(picks)}; "
-              f"free link for {sum(1 for c in free if c)} of {len(picks)}")
+        for i in new:
+            free[i] = find_free_copy(picks[i][0], args.email)
+        found = [free[i] for i in new]
+        print(f"  full text found for {sum(1 for c in found if c and c.text)} of {len(new)}; "
+              f"free link for {sum(1 for c in found if c)} of {len(new)}")
 
-    if use_ai:
-        print(f"Writing {len(picks)} student-level summaries...")
-        jobs = [(a, c.text if c else "", c.version if c else "") for (a, _), c in zip(picks, free)]
-        summaries = ai.summarize_many(jobs, max_chars=args.max_fulltext_chars)
-    else:
-        summaries = [quoted_summary(a) for a, _ in picks]
+    summaries = [None] * len(picks)
+    for i in repeats:
+        summaries[i] = summary_from_paper(history[key(picks[i][0])]["paper"])
+    if use_ai and new:
+        print(f"Writing {len(new)} student-level summaries...")
+        jobs = [(picks[i][0], free[i].text if free[i] else "", free[i].version if free[i] else "") for i in new]
+        for i, s in zip(new, ai.summarize_many(jobs, max_chars=args.max_fulltext_chars)):
+            summaries[i] = s
+    elif new:
+        for i in new:
+            summaries[i] = quoted_summary(picks[i][0])
 
-    entries = build_entries(picks, summaries, free)
-    html_path, md_path = render(entries, date.today(), args.out, len(articles), journals, use_ai)
+    before = [sorted(history[key(a)]["dates"]) if key(a) in history else [] for a, _ in picks]
+    entries = build_entries(picks, summaries, free, before)
+    for i in repeats:  # keep the citation exactly as it was first published
+        old = history[key(picks[i][0])]["paper"]
+        entries[i]["citation"], entries[i]["url"] = old["citation"], old["url"]
+
+    digest = day_json(entries, today, len(articles), journals, use_ai)
+    html_path, md_path = render(digest, args.out)
     print(f"\nDone.\n  HTML:     {html_path.resolve()}\n  Markdown: {md_path.resolve()}")
     if args.site:
-        digest = day_json(entries, date.today(), len(articles), journals, use_ai)
-        print(f"  App data: {publish(args.site, digest, html_path).resolve()}")
+        print(f"  App data: {publish(args.site, digest).resolve()}")
+        if not args.no_reviews:
+            for kind in due_reviews(today):
+                make_review(args, kind, today, use_ai)
+
+
+def make_review(args, kind, today, use_ai):
+    print(f"\nBuilding the {kind} review...")
+    review = build_review(args.site, kind, today, args.top, use_ai)
+    if review is None:
+        return
+    html_path, _ = render(review, args.out)
+    print(f"  {review['title']}: {len(review['papers'])} papers from {review['scanned']} featured")
+    print(f"  HTML:     {html_path.resolve()}")
+    print(f"  App data: {publish(args.site, review).resolve()}")
 
 
 def run():

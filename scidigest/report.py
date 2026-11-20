@@ -81,6 +81,16 @@ def headings(digest: dict) -> tuple[str, str]:
     return digest["title"], sub
 
 
+def excerpt(summary: str, limit: int = 230) -> str:
+    """The opening of the summary, cut at a sentence or word boundary."""
+    first = next((p.strip() for p in summary.split("\n") if p.strip()), "")
+    if len(first) <= limit:
+        return first
+    cut = first[:limit]
+    end = max(cut.rfind(". "), cut.rfind("? "), cut.rfind("! "))
+    return cut[: end + 1] if end >= 60 else cut[: cut.rfind(" ")].rstrip(",;:") + "…"
+
+
 def _italicize_journal(citation: str, journal: str) -> str:
     i = citation.rfind(journal)  # the journal name comes after the title
     return citation if i < 0 else f"{citation[:i]}*{journal}*{citation[i + len(journal):]}"
@@ -111,6 +121,11 @@ def entries_from_json(digest: dict) -> list[dict]:
             "published_label": f"Published {short_date(pub)}" if pub else "Publication date not listed",
             "featured_label": featured_label,
             "image": NS(**p["image"]) if p.get("image") else None,
+            "intro": excerpt(p["summary"]),
+            "topic": p.get("category") or "",
+            "topic_name": p.get("category_name") or p["field"],
+            "editors_pick": p.get("editors_pick", True),
+            "preprint": p.get("preprint", False),
         })
     return out
 
@@ -123,8 +138,18 @@ def _env() -> Environment:
 
 
 def _context(digest: dict) -> dict:
+    from .taxonomy import TOPIC_IDS
     title, subtitle = headings(digest)
-    return dict(entries=entries_from_json(digest), title=title, subtitle=subtitle,
+    entries = entries_from_json(digest)
+    order = {t: i for i, t in enumerate(TOPIC_IDS)}
+    others = [e for e in entries if not e["editors_pick"]]
+    groups = {}
+    for e in sorted(others, key=lambda e: (order.get(e["topic"], 99), -e["pick"]["score"])):
+        groups.setdefault(e["topic_name"], []).append(e)
+    topics = sorted({(e["topic"], e["topic_name"]) for e in entries if e["topic"]},
+                    key=lambda t: order.get(t[0], 99))
+    return dict(entries=entries, editors=[e for e in entries if e["editors_pick"]],
+                by_topic=list(groups.items()), topics=topics, title=title, subtitle=subtitle,
                 intro=digest.get("intro", ""), ai=digest["ai_summaries"],
                 is_review=digest.get("kind", "daily") != "daily")
 

@@ -9,6 +9,16 @@ A daily report of the most significant new scientific research. Each morning it:
 5. **Paraphrases** each paper for an average undergrad science student: plain headline, summary, why it matters, caveats, and a mini glossary of key terms. It only uses facts from the abstract, and an automatic check rewrites any summary that copies too much original wording.
 6. **Writes the report** as HTML and Markdown, with numbered in-text citations, a source link on every item and an APA-style reference list.
 
+## Topics
+
+Every selected paper is assigned to one of 18 topics in 6 groups (Physical Sciences, Math & Computing; Engineering & Technology; Biological & Life Sciences; Health & Medical Sciences; Earth & Environmental Sciences; Society, Policy & Interdisciplinary Studies; full list in `scidigest/taxonomy.py`).
+
+Each day publishes **8 editor's picks** plus **up to 2 of the best papers in every topic** (`--per-topic`, or the `SCIDIGEST_PER_TOPIC` repository variable for the GitHub run). Readers choose their topics in the app and see "For you" papers on every day and review; the website has topic filter chips.
+
+Sources now include about 40 journals (Nature and Science families, Cell, PNAS, NEJM, The Lancet, JAMA, The BMJ, PRL, PLOS, eLife) plus capped arXiv feeds for mathematics, computer science, statistics, economics and robotics. arXiv papers are labelled **Preprint** (not peer reviewed).
+
+**Cost:** each topic pick is one more summary. With 2 per topic expect roughly 25 to 35 summaries a day (an estimate: about $1.50 to $3.50 a day); 1 per topic roughly halves the extra; 0 turns topic picks off.
+
 ## Weekly and monthly reviews
 
 When run with `--site`, it also publishes:

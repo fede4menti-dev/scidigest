@@ -9,8 +9,10 @@ struct PaperDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 HStack(spacing: 6) {
-                    Chip(text: paper.field, color: Theme.color(for: paper.field))
-                    Chip(text: paper.journal, color: .secondary)
+                    Chip(text: paper.topicLabel, color: Theme.color(for: paper))
+                    if paper.isPreprint {
+                        Chip(text: "Preprint, not peer reviewed", color: .orange)
+                    }
                     if paper.isFullText {
                         Chip(text: "From full text", color: .green, systemImage: "doc.text")
                     }
@@ -19,6 +21,9 @@ struct PaperDetailView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(paper.headline)
                         .font(.title2.bold())
+                    Text(paper.journal)
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(.secondary)
                     Text("Original title: \u{201C}\(paper.originalTitle)\u{201D}")
                         .font(.subheadline)
                         .italic()

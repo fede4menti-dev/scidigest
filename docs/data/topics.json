@@ -1,0 +1,131 @@
+{
+ "format": 1,
+ "groups": [
+  {
+   "id": "physical",
+   "name": "Physical Sciences, Math & Computing",
+   "topics": [
+    {
+     "id": "physics",
+     "name": "Physics",
+     "covers": "classical mechanics, quantum science, optics and photonics, condensed matter, mathematical physics, space physics"
+    },
+    {
+     "id": "chemistry",
+     "name": "Chemistry",
+     "covers": "organic, inorganic, physical and analytical chemistry, chemical biology"
+    },
+    {
+     "id": "math_stats",
+     "name": "Mathematics & Statistics",
+     "covers": "algebra, geometry, topology, differential equations, probability, numerical analysis, optimization, statistics theory"
+    },
+    {
+     "id": "computing",
+     "name": "Computer Science & IT",
+     "covers": "artificial intelligence and machine learning, cybersecurity, data science, information theory, computational systems"
+    },
+    {
+     "id": "astronomy",
+     "name": "Astronomy & Planetary Science",
+     "covers": "astrophysics, observational astronomy, planetary geology, cosmology"
+    },
+    {
+     "id": "materials",
+     "name": "Materials & Nanoscience",
+     "covers": "nanomaterials, polymers, metallurgy, semiconductors, energy materials"
+    }
+   ]
+  },
+  {
+   "id": "engineering",
+   "name": "Engineering & Technology",
+   "topics": [
+    {
+     "id": "core_engineering",
+     "name": "Core Engineering",
+     "covers": "mechanical, electrical, civil, chemical and aerospace engineering"
+    },
+    {
+     "id": "applied_tech",
+     "name": "Applied & Emerging Tech",
+     "covers": "biomedical engineering, robotics, automation and control systems, energy science, biotechnology"
+    }
+   ]
+  },
+  {
+   "id": "life",
+   "name": "Biological & Life Sciences",
+   "topics": [
+    {
+     "id": "cell_molecular",
+     "name": "Cellular & Molecular",
+     "covers": "cell biology, molecular biology, genetics, genomics, biochemistry, structural biology"
+    },
+    {
+     "id": "organismal",
+     "name": "Organismal & Systems",
+     "covers": "microbiology, immunology, neuroscience, physiology, developmental biology, evolutionary biology"
+    },
+    {
+     "id": "ecology",
+     "name": "Ecology & Biodiversity",
+     "covers": "ecology, conservation biology, zoology, plant sciences, entomology, computational biology and bioinformatics"
+    }
+   ]
+  },
+  {
+   "id": "health",
+   "name": "Health & Medical Sciences",
+   "topics": [
+    {
+     "id": "clinical",
+     "name": "Clinical & Disease Research",
+     "covers": "oncology, cardiology, neurology, infectious diseases, clinical immunology"
+    },
+    {
+     "id": "therapeutics",
+     "name": "Therapeutics & Care",
+     "covers": "pharmacology, drug discovery, nursing, dentistry, medical informatics, public and occupational health"
+    },
+    {
+     "id": "behavioral",
+     "name": "Behavioral & Mental Health",
+     "covers": "clinical, cognitive, experimental and social psychology, behavioral sciences"
+    }
+   ]
+  },
+  {
+   "id": "earth",
+   "name": "Earth & Environmental Sciences",
+   "topics": [
+    {
+     "id": "earth_water",
+     "name": "Earth & Water",
+     "covers": "geology (solid Earth), hydrology, ocean sciences, limnology, natural hazards"
+    },
+    {
+     "id": "climate",
+     "name": "Climate & Environment",
+     "covers": "climate science, atmospheric science, environmental science, biogeochemistry, sustainability"
+    }
+   ]
+  },
+  {
+   "id": "society",
+   "name": "Society, Policy & Interdisciplinary Studies",
+   "topics": [
+    {
+     "id": "social_economic",
+     "name": "Social & Economic Sciences",
+     "covers": "economics, finance, sociology, political science, public policy, education, geography"
+    },
+    {
+     "id": "resources",
+     "name": "Resource & Applied Fields",
+     "covers": "agriculture, forestry, water resources, food science, veterinary science, science communication and ethics"
+    }
+   ]
+  }
+ ]
+}

@@ -9,6 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 import anthropic
 
 from .fetch import Article
+from .taxonomy import TOPIC_IDS, TOPICS, prompt_list
 
 MODEL = "claude-opus-5-5"
 _client: anthropic.Anthropic | None = None
@@ -66,27 +67,44 @@ Only choose original research or major reviews. Skip anything that is a letter, 
 commentary, editorial, news item, or correction, and skip items whose abstract is missing or only
 gives citation details, since readers need real findings."""
 
-RANK_SCHEMA = {
+RANK_SCHEMA_TEMPLATE = {
     "type": "object",
     "properties": {
-        "picks": {
+        "selections": {
             "type": "array",
             "items": {
                 "type": "object",
                 "properties": {
                     "index": {"type": "integer"},
+                    "topic": {"type": "string", "enum": TOPIC_IDS},
+                    "editors_pick": {"type": "boolean"},
                     "score": {"type": "integer", "description": "significance 1-10"},
-                    "field": {"type": "string", "description": "e.g. Astronomy, Neuroscience"},
+                    "field": {"type": "string", "description": "specific field label, e.g. Astrophysics, Immunology"},
                     "reason": {"type": "string", "description": "one sentence on why it was chosen (mention timeliness if that was the reason)"},
                 },
-                "required": ["index", "score", "field", "reason"],
+                "required": ["index", "topic", "editors_pick", "score", "field", "reason"],
                 "additionalProperties": False,
             },
         }
     },
-    "required": ["picks"],
+    "required": ["selections"],
     "additionalProperties": False,
 }
+RANK_SCHEMA = RANK_SCHEMA_TEMPLATE
+
+TOPIC_RULES = """Readers follow topics. Assign every paper you select to exactly one topic id from this list
+(the closest fit):
+{topics}
+
+Make two kinds of selection in one list:
+- Editor's picks (editors_pick = true): exactly {top} papers, the most significant overall today, any topic,
+  best first.
+- Topic picks (editors_pick = false): for EACH topic, up to {per_topic} of the best remaining papers in that
+  topic, so readers who only follow that topic still get good papers. Skip a topic if nothing in it is
+  worth reading; never pad with weak papers. A paper appears at most once in the list.
+
+Preprints (marked "preprint, not peer reviewed") are the main venue for mathematics, computer science,
+statistics and economics, so they are welcome as topic picks there; be stricter with them as editor's picks."""
 
 
 def _age(a: Article, today) -> str:
@@ -97,37 +115,54 @@ def _age(a: Article, today) -> str:
     return f"published {when} ({'today' if days <= 0 else f'{days} day' + ('s' if days != 1 else '') + ' ago'})"
 
 
-def rank(articles: list[Article], top: int, today=None, featured: dict | None = None) -> list[tuple[Article, dict]]:
-    """featured: index -> list of dates the paper was already a daily pick."""
+def rank(articles: list[Article], top: int, today=None, featured: dict | None = None,
+         per_topic: int = 2) -> list[tuple[Article, dict]]:
+    """Returns editor's picks first (in order), then topic picks (by score).
+    featured: index -> list of dates the paper was already a daily pick."""
     from datetime import date as _date
     today = today or _date.today()
     featured = featured or {}
+    snippet = 900 if len(articles) <= 150 else 600
     lines = []
     for i, a in enumerate(articles):
         note = f" | already featured on {', '.join(featured[i])}" if featured.get(i) else ""
-        lines.append(f"[{i}] {a.journal}: {a.title}\n({_age(a, today)}{note})\n{a.abstract[:900]}")
+        kind = " | preprint, not peer reviewed" if getattr(a, "preprint", False) else ""
+        lines.append(f"[{i}] {a.journal}: {a.title}\n({_age(a, today)}{kind}{note})\n{a.abstract[:snippet]}")
+    system = RANK_SYSTEM + "\n\n" + TOPIC_RULES.format(topics=prompt_list(), top=top, per_topic=per_topic)
     data = _ask_json(
-        RANK_SYSTEM,
-        f"Today is {today:%A, %B %d, %Y}. Here are {len(articles)} recent papers. "
-        f"Pick the {top} most significant for today's digest, best first.\n\n" + "\n\n".join(lines),
+        system,
+        f"Today is {today:%A, %B %d, %Y}. Here are {len(articles)} recent papers. Make today's selections.\n\n"
+        + "\n\n".join(lines),
         RANK_SCHEMA,
         effort="high",
     )
-    picks, used = [], set()
-    for p in data["picks"]:
+    editors, others, used = [], [], set()
+    for p in data["selections"]:
         i = p["index"]
-        if 0 <= i < len(articles) and i not in used:
-            used.add(i)
-            picks.append((articles[i], p))
-    return picks[:top]
+        if not (0 <= i < len(articles)) or i in used or p.get("topic") not in TOPICS:
+            continue
+        used.add(i)
+        (editors if p.get("editors_pick") and len(editors) < top else others).append((articles[i], p))
+    for _, p in others:
+        p["editors_pick"] = False
+    # Keep at most per_topic topic picks per topic.
+    kept, count = [], {}
+    for a, p in sorted(others, key=lambda x: -x[1].get("score", 0)):
+        if count.get(p["topic"], 0) < per_topic:
+            count[p["topic"]] = count.get(p["topic"], 0) + 1
+            kept.append((a, p))
+    return editors + kept
 
 
 # -------------------------------------------------------- weekly/monthly
 
 REVIEW_SYSTEM = """You are the editor of a science digest for undergraduate science students, writing
 the {span} review. You get every paper that appeared in the daily digests during the {span}, each with
-its plain-language summary. Choose the most important ones overall: the biggest advances, the
+its topic and plain-language summary. Choose the most important ones: the biggest advances, the
 strongest evidence and the widest relevance, with variety across fields when papers are close.
+Mark exactly {top} as editor's picks (the most important overall, best first). Then, for each topic,
+add up to {per_topic} more of its best papers as topic picks (editors_pick = false), so readers who
+follow only that topic get a good review too; skip topics with nothing strong.
 Then write a short overview (3 to 5 sentences) that tells a student what the {span} in science looked
 like: the main themes and the standout results, in plain language, without hype and without
 introducing any facts that are not in the summaries."""
@@ -142,10 +177,11 @@ REVIEW_SCHEMA = {
                 "type": "object",
                 "properties": {
                     "index": {"type": "integer"},
+                    "editors_pick": {"type": "boolean"},
                     "score": {"type": "integer", "description": "significance 1-10"},
                     "reason": {"type": "string", "description": "one sentence on why it is one of the most important of the period"},
                 },
-                "required": ["index", "score", "reason"],
+                "required": ["index", "editors_pick", "score", "reason"],
                 "additionalProperties": False,
             },
         },
@@ -155,26 +191,36 @@ REVIEW_SCHEMA = {
 }
 
 
-def rank_review(papers: list[dict], top: int, span: str, label: str) -> tuple[str, list[tuple[dict, dict]]]:
-    """papers are published paper JSON objects. Returns (intro, [(paper, pick)])."""
+def rank_review(papers: list[dict], top: int, span: str, label: str,
+                per_topic: int = 2) -> tuple[str, list[tuple[dict, dict]]]:
+    """papers are published paper JSON objects. Returns (intro, [(paper, pick)]), editor's picks first."""
     listing = "\n\n".join(
-        f"[{i}] {p['field']} | {p['journal']} | daily significance {p['significance']}/10\n"
-        f"{p['headline']}\n{p['summary']}\nWhy it matters: {p['why_it_matters']}"
+        f"[{i}] topic: {p.get('category') or 'unassigned'} | {p['field']} | {p['journal']} | "
+        f"daily significance {p['significance']}/10\n"
+        f"{p['headline']}\n{p['summary'][:1200]}\nWhy it matters: {p['why_it_matters']}"
         for i, p in enumerate(papers))
     data = _ask_json(
-        REVIEW_SYSTEM.format(span=span),
+        REVIEW_SYSTEM.format(span=span, top=top, per_topic=per_topic),
         f"The {span}: {label}. Here are the {len(papers)} papers featured. "
-        f"Pick the {top} most important, best first, and write the overview.\n\n{listing}",
+        f"Make the selections and write the overview.\n\n{listing}",
         REVIEW_SCHEMA,
         effort="high",
     )
-    picks, used = [], set()
+    editors, others, used = [], [], set()
     for p in data["picks"]:
         i = p["index"]
         if 0 <= i < len(papers) and i not in used:
             used.add(i)
-            picks.append((papers[i], p))
-    return data["intro"], picks[:top]
+            (editors if p.get("editors_pick") and len(editors) < top else others).append((papers[i], p))
+    for _, p in others:
+        p["editors_pick"] = False
+    kept, count = [], {}
+    for paper, p in sorted(others, key=lambda x: -x[1].get("score", 0)):
+        t = paper.get("category") or "_"
+        if count.get(t, 0) < per_topic:
+            count[t] = count.get(t, 0) + 1
+            kept.append((paper, p))
+    return data["intro"], editors + kept
 
 
 # ---------------------------------------------------------- summarising
@@ -235,6 +281,9 @@ def summarize(article: Article, full_text: str = "", version: str = "", figures:
               max_chars: int = 150_000, attempts: int = 2) -> dict:
     prompt = (f"Journal: {article.journal}\nTitle: {article.title}\n\n"
               f"Abstract / description from the publisher:\n{article.abstract or '(none provided)'}")
+    if getattr(article, "preprint", False):
+        prompt += ("\n\nThis is a preprint that has not been peer reviewed yet. Say so briefly in the "
+                   "summary or limitations.")
     if figures:
         prompt += "\n\nFigures available from the paper (choose one with figure_index, or -1):\n" + "\n".join(
             f"[{i}] {f.get('label', '')}: {f.get('caption', '')[:500]}" for i, f in enumerate(figures))

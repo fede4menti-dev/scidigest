@@ -47,7 +47,8 @@ def test_models_match_published_json(tmp_path):
     added_later = {"kind", "id", "title", "period_start", "period_end", "intro"}
     check(day, "Digest", nullable=added_later)
     check(review, "Digest", nullable=added_later)
-    check(day["papers"][0], "Paper", nullable={"published", "doi", "free_copy", "featured_on", "image"})
+    check(day["papers"][0], "Paper", nullable={"published", "doi", "free_copy", "featured_on", "image",
+                                                      "category", "category_name", "editors_pick", "preprint"})
     assert day["papers"][0]["featured_on"] == ["2026-11-18"]       # repeat after 4 days is allowed
     check({"term": "", "meaning": ""}, "KeyTerm")
     check({"kind": "", "url": "", "caption": "", "credit": "", "license": "", "license_url": None, "source_url": ""},
@@ -63,3 +64,12 @@ def test_idea_report_models_match_worker_output():
     check(rep["quality"]["clarity"], "Scored")
     check(rep["related"][0], "RelatedPaper", nullable={"year", "doi"})
     check(rep["search"], "SearchInfo")
+
+
+def test_taxonomy_matches_swift():
+    from scidigest.taxonomy import GROUPS
+    src = (ROOT / "ios" / "SciDigest" / "Taxonomy.swift").read_text()
+    swift_groups = re.findall(r'TopicGroup\(id: "(\w+)", name: "([^"]+)"', src)
+    swift_topics = re.findall(r'\("(\w+)", "([^"]+)", "([^"]+)"\)', src)
+    assert swift_groups == [(g, n) for g, n, _ in GROUPS]
+    assert swift_topics == [t for _, _, ts in GROUPS for t in ts]

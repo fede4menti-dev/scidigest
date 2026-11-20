@@ -5,6 +5,7 @@ struct SettingsView: View {
     @AppStorage(Config.feedURLKey) private var feedURL = Config.defaultFeedURL
     @AppStorage(Config.ideaCheckerURLKey) private var ideaCheckerURL = Config.defaultIdeaCheckerURL
     @AppStorage(Config.ideaCheckerTokenKey) private var ideaCheckerToken = Config.defaultIdeaCheckerToken
+    @AppStorage(TopicPrefs.key) private var followedRaw = ""
     @AppStorage("reminderOn") private var reminderOn = false
     @AppStorage("reminderHour") private var reminderHour = 8
     @AppStorage("reminderMinute") private var reminderMinute = 0
@@ -23,6 +24,14 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section("Reading") {
+                    NavigationLink {
+                        TopicsView()
+                    } label: {
+                        LabeledContent("Your topics", value: TopicPrefs.summary(TopicPrefs.decode(followedRaw)))
+                    }
+                }
+
                 Section {
                     TextField("https://yourname.github.io/scidigest/", text: $feedURL)
                         .keyboardType(.URL)

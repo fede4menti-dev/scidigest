@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import time
 import os
 import sys
 from datetime import date
@@ -42,9 +43,10 @@ def fill_abstracts(articles, use_crossref=True, workers=8):
 
 
 def heuristic_rank(articles, top):
-    """No-AI fallback: journal weight, plus a bump for having a real abstract."""
+    """No-AI fallback: journal weight, plus a bump for having a real abstract. No topics."""
     scored = sorted(articles, key=lambda a: a.prior + min(len(a.abstract), 1200) / 4000, reverse=True)
-    return [(a, {"score": round(a.prior * 10), "field": a.journal, "reason": ""}) for a in scored[:top]]
+    return [(a, {"score": round(a.prior * 10), "field": a.journal, "reason": "", "topic": None,
+                 "editors_pick": True}) for a in scored[:top]]
 
 
 def quoted_summary(a):
@@ -80,7 +82,10 @@ def pick_image(article, summary: dict, copy) -> dict | None:
 
 def main(argv=None):
     p = argparse.ArgumentParser(prog="scidigest", description="Daily digest of significant new research.")
-    p.add_argument("--top", type=int, default=8, help="number of papers per report (default 8)")
+    p.add_argument("--top", type=int, default=8, help="number of editor's picks per report (default 8)")
+    p.add_argument("--per-topic", type=int, default=int(os.environ.get("SCIDIGEST_PER_TOPIC", "2")),
+                   help="extra best papers per topic for readers who filter by topic (default 2; 0 = off). "
+                        "Each one adds a summary, so this is the main cost lever.")
     p.add_argument("--hours", type=int, default=336,
                    help="how far back papers can come from (default 336 = 14 days; newest are preferred)")
     p.add_argument("--out", type=Path, default=Path("reports"), help="output folder")
@@ -100,7 +105,7 @@ def main(argv=None):
     p.add_argument("--today", type=date.fromisoformat, default=None, help=argparse.SUPPRESS)
     p.add_argument("--feed-file", nargs=2, action="append", metavar=("JOURNAL", "PATH"),
                    help="read a saved feed file instead of the web (repeatable; for testing)")
-    p.add_argument("--max-candidates", type=int, default=150,
+    p.add_argument("--max-candidates", type=int, default=300,
                    help="cap on papers sent to the AI ranker (freshest and best journals first)")
     args = p.parse_args(argv)
 
@@ -169,7 +174,10 @@ def main(argv=None):
     featured = {i: history[key(a)]["dates"] for i, a in enumerate(candidates) if key(a) in history}
     if use_ai:
         print(f"Ranking {len(candidates)} papers by significance with Claude...")
-        picks = ai.rank(candidates, args.top, today=today, featured=featured)
+        picks = ai.rank(candidates, args.top, today=today, featured=featured, per_topic=args.per_topic)
+        n_ed = sum(1 for _, p in picks if p.get("editors_pick"))
+        print(f"  {n_ed} editor's picks + {len(picks) - n_ed} topic picks across "
+              f"{len({p.get('topic') for _, p in picks})} topics")
     else:
         picks = heuristic_rank(candidates, args.top)
 
@@ -210,6 +218,7 @@ def main(argv=None):
             print("Finding images (open-access figures, else free-licensed photos)...")
             for i in new:
                 summaries[i]["image"] = pick_image(picks[i][0], summaries[i], free[i])
+                time.sleep(0.5)  # be polite to Wikimedia's API
             print(f"  images for {sum(1 for i in new if summaries[i].get('image'))} of {len(new)} papers")
     elif new:
         for i in new:
@@ -233,7 +242,7 @@ def main(argv=None):
 
 def make_review(args, kind, today, use_ai):
     print(f"\nBuilding the {kind} review...")
-    review = build_review(args.site, kind, today, args.top, use_ai)
+    review = build_review(args.site, kind, today, args.top, use_ai, per_topic=args.per_topic)
     if review is None:
         return
     html_path, _ = render(review, args.out)

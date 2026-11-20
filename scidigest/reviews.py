@@ -30,7 +30,7 @@ def due_reviews(today: date) -> list[str]:
     return due
 
 
-def build_review(site, kind: str, today: date, top: int, use_ai: bool, log=print) -> dict | None:
+def build_review(site, kind: str, today: date, top: int, use_ai: bool, log=print, per_topic: int = 2) -> dict | None:
     if kind == "weekly":
         start, end = weekly_period(today)
         ident = f"weekly-{end.isoformat()}"
@@ -71,11 +71,11 @@ def build_review(site, kind: str, today: date, top: int, use_ai: bool, log=print
     if use_ai:
         from . import ai
         label = f"{start:%B %d} to {end:%B %d, %Y}"
-        intro, picks = ai.rank_review(papers, top, span, label)
+        intro, picks = ai.rank_review(papers, top, span, label, per_topic=per_topic)
     else:
         intro = ""
         ranked = sorted(papers, key=lambda p: p["significance"], reverse=True)[:top]
-        picks = [(p, {"score": p["significance"], "reason": p.get("reason", "")}) for p in ranked]
+        picks = [(p, {"score": p["significance"], "reason": p.get("reason", ""), "editors_pick": True}) for p in ranked]
 
     chosen = []
     for n, (p, pick) in enumerate(picks, start=1):
@@ -83,6 +83,7 @@ def build_review(site, kind: str, today: date, top: int, use_ai: bool, log=print
         p["rank"] = n
         p["significance"] = int(pick.get("score") or p["significance"])
         p["reason"] = pick.get("reason") or p.get("reason", "")
+        p["editors_pick"] = bool(pick.get("editors_pick", True))
         chosen.append(p)
 
     return {

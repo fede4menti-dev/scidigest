@@ -5,194 +5,307 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily Science Digest</title>
 <style>
-:root{--bg:#fbfaf7;--card:#fff;--ink:#1d1d1f;--muted:#5f6368;--line:#e6e2da;--accent:#2f5d8a;--chip:#eef3f8;--okbg:#e8f4ec;--ok:#2d6a3e}
-@media (prefers-color-scheme:dark){:root{--bg:#141517;--card:#1c1d20;--ink:#ececec;--muted:#a3a7ad;--line:#2c2e33;--accent:#8db6e0;--chip:#24303d;--okbg:#1f3326;--ok:#8fd0a2}}
+:root{--bg:#f6f7f9;--card:#fff;--ink:#14171a;--soft:#4b5563;--muted:#8a919c;--line:#e7e9ee;--accent:#0f766e;--accent-bg:#e6f4f2;--warn:#b45309;--warn-bg:#fdf3e4;--ok:#15803d;--ok-bg:#e8f6ec;--ph:#e9edf2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1113;--card:#181b1f;--ink:#eef0f2;--soft:#b9c0c9;--muted:#7d8590;--line:#2a2e34;--accent:#5eead4;--accent-bg:#11302d;--warn:#fbbf24;--warn-bg:#33270f;--ok:#86efac;--ok-bg:#12301c;--ph:#22262b}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Georgia,"Iowan Old Style",serif}
-main{max-width:760px;margin:0 auto;padding:40px 16px 80px}
-header h1{font-size:2rem;margin:0 0 4px;letter-spacing:-.01em}
-.sub{color:var(--muted);font-family:system-ui,sans-serif;font-size:.9rem}
-.note{background:var(--chip);padding:10px 14px;border-radius:8px;font-family:system-ui,sans-serif;font-size:.9rem;margin-top:16px}
-nav{margin:28px 0;padding:16px 20px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-family:system-ui,sans-serif;font-size:.92rem}
-nav ol{margin:6px 0 0;padding-left:20px}
-nav a{color:var(--ink);text-decoration:none}nav a:hover{color:var(--accent)}
-article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px;margin:22px 0}
-.meta{display:flex;flex-wrap:wrap;gap:6px;font-family:system-ui,sans-serif;font-size:.78rem;margin-bottom:10px}
-.chip{background:var(--chip);color:var(--accent);padding:3px 9px;border-radius:99px}
-.chip.ok{background:var(--okbg);color:var(--ok)}
-article h2{font-size:1.4rem;line-height:1.3;margin:4px 0 6px}
-.orig{color:var(--muted);font-style:italic;font-size:.92rem;margin:0 0 4px}
-.dates{color:var(--muted);font-family:system-ui,sans-serif;font-size:.82rem;margin:0 0 14px}
-.intro{font-size:1.05rem;margin:16px 0 0}
-.pic{margin:0 0 16px}.pic img{display:block;width:100%;max-height:420px;object-fit:contain;background:var(--chip);border-radius:8px}
-.pic figcaption{font-family:system-ui,sans-serif;font-size:.82rem;color:var(--muted);margin-top:6px}
-.pic .credit{display:block;margin-top:2px;font-size:.75rem}.pic a{color:var(--accent)}
-.tag{background:var(--chip);color:var(--accent);padding:1px 6px;border-radius:4px;font-size:.72rem;margin-right:4px}
-h3{font-family:system-ui,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 4px}
-dl{margin:0;font-size:.95rem}dt{font-weight:bold;display:inline}dd{display:inline;margin:0}dd::after{content:"";display:block;margin-bottom:4px}
-sup a{color:var(--accent);text-decoration:none;font-family:system-ui,sans-serif;font-size:.75rem}
-.src{font-family:system-ui,sans-serif;font-size:.88rem;margin-top:16px}
-.src a{color:var(--accent)}
-.refs{font-size:.88rem}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
-footer{color:var(--muted);font-size:.85rem;margin-top:30px;font-family:system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 16px 64px}
+.brand{font-weight:700;letter-spacing:-.01em;color:var(--accent);font-size:.95rem}
+h1{font-size:2rem;line-height:1.15;letter-spacing:-.02em;margin:6px 0 6px}
+.sub{color:var(--soft);font-size:.95rem}
+.intro{max-width:760px;font-size:1.05rem;margin:14px 0 0}
+.note{display:inline-block;margin-top:12px;background:var(--warn-bg);color:var(--warn);padding:6px 10px;border-radius:8px;font-size:.85rem}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:18px 0 4px;scrollbar-width:none}
+.chips button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--soft);padding:7px 13px;border-radius:999px;font:inherit;font-size:.85rem;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+h2{font-size:1.15rem;letter-spacing:-.01em;margin:30px 0 12px}
+h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:22px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:box-shadow .15s}
+.card:hover{box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.card.open{grid-column:1/-1}
+.card summary{list-style:none;cursor:pointer;display:block}
+.card summary::-webkit-details-marker{display:none}
+.thumb{aspect-ratio:16/9;background:var(--ph);overflow:hidden;position:relative}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:2.2rem;font-weight:700;color:var(--muted)}
+.card.open .thumb{aspect-ratio:auto;max-height:440px}
+.card.open .thumb img{object-fit:contain;max-height:440px;background:var(--ph)}
+.body{padding:14px 16px 16px}
+.kicker{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.75rem;font-weight:600;margin-bottom:6px}
+.topic{color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
+.pill{padding:2px 7px;border-radius:6px;font-weight:600}
+.pill.pre{background:var(--warn-bg);color:var(--warn)}.pill.full{background:var(--ok-bg);color:var(--ok)}.pill.rep{background:var(--accent-bg);color:var(--accent)}
+.card h4{font-size:1.08rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card.open h4{display:block}
+.lede{color:var(--soft);font-size:.93rem;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.8rem;margin-top:12px}
+.dots{display:inline-flex;gap:2px}.dots i{width:5px;height:10px;border-radius:2px;background:var(--line)}.dots i.on{background:var(--accent)}
+.more{color:var(--accent);font-weight:600;font-size:.85rem;margin-top:10px}
+.card.open .more,.card.open .lede{display:none}
+.full{padding:0 16px 18px;max-width:760px}
+.full p{margin:0 0 12px}
+.full h5{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
+.full dl{margin:0;font-size:.93rem}.full dt{font-weight:600;display:inline}.full dd{display:inline;margin:0}.full dd::after{content:"";display:block;margin-bottom:6px}
+.orig{color:var(--muted);font-size:.85rem;font-style:italic}
+.credit{color:var(--muted);font-size:.75rem;padding:6px 16px 0}
+.src{background:var(--bg);border-radius:10px;padding:12px 14px;font-size:.85rem;margin-top:16px;overflow-wrap:anywhere}
+sup a{text-decoration:none;font-size:.7rem}
+.refs{font-size:.85rem;color:var(--soft);padding-left:20px}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
+footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
+.hidden{display:none!important}
 </style>
 </head>
-<body><main>
+<body><div class="wrap">
 <header>
+  <div class="brand">SciDigest</div>
   <h1>Daily Science Digest</h1>
   <div class="sub">Friday, November 20, 2026 · 8 papers chosen from 442 recent research articles in 17 journals</div>
   
   
 </header>
-<nav><strong>Today&#39;s picks</strong><ol>
-<li><a href="#p1">Vaccinating whole communities against malaria each season cut infection rates</a> <span class="sub">(Global Health)</span></li><li><a href="#p2">Newly found gut viruses are poxviruses&#39; closest known relatives</a> <span class="sub">(Virology / Microbiome)</span></li><li><a href="#p3">Astronomers watch a star spiral inside its giant partner&#39;s outer layers</a> <span class="sub">(Astronomy)</span></li><li><a href="#p4">Brain region that controls metabolism and sleep cycles shrinks in Alzheimer&#39;s</a> <span class="sub">(Neuroscience)</span></li><li><a href="#p5">Tiny diamond particles help perovskite solar cells withstand heat and long use</a> <span class="sub">(Materials Science / Energy)</span></li><li><a href="#p6">Farming intensity in Indonesia reshuffles which species live where, not just how many</a> <span class="sub">(Ecology / Conservation)</span></li><li><a href="#p7">Homo erectus lived in southern China&#39;s rainforests later than once thought</a> <span class="sub">(Palaeoanthropology)</span></li><li><a href="#p8">Bogong moths steer by the tilt of Earth&#39;s magnetic field, using light</a> <span class="sub">(Animal Behaviour)</span></li>
-</ol></nav>
 
-<article id="p1">
-  <div class="meta"><span class="chip">Global Health</span><span class="chip">The Lancet</span><span class="chip">Significance 9/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>1. Vaccinating whole communities against malaria each season cut infection rates</h2>
-  <p class="orig">Original title: “Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial”</p>
-  <p class="dates">Published Nov 19, 2026</p>
-  <figure class="pic">
-    <a href="https://commons.wikimedia.org/wiki/File:U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010,_Kisumu,_Kenya_April_25,_2010.jpg" target="_blank" rel="noopener"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg/960px-U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg" alt="Malaria vaccine africa" loading="lazy"></a>
-    <figcaption><span class="tag">Illustration, not from the paper</span> Malaria vaccine africa
-      <span class="credit">U.S. Army Southern European Task Force, Africa, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></span></figcaption>
-  </figure>
-  <p>Malaria in parts of West Africa spreads mostly during a rainy season, so researchers asked whether vaccinating entire communities just before that season could lower how many people carry the parasite. They tested a malaria vaccine called R21/Matrix-M in The Gambia and Burkina Faso. They used a cluster-randomised trial, in which whole groups such as villages, not individuals, are randomly assigned to receive the intervention or serve as controls. The trial was open-label, meaning participants and researchers knew who got the vaccine.</p><p>The publisher&#39;s summary reports that this seasonal mass vaccination lowered malaria prevalence, the share of people infected at a given time, in both countries. The authors propose it as an extra control tool where transmission is seasonal. In areas with low to moderate malaria it might speed progress toward elimination. In high-transmission areas it might further reduce the disease burden.<sup><a href="#ref1">[1]</a></sup></p>
-  <h3>Why it matters</h3><p>Malaria vaccines have mainly been given to young children. Vaccinating whole communities at the right time of year could add a new layer of protection on top of bed nets and drugs. That approach may help countries move closer to getting rid of malaria.</p>
-  <h3>Caveats</h3><p>The summary provided gives no effect sizes, safety data, or duration of protection. Because the trial was open-label, knowing who was vaccinated could have influenced some results.</p>
-  <h3>Key terms</h3><dl><dt>R21/Matrix-M:</dt> <dd>A malaria vaccine. Matrix-M is an added ingredient (adjuvant) that strengthens the immune response.</dd><dt>Seasonal mass vaccination (SMV):</dt> <dd>Vaccinating a whole population at once, timed to come before the main malaria season.</dd><dt>Cluster-randomised trial:</dt> <dd>A study where whole groups, such as villages, are randomly assigned to the treatment or control condition.</dd><dt>Open-label:</dt> <dd>Everyone involved knows who received the vaccine, unlike a blinded study.</dd><dt>Prevalence:</dt> <dd>The proportion of people who have an infection at a particular time.</dd><dt>Endemic:</dt> <dd>Regularly present in an area.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1016/S0140-6736(26)01562-X" target="_blank" rel="noopener">https://doi.org/10.1016/S0140-6736(26)01562-X</a>
+
+
+
+
+<main>
+  <h2>Editor&#39;s picks</h2>
+  <div class="grid">
+<details class="card" id="p1" data-topic="">
+  <summary>
+    <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg/960px-U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg" alt="Malaria vaccine africa" loading="lazy"></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Global Health</span>
+        
+        
+        </div>
+      <h4>Vaccinating whole communities against malaria each season cut infection rates</h4>
+      <p class="lede">Malaria in parts of West Africa spreads mostly during a rainy season, so researchers asked whether vaccinating entire communities just before that season could lower how many people carry the parasite.</p>
+      <div class="meta"><span>The Lancet · Nov 19, 2026</span>
+        <span class="dots" title="Significance 9/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
+  <div class="credit">Illustration, not from the paper. Malaria vaccine africa · U.S. Army Southern European Task Force, Africa, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></div>
+  <div class="full">
+    <p class="orig">Original title: “Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial”<br>Published Nov 19, 2026</p>
+    <p>Malaria in parts of West Africa spreads mostly during a rainy season, so researchers asked whether vaccinating entire communities just before that season could lower how many people carry the parasite. They tested a malaria vaccine called R21/Matrix-M in The Gambia and Burkina Faso. They used a cluster-randomised trial, in which whole groups such as villages, not individuals, are randomly assigned to receive the intervention or serve as controls. The trial was open-label, meaning participants and researchers knew who got the vaccine.</p><p>The publisher&#39;s summary reports that this seasonal mass vaccination lowered malaria prevalence, the share of people infected at a given time, in both countries. The authors propose it as an extra control tool where transmission is seasonal. In areas with low to moderate malaria it might speed progress toward elimination. In high-transmission areas it might further reduce the disease burden.<sup><a href="#ref1">[1]</a></sup></p>
+    <h5>Why it matters</h5><p>Malaria vaccines have mainly been given to young children. Vaccinating whole communities at the right time of year could add a new layer of protection on top of bed nets and drugs. That approach may help countries move closer to getting rid of malaria.</p>
+    <h5>Caveats</h5><p>The summary provided gives no effect sizes, safety data, or duration of protection. Because the trial was open-label, knowing who was vaccinated could have influenced some results.</p>
+    <h5>Key terms</h5><dl><dt>R21/Matrix-M:</dt> <dd>A malaria vaccine. Matrix-M is an added ingredient (adjuvant) that strengthens the immune response.</dd><dt>Seasonal mass vaccination (SMV):</dt> <dd>Vaccinating a whole population at once, timed to come before the main malaria season.</dd><dt>Cluster-randomised trial:</dt> <dd>A study where whole groups, such as villages, are randomly assigned to the treatment or control condition.</dd><dt>Open-label:</dt> <dd>Everyone involved knows who received the vaccine, unlike a blinded study.</dd><dt>Prevalence:</dt> <dd>The proportion of people who have an infection at a particular time.</dd><dt>Endemic:</dt> <dd>Regularly present in an area.</dd></dl>
+    <h5>Why it was picked</h5><p>A cluster-randomised trial in two African countries shows that seasonal mass vaccination with R21 reduces malaria prevalence, pointing to a new large-scale control strategy.</p>
+    <div class="src">Dabira, E. D., Natama, H. M., Erhart, A., Bihoun, B., Keita, M. L., Derra, K., Bah, A., Ilboudo, N., Ndiath, M. O., Bonko, M. D. A., Saidy, L., Ilboudo, A. H., Kafando, M. H. O., Jaiteh, F., Bocoum, F. Y., Grietens, K. P., Gibba, B., Kompaore, S. C. B., Hill, A. V. S., ... Sanyang, D. (2026). Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial. <em>The Lancet</em>. https://doi.org/10.1016/S0140-6736(26)01562-X<br><a href="https://doi.org/10.1016/S0140-6736(26)01562-X" target="_blank" rel="noopener">Read the original</a></div>
   </div>
-</article>
+</details>
 
-<article id="p2">
-  <div class="meta"><span class="chip">Virology / Microbiome</span><span class="chip">Nature</span><span class="chip">Significance 8/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>2. Newly found gut viruses are poxviruses&#39; closest known relatives</h2>
-  <p class="orig">Original title: “Closest relatives of poxviruses prevail in human and animal guts worldwide”</p>
-  <p class="dates">Published Nov 18, 2026</p>
-  <figure class="pic">
-    <a href="https://commons.wikimedia.org/wiki/File:Trichomonas_Gram_stain.jpg" target="_blank" rel="noopener"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Trichomonas_Gram_stain.jpg/960px-Trichomonas_Gram_stain.jpg" alt="Trichomonas vaginalis microscope" loading="lazy"></a>
-    <figcaption><span class="tag">Illustration, not from the paper</span> Trichomonas vaginalis microscope
-      <span class="credit">Dr Graham Beards, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></span></figcaption>
-  </figure>
-  <p>Large double-stranded DNA viruses are common in soil and water but have rarely been spotted inside animal digestive systems. Researchers sifting through genetic data from gut samples found a whole new group of such viruses, which they call egoviruses, with big linear DNA genomes. These viruses turn up worldwide and almost only in the guts of humans, farm animals and wild animals, and one human-associated type is found across continents, suggesting a long shared history with the human gut microbiome.</p><p>By comparing egovirus genes with those of single-celled organisms, the team concluded that the viruses probably infect not animal cells but gut-dwelling protists: ciliates that help cows and other ruminants digest food, and parabasalids that affect immunity and gut ecology. Family-tree analysis places egoviruses as the nearest known relatives of poxviruses (the group that includes smallpox). Unlike the brick-shaped poxvirus particle, egoviruses are predicted to build many-layered icosahedral (20-sided) shells, which the authors argue is the older, ancestral shape. They propose that poxvirus ancestors first infected oxygen-free single-celled organisms inside ancient animal guts before switching to infecting animal cells themselves.<sup><a href="#ref2">[2]</a></sup></p>
-  <h3>Why it matters</h3><p>Poxviruses cause serious human and animal disease, but where they came from has been unclear. This work points to a possible origin in gut-dwelling single-celled organisms and shows that a large, previously unrecognised family of DNA viruses is a routine part of gut ecosystems worldwide.</p>
-  <h3>Caveats</h3><p>The host assignments and the icosahedral particle shape are predictions from gene sequences, not direct observations of the viruses infecting cells; the proposed evolutionary route to poxviruses is an inferred scenario.</p>
-  <h3>Key terms</h3><dl><dt>Double-stranded DNA virus:</dt> <dd>A virus whose genetic material is DNA in the familiar two-stranded form, rather than RNA.</dd><dt>Egoviruses:</dt> <dd>The new group of large gut-dwelling DNA viruses named in this study.</dd><dt>Ciliates (Trichostomatia):</dt> <dd>Single-celled organisms covered in hair-like cilia; some live in ruminant stomachs and help break down plant food.</dd><dt>Parabasalia:</dt> <dd>A group of single-celled organisms living in animal guts; includes Trichomonas vaginalis, a human parasite.</dd><dt>Capsid:</dt> <dd>The protein shell that encloses a virus&#39;s genetic material.</dd><dt>Polintons:</dt> <dd>Virus-like DNA elements that have become embedded in the genomes of their hosts.</dd><dt>Phylogenomics:</dt> <dd>Building evolutionary family trees by comparing whole genome sequences.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1038/s41586-026-11283-z" target="_blank" rel="noopener">https://doi.org/10.1038/s41586-026-11283-z</a>
-  <br>Free to read: <a href="https://doi.org/10.1038/s41586-026-11283-z" target="_blank" rel="noopener">Published version</a> <span class="sub">via publisher, cc-by</span></div>
-</article>
-
-<article id="p3">
-  <div class="meta"><span class="chip">Astronomy</span><span class="chip">Nature</span><span class="chip">Significance 8/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>3. Astronomers watch a star spiral inside its giant partner&#39;s outer layers</h2>
-  <p class="orig">Original title: “An inspiral of a star inside a common envelope with its giant companion”</p>
-  <p class="dates">Published Nov 18, 2026</p>
-  <figure class="pic">
-    <a href="https://commons.wikimedia.org/wiki/File:Andromeda_Galaxy_(with_h-alpha).jpg" target="_blank" rel="noopener"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/960px-Andromeda_Galaxy_%28with_h-alpha%29.jpg" alt="Andromeda galaxy" loading="lazy"></a>
-    <figcaption><span class="tag">Illustration, not from the paper</span> Andromeda galaxy
-      <span class="credit">Adam Evans, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></span></figcaption>
-  </figure>
-  <p>Many tight pairs of stars, including the compact stellar remnants that orbit each other closely, are thought to start out much farther apart. A leading idea is &#34;common envelope evolution&#34;: when one star swells into a giant, its companion ends up orbiting inside the giant&#39;s puffy outer layers. Friction-like drag then makes the companion spiral inward. This spiralling had been predicted but never directly seen. The team studied AT 2025abao, an eruption in the Andromeda Galaxy. It involved a giant star of about 7 solar masses, late in its life (an asymptotic giant branch, or AGB, star), and a companion. They used spectra (light split into its wavelengths) taken both before and after the outburst.</p><p>The data fit best with a companion of roughly 0.7 solar masses sinking through the giant&#39;s churning outer envelope. For about seven years, the system slowly got brighter, powered by energy released by the drag. That energy escaped efficiently as light, as models of heat carried by convection predicted. The companion then merged with the giant&#39;s core. The merger threw off the outermost tenth of the envelope at about ten times the speed needed to escape the star. From this, the authors estimated how efficiently lost orbital energy can push away the shared envelope. That efficiency, called α, came out between roughly 0.01 and 0.4.<sup><a href="#ref3">[3]</a></sup></p>
-  <h3>Why it matters</h3><p>Common envelope evolution is a key step in how close binaries form, and models of it rely on poorly known numbers such as the energy-efficiency factor α. This event gives one of the first direct observational looks at the inspiral phase and a measured range for α. It also shows that sky surveys could be used to find and study more such events.</p>
-  <h3>Caveats</h3><p>This is a single event, and the companion inspiral is the scenario that best explains the spectra rather than something imaged directly. The efficiency α is only pinned down to a broad range.</p>
-  <h3>Key terms</h3><dl><dt>Common envelope evolution (CEE):</dt> <dd>A phase in which two stars orbit inside a single shared, loosely held outer gas layer. Drag there shrinks their orbit.</dd><dt>Asymptotic giant branch (AGB) star:</dt> <dd>A late stage in a star&#39;s life when it has swollen into a large, cool giant with a turbulent outer envelope.</dd><dt>Inspiral:</dt> <dd>The gradual inward spiralling of one object toward another as its orbit loses energy.</dd><dt>Convective envelope:</dt> <dd>An outer layer of a star where heat is carried by rising and sinking gas, like boiling water.</dd><dt>α (alpha) efficiency:</dt> <dd>The fraction of the orbital energy lost during the inspiral that goes into pushing the envelope away from the star.</dd><dt>Transient:</dt> <dd>An astronomical object that suddenly brightens or appears for a limited time.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1038/s41586-026-11221-z" target="_blank" rel="noopener">https://doi.org/10.1038/s41586-026-11221-z</a>
+<details class="card" id="p2" data-topic="">
+  <summary>
+    <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Trichomonas_Gram_stain.jpg/960px-Trichomonas_Gram_stain.jpg" alt="Trichomonas vaginalis microscope" loading="lazy"></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Virology / Microbiome</span>
+        
+        
+        </div>
+      <h4>Newly found gut viruses are poxviruses&#39; closest known relatives</h4>
+      <p class="lede">Large double-stranded DNA viruses are common in soil and water but have rarely been spotted inside animal digestive systems.</p>
+      <div class="meta"><span>Nature · Nov 18, 2026</span>
+        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
+  <div class="credit">Illustration, not from the paper. Trichomonas vaginalis microscope · Dr Graham Beards, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
+  <div class="full">
+    <p class="orig">Original title: “Closest relatives of poxviruses prevail in human and animal guts worldwide”<br>Published Nov 18, 2026</p>
+    <p>Large double-stranded DNA viruses are common in soil and water but have rarely been spotted inside animal digestive systems. Researchers sifting through genetic data from gut samples found a whole new group of such viruses, which they call egoviruses, with big linear DNA genomes. These viruses turn up worldwide and almost only in the guts of humans, farm animals and wild animals, and one human-associated type is found across continents, suggesting a long shared history with the human gut microbiome.</p><p>By comparing egovirus genes with those of single-celled organisms, the team concluded that the viruses probably infect not animal cells but gut-dwelling protists: ciliates that help cows and other ruminants digest food, and parabasalids that affect immunity and gut ecology. Family-tree analysis places egoviruses as the nearest known relatives of poxviruses (the group that includes smallpox). Unlike the brick-shaped poxvirus particle, egoviruses are predicted to build many-layered icosahedral (20-sided) shells, which the authors argue is the older, ancestral shape. They propose that poxvirus ancestors first infected oxygen-free single-celled organisms inside ancient animal guts before switching to infecting animal cells themselves.<sup><a href="#ref2">[2]</a></sup></p>
+    <h5>Why it matters</h5><p>Poxviruses cause serious human and animal disease, but where they came from has been unclear. This work points to a possible origin in gut-dwelling single-celled organisms and shows that a large, previously unrecognised family of DNA viruses is a routine part of gut ecosystems worldwide.</p>
+    <h5>Caveats</h5><p>The host assignments and the icosahedral particle shape are predictions from gene sequences, not direct observations of the viruses infecting cells; the proposed evolutionary route to poxviruses is an inferred scenario.</p>
+    <h5>Key terms</h5><dl><dt>Double-stranded DNA virus:</dt> <dd>A virus whose genetic material is DNA in the familiar two-stranded form, rather than RNA.</dd><dt>Egoviruses:</dt> <dd>The new group of large gut-dwelling DNA viruses named in this study.</dd><dt>Ciliates (Trichostomatia):</dt> <dd>Single-celled organisms covered in hair-like cilia; some live in ruminant stomachs and help break down plant food.</dd><dt>Parabasalia:</dt> <dd>A group of single-celled organisms living in animal guts; includes Trichomonas vaginalis, a human parasite.</dd><dt>Capsid:</dt> <dd>The protein shell that encloses a virus&#39;s genetic material.</dd><dt>Polintons:</dt> <dd>Virus-like DNA elements that have become embedded in the genomes of their hosts.</dd><dt>Phylogenomics:</dt> <dd>Building evolutionary family trees by comparing whole genome sequences.</dd></dl>
+    <h5>Why it was picked</h5><p>Reports a previously unknown order of large DNA viruses, the closest relatives of poxviruses, found worldwide in human and animal guts, which clarifies where poxviruses came from.</p>
+    <div class="src">Gaïa, M., Guyet, U., Ruscheweyh, H., Eren, A. M., Sunagawa, S., Koonin, E. V., Krupovic, M., &amp; Delmont, T. O. (2026). Closest relatives of poxviruses prevail in human and animal guts worldwide. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11283-z<br><a href="https://doi.org/10.1038/s41586-026-11283-z" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1038/s41586-026-11283-z" target="_blank" rel="noopener">Free to read: Published version</a></div>
   </div>
-</article>
+</details>
 
-<article id="p4">
-  <div class="meta"><span class="chip">Neuroscience</span><span class="chip">Nature</span><span class="chip">Significance 8/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>4. Brain region that controls metabolism and sleep cycles shrinks in Alzheimer&#39;s</h2>
-  <p class="orig">Original title: “Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease”</p>
-  <p class="dates">Published Nov 18, 2026</p>
-  <figure class="pic">
-    <a href="https://commons.wikimedia.org/wiki/File:CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg" alt="Brain mri scan" loading="lazy"></a>
-    <figcaption><span class="tag">Illustration, not from the paper</span> Brain mri scan
-      <span class="credit">Wei-yuan Huang, Gang Wu, Feng Chen, Meng-meng Li and Jian-jun Li, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></span></figcaption>
-  </figure>
-  <p>The hypothalamus is a small region deep in the brain that helps run body functions such as metabolism, hormone release and daily (circadian) rhythms. Researchers wanted to know how this region changes with normal ageing and with Alzheimer&#39;s disease, both in its overall size and in the kinds of cells it contains. They built an atlas, called HypoAD, that combines two kinds of data. One is detailed MRI brain scans from 458 people. The other is single-nucleus RNA sequencing of 614,403 individual cell nuclei, which shows which genes each cell is using.</p><p>By combining these measurements, the team found that the hypothalamus is not affected evenly. Subregions that regulate metabolism and circadian rhythms looked especially vulnerable. Within these areas, two cell types stood out. One was inhibitory neurons, which are nerve cells that dampen the activity of other cells. The other was microglia, the brain&#39;s resident immune cells.<sup><a href="#ref4">[4]</a></sup></p>
-  <h3>Why it matters</h3><p>Changes in sleep patterns, appetite and body weight are common in Alzheimer&#39;s disease, and this work points to particular parts of the hypothalamus and particular cell types that may be involved. The atlas also gives other scientists a shared reference for studying this hard-to-measure brain region in older adults.</p>
-  <h3>Caveats</h3><p>The summary available here does not say whether these changes cause Alzheimer&#39;s symptoms or are a consequence of the disease. It also does not say how much the MRI group overlaps with the people whose tissue was sequenced.</p>
-  <h3>Key terms</h3><dl><dt>Hypothalamus:</dt> <dd>A small structure at the base of the brain that controls hunger, body temperature, hormones and sleep–wake cycles.</dd><dt>Single-nucleus RNA sequencing:</dt> <dd>A method that reads which genes are active in thousands of individual cell nuclei, so researchers can identify cell types and their states.</dd><dt>Circadian rhythm:</dt> <dd>The body&#39;s roughly 24-hour internal clock that governs sleep, alertness and many physiological processes.</dd><dt>Inhibitory neurons:</dt> <dd>Nerve cells that reduce or block activity in other neurons, helping balance brain signalling.</dd><dt>Microglia:</dt> <dd>Immune cells of the brain that clear debris and respond to injury or disease.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1038/s41586-026-11305-w" target="_blank" rel="noopener">https://doi.org/10.1038/s41586-026-11305-w</a>
-  <br>Free to read: <a href="https://doi.org/10.1038/s41586-026-11305-w" target="_blank" rel="noopener">Published version</a> <span class="sub">via publisher, cc-by-nc-nd</span></div>
-</article>
-
-<article id="p5">
-  <div class="meta"><span class="chip">Materials Science / Energy</span><span class="chip">Science</span><span class="chip">Significance 7/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>5. Tiny diamond particles help perovskite solar cells withstand heat and long use</h2>
-  <p class="orig">Original title: “Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells”</p>
-  <p class="dates">Published Nov 19, 2026</p>
-  <figure class="pic">
-    <a href="https://commons.wikimedia.org/wiki/File:Perovskite_solar_cell.jpg" target="_blank" rel="noopener"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Perovskite_solar_cell.jpg/960px-Perovskite_solar_cell.jpg" alt="Perovskite solar cell" loading="lazy"></a>
-    <figcaption><span class="tag">Illustration, not from the paper</span> Perovskite solar cell
-      <span class="credit">Dennis Schroeder / National Renewable Energy Laboratory, via Wikimedia Commons · Public domain</span></figcaption>
-  </figure>
-  <p>Halide perovskites are crystals that turn sunlight into electricity very efficiently, partly because their atomic lattice is soft and flexible. That same softness is a weakness: under heat and light the lattice deforms, internal strain builds up, and the material slowly degrades. The researchers asked whether adding hard nanodiamond particles to the perovskite could stop this. They report that the nanodiamonds pass mechanical stress from the inside of each crystal grain out to the grain boundaries (the borders between neighbouring crystals). There the stress is spread out and released instead of piling up inside the grains.</p><p>The nanodiamonds also kept neighbouring grains from sliding past one another. This limited distortion of the lattice and reduced the number of defects that formed over long operation. Small test cells (0.09 cm²) reached an independently certified efficiency of 27.6%, and larger minimodules (16.1 cm²) reached 24.3%. The cells kept 80% of their starting efficiency after 5000 hours of continuous operation at 85°C. They kept 98% after 5000 hours of simulated day-night cycles with changing light levels.<sup><a href="#ref5">[5]</a></sup></p>
-  <h3>Why it matters</h3><p>Perovskite solar cells are already very efficient, but poor durability is a major barrier to selling them. This work suggests that mechanically reinforcing the material can make it more stable without giving up efficiency, and the approach also worked on larger minimodules.</p>
-  <h3>Caveats</h3><p>The certified efficiencies come from small cells and minimodules, not full-size panels. The abstract does not describe tests under real outdoor conditions or over periods longer than 5000 hours (about seven months).</p>
-  <h3>Key terms</h3><dl><dt>Halide perovskite:</dt> <dd>A family of crystalline materials, containing halogen ions such as iodide, used to make cheap, high-efficiency solar cells.</dd><dt>Soft lattice:</dt> <dd>A crystal structure whose atoms are held together loosely enough that it deforms easily under stress or heat.</dd><dt>Elastic field:</dt> <dd>The pattern of internal strain and stress spread through a material.</dd><dt>Grain boundary:</dt> <dd>The interface where two small crystals (grains) in a film meet.</dd><dt>Nanodiamond:</dt> <dd>Diamond particles only nanometres across; very hard and rigid.</dd><dt>Power conversion efficiency (PCE):</dt> <dd>The percentage of incoming light energy that a solar cell turns into electricity.</dd><dt>Maximum power point operation:</dt> <dd>Running a solar cell continuously at the voltage and current that give its highest power output, a standard stress test.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1126/science.aeh3114" target="_blank" rel="noopener">https://doi.org/10.1126/science.aeh3114</a>
+<details class="card" id="p3" data-topic="">
+  <summary>
+    <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/960px-Andromeda_Galaxy_%28with_h-alpha%29.jpg" alt="Andromeda galaxy" loading="lazy"></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Astronomy</span>
+        
+        
+        </div>
+      <h4>Astronomers watch a star spiral inside its giant partner&#39;s outer layers</h4>
+      <p class="lede">Many tight pairs of stars, including the compact stellar remnants that orbit each other closely, are thought to start out much farther apart.</p>
+      <div class="meta"><span>Nature · Nov 18, 2026</span>
+        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
+  <div class="credit">Illustration, not from the paper. Andromeda galaxy · Adam Evans, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></div>
+  <div class="full">
+    <p class="orig">Original title: “An inspiral of a star inside a common envelope with its giant companion”<br>Published Nov 18, 2026</p>
+    <p>Many tight pairs of stars, including the compact stellar remnants that orbit each other closely, are thought to start out much farther apart. A leading idea is &#34;common envelope evolution&#34;: when one star swells into a giant, its companion ends up orbiting inside the giant&#39;s puffy outer layers. Friction-like drag then makes the companion spiral inward. This spiralling had been predicted but never directly seen. The team studied AT 2025abao, an eruption in the Andromeda Galaxy. It involved a giant star of about 7 solar masses, late in its life (an asymptotic giant branch, or AGB, star), and a companion. They used spectra (light split into its wavelengths) taken both before and after the outburst.</p><p>The data fit best with a companion of roughly 0.7 solar masses sinking through the giant&#39;s churning outer envelope. For about seven years, the system slowly got brighter, powered by energy released by the drag. That energy escaped efficiently as light, as models of heat carried by convection predicted. The companion then merged with the giant&#39;s core. The merger threw off the outermost tenth of the envelope at about ten times the speed needed to escape the star. From this, the authors estimated how efficiently lost orbital energy can push away the shared envelope. That efficiency, called α, came out between roughly 0.01 and 0.4.<sup><a href="#ref3">[3]</a></sup></p>
+    <h5>Why it matters</h5><p>Common envelope evolution is a key step in how close binaries form, and models of it rely on poorly known numbers such as the energy-efficiency factor α. This event gives one of the first direct observational looks at the inspiral phase and a measured range for α. It also shows that sky surveys could be used to find and study more such events.</p>
+    <h5>Caveats</h5><p>This is a single event, and the companion inspiral is the scenario that best explains the spectra rather than something imaged directly. The efficiency α is only pinned down to a broad range.</p>
+    <h5>Key terms</h5><dl><dt>Common envelope evolution (CEE):</dt> <dd>A phase in which two stars orbit inside a single shared, loosely held outer gas layer. Drag there shrinks their orbit.</dd><dt>Asymptotic giant branch (AGB) star:</dt> <dd>A late stage in a star&#39;s life when it has swollen into a large, cool giant with a turbulent outer envelope.</dd><dt>Inspiral:</dt> <dd>The gradual inward spiralling of one object toward another as its orbit loses energy.</dd><dt>Convective envelope:</dt> <dd>An outer layer of a star where heat is carried by rising and sinking gas, like boiling water.</dd><dt>α (alpha) efficiency:</dt> <dd>The fraction of the orbital energy lost during the inspiral that goes into pushing the envelope away from the star.</dd><dt>Transient:</dt> <dd>An astronomical object that suddenly brightens or appears for a limited time.</dd></dl>
+    <h5>Why it was picked</h5><p>One of the first direct observations of a companion star spiralling inside a giant&#39;s shared envelope, a long-theorised but unseen step in how compact binaries form.</p>
+    <div class="src">Karambelkar, V., De, K., Temmink, K. D., Metzger, B. D., Blagorodnova, N., Anupama, G. C., Barway, S., Basu, J., Bellm, E. C., Bhalerao, V., Bochenek, A., Chamoli, S., Das, K., Fremling, C., Frostig, D., Gómez-Muñoz, M. A., Groom, S. L., Hinds, K., Jaimes, J. C., ... Wise, J. (2026). An inspiral of a star inside a common envelope with its giant companion. <em>Nature</em>, 659(8141), 628-633. https://doi.org/10.1038/s41586-026-11221-z<br><a href="https://doi.org/10.1038/s41586-026-11221-z" target="_blank" rel="noopener">Read the original</a></div>
   </div>
-</article>
+</details>
 
-<article id="p6">
-  <div class="meta"><span class="chip">Ecology / Conservation</span><span class="chip">Nature</span><span class="chip">Significance 7/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>6. Farming intensity in Indonesia reshuffles which species live where, not just how many</h2>
-  <p class="orig">Original title: “Tropical land-use intensification restructures biodiversity”</p>
-  <p class="dates">Published Nov 18, 2026</p>
-  <figure class="pic">
-    <a href="https://commons.wikimedia.org/wiki/File:Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg" target="_blank" rel="noopener"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg/960px-Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg" alt="Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu" loading="lazy"></a>
-    <figcaption><span class="tag">Illustration, not from the paper</span> Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu
-      <span class="credit">CEphoto, Uwe Aranas, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a></span></figcaption>
-  </figure>
-  <p>Most studies of biodiversity in tropical farmland count species at a single spot, missing how farming changes the mix of species across a whole landscape and across many kinds of organisms. This team surveyed 24 groups of organisms spanning all domains of life, about 40,000 species in total, in Indonesian landscapes. Sites ranged from lowland forest to smallholder farms growing a single cash crop intensively.</p><p>In the single-crop plantations, roughly 78% of combined diversity was lost at the landscape scale and about 50% at the local scale. The researchers expected these farms to become more alike in their species (homogenization), but they found no consistent sign of this. Instead, for organisms living above ground, the pattern shifted. In forest, different sites held largely different species (turnover). In plantations, poorer sites tended to hold a subset of the species found at richer sites (nestedness). The authors suggest this may be an early step of community simplification that could eventually lead to homogenization. Meanwhile, remaining differences among sites can help prop up total regional diversity.<sup><a href="#ref6">[6]</a></sup></p>
-  <h3>Why it matters</h3><p>Agricultural expansion is a major threat to tropical biodiversity. This study shows the damage involves both losing species and rearranging communities across the food chain. It points to practical options such as keeping patches of traditional farming, using more sustainable management, and protecting natural habitat alongside farmland.</p>
-  <h3>Caveats</h3><p>The work comes from Indonesian landscapes, so it may not apply to all tropical regions. The suggestion that current differences between sites may hide a future slide toward homogenization is an interpretation that remains to be tested over time.</p>
-  <h3>Key terms</h3><dl><dt>Multidiversity:</dt> <dd>A combined measure of diversity averaged across many different groups of organisms at once.</dd><dt>Biotic homogenization:</dt> <dd>When different places come to hold increasingly similar sets of species.</dd><dt>Turnover:</dt> <dd>Sites differ because they contain different species that replace one another.</dd><dt>Nestedness:</dt> <dd>Species-poor sites contain mainly a subset of the species found at richer sites.</dd><dt>γ-diversity (gamma diversity):</dt> <dd>The total number of species across a whole region or landscape.</dd><dt>Land-use intensification gradient:</dt> <dd>A series of sites ranging from natural forest to the most intensively managed farmland.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1038/s41586-026-11298-6" target="_blank" rel="noopener">https://doi.org/10.1038/s41586-026-11298-6</a>
-  <br>Free to read: <a href="https://doi.org/10.1038/s41586-026-11298-6" target="_blank" rel="noopener">Published version</a> <span class="sub">via publisher, cc-by</span></div>
-</article>
+<details class="card" id="p4" data-topic="">
+  <summary>
+    <div class="thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg" alt="Brain mri scan" loading="lazy"></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Neuroscience</span>
+        
+        
+        </div>
+      <h4>Brain region that controls metabolism and sleep cycles shrinks in Alzheimer&#39;s</h4>
+      <p class="lede">The hypothalamus is a small region deep in the brain that helps run body functions such as metabolism, hormone release and daily (circadian) rhythms.</p>
+      <div class="meta"><span>Nature · Nov 18, 2026</span>
+        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
+  <div class="credit">Illustration, not from the paper. Brain mri scan · Wei-yuan Huang, Gang Wu, Feng Chen, Meng-meng Li and Jian-jun Li, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
+  <div class="full">
+    <p class="orig">Original title: “Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease”<br>Published Nov 18, 2026</p>
+    <p>The hypothalamus is a small region deep in the brain that helps run body functions such as metabolism, hormone release and daily (circadian) rhythms. Researchers wanted to know how this region changes with normal ageing and with Alzheimer&#39;s disease, both in its overall size and in the kinds of cells it contains. They built an atlas, called HypoAD, that combines two kinds of data. One is detailed MRI brain scans from 458 people. The other is single-nucleus RNA sequencing of 614,403 individual cell nuclei, which shows which genes each cell is using.</p><p>By combining these measurements, the team found that the hypothalamus is not affected evenly. Subregions that regulate metabolism and circadian rhythms looked especially vulnerable. Within these areas, two cell types stood out. One was inhibitory neurons, which are nerve cells that dampen the activity of other cells. The other was microglia, the brain&#39;s resident immune cells.<sup><a href="#ref4">[4]</a></sup></p>
+    <h5>Why it matters</h5><p>Changes in sleep patterns, appetite and body weight are common in Alzheimer&#39;s disease, and this work points to particular parts of the hypothalamus and particular cell types that may be involved. The atlas also gives other scientists a shared reference for studying this hard-to-measure brain region in older adults.</p>
+    <h5>Caveats</h5><p>The summary available here does not say whether these changes cause Alzheimer&#39;s symptoms or are a consequence of the disease. It also does not say how much the MRI group overlaps with the people whose tissue was sequenced.</p>
+    <h5>Key terms</h5><dl><dt>Hypothalamus:</dt> <dd>A small structure at the base of the brain that controls hunger, body temperature, hormones and sleep–wake cycles.</dd><dt>Single-nucleus RNA sequencing:</dt> <dd>A method that reads which genes are active in thousands of individual cell nuclei, so researchers can identify cell types and their states.</dd><dt>Circadian rhythm:</dt> <dd>The body&#39;s roughly 24-hour internal clock that governs sleep, alertness and many physiological processes.</dd><dt>Inhibitory neurons:</dt> <dd>Nerve cells that reduce or block activity in other neurons, helping balance brain signalling.</dd><dt>Microglia:</dt> <dd>Immune cells of the brain that clear debris and respond to injury or disease.</dd></dl>
+    <h5>Why it was picked</h5><p>A large atlas combining MRI from 458 people with 600,000+ single-nucleus profiles shows which hypothalamic regions and cell types are most vulnerable in ageing and Alzheimer&#39;s disease.</p>
+    <div class="src">Yu, D., Germann, J., Murtaza, G., Hajdarovic, K. H., Babcock, K. R., Dehkordi, S. K., Jackson, A. C., Delalle, I., Orr, M. E., Zare, H., Singh, R., MacCoss, M. J., Noble, W. S., Vlassenko, A. G., Goyal, M. S., &amp; Webb, A. E. (2026). Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11305-w<br><a href="https://doi.org/10.1038/s41586-026-11305-w" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1038/s41586-026-11305-w" target="_blank" rel="noopener">Free to read: Published version</a></div>
+  </div>
+</details>
 
-<article id="p7">
-  <div class="meta"><span class="chip">Palaeoanthropology</span><span class="chip">Nature</span><span class="chip">Significance 7/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>7. Homo erectus lived in southern China&#39;s rainforests later than once thought</h2>
-  <p class="orig">Original title: “Rainforest adaptation in late Homo erectus from southern China”</p>
-  <p class="dates">Published Nov 18, 2026</p>
-  <figure class="pic">
-    <a href="https://commons.wikimedia.org/wiki/File:Karst_Landscape,_China_(ASTER).jpg" target="_blank" rel="noopener"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Karst_Landscape%2C_China_%28ASTER%29.jpg/960px-Karst_Landscape%2C_China_%28ASTER%29.jpg" alt="Guangxi karst cave" loading="lazy"></a>
-    <figcaption><span class="tag">Illustration, not from the paper</span> Guangxi karst cave
-      <span class="credit">NASA/METI/AIST/Japan Space Systems, and U.S./Japan ASTER Science Team, via Wikimedia Commons · Public domain</span></figcaption>
-  </figure>
-  <p>Homo erectus, an early human species, existed for a very long time, from roughly 1.9 million years ago until about 108,000 years ago, and spread from Africa across to eastern Asia. Researchers have long assumed it preferred open landscapes mixing woodland and grassland, partly because of famous fossil sites on Java, but few direct chemical measurements from Asian fossils have tested this. The team studied nine hominin teeth from two linked caves in Guangxi province, southern China. Eight had earlier been identified as H. erectus using both tooth shape and genetic evidence.</p><p>To date the teeth, the researchers combined 43 age measurements from five different dating methods into a single timeline. They then analysed isotopes (versions of chemical elements that differ in weight) and trace elements locked in the teeth to reconstruct the surrounding environment and how the hominins behaved. They conclude that H. erectus was in southern China between about 324,000 and 184,000 years ago. That is clearly younger than the roughly 400,000-year age previously accepted for definite H. erectus fossils in this region. The chemical evidence points to these hominins living in closed rainforest, a habitat often thought to have been used only by our own species, and suggests they moved around over long periods and adapted flexibly to their surroundings.<sup><a href="#ref7">[7]</a></sup></p>
-  <h3>Why it matters</h3><p>The findings question the view that H. erectus was limited to open grassy habitats and was less able than Homo sapiens to cope with dense forest. They also push back the known survival date of this species in southern China, which affects how scientists picture which human species shared Asia and when.</p>
-  <h3>Caveats</h3><p>The conclusions rest on nine teeth from a single pair of caves, so it is unclear how typical this rainforest lifestyle was for H. erectus elsewhere in Asia.</p>
-  <h3>Key terms</h3><dl><dt>Homo erectus:</dt> <dd>An extinct early human species that walked upright and spread from Africa into Asia. It is one of the longest-lasting human species known.</dd><dt>Hominin:</dt> <dd>Any member of the human lineage, including modern humans and extinct relatives such as H. erectus.</dd><dt>Radiometric dating:</dt> <dd>Working out the age of material by measuring how much of certain radioactive or radiation-affected substances it contains.</dd><dt>Stable carbon isotopes:</dt> <dd>Non-radioactive forms of carbon whose ratios in teeth reflect the kinds of plants at the base of an animal&#39;s diet. This can show whether the landscape was forest or grassland.</dd><dt>Clumped isotopes:</dt> <dd>A measurement of how often heavy isotopes bond together within a mineral. It can give clues about temperature or the environment when the mineral formed.</dd><dt>Trace elements:</dt> <dd>Elements present in tiny amounts in teeth that can reflect diet, water sources and movement across the landscape.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1038/s41586-026-11155-6" target="_blank" rel="noopener">https://doi.org/10.1038/s41586-026-11155-6</a>
-  <br>Free to read: <a href="https://doi.org/10.1038/s41586-026-11155-6" target="_blank" rel="noopener">Published version</a> <span class="sub">via publisher, cc-by-nc-nd</span></div>
-</article>
+<details class="card" id="p5" data-topic="">
+  <summary>
+    <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Perovskite_solar_cell.jpg/960px-Perovskite_solar_cell.jpg" alt="Perovskite solar cell" loading="lazy"></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Materials Science / Energy</span>
+        
+        
+        </div>
+      <h4>Tiny diamond particles help perovskite solar cells withstand heat and long use</h4>
+      <p class="lede">Halide perovskites are crystals that turn sunlight into electricity very efficiently, partly because their atomic lattice is soft and flexible.</p>
+      <div class="meta"><span>Science · Nov 19, 2026</span>
+        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
+  <div class="credit">Illustration, not from the paper. Perovskite solar cell · Dennis Schroeder / National Renewable Energy Laboratory, via Wikimedia Commons · Public domain</div>
+  <div class="full">
+    <p class="orig">Original title: “Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells”<br>Published Nov 19, 2026</p>
+    <p>Halide perovskites are crystals that turn sunlight into electricity very efficiently, partly because their atomic lattice is soft and flexible. That same softness is a weakness: under heat and light the lattice deforms, internal strain builds up, and the material slowly degrades. The researchers asked whether adding hard nanodiamond particles to the perovskite could stop this. They report that the nanodiamonds pass mechanical stress from the inside of each crystal grain out to the grain boundaries (the borders between neighbouring crystals). There the stress is spread out and released instead of piling up inside the grains.</p><p>The nanodiamonds also kept neighbouring grains from sliding past one another. This limited distortion of the lattice and reduced the number of defects that formed over long operation. Small test cells (0.09 cm²) reached an independently certified efficiency of 27.6%, and larger minimodules (16.1 cm²) reached 24.3%. The cells kept 80% of their starting efficiency after 5000 hours of continuous operation at 85°C. They kept 98% after 5000 hours of simulated day-night cycles with changing light levels.<sup><a href="#ref5">[5]</a></sup></p>
+    <h5>Why it matters</h5><p>Perovskite solar cells are already very efficient, but poor durability is a major barrier to selling them. This work suggests that mechanically reinforcing the material can make it more stable without giving up efficiency, and the approach also worked on larger minimodules.</p>
+    <h5>Caveats</h5><p>The certified efficiencies come from small cells and minimodules, not full-size panels. The abstract does not describe tests under real outdoor conditions or over periods longer than 5000 hours (about seven months).</p>
+    <h5>Key terms</h5><dl><dt>Halide perovskite:</dt> <dd>A family of crystalline materials, containing halogen ions such as iodide, used to make cheap, high-efficiency solar cells.</dd><dt>Soft lattice:</dt> <dd>A crystal structure whose atoms are held together loosely enough that it deforms easily under stress or heat.</dd><dt>Elastic field:</dt> <dd>The pattern of internal strain and stress spread through a material.</dd><dt>Grain boundary:</dt> <dd>The interface where two small crystals (grains) in a film meet.</dd><dt>Nanodiamond:</dt> <dd>Diamond particles only nanometres across; very hard and rigid.</dd><dt>Power conversion efficiency (PCE):</dt> <dd>The percentage of incoming light energy that a solar cell turns into electricity.</dd><dt>Maximum power point operation:</dt> <dd>Running a solar cell continuously at the voltage and current that give its highest power output, a standard stress test.</dd></dl>
+    <h5>Why it was picked</h5><p>Nanodiamond inclusions stabilise perovskite solar cells, which reach a certified 27.6% efficiency and long operating lifetimes, tackling the field&#39;s main barrier to commercial use.</p>
+    <div class="src">Li, B., Zhang, T., Wang, X., Wen, Y., Wang, Y., Yu, X., &amp; Yang, D. (2026). Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells. <em>Science</em>, 394(6826), eaeh3114. https://doi.org/10.1126/science.aeh3114<br><a href="https://doi.org/10.1126/science.aeh3114" target="_blank" rel="noopener">Read the original</a></div>
+  </div>
+</details>
 
-<article id="p8">
-  <div class="meta"><span class="chip">Animal Behaviour</span><span class="chip">Nature</span><span class="chip">Significance 7/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>8. Bogong moths steer by the tilt of Earth&#39;s magnetic field, using light</h2>
-  <p class="orig">Original title: “Bogong moths navigate with a light-dependent geomagnetic inclination compass”</p>
-  <p class="dates">Published Nov 18, 2026</p>
-  <figure class="pic">
-    <a href="https://commons.wikimedia.org/wiki/File:Agrotis_infusa.jpg" target="_blank" rel="noopener"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Agrotis_infusa.jpg/960px-Agrotis_infusa.jpg" alt="Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008" loading="lazy"></a>
-    <figcaption><span class="tag">Illustration, not from the paper</span> Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008
-      <span class="credit">Donald Hobern from Canberra, Australia, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></span></figcaption>
-  </figure>
-  <p>Bogong moths travel up to about 1,000 km twice a year between where they breed and a limited set of cool resting sites in the Australian Alps, where they spend summer in a dormant state. Earlier work showed they can use the stars to hold their course, yet they still head the right way under cloudy skies, hinting that they also sense Earth&#39;s magnetic field. This study asked what kind of magnetic compass they use and how it might work. The researchers tethered moths inside a flight arena beneath an artificial night sky whose star positions were scrambled, so the stars gave no useful direction, and then altered the magnetic field around them.</p><p>The moths still flew in their inborn migratory direction using the magnetic field alone. Rotating the field by 180°, or flipping its inclination (the angle at which field lines dip into the ground), made them fly the opposite way. Flipping only the field&#39;s polarity (which end counts as north) did not make them turn. Magnetic orientation also disappeared when violet-to-blue light was removed from the lighting, or when weak radio-frequency noise was added. The authors conclude that the moths use an inclination compass and that their magnetic sense likely depends on light-triggered chemical reactions involving radical pairs.<sup><a href="#ref8">[8]</a></sup></p>
-  <h3>Why it matters</h3><p>Light-dependent inclination compasses have mainly been linked to night-migrating birds, so this result suggests a similar mechanism exists in a long-distance migrating insect. It also helps explain how these moths stay on course even when clouds hide the stars.</p>
-  <h3>Caveats</h3><p>These were lab tests on moths tethered under an artificial sky, so how the compass is used in free flight in the wild is not shown. The radical-pair mechanism is inferred from how the moths responded to light and radio noise rather than seen directly.</p>
-  <h3>Key terms</h3><dl><dt>Inclination compass:</dt> <dd>A compass that reads the angle at which Earth&#39;s magnetic field lines tilt toward the ground. It tells &#39;toward the pole&#39; from &#39;toward the equator&#39; rather than magnetic north from south.</dd><dt>Polarity:</dt> <dd>The direction the magnetic field points, from south to north. An inclination compass ignores it.</dd><dt>Radical pair:</dt> <dd>Two molecules, each carrying an unpaired electron, that can be produced when light is absorbed. How their reactions proceed can be affected by weak magnetic fields.</dd><dt>Aestivation:</dt> <dd>A dormant, inactive period spent through the hot season, similar to hibernation in winter.</dd><dt>Radiofrequency fields:</dt> <dd>Weak, rapidly oscillating electromagnetic fields, here between 150 kHz and 60 MHz, which can disrupt radical-pair-based magnetic sensing.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1038/s41586-026-11322-9" target="_blank" rel="noopener">https://doi.org/10.1038/s41586-026-11322-9</a>
-  <br>Free to read: <a href="https://doi.org/10.1038/s41586-026-11322-9" target="_blank" rel="noopener">Published version</a> <span class="sub">via publisher, cc-by</span></div>
-</article>
+<details class="card" id="p6" data-topic="">
+  <summary>
+    <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg/960px-Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg" alt="Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu" loading="lazy"></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Ecology / Conservation</span>
+        
+        
+        </div>
+      <h4>Farming intensity in Indonesia reshuffles which species live where, not just how many</h4>
+      <p class="lede">Most studies of biodiversity in tropical farmland count species at a single spot, missing how farming changes the mix of species across a whole landscape and across many kinds of organisms.</p>
+      <div class="meta"><span>Nature · Nov 18, 2026</span>
+        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
+  <div class="credit">Illustration, not from the paper. Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu · CEphoto, Uwe Aranas, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a></div>
+  <div class="full">
+    <p class="orig">Original title: “Tropical land-use intensification restructures biodiversity”<br>Published Nov 18, 2026</p>
+    <p>Most studies of biodiversity in tropical farmland count species at a single spot, missing how farming changes the mix of species across a whole landscape and across many kinds of organisms. This team surveyed 24 groups of organisms spanning all domains of life, about 40,000 species in total, in Indonesian landscapes. Sites ranged from lowland forest to smallholder farms growing a single cash crop intensively.</p><p>In the single-crop plantations, roughly 78% of combined diversity was lost at the landscape scale and about 50% at the local scale. The researchers expected these farms to become more alike in their species (homogenization), but they found no consistent sign of this. Instead, for organisms living above ground, the pattern shifted. In forest, different sites held largely different species (turnover). In plantations, poorer sites tended to hold a subset of the species found at richer sites (nestedness). The authors suggest this may be an early step of community simplification that could eventually lead to homogenization. Meanwhile, remaining differences among sites can help prop up total regional diversity.<sup><a href="#ref6">[6]</a></sup></p>
+    <h5>Why it matters</h5><p>Agricultural expansion is a major threat to tropical biodiversity. This study shows the damage involves both losing species and rearranging communities across the food chain. It points to practical options such as keeping patches of traditional farming, using more sustainable management, and protecting natural habitat alongside farmland.</p>
+    <h5>Caveats</h5><p>The work comes from Indonesian landscapes, so it may not apply to all tropical regions. The suggestion that current differences between sites may hide a future slide toward homogenization is an interpretation that remains to be tested over time.</p>
+    <h5>Key terms</h5><dl><dt>Multidiversity:</dt> <dd>A combined measure of diversity averaged across many different groups of organisms at once.</dd><dt>Biotic homogenization:</dt> <dd>When different places come to hold increasingly similar sets of species.</dd><dt>Turnover:</dt> <dd>Sites differ because they contain different species that replace one another.</dd><dt>Nestedness:</dt> <dd>Species-poor sites contain mainly a subset of the species found at richer sites.</dd><dt>γ-diversity (gamma diversity):</dt> <dd>The total number of species across a whole region or landscape.</dd><dt>Land-use intensification gradient:</dt> <dd>A series of sites ranging from natural forest to the most intensively managed farmland.</dd></dl>
+    <h5>Why it was picked</h5><p>An assessment of about 40,000 species, from soil microbes to vertebrates, in Sumatra shows how agricultural intensification erodes and restructures tropical biodiversity across spatial scales.</p>
+    <div class="src">Guerrero-Ramírez, N. R., Salecker, J., Simpkins, C. E., Brambach, F., Corre, M. D., Darras, K. F. A., Drescher, J., Grass, I., König, C., Paterno, G. B., Wiegand, K., Azhar, A., Barnes, A. D., Brose, U., Buchori, D., Daniel, R., Hertel, D., Hidayat, P., Jochum, M., ... Kreft, H. (2026). Tropical land-use intensification restructures biodiversity. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11298-6<br><a href="https://doi.org/10.1038/s41586-026-11298-6" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1038/s41586-026-11298-6" target="_blank" rel="noopener">Free to read: Published version</a></div>
+  </div>
+</details>
 
-<h2>References</h2>
-<ol class="refs"><li id="ref1">Dabira, E. D., Natama, H. M., Erhart, A., Bihoun, B., Keita, M. L., Derra, K., Bah, A., Ilboudo, N., Ndiath, M. O., Bonko, M. D. A., Saidy, L., Ilboudo, A. H., Kafando, M. H. O., Jaiteh, F., Bocoum, F. Y., Grietens, K. P., Gibba, B., Kompaore, S. C. B., Hill, A. V. S., ... Sanyang, D. (2026). Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial. <em>The Lancet</em>. https://doi.org/10.1016/S0140-6736(26)01562-X</li><li id="ref2">Gaïa, M., Guyet, U., Ruscheweyh, H., Eren, A. M., Sunagawa, S., Koonin, E. V., Krupovic, M., &amp; Delmont, T. O. (2026). Closest relatives of poxviruses prevail in human and animal guts worldwide. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11283-z</li><li id="ref3">Karambelkar, V., De, K., Temmink, K. D., Metzger, B. D., Blagorodnova, N., Anupama, G. C., Barway, S., Basu, J., Bellm, E. C., Bhalerao, V., Bochenek, A., Chamoli, S., Das, K., Fremling, C., Frostig, D., Gómez-Muñoz, M. A., Groom, S. L., Hinds, K., Jaimes, J. C., ... Wise, J. (2026). An inspiral of a star inside a common envelope with its giant companion. <em>Nature</em>, 659(8141), 628-633. https://doi.org/10.1038/s41586-026-11221-z</li><li id="ref4">Yu, D., Germann, J., Murtaza, G., Hajdarovic, K. H., Babcock, K. R., Dehkordi, S. K., Jackson, A. C., Delalle, I., Orr, M. E., Zare, H., Singh, R., MacCoss, M. J., Noble, W. S., Vlassenko, A. G., Goyal, M. S., &amp; Webb, A. E. (2026). Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11305-w</li><li id="ref5">Li, B., Zhang, T., Wang, X., Wen, Y., Wang, Y., Yu, X., &amp; Yang, D. (2026). Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells. <em>Science</em>, 394(6826), eaeh3114. https://doi.org/10.1126/science.aeh3114</li><li id="ref6">Guerrero-Ramírez, N. R., Salecker, J., Simpkins, C. E., Brambach, F., Corre, M. D., Darras, K. F. A., Drescher, J., Grass, I., König, C., Paterno, G. B., Wiegand, K., Azhar, A., Barnes, A. D., Brose, U., Buchori, D., Daniel, R., Hertel, D., Hidayat, P., Jochum, M., ... Kreft, H. (2026). Tropical land-use intensification restructures biodiversity. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11298-6</li><li id="ref7">Westaway, K. E., Joannes-Boyau, R., Liao, W., Shao, Q., Yu, W., Quinn, M., Bacon, A., Liang, H., Bourgon, N., Zhao, J., Roberts, P., Kono, R., Pan, Y., Yang, L., Wang, Y., Jin, C., Wu, Z., Murray, S., Zanolli, C., ... Zhang, Y. (2026). Rainforest adaptation in late Homo erectus from southern China. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11155-6</li><li id="ref8">Chen, H., Rosberg, L., Dreyer, D., Leberecht, B., Mouritsen, H., Fleischmann, P. N., &amp; Warrant, E. J. (2026). Bogong moths navigate with a light-dependent geomagnetic inclination compass. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11322-9</li></ol>
-<footer>Summaries are paraphrased by an AI model from each paper's abstract, plus its full text when a free, legal copy was available (marked on each paper). Free copies are found through Europe PMC and Unpaywall; preprints and accepted manuscripts can differ slightly from the final published paper. Check the original paper before citing it in your own work.</footer>
-</main></body></html>
+<details class="card" id="p7" data-topic="">
+  <summary>
+    <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Karst_Landscape%2C_China_%28ASTER%29.jpg/960px-Karst_Landscape%2C_China_%28ASTER%29.jpg" alt="Guangxi karst cave" loading="lazy"></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Palaeoanthropology</span>
+        
+        
+        </div>
+      <h4>Homo erectus lived in southern China&#39;s rainforests later than once thought</h4>
+      <p class="lede">Homo erectus, an early human species, existed for a very long time, from roughly 1.9 million years ago until about 108,000 years ago, and spread from Africa across to eastern Asia.</p>
+      <div class="meta"><span>Nature · Nov 18, 2026</span>
+        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
+  <div class="credit">Illustration, not from the paper. Guangxi karst cave · NASA/METI/AIST/Japan Space Systems, and U.S./Japan ASTER Science Team, via Wikimedia Commons · Public domain</div>
+  <div class="full">
+    <p class="orig">Original title: “Rainforest adaptation in late Homo erectus from southern China”<br>Published Nov 18, 2026</p>
+    <p>Homo erectus, an early human species, existed for a very long time, from roughly 1.9 million years ago until about 108,000 years ago, and spread from Africa across to eastern Asia. Researchers have long assumed it preferred open landscapes mixing woodland and grassland, partly because of famous fossil sites on Java, but few direct chemical measurements from Asian fossils have tested this. The team studied nine hominin teeth from two linked caves in Guangxi province, southern China. Eight had earlier been identified as H. erectus using both tooth shape and genetic evidence.</p><p>To date the teeth, the researchers combined 43 age measurements from five different dating methods into a single timeline. They then analysed isotopes (versions of chemical elements that differ in weight) and trace elements locked in the teeth to reconstruct the surrounding environment and how the hominins behaved. They conclude that H. erectus was in southern China between about 324,000 and 184,000 years ago. That is clearly younger than the roughly 400,000-year age previously accepted for definite H. erectus fossils in this region. The chemical evidence points to these hominins living in closed rainforest, a habitat often thought to have been used only by our own species, and suggests they moved around over long periods and adapted flexibly to their surroundings.<sup><a href="#ref7">[7]</a></sup></p>
+    <h5>Why it matters</h5><p>The findings question the view that H. erectus was limited to open grassy habitats and was less able than Homo sapiens to cope with dense forest. They also push back the known survival date of this species in southern China, which affects how scientists picture which human species shared Asia and when.</p>
+    <h5>Caveats</h5><p>The conclusions rest on nine teeth from a single pair of caves, so it is unclear how typical this rainforest lifestyle was for H. erectus elsewhere in Asia.</p>
+    <h5>Key terms</h5><dl><dt>Homo erectus:</dt> <dd>An extinct early human species that walked upright and spread from Africa into Asia. It is one of the longest-lasting human species known.</dd><dt>Hominin:</dt> <dd>Any member of the human lineage, including modern humans and extinct relatives such as H. erectus.</dd><dt>Radiometric dating:</dt> <dd>Working out the age of material by measuring how much of certain radioactive or radiation-affected substances it contains.</dd><dt>Stable carbon isotopes:</dt> <dd>Non-radioactive forms of carbon whose ratios in teeth reflect the kinds of plants at the base of an animal&#39;s diet. This can show whether the landscape was forest or grassland.</dd><dt>Clumped isotopes:</dt> <dd>A measurement of how often heavy isotopes bond together within a mineral. It can give clues about temperature or the environment when the mineral formed.</dd><dt>Trace elements:</dt> <dd>Elements present in tiny amounts in teeth that can reflect diet, water sources and movement across the landscape.</dd></dl>
+    <h5>Why it was picked</h5><p>Homo erectus teeth from southern China dated to 324–184 thousand years ago show the species lived in closed rainforests, challenging assumptions about its ecological limits.</p>
+    <div class="src">Westaway, K. E., Joannes-Boyau, R., Liao, W., Shao, Q., Yu, W., Quinn, M., Bacon, A., Liang, H., Bourgon, N., Zhao, J., Roberts, P., Kono, R., Pan, Y., Yang, L., Wang, Y., Jin, C., Wu, Z., Murray, S., Zanolli, C., ... Zhang, Y. (2026). Rainforest adaptation in late Homo erectus from southern China. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11155-6<br><a href="https://doi.org/10.1038/s41586-026-11155-6" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1038/s41586-026-11155-6" target="_blank" rel="noopener">Free to read: Published version</a></div>
+  </div>
+</details>
+
+<details class="card" id="p8" data-topic="">
+  <summary>
+    <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Agrotis_infusa.jpg/960px-Agrotis_infusa.jpg" alt="Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008" loading="lazy"></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Animal Behaviour</span>
+        
+        
+        </div>
+      <h4>Bogong moths steer by the tilt of Earth&#39;s magnetic field, using light</h4>
+      <p class="lede">Bogong moths travel up to about 1,000 km twice a year between where they breed and a limited set of cool resting sites in the Australian Alps, where they spend summer in a dormant state.</p>
+      <div class="meta"><span>Nature · Nov 18, 2026</span>
+        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
+  <div class="credit">Illustration, not from the paper. Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008 · Donald Hobern from Canberra, Australia, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></div>
+  <div class="full">
+    <p class="orig">Original title: “Bogong moths navigate with a light-dependent geomagnetic inclination compass”<br>Published Nov 18, 2026</p>
+    <p>Bogong moths travel up to about 1,000 km twice a year between where they breed and a limited set of cool resting sites in the Australian Alps, where they spend summer in a dormant state. Earlier work showed they can use the stars to hold their course, yet they still head the right way under cloudy skies, hinting that they also sense Earth&#39;s magnetic field. This study asked what kind of magnetic compass they use and how it might work. The researchers tethered moths inside a flight arena beneath an artificial night sky whose star positions were scrambled, so the stars gave no useful direction, and then altered the magnetic field around them.</p><p>The moths still flew in their inborn migratory direction using the magnetic field alone. Rotating the field by 180°, or flipping its inclination (the angle at which field lines dip into the ground), made them fly the opposite way. Flipping only the field&#39;s polarity (which end counts as north) did not make them turn. Magnetic orientation also disappeared when violet-to-blue light was removed from the lighting, or when weak radio-frequency noise was added. The authors conclude that the moths use an inclination compass and that their magnetic sense likely depends on light-triggered chemical reactions involving radical pairs.<sup><a href="#ref8">[8]</a></sup></p>
+    <h5>Why it matters</h5><p>Light-dependent inclination compasses have mainly been linked to night-migrating birds, so this result suggests a similar mechanism exists in a long-distance migrating insect. It also helps explain how these moths stay on course even when clouds hide the stars.</p>
+    <h5>Caveats</h5><p>These were lab tests on moths tethered under an artificial sky, so how the compass is used in free flight in the wild is not shown. The radical-pair mechanism is inferred from how the moths responded to light and radio noise rather than seen directly.</p>
+    <h5>Key terms</h5><dl><dt>Inclination compass:</dt> <dd>A compass that reads the angle at which Earth&#39;s magnetic field lines tilt toward the ground. It tells &#39;toward the pole&#39; from &#39;toward the equator&#39; rather than magnetic north from south.</dd><dt>Polarity:</dt> <dd>The direction the magnetic field points, from south to north. An inclination compass ignores it.</dd><dt>Radical pair:</dt> <dd>Two molecules, each carrying an unpaired electron, that can be produced when light is absorbed. How their reactions proceed can be affected by weak magnetic fields.</dd><dt>Aestivation:</dt> <dd>A dormant, inactive period spent through the hot season, similar to hibernation in winter.</dd><dt>Radiofrequency fields:</dt> <dd>Weak, rapidly oscillating electromagnetic fields, here between 150 kHz and 60 MHz, which can disrupt radical-pair-based magnetic sensing.</dd></dl>
+    <h5>Why it was picked</h5><p>Shows that migrating Bogong moths carry a light-dependent magnetic inclination compass as a backup to their star compass, a striking finding about how insects navigate.</p>
+    <div class="src">Chen, H., Rosberg, L., Dreyer, D., Leberecht, B., Mouritsen, H., Fleischmann, P. N., &amp; Warrant, E. J. (2026). Bogong moths navigate with a light-dependent geomagnetic inclination compass. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11322-9<br><a href="https://doi.org/10.1038/s41586-026-11322-9" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1038/s41586-026-11322-9" target="_blank" rel="noopener">Free to read: Published version</a></div>
+  </div>
+</details>
+</div>
+  
+
+  <h2>References</h2>
+  <ol class="refs"><li id="ref1" value="1">Dabira, E. D., Natama, H. M., Erhart, A., Bihoun, B., Keita, M. L., Derra, K., Bah, A., Ilboudo, N., Ndiath, M. O., Bonko, M. D. A., Saidy, L., Ilboudo, A. H., Kafando, M. H. O., Jaiteh, F., Bocoum, F. Y., Grietens, K. P., Gibba, B., Kompaore, S. C. B., Hill, A. V. S., ... Sanyang, D. (2026). Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial. <em>The Lancet</em>. https://doi.org/10.1016/S0140-6736(26)01562-X</li><li id="ref2" value="2">Gaïa, M., Guyet, U., Ruscheweyh, H., Eren, A. M., Sunagawa, S., Koonin, E. V., Krupovic, M., &amp; Delmont, T. O. (2026). Closest relatives of poxviruses prevail in human and animal guts worldwide. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11283-z</li><li id="ref3" value="3">Karambelkar, V., De, K., Temmink, K. D., Metzger, B. D., Blagorodnova, N., Anupama, G. C., Barway, S., Basu, J., Bellm, E. C., Bhalerao, V., Bochenek, A., Chamoli, S., Das, K., Fremling, C., Frostig, D., Gómez-Muñoz, M. A., Groom, S. L., Hinds, K., Jaimes, J. C., ... Wise, J. (2026). An inspiral of a star inside a common envelope with its giant companion. <em>Nature</em>, 659(8141), 628-633. https://doi.org/10.1038/s41586-026-11221-z</li><li id="ref4" value="4">Yu, D., Germann, J., Murtaza, G., Hajdarovic, K. H., Babcock, K. R., Dehkordi, S. K., Jackson, A. C., Delalle, I., Orr, M. E., Zare, H., Singh, R., MacCoss, M. J., Noble, W. S., Vlassenko, A. G., Goyal, M. S., &amp; Webb, A. E. (2026). Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11305-w</li><li id="ref5" value="5">Li, B., Zhang, T., Wang, X., Wen, Y., Wang, Y., Yu, X., &amp; Yang, D. (2026). Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells. <em>Science</em>, 394(6826), eaeh3114. https://doi.org/10.1126/science.aeh3114</li><li id="ref6" value="6">Guerrero-Ramírez, N. R., Salecker, J., Simpkins, C. E., Brambach, F., Corre, M. D., Darras, K. F. A., Drescher, J., Grass, I., König, C., Paterno, G. B., Wiegand, K., Azhar, A., Barnes, A. D., Brose, U., Buchori, D., Daniel, R., Hertel, D., Hidayat, P., Jochum, M., ... Kreft, H. (2026). Tropical land-use intensification restructures biodiversity. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11298-6</li><li id="ref7" value="7">Westaway, K. E., Joannes-Boyau, R., Liao, W., Shao, Q., Yu, W., Quinn, M., Bacon, A., Liang, H., Bourgon, N., Zhao, J., Roberts, P., Kono, R., Pan, Y., Yang, L., Wang, Y., Jin, C., Wu, Z., Murray, S., Zanolli, C., ... Zhang, Y. (2026). Rainforest adaptation in late Homo erectus from southern China. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11155-6</li><li id="ref8" value="8">Chen, H., Rosberg, L., Dreyer, D., Leberecht, B., Mouritsen, H., Fleischmann, P. N., &amp; Warrant, E. J. (2026). Bogong moths navigate with a light-dependent geomagnetic inclination compass. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11322-9</li></ol>
+</main>
+<footer>Summaries are paraphrased by AI from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</footer>
+</div>
+<script>
+document.querySelectorAll("details.card").forEach(function(d){d.addEventListener("toggle",function(){d.classList.toggle("open",d.open)})});
+(function(){var KEY="scidigest-topic",btns=[].slice.call(document.querySelectorAll(".chips button"));if(!btns.length)return;
+function apply(t){btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.topic===t))});
+document.querySelectorAll("details.card").forEach(function(c){c.classList.toggle("hidden",!!t&&c.dataset.topic!==t)});
+document.querySelectorAll(".topic-section").forEach(function(s){s.classList.toggle("hidden",!s.querySelector("details.card:not(.hidden)"))});
+document.querySelectorAll("h2.by-topic").forEach(function(h){h.classList.toggle("hidden",!document.querySelector(".topic-section:not(.hidden)"))});
+try{localStorage.setItem(KEY,t)}catch(e){}}
+btns.forEach(function(b){b.addEventListener("click",function(){apply(b.dataset.topic)})});
+var saved="";try{saved=localStorage.getItem(KEY)||""}catch(e){}
+if(saved&&btns.some(function(b){return b.dataset.topic===saved}))apply(saved);})();
+</script>
+</body></html>

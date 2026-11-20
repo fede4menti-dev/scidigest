@@ -5,162 +5,307 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily Science Digest</title>
 <style>
-:root{--bg:#fbfaf7;--card:#fff;--ink:#1d1d1f;--muted:#5f6368;--line:#e6e2da;--accent:#2f5d8a;--chip:#eef3f8;--okbg:#e8f4ec;--ok:#2d6a3e}
-@media (prefers-color-scheme:dark){:root{--bg:#141517;--card:#1c1d20;--ink:#ececec;--muted:#a3a7ad;--line:#2c2e33;--accent:#8db6e0;--chip:#24303d;--okbg:#1f3326;--ok:#8fd0a2}}
+:root{--bg:#f6f7f9;--card:#fff;--ink:#14171a;--soft:#4b5563;--muted:#8a919c;--line:#e7e9ee;--accent:#0f766e;--accent-bg:#e6f4f2;--warn:#b45309;--warn-bg:#fdf3e4;--ok:#15803d;--ok-bg:#e8f6ec;--ph:#e9edf2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1113;--card:#181b1f;--ink:#eef0f2;--soft:#b9c0c9;--muted:#7d8590;--line:#2a2e34;--accent:#5eead4;--accent-bg:#11302d;--warn:#fbbf24;--warn-bg:#33270f;--ok:#86efac;--ok-bg:#12301c;--ph:#22262b}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Georgia,"Iowan Old Style",serif}
-main{max-width:760px;margin:0 auto;padding:40px 16px 80px}
-header h1{font-size:2rem;margin:0 0 4px;letter-spacing:-.01em}
-.sub{color:var(--muted);font-family:system-ui,sans-serif;font-size:.9rem}
-.note{background:var(--chip);padding:10px 14px;border-radius:8px;font-family:system-ui,sans-serif;font-size:.9rem;margin-top:16px}
-nav{margin:28px 0;padding:16px 20px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-family:system-ui,sans-serif;font-size:.92rem}
-nav ol{margin:6px 0 0;padding-left:20px}
-nav a{color:var(--ink);text-decoration:none}nav a:hover{color:var(--accent)}
-article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px;margin:22px 0}
-.meta{display:flex;flex-wrap:wrap;gap:6px;font-family:system-ui,sans-serif;font-size:.78rem;margin-bottom:10px}
-.chip{background:var(--chip);color:var(--accent);padding:3px 9px;border-radius:99px}
-.chip.ok{background:var(--okbg);color:var(--ok)}
-article h2{font-size:1.4rem;line-height:1.3;margin:4px 0 6px}
-.orig{color:var(--muted);font-style:italic;font-size:.92rem;margin:0 0 4px}
-.dates{color:var(--muted);font-family:system-ui,sans-serif;font-size:.82rem;margin:0 0 14px}
-.intro{font-size:1.05rem;margin:16px 0 0}
-.pic{margin:0 0 16px}.pic img{display:block;width:100%;max-height:420px;object-fit:contain;background:var(--chip);border-radius:8px}
-.pic figcaption{font-family:system-ui,sans-serif;font-size:.82rem;color:var(--muted);margin-top:6px}
-.pic .credit{display:block;margin-top:2px;font-size:.75rem}.pic a{color:var(--accent)}
-.tag{background:var(--chip);color:var(--accent);padding:1px 6px;border-radius:4px;font-size:.72rem;margin-right:4px}
-h3{font-family:system-ui,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 4px}
-dl{margin:0;font-size:.95rem}dt{font-weight:bold;display:inline}dd{display:inline;margin:0}dd::after{content:"";display:block;margin-bottom:4px}
-sup a{color:var(--accent);text-decoration:none;font-family:system-ui,sans-serif;font-size:.75rem}
-.src{font-family:system-ui,sans-serif;font-size:.88rem;margin-top:16px}
-.src a{color:var(--accent)}
-.refs{font-size:.88rem}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
-footer{color:var(--muted);font-size:.85rem;margin-top:30px;font-family:system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 16px 64px}
+.brand{font-weight:700;letter-spacing:-.01em;color:var(--accent);font-size:.95rem}
+h1{font-size:2rem;line-height:1.15;letter-spacing:-.02em;margin:6px 0 6px}
+.sub{color:var(--soft);font-size:.95rem}
+.intro{max-width:760px;font-size:1.05rem;margin:14px 0 0}
+.note{display:inline-block;margin-top:12px;background:var(--warn-bg);color:var(--warn);padding:6px 10px;border-radius:8px;font-size:.85rem}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:18px 0 4px;scrollbar-width:none}
+.chips button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--soft);padding:7px 13px;border-radius:999px;font:inherit;font-size:.85rem;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+h2{font-size:1.15rem;letter-spacing:-.01em;margin:30px 0 12px}
+h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:22px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:box-shadow .15s}
+.card:hover{box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.card.open{grid-column:1/-1}
+.card summary{list-style:none;cursor:pointer;display:block}
+.card summary::-webkit-details-marker{display:none}
+.thumb{aspect-ratio:16/9;background:var(--ph);overflow:hidden;position:relative}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:2.2rem;font-weight:700;color:var(--muted)}
+.card.open .thumb{aspect-ratio:auto;max-height:440px}
+.card.open .thumb img{object-fit:contain;max-height:440px;background:var(--ph)}
+.body{padding:14px 16px 16px}
+.kicker{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.75rem;font-weight:600;margin-bottom:6px}
+.topic{color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
+.pill{padding:2px 7px;border-radius:6px;font-weight:600}
+.pill.pre{background:var(--warn-bg);color:var(--warn)}.pill.full{background:var(--ok-bg);color:var(--ok)}.pill.rep{background:var(--accent-bg);color:var(--accent)}
+.card h4{font-size:1.08rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card.open h4{display:block}
+.lede{color:var(--soft);font-size:.93rem;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.8rem;margin-top:12px}
+.dots{display:inline-flex;gap:2px}.dots i{width:5px;height:10px;border-radius:2px;background:var(--line)}.dots i.on{background:var(--accent)}
+.more{color:var(--accent);font-weight:600;font-size:.85rem;margin-top:10px}
+.card.open .more,.card.open .lede{display:none}
+.full{padding:0 16px 18px;max-width:760px}
+.full p{margin:0 0 12px}
+.full h5{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
+.full dl{margin:0;font-size:.93rem}.full dt{font-weight:600;display:inline}.full dd{display:inline;margin:0}.full dd::after{content:"";display:block;margin-bottom:6px}
+.orig{color:var(--muted);font-size:.85rem;font-style:italic}
+.credit{color:var(--muted);font-size:.75rem;padding:6px 16px 0}
+.src{background:var(--bg);border-radius:10px;padding:12px 14px;font-size:.85rem;margin-top:16px;overflow-wrap:anywhere}
+sup a{text-decoration:none;font-size:.7rem}
+.refs{font-size:.85rem;color:var(--soft);padding-left:20px}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
+footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
+.hidden{display:none!important}
 </style>
 </head>
-<body><main>
+<body><div class="wrap">
 <header>
+  <div class="brand">SciDigest</div>
   <h1>Daily Science Digest</h1>
   <div class="sub">Thursday, November 19, 2026 · 8 papers chosen from 74 recent research articles in 8 journals</div>
   
   
 </header>
-<nav><strong>Today&#39;s picks</strong><ol>
-<li><a href="#p1">Molecular recorder traces family tree of over a million mouse embryo cells</a> <span class="sub">(Developmental Biology)</span></li><li><a href="#p2">A small patch of the brain&#39;s &#39;listening&#39; area helps plan spoken words</a> <span class="sub">(Neuroscience)</span></li><li><a href="#p3">Organic nitrogen falling from the air feeds the oceans more than thought</a> <span class="sub">(Ocean and Atmospheric Science)</span></li><li><a href="#p4">A molecular &#39;glue&#39; layer helps large perovskite solar panels hold together</a> <span class="sub">(Materials Science and Energy)</span></li><li><a href="#p5">Twisted laser light makes a trapped ion spin in measurable steps</a> <span class="sub">(Physics)</span></li><li><a href="#p6">Gut inflammation after a myeloma CAR T therapy often persists and can be fatal</a> <span class="sub">(Medicine and Oncology)</span></li><li><a href="#p7">Early-life stress primes a brain pathway that worsens pain in female mice</a> <span class="sub">(Neuroscience)</span></li><li><a href="#p8">Hollow shells with one opening use turbulence to sort and trap particles</a> <span class="sub">(Physics and Fluid Dynamics)</span></li>
-</ol></nav>
 
-<article id="p1">
-  <div class="meta"><span class="chip">Developmental Biology</span><span class="chip">Science</span><span class="chip">Significance 9/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>1. Molecular recorder traces family tree of over a million mouse embryo cells</h2>
-  <p class="orig">Original title: “A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis”</p>
-  <p class="dates">Published Nov 19, 2026</p>
-  
-  <p>How does a single fertilized egg give rise to all the cell types of a mammal? Watching this directly is hard because development happens deep inside tissues we cannot easily see into. The researchers used a tool called DNA Typewriter, which writes a running record of events into a cell&#39;s DNA in a fixed order, so that later cells carry a readable history of their ancestry. They let it record in a mouse embryo for almost two weeks, from the fertilized egg (zygote) through the stage when organs are forming, and then read both the recorded DNA edits and the active genes of each cell.</p><p>From one embryo they built a family tree of about 1.28 million cells, rooted at the zygote and calibrated in time. A burst of edits clearly tagged the two cells made by the very first cell division, letting the two halves of the embryo act as built-in repeats of each other. They measured how some cell families came to dominate during gastrulation, the stage when the main body layers form. Closely related cells on the tree usually shared the same cell type far more often than chance, and sister cells of different types pointed to final steps of specialization. By tracking which cell types appeared together within branches over time, they recovered a dated order in which cell types separated, and their inferred identities for ancestral cells matched known developmental routes.<sup><a href="#ref1">[1]</a></sup></p>
-  <h3>Why it matters</h3><p>Building a complete, timed family tree of mammalian development has long been out of reach, and this work shows it can be done at the scale of a whole embryo. Such maps can reveal when and from which ancestors different tissues arise, a basic question for understanding development and its disorders.</p>
-  <h3>Caveats</h3><p>The tree comes from a single mouse embryo, so how much it varies between individuals is not established from this abstract. Identities of ancestral cells are inferred (imputed) rather than directly observed.</p>
-  <h3>Key terms</h3><dl><dt>DNA Typewriter:</dt> <dd>A molecular recording system that adds edits to a stretch of DNA one after another in order, so cells inherit a readable log of their lineage.</dd><dt>Cell lineage / phylogeny:</dt> <dd>The family tree showing which cells descended from which ancestors.</dd><dt>Parsimony:</dt> <dd>A tree-building principle that prefers the tree needing the fewest changes to explain the data.</dd><dt>Transcriptionally profiled:</dt> <dd>Each cell&#39;s active genes were measured, which identifies its cell type.</dd><dt>Gastrulation:</dt> <dd>An early embryo stage when cells reorganize into the main layers that form the body.</dd><dt>Clonal dominance:</dt> <dd>When descendants of a few ancestor cells make up an outsized share of the tissue.</dd><dt>Heterotypic siblings:</dt> <dd>Closely related sister cells that ended up as different cell types.</dd><dt>Clade:</dt> <dd>A branch of the tree: one ancestor and all its descendants.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1126/science.ael0508" target="_blank" rel="noopener">https://doi.org/10.1126/science.ael0508</a>
-  <br>Free to read: <a href="https://doi.org/10.1126/science.ael0508" target="_blank" rel="noopener">Published version</a> <span class="sub">via publisher, cc-by</span></div>
-</article>
 
-<article id="p2">
-  <div class="meta"><span class="chip">Neuroscience</span><span class="chip">Science</span><span class="chip">Significance 9/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>2. A small patch of the brain&#39;s &#39;listening&#39; area helps plan spoken words</h2>
-  <p class="orig">Original title: “A neural code for generative speech production in human Wernicke’s area”</p>
-  <p class="dates">Published Nov 19, 2026</p>
+
+
+
+<main>
+  <h2>Editor&#39;s picks</h2>
+  <div class="grid">
+<details class="card" id="p1" data-topic="">
+  <summary>
+    <div class="thumb"><div class="ph" aria-hidden="true">D</div></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Developmental Biology</span>
+        
+        
+        </div>
+      <h4>Molecular recorder traces family tree of over a million mouse embryo cells</h4>
+      <p class="lede">How does a single fertilized egg give rise to all the cell types of a mammal? Watching this directly is hard because development happens deep inside tissues we cannot easily see into.</p>
+      <div class="meta"><span>Science · Nov 19, 2026</span>
+        <span class="dots" title="Significance 9/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
   
-  <p>Wernicke&#39;s area, a region toward the back of the left temporal lobe (the side of the brain near the ear), has long been viewed as the hub for understanding speech. That leaves a puzzle: people with damage there often have serious trouble speaking, not just understanding. The researchers asked whether part of this region actually takes part in producing speech. They used three kinds of evidence from people: recordings made directly from the brain surface, mild electrical stimulation of the cortex to see what disrupts speech, and analysis of where brain injuries were located in people with speech problems.</p><p>They found a distinct subregion, the left posterior superior temporal gyrus (lpSTG), that switches on before a person starts talking. Interfering with it disrupted speech, which suggests it is needed for speaking rather than just active alongside it. Its activity reflected properties of the whole word about to be said, not basic sound features or mouth and tongue movements. This signal differed from nearby activity that responds to hearing one&#39;s own voice. It could also be used to decode the words that people with paralysis were trying to say.<sup><a href="#ref2">[2]</a></sup></p>
-  <h3>Why it matters</h3><p>The work helps explain why damage to a so-called comprehension area also impairs speaking. It points to a dedicated speech-generating zone within auditory cortex. Because its signals carry information about intended words, it could be a useful target for brain-computer interfaces that restore communication to paralysed people.</p>
-  <h3>Caveats</h3><p>The abstract does not say how many people were studied or how accurate the decoding was. Direct brain recordings are typically possible only in patients already undergoing brain procedures, which may limit how broadly the results apply.</p>
-  <h3>Key terms</h3><dl><dt>Wernicke&#39;s area:</dt> <dd>A region at the back of the left temporal lobe traditionally linked to understanding spoken language.</dd><dt>Left posterior superior temporal gyrus (lpSTG):</dt> <dd>The rear part of the upper fold of the left temporal lobe; the specific subzone identified here as involved in producing speech.</dd><dt>Cortical stimulation:</dt> <dd>Applying small electrical currents to the brain surface to briefly disrupt a region and test whether it is needed for a task.</dd><dt>Lesion analysis:</dt> <dd>Studying people with brain damage to link the location of the injury to the abilities they have lost.</dd><dt>Auditory feedback:</dt> <dd>The brain&#39;s response to hearing one&#39;s own voice while speaking.</dd><dt>Decode:</dt> <dd>Using recorded brain activity to work out what a person intends to say.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1126/science.aef8963" target="_blank" rel="noopener">https://doi.org/10.1126/science.aef8963</a>
+  <div class="full">
+    <p class="orig">Original title: “A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis”<br>Published Nov 19, 2026</p>
+    <p>How does a single fertilized egg give rise to all the cell types of a mammal? Watching this directly is hard because development happens deep inside tissues we cannot easily see into. The researchers used a tool called DNA Typewriter, which writes a running record of events into a cell&#39;s DNA in a fixed order, so that later cells carry a readable history of their ancestry. They let it record in a mouse embryo for almost two weeks, from the fertilized egg (zygote) through the stage when organs are forming, and then read both the recorded DNA edits and the active genes of each cell.</p><p>From one embryo they built a family tree of about 1.28 million cells, rooted at the zygote and calibrated in time. A burst of edits clearly tagged the two cells made by the very first cell division, letting the two halves of the embryo act as built-in repeats of each other. They measured how some cell families came to dominate during gastrulation, the stage when the main body layers form. Closely related cells on the tree usually shared the same cell type far more often than chance, and sister cells of different types pointed to final steps of specialization. By tracking which cell types appeared together within branches over time, they recovered a dated order in which cell types separated, and their inferred identities for ancestral cells matched known developmental routes.<sup><a href="#ref1">[1]</a></sup></p>
+    <h5>Why it matters</h5><p>Building a complete, timed family tree of mammalian development has long been out of reach, and this work shows it can be done at the scale of a whole embryo. Such maps can reveal when and from which ancestors different tissues arise, a basic question for understanding development and its disorders.</p>
+    <h5>Caveats</h5><p>The tree comes from a single mouse embryo, so how much it varies between individuals is not established from this abstract. Identities of ancestral cells are inferred (imputed) rather than directly observed.</p>
+    <h5>Key terms</h5><dl><dt>DNA Typewriter:</dt> <dd>A molecular recording system that adds edits to a stretch of DNA one after another in order, so cells inherit a readable log of their lineage.</dd><dt>Cell lineage / phylogeny:</dt> <dd>The family tree showing which cells descended from which ancestors.</dd><dt>Parsimony:</dt> <dd>A tree-building principle that prefers the tree needing the fewest changes to explain the data.</dd><dt>Transcriptionally profiled:</dt> <dd>Each cell&#39;s active genes were measured, which identifies its cell type.</dd><dt>Gastrulation:</dt> <dd>An early embryo stage when cells reorganize into the main layers that form the body.</dd><dt>Clonal dominance:</dt> <dd>When descendants of a few ancestor cells make up an outsized share of the tissue.</dd><dt>Heterotypic siblings:</dt> <dd>Closely related sister cells that ended up as different cell types.</dd><dt>Clade:</dt> <dd>A branch of the tree: one ancestor and all its descendants.</dd></dl>
+    <h5>Why it was picked</h5><p>A first zygote-rooted, time-calibrated lineage tree of 1.28 million cells from a single mouse embryo, a long-sought map of mammalian development.</p>
+    <div class="src">Yu, Q., Kim, H., Seidel, S., Acosta-Clark, J. F., Martin, B. K., O’Connor, K., Daza, R. M., Gasperini, M., Nathans, J. F., Lam, M., Gamo, E., VijayKumar, S., Kuo, L., Lalanne, J., Simeonov, K. P., Pepper, M., Trapnell, C., Gray, J. M., Choi, J., ... Shendure, J. (2026). A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis. <em>Science</em>, 394(6826), eael0508. https://doi.org/10.1126/science.ael0508<br><a href="https://doi.org/10.1126/science.ael0508" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1126/science.ael0508" target="_blank" rel="noopener">Free to read: Published version</a></div>
   </div>
-</article>
+</details>
 
-<article id="p3">
-  <div class="meta"><span class="chip">Ocean and Atmospheric Science</span><span class="chip">Science</span><span class="chip">Significance 8/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>3. Organic nitrogen falling from the air feeds the oceans more than thought</h2>
-  <p class="orig">Original title: “Atmospheric organic nitrogen is a major nutrient source to global oceans”</p>
-  <p class="dates">Published Nov 19, 2026</p>
+<details class="card" id="p2" data-topic="">
+  <summary>
+    <div class="thumb"><div class="ph" aria-hidden="true">N</div></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Neuroscience</span>
+        
+        
+        </div>
+      <h4>A small patch of the brain&#39;s &#39;listening&#39; area helps plan spoken words</h4>
+      <p class="lede">Wernicke&#39;s area, a region toward the back of the left temporal lobe (the side of the brain near the ear), has long been viewed as the hub for understanding speech.</p>
+      <div class="meta"><span>Science · Nov 19, 2026</span>
+        <span class="dots" title="Significance 9/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
   
-  <p>Nitrogen is a key nutrient for ocean life, and some of it reaches the sea from the air. Most of this airborne supply is inorganic nitrogen (such as nitrate and ammonium), but some comes as organic nitrogen, meaning nitrogen built into carbon-containing molecules. That organic portion has been poorly measured. The researchers collected airborne particles over the sea on 21 research cruises that crossed several ocean basins and reached high latitudes in both hemispheres. They measured the organic nitrogen in these samples, then used the measurements to tune and check a computer model of atmospheric chemistry, which they had updated with better descriptions of where organic nitrogen comes from and how it is removed from the air.</p><p>The model estimates that about 12.8 teragrams (million tonnes) of organic nitrogen settles onto the oceans each year, with a wide uncertainty range of roughly 4 to 23 teragrams. That is about 27% of all nitrogen deposited from the air to the sea (range 11–40%). Around 70% of this organic nitrogen comes from land sources and about 30% from the ocean itself. In regions where a shortage of nitrogen limits growth, such as the central Atlantic and the seas around Indonesia, organic nitrogen makes up about half of the nitrogen arriving from the atmosphere.<sup><a href="#ref3">[3]</a></sup></p>
-  <h3>Why it matters</h3><p>If roughly a quarter of airborne nitrogen reaching the oceans is organic, budgets that leave it out underestimate how much nutrient the air delivers to marine ecosystems. This is especially relevant in nitrogen-starved waters, where extra nitrogen can control how much plankton grows. Because most of the organic nitrogen comes from land, human activity on land may affect distant oceans through this route.</p>
-  <h3>Caveats</h3><p>The global numbers come from a model constrained by ship measurements, not from direct measurement everywhere, and the uncertainty ranges are wide (for example, 4 to 23 Tg N per year for total organic nitrogen deposition). The abstract also does not say how much of this deposited organic nitrogen marine organisms can actually use.</p>
-  <h3>Key terms</h3><dl><dt>Atmospheric nitrogen deposition:</dt> <dd>Nitrogen compounds in the air that settle onto land or sea, either as dry particles or carried down by rain.</dd><dt>Organic nitrogen (ON):</dt> <dd>Nitrogen that is part of carbon-based molecules, as opposed to simple inorganic forms like nitrate or ammonium.</dd><dt>Aerosols:</dt> <dd>Tiny solid or liquid particles suspended in the air.</dd><dt>Teragram (Tg):</dt> <dd>A trillion grams, which equals one million tonnes.</dd><dt>N-limited region:</dt> <dd>An ocean area where a lack of nitrogen is the main factor holding back the growth of algae and other organisms.</dd><dt>Atmospheric chemistry model:</dt> <dd>A computer simulation of how chemicals are emitted, transformed, moved, and removed in the atmosphere.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1126/science.aeg4265" target="_blank" rel="noopener">https://doi.org/10.1126/science.aeg4265</a>
+  <div class="full">
+    <p class="orig">Original title: “A neural code for generative speech production in human Wernicke’s area”<br>Published Nov 19, 2026</p>
+    <p>Wernicke&#39;s area, a region toward the back of the left temporal lobe (the side of the brain near the ear), has long been viewed as the hub for understanding speech. That leaves a puzzle: people with damage there often have serious trouble speaking, not just understanding. The researchers asked whether part of this region actually takes part in producing speech. They used three kinds of evidence from people: recordings made directly from the brain surface, mild electrical stimulation of the cortex to see what disrupts speech, and analysis of where brain injuries were located in people with speech problems.</p><p>They found a distinct subregion, the left posterior superior temporal gyrus (lpSTG), that switches on before a person starts talking. Interfering with it disrupted speech, which suggests it is needed for speaking rather than just active alongside it. Its activity reflected properties of the whole word about to be said, not basic sound features or mouth and tongue movements. This signal differed from nearby activity that responds to hearing one&#39;s own voice. It could also be used to decode the words that people with paralysis were trying to say.<sup><a href="#ref2">[2]</a></sup></p>
+    <h5>Why it matters</h5><p>The work helps explain why damage to a so-called comprehension area also impairs speaking. It points to a dedicated speech-generating zone within auditory cortex. Because its signals carry information about intended words, it could be a useful target for brain-computer interfaces that restore communication to paralysed people.</p>
+    <h5>Caveats</h5><p>The abstract does not say how many people were studied or how accurate the decoding was. Direct brain recordings are typically possible only in patients already undergoing brain procedures, which may limit how broadly the results apply.</p>
+    <h5>Key terms</h5><dl><dt>Wernicke&#39;s area:</dt> <dd>A region at the back of the left temporal lobe traditionally linked to understanding spoken language.</dd><dt>Left posterior superior temporal gyrus (lpSTG):</dt> <dd>The rear part of the upper fold of the left temporal lobe; the specific subzone identified here as involved in producing speech.</dd><dt>Cortical stimulation:</dt> <dd>Applying small electrical currents to the brain surface to briefly disrupt a region and test whether it is needed for a task.</dd><dt>Lesion analysis:</dt> <dd>Studying people with brain damage to link the location of the injury to the abilities they have lost.</dd><dt>Auditory feedback:</dt> <dd>The brain&#39;s response to hearing one&#39;s own voice while speaking.</dd><dt>Decode:</dt> <dd>Using recorded brain activity to work out what a person intends to say.</dd></dl>
+    <h5>Why it was picked</h5><p>Direct brain recordings, stimulation and lesion analysis resolve a classic paradox by finding a Wernicke&#39;s-area subregion that is causally needed for generating speech, with potential use in speech-decoding devices for paralysis.</p>
+    <div class="src">Silva, A. B., Leonard, M. K., Hullett, P. W., Levy, D. F., Wang, C., Xu, D., Bhaya-Grossman, I., &amp; Chang, E. F. (2026). A neural code for generative speech production in human Wernicke’s area. <em>Science</em>, 394(6826), eaef8963. https://doi.org/10.1126/science.aef8963<br><a href="https://doi.org/10.1126/science.aef8963" target="_blank" rel="noopener">Read the original</a></div>
   </div>
-</article>
+</details>
 
-<article id="p4">
-  <div class="meta"><span class="chip">Materials Science and Energy</span><span class="chip">Science</span><span class="chip">Significance 8/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>4. A molecular &#39;glue&#39; layer helps large perovskite solar panels hold together</h2>
-  <p class="orig">Original title: “Molecular adhesion for durable metal halide perovskite modules”</p>
-  <p class="dates">Published Nov 19, 2026</p>
+<details class="card" id="p3" data-topic="">
+  <summary>
+    <div class="thumb"><div class="ph" aria-hidden="true">O</div></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Ocean and Atmospheric Science</span>
+        
+        
+        </div>
+      <h4>Organic nitrogen falling from the air feeds the oceans more than thought</h4>
+      <p class="lede">Nitrogen is a key nutrient for ocean life, and some of it reaches the sea from the air.</p>
+      <div class="meta"><span>Science · Nov 19, 2026</span>
+        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
   
-  <p>Perovskite solar cells convert sunlight to electricity efficiently and cheaply, but they tend to degrade, partly because the layers inside them can weaken or come apart at their boundaries. This study tackled the hidden bottom boundary where the perovskite light-absorbing layer sits on the layer that carries positive charges (holes). The researchers inserted a thin molecular layer made from an aromatic (ring-shaped, carbon-based) molecule that can attach at two sites. It interacts with the hole-carrying layer below and forms strong chemical bonds, tying the two layers together.</p><p>The authors report that this layer makes the perovskite stick better and relieves built-up mechanical strain, so devices cope better with stresses from heating and cooling. They built panels far larger than typical lab cells: 900 cm² submodules reached 22.7% efficiency, and full-size 7200 cm² modules reached 21.3%. The best full-size module kept steady performance through 105 days outdoors, with measurements taken by an independent testing center (PACT).<sup><a href="#ref4">[4]</a></sup></p>
-  <h3>Why it matters</h3><p>A key obstacle to selling perovskite solar panels is making them last, not just making them efficient in small lab samples. This work shows that strengthening one internal interface can deliver both good efficiency and early outdoor stability at commercial panel sizes, with independent verification.</p>
-  <h3>Caveats</h3><p>105 days of outdoor testing is short next to the decades that commercial panels must last, and the outdoor result is reported for the single best module. The abstract does not give how much performance changed or how long devices last under accelerated stress tests.</p>
-  <h3>Key terms</h3><dl><dt>Perovskite (metal halide):</dt> <dd>A family of crystalline materials, containing metal and halogen ions, that absorb light well and can be made into cheap, efficient solar cells.</dd><dt>Hole-selective layer:</dt> <dd>A layer that lets positive charge carriers (holes) pass to the electrode while blocking electrons.</dd><dt>Buried interface:</dt> <dd>The boundary under the perovskite layer, hidden beneath it and hard to reach once the device is built.</dd><dt>Dual-site-binding ligand:</dt> <dd>A molecule with two parts that can each attach to a surface, letting it link two materials.</dd><dt>Thermomechanical stress:</dt> <dd>Strain from materials expanding and contracting as temperature changes, which can crack or separate layers.</dd><dt>Aperture area:</dt> <dd>The part of a panel that actually collects light, used when calculating efficiency.</dd><dt>Power conversion efficiency:</dt> <dd>The percentage of incoming sunlight energy turned into electrical energy.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1126/science.aej5001" target="_blank" rel="noopener">https://doi.org/10.1126/science.aej5001</a>
+  <div class="full">
+    <p class="orig">Original title: “Atmospheric organic nitrogen is a major nutrient source to global oceans”<br>Published Nov 19, 2026</p>
+    <p>Nitrogen is a key nutrient for ocean life, and some of it reaches the sea from the air. Most of this airborne supply is inorganic nitrogen (such as nitrate and ammonium), but some comes as organic nitrogen, meaning nitrogen built into carbon-containing molecules. That organic portion has been poorly measured. The researchers collected airborne particles over the sea on 21 research cruises that crossed several ocean basins and reached high latitudes in both hemispheres. They measured the organic nitrogen in these samples, then used the measurements to tune and check a computer model of atmospheric chemistry, which they had updated with better descriptions of where organic nitrogen comes from and how it is removed from the air.</p><p>The model estimates that about 12.8 teragrams (million tonnes) of organic nitrogen settles onto the oceans each year, with a wide uncertainty range of roughly 4 to 23 teragrams. That is about 27% of all nitrogen deposited from the air to the sea (range 11–40%). Around 70% of this organic nitrogen comes from land sources and about 30% from the ocean itself. In regions where a shortage of nitrogen limits growth, such as the central Atlantic and the seas around Indonesia, organic nitrogen makes up about half of the nitrogen arriving from the atmosphere.<sup><a href="#ref3">[3]</a></sup></p>
+    <h5>Why it matters</h5><p>If roughly a quarter of airborne nitrogen reaching the oceans is organic, budgets that leave it out underestimate how much nutrient the air delivers to marine ecosystems. This is especially relevant in nitrogen-starved waters, where extra nitrogen can control how much plankton grows. Because most of the organic nitrogen comes from land, human activity on land may affect distant oceans through this route.</p>
+    <h5>Caveats</h5><p>The global numbers come from a model constrained by ship measurements, not from direct measurement everywhere, and the uncertainty ranges are wide (for example, 4 to 23 Tg N per year for total organic nitrogen deposition). The abstract also does not say how much of this deposited organic nitrogen marine organisms can actually use.</p>
+    <h5>Key terms</h5><dl><dt>Atmospheric nitrogen deposition:</dt> <dd>Nitrogen compounds in the air that settle onto land or sea, either as dry particles or carried down by rain.</dd><dt>Organic nitrogen (ON):</dt> <dd>Nitrogen that is part of carbon-based molecules, as opposed to simple inorganic forms like nitrate or ammonium.</dd><dt>Aerosols:</dt> <dd>Tiny solid or liquid particles suspended in the air.</dd><dt>Teragram (Tg):</dt> <dd>A trillion grams, which equals one million tonnes.</dd><dt>N-limited region:</dt> <dd>An ocean area where a lack of nitrogen is the main factor holding back the growth of algae and other organisms.</dd><dt>Atmospheric chemistry model:</dt> <dd>A computer simulation of how chemicals are emitted, transformed, moved, and removed in the atmosphere.</dd></dl>
+    <h5>Why it was picked</h5><p>Measurements from 21 research cruises combined with global modeling show organic nitrogen makes up about 27% of atmospheric nitrogen deposition to the oceans, reshaping marine nutrient budgets.</p>
+    <div class="src">Yu, X., Li, Y., Shi, G., Yu, L., Wang, Y., Lai, S., Zhou, Y., Zhang, Y., Sun, N., Zhang, B., Hu, Y., Li, Z., Jiang, Y., Li, W., Fu, T., &amp; Yu, J. Z. (2026). Atmospheric organic nitrogen is a major nutrient source to global oceans. <em>Science</em>, 394(6826), 901-906. https://doi.org/10.1126/science.aeg4265<br><a href="https://doi.org/10.1126/science.aeg4265" target="_blank" rel="noopener">Read the original</a></div>
   </div>
-</article>
+</details>
 
-<article id="p5">
-  <div class="meta"><span class="chip">Physics</span><span class="chip">Science</span><span class="chip">Significance 7/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>5. Twisted laser light makes a trapped ion spin in measurable steps</h2>
-  <p class="orig">Original title: “Angular momentum transfer from an optical vortex to an atomic rotor”</p>
-  <p class="dates">Published Nov 19, 2026</p>
+<details class="card" id="p4" data-topic="">
+  <summary>
+    <div class="thumb"><div class="ph" aria-hidden="true">M</div></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Materials Science and Energy</span>
+        
+        
+        </div>
+      <h4>A molecular &#39;glue&#39; layer helps large perovskite solar panels hold together</h4>
+      <p class="lede">Perovskite solar cells convert sunlight to electricity efficiently and cheaply, but they tend to degrade, partly because the layers inside them can weaken or come apart at their boundaries.</p>
+      <div class="meta"><span>Science · Nov 19, 2026</span>
+        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
   
-  <p>Light can carry angular momentum, a measure of rotation, in two ways. One is spin, tied to the beam&#39;s polarization, and it is well known to govern which atomic transitions are allowed. The other is orbital angular momentum (OAM), which comes from a beam whose wavefront twists like a corkscrew (a &#39;vortex&#39; beam). How OAM actually exchanges with matter is still debated. This experiment asked whether OAM from a vortex laser can be handed over directly to the rotational motion of a single trapped calcium ion (40Ca+), set up so that it behaves as a quantum rotor that can only rotate in fixed, discrete amounts.</p><p>The team drove a weak transition of the ion called an electric quadrupole transition and looked at &#39;rotational sidebands&#39;, which are extra spectral lines that appear when the light changes the ion&#39;s rotation as well as its internal state. They saw the beam&#39;s OAM converted coherently into quantized rotation of the ion. Different sidebands followed different selection rules, meaning different patterns of which changes are permitted. The authors read this as evidence that the light&#39;s angular momentum takes different routes into matter depending on scale: some goes into the electron&#39;s internal state and some into the motion of the whole ion. They say this also explains unusual selection rules reported in earlier trapped-ion experiments.<sup><a href="#ref5">[5]</a></sup></p>
-  <h3>Why it matters</h3><p>The result helps settle an open question about how light&#39;s twisting wavefront interacts with atoms, and it brings earlier puzzling observations into one framework. A clearer picture of how light&#39;s angular momentum is shared out could help researchers who use twisted light to control atoms and quantum systems.</p>
-  <h3>Caveats</h3><p>The abstract covers a single-ion experiment with one atomic species and transition. It does not say how far the proposed &#39;unified framework&#39; has been tested in other systems.</p>
-  <h3>Key terms</h3><dl><dt>Orbital angular momentum (OAM):</dt> <dd>Angular momentum carried by light whose wavefronts spiral around the beam axis, separate from the spin linked to polarization.</dd><dt>Optical vortex:</dt> <dd>A laser beam with a corkscrew-shaped wavefront and a dark center, which carries OAM.</dd><dt>Trapped-ion quantum rotor:</dt> <dd>A single charged atom held by electromagnetic fields and set up so its rotation can only take discrete, quantized values.</dd><dt>Electric quadrupole transition:</dt> <dd>A weaker type of atomic transition than the usual dipole kind, more sensitive to how the light field varies across space.</dd><dt>Rotational sidebands:</dt> <dd>Extra spectral lines next to the main transition that correspond to the ion also gaining or losing rotational quanta.</dd><dt>Selection rules:</dt> <dd>Rules stating which changes in a quantum system&#39;s state are allowed when it absorbs light.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1126/science.aeh0182" target="_blank" rel="noopener">https://doi.org/10.1126/science.aeh0182</a>
+  <div class="full">
+    <p class="orig">Original title: “Molecular adhesion for durable metal halide perovskite modules”<br>Published Nov 19, 2026</p>
+    <p>Perovskite solar cells convert sunlight to electricity efficiently and cheaply, but they tend to degrade, partly because the layers inside them can weaken or come apart at their boundaries. This study tackled the hidden bottom boundary where the perovskite light-absorbing layer sits on the layer that carries positive charges (holes). The researchers inserted a thin molecular layer made from an aromatic (ring-shaped, carbon-based) molecule that can attach at two sites. It interacts with the hole-carrying layer below and forms strong chemical bonds, tying the two layers together.</p><p>The authors report that this layer makes the perovskite stick better and relieves built-up mechanical strain, so devices cope better with stresses from heating and cooling. They built panels far larger than typical lab cells: 900 cm² submodules reached 22.7% efficiency, and full-size 7200 cm² modules reached 21.3%. The best full-size module kept steady performance through 105 days outdoors, with measurements taken by an independent testing center (PACT).<sup><a href="#ref4">[4]</a></sup></p>
+    <h5>Why it matters</h5><p>A key obstacle to selling perovskite solar panels is making them last, not just making them efficient in small lab samples. This work shows that strengthening one internal interface can deliver both good efficiency and early outdoor stability at commercial panel sizes, with independent verification.</p>
+    <h5>Caveats</h5><p>105 days of outdoor testing is short next to the decades that commercial panels must last, and the outdoor result is reported for the single best module. The abstract does not give how much performance changed or how long devices last under accelerated stress tests.</p>
+    <h5>Key terms</h5><dl><dt>Perovskite (metal halide):</dt> <dd>A family of crystalline materials, containing metal and halogen ions, that absorb light well and can be made into cheap, efficient solar cells.</dd><dt>Hole-selective layer:</dt> <dd>A layer that lets positive charge carriers (holes) pass to the electrode while blocking electrons.</dd><dt>Buried interface:</dt> <dd>The boundary under the perovskite layer, hidden beneath it and hard to reach once the device is built.</dd><dt>Dual-site-binding ligand:</dt> <dd>A molecule with two parts that can each attach to a surface, letting it link two materials.</dd><dt>Thermomechanical stress:</dt> <dd>Strain from materials expanding and contracting as temperature changes, which can crack or separate layers.</dd><dt>Aperture area:</dt> <dd>The part of a panel that actually collects light, used when calculating efficiency.</dd><dt>Power conversion efficiency:</dt> <dd>The percentage of incoming sunlight energy turned into electrical energy.</dd></dl>
+    <h5>Why it was picked</h5><p>A molecular adhesion layer gives full-size perovskite solar modules over 21% efficiency, with independently verified stability over 105 days outdoors, a key step toward commercialization.</p>
+    <div class="src">Yang, C., Hou, T., Xu, Y., Robinson, C., Stein, J. S., Guo, Y., Chang, Q., Li, H., Yu, L., Qin, Y., Mohammed, O. F., Huang, Y., You, S., &amp; Zheng, X. (2026). Molecular adhesion for durable metal halide perovskite modules. <em>Science</em>, 394(6826), eaej5001. https://doi.org/10.1126/science.aej5001<br><a href="https://doi.org/10.1126/science.aej5001" target="_blank" rel="noopener">Read the original</a></div>
   </div>
-</article>
+</details>
 
-<article id="p6">
-  <div class="meta"><span class="chip">Medicine and Oncology</span><span class="chip">Nature Medicine</span><span class="chip">Significance 7/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>6. Gut inflammation after a myeloma CAR T therapy often persists and can be fatal</h2>
-  <p class="orig">Original title: “Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy”</p>
-  <p class="dates">Published Nov 19, 2026</p>
+<details class="card" id="p5" data-topic="">
+  <summary>
+    <div class="thumb"><div class="ph" aria-hidden="true">P</div></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Physics</span>
+        
+        
+        </div>
+      <h4>Twisted laser light makes a trapped ion spin in measurable steps</h4>
+      <p class="lede">Light can carry angular momentum, a measure of rotation, in two ways. One is spin, tied to the beam&#39;s polarization, and it is well known to govern which atomic transitions are allowed.</p>
+      <div class="meta"><span>Science · Nov 19, 2026</span>
+        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
   
-  <p>CAR T cell therapy reprograms a patient&#39;s own immune cells to attack cancer. One version targets BCMA, a protein found on the cancer cells of multiple myeloma, a blood cancer. Some patients given this treatment later develop inflammation of the intestines, called immune effector cell-associated enterocolitis. This study set out to describe that complication across several hospitals.</p><p>The researchers pulled together a case series, meaning a collection of patients who had the complication, drawn from multiple treatment centers. At the most recent check-up, the enterocolitis had cleared in only about a third of patients (32%). Some deaths were judged to be caused directly by complications of the gut inflammation.<sup><a href="#ref6">[6]</a></sup></p>
-  <h3>Why it matters</h3><p>BCMA-directed CAR T cells are an important option for patients with multiple myeloma, so doctors need to know about serious side effects that can appear afterward. The findings suggest this gut complication is often long-lasting and sometimes deadly, which argues for watching for it closely and finding better treatments.</p>
-  <h3>Caveats</h3><p>A case series describes only patients who developed the complication, so it cannot show how common enterocolitis is or establish what causes it. The short summary also gives no detail on patient numbers, follow-up length, or which treatments were tried.</p>
-  <h3>Key terms</h3><dl><dt>CAR T cell therapy:</dt> <dd>A treatment that takes a patient&#39;s T cells (a type of immune cell), engineers them to recognize a target on cancer cells, and returns them to the body.</dd><dt>BCMA:</dt> <dd>B-cell maturation antigen, a protein on the surface of myeloma cells that these CAR T cells are designed to recognize.</dd><dt>Enterocolitis:</dt> <dd>Inflammation of the small intestine and colon, which can cause symptoms such as diarrhea.</dd><dt>Case series:</dt> <dd>A study that describes a group of patients who share a condition, without a comparison group.</dd><dt>Disease resolution:</dt> <dd>The condition clearing up completely.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1038/s41591-026-04783-y" target="_blank" rel="noopener">https://doi.org/10.1038/s41591-026-04783-y</a>
+  <div class="full">
+    <p class="orig">Original title: “Angular momentum transfer from an optical vortex to an atomic rotor”<br>Published Nov 19, 2026</p>
+    <p>Light can carry angular momentum, a measure of rotation, in two ways. One is spin, tied to the beam&#39;s polarization, and it is well known to govern which atomic transitions are allowed. The other is orbital angular momentum (OAM), which comes from a beam whose wavefront twists like a corkscrew (a &#39;vortex&#39; beam). How OAM actually exchanges with matter is still debated. This experiment asked whether OAM from a vortex laser can be handed over directly to the rotational motion of a single trapped calcium ion (40Ca+), set up so that it behaves as a quantum rotor that can only rotate in fixed, discrete amounts.</p><p>The team drove a weak transition of the ion called an electric quadrupole transition and looked at &#39;rotational sidebands&#39;, which are extra spectral lines that appear when the light changes the ion&#39;s rotation as well as its internal state. They saw the beam&#39;s OAM converted coherently into quantized rotation of the ion. Different sidebands followed different selection rules, meaning different patterns of which changes are permitted. The authors read this as evidence that the light&#39;s angular momentum takes different routes into matter depending on scale: some goes into the electron&#39;s internal state and some into the motion of the whole ion. They say this also explains unusual selection rules reported in earlier trapped-ion experiments.<sup><a href="#ref5">[5]</a></sup></p>
+    <h5>Why it matters</h5><p>The result helps settle an open question about how light&#39;s twisting wavefront interacts with atoms, and it brings earlier puzzling observations into one framework. A clearer picture of how light&#39;s angular momentum is shared out could help researchers who use twisted light to control atoms and quantum systems.</p>
+    <h5>Caveats</h5><p>The abstract covers a single-ion experiment with one atomic species and transition. It does not say how far the proposed &#39;unified framework&#39; has been tested in other systems.</p>
+    <h5>Key terms</h5><dl><dt>Orbital angular momentum (OAM):</dt> <dd>Angular momentum carried by light whose wavefronts spiral around the beam axis, separate from the spin linked to polarization.</dd><dt>Optical vortex:</dt> <dd>A laser beam with a corkscrew-shaped wavefront and a dark center, which carries OAM.</dd><dt>Trapped-ion quantum rotor:</dt> <dd>A single charged atom held by electromagnetic fields and set up so its rotation can only take discrete, quantized values.</dd><dt>Electric quadrupole transition:</dt> <dd>A weaker type of atomic transition than the usual dipole kind, more sensitive to how the light field varies across space.</dd><dt>Rotational sidebands:</dt> <dd>Extra spectral lines next to the main transition that correspond to the ion also gaining or losing rotational quanta.</dd><dt>Selection rules:</dt> <dd>Rules stating which changes in a quantum system&#39;s state are allowed when it absorbs light.</dd></dl>
+    <h5>Why it was picked</h5><p>Directly observes coherent transfer of orbital angular momentum from twisted light into the quantized rotation of a trapped ion, settling a debated question about light-matter interaction.</p>
+    <div class="src">Tang, Y., Tollefsen, R., Yadav, N., Zuerch, M. W., &amp; Häffner, H. (2026). Angular momentum transfer from an optical vortex to an atomic rotor. <em>Science</em>, 394(6826), 890-894. https://doi.org/10.1126/science.aeh0182<br><a href="https://doi.org/10.1126/science.aeh0182" target="_blank" rel="noopener">Read the original</a></div>
   </div>
-</article>
+</details>
 
-<article id="p7">
-  <div class="meta"><span class="chip">Neuroscience</span><span class="chip">Science</span><span class="chip">Significance 7/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>7. Early-life stress primes a brain pathway that worsens pain in female mice</h2>
-  <p class="orig">Original title: “A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress”</p>
-  <p class="dates">Published Nov 19, 2026</p>
+<details class="card" id="p6" data-topic="">
+  <summary>
+    <div class="thumb"><div class="ph" aria-hidden="true">M</div></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Medicine and Oncology</span>
+        
+        
+        </div>
+      <h4>Gut inflammation after a myeloma CAR T therapy often persists and can be fatal</h4>
+      <p class="lede">CAR T cell therapy reprograms a patient&#39;s own immune cells to attack cancer. One version targets BCMA, a protein found on the cancer cells of multiple myeloma, a blood cancer.</p>
+      <div class="meta"><span>Nature Medicine · Nov 19, 2026</span>
+        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
   
-  <p>Children who experience adversity are more likely to develop chronic pain and anxiety as adults, and this link appears stronger in women. This mouse study asked what brain wiring might carry that risk forward in time. Researchers combined an early-life stressor (social isolation) with a later nerve injury and tracked a specific connection between the paraventricular thalamus (a relay hub involved in arousal and threat) and the central amygdala (a region handling fear and the emotional side of pain).</p><p>In female mice, but not males, the two hits combined to strengthen signalling along this pathway, and the pathway became active in anticipation of an unpleasant event rather than only during it. These females showed greater sensitivity to touch and more avoidance behaviour. Using chemogenetics — engineered receptors that let researchers switch neurons on or off with a drug — damping the pathway reversed these behaviours, but only in animals that had experienced both stress and injury. Turning the pathway on artificially produced the symptoms: steady activation caused touch hypersensitivity, while brief bursts caused avoidance. The authors describe this as a hidden, &#39;primed&#39; state created by early stress that stays silent until an injury reveals it.<sup><a href="#ref7">[7]</a></sup></p>
-  <h3>Why it matters</h3><p>It offers a concrete circuit-level explanation for why early adversity can translate into chronic pain and anxiety years later, and why the effect may differ by sex. It also suggests that treatments might need to target the combination of past stress plus current injury, rather than either alone. Studies like this are a reminder that sex differences in pain are biological as well as social.</p>
-  <h3>Caveats</h3><p>This is a mouse study, so whether the same circuit explains human sex differences in chronic pain is untested. The abstract also uses one specific early-life stressor (social isolation) and one injury model, so it is unclear how broadly the finding generalises.</p>
-  <h3>Key terms</h3><dl><dt>Paraventricular thalamus:</dt> <dd>A small brain relay region involved in arousal, stress and signalling threat or salience.</dd><dt>Central amygdala:</dt> <dd>An amygdala region that handles fear responses and the emotional, unpleasant aspect of pain.</dd><dt>Chemogenetics:</dt> <dd>A technique where neurons are genetically engineered to carry a custom receptor, so a specific drug can silence or activate just those cells.</dd><dt>Synaptic gain:</dt> <dd>How strongly a connection between neurons amplifies incoming signals; higher gain means a bigger output for the same input.</dd><dt>Mechanical hypersensitivity:</dt> <dd>Exaggerated pain or withdrawal in response to light touch or pressure.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1126/science.adx5757" target="_blank" rel="noopener">https://doi.org/10.1126/science.adx5757</a>
+  <div class="full">
+    <p class="orig">Original title: “Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy”<br>Published Nov 19, 2026</p>
+    <p>CAR T cell therapy reprograms a patient&#39;s own immune cells to attack cancer. One version targets BCMA, a protein found on the cancer cells of multiple myeloma, a blood cancer. Some patients given this treatment later develop inflammation of the intestines, called immune effector cell-associated enterocolitis. This study set out to describe that complication across several hospitals.</p><p>The researchers pulled together a case series, meaning a collection of patients who had the complication, drawn from multiple treatment centers. At the most recent check-up, the enterocolitis had cleared in only about a third of patients (32%). Some deaths were judged to be caused directly by complications of the gut inflammation.<sup><a href="#ref6">[6]</a></sup></p>
+    <h5>Why it matters</h5><p>BCMA-directed CAR T cells are an important option for patients with multiple myeloma, so doctors need to know about serious side effects that can appear afterward. The findings suggest this gut complication is often long-lasting and sometimes deadly, which argues for watching for it closely and finding better treatments.</p>
+    <h5>Caveats</h5><p>A case series describes only patients who developed the complication, so it cannot show how common enterocolitis is or establish what causes it. The short summary also gives no detail on patient numbers, follow-up length, or which treatments were tried.</p>
+    <h5>Key terms</h5><dl><dt>CAR T cell therapy:</dt> <dd>A treatment that takes a patient&#39;s T cells (a type of immune cell), engineers them to recognize a target on cancer cells, and returns them to the body.</dd><dt>BCMA:</dt> <dd>B-cell maturation antigen, a protein on the surface of myeloma cells that these CAR T cells are designed to recognize.</dd><dt>Enterocolitis:</dt> <dd>Inflammation of the small intestine and colon, which can cause symptoms such as diarrhea.</dd><dt>Case series:</dt> <dd>A study that describes a group of patients who share a condition, without a comparison group.</dd><dt>Disease resolution:</dt> <dd>The condition clearing up completely.</dd></dl>
+    <h5>Why it was picked</h5><p>A large multicenter case series reveals a serious, often unresolved and sometimes fatal gut complication of BCMA-directed CAR-T therapy, which matters for patient safety.</p>
+    <div class="src">Mikkilineni, L., Hamilton, M. P., Jensen, A., Lim, K. J., Galarza-Fortuna, G. M., Kumar, A. D., Ferreri, C. J., Portuguese, A. J., Hosoya, H., Dong, S., Abdallah, N. H., Song, J., Gonzalez, R., Shestakova, A., Chowla, N., Chen, Z. E., Godara, A., Mohyuddin, G. R., Brondfield, M. N., ... Wolf, J. L. (2026). Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy. <em>Nature Medicine</em>. https://doi.org/10.1038/s41591-026-04783-y<br><a href="https://doi.org/10.1038/s41591-026-04783-y" target="_blank" rel="noopener">Read the original</a></div>
   </div>
-</article>
+</details>
 
-<article id="p8">
-  <div class="meta"><span class="chip">Physics and Fluid Dynamics</span><span class="chip">Science</span><span class="chip">Significance 7/10</span><span class="chip ">Summarised from abstract</span></div>
-  <h2>8. Hollow shells with one opening use turbulence to sort and trap particles</h2>
-  <p class="orig">Original title: “Quiet within, chaos without: Turbulence shelters drive selective particle capture and release”</p>
-  <p class="dates">Published Nov 19, 2026</p>
+<details class="card" id="p7" data-topic="">
+  <summary>
+    <div class="thumb"><div class="ph" aria-hidden="true">N</div></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Neuroscience</span>
+        
+        
+        </div>
+      <h4>Early-life stress primes a brain pathway that worsens pain in female mice</h4>
+      <p class="lede">Children who experience adversity are more likely to develop chronic pain and anxiety as adults, and this link appears stronger in women. This mouse study asked what brain wiring might carry that risk forward in time.</p>
+      <div class="meta"><span>Science · Nov 19, 2026</span>
+        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
   
-  <p>Turbulent flow looks random, but its swirls (eddies) pass energy from large scales down to small ones in an organised way that is not in thermal equilibrium. In a gas at equilibrium, basic physics laws prevent you from passively extracting useful work from random molecular motion. The authors asked whether turbulence, which is not bound by those laws, could instead be used to move particles in a chosen direction without pumping any fluid. They designed &#39;turbulence shelters&#39;: hollow shells with a single hole that let in only eddies of certain sizes, so the inside stays calmer than the churning flow outside.</p><p>This difference in how strongly the fluid fluctuates inside versus outside pushed particles in a consistent direction, even though there was no overall net flow of fluid into or out of the shell. Shelters built over a thousandfold range of sizes produced different particle concentrations inside compared with outside. Which particles were captured or released depended on their shape, their inertia (how hard they are to speed up or slow down), random thermal jiggling, and electric charge effects. At the smallest scale, shelters could tell apart particles whose sizes differed by only tens of nanometres, regardless of what the particles were made of.<sup><a href="#ref8">[8]</a></sup></p>
-  <h3>Why it matters</h3><p>The work suggests a new way to filter or sort particles that relies on the shape of a container and the energy already present in turbulent surroundings, rather than on pumps or membranes. Because separation at the microscale depended on size rather than material, it could apply to particles that are chemically similar but slightly different in size.</p>
-  <h3>Caveats</h3><p>The abstract does not say how fast or efficient the separation is, or how well it would scale up for practical filtration. Details of the experimental conditions and particle types are not given.</p>
-  <h3>Key terms</h3><dl><dt>Turbulence:</dt> <dd>Chaotic fluid motion made of many swirling eddies of different sizes.</dd><dt>Energy cascade:</dt> <dd>The process by which energy in turbulence moves from large eddies to progressively smaller ones.</dd><dt>Nonequilibrium:</dt> <dd>A system with a steady flow of energy through it, so it does not settle into the balanced state that ordinary thermodynamics laws describe.</dd><dt>Turbulence shelter:</dt> <dd>A hollow shell with one opening that admits only some eddy sizes, creating a quieter interior.</dd><dt>Inertia:</dt> <dd>A particle&#39;s resistance to changes in its motion, which depends mainly on its mass.</dd><dt>Zero mean fluid flux:</dt> <dd>No net flow of fluid in or out on average, even though the fluid is moving locally.</dd></dl>
-  <div class="src">Source: <a href="https://doi.org/10.1126/science.aee9889" target="_blank" rel="noopener">https://doi.org/10.1126/science.aee9889</a>
+  <div class="full">
+    <p class="orig">Original title: “A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress”<br>Published Nov 19, 2026</p>
+    <p>Children who experience adversity are more likely to develop chronic pain and anxiety as adults, and this link appears stronger in women. This mouse study asked what brain wiring might carry that risk forward in time. Researchers combined an early-life stressor (social isolation) with a later nerve injury and tracked a specific connection between the paraventricular thalamus (a relay hub involved in arousal and threat) and the central amygdala (a region handling fear and the emotional side of pain).</p><p>In female mice, but not males, the two hits combined to strengthen signalling along this pathway, and the pathway became active in anticipation of an unpleasant event rather than only during it. These females showed greater sensitivity to touch and more avoidance behaviour. Using chemogenetics — engineered receptors that let researchers switch neurons on or off with a drug — damping the pathway reversed these behaviours, but only in animals that had experienced both stress and injury. Turning the pathway on artificially produced the symptoms: steady activation caused touch hypersensitivity, while brief bursts caused avoidance. The authors describe this as a hidden, &#39;primed&#39; state created by early stress that stays silent until an injury reveals it.<sup><a href="#ref7">[7]</a></sup></p>
+    <h5>Why it matters</h5><p>It offers a concrete circuit-level explanation for why early adversity can translate into chronic pain and anxiety years later, and why the effect may differ by sex. It also suggests that treatments might need to target the combination of past stress plus current injury, rather than either alone. Studies like this are a reminder that sex differences in pain are biological as well as social.</p>
+    <h5>Caveats</h5><p>This is a mouse study, so whether the same circuit explains human sex differences in chronic pain is untested. The abstract also uses one specific early-life stressor (social isolation) and one injury model, so it is unclear how broadly the finding generalises.</p>
+    <h5>Key terms</h5><dl><dt>Paraventricular thalamus:</dt> <dd>A small brain relay region involved in arousal, stress and signalling threat or salience.</dd><dt>Central amygdala:</dt> <dd>An amygdala region that handles fear responses and the emotional, unpleasant aspect of pain.</dd><dt>Chemogenetics:</dt> <dd>A technique where neurons are genetically engineered to carry a custom receptor, so a specific drug can silence or activate just those cells.</dd><dt>Synaptic gain:</dt> <dd>How strongly a connection between neurons amplifies incoming signals; higher gain means a bigger output for the same input.</dd><dt>Mechanical hypersensitivity:</dt> <dd>Exaggerated pain or withdrawal in response to light touch or pressure.</dd></dl>
+    <h5>Why it was picked</h5><p>Identifies a female-specific thalamus-to-amygdala circuit in mice through which early-life stress primes vulnerability to chronic pain, offering a mechanism for a known sex difference.</p>
+    <div class="src">Borruto, A. M., Kohlund, T., Rettig, L., Renesse, M. v., Hammer, C. A., Leonhardt, N., Kurpiers, B., Calpe-López, C., Benn, L., Friederich, H., Kuner, T., Spanagel, R., &amp; Wieland, S. (2026). A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress. <em>Science</em>, 394(6826), 864-869. https://doi.org/10.1126/science.adx5757<br><a href="https://doi.org/10.1126/science.adx5757" target="_blank" rel="noopener">Read the original</a></div>
   </div>
-</article>
+</details>
 
-<h2>References</h2>
-<ol class="refs"><li id="ref1">Yu, Q., Kim, H., Seidel, S., Acosta-Clark, J. F., Martin, B. K., O’Connor, K., Daza, R. M., Gasperini, M., Nathans, J. F., Lam, M., Gamo, E., VijayKumar, S., Kuo, L., Lalanne, J., Simeonov, K. P., Pepper, M., Trapnell, C., Gray, J. M., Choi, J., ... Shendure, J. (2026). A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis. <em>Science</em>, 394(6826), eael0508. https://doi.org/10.1126/science.ael0508</li><li id="ref2">Silva, A. B., Leonard, M. K., Hullett, P. W., Levy, D. F., Wang, C., Xu, D., Bhaya-Grossman, I., &amp; Chang, E. F. (2026). A neural code for generative speech production in human Wernicke’s area. <em>Science</em>, 394(6826), eaef8963. https://doi.org/10.1126/science.aef8963</li><li id="ref3">Yu, X., Li, Y., Shi, G., Yu, L., Wang, Y., Lai, S., Zhou, Y., Zhang, Y., Sun, N., Zhang, B., Hu, Y., Li, Z., Jiang, Y., Li, W., Fu, T., &amp; Yu, J. Z. (2026). Atmospheric organic nitrogen is a major nutrient source to global oceans. <em>Science</em>, 394(6826), 901-906. https://doi.org/10.1126/science.aeg4265</li><li id="ref4">Yang, C., Hou, T., Xu, Y., Robinson, C., Stein, J. S., Guo, Y., Chang, Q., Li, H., Yu, L., Qin, Y., Mohammed, O. F., Huang, Y., You, S., &amp; Zheng, X. (2026). Molecular adhesion for durable metal halide perovskite modules. <em>Science</em>, 394(6826), eaej5001. https://doi.org/10.1126/science.aej5001</li><li id="ref5">Tang, Y., Tollefsen, R., Yadav, N., Zuerch, M. W., &amp; Häffner, H. (2026). Angular momentum transfer from an optical vortex to an atomic rotor. <em>Science</em>, 394(6826), 890-894. https://doi.org/10.1126/science.aeh0182</li><li id="ref6">Mikkilineni, L., Hamilton, M. P., Jensen, A., Lim, K. J., Galarza-Fortuna, G. M., Kumar, A. D., Ferreri, C. J., Portuguese, A. J., Hosoya, H., Dong, S., Abdallah, N. H., Song, J., Gonzalez, R., Shestakova, A., Chowla, N., Chen, Z. E., Godara, A., Mohyuddin, G. R., Brondfield, M. N., ... Wolf, J. L. (2026). Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy. <em>Nature Medicine</em>. https://doi.org/10.1038/s41591-026-04783-y</li><li id="ref7">Borruto, A. M., Kohlund, T., Rettig, L., Renesse, M. v., Hammer, C. A., Leonhardt, N., Kurpiers, B., Calpe-López, C., Benn, L., Friederich, H., Kuner, T., Spanagel, R., &amp; Wieland, S. (2026). A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress. <em>Science</em>, 394(6826), 864-869. https://doi.org/10.1126/science.adx5757</li><li id="ref8">Sabato, M., Chong, S., Li, Y., Xu, Z., Gao, D., Falk, M. J., Sacanna, S., &amp; Irvine, W. T. M. (2026). Quiet within, chaos without: Turbulence shelters drive selective particle capture and release. <em>Science</em>, 394(6826), 884-889. https://doi.org/10.1126/science.aee9889</li></ol>
-<footer>Summaries are paraphrased by an AI model from each paper's abstract, plus its full text when a free, legal copy was available (marked on each paper). Free copies are found through Europe PMC and Unpaywall; preprints and accepted manuscripts can differ slightly from the final published paper. Check the original paper before citing it in your own work.</footer>
-</main></body></html>
+<details class="card" id="p8" data-topic="">
+  <summary>
+    <div class="thumb"><div class="ph" aria-hidden="true">P</div></div>
+    <div class="body">
+      <div class="kicker"><span class="topic">Physics and Fluid Dynamics</span>
+        
+        
+        </div>
+      <h4>Hollow shells with one opening use turbulence to sort and trap particles</h4>
+      <p class="lede">Turbulent flow looks random, but its swirls (eddies) pass energy from large scales down to small ones in an organised way that is not in thermal equilibrium.</p>
+      <div class="meta"><span>Science · Nov 19, 2026</span>
+        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+      <div class="more">Read more</div>
+    </div>
+  </summary>
+  
+  <div class="full">
+    <p class="orig">Original title: “Quiet within, chaos without: Turbulence shelters drive selective particle capture and release”<br>Published Nov 19, 2026</p>
+    <p>Turbulent flow looks random, but its swirls (eddies) pass energy from large scales down to small ones in an organised way that is not in thermal equilibrium. In a gas at equilibrium, basic physics laws prevent you from passively extracting useful work from random molecular motion. The authors asked whether turbulence, which is not bound by those laws, could instead be used to move particles in a chosen direction without pumping any fluid. They designed &#39;turbulence shelters&#39;: hollow shells with a single hole that let in only eddies of certain sizes, so the inside stays calmer than the churning flow outside.</p><p>This difference in how strongly the fluid fluctuates inside versus outside pushed particles in a consistent direction, even though there was no overall net flow of fluid into or out of the shell. Shelters built over a thousandfold range of sizes produced different particle concentrations inside compared with outside. Which particles were captured or released depended on their shape, their inertia (how hard they are to speed up or slow down), random thermal jiggling, and electric charge effects. At the smallest scale, shelters could tell apart particles whose sizes differed by only tens of nanometres, regardless of what the particles were made of.<sup><a href="#ref8">[8]</a></sup></p>
+    <h5>Why it matters</h5><p>The work suggests a new way to filter or sort particles that relies on the shape of a container and the energy already present in turbulent surroundings, rather than on pumps or membranes. Because separation at the microscale depended on size rather than material, it could apply to particles that are chemically similar but slightly different in size.</p>
+    <h5>Caveats</h5><p>The abstract does not say how fast or efficient the separation is, or how well it would scale up for practical filtration. Details of the experimental conditions and particle types are not given.</p>
+    <h5>Key terms</h5><dl><dt>Turbulence:</dt> <dd>Chaotic fluid motion made of many swirling eddies of different sizes.</dd><dt>Energy cascade:</dt> <dd>The process by which energy in turbulence moves from large eddies to progressively smaller ones.</dd><dt>Nonequilibrium:</dt> <dd>A system with a steady flow of energy through it, so it does not settle into the balanced state that ordinary thermodynamics laws describe.</dd><dt>Turbulence shelter:</dt> <dd>A hollow shell with one opening that admits only some eddy sizes, creating a quieter interior.</dd><dt>Inertia:</dt> <dd>A particle&#39;s resistance to changes in its motion, which depends mainly on its mass.</dd><dt>Zero mean fluid flux:</dt> <dd>No net flow of fluid in or out on average, even though the fluid is moving locally.</dd></dl>
+    <h5>Why it was picked</h5><p>Introduces &#39;turbulence shelters&#39; that use geometry to harness turbulent fluctuations for selective particle capture across three orders of magnitude in size, a new design principle for filtration.</p>
+    <div class="src">Sabato, M., Chong, S., Li, Y., Xu, Z., Gao, D., Falk, M. J., Sacanna, S., &amp; Irvine, W. T. M. (2026). Quiet within, chaos without: Turbulence shelters drive selective particle capture and release. <em>Science</em>, 394(6826), 884-889. https://doi.org/10.1126/science.aee9889<br><a href="https://doi.org/10.1126/science.aee9889" target="_blank" rel="noopener">Read the original</a></div>
+  </div>
+</details>
+</div>
+  
+
+  <h2>References</h2>
+  <ol class="refs"><li id="ref1" value="1">Yu, Q., Kim, H., Seidel, S., Acosta-Clark, J. F., Martin, B. K., O’Connor, K., Daza, R. M., Gasperini, M., Nathans, J. F., Lam, M., Gamo, E., VijayKumar, S., Kuo, L., Lalanne, J., Simeonov, K. P., Pepper, M., Trapnell, C., Gray, J. M., Choi, J., ... Shendure, J. (2026). A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis. <em>Science</em>, 394(6826), eael0508. https://doi.org/10.1126/science.ael0508</li><li id="ref2" value="2">Silva, A. B., Leonard, M. K., Hullett, P. W., Levy, D. F., Wang, C., Xu, D., Bhaya-Grossman, I., &amp; Chang, E. F. (2026). A neural code for generative speech production in human Wernicke’s area. <em>Science</em>, 394(6826), eaef8963. https://doi.org/10.1126/science.aef8963</li><li id="ref3" value="3">Yu, X., Li, Y., Shi, G., Yu, L., Wang, Y., Lai, S., Zhou, Y., Zhang, Y., Sun, N., Zhang, B., Hu, Y., Li, Z., Jiang, Y., Li, W., Fu, T., &amp; Yu, J. Z. (2026). Atmospheric organic nitrogen is a major nutrient source to global oceans. <em>Science</em>, 394(6826), 901-906. https://doi.org/10.1126/science.aeg4265</li><li id="ref4" value="4">Yang, C., Hou, T., Xu, Y., Robinson, C., Stein, J. S., Guo, Y., Chang, Q., Li, H., Yu, L., Qin, Y., Mohammed, O. F., Huang, Y., You, S., &amp; Zheng, X. (2026). Molecular adhesion for durable metal halide perovskite modules. <em>Science</em>, 394(6826), eaej5001. https://doi.org/10.1126/science.aej5001</li><li id="ref5" value="5">Tang, Y., Tollefsen, R., Yadav, N., Zuerch, M. W., &amp; Häffner, H. (2026). Angular momentum transfer from an optical vortex to an atomic rotor. <em>Science</em>, 394(6826), 890-894. https://doi.org/10.1126/science.aeh0182</li><li id="ref6" value="6">Mikkilineni, L., Hamilton, M. P., Jensen, A., Lim, K. J., Galarza-Fortuna, G. M., Kumar, A. D., Ferreri, C. J., Portuguese, A. J., Hosoya, H., Dong, S., Abdallah, N. H., Song, J., Gonzalez, R., Shestakova, A., Chowla, N., Chen, Z. E., Godara, A., Mohyuddin, G. R., Brondfield, M. N., ... Wolf, J. L. (2026). Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy. <em>Nature Medicine</em>. https://doi.org/10.1038/s41591-026-04783-y</li><li id="ref7" value="7">Borruto, A. M., Kohlund, T., Rettig, L., Renesse, M. v., Hammer, C. A., Leonhardt, N., Kurpiers, B., Calpe-López, C., Benn, L., Friederich, H., Kuner, T., Spanagel, R., &amp; Wieland, S. (2026). A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress. <em>Science</em>, 394(6826), 864-869. https://doi.org/10.1126/science.adx5757</li><li id="ref8" value="8">Sabato, M., Chong, S., Li, Y., Xu, Z., Gao, D., Falk, M. J., Sacanna, S., &amp; Irvine, W. T. M. (2026). Quiet within, chaos without: Turbulence shelters drive selective particle capture and release. <em>Science</em>, 394(6826), 884-889. https://doi.org/10.1126/science.aee9889</li></ol>
+</main>
+<footer>Summaries are paraphrased by AI from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</footer>
+</div>
+<script>
+document.querySelectorAll("details.card").forEach(function(d){d.addEventListener("toggle",function(){d.classList.toggle("open",d.open)})});
+(function(){var KEY="scidigest-topic",btns=[].slice.call(document.querySelectorAll(".chips button"));if(!btns.length)return;
+function apply(t){btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.topic===t))});
+document.querySelectorAll("details.card").forEach(function(c){c.classList.toggle("hidden",!!t&&c.dataset.topic!==t)});
+document.querySelectorAll(".topic-section").forEach(function(s){s.classList.toggle("hidden",!s.querySelector("details.card:not(.hidden)"))});
+document.querySelectorAll("h2.by-topic").forEach(function(h){h.classList.toggle("hidden",!document.querySelector(".topic-section:not(.hidden)"))});
+try{localStorage.setItem(KEY,t)}catch(e){}}
+btns.forEach(function(b){b.addEventListener("click",function(){apply(b.dataset.topic)})});
+var saved="";try{saved=localStorage.getItem(KEY)||""}catch(e){}
+if(saved&&btns.some(function(b){return b.dataset.topic===saved}))apply(saved);})();
+</script>
+</body></html>

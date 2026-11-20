@@ -87,6 +87,10 @@ struct Paper: Codable, Identifiable, Hashable {
     let freeCopy: FreeCopy?
     let featuredOn: [String]?
     let image: PaperImage?
+    let category: String?
+    let categoryName: String?
+    let editorsPick: Bool?
+    let preprint: Bool?
 
     var id: String { "\(rank)-\(url)" }
     var isFullText: Bool { basedOn == "full text" }
@@ -100,6 +104,18 @@ struct Paper: Codable, Identifiable, Hashable {
         case 2: return "\(authors[0]) & \(authors[1])"
         default: return "\(authors[0]) et al."
         }
+    }
+    var topicLabel: String {
+        if let n = categoryName, !n.isEmpty { return n }
+        return field
+    }
+    var isEditorsPick: Bool { editorsPick ?? true }
+    var isPreprint: Bool { preprint ?? false }
+    /// The opening paragraph, for cards.
+    var intro: String { paragraphs.first ?? summary }
+    var shortDate: String {
+        guard let p = published else { return "" }
+        return DayFormat.short(String(p.prefix(10)))
     }
     var publishedLabel: String {
         guard let p = published else { return "Publication date not listed" }

@@ -46,10 +46,11 @@ def fake_create(**kw):
     PROMPTS.append(kw["messages"][0]["content"])
     schema_keys = kw["output_config"]["format"]["schema"]["properties"].keys()
     assert kw["model"] == "claude-opus-5-5" and kw["fallbacks"] == "default"
-    if "picks" in schema_keys:
-        return _fake_response({"picks": [
-            {"index": 1, "score": 8, "field": "Astronomy", "reason": "early galaxy"},
-            {"index": 0, "score": 7, "field": "Biochemistry", "reason": "plastic recycling"}]})
+    if "selections" in schema_keys:
+        return _fake_response({"selections": [
+            {"index": 1, "topic": "astronomy", "editors_pick": True, "score": 8, "field": "Astronomy", "reason": "early galaxy"},
+            {"index": 0, "topic": "cell_molecular", "editors_pick": False, "score": 7, "field": "Biochemistry",
+             "reason": "plastic recycling"}]})
     return _fake_response({
         "headline": "Plain headline <b>safe</b>",
         "summary": "Para one in my own words.\nPara two in my own words.",
@@ -73,11 +74,13 @@ def test_end_to_end_with_mocked_claude(tmp_path, monkeypatch):
         main(["--feed-file", "Nature", str(FIX), "--no-crossref", "--out", str(tmp_path)])
     html = next(tmp_path.glob("*.html")).read_text()
     md = next(tmp_path.glob("*.md")).read_text()
-    assert html.index("Astronomy") < html.index("Biochemistry")       # ranking order kept
+    assert 'id="p1" data-topic="astronomy"' in html and 'id="p2" data-topic="cell_molecular"' in html
+    assert html.index('id="p1"') < html.index("More by topic") < html.index('id="p2"')
+    assert "More by topic" in html and "Cellular &amp; Molecular" in html
     assert "&lt;b&gt;safe&lt;/b&gt;" in html                            # escaped
     assert "<em>Nature</em>" in html and 'id="ref2"' in html            # references
     assert any("FULLTEXT_MARKER" in p for p in PROMPTS)
-    assert "Summarised from full text" in html and "Summarised from abstract" in html
+    assert html.count('class="pill full"') == 1                          # only the paper with full text
     assert "https://europepmc.org/article/PMC/PMC1" in html and "Free to read" in md
     assert "## References" in md and "https://doi.org/10.9999/test.0001" in md
 
@@ -106,7 +109,8 @@ def test_site_publish_json_contract(tmp_path):
     p = d["papers"][0]
     assert set(p) == {"rank", "headline", "original_title", "journal", "field", "significance", "reason",
                       "summary", "why_it_matters", "limitations", "key_terms", "based_on", "authors",
-                      "published", "doi", "url", "citation", "free_copy", "featured_on", "image"}
+                      "published", "doi", "url", "citation", "free_copy", "featured_on", "image",
+                      "category", "category_name", "editors_pick", "preprint"}
     assert "*" not in p["citation"] and isinstance(p["significance"], int)
     assert (site / "reports" / f"{day['date']}.html").exists() and (site / "index.html").exists()
     assert "does not collect" in (site / "privacy.html").read_text()
@@ -244,3 +248,39 @@ def test_paper_dates_shown(tmp_path):
     html = (site / "reports" / "2026-11-18.html").read_text()
     assert "Published Nov 18, 2026" in html and "Published Nov 17, 2026" in html
     assert "Wednesday, November 18, 2026" in html
+
+
+def test_topic_picks_and_quota(monkeypatch):
+    """Editor's picks first (max `top`), then at most per_topic picks per topic, invalid topics dropped."""
+    from scidigest.fetch import Article
+    arts = [Article(id=str(i), title=f"T{i}", journal="J", link="", abstract="a" * 400, published=None)
+            for i in range(8)]
+    sel = [
+        {"index": 0, "topic": "physics", "editors_pick": True, "score": 9, "field": "f", "reason": ""},
+        {"index": 1, "topic": "physics", "editors_pick": True, "score": 8, "field": "f", "reason": ""},   # over top=1
+        {"index": 2, "topic": "physics", "editors_pick": False, "score": 7, "field": "f", "reason": ""},
+        {"index": 3, "topic": "physics", "editors_pick": False, "score": 6, "field": "f", "reason": ""},   # over quota
+        {"index": 4, "topic": "climate", "editors_pick": False, "score": 5, "field": "f", "reason": ""},
+        {"index": 4, "topic": "climate", "editors_pick": False, "score": 5, "field": "f", "reason": ""},   # duplicate
+        {"index": 9, "topic": "climate", "editors_pick": False, "score": 5, "field": "f", "reason": ""},   # bad index
+    ]
+    monkeypatch.setattr(ai, "_ask_json", lambda *a, **k: {"selections": sel})
+    picks = ai.rank(arts, top=1, per_topic=2)
+    assert [a.id for a, _ in picks] == ["0", "1", "2", "4"]
+    assert [p["editors_pick"] for _, p in picks] == [True, False, False, False]
+
+
+def test_arxiv_preprint_flag_and_card_page(tmp_path):
+    from scidigest.publish import paper_json
+    from scidigest.report import excerpt
+    long = "First sentence is here. " + "word " * 80
+    assert excerpt(long).endswith("…") and len(excerpt(long)) < 240            # very short first sentence: cut at a word
+    two = "This opening sentence is long enough to be a good card intro on its own here. " + "more " * 60
+    assert excerpt(two).endswith("here.")
+    assert excerpt("short") == "short"
+    site = _run(tmp_path, "2026-11-18")
+    html = (site / "reports" / "2026-11-18.html").read_text()
+    assert 'class="card"' in html and "<summary>" in html and "Read more" in html
+    assert "References" in html and 'id="ref1"' in html
+    topics = json.loads((site / "data" / "topics.json").read_text())
+    assert len(topics["groups"]) == 6 and sum(len(g["topics"]) for g in topics["groups"]) == 18

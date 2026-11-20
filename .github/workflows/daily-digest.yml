@@ -31,6 +31,9 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SCIDIGEST_EMAIL: ${{ secrets.SCIDIGEST_EMAIL }}
+          # Extra papers per topic for readers who follow topics. Main cost lever:
+          # set a repository variable SCIDIGEST_PER_TOPIC (Settings > Secrets and variables > Actions > Variables).
+          SCIDIGEST_PER_TOPIC: ${{ vars.SCIDIGEST_PER_TOPIC || '2' }}
         run: python -m scidigest --top 8 --out reports --site docs
 
       - name: Publish to GitHub Pages

@@ -10,7 +10,7 @@ from datetime import datetime, timedelta, timezone
 import feedparser
 import requests
 
-from .sources import NON_RESEARCH_PREFIXES, SOURCES
+from .sources import DEFAULT_MAX_ITEMS, NON_RESEARCH_PREFIXES, SOURCES
 
 USER_AGENT = "SciDigest/1.0 (daily research digest; RSS reader)"
 DOI_RE = re.compile(r"10\.\d{4,9}/[^\s\"<>?#]+", re.I)
@@ -31,6 +31,7 @@ class Article:
     issue: str | None = None
     pages: str | None = None
     prior: float = 0.5  # journal weight
+    preprint: bool = False
 
 
 def _clean(text: str) -> str:
@@ -108,12 +109,23 @@ def parse_feed(raw: bytes | str, source: dict) -> list[Article]:
             continue
         title = strip_tag(title)
         abstract = _clean(e.get("summary", "") or e.get("description", ""))
+        if source.get("preprint"):
+            # arXiv: "arXiv:2511.01234v1 Announce Type: new Abstract: ..." - keep only brand-new papers
+            m = re.match(r"^arXiv:(\S+?)(v\d+)?\s+Announce Type:\s*(\S+)\s+Abstract:\s*", abstract)
+            if m:
+                if m.group(3).lower() not in ("new",):
+                    continue
+                abstract = abstract[m.end():]
         if e.get("content"):
             longer = _clean(e["content"][0].get("value", ""))
             if len(longer) > len(abstract):
                 abstract = longer
         pub = _date(e)
         doi = _doi(e)
+        if not doi and source.get("preprint"):
+            m = re.search(r"arxiv\.org/abs/([\w.\-/]+?)(v\d+)?$", e.get("link", ""))
+            if m:
+                doi = f"10.48550/arXiv.{m.group(1)}"
         items.append(Article(
             id=doi or e.get("link", title),
             title=title,
@@ -128,6 +140,7 @@ def parse_feed(raw: bytes | str, source: dict) -> list[Article]:
             issue=e.get("prism_number"),
             pages=e.get("prism_startingpage"),
             prior=source.get("weight", 0.5),
+            preprint=bool(source.get("preprint")),
         ))
     return items
 
@@ -145,6 +158,8 @@ def fetch_all(hours: int = 36, sources: list[dict] | None = None, log=print) -> 
             log(f"  ! {src['journal']}: {exc}")
             continue
         fresh = [a for a in items if a.published is None or a.published >= cutoff]
+        fresh.sort(key=lambda a: a.published or cutoff, reverse=True)
+        fresh = fresh[: src.get("max_items", DEFAULT_MAX_ITEMS)]
         log(f"  {src['journal']}: {len(fresh)} recent research items")
         for a in fresh:
             key = (a.doi or a.title).lower()

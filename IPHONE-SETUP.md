@@ -140,6 +140,8 @@ Things that help it pass review:
 
 ## Using the app
 
+- **First launch:** pick your topics (or tap Skip for everything). Change them any time in **Settings → Your topics**; tapping **Save and refresh papers** applies them to today and every past report.
+
 - **Idea Check:** type a research question to see related papers. For the full AI report, set up the idea checker first: see **IDEA-CHECKER-SETUP.md**.
 
 - **Today:** today's picks. Pull down to refresh. Tap any paper for the full explanation, caveats, key terms, citation (with a copy button), and links to the original and any free full-text copy.

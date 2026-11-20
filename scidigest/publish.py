@@ -23,6 +23,7 @@ from pathlib import Path
 from markupsafe import escape
 
 from .report import headings, html_from_json, long_date
+from .taxonomy import as_json as taxonomy_json, topic_name
 
 FORMAT_VERSION = 1
 DAILY_GLOB = "????-??-??.json"
@@ -61,6 +62,10 @@ def paper_json(e: dict) -> dict:
         },
         "featured_on": list(e.get("featured_on") or []),
         "image": s.get("image"),
+        "category": pick.get("topic"),
+        "category_name": topic_name(pick.get("topic")),
+        "editors_pick": bool(pick.get("editors_pick", True)),
+        "preprint": bool(getattr(a, "preprint", False)),
     }
 
 
@@ -155,7 +160,7 @@ def rebuild_site(site: Path) -> None:
     reports.mkdir(parents=True, exist_ok=True)
     digests = {}
     for f in data.glob("*.json"):
-        if f.stem in ("index", "latest"):
+        if f.stem in ("index", "latest", "topics"):
             continue
         digests[f.stem] = json.loads(f.read_text(encoding="utf-8"))
         # Re-render every page, so missing pages come back and design changes reach old reports.
@@ -177,6 +182,7 @@ def rebuild_site(site: Path) -> None:
         "monthly": [_review_entry(d) for d in monthly],
     }
     _dump(data / "index.json", index)
+    _dump(data / "topics.json", {"format": FORMAT_VERSION, "groups": taxonomy_json()})
     if days:
         shutil.copyfile(data / f"{days[0]['date']}.json", data / "latest.json")
 

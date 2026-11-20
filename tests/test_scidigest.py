@@ -150,3 +150,31 @@ def test_short_abstract_papers_skipped_before_ranking(tmp_path):
          mock.patch.dict("os.environ", {"ANTHROPIC_API_KEY": "x"}):
         cli.main(["--top", "2", "--no-crossref", "--no-fulltext", "--out", str(tmp_path)])
     assert seen["n"] == 3
+
+
+def test_missing_report_pages_are_rebuilt_from_json(tmp_path):
+    site = tmp_path / "site"
+    args = ["--no-ai", "--no-fulltext", "--no-crossref", "--feed-file", "Nature", str(FIX),
+            "--out", str(tmp_path / "r"), "--site", str(site)]
+    main(args)
+    page = next((site / "reports").glob("*.html"))
+    old = (site / "data" / f"{page.stem}.json").read_text()
+    (site / "data" / "2020-01-01.json").write_text(old.replace(page.stem, "2020-01-01"))
+    page.unlink()
+    main(args)
+    assert page.exists()
+    rebuilt = (site / "reports" / "2020-01-01.html").read_text()
+    assert "Daily Science Digest" in rebuilt and "doi.org/10.9999/test.0001" in rebuilt
+
+
+def test_gitignore_does_not_hide_site_reports():
+    rules = (Path(__file__).parents[1] / ".gitignore").read_text().split()
+    assert "reports/" not in rules and "/reports/" in rules
+
+
+def test_lancet_tags():
+    from scidigest.fetch import is_research, strip_tag
+    assert is_research("[Articles] Seasonal mass vaccination with R21")
+    assert not is_research("[Comment] Malaria vaccines at scale")
+    assert not is_research("[Correspondence] A reply")
+    assert strip_tag("[Articles] Seasonal mass vaccination") == "Seasonal mass vaccination"

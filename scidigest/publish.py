@@ -98,6 +98,13 @@ def publish(site: Path, digest: dict, html_report: Path) -> Path:
     dump(data / f"{day}.json", digest)
     shutil.copyfile(html_report, reports / f"{day}.html")
 
+    # Fill in any day whose HTML page is missing (e.g. lost or never committed).
+    from .report import html_from_json
+    for f in data.glob("????-??-??.json"):
+        page = reports / f"{f.stem}.html"
+        if not page.exists():
+            page.write_text(html_from_json(json.loads(f.read_text(encoding="utf-8"))), encoding="utf-8")
+
     # Rebuild the index from every day file on disk (so reruns are idempotent).
     days = []
     for f in sorted(data.glob("????-??-??.json"), reverse=True):

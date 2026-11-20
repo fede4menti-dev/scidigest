@@ -80,8 +80,20 @@ def _authors(entry) -> list[str]:
 NON_RESEARCH_DOI = re.compile(r"^10\.1056/NEJM(?!oa|ra|sa)", re.I)
 
 
+RESEARCH_TAGS = {"articles", "article", "research", "research letter", "review", "seminar", "series", "fast track"}
+
+
+def strip_tag(title: str) -> str:
+    return re.sub(r"^\[[^\]]+\]\s*", "", title)
+
+
 def is_research(title: str, doi: str | None = None) -> bool:
     t = title.lower().strip()
+    tag = re.match(r"^\[([^\]]+)\]\s*", t)  # Lancet style: "[Articles] ...", "[Comment] ..."
+    if tag:
+        if tag.group(1).strip() not in RESEARCH_TAGS:
+            return False
+        t = t[tag.end():]
     if not t or t.startswith(NON_RESEARCH_PREFIXES):
         return False
     return not (doi and NON_RESEARCH_DOI.match(doi))
@@ -94,6 +106,7 @@ def parse_feed(raw: bytes | str, source: dict) -> list[Article]:
         title = _clean(e.get("title", ""))
         if not is_research(title, _doi(e)):
             continue
+        title = strip_tag(title)
         abstract = _clean(e.get("summary", "") or e.get("description", ""))
         if e.get("content"):
             longer = _clean(e["content"][0].get("value", ""))

@@ -133,6 +133,8 @@ def main(argv=None):
             done_today = False
         if done_today or not use_ai:
             print(f"Today's digest ({today}) already exists; skipping to avoid paying twice. Use --force to rebuild it.")
+            rebuild_site(args.site)   # still refresh the pages (new settings, idea checker address); no AI used
+            print("Pages refreshed.")
             if args.site and not args.no_reviews:
                 for kind in due_reviews(today):
                     make_review(args, kind, today, use_ai)

@@ -362,8 +362,10 @@ def test_spending_cap_keeps_editors_picks_and_drops_topic_picks(tmp_path, monkey
 def test_second_run_same_day_is_skipped_unless_forced(tmp_path, capsys):
     site = _run(tmp_path, "2026-11-18")
     capsys.readouterr()
+    (site / "idea.html").unlink()
     main(["--no-ai", "--site", str(site), "--out", str(tmp_path / "r"), "--today", "2026-11-18"])
     assert "already exists; skipping" in capsys.readouterr().out
+    assert (site / "idea.html").exists(), "pages are still rebuilt (free) on a skipped run"
 
 
 def test_search_saved_pages_and_offline_files(tmp_path):

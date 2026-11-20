@@ -1,0 +1,556 @@
+{
+ "format": 1,
+ "date": "2026-11-20",
+ "generated_at": "2026-11-20T10:07:41+00:00",
+ "scanned": 100,
+ "journals": [
+  "Cell",
+  "Nature",
+  "Nature Biotechnology",
+  "Nature Communications",
+  "Nature Medicine",
+  "PLOS Biology",
+  "Physical Review Letters",
+  "Science",
+  "The Lancet",
+  "The New England Journal of Medicine",
+  "eLife"
+ ],
+ "ai_summaries": true,
+ "papers": [
+  {
+   "rank": 1,
+   "headline": "Vaccinating whole communities against malaria each season lowered infection rates",
+   "original_title": "[Articles] Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial",
+   "journal": "The Lancet",
+   "field": "Global Health",
+   "significance": 9,
+   "reason": "A cluster-randomised trial in two African countries shows seasonal mass vaccination with the R21 malaria vaccine cut malaria prevalence, offering a new population-level control strategy.",
+   "summary": "Malaria in parts of West Africa spreads mainly during a rainy season. This study asked whether giving the R21/Matrix-M malaria vaccine to entire communities just before transmission peaks, an approach called seasonal mass vaccination (SMV), could reduce how common malaria is. The trial ran in The Gambia and Burkina Faso. Whole groups of people (clusters, such as villages) were randomly assigned either to receive the vaccine campaign or to serve as a comparison. Participants and researchers knew who had been vaccinated, which is what 'open-label' means.\n\nAccording to the publisher's summary, the vaccination campaigns reduced the proportion of people carrying malaria in both countries. The authors suggest SMV could be added to existing malaria control tools wherever transmission is seasonal. In places with lower transmission it might help move toward eliminating the disease, and in places with heavy transmission it might further cut the amount of illness.",
+   "why_it_matters": "Most malaria vaccines so far have been given to young children, so protecting whole communities could reduce how much the parasite circulates overall. A seasonal community-wide campaign may offer a practical extra tool alongside bed nets and medicines in regions where malaria comes in yearly waves.",
+   "limitations": "The summary provided does not report the size of the reduction, how many people took part, the age groups vaccinated, or safety findings. The open-label design also means knowing who was vaccinated could have influenced behaviour or reporting.",
+   "key_terms": [
+    {
+     "term": "R21/Matrix-M",
+     "meaning": "A malaria vaccine. R21 is the part that trains the immune system to recognise the malaria parasite, and Matrix-M is an added ingredient (an adjuvant) that strengthens the immune response."
+    },
+    {
+     "term": "Seasonal mass vaccination (SMV)",
+     "meaning": "Vaccinating a whole population at once, timed to come just before the season when malaria spreads most."
+    },
+    {
+     "term": "Cluster-randomised trial",
+     "meaning": "A study where whole groups, such as villages, rather than individuals are randomly assigned to receive the intervention or not."
+    },
+    {
+     "term": "Open-label",
+     "meaning": "Everyone involved knows who got the vaccine; there is no placebo or masking."
+    },
+    {
+     "term": "Malaria prevalence",
+     "meaning": "The share of people in a population who are infected with malaria at a given time."
+    },
+    {
+     "term": "Endemic",
+     "meaning": "Constantly present in a region, rather than appearing only in occasional outbreaks."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Edgard D Dabira",
+    "H Magloire Natama",
+    "Annette Erhart",
+    "Biébo Bihoun",
+    "Modou Lamin Keita",
+    "Karim Derra",
+    "Amadou Bah",
+    "Nafissatou Ilboudo",
+    "Mamadou O Ndiath",
+    "Massa Dit Achille Bonko",
+    "Lamin Saidy",
+    "Al Hassan Ilboudo",
+    "Miguel Hugues Olivier Kafando",
+    "Fatou Jaiteh",
+    "Fadima Y Bocoum",
+    "Koen Peeters Grietens",
+    "Balla Gibba",
+    "Sidzabda C B Kompaore",
+    "Adrian V S Hill",
+    "Lucy Okell",
+    "Azra Ghani",
+    "Nuredin I Mohammed",
+    "Halidou Tinto",
+    "Umberto D'Alessandro",
+    "Ousmane Badini",
+    "Omar Jarra",
+    "Lionel Ouattara",
+    "Alieu Comma",
+    "Alice Sanou",
+    "Samba Gaye",
+    "Edrissa Sabally",
+    "Sarah Ahout-Kan Jocelyne Kouadio",
+    "Baboucarr Bittaye",
+    "Edouard Zongo",
+    "Sainey Ceesay",
+    "Leilatou Tassembedo",
+    "Aurelia Prom",
+    "Pacôme Kazienga",
+    "Bubacarr Darboe",
+    "Lamin Camara",
+    "Delwendé Florence Ouédraogo",
+    "Alasana Bah",
+    "Arouna Bonkoungou",
+    "Abdourahman Jallow",
+    "Charles Ouédraogo",
+    "Muhammed Njie",
+    "Abdoul Nouri Ouédraogo",
+    "Bekai Njie",
+    "Issa Sidiki Abdoul Latif Gnanou",
+    "Gwladys Ouédraogo",
+    "Domenabale Somda",
+    "Toussaint Rouamba",
+    "Gérard Sampébré",
+    "Abdoul Rahim Ouédraogo",
+    "Lan-Boado Rodrigue Yonli",
+    "Elodie Sanon",
+    "Sanlé Yahacoub Sagnon",
+    "Dodou Sanyang"
+   ],
+   "published": "2026-11-19T23:30:01+00:00",
+   "doi": "10.1016/S0140-6736(26)01562-X",
+   "url": "https://doi.org/10.1016/S0140-6736(26)01562-X",
+   "citation": "Dabira, E. D., Natama, H. M., Erhart, A., Bihoun, B., Keita, M. L., Derra, K., Bah, A., Ilboudo, N., Ndiath, M. O., Bonko, M. D. A., Saidy, L., Ilboudo, A. H., Kafando, M. H. O., Jaiteh, F., Bocoum, F. Y., Grietens, K. P., Gibba, B., Kompaore, S. C. B., Hill, A. V. S., ... Sanyang, D. (2026). [Articles] Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial. The Lancet. https://doi.org/10.1016/S0140-6736(26)01562-X",
+   "free_copy": null
+  },
+  {
+   "rank": 2,
+   "headline": "Molecular 'typewriter' in DNA traces a mouse embryo's family tree of cells",
+   "original_title": "A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis",
+   "journal": "Science",
+   "field": "Developmental Biology",
+   "significance": 9,
+   "reason": "For the first time, the cell lineage of an entire mouse was recorded from zygote to organogenesis, yielding a time-calibrated family tree of 1.28 million profiled cells.",
+   "summary": "Every animal grows from a single fertilized egg (the zygote), but tracking which cells give rise to which tissues inside a developing mammal is very hard, because embryos are hidden and opaque. The researchers used a tool called DNA Typewriter, which writes small edits into the DNA of cells one after another in sequence. Cells inherit these edits when they divide, so the pattern of edits works like a record of family history. They ran this recorder in a mouse embryo for almost two weeks, from the zygote stage to the late stage when organs are forming.\n\nFrom a single embryo, they built a family tree of 1.28 million cells, each of which also had its active genes measured, so its cell type was known. The tree was rooted at the zygote and calibrated to time. A burst of edits clearly marked the two cells made by the first division, which let the team treat the two halves of the embryo as built-in repeats of the same experiment. They measured how some cell families came to dominate during gastrulation, the early stage when the body's basic layers form. Closely related cells tended to share a cell type much more often than chance would predict. Related cells of different types pointed to late decisions in development. By tracking which cell families appeared together over time, they recovered an ordered, dated pattern of how cell types are related. The inferred identities of ancestor cells matched known developmental routes.",
+   "why_it_matters": "This gives a direct, recorded picture of how cells in a mammal divide and specialize, rather than one pieced together indirectly. A cell-by-cell family tree of development has long been out of reach for mammals, and this approach could help show when and how tissues split off from one another.",
+   "limitations": "The tree comes from a single mouse embryo, so how consistent these patterns are across many embryos is not shown in the abstract. Cell types of ancestor cells were imputed (estimated), not directly observed.",
+   "key_terms": [
+    {
+     "term": "Cell lineage",
+     "meaning": "The ancestry of a cell: which earlier cells it descended from through division."
+    },
+    {
+     "term": "Molecular recorder",
+     "meaning": "An engineered system that writes heritable changes into DNA over time, so events can be read later by sequencing."
+    },
+    {
+     "term": "Phylogeny",
+     "meaning": "A branching family tree showing how related things (here, cells) descend from common ancestors."
+    },
+    {
+     "term": "Parsimony",
+     "meaning": "Choosing the tree that explains the observed DNA edits with the fewest changes."
+    },
+    {
+     "term": "Transcriptionally profiled",
+     "meaning": "Each cell's active genes were measured, which reveals what kind of cell it is."
+    },
+    {
+     "term": "Gastrulation",
+     "meaning": "An early developmental stage when the embryo reorganizes into the basic tissue layers."
+    },
+    {
+     "term": "Clonal dominance",
+     "meaning": "When descendants of a few cells make up an unusually large share of the embryo."
+    },
+    {
+     "term": "Clade",
+     "meaning": "A branch of the tree: one ancestor cell plus all its descendants."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Qi Yu",
+    "Haedong Kim",
+    "Sophie Seidel",
+    "James F. Acosta-Clark",
+    "Beth K. Martin",
+    "Kyle O’Connor",
+    "Riza M. Daza",
+    "Molly Gasperini",
+    "Jenny F. Nathans",
+    "Maggie Lam",
+    "Elena Gamo",
+    "Shruthi VijayKumar",
+    "Lauren Kuo",
+    "Jean-Benoît Lalanne",
+    "Kamen P. Simeonov",
+    "Marion Pepper",
+    "Cole Trapnell",
+    "Jesse M. Gray",
+    "Junhong Choi",
+    "Chengxiang Qiu",
+    "Jay Shendure"
+   ],
+   "published": "2026-11-19T08:00:00+00:00",
+   "doi": "10.1126/science.ael0508",
+   "url": "https://doi.org/10.1126/science.ael0508",
+   "citation": "Yu, Q., Kim, H., Seidel, S., Acosta-Clark, J. F., Martin, B. K., O’Connor, K., Daza, R. M., Gasperini, M., Nathans, J. F., Lam, M., Gamo, E., VijayKumar, S., Kuo, L., Lalanne, J., Simeonov, K. P., Pepper, M., Trapnell, C., Gray, J. M., Choi, J., ... Shendure, J. (2026). A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis. Science, 394(6826), eael0508. https://doi.org/10.1126/science.ael0508",
+   "free_copy": {
+    "url": "https://doi.org/10.1126/science.ael0508",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   }
+  },
+  {
+   "rank": 3,
+   "headline": "Organic nitrogen falling from the air feeds the oceans more than thought",
+   "original_title": "Atmospheric organic nitrogen is a major nutrient source to global oceans",
+   "journal": "Science",
+   "field": "Ocean & Atmospheric Science",
+   "significance": 8,
+   "reason": "Measurements from 21 research cruises combined with a global model show that airborne organic nitrogen supplies about a quarter of the nitrogen deposited on the oceans, reshaping marine nutrient budgets.",
+   "summary": "Nitrogen is a key nutrient for ocean life, and some of it reaches the sea from the atmosphere as particles and gases settle out or wash down in rain. Scientists have tracked the inorganic forms of this nitrogen fairly well, but the share carried in organic (carbon-containing) molecules has been poorly measured. To fill this gap, the researchers sampled tiny airborne particles over the sea during 21 research voyages that crossed several ocean basins and reached high latitudes in both hemispheres, and measured how much organic nitrogen they held.\n\nThey then used these measurements to tune and test a computer model of atmospheric chemistry, updated with improved descriptions of where organic nitrogen comes from and how it is removed from the air. The model estimates that about 12.8 teragrams (million tonnes) of nitrogen per year reach the oceans in organic form, with a wide uncertainty range of roughly 4 to 23. That is around 27% of all nitrogen deposited on the sea. About 70% of this organic nitrogen comes from land sources and about 30% from the ocean itself. In nitrogen-starved waters such as the central Atlantic and the seas around Indonesia, organic forms make up roughly half of the nitrogen arriving from the air.",
+   "why_it_matters": "In many parts of the ocean, the lack of nitrogen limits how much plankton can grow, so an extra nutrient supply from the air can affect marine food webs and carbon uptake. These results suggest that budgets ignoring organic nitrogen may miss about a quarter of the atmospheric nitrogen input, and around half of it in some nitrogen-poor regions.",
+   "limitations": "The global numbers come from a model constrained by ship-based samples, so their uncertainty ranges are wide (for example, roughly 4 to 23 Tg N per year in total). The abstract also does not say how much of the deposited organic nitrogen marine organisms can actually use.",
+   "key_terms": [
+    {
+     "term": "Nitrogen deposition",
+     "meaning": "Nitrogen compounds moving from the atmosphere onto the Earth's surface (here the ocean), either settling directly or carried down by rain."
+    },
+    {
+     "term": "Organic nitrogen (ON)",
+     "meaning": "Nitrogen bound within carbon-based molecules, in contrast to simple inorganic forms such as nitrate or ammonium."
+    },
+    {
+     "term": "Aerosols",
+     "meaning": "Tiny solid or liquid particles suspended in the air."
+    },
+    {
+     "term": "Atmospheric chemistry model",
+     "meaning": "A computer simulation of how chemicals are emitted, transported, transformed and removed in the atmosphere."
+    },
+    {
+     "term": "Teragram (Tg)",
+     "meaning": "A trillion grams, which equals one million tonnes."
+    },
+    {
+     "term": "N-limited regions",
+     "meaning": "Ocean areas where nitrogen shortage is the main factor holding back the growth of plankton."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Xu Yu",
+    "Yumin Li",
+    "Guitao Shi",
+    "Liuqian Yu",
+    "Yujue Wang",
+    "Senchao Lai",
+    "Yang Zhou",
+    "Yingyi Zhang",
+    "Ningning Sun",
+    "Bo Zhang",
+    "Ye Hu",
+    "Zhe Li",
+    "Yue Jiang",
+    "Wenshuai Li",
+    "Tzung-May Fu",
+    "Jian Zhen Yu"
+   ],
+   "published": "2026-11-19T07:00:11+00:00",
+   "doi": "10.1126/science.aeg4265",
+   "url": "https://doi.org/10.1126/science.aeg4265",
+   "citation": "Yu, X., Li, Y., Shi, G., Yu, L., Wang, Y., Lai, S., Zhou, Y., Zhang, Y., Sun, N., Zhang, B., Hu, Y., Li, Z., Jiang, Y., Li, W., Fu, T., & Yu, J. Z. (2026). Atmospheric organic nitrogen is a major nutrient source to global oceans. Science, 394(6826), 901-906. https://doi.org/10.1126/science.aeg4265",
+   "free_copy": null
+  },
+  {
+   "rank": 4,
+   "headline": "A molecular 'glue' layer helps large perovskite solar panels hold together",
+   "original_title": "Molecular adhesion for durable metal halide perovskite modules",
+   "journal": "Science",
+   "field": "Energy Materials",
+   "significance": 8,
+   "reason": "A molecular adhesion layer lets large perovskite solar modules reach 21–23% efficiency and stay stable through 105 days of independently measured outdoor testing, a step toward commercial durability.",
+   "summary": "Perovskite solar cells are a promising, low-cost alternative to silicon, but large panels tend to wear out because the layers inside them can weaken or come apart. The researchers focused on the hidden boundary at the bottom of the perovskite layer, where it sits on the layer that carries positive charges ('holes') out of the cell. They added a thin molecular layer made from a ring-shaped (aromatic) molecule that can grab onto materials at two different points, so it attaches both to the hole-carrying layer and to the perovskite.\n\nThis interlayer held the stack together through attractions between molecules and through strong chemical bonds. The perovskite stuck better to the layer below it, and built-up mechanical strain at the boundary was relieved, so the devices coped better with stresses from heating and cooling. Mid-sized panels (900 cm², with 655 cm² active) converted 22.7% of incoming sunlight into electricity, and full-sized panels (7200 cm², with 6380 cm² active) reached 21.3%. The best full-sized panel kept steady performance over 105 days outdoors, as measured by an independent testing center (PACT).",
+   "why_it_matters": "Small perovskite lab cells already work well, but turning them into large, long-lasting commercial panels is the main hurdle. This work shows that improving adhesion between internal layers can deliver both high efficiency and early stability at real module sizes, with outdoor results checked by an outside lab.",
+   "limitations": "The outdoor test lasted 105 days and covered the best-performing panel only. Commercial panels are expected to last for decades, so much longer testing is still needed.",
+   "key_terms": [
+    {
+     "term": "Metal halide perovskite",
+     "meaning": "A family of crystalline materials, made of metal and halogen ions (such as lead and iodide), that absorb sunlight well and can be used in solar cells."
+    },
+    {
+     "term": "Buried interface",
+     "meaning": "The boundary underneath the perovskite layer, where it contacts the layer beneath it. It is hard to reach once the device is built."
+    },
+    {
+     "term": "Hole-selective layer",
+     "meaning": "A layer that lets positive charge carriers (holes) pass out of the cell while blocking electrons."
+    },
+    {
+     "term": "Dual-site-binding ligand",
+     "meaning": "A molecule with two parts that can each attach to a surface, so it can link two different materials together."
+    },
+    {
+     "term": "Thermomechanical stress",
+     "meaning": "Strain caused by repeated heating and cooling, which makes layers expand and shrink by different amounts."
+    },
+    {
+     "term": "Power conversion efficiency",
+     "meaning": "The percentage of incoming sunlight energy that a solar device turns into electrical energy."
+    },
+    {
+     "term": "Aperture area",
+     "meaning": "The part of a panel that actually collects light, not counting edges and frame."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Chenglin Yang",
+    "Tian Hou",
+    "Yafeng Xu",
+    "Charles Robinson",
+    "Joshua S. Stein",
+    "Yingtong Guo",
+    "Qingchao Chang",
+    "Hong Li",
+    "Lang Yu",
+    "Yuanyuan Qin",
+    "Omar F. Mohammed",
+    "Yuelong Huang",
+    "Shuai You",
+    "Xiaopeng Zheng"
+   ],
+   "published": "2026-11-19T08:00:00+00:00",
+   "doi": "10.1126/science.aej5001",
+   "url": "https://doi.org/10.1126/science.aej5001",
+   "citation": "Yang, C., Hou, T., Xu, Y., Robinson, C., Stein, J. S., Guo, Y., Chang, Q., Li, H., Yu, L., Qin, Y., Mohammed, O. F., Huang, Y., You, S., & Zheng, X. (2026). Molecular adhesion for durable metal halide perovskite modules. Science, 394(6826), eaej5001. https://doi.org/10.1126/science.aej5001",
+   "free_copy": null
+  },
+  {
+   "rank": 5,
+   "headline": "Lattice math finds a hidden gamma-ray pulsar in hours, not centuries",
+   "original_title": "Gamma-Ray Pulsar Discovery Using a Lattice-Based Method",
+   "journal": "Physical Review Letters",
+   "field": "Astrophysics",
+   "significance": 8,
+   "reason": "A lattice-based search algorithm found a new gamma-ray pulsar in about ten CPU hours where a conventional search failed after roughly 600 CPU years, which could unlock many new discoveries.",
+   "summary": "Pulsars are rapidly spinning neutron stars that emit beams of radiation, which we see as regular pulses. Spotting them through their gamma rays is hard because the signal is so sparse: on average a telescope catches roughly one gamma-ray photon for every hundred million turns of the star. The usual approach is to try enormous numbers of possible spin rates and spin-down patterns until the photon arrival times line up, which is computationally very expensive. The authors extended a recently proposed algorithm that instead recasts the problem as finding short vectors in a high-dimensional lattice (a regular grid of points in many dimensions), a task for which efficient mathematical tools already exist.\n\nApplying this method to 15 years of data from the Fermi Large Area Telescope (Fermi-LAT), they found a previously unknown pulsar, PSR J1622−7204. It is isolated (it has no companion star) and spins 261 times per second. The search took about ten hours of computer processor time. The best earlier technique, called a semicoherent search, had looked at the same target and come up empty after roughly 600 years of processor time. The authors describe this as the first gamma-ray pulsar found with this kind of lattice-based method.",
+   "why_it_matters": "A cut in computing cost this large could let astronomers search many more gamma-ray sources for hidden pulsars. The authors say it may be especially useful for pulsars orbiting a companion star. Finding those has been close to impossible unless the orbit was already known in detail, because the orbital motion adds many more unknowns to the search.",
+   "limitations": "So far the method has produced one discovery, an isolated pulsar. Its promise for pulsars in binary systems, and for finding many new pulsars, is still a hope that has not yet been shown.",
+   "key_terms": [
+    {
+     "term": "Pulsar",
+     "meaning": "A fast-rotating, highly magnetized neutron star whose beams of radiation sweep past Earth, producing regular pulses."
+    },
+    {
+     "term": "Fermi-LAT",
+     "meaning": "The Large Area Telescope on NASA's Fermi spacecraft, which detects gamma-ray photons from across the sky."
+    },
+    {
+     "term": "Lattice",
+     "meaning": "A regularly repeating arrangement of points in space. Here the space has many dimensions, and the task is to find especially short vectors (arrows between lattice points)."
+    },
+    {
+     "term": "Semicoherent search",
+     "meaning": "The previous standard technique, which splits long data sets into shorter pieces, analyzes each piece, and then combines the results to look for a periodic signal."
+    },
+    {
+     "term": "CPU hours/years",
+     "meaning": "A measure of computing effort: how long a single computer processor would need to run to complete the work."
+    },
+    {
+     "term": "Isolated pulsar",
+     "meaning": "A pulsar that is not orbiting another star."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Daniel Pook-Kolb",
+    "Dotan Gazith",
+    "Colin J. Clark",
+    "Erik Agrell",
+    "Barak Zackay",
+    "Bruce Allen"
+   ],
+   "published": "2026-11-19T10:00:00+00:00",
+   "doi": "10.1103/vlt2-xzgk",
+   "url": "https://doi.org/10.1103/vlt2-xzgk",
+   "citation": "Pook-Kolb, D., Gazith, D., Clark, C. J., Agrell, E., Zackay, B., & Allen, B. (2026). Gamma-Ray Pulsar Discovery Using a Lattice-Based Method. Physical Review Letters, 137(21), 211201. https://doi.org/10.1103/vlt2-xzgk",
+   "free_copy": {
+    "url": "https://doi.org/10.1103/vlt2-xzgk",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   }
+  },
+  {
+   "rank": 6,
+   "headline": "Early stress primes a brain pathway that worsens pain in female mice",
+   "original_title": "A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress",
+   "journal": "Science",
+   "field": "Neuroscience",
+   "significance": 7,
+   "reason": "In mice, a female-specific thalamus-to-amygdala circuit explains how early-life stress raises later vulnerability to chronic pain, offering a mechanistic basis for the sex difference seen in people.",
+   "summary": "Children who face adversity are more likely to develop chronic pain and anxiety as adults, and this link is stronger in women — but it hasn't been clear what in the brain causes it. This mouse study tested whether early-life stress (social isolation during development) changes how a specific brain circuit responds to a later injury. The circuit runs from the paraventricular thalamus, a relay region involved in alertness and threat, to the central amygdala, a hub for fear and emotional responses to pain.\n\nIn female mice, but not males, isolation plus a later nerve injury combined to strengthen the signalling in this pathway, and the circuit also became active in anticipation of a painful or threatening event. These females showed stronger sensitivity to touch and more avoidance behaviour. Using chemogenetics — engineered receptors that let researchers switch specific neurons on or off with a drug — the team dampened the pathway and reduced both behaviours, but only in animals that had experienced both stress and injury. Turning the pathway on artificially produced the symptoms: steady activation caused touch hypersensitivity, while brief bursts caused avoidance. The authors describe this as a hidden, primed state in the circuit that only shows its effects once an injury occurs later.",
+   "why_it_matters": "It offers a concrete biological explanation for why early-life adversity translates into chronic pain and anxiety more often in females, rather than treating it as a vague risk factor. It also points to a specific circuit — and a specific two-hit timing (early stress, then later injury) — that could guide future treatments. Because the effect appeared only when both hits occurred, it suggests why some people with injuries develop chronic pain while others do not.",
+   "limitations": "This is a mouse study, so whether the same circuit explains sex differences in human chronic pain is untested, and social isolation in mice is only one model of childhood adversity. The abstract does not report how large or lasting the behavioural rescue was.",
+   "key_terms": [
+    {
+     "term": "Paraventricular thalamus",
+     "meaning": "A small brain region that relays signals about arousal, stress and threat to emotional brain centres."
+    },
+    {
+     "term": "Central amygdala",
+     "meaning": "Part of the amygdala that organises fear, avoidance and the emotional side of pain."
+    },
+    {
+     "term": "Chemogenetics",
+     "meaning": "A technique where specific neurons are genetically engineered to carry a custom receptor, so a harmless drug can activate or silence just those cells."
+    },
+    {
+     "term": "Synaptic gain",
+     "meaning": "How strongly a connection between neurons amplifies incoming signals; higher gain means a bigger response to the same input."
+    },
+    {
+     "term": "Mechanical hypersensitivity",
+     "meaning": "Reacting to light touch or pressure as though it were painful."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Anna Maria Borruto",
+    "Tabea Kohlund",
+    "Lukas Rettig",
+    "Martin von Renesse",
+    "Christian Alexander Hammer",
+    "Nikolas Leonhardt",
+    "Barbara Kurpiers",
+    "Claudia Calpe-López",
+    "Luca Benn",
+    "Hans-Christoph Friederich",
+    "Thomas Kuner",
+    "Rainer Spanagel",
+    "Sebastian Wieland"
+   ],
+   "published": "2026-11-19T07:00:11+00:00",
+   "doi": "10.1126/science.adx5757",
+   "url": "https://doi.org/10.1126/science.adx5757",
+   "citation": "Borruto, A. M., Kohlund, T., Rettig, L., Renesse, M. v., Hammer, C. A., Leonhardt, N., Kurpiers, B., Calpe-López, C., Benn, L., Friederich, H., Kuner, T., Spanagel, R., & Wieland, S. (2026). A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress. Science, 394(6826), 864-869. https://doi.org/10.1126/science.adx5757",
+   "free_copy": null
+  },
+  {
+   "rank": 7,
+   "headline": "A nuclear tug-of-war over unfinished RNAs tunes mitochondria and nerve health",
+   "original_title": "The fate of poised pre-mRNAs shapes mitochondrial activity and cellular differentiation",
+   "journal": "Science",
+   "field": "Molecular Biology",
+   "significance": 7,
+   "reason": "The paper uncovers a nuclear quality-control mechanism for unspliced RNAs that governs mitochondrial function and is linked to human neurological disease from RNA exosome mutations.",
+   "summary": "Genes are first copied into precursor messenger RNAs (pre-mRNAs), which must have their non-coding stretches (introns) cut out before they can be used to make proteins. Cells also run quality-control systems that destroy faulty RNAs, but how far this control reaches inside the nucleus is not well understood. This study looked at a group of pre-mRNAs the authors call PIA-RNAs: molecules that already carry their finishing tail of adenines but still contain an intron and sit on chromatin (the DNA-protein material of chromosomes), apparently waiting.\n\nThe researchers found that the fate of these waiting RNAs depends on which protein binds them. If a protein called NCBP3 grabs them, they are kept as immature mRNAs that can finish splicing later. If a protein called anillin binds instead, they are sent to the nuclear RNA exosome, a machine that breaks RNA down. Many of the RNAs caught in this competition code for proteins used by mitochondria, the cell's energy producers. Mice lacking NCBP3, and people carrying disease-causing mutations in the RNA exosome, both showed weaker mitochondrial activity, muscle weakness, poor insulation (myelin) of nerves in the cerebellum, and reduced motor coordination.",
+   "why_it_matters": "The work suggests that deciding whether to save or destroy unfinished RNAs is not just housekeeping but a way of controlling how well mitochondria work and how cells mature. It also offers a possible explanation for how defects in RNA-processing machinery lead to certain neurological diseases.",
+   "limitations": "The abstract does not give details on how many RNAs or patients were studied, and the link to human disease rests on existing exosome mutations rather than direct manipulation of NCBP3 in people. Effects of removing NCBP3 were shown in mice, so how closely this applies to humans remains to be confirmed.",
+   "key_terms": [
+    {
+     "term": "Pre-mRNA",
+     "meaning": "The first, unprocessed RNA copy of a gene, which still contains introns that must be removed before it becomes a usable messenger RNA."
+    },
+    {
+     "term": "Intron and splicing",
+     "meaning": "Introns are non-coding segments inside a gene's RNA; splicing is the process of cutting them out and joining the remaining pieces."
+    },
+    {
+     "term": "Polyadenylation",
+     "meaning": "Adding a tail of adenine nucleotides to the end of an RNA, normally a sign it is nearly finished."
+    },
+    {
+     "term": "Nuclear RNA exosome",
+     "meaning": "A protein complex in the nucleus that degrades unwanted or faulty RNA molecules."
+    },
+    {
+     "term": "NCBP3",
+     "meaning": "Nuclear cap-binding protein 3, which binds the start (cap) of RNAs; here it protects waiting pre-mRNAs so they can be spliced later."
+    },
+    {
+     "term": "Anillin",
+     "meaning": "A protein that, in this study, steers waiting pre-mRNAs toward destruction by the exosome."
+    },
+    {
+     "term": "Cerebellar hypomyelination",
+     "meaning": "Too little myelin, the insulating layer around nerve fibres, in the cerebellum, a brain region that coordinates movement."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Xavier Rambout",
+    "Rina Nagao",
+    "Victor Gu",
+    "Sophie Werner",
+    "Justin Youngyunpipatkul",
+    "Jadon Schlierf",
+    "Christoph Pröschel",
+    "Lynne E. Maquat"
+   ],
+   "published": "2026-11-19T08:00:00+00:00",
+   "doi": "10.1126/science.aee8018",
+   "url": "https://doi.org/10.1126/science.aee8018",
+   "citation": "Rambout, X., Nagao, R., Gu, V., Werner, S., Youngyunpipatkul, J., Schlierf, J., Pröschel, C., & Maquat, L. E. (2026). The fate of poised pre-mRNAs shapes mitochondrial activity and cellular differentiation. Science, 394(6826), eaee8018. https://doi.org/10.1126/science.aee8018",
+   "free_copy": null
+  },
+  {
+   "rank": 8,
+   "headline": "Hollow shells with one opening use turbulence to sort and trap particles",
+   "original_title": "Quiet within, chaos without: Turbulence shelters drive selective particle capture and release",
+   "journal": "Science",
+   "field": "Physics / Fluid Dynamics",
+   "significance": 7,
+   "reason": "Hollow \"turbulence shelters\" use eddy filtering to sort particles by size down to tens of nanometres with no net fluid flow, a new design principle for filtration.",
+   "summary": "Turbulent flow looks random, but its swirls (eddies) pass energy from large scales down to small ones in an organized way. Because turbulence is not in thermal equilibrium, it is not bound by the rules that stop anyone from pulling useful work out of the random jiggling of gas molecules. The researchers asked whether this structure could be used to move particles in a chosen direction without any overall flow of fluid. They built what they call turbulence shelters: hollow shells with a single hole. The hole lets only eddies of certain sizes inside, so the interior stays calmer than the churning fluid outside.\n\nThis difference in how strongly the fluid fluctuates inside versus outside pushes particles in one direction, either into the shelter or out of it, even though no net fluid passes through the hole. The effect held for shelters spanning a thousandfold range of sizes, and particle concentrations inside and outside ended up different. Which particles were captured or released depended on their shape, their inertia (how hard they are to speed up or slow down), random thermal motion, and electrostatic forces. At the smallest scale, shelters could tell apart particles whose sizes differed by only tens of nanometers, whatever material the particles were made of.",
+   "why_it_matters": "The work suggests a new principle for filtering: shape a container so it separates calm and turbulent regions, and existing background turbulence will do the sorting with no pump-driven flow through a membrane. Being able to separate particles by size regardless of composition could be useful wherever turbulent fluids carry mixed particles.",
+   "limitations": "The abstract does not give capture efficiencies, speeds, or energy costs, and does not say how well the approach works outside the tested setups or compares with existing filters.",
+   "key_terms": [
+    {
+     "term": "Turbulence",
+     "meaning": "Chaotic, swirling fluid motion with eddies of many sizes."
+    },
+    {
+     "term": "Energy cascade",
+     "meaning": "The way energy in turbulence moves from large eddies to progressively smaller ones until it is lost as heat."
+    },
+    {
+     "term": "Nonequilibrium",
+     "meaning": "A system that is constantly driven and not settled into a steady thermal balance, so equilibrium limits on extracting work need not apply."
+    },
+    {
+     "term": "Turbulence shelter",
+     "meaning": "A hollow shell with one opening that admits only some eddy sizes, keeping its interior less turbulent than the outside."
+    },
+    {
+     "term": "Zero mean fluid flux",
+     "meaning": "On average, no net fluid flows into or out of the shell, even though it moves back and forth."
+    },
+    {
+     "term": "Inertia",
+     "meaning": "A particle's resistance to changes in its motion, which depends mainly on its mass."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Matteo Sabato",
+    "Sarah Chong",
+    "Yaocheng Li",
+    "Zhe Xu",
+    "Daqian Gao",
+    "Martin J. Falk",
+    "Stefano Sacanna",
+    "William T. M. Irvine"
+   ],
+   "published": "2026-11-19T07:00:11+00:00",
+   "doi": "10.1126/science.aee9889",
+   "url": "https://doi.org/10.1126/science.aee9889",
+   "citation": "Sabato, M., Chong, S., Li, Y., Xu, Z., Gao, D., Falk, M. J., Sacanna, S., & Irvine, W. T. M. (2026). Quiet within, chaos without: Turbulence shelters drive selective particle capture and release. Science, 394(6826), 884-889. https://doi.org/10.1126/science.aee9889",
+   "free_copy": null
+  }
+ ]
+}

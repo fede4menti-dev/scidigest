@@ -1,7 +1,26 @@
 {
  "format": 1,
- "updated": "2026-11-19T22:48:38+00:00",
+ "updated": "2026-11-20T10:07:41+00:00",
  "days": [
+  {
+   "date": "2026-11-20",
+   "count": 8,
+   "fields": [
+    "Astrophysics",
+    "Developmental Biology",
+    "Energy Materials",
+    "Global Health",
+    "Molecular Biology",
+    "Neuroscience",
+    "Ocean & Atmospheric Science",
+    "Physics / Fluid Dynamics"
+   ],
+   "top_headlines": [
+    "Vaccinating whole communities against malaria each season lowered infection rates",
+    "Molecular 'typewriter' in DNA traces a mouse embryo's family tree of cells",
+    "Organic nitrogen falling from the air feeds the oceans more than thought"
+   ]
+  },
   {
    "date": "2026-11-19",
    "count": 8,

@@ -15,6 +15,10 @@
 **Field:** {{ e.pick.field }} · **Journal:** *{{ e.article.journal }}* · **Significance:** {{ e.pick.score }}/10{% if e.s.based_on %} · *Summarised from {{ e.s.based_on }}*{% endif %}
 *Original title: "{{ e.article.title }}"*
 {{ e.published_label }}{% if e.featured_label %} · {{ e.featured_label }}{% endif %}
+{% if e.image %}
+![{{ e.image.caption or e.s.headline }}]({{ e.image.url }})
+*{% if e.image.kind == "illustration" %}Illustration, not from the paper. {% endif %}{{ e.image.caption }} Credit: {{ e.image.credit }}{% if e.image.license %}, {{ e.image.license }}{% endif %}.*
+{% endif %}
 
 {{ e.s.summary }} [{{ e.n }}]
 

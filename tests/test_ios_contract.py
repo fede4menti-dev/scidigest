@@ -47,7 +47,9 @@ def test_models_match_published_json(tmp_path):
     added_later = {"kind", "id", "title", "period_start", "period_end", "intro"}
     check(day, "Digest", nullable=added_later)
     check(review, "Digest", nullable=added_later)
-    check(day["papers"][0], "Paper", nullable={"published", "doi", "free_copy", "featured_on"})
+    check(day["papers"][0], "Paper", nullable={"published", "doi", "free_copy", "featured_on", "image"})
     assert day["papers"][0]["featured_on"] == ["2026-11-18"]       # repeat after 4 days is allowed
     check({"term": "", "meaning": ""}, "KeyTerm")
+    check({"kind": "", "url": "", "caption": "", "credit": "", "license": "", "license_url": None, "source_url": ""},
+          "PaperImage", nullable={"license_url"})
     check({"url": "", "version": "", "host": "", "license": None}, "FreeCopy", nullable={"license"})

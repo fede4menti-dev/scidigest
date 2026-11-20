@@ -61,6 +61,15 @@ struct PaperRow: View {
     var inReview = false
 
     var body: some View {
+        HStack(alignment: .top, spacing: 12) {
+            details
+            if let image = paper.image {
+                PaperThumbnail(image: image)
+            }
+        }
+    }
+
+    private var details: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 6) {
                 Chip(text: paper.field, color: Theme.color(for: paper.field))

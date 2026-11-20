@@ -86,6 +86,7 @@ struct Paper: Codable, Identifiable, Hashable {
     let citation: String
     let freeCopy: FreeCopy?
     let featuredOn: [String]?
+    let image: PaperImage?
 
     var id: String { "\(rank)-\(url)" }
     var isFullText: Bool { basedOn == "full text" }
@@ -107,6 +108,19 @@ struct Paper: Codable, Identifiable, Hashable {
     /// Other days this paper appeared in the daily digest.
     var featuredDates: [String] { featuredOn ?? [] }
     var featuredLabel: String { featuredDates.map { DayFormat.short($0) }.joined(separator: ", ") }
+}
+
+/// A figure from the paper (open-access, reusable licence) or a free-licensed illustrative photo.
+struct PaperImage: Codable, Hashable {
+    let kind: String          // "figure" or "illustration"
+    let url: String
+    let caption: String
+    let credit: String
+    let license: String
+    let licenseUrl: String?
+    let sourceUrl: String
+
+    var isIllustration: Bool { kind == "illustration" }
 }
 
 struct KeyTerm: Codable, Hashable {

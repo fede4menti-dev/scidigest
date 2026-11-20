@@ -60,6 +60,7 @@ def paper_json(e: dict) -> dict:
             "url": free.url, "version": free.version, "host": free.host, "license": free.license,
         },
         "featured_on": list(e.get("featured_on") or []),
+        "image": s.get("image"),
     }
 
 

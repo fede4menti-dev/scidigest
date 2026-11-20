@@ -106,7 +106,7 @@ def test_site_publish_json_contract(tmp_path):
     p = d["papers"][0]
     assert set(p) == {"rank", "headline", "original_title", "journal", "field", "significance", "reason",
                       "summary", "why_it_matters", "limitations", "key_terms", "based_on", "authors",
-                      "published", "doi", "url", "citation", "free_copy", "featured_on"}
+                      "published", "doi", "url", "citation", "free_copy", "featured_on", "image"}
     assert "*" not in p["citation"] and isinstance(p["significance"], int)
     assert (site / "reports" / f"{day['date']}.html").exists() and (site / "index.html").exists()
     assert "does not collect" in (site / "privacy.html").read_text()

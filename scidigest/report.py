@@ -110,6 +110,7 @@ def entries_from_json(digest: dict) -> list[dict]:
             "url": p["url"],
             "published_label": f"Published {short_date(pub)}" if pub else "Publication date not listed",
             "featured_label": featured_label,
+            "image": NS(**p["image"]) if p.get("image") else None,
         })
     return out
 

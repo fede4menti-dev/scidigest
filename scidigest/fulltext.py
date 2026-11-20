@@ -12,7 +12,7 @@ from __future__ import annotations
 import io
 import re
 import xml.etree.ElementTree as ET
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import requests
 
@@ -40,6 +40,7 @@ class FreeCopy:
     host: str                   # e.g. "Europe PMC", "repository", "publisher"
     license: str | None = None
     text: str = ""              # extracted full text ("" if only a link was found)
+    figures: list = field(default_factory=list)  # [{label, caption, url}] when reuse is allowed
 
 
 def _get(url: str, **kw) -> requests.Response:
@@ -89,6 +90,29 @@ def europe_pmc_abstract(doi: str) -> str:
     return _clean(results[0].get("abstractText", "")) if results else ""
 
 
+XLINK = "{http://www.w3.org/1999/xlink}href"
+
+
+def jats_figures(xml: bytes | str, pmcid: str) -> list[dict]:
+    """Figures in a JATS document, with Europe PMC image URLs."""
+    root = ET.fromstring(xml)
+    figs = []
+    for fig in root.iter("fig"):
+        g = fig.find(".//graphic")
+        href = g.get(XLINK) if g is not None else None
+        if not href:
+            continue
+        stem = re.sub(r"\.(jpe?g|gif|tiff?|png)$", "", href, flags=re.I)
+        label = fig.find("label")
+        cap = fig.find("caption")
+        figs.append({
+            "label": _clean(" ".join(label.itertext())) if label is not None else "",
+            "caption": _clean(" ".join(cap.itertext())) if cap is not None else "",
+            "url": f"https://europepmc.org/articles/{pmcid}/bin/{stem}.jpg",
+        })
+    return figs
+
+
 def from_europe_pmc(doi: str) -> tuple[FreeCopy | None, str]:
     """Returns (free copy with text, or None; abstract from Europe PMC, or "")."""
     r = _get(f"{EPMC}/search", params={
@@ -101,10 +125,14 @@ def from_europe_pmc(doi: str) -> tuple[FreeCopy | None, str]:
     pmcid = rec.get("pmcid")
     if not pmcid or rec.get("isOpenAccess") != "Y":
         return None, abstract
-    text = jats_to_text(_get(f"{EPMC}/{pmcid}/fullTextXML").content)
+    xml = _get(f"{EPMC}/{pmcid}/fullTextXML").content
+    text = jats_to_text(xml)
     if len(text) < 1500:
         return None, abstract
+    from .images import reusable
+    figures = jats_figures(xml, pmcid) if reusable(rec.get("license")) else []
     return FreeCopy(
+        figures=figures,
         url=f"https://europepmc.org/article/PMC/{pmcid}",
         version="Published version" if rec.get("pubType", "").lower() != "preprint"
         else VERSION_LABELS["submittedVersion"],

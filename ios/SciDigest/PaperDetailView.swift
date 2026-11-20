@@ -47,6 +47,10 @@ struct PaperDetailView: View {
                     }
                 }
 
+                if let image = paper.image {
+                    PaperImageView(image: image)
+                }
+
                 VStack(alignment: .leading, spacing: 12) {
                     ForEach(paper.paragraphs, id: \.self) { para in
                         Text(para)

@@ -13,6 +13,7 @@ from .fetch import fetch_all, parse_feed
 from .fulltext import europe_pmc_abstract, find_free_copy
 from concurrent.futures import ThreadPoolExecutor
 from .fulltext import FreeCopy
+from .images import figure_image, wikimedia_image
 from .publish import day_json, featured_history, paper_key, publish
 from .report import build_entries, render
 from .reviews import build_review, due_reviews
@@ -65,7 +66,16 @@ def freshness(a, today) -> float:
 def summary_from_paper(p: dict) -> dict:
     return {"headline": p["headline"], "summary": p["summary"], "why_it_matters": p["why_it_matters"],
             "limitations": p.get("limitations", ""), "key_terms": p.get("key_terms", []),
-            "based_on": p.get("based_on", "abstract")}
+            "based_on": p.get("based_on", "abstract"), "image": p.get("image")}
+
+
+def pick_image(article, summary: dict, copy) -> dict | None:
+    """The chosen open-access figure if allowed, else a free-licensed Wikimedia photo."""
+    i = summary.get("figure_index", -1)
+    figs = copy.figures if copy else []
+    if isinstance(i, int) and 0 <= i < len(figs):
+        return figure_image(figs[i], article.journal, copy.license, copy.url, summary.get("figure_caption", ""))
+    return wikimedia_image(summary.get("image_query", ""))
 
 
 def main(argv=None):
@@ -81,6 +91,7 @@ def main(argv=None):
     p.add_argument("--no-fulltext", action="store_true", help="don't look for free full-text copies")
     p.add_argument("--max-fulltext-chars", type=int, default=150_000,
                    help="cap on full-text characters sent per paper (default 150000, about 37K tokens)")
+    p.add_argument("--no-images", action="store_true", help="don't add figures or illustrative photos")
     p.add_argument("--site", type=Path, help="also publish JSON + HTML for the iPhone app into this folder")
     p.add_argument("--review", choices=["weekly", "monthly"],
                    help="only build this review now (needs --site with past daily digests)")
@@ -191,9 +202,15 @@ def main(argv=None):
         summaries[i] = summary_from_paper(history[key(picks[i][0])]["paper"])
     if use_ai and new:
         print(f"Writing {len(new)} student-level summaries...")
-        jobs = [(picks[i][0], free[i].text if free[i] else "", free[i].version if free[i] else "") for i in new]
+        jobs = [(picks[i][0], free[i].text if free[i] else "", free[i].version if free[i] else "",
+                 free[i].figures if free[i] else []) for i in new]
         for i, s in zip(new, ai.summarize_many(jobs, max_chars=args.max_fulltext_chars)):
             summaries[i] = s
+        if not args.no_images:
+            print("Finding images (open-access figures, else free-licensed photos)...")
+            for i in new:
+                summaries[i]["image"] = pick_image(picks[i][0], summaries[i], free[i])
+            print(f"  images for {sum(1 for i in new if summaries[i].get('image'))} of {len(new)} papers")
     elif new:
         for i in new:
             summaries[i] = quoted_summary(picks[i][0])

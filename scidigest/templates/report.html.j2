@@ -24,6 +24,10 @@ article h2{font-size:1.4rem;line-height:1.3;margin:4px 0 6px}
 .orig{color:var(--muted);font-style:italic;font-size:.92rem;margin:0 0 4px}
 .dates{color:var(--muted);font-family:system-ui,sans-serif;font-size:.82rem;margin:0 0 14px}
 .intro{font-size:1.05rem;margin:16px 0 0}
+.pic{margin:0 0 16px}.pic img{display:block;width:100%;max-height:420px;object-fit:contain;background:var(--chip);border-radius:8px}
+.pic figcaption{font-family:system-ui,sans-serif;font-size:.82rem;color:var(--muted);margin-top:6px}
+.pic .credit{display:block;margin-top:2px;font-size:.75rem}.pic a{color:var(--accent)}
+.tag{background:var(--chip);color:var(--accent);padding:1px 6px;border-radius:4px;font-size:.72rem;margin-right:4px}
 h3{font-family:system-ui,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 4px}
 dl{margin:0;font-size:.95rem}dt{font-weight:bold;display:inline}dd{display:inline;margin:0}dd::after{content:"";display:block;margin-bottom:4px}
 sup a{color:var(--accent);text-decoration:none;font-family:system-ui,sans-serif;font-size:.75rem}
@@ -49,6 +53,11 @@ footer{color:var(--muted);font-size:.85rem;margin-top:30px;font-family:system-ui
   <h2>{{ e.n }}. {{ e.s.headline }}</h2>
   <p class="orig">Original title: “{{ e.article.title }}”</p>
   <p class="dates">{{ e.published_label }}{% if e.featured_label %} · {{ e.featured_label }}{% endif %}</p>
+  {% if e.image %}<figure class="pic">
+    <a href="{{ e.image.source_url }}" target="_blank" rel="noopener"><img src="{{ e.image.url }}" alt="{{ e.image.caption or e.s.headline }}" loading="lazy"></a>
+    <figcaption>{% if e.image.kind == "illustration" %}<span class="tag">Illustration, not from the paper</span> {% endif %}{{ e.image.caption }}
+      <span class="credit">{{ e.image.credit }}{% if e.image.license %} · {% if e.image.license_url %}<a href="{{ e.image.license_url }}" target="_blank" rel="noopener">{{ e.image.license }}</a>{% else %}{{ e.image.license }}{% endif %}{% endif %}</span></figcaption>
+  </figure>{% endif %}
   {% for para in e.s.summary.split("\n") if para.strip() %}<p>{{ para }}{% if loop.last %}<sup><a href="#ref{{ e.n }}">[{{ e.n }}]</a></sup>{% endif %}</p>{% endfor %}
   <h3>Why it matters</h3><p>{{ e.s.why_it_matters }}</p>
   {% if e.s.limitations %}<h3>Caveats</h3><p>{{ e.s.limitations }}</p>{% endif %}

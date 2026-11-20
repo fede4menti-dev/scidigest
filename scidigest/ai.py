@@ -210,8 +210,12 @@ SUMMARY_SCHEMA = {
             },
         },
         "limitations": {"type": "string", "description": "1-2 sentences on caveats or open questions; empty if the abstract gives no basis"},
+        "figure_index": {"type": "integer", "description": "index of the paper figure that best shows the main finding, or -1 if no figures are listed or none is clear enough for a student"},
+        "figure_caption": {"type": "string", "description": "plain-language caption (1-2 sentences) for that figure, based only on its original caption; empty if figure_index is -1"},
+        "image_query": {"type": "string", "description": "2-4 word search for a real photo of the paper's subject (an organism, object, place or instrument), e.g. 'malaria mosquito', 'perovskite solar panel', 'radio telescope'. Avoid abstract concepts."},
     },
-    "required": ["headline", "summary", "why_it_matters", "key_terms", "limitations"],
+    "required": ["headline", "summary", "why_it_matters", "key_terms", "limitations",
+                 "figure_index", "figure_caption", "image_query"],
     "additionalProperties": False,
 }
 
@@ -227,10 +231,15 @@ def copied_fraction(summary: str, source: str) -> float:
     return len(s & _shingles(source)) / len(s) if s else 0.0
 
 
-def summarize(article: Article, full_text: str = "", version: str = "",
+def summarize(article: Article, full_text: str = "", version: str = "", figures: list | None = None,
               max_chars: int = 150_000, attempts: int = 2) -> dict:
     prompt = (f"Journal: {article.journal}\nTitle: {article.title}\n\n"
               f"Abstract / description from the publisher:\n{article.abstract or '(none provided)'}")
+    if figures:
+        prompt += "\n\nFigures available from the paper (choose one with figure_index, or -1):\n" + "\n".join(
+            f"[{i}] {f.get('label', '')}: {f.get('caption', '')[:500]}" for i, f in enumerate(figures))
+    else:
+        prompt += "\n\nNo figures are available for this paper: set figure_index to -1 and figure_caption to empty."
     note = ""
     if full_text:
         body = full_text[:max_chars]
@@ -257,7 +266,7 @@ def summarize(article: Article, full_text: str = "", version: str = "",
 
 
 def summarize_many(jobs: list[tuple[Article, str, str]], workers: int = 4, **kw) -> list[dict]:
-    """jobs: (article, full_text, version_label) tuples."""
+    """jobs: (article, full_text, version_label, figures) tuples."""
     def safe(job):
         article = job[0]
         try:
@@ -268,7 +277,8 @@ def summarize_many(jobs: list[tuple[Article, str, str]], workers: int = 4, **kw)
                     "summary": article.abstract or "(No abstract available.)",
                     "why_it_matters": "A plain-language summary could not be generated for this paper today; "
                                       "the text above is the publisher's abstract.",
-                    "key_terms": [], "limitations": "", "based_on": "abstract (not paraphrased)"}
+                    "key_terms": [], "limitations": "", "based_on": "abstract (not paraphrased)",
+                    "figure_index": -1, "figure_caption": "", "image_query": ""}
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
         return list(pool.map(safe, jobs))

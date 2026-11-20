@@ -93,7 +93,10 @@
     "version": "Published version",
     "host": "publisher",
     "license": "cc-by"
-   }
+   },
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": true
   },
   {
    "rank": 2,
@@ -147,7 +150,10 @@
    "doi": "10.1126/science.aef8963",
    "url": "https://doi.org/10.1126/science.aef8963",
    "citation": "Silva, A. B., Leonard, M. K., Hullett, P. W., Levy, D. F., Wang, C., Xu, D., Bhaya-Grossman, I., & Chang, E. F. (2026). A neural code for generative speech production in human Wernicke’s area. Science, 394(6826), eaef8963. https://doi.org/10.1126/science.aef8963",
-   "free_copy": null
+   "free_copy": null,
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": true
   },
   {
    "rank": 3,
@@ -209,7 +215,10 @@
    "doi": "10.1126/science.aeg4265",
    "url": "https://doi.org/10.1126/science.aeg4265",
    "citation": "Yu, X., Li, Y., Shi, G., Yu, L., Wang, Y., Lai, S., Zhou, Y., Zhang, Y., Sun, N., Zhang, B., Hu, Y., Li, Z., Jiang, Y., Li, W., Fu, T., & Yu, J. Z. (2026). Atmospheric organic nitrogen is a major nutrient source to global oceans. Science, 394(6826), 901-906. https://doi.org/10.1126/science.aeg4265",
-   "free_copy": null
+   "free_copy": null,
+   "category": "climate",
+   "category_name": "Climate & Environment",
+   "editors_pick": true
   },
   {
    "rank": 4,
@@ -273,7 +282,10 @@
    "doi": "10.1126/science.aej5001",
    "url": "https://doi.org/10.1126/science.aej5001",
    "citation": "Yang, C., Hou, T., Xu, Y., Robinson, C., Stein, J. S., Guo, Y., Chang, Q., Li, H., Yu, L., Qin, Y., Mohammed, O. F., Huang, Y., You, S., & Zheng, X. (2026). Molecular adhesion for durable metal halide perovskite modules. Science, 394(6826), eaej5001. https://doi.org/10.1126/science.aej5001",
-   "free_copy": null
+   "free_copy": null,
+   "category": "materials",
+   "category_name": "Materials & Nanoscience",
+   "editors_pick": true
   },
   {
    "rank": 5,
@@ -324,7 +336,10 @@
    "doi": "10.1126/science.aeh0182",
    "url": "https://doi.org/10.1126/science.aeh0182",
    "citation": "Tang, Y., Tollefsen, R., Yadav, N., Zuerch, M. W., & Häffner, H. (2026). Angular momentum transfer from an optical vortex to an atomic rotor. Science, 394(6826), 890-894. https://doi.org/10.1126/science.aeh0182",
-   "free_copy": null
+   "free_copy": null,
+   "category": "physics",
+   "category_name": "Physics",
+   "editors_pick": true
   },
   {
    "rank": 6,
@@ -407,7 +422,10 @@
    "doi": "10.1038/s41591-026-04783-y",
    "url": "https://doi.org/10.1038/s41591-026-04783-y",
    "citation": "Mikkilineni, L., Hamilton, M. P., Jensen, A., Lim, K. J., Galarza-Fortuna, G. M., Kumar, A. D., Ferreri, C. J., Portuguese, A. J., Hosoya, H., Dong, S., Abdallah, N. H., Song, J., Gonzalez, R., Shestakova, A., Chowla, N., Chen, Z. E., Godara, A., Mohyuddin, G. R., Brondfield, M. N., ... Wolf, J. L. (2026). Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy. Nature Medicine. https://doi.org/10.1038/s41591-026-04783-y",
-   "free_copy": null
+   "free_copy": null,
+   "category": "clinical",
+   "category_name": "Clinical & Disease Research",
+   "editors_pick": true
   },
   {
    "rank": 7,
@@ -462,7 +480,10 @@
    "doi": "10.1126/science.adx5757",
    "url": "https://doi.org/10.1126/science.adx5757",
    "citation": "Borruto, A. M., Kohlund, T., Rettig, L., Renesse, M. v., Hammer, C. A., Leonhardt, N., Kurpiers, B., Calpe-López, C., Benn, L., Friederich, H., Kuner, T., Spanagel, R., & Wieland, S. (2026). A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress. Science, 394(6826), 864-869. https://doi.org/10.1126/science.adx5757",
-   "free_copy": null
+   "free_copy": null,
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": true
   },
   {
    "rank": 8,
@@ -516,7 +537,10 @@
    "doi": "10.1126/science.aee9889",
    "url": "https://doi.org/10.1126/science.aee9889",
    "citation": "Sabato, M., Chong, S., Li, Y., Xu, Z., Gao, D., Falk, M. J., Sacanna, S., & Irvine, W. T. M. (2026). Quiet within, chaos without: Turbulence shelters drive selective particle capture and release. Science, 394(6826), 884-889. https://doi.org/10.1126/science.aee9889",
-   "free_copy": null
+   "free_copy": null,
+   "category": "physics",
+   "category_name": "Physics",
+   "editors_pick": true
   }
  ]
 }

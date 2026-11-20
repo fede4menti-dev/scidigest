@@ -298,3 +298,27 @@ def test_site_settings_panel_and_home_screen_files(tmp_path):
     for f in ("manifest.webmanifest", "apple-touch-icon.png", "icon-192.png", "icon-512.png"):
         assert (site / f).exists()
     assert json.loads((site / "manifest.webmanifest").read_text())["display"] == "standalone"
+
+
+def test_backfill_tags_old_papers(tmp_path):
+    from scidigest.backfill import backfill_topics, guess_topic
+    assert guess_topic("Astronomy", "A star spirals") == "astronomy"
+    assert guess_topic("Materials Science / Energy", "perovskite solar cells") == "materials"
+    assert guess_topic("Ecology / Conservation", "Farming reshuffles species") == "ecology"
+    site = _run(tmp_path, "2026-11-18", "--no-reviews")
+    f = site / "data" / "2026-11-18.json"
+    d = json.loads(f.read_text())
+    for p in d["papers"]:
+        p.pop("category"); p.pop("category_name"); p.pop("editors_pick")
+        p["field"] = "Astronomy"
+    f.write_text(json.dumps(d))
+    assert backfill_topics(site, use_ai=False, log=lambda *_: None) == len(d["papers"])
+    d = json.loads(f.read_text())
+    assert all(p["category"] == "astronomy" and p["category_name"] == "Astronomy & Planetary Science" for p in d["papers"])
+    assert backfill_topics(site, use_ai=False) == 0          # nothing left to do
+
+
+def test_untagged_papers_do_not_match_a_topic_filter(tmp_path):
+    site = _run(tmp_path, "2026-11-18")
+    html = (site / "reports" / "2026-11-18.html").read_text()
+    assert "!c.dataset.topic||" not in html

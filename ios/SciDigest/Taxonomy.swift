@@ -77,9 +77,10 @@ enum TopicPrefs {
         topics.sorted().joined(separator: ",")
     }
 
-    /// Papers from before topics existed have no category and always match.
+    /// With no topics chosen everything matches; otherwise only papers tagged with a followed topic.
     static func matches(_ paper: Paper, _ followed: Set<String>) -> Bool {
-        guard !followed.isEmpty, let c = paper.category else { return true }
+        guard !followed.isEmpty else { return true }
+        guard let c = paper.category else { return false }
         return followed.contains(c)
     }
 

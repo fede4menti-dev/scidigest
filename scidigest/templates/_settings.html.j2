@@ -63,7 +63,7 @@
   var main=document.querySelector("main[data-report]");
   if(main&&f.length){
     var cards=[].slice.call(main.querySelectorAll("details.card"));
-    var mine=cards.filter(function(c){return !c.dataset.topic||f.indexOf(c.dataset.topic)>=0});
+    var mine=cards.filter(function(c){return f.indexOf(c.dataset.topic)>=0});
     mine.sort(function(a,b){var ea=a.dataset.editors==="1",eb=b.dataset.editors==="1";
       if(ea!==eb)return ea?-1:1;return ea?(+a.dataset.rank- +b.dataset.rank):(+b.dataset.score- +a.dataset.score)});
     var sec=document.createElement("section"),h=document.createElement("h2"),grid=document.createElement("div");

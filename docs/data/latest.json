@@ -142,7 +142,10 @@
     "license": "CC BY 2.0",
     "license_url": "https://creativecommons.org/licenses/by/2.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010,_Kisumu,_Kenya_April_25,_2010.jpg"
-   }
+   },
+   "category": "clinical",
+   "category_name": "Clinical & Disease Research",
+   "editors_pick": true
   },
   {
    "rank": 2,
@@ -215,7 +218,10 @@
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Trichomonas_Gram_stain.jpg"
-   }
+   },
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": true
   },
   {
    "rank": 3,
@@ -316,7 +322,10 @@
     "license": "CC BY 2.0",
     "license_url": "https://creativecommons.org/licenses/by/2.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Andromeda_Galaxy_(with_h-alpha).jpg"
-   }
+   },
+   "category": "astronomy",
+   "category_name": "Astronomy & Planetary Science",
+   "editors_pick": true
   },
   {
    "rank": 4,
@@ -389,7 +398,10 @@
     "license": "CC BY 4.0",
     "license_url": "https://creativecommons.org/licenses/by/4.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg"
-   }
+   },
+   "category": "clinical",
+   "category_name": "Clinical & Disease Research",
+   "editors_pick": true
   },
   {
    "rank": 5,
@@ -456,7 +468,10 @@
     "license": "Public domain",
     "license_url": null,
     "source_url": "https://commons.wikimedia.org/wiki/File:Perovskite_solar_cell.jpg"
-   }
+   },
+   "category": "materials",
+   "category_name": "Materials & Nanoscience",
+   "editors_pick": true
   },
   {
    "rank": 6,
@@ -564,7 +579,10 @@
     "license": "CC BY-SA 3.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg"
-   }
+   },
+   "category": "ecology",
+   "category_name": "Ecology & Biodiversity",
+   "editors_pick": true
   },
   {
    "rank": 7,
@@ -651,7 +669,10 @@
     "license": "Public domain",
     "license_url": null,
     "source_url": "https://commons.wikimedia.org/wiki/File:Karst_Landscape,_China_(ASTER).jpg"
-   }
+   },
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": true
   },
   {
    "rank": 8,
@@ -715,7 +736,10 @@
     "license": "CC BY 2.0",
     "license_url": "https://creativecommons.org/licenses/by/2.0",
     "source_url": "https://commons.wikimedia.org/wiki/File:Agrotis_infusa.jpg"
-   }
+   },
+   "category": "ecology",
+   "category_name": "Ecology & Biodiversity",
+   "editors_pick": true
   }
  ]
 }

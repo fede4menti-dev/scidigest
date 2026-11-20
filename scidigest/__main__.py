@@ -15,7 +15,8 @@ from .fulltext import europe_pmc_abstract, find_free_copy
 from concurrent.futures import ThreadPoolExecutor
 from .fulltext import FreeCopy
 from .images import figure_image, wikimedia_image
-from .publish import day_json, featured_history, paper_key, publish
+from .backfill import backfill_topics
+from .publish import day_json, featured_history, paper_key, publish, rebuild_site
 from .report import build_entries, render
 from .reviews import build_review, due_reviews
 from .sources import SOURCES
@@ -117,6 +118,7 @@ def main(argv=None):
     if args.review:
         if not args.site:
             sys.exit("--review needs --site (the folder with past daily digests).")
+        backfill_topics(args.site, use_ai)
         make_review(args, args.review, today, use_ai)
         return
 
@@ -235,6 +237,8 @@ def main(argv=None):
     print(f"\nDone.\n  HTML:     {html_path.resolve()}\n  Markdown: {md_path.resolve()}")
     if args.site:
         print(f"  App data: {publish(args.site, digest).resolve()}")
+        if backfill_topics(args.site, use_ai):
+            rebuild_site(args.site)
         if not args.no_reviews:
             for kind in due_reviews(today):
                 make_review(args, kind, today, use_ai)

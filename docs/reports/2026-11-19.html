@@ -121,17 +121,22 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   <span class="act">Choose topics</span>
 </button>
 
+<nav class="chips" aria-label="Filter by topic">
+  <button type="button" data-topic="" aria-pressed="true">All topics</button>
+  <button type="button" data-topic="physics" aria-pressed="false">Physics</button><button type="button" data-topic="materials" aria-pressed="false">Materials &amp; Nanoscience</button><button type="button" data-topic="organismal" aria-pressed="false">Organismal &amp; Systems</button><button type="button" data-topic="clinical" aria-pressed="false">Clinical &amp; Disease Research</button><button type="button" data-topic="climate" aria-pressed="false">Climate &amp; Environment</button>
+</nav>
+
 
 
 
 <main data-report>
   <h2 class="editors">Editor&#39;s picks</h2>
   <div class="grid editors-grid">
-<details class="card" id="p1" data-topic="" data-editors="1" data-rank="1" data-score="9">
+<details class="card" id="p1" data-topic="organismal" data-editors="1" data-rank="1" data-score="9">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">D</div></div>
+    <div class="thumb"><div class="ph" aria-hidden="true">O</div></div>
     <div class="body">
-      <div class="kicker"><span class="topic">Developmental Biology</span>
+      <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
         
         </div>
@@ -154,11 +159,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p2" data-topic="" data-editors="1" data-rank="2" data-score="9">
+<details class="card" id="p2" data-topic="organismal" data-editors="1" data-rank="2" data-score="9">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">N</div></div>
+    <div class="thumb"><div class="ph" aria-hidden="true">O</div></div>
     <div class="body">
-      <div class="kicker"><span class="topic">Neuroscience</span>
+      <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
         
         </div>
@@ -181,11 +186,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p3" data-topic="" data-editors="1" data-rank="3" data-score="8">
+<details class="card" id="p3" data-topic="climate" data-editors="1" data-rank="3" data-score="8">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">O</div></div>
+    <div class="thumb"><div class="ph" aria-hidden="true">C</div></div>
     <div class="body">
-      <div class="kicker"><span class="topic">Ocean and Atmospheric Science</span>
+      <div class="kicker"><span class="topic">Climate &amp; Environment</span>
         
         
         </div>
@@ -208,11 +213,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p4" data-topic="" data-editors="1" data-rank="4" data-score="8">
+<details class="card" id="p4" data-topic="materials" data-editors="1" data-rank="4" data-score="8">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">M</div></div>
     <div class="body">
-      <div class="kicker"><span class="topic">Materials Science and Energy</span>
+      <div class="kicker"><span class="topic">Materials &amp; Nanoscience</span>
         
         
         </div>
@@ -235,7 +240,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p5" data-topic="" data-editors="1" data-rank="5" data-score="7">
+<details class="card" id="p5" data-topic="physics" data-editors="1" data-rank="5" data-score="7">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">P</div></div>
     <div class="body">
@@ -262,11 +267,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p6" data-topic="" data-editors="1" data-rank="6" data-score="7">
+<details class="card" id="p6" data-topic="clinical" data-editors="1" data-rank="6" data-score="7">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">M</div></div>
+    <div class="thumb"><div class="ph" aria-hidden="true">C</div></div>
     <div class="body">
-      <div class="kicker"><span class="topic">Medicine and Oncology</span>
+      <div class="kicker"><span class="topic">Clinical &amp; Disease Research</span>
         
         
         </div>
@@ -289,11 +294,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p7" data-topic="" data-editors="1" data-rank="7" data-score="7">
+<details class="card" id="p7" data-topic="organismal" data-editors="1" data-rank="7" data-score="7">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">N</div></div>
+    <div class="thumb"><div class="ph" aria-hidden="true">O</div></div>
     <div class="body">
-      <div class="kicker"><span class="topic">Neuroscience</span>
+      <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
         
         </div>
@@ -316,11 +321,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p8" data-topic="" data-editors="1" data-rank="8" data-score="7">
+<details class="card" id="p8" data-topic="physics" data-editors="1" data-rank="8" data-score="7">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">P</div></div>
     <div class="body">
-      <div class="kicker"><span class="topic">Physics and Fluid Dynamics</span>
+      <div class="kicker"><span class="topic">Physics</span>
         
         
         </div>
@@ -461,7 +466,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   var main=document.querySelector("main[data-report]");
   if(main&&f.length){
     var cards=[].slice.call(main.querySelectorAll("details.card"));
-    var mine=cards.filter(function(c){return !c.dataset.topic||f.indexOf(c.dataset.topic)>=0});
+    var mine=cards.filter(function(c){return f.indexOf(c.dataset.topic)>=0});
     mine.sort(function(a,b){var ea=a.dataset.editors==="1",eb=b.dataset.editors==="1";
       if(ea!==eb)return ea?-1:1;return ea?(+a.dataset.rank- +b.dataset.rank):(+b.dataset.score- +a.dataset.score)});
     var sec=document.createElement("section"),h=document.createElement("h2"),grid=document.createElement("div");

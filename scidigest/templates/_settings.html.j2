@@ -1,0 +1,86 @@
+{# Settings panel shared by every page. Preferences live in this browser (localStorage). #}
+<dialog class="settings" id="settings" aria-labelledby="settings-title">
+  <form method="dialog" class="sheet" id="settings-form">
+    <header><h2 id="settings-title">Settings</h2><button class="close" value="cancel" aria-label="Close">×</button></header>
+    <div class="content">
+      <h3>Your topics</h3>
+      <p class="help" style="margin-top:0">Choose the fields you want to read about. Every daily digest and every weekly and monthly review will show these first.</p>
+      <label class="opt" style="margin-top:12px"><input type="checkbox" id="all-topics"><span><span class="n">All topics</span><br><span class="c">The editor's picks across every field</span></span></label>
+      {% for g in taxonomy %}
+      <h3><span>{{ g.name }}</span><button type="button" class="selgroup" data-group="{{ g.id }}">Select all</button></h3>
+      {% for t in g.topics %}
+      <label class="opt"><input type="checkbox" name="topic" value="{{ t.id }}" data-group="{{ g.id }}"><span><span class="n">{{ t.name }}</span><br><span class="c">{{ t.covers|capitalize }}</span></span></label>
+      {% endfor %}{% endfor %}
+      <h3>Appearance</h3>
+      <div class="seg" role="radiogroup" aria-label="Appearance">
+        <label><input type="radio" name="theme" value="">System</label>
+        <label><input type="radio" name="theme" value="light">Light</label>
+        <label><input type="radio" name="theme" value="dark">Dark</label>
+      </div>
+      <p class="help">Settings are saved in this browser only.</p>
+    </div>
+    <footer><button class="secondary" value="cancel">Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
+  </form>
+</dialog>
+<script>
+(function(){
+  var TOPICS={{ topic_names|tojson }};
+  var KEY="scidigest-topics",THEME="scidigest-theme",FLASH="scidigest-saved";
+  function get(k){try{return localStorage.getItem(k)||""}catch(e){return ""}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function followed(){return get(KEY).split(",").filter(function(t){return TOPICS[t]})}
+  function summary(f){if(!f.length)return "All topics";var n=f.map(function(t){return TOPICS[t]});return n.length<=2?n.join(", "):n[0]+", "+n[1]+" +"+(n.length-2)}
+  function applyTheme(){var t=get(THEME);if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme}
+  applyTheme();
+
+  var dlg=document.getElementById("settings"),boxes=[].slice.call(dlg.querySelectorAll('input[name=topic]')),all=document.getElementById("all-topics");
+  function syncAll(){all.checked=!boxes.some(function(b){return b.checked});
+    [].forEach.call(dlg.querySelectorAll(".selgroup"),function(btn){var g=boxes.filter(function(b){return b.dataset.group===btn.dataset.group});
+      btn.textContent=g.every(function(b){return b.checked})?"Clear":"Select all"})}
+  function open(){var f=followed();boxes.forEach(function(b){b.checked=f.indexOf(b.value)>=0});
+    var th=get(THEME);[].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.checked=r.value===th});
+    syncAll();dlg.showModal()}
+  boxes.forEach(function(b){b.addEventListener("change",syncAll)});
+  all.addEventListener("change",function(){if(all.checked)boxes.forEach(function(b){b.checked=false});syncAll()});
+  [].forEach.call(dlg.querySelectorAll(".selgroup"),function(btn){btn.addEventListener("click",function(){
+    var g=boxes.filter(function(b){return b.dataset.group===btn.dataset.group}),on=!g.every(function(b){return b.checked});
+    g.forEach(function(b){b.checked=on});syncAll()})});
+  [].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.addEventListener("change",function(){set(THEME,r.value);applyTheme()})});
+  document.getElementById("save-settings").addEventListener("click",function(){
+    set(KEY,boxes.filter(function(b){return b.checked}).map(function(b){return b.value}).join(","));
+    try{sessionStorage.setItem(FLASH,"1")}catch(e){}
+    location.reload()});
+  [].forEach.call(document.querySelectorAll("[data-open-settings]"),function(el){el.addEventListener("click",open)});
+
+  // "Your topics" banner
+  var f=followed();
+  [].forEach.call(document.querySelectorAll(".mytopics"),function(el){
+    el.querySelector(".t").textContent=f.length?"Your topics":"Showing all topics";
+    el.querySelector(".s").textContent=summary(f);
+    el.querySelector(".act").textContent=f.length?"Edit":"Choose topics"});
+
+  // Rearrange a report page: "For you" first, then the rest.
+  var main=document.querySelector("main[data-report]");
+  if(main&&f.length){
+    var cards=[].slice.call(main.querySelectorAll("details.card"));
+    var mine=cards.filter(function(c){return !c.dataset.topic||f.indexOf(c.dataset.topic)>=0});
+    mine.sort(function(a,b){var ea=a.dataset.editors==="1",eb=b.dataset.editors==="1";
+      if(ea!==eb)return ea?-1:1;return ea?(+a.dataset.rank- +b.dataset.rank):(+b.dataset.score- +a.dataset.score)});
+    var sec=document.createElement("section"),h=document.createElement("h2"),grid=document.createElement("div");
+    h.textContent="For you";grid.className="grid";sec.appendChild(h);
+    if(mine.length){mine.forEach(function(c){grid.appendChild(c)});sec.appendChild(grid)}
+    else{var p=document.createElement("p");p.className="sub";p.textContent="Nothing new in your topics in this report. Here are the other highlights instead.";sec.appendChild(p)}
+    main.insertBefore(sec,main.firstChild);
+    var eh=main.querySelector("h2.editors"),eg=main.querySelector(".editors-grid");
+    if(eh){if(eg&&eg.children.length)eh.textContent="Also worth reading";else{eh.classList.add("hidden");eg&&eg.classList.add("hidden")}}
+    [].forEach.call(main.querySelectorAll(".topic-section"),function(s){if(!s.querySelector("details.card"))s.classList.add("hidden")});
+    var bt=main.querySelector("h2.by-topic");if(bt&&!main.querySelector(".topic-section:not(.hidden)"))bt.classList.add("hidden");
+    var chips=document.querySelector(".chips");if(chips)chips.classList.add("hidden");
+  }
+
+  var flash="";try{flash=sessionStorage.getItem(FLASH)||"";sessionStorage.removeItem(FLASH)}catch(e){}
+  if(flash){var t=document.createElement("div");t.className="toast";t.setAttribute("role","status");
+    t.textContent=f.length?"Saved. Every day and review now shows your topics first.":"Saved. Showing all topics.";
+    document.body.appendChild(t);setTimeout(function(){t.remove()},3500)}
+})();
+</script>

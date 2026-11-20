@@ -22,10 +22,11 @@ from pathlib import Path
 
 from markupsafe import escape
 
-from .report import headings, html_from_json, long_date
+from .report import _env, headings, html_from_json, long_date, site_context
 from .taxonomy import as_json as taxonomy_json, topic_name
 
 FORMAT_VERSION = 1
+STATIC = Path(__file__).parent / "static"
 DAILY_GLOB = "????-??-??.json"
 
 
@@ -186,27 +187,21 @@ def rebuild_site(site: Path) -> None:
     if days:
         shutil.copyfile(data / f"{days[0]['date']}.json", data / "latest.json")
 
-    def rows(items, ident):
-        return "\n".join(
-            f'<li><a href="reports/{ident(d)}.html">{escape(headings(d)[0] if d.get("kind","daily") != "daily" else long_date(date.fromisoformat(d["date"])))}</a>'
-            f' · {len(d["papers"])} papers<br><small>{escape(" · ".join(p["headline"] for p in d["papers"][:3]))}</small></li>'
-            for d in items)
+    def item(d):
+        ident = d.get("id") or d["date"]
+        label = headings(d)[0] if d.get("kind", "daily") != "daily" else long_date(date.fromisoformat(d["date"]))
+        return {"id": ident, "label": label, "count": len(d["papers"]),
+                "headlines": [p["headline"] for p in d["papers"][:3]]}
 
-    sections = ""
-    if monthly:
-        sections += f"<h2>Monthly reviews</h2><ul>{rows(monthly, lambda d: d['id'])}</ul>"
-    if weekly:
-        sections += f"<h2>Weekly reviews</h2><ul>{rows(weekly, lambda d: d['id'])}</ul>"
-    sections += f"<h2>Daily digests</h2><ul>{rows(days, lambda d: d.get('id') or d['date'])}</ul>"
-    (site / "index.html").write_text(f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><title>Science Digest</title>
-<style>:root{{--bg:#fbfaf7;--ink:#1d1d1f;--muted:#5f6368;--accent:#2f5d8a}}
-@media (prefers-color-scheme:dark){{:root{{--bg:#141517;--ink:#ececec;--muted:#a3a7ad;--accent:#8db6e0}}}}
-body{{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Georgia,serif}}
-main{{max-width:760px;margin:0 auto;padding:40px 16px}}a{{color:var(--accent)}}small{{color:var(--muted)}}
-h2{{font-size:1.2rem;margin-top:32px}}ul{{padding-left:20px}}li{{margin-bottom:14px}}</style></head><body><main>
-<h1>Science Digest</h1>
-<p><small>New research from leading journals, explained for science students. Daily picks, a weekly review every Sunday and a monthly review on the 1st.</small></p>
-{sections}</main></body></html>""", encoding="utf-8")
+    page = _env().get_template("index.html.j2").render(
+        **site_context(root=""),
+        days=[item(d) for d in days],
+        sections=[("Monthly reviews", [item(d) for d in monthly]),
+                  ("Weekly reviews", [item(d) for d in weekly]),
+                  ("Earlier daily digests", [item(d) for d in days[1:]])],
+    )
+    (site / "index.html").write_text(page, encoding="utf-8")
+    for f in STATIC.iterdir():      # app icon + manifest so the site can be added to a home screen
+        shutil.copyfile(f, site / f.name)
     (site / "privacy.html").write_text(PRIVACY_HTML, encoding="utf-8")
     (site / ".nojekyll").write_text("")

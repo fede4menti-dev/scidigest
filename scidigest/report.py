@@ -137,6 +137,12 @@ def _env() -> Environment:
     return env
 
 
+def site_context(root: str) -> dict:
+    """Shared by every site page: topics for the Settings panel, and the path to the site root."""
+    from .taxonomy import TOPICS, as_json
+    return dict(taxonomy=as_json(), topic_names={t: v["name"] for t, v in TOPICS.items()}, root=root)
+
+
 def _context(digest: dict) -> dict:
     from .taxonomy import TOPIC_IDS
     title, subtitle = headings(digest)
@@ -148,7 +154,7 @@ def _context(digest: dict) -> dict:
         groups.setdefault(e["topic_name"], []).append(e)
     topics = sorted({(e["topic"], e["topic_name"]) for e in entries if e["topic"]},
                     key=lambda t: order.get(t[0], 99))
-    return dict(entries=entries, editors=[e for e in entries if e["editors_pick"]],
+    return dict(**site_context(root="../"), entries=entries, editors=[e for e in entries if e["editors_pick"]],
                 by_topic=list(groups.items()), topics=topics, title=title, subtitle=subtitle,
                 intro=digest.get("intro", ""), ai=digest["ai_summaries"],
                 is_review=digest.get("kind", "daily") != "daily")

@@ -4,14 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ title }}</title>
+{% include "_base_css.html.j2" %}
+{% include "_head_app.html.j2" %}
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#14171a;--soft:#4b5563;--muted:#8a919c;--line:#e7e9ee;--accent:#0f766e;--accent-bg:#e6f4f2;--warn:#b45309;--warn-bg:#fdf3e4;--ok:#15803d;--ok-bg:#e8f6ec;--ph:#e9edf2}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1113;--card:#181b1f;--ink:#eef0f2;--soft:#b9c0c9;--muted:#7d8590;--line:#2a2e34;--accent:#5eead4;--accent-bg:#11302d;--warn:#fbbf24;--warn-bg:#33270f;--ok:#86efac;--ok-bg:#12301c;--ph:#22262b}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--accent)}
-.wrap{max-width:1080px;margin:0 auto;padding:28px 16px 64px}
-.brand{font-weight:700;letter-spacing:-.01em;color:var(--accent);font-size:.95rem}
 h1{font-size:2rem;line-height:1.15;letter-spacing:-.02em;margin:6px 0 6px}
 .sub{color:var(--soft);font-size:.95rem}
 .intro{max-width:760px;font-size:1.05rem;margin:14px 0 0}
@@ -54,18 +49,18 @@ h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut
 sup a{text-decoration:none;font-size:.7rem}
 .refs{font-size:.85rem;color:var(--soft);padding-left:20px}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
 footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
-.hidden{display:none!important}
 </style>
 </head>
 <body><div class="wrap">
+{% set home = root ~ "index.html" %}{% include "_topbar.html.j2" %}
 <header>
-  <div class="brand">SciDigest</div>
   <h1>{{ title }}</h1>
   <div class="sub">{{ subtitle }}</div>
   {% if intro %}<p class="intro">{{ intro }}</p>{% endif %}
   {% if not ai %}<div class="note">Summaries here are the publishers' abstracts, not plain-language rewrites.</div>{% endif %}
 </header>
 
+{% include "_mytopics.html.j2" %}
 {% if topics|length > 1 %}
 <nav class="chips" aria-label="Filter by topic">
   <button type="button" data-topic="" aria-pressed="true">All topics</button>
@@ -74,7 +69,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
 {% endif %}
 
 {% macro card(e) %}
-<details class="card" id="p{{ e.n }}" data-topic="{{ e.topic }}">
+<details class="card" id="p{{ e.n }}" data-topic="{{ e.topic }}" data-editors="{{ 1 if e.editors_pick else 0 }}" data-rank="{{ e.n }}" data-score="{{ e.pick.score }}">
   <summary>
     <div class="thumb">{% if e.image %}<img src="{{ e.image.url }}" alt="{{ e.image.caption or e.s.headline }}" loading="lazy">{% else %}<div class="ph" aria-hidden="true">{{ e.topic_name[:1] }}</div>{% endif %}</div>
     <div class="body">
@@ -102,17 +97,20 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
 </details>
 {% endmacro %}
 
-<main>
-  {% if editors %}<h2>{{ "Top papers" if is_review else "Editor's picks" }}</h2>
-  <div class="grid">{% for e in editors %}{{ card(e) }}{% endfor %}</div>{% endif %}
+<main data-report>
+  {% if editors %}<h2 class="editors">{{ "Top papers" if is_review else "Editor's picks" }}</h2>
+  <div class="grid editors-grid">{% for e in editors %}{{ card(e) }}{% endfor %}</div>{% endif %}
   {% if by_topic %}<h2 class="by-topic">More by topic</h2>
   {% for name, items in by_topic %}<section class="topic-section"><h3>{{ name }}</h3><div class="grid">{% for e in items %}{{ card(e) }}{% endfor %}</div></section>{% endfor %}{% endif %}
 
+</main>
+<section>
   <h2>References</h2>
   <ol class="refs">{% for e in entries %}<li id="ref{{ e.n }}" value="{{ e.n }}">{{ e.citation|md_italics }}</li>{% endfor %}</ol>
-</main>
+</section>
 <footer>Summaries are paraphrased{% if ai %} by AI{% endif %} from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</footer>
 </div>
+{% include "_settings.html.j2" %}
 <script>
 document.querySelectorAll("details.card").forEach(function(d){d.addEventListener("toggle",function(){d.classList.toggle("open",d.open)})});
 (function(){var KEY="scidigest-topic",btns=[].slice.call(document.querySelectorAll(".chips button"));if(!btns.length)return;

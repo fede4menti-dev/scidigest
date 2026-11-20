@@ -5,13 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily Science Digest</title>
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#14171a;--soft:#4b5563;--muted:#8a919c;--line:#e7e9ee;--accent:#0f766e;--accent-bg:#e6f4f2;--warn:#b45309;--warn-bg:#fdf3e4;--ok:#15803d;--ok-bg:#e8f6ec;--ph:#e9edf2}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1113;--card:#181b1f;--ink:#eef0f2;--soft:#b9c0c9;--muted:#7d8590;--line:#2a2e34;--accent:#5eead4;--accent-bg:#11302d;--warn:#fbbf24;--warn-bg:#33270f;--ok:#86efac;--ok-bg:#12301c;--ph:#22262b}}
+:root{--bg:#f6f7f9;--card:#fff;--ink:#14171a;--soft:#4b5563;--muted:#8a919c;--line:#e7e9ee;--accent:#0f766e;--accent-ink:#fff;--accent-bg:#e6f4f2;--warn:#b45309;--warn-bg:#fdf3e4;--ok:#15803d;--ok-bg:#e8f6ec;--ph:#e9edf2;--shadow:0 10px 40px rgba(15,23,42,.18)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1113;--card:#181b1f;--ink:#eef0f2;--soft:#b9c0c9;--muted:#7d8590;--line:#2a2e34;--accent:#5eead4;--accent-ink:#06201d;--accent-bg:#11302d;--warn:#fbbf24;--warn-bg:#33270f;--ok:#86efac;--ok-bg:#12301c;--ph:#22262b;--shadow:0 10px 40px rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--bg:#0f1113;--card:#181b1f;--ink:#eef0f2;--soft:#b9c0c9;--muted:#7d8590;--line:#2a2e34;--accent:#5eead4;--accent-ink:#06201d;--accent-bg:#11302d;--warn:#fbbf24;--warn-bg:#33270f;--ok:#86efac;--ok-bg:#12301c;--ph:#22262b;--shadow:0 10px 40px rgba(0,0,0,.5)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
-.wrap{max-width:1080px;margin:0 auto;padding:28px 16px 64px}
-.brand{font-weight:700;letter-spacing:-.01em;color:var(--accent);font-size:.95rem}
+.wrap{max-width:1080px;margin:0 auto;padding:20px 16px 64px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.brand{font-weight:700;letter-spacing:-.01em;color:var(--accent);font-size:1rem;text-decoration:none}
+.iconbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 12px;border-radius:999px;font:inherit;font-size:.88rem;cursor:pointer}
+.iconbtn svg{width:16px;height:16px}
+.iconbtn:hover{border-color:var(--muted)}
+.mytopics{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:18px 0 4px;cursor:pointer;width:100%;text-align:left;font:inherit;color:inherit}
+.mytopics .t{display:block;font-weight:600;font-size:.92rem}.mytopics .s{display:block;color:var(--muted);font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mytopics .grow{flex:1;min-width:0}.mytopics .act{flex:none;color:var(--accent);font-weight:600;font-size:.88rem}
+/* settings panel */
+dialog.settings{border:0;padding:0;border-radius:18px;width:min(640px,100vw - 24px);max-height:min(860px,100vh - 24px);background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+dialog.settings::backdrop{background:rgba(15,23,42,.45)}
+@media (max-width:600px){dialog.settings{width:100vw;max-width:100vw;height:100%;max-height:100%;border-radius:0;margin:0}}
+.sheet{display:flex;flex-direction:column;max-height:inherit;height:100%}
+.sheet header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
+.sheet header h2{margin:0;font-size:1.1rem}
+.sheet .close{border:0;background:none;color:var(--soft);font-size:1.4rem;line-height:1;cursor:pointer;padding:4px 8px}
+.sheet .content{overflow:auto;padding:4px 18px 18px;flex:1}
+.sheet h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:22px 0 8px;display:flex;justify-content:space-between;align-items:center}
+.sheet h3 button{border:0;background:none;color:var(--accent);font:inherit;font-size:.75rem;font-weight:600;text-transform:none;letter-spacing:0;cursor:pointer}
+.sheet .help{color:var(--soft);font-size:.9rem;margin:14px 0 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;cursor:pointer}
+.opt:hover{border-color:var(--muted)}
+.opt input{margin:3px 0 0;width:18px;height:18px;accent-color:var(--accent);flex:none}
+.opt .n{font-weight:600;font-size:.93rem}.opt .c{color:var(--muted);font-size:.8rem}
+.opt:has(input:checked){border-color:var(--accent);background:var(--accent-bg)}
+.seg{display:flex;background:var(--bg);border-radius:10px;padding:3px;gap:3px}
+.seg label{flex:1;text-align:center;padding:7px;border-radius:8px;font-size:.88rem;cursor:pointer;color:var(--soft)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){background:var(--card);color:var(--ink);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.sheet footer{padding:14px 18px;border-top:1px solid var(--line);display:flex;gap:10px}
+.primary{flex:1;border:0;background:var(--accent);color:var(--accent-ink);padding:12px 16px;border-radius:12px;font:inherit;font-weight:600;cursor:pointer}
+.secondary{border:1px solid var(--line);background:none;color:var(--ink);padding:12px 16px;border-radius:12px;font:inherit;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--card);padding:11px 16px;border-radius:12px;font-size:.9rem;box-shadow:var(--shadow);max-width:calc(100vw - 32px);z-index:10}
+.hidden{display:none!important}
+</style>
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="icon" type="image/png" href="../icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SciDigest">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#0f766e">
+<style>
 h1{font-size:2rem;line-height:1.15;letter-spacing:-.02em;margin:6px 0 6px}
 .sub{color:var(--soft);font-size:.95rem}
 .intro{max-width:760px;font-size:1.05rem;margin:14px 0 0}
@@ -54,26 +98,36 @@ h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut
 sup a{text-decoration:none;font-size:.7rem}
 .refs{font-size:.85rem;color:var(--soft);padding-left:20px}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
 footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
-.hidden{display:none!important}
 </style>
 </head>
 <body><div class="wrap">
+<div class="topbar">
+  <a class="brand" href="../index.html">SciDigest</a>
+  <button type="button" class="iconbtn" data-open-settings aria-haspopup="dialog">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    Settings
+  </button>
+</div>
 <header>
-  <div class="brand">SciDigest</div>
   <h1>Daily Science Digest</h1>
   <div class="sub">Friday, November 20, 2026 · 8 papers chosen from 442 recent research articles in 17 journals</div>
   
   
 </header>
 
+<button type="button" class="mytopics" data-open-settings>
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+  <span class="grow"><span class="t">Showing all topics</span><span class="s">All topics</span></span>
+  <span class="act">Choose topics</span>
+</button>
 
 
 
 
-<main>
-  <h2>Editor&#39;s picks</h2>
-  <div class="grid">
-<details class="card" id="p1" data-topic="">
+<main data-report>
+  <h2 class="editors">Editor&#39;s picks</h2>
+  <div class="grid editors-grid">
+<details class="card" id="p1" data-topic="" data-editors="1" data-rank="1" data-score="9">
   <summary>
     <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg/960px-U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg" alt="Malaria vaccine africa" loading="lazy"></div>
     <div class="body">
@@ -100,7 +154,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p2" data-topic="">
+<details class="card" id="p2" data-topic="" data-editors="1" data-rank="2" data-score="8">
   <summary>
     <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Trichomonas_Gram_stain.jpg/960px-Trichomonas_Gram_stain.jpg" alt="Trichomonas vaginalis microscope" loading="lazy"></div>
     <div class="body">
@@ -127,7 +181,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p3" data-topic="">
+<details class="card" id="p3" data-topic="" data-editors="1" data-rank="3" data-score="8">
   <summary>
     <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/960px-Andromeda_Galaxy_%28with_h-alpha%29.jpg" alt="Andromeda galaxy" loading="lazy"></div>
     <div class="body">
@@ -154,7 +208,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p4" data-topic="">
+<details class="card" id="p4" data-topic="" data-editors="1" data-rank="4" data-score="8">
   <summary>
     <div class="thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg" alt="Brain mri scan" loading="lazy"></div>
     <div class="body">
@@ -181,7 +235,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p5" data-topic="">
+<details class="card" id="p5" data-topic="" data-editors="1" data-rank="5" data-score="7">
   <summary>
     <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Perovskite_solar_cell.jpg/960px-Perovskite_solar_cell.jpg" alt="Perovskite solar cell" loading="lazy"></div>
     <div class="body">
@@ -208,7 +262,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p6" data-topic="">
+<details class="card" id="p6" data-topic="" data-editors="1" data-rank="6" data-score="7">
   <summary>
     <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg/960px-Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg" alt="Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu" loading="lazy"></div>
     <div class="body">
@@ -235,7 +289,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p7" data-topic="">
+<details class="card" id="p7" data-topic="" data-editors="1" data-rank="7" data-score="7">
   <summary>
     <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Karst_Landscape%2C_China_%28ASTER%29.jpg/960px-Karst_Landscape%2C_China_%28ASTER%29.jpg" alt="Guangxi karst cave" loading="lazy"></div>
     <div class="body">
@@ -262,7 +316,7 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p8" data-topic="">
+<details class="card" id="p8" data-topic="" data-editors="1" data-rank="8" data-score="7">
   <summary>
     <div class="thumb"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Agrotis_infusa.jpg/960px-Agrotis_infusa.jpg" alt="Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008" loading="lazy"></div>
     <div class="body">
@@ -291,11 +345,143 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px;max-width:760px}
 </div>
   
 
+</main>
+<section>
   <h2>References</h2>
   <ol class="refs"><li id="ref1" value="1">Dabira, E. D., Natama, H. M., Erhart, A., Bihoun, B., Keita, M. L., Derra, K., Bah, A., Ilboudo, N., Ndiath, M. O., Bonko, M. D. A., Saidy, L., Ilboudo, A. H., Kafando, M. H. O., Jaiteh, F., Bocoum, F. Y., Grietens, K. P., Gibba, B., Kompaore, S. C. B., Hill, A. V. S., ... Sanyang, D. (2026). Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial. <em>The Lancet</em>. https://doi.org/10.1016/S0140-6736(26)01562-X</li><li id="ref2" value="2">Gaïa, M., Guyet, U., Ruscheweyh, H., Eren, A. M., Sunagawa, S., Koonin, E. V., Krupovic, M., &amp; Delmont, T. O. (2026). Closest relatives of poxviruses prevail in human and animal guts worldwide. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11283-z</li><li id="ref3" value="3">Karambelkar, V., De, K., Temmink, K. D., Metzger, B. D., Blagorodnova, N., Anupama, G. C., Barway, S., Basu, J., Bellm, E. C., Bhalerao, V., Bochenek, A., Chamoli, S., Das, K., Fremling, C., Frostig, D., Gómez-Muñoz, M. A., Groom, S. L., Hinds, K., Jaimes, J. C., ... Wise, J. (2026). An inspiral of a star inside a common envelope with its giant companion. <em>Nature</em>, 659(8141), 628-633. https://doi.org/10.1038/s41586-026-11221-z</li><li id="ref4" value="4">Yu, D., Germann, J., Murtaza, G., Hajdarovic, K. H., Babcock, K. R., Dehkordi, S. K., Jackson, A. C., Delalle, I., Orr, M. E., Zare, H., Singh, R., MacCoss, M. J., Noble, W. S., Vlassenko, A. G., Goyal, M. S., &amp; Webb, A. E. (2026). Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11305-w</li><li id="ref5" value="5">Li, B., Zhang, T., Wang, X., Wen, Y., Wang, Y., Yu, X., &amp; Yang, D. (2026). Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells. <em>Science</em>, 394(6826), eaeh3114. https://doi.org/10.1126/science.aeh3114</li><li id="ref6" value="6">Guerrero-Ramírez, N. R., Salecker, J., Simpkins, C. E., Brambach, F., Corre, M. D., Darras, K. F. A., Drescher, J., Grass, I., König, C., Paterno, G. B., Wiegand, K., Azhar, A., Barnes, A. D., Brose, U., Buchori, D., Daniel, R., Hertel, D., Hidayat, P., Jochum, M., ... Kreft, H. (2026). Tropical land-use intensification restructures biodiversity. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11298-6</li><li id="ref7" value="7">Westaway, K. E., Joannes-Boyau, R., Liao, W., Shao, Q., Yu, W., Quinn, M., Bacon, A., Liang, H., Bourgon, N., Zhao, J., Roberts, P., Kono, R., Pan, Y., Yang, L., Wang, Y., Jin, C., Wu, Z., Murray, S., Zanolli, C., ... Zhang, Y. (2026). Rainforest adaptation in late Homo erectus from southern China. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11155-6</li><li id="ref8" value="8">Chen, H., Rosberg, L., Dreyer, D., Leberecht, B., Mouritsen, H., Fleischmann, P. N., &amp; Warrant, E. J. (2026). Bogong moths navigate with a light-dependent geomagnetic inclination compass. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11322-9</li></ol>
-</main>
+</section>
 <footer>Summaries are paraphrased by AI from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</footer>
 </div>
+
+<dialog class="settings" id="settings" aria-labelledby="settings-title">
+  <form method="dialog" class="sheet" id="settings-form">
+    <header><h2 id="settings-title">Settings</h2><button class="close" value="cancel" aria-label="Close">×</button></header>
+    <div class="content">
+      <h3>Your topics</h3>
+      <p class="help" style="margin-top:0">Choose the fields you want to read about. Every daily digest and every weekly and monthly review will show these first.</p>
+      <label class="opt" style="margin-top:12px"><input type="checkbox" id="all-topics"><span><span class="n">All topics</span><br><span class="c">The editor's picks across every field</span></span></label>
+      
+      <h3><span>Physical Sciences, Math &amp; Computing</span><button type="button" class="selgroup" data-group="physical">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="physics" data-group="physical"><span><span class="n">Physics</span><br><span class="c">Classical mechanics, quantum science, optics and photonics, condensed matter, mathematical physics, space physics</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="chemistry" data-group="physical"><span><span class="n">Chemistry</span><br><span class="c">Organic, inorganic, physical and analytical chemistry, chemical biology</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="math_stats" data-group="physical"><span><span class="n">Mathematics &amp; Statistics</span><br><span class="c">Algebra, geometry, topology, differential equations, probability, numerical analysis, optimization, statistics theory</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="computing" data-group="physical"><span><span class="n">Computer Science &amp; IT</span><br><span class="c">Artificial intelligence and machine learning, cybersecurity, data science, information theory, computational systems</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="astronomy" data-group="physical"><span><span class="n">Astronomy &amp; Planetary Science</span><br><span class="c">Astrophysics, observational astronomy, planetary geology, cosmology</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="materials" data-group="physical"><span><span class="n">Materials &amp; Nanoscience</span><br><span class="c">Nanomaterials, polymers, metallurgy, semiconductors, energy materials</span></span></label>
+      
+      <h3><span>Engineering &amp; Technology</span><button type="button" class="selgroup" data-group="engineering">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="core_engineering" data-group="engineering"><span><span class="n">Core Engineering</span><br><span class="c">Mechanical, electrical, civil, chemical and aerospace engineering</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="applied_tech" data-group="engineering"><span><span class="n">Applied &amp; Emerging Tech</span><br><span class="c">Biomedical engineering, robotics, automation and control systems, energy science, biotechnology</span></span></label>
+      
+      <h3><span>Biological &amp; Life Sciences</span><button type="button" class="selgroup" data-group="life">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="cell_molecular" data-group="life"><span><span class="n">Cellular &amp; Molecular</span><br><span class="c">Cell biology, molecular biology, genetics, genomics, biochemistry, structural biology</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="organismal" data-group="life"><span><span class="n">Organismal &amp; Systems</span><br><span class="c">Microbiology, immunology, neuroscience, physiology, developmental biology, evolutionary biology</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="ecology" data-group="life"><span><span class="n">Ecology &amp; Biodiversity</span><br><span class="c">Ecology, conservation biology, zoology, plant sciences, entomology, computational biology and bioinformatics</span></span></label>
+      
+      <h3><span>Health &amp; Medical Sciences</span><button type="button" class="selgroup" data-group="health">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="clinical" data-group="health"><span><span class="n">Clinical &amp; Disease Research</span><br><span class="c">Oncology, cardiology, neurology, infectious diseases, clinical immunology</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="therapeutics" data-group="health"><span><span class="n">Therapeutics &amp; Care</span><br><span class="c">Pharmacology, drug discovery, nursing, dentistry, medical informatics, public and occupational health</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="behavioral" data-group="health"><span><span class="n">Behavioral &amp; Mental Health</span><br><span class="c">Clinical, cognitive, experimental and social psychology, behavioral sciences</span></span></label>
+      
+      <h3><span>Earth &amp; Environmental Sciences</span><button type="button" class="selgroup" data-group="earth">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="earth_water" data-group="earth"><span><span class="n">Earth &amp; Water</span><br><span class="c">Geology (solid earth), hydrology, ocean sciences, limnology, natural hazards</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="climate" data-group="earth"><span><span class="n">Climate &amp; Environment</span><br><span class="c">Climate science, atmospheric science, environmental science, biogeochemistry, sustainability</span></span></label>
+      
+      <h3><span>Society, Policy &amp; Interdisciplinary Studies</span><button type="button" class="selgroup" data-group="society">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="social_economic" data-group="society"><span><span class="n">Social &amp; Economic Sciences</span><br><span class="c">Economics, finance, sociology, political science, public policy, education, geography</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="resources" data-group="society"><span><span class="n">Resource &amp; Applied Fields</span><br><span class="c">Agriculture, forestry, water resources, food science, veterinary science, science communication and ethics</span></span></label>
+      
+      <h3>Appearance</h3>
+      <div class="seg" role="radiogroup" aria-label="Appearance">
+        <label><input type="radio" name="theme" value="">System</label>
+        <label><input type="radio" name="theme" value="light">Light</label>
+        <label><input type="radio" name="theme" value="dark">Dark</label>
+      </div>
+      <p class="help">Settings are saved in this browser only.</p>
+    </div>
+    <footer><button class="secondary" value="cancel">Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
+  </form>
+</dialog>
+<script>
+(function(){
+  var TOPICS={"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"};
+  var KEY="scidigest-topics",THEME="scidigest-theme",FLASH="scidigest-saved";
+  function get(k){try{return localStorage.getItem(k)||""}catch(e){return ""}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function followed(){return get(KEY).split(",").filter(function(t){return TOPICS[t]})}
+  function summary(f){if(!f.length)return "All topics";var n=f.map(function(t){return TOPICS[t]});return n.length<=2?n.join(", "):n[0]+", "+n[1]+" +"+(n.length-2)}
+  function applyTheme(){var t=get(THEME);if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme}
+  applyTheme();
+
+  var dlg=document.getElementById("settings"),boxes=[].slice.call(dlg.querySelectorAll('input[name=topic]')),all=document.getElementById("all-topics");
+  function syncAll(){all.checked=!boxes.some(function(b){return b.checked});
+    [].forEach.call(dlg.querySelectorAll(".selgroup"),function(btn){var g=boxes.filter(function(b){return b.dataset.group===btn.dataset.group});
+      btn.textContent=g.every(function(b){return b.checked})?"Clear":"Select all"})}
+  function open(){var f=followed();boxes.forEach(function(b){b.checked=f.indexOf(b.value)>=0});
+    var th=get(THEME);[].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.checked=r.value===th});
+    syncAll();dlg.showModal()}
+  boxes.forEach(function(b){b.addEventListener("change",syncAll)});
+  all.addEventListener("change",function(){if(all.checked)boxes.forEach(function(b){b.checked=false});syncAll()});
+  [].forEach.call(dlg.querySelectorAll(".selgroup"),function(btn){btn.addEventListener("click",function(){
+    var g=boxes.filter(function(b){return b.dataset.group===btn.dataset.group}),on=!g.every(function(b){return b.checked});
+    g.forEach(function(b){b.checked=on});syncAll()})});
+  [].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.addEventListener("change",function(){set(THEME,r.value);applyTheme()})});
+  document.getElementById("save-settings").addEventListener("click",function(){
+    set(KEY,boxes.filter(function(b){return b.checked}).map(function(b){return b.value}).join(","));
+    try{sessionStorage.setItem(FLASH,"1")}catch(e){}
+    location.reload()});
+  [].forEach.call(document.querySelectorAll("[data-open-settings]"),function(el){el.addEventListener("click",open)});
+
+  // "Your topics" banner
+  var f=followed();
+  [].forEach.call(document.querySelectorAll(".mytopics"),function(el){
+    el.querySelector(".t").textContent=f.length?"Your topics":"Showing all topics";
+    el.querySelector(".s").textContent=summary(f);
+    el.querySelector(".act").textContent=f.length?"Edit":"Choose topics"});
+
+  // Rearrange a report page: "For you" first, then the rest.
+  var main=document.querySelector("main[data-report]");
+  if(main&&f.length){
+    var cards=[].slice.call(main.querySelectorAll("details.card"));
+    var mine=cards.filter(function(c){return !c.dataset.topic||f.indexOf(c.dataset.topic)>=0});
+    mine.sort(function(a,b){var ea=a.dataset.editors==="1",eb=b.dataset.editors==="1";
+      if(ea!==eb)return ea?-1:1;return ea?(+a.dataset.rank- +b.dataset.rank):(+b.dataset.score- +a.dataset.score)});
+    var sec=document.createElement("section"),h=document.createElement("h2"),grid=document.createElement("div");
+    h.textContent="For you";grid.className="grid";sec.appendChild(h);
+    if(mine.length){mine.forEach(function(c){grid.appendChild(c)});sec.appendChild(grid)}
+    else{var p=document.createElement("p");p.className="sub";p.textContent="Nothing new in your topics in this report. Here are the other highlights instead.";sec.appendChild(p)}
+    main.insertBefore(sec,main.firstChild);
+    var eh=main.querySelector("h2.editors"),eg=main.querySelector(".editors-grid");
+    if(eh){if(eg&&eg.children.length)eh.textContent="Also worth reading";else{eh.classList.add("hidden");eg&&eg.classList.add("hidden")}}
+    [].forEach.call(main.querySelectorAll(".topic-section"),function(s){if(!s.querySelector("details.card"))s.classList.add("hidden")});
+    var bt=main.querySelector("h2.by-topic");if(bt&&!main.querySelector(".topic-section:not(.hidden)"))bt.classList.add("hidden");
+    var chips=document.querySelector(".chips");if(chips)chips.classList.add("hidden");
+  }
+
+  var flash="";try{flash=sessionStorage.getItem(FLASH)||"";sessionStorage.removeItem(FLASH)}catch(e){}
+  if(flash){var t=document.createElement("div");t.className="toast";t.setAttribute("role","status");
+    t.textContent=f.length?"Saved. Every day and review now shows your topics first.":"Saved. Showing all topics.";
+    document.body.appendChild(t);setTimeout(function(){t.remove()},3500)}
+})();
+</script>
 <script>
 document.querySelectorAll("details.card").forEach(function(d){d.addEventListener("toggle",function(){d.classList.toggle("open",d.open)})});
 (function(){var KEY="scidigest-topic",btns=[].slice.call(document.querySelectorAll(".chips button"));if(!btns.length)return;

@@ -284,3 +284,17 @@ def test_arxiv_preprint_flag_and_card_page(tmp_path):
     assert "References" in html and 'id="ref1"' in html
     topics = json.loads((site / "data" / "topics.json").read_text())
     assert len(topics["groups"]) == 6 and sum(len(g["topics"]) for g in topics["groups"]) == 18
+
+
+def test_site_settings_panel_and_home_screen_files(tmp_path):
+    site = _run(tmp_path, "2026-11-18")
+    for page in (site / "index.html", site / "reports" / "2026-11-18.html"):
+        html = page.read_text()
+        assert 'id="settings"' in html and "Save and refresh papers" in html and "data-open-settings" in html
+        assert html.count('name="topic"') == 18 and "Mathematics &amp; Statistics" in html
+        assert 'rel="manifest"' in html and "apple-touch-icon" in html
+    assert '<main data-report>' in (site / "reports" / "2026-11-18.html").read_text()
+    assert 'href="../index.html"' in (site / "reports" / "2026-11-18.html").read_text()
+    for f in ("manifest.webmanifest", "apple-touch-icon.png", "icon-192.png", "icon-512.png"):
+        assert (site / f).exists()
+    assert json.loads((site / "manifest.webmanifest").read_text())["display"] == "standalone"

@@ -1,58 +1,70 @@
 {
  "format": 1,
+ "kind": "daily",
+ "id": "2026-11-20",
+ "title": "Daily Science Digest",
  "date": "2026-11-20",
- "generated_at": "2026-11-20T10:07:41+00:00",
- "scanned": 100,
+ "period_start": "2026-11-20",
+ "period_end": "2026-11-20",
+ "generated_at": "2026-11-20T11:18:56+00:00",
+ "scanned": 442,
  "journals": [
   "Cell",
   "Nature",
+  "Nature Astronomy",
   "Nature Biotechnology",
+  "Nature Climate Change",
   "Nature Communications",
   "Nature Medicine",
+  "Nature Neuroscience",
+  "Nature Physics",
   "PLOS Biology",
+  "PNAS",
   "Physical Review Letters",
   "Science",
+  "Science Advances",
   "The Lancet",
   "The New England Journal of Medicine",
   "eLife"
  ],
  "ai_summaries": true,
+ "intro": "",
  "papers": [
   {
    "rank": 1,
-   "headline": "Vaccinating whole communities against malaria each season lowered infection rates",
-   "original_title": "[Articles] Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial",
+   "headline": "Vaccinating whole communities against malaria each season cut infection rates",
+   "original_title": "Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial",
    "journal": "The Lancet",
    "field": "Global Health",
    "significance": 9,
-   "reason": "A cluster-randomised trial in two African countries shows seasonal mass vaccination with the R21 malaria vaccine cut malaria prevalence, offering a new population-level control strategy.",
-   "summary": "Malaria in parts of West Africa spreads mainly during a rainy season. This study asked whether giving the R21/Matrix-M malaria vaccine to entire communities just before transmission peaks, an approach called seasonal mass vaccination (SMV), could reduce how common malaria is. The trial ran in The Gambia and Burkina Faso. Whole groups of people (clusters, such as villages) were randomly assigned either to receive the vaccine campaign or to serve as a comparison. Participants and researchers knew who had been vaccinated, which is what 'open-label' means.\n\nAccording to the publisher's summary, the vaccination campaigns reduced the proportion of people carrying malaria in both countries. The authors suggest SMV could be added to existing malaria control tools wherever transmission is seasonal. In places with lower transmission it might help move toward eliminating the disease, and in places with heavy transmission it might further cut the amount of illness.",
-   "why_it_matters": "Most malaria vaccines so far have been given to young children, so protecting whole communities could reduce how much the parasite circulates overall. A seasonal community-wide campaign may offer a practical extra tool alongside bed nets and medicines in regions where malaria comes in yearly waves.",
-   "limitations": "The summary provided does not report the size of the reduction, how many people took part, the age groups vaccinated, or safety findings. The open-label design also means knowing who was vaccinated could have influenced behaviour or reporting.",
+   "reason": "A cluster-randomised trial in two African countries shows that seasonal mass vaccination with R21 reduces malaria prevalence, pointing to a new large-scale control strategy.",
+   "summary": "Malaria in parts of West Africa spreads mostly during a rainy season, so researchers asked whether vaccinating entire communities just before that season could lower how many people carry the parasite. They tested a malaria vaccine called R21/Matrix-M in The Gambia and Burkina Faso. They used a cluster-randomised trial, in which whole groups such as villages, not individuals, are randomly assigned to receive the intervention or serve as controls. The trial was open-label, meaning participants and researchers knew who got the vaccine.\n\nThe publisher's summary reports that this seasonal mass vaccination lowered malaria prevalence, the share of people infected at a given time, in both countries. The authors propose it as an extra control tool where transmission is seasonal. In areas with low to moderate malaria it might speed progress toward elimination. In high-transmission areas it might further reduce the disease burden.",
+   "why_it_matters": "Malaria vaccines have mainly been given to young children. Vaccinating whole communities at the right time of year could add a new layer of protection on top of bed nets and drugs. That approach may help countries move closer to getting rid of malaria.",
+   "limitations": "The summary provided gives no effect sizes, safety data, or duration of protection. Because the trial was open-label, knowing who was vaccinated could have influenced some results.",
    "key_terms": [
     {
      "term": "R21/Matrix-M",
-     "meaning": "A malaria vaccine. R21 is the part that trains the immune system to recognise the malaria parasite, and Matrix-M is an added ingredient (an adjuvant) that strengthens the immune response."
+     "meaning": "A malaria vaccine. Matrix-M is an added ingredient (adjuvant) that strengthens the immune response."
     },
     {
      "term": "Seasonal mass vaccination (SMV)",
-     "meaning": "Vaccinating a whole population at once, timed to come just before the season when malaria spreads most."
+     "meaning": "Vaccinating a whole population at once, timed to come before the main malaria season."
     },
     {
      "term": "Cluster-randomised trial",
-     "meaning": "A study where whole groups, such as villages, rather than individuals are randomly assigned to receive the intervention or not."
+     "meaning": "A study where whole groups, such as villages, are randomly assigned to the treatment or control condition."
     },
     {
      "term": "Open-label",
-     "meaning": "Everyone involved knows who got the vaccine; there is no placebo or masking."
+     "meaning": "Everyone involved knows who received the vaccine, unlike a blinded study."
     },
     {
-     "term": "Malaria prevalence",
-     "meaning": "The share of people in a population who are infected with malaria at a given time."
+     "term": "Prevalence",
+     "meaning": "The proportion of people who have an infection at a particular time."
     },
     {
      "term": "Endemic",
-     "meaning": "Constantly present in a region, rather than appearing only in occasional outbreaks."
+     "meaning": "Regularly present in an area."
     }
    ],
    "based_on": "abstract",
@@ -119,438 +131,591 @@
    "published": "2026-11-19T23:30:01+00:00",
    "doi": "10.1016/S0140-6736(26)01562-X",
    "url": "https://doi.org/10.1016/S0140-6736(26)01562-X",
-   "citation": "Dabira, E. D., Natama, H. M., Erhart, A., Bihoun, B., Keita, M. L., Derra, K., Bah, A., Ilboudo, N., Ndiath, M. O., Bonko, M. D. A., Saidy, L., Ilboudo, A. H., Kafando, M. H. O., Jaiteh, F., Bocoum, F. Y., Grietens, K. P., Gibba, B., Kompaore, S. C. B., Hill, A. V. S., ... Sanyang, D. (2026). [Articles] Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial. The Lancet. https://doi.org/10.1016/S0140-6736(26)01562-X",
-   "free_copy": null
+   "citation": "Dabira, E. D., Natama, H. M., Erhart, A., Bihoun, B., Keita, M. L., Derra, K., Bah, A., Ilboudo, N., Ndiath, M. O., Bonko, M. D. A., Saidy, L., Ilboudo, A. H., Kafando, M. H. O., Jaiteh, F., Bocoum, F. Y., Grietens, K. P., Gibba, B., Kompaore, S. C. B., Hill, A. V. S., ... Sanyang, D. (2026). Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial. The Lancet. https://doi.org/10.1016/S0140-6736(26)01562-X",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg/960px-U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg",
+    "caption": "Malaria vaccine africa",
+    "credit": "U.S. Army Southern European Task Force, Africa, via Wikimedia Commons",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010,_Kisumu,_Kenya_April_25,_2010.jpg"
+   }
   },
   {
    "rank": 2,
-   "headline": "Molecular 'typewriter' in DNA traces a mouse embryo's family tree of cells",
-   "original_title": "A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis",
-   "journal": "Science",
-   "field": "Developmental Biology",
-   "significance": 9,
-   "reason": "For the first time, the cell lineage of an entire mouse was recorded from zygote to organogenesis, yielding a time-calibrated family tree of 1.28 million profiled cells.",
-   "summary": "Every animal grows from a single fertilized egg (the zygote), but tracking which cells give rise to which tissues inside a developing mammal is very hard, because embryos are hidden and opaque. The researchers used a tool called DNA Typewriter, which writes small edits into the DNA of cells one after another in sequence. Cells inherit these edits when they divide, so the pattern of edits works like a record of family history. They ran this recorder in a mouse embryo for almost two weeks, from the zygote stage to the late stage when organs are forming.\n\nFrom a single embryo, they built a family tree of 1.28 million cells, each of which also had its active genes measured, so its cell type was known. The tree was rooted at the zygote and calibrated to time. A burst of edits clearly marked the two cells made by the first division, which let the team treat the two halves of the embryo as built-in repeats of the same experiment. They measured how some cell families came to dominate during gastrulation, the early stage when the body's basic layers form. Closely related cells tended to share a cell type much more often than chance would predict. Related cells of different types pointed to late decisions in development. By tracking which cell families appeared together over time, they recovered an ordered, dated pattern of how cell types are related. The inferred identities of ancestor cells matched known developmental routes.",
-   "why_it_matters": "This gives a direct, recorded picture of how cells in a mammal divide and specialize, rather than one pieced together indirectly. A cell-by-cell family tree of development has long been out of reach for mammals, and this approach could help show when and how tissues split off from one another.",
-   "limitations": "The tree comes from a single mouse embryo, so how consistent these patterns are across many embryos is not shown in the abstract. Cell types of ancestor cells were imputed (estimated), not directly observed.",
+   "headline": "Newly found gut viruses are poxviruses' closest known relatives",
+   "original_title": "Closest relatives of poxviruses prevail in human and animal guts worldwide",
+   "journal": "Nature",
+   "field": "Virology / Microbiome",
+   "significance": 8,
+   "reason": "Reports a previously unknown order of large DNA viruses, the closest relatives of poxviruses, found worldwide in human and animal guts, which clarifies where poxviruses came from.",
+   "summary": "Large double-stranded DNA viruses are common in soil and water but have rarely been spotted inside animal digestive systems. Researchers sifting through genetic data from gut samples found a whole new group of such viruses, which they call egoviruses, with big linear DNA genomes. These viruses turn up worldwide and almost only in the guts of humans, farm animals and wild animals, and one human-associated type is found across continents, suggesting a long shared history with the human gut microbiome.\n\nBy comparing egovirus genes with those of single-celled organisms, the team concluded that the viruses probably infect not animal cells but gut-dwelling protists: ciliates that help cows and other ruminants digest food, and parabasalids that affect immunity and gut ecology. Family-tree analysis places egoviruses as the nearest known relatives of poxviruses (the group that includes smallpox). Unlike the brick-shaped poxvirus particle, egoviruses are predicted to build many-layered icosahedral (20-sided) shells, which the authors argue is the older, ancestral shape. They propose that poxvirus ancestors first infected oxygen-free single-celled organisms inside ancient animal guts before switching to infecting animal cells themselves.",
+   "why_it_matters": "Poxviruses cause serious human and animal disease, but where they came from has been unclear. This work points to a possible origin in gut-dwelling single-celled organisms and shows that a large, previously unrecognised family of DNA viruses is a routine part of gut ecosystems worldwide.",
+   "limitations": "The host assignments and the icosahedral particle shape are predictions from gene sequences, not direct observations of the viruses infecting cells; the proposed evolutionary route to poxviruses is an inferred scenario.",
    "key_terms": [
     {
-     "term": "Cell lineage",
-     "meaning": "The ancestry of a cell: which earlier cells it descended from through division."
+     "term": "Double-stranded DNA virus",
+     "meaning": "A virus whose genetic material is DNA in the familiar two-stranded form, rather than RNA."
     },
     {
-     "term": "Molecular recorder",
-     "meaning": "An engineered system that writes heritable changes into DNA over time, so events can be read later by sequencing."
+     "term": "Egoviruses",
+     "meaning": "The new group of large gut-dwelling DNA viruses named in this study."
     },
     {
-     "term": "Phylogeny",
-     "meaning": "A branching family tree showing how related things (here, cells) descend from common ancestors."
+     "term": "Ciliates (Trichostomatia)",
+     "meaning": "Single-celled organisms covered in hair-like cilia; some live in ruminant stomachs and help break down plant food."
     },
     {
-     "term": "Parsimony",
-     "meaning": "Choosing the tree that explains the observed DNA edits with the fewest changes."
+     "term": "Parabasalia",
+     "meaning": "A group of single-celled organisms living in animal guts; includes Trichomonas vaginalis, a human parasite."
     },
     {
-     "term": "Transcriptionally profiled",
-     "meaning": "Each cell's active genes were measured, which reveals what kind of cell it is."
+     "term": "Capsid",
+     "meaning": "The protein shell that encloses a virus's genetic material."
     },
     {
-     "term": "Gastrulation",
-     "meaning": "An early developmental stage when the embryo reorganizes into the basic tissue layers."
+     "term": "Polintons",
+     "meaning": "Virus-like DNA elements that have become embedded in the genomes of their hosts."
     },
     {
-     "term": "Clonal dominance",
-     "meaning": "When descendants of a few cells make up an unusually large share of the embryo."
-    },
-    {
-     "term": "Clade",
-     "meaning": "A branch of the tree: one ancestor cell plus all its descendants."
+     "term": "Phylogenomics",
+     "meaning": "Building evolutionary family trees by comparing whole genome sequences."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Qi Yu",
-    "Haedong Kim",
-    "Sophie Seidel",
-    "James F. Acosta-Clark",
-    "Beth K. Martin",
-    "Kyle O’Connor",
-    "Riza M. Daza",
-    "Molly Gasperini",
-    "Jenny F. Nathans",
-    "Maggie Lam",
-    "Elena Gamo",
-    "Shruthi VijayKumar",
-    "Lauren Kuo",
-    "Jean-Benoît Lalanne",
-    "Kamen P. Simeonov",
-    "Marion Pepper",
-    "Cole Trapnell",
-    "Jesse M. Gray",
-    "Junhong Choi",
-    "Chengxiang Qiu",
-    "Jay Shendure"
+    "Morgan Gaïa",
+    "Ulysse Guyet",
+    "Hans-Joachim Ruscheweyh",
+    "A. Murat Eren",
+    "Shinichi Sunagawa",
+    "Eugene V. Koonin",
+    "Mart Krupovic",
+    "Tom O. Delmont"
    ],
-   "published": "2026-11-19T08:00:00+00:00",
-   "doi": "10.1126/science.ael0508",
-   "url": "https://doi.org/10.1126/science.ael0508",
-   "citation": "Yu, Q., Kim, H., Seidel, S., Acosta-Clark, J. F., Martin, B. K., O’Connor, K., Daza, R. M., Gasperini, M., Nathans, J. F., Lam, M., Gamo, E., VijayKumar, S., Kuo, L., Lalanne, J., Simeonov, K. P., Pepper, M., Trapnell, C., Gray, J. M., Choi, J., ... Shendure, J. (2026). A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis. Science, 394(6826), eael0508. https://doi.org/10.1126/science.ael0508",
+   "published": "2026-11-18T00:00:00+00:00",
+   "doi": "10.1038/s41586-026-11283-z",
+   "url": "https://doi.org/10.1038/s41586-026-11283-z",
+   "citation": "Gaïa, M., Guyet, U., Ruscheweyh, H., Eren, A. M., Sunagawa, S., Koonin, E. V., Krupovic, M., & Delmont, T. O. (2026). Closest relatives of poxviruses prevail in human and animal guts worldwide. Nature. https://doi.org/10.1038/s41586-026-11283-z",
    "free_copy": {
-    "url": "https://doi.org/10.1126/science.ael0508",
+    "url": "https://doi.org/10.1038/s41586-026-11283-z",
     "version": "Published version",
     "host": "publisher",
     "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Trichomonas_Gram_stain.jpg/960px-Trichomonas_Gram_stain.jpg",
+    "caption": "Trichomonas vaginalis microscope",
+    "credit": "Dr Graham Beards, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Trichomonas_Gram_stain.jpg"
    }
   },
   {
    "rank": 3,
-   "headline": "Organic nitrogen falling from the air feeds the oceans more than thought",
-   "original_title": "Atmospheric organic nitrogen is a major nutrient source to global oceans",
-   "journal": "Science",
-   "field": "Ocean & Atmospheric Science",
+   "headline": "Astronomers watch a star spiral inside its giant partner's outer layers",
+   "original_title": "An inspiral of a star inside a common envelope with its giant companion",
+   "journal": "Nature",
+   "field": "Astronomy",
    "significance": 8,
-   "reason": "Measurements from 21 research cruises combined with a global model show that airborne organic nitrogen supplies about a quarter of the nitrogen deposited on the oceans, reshaping marine nutrient budgets.",
-   "summary": "Nitrogen is a key nutrient for ocean life, and some of it reaches the sea from the atmosphere as particles and gases settle out or wash down in rain. Scientists have tracked the inorganic forms of this nitrogen fairly well, but the share carried in organic (carbon-containing) molecules has been poorly measured. To fill this gap, the researchers sampled tiny airborne particles over the sea during 21 research voyages that crossed several ocean basins and reached high latitudes in both hemispheres, and measured how much organic nitrogen they held.\n\nThey then used these measurements to tune and test a computer model of atmospheric chemistry, updated with improved descriptions of where organic nitrogen comes from and how it is removed from the air. The model estimates that about 12.8 teragrams (million tonnes) of nitrogen per year reach the oceans in organic form, with a wide uncertainty range of roughly 4 to 23. That is around 27% of all nitrogen deposited on the sea. About 70% of this organic nitrogen comes from land sources and about 30% from the ocean itself. In nitrogen-starved waters such as the central Atlantic and the seas around Indonesia, organic forms make up roughly half of the nitrogen arriving from the air.",
-   "why_it_matters": "In many parts of the ocean, the lack of nitrogen limits how much plankton can grow, so an extra nutrient supply from the air can affect marine food webs and carbon uptake. These results suggest that budgets ignoring organic nitrogen may miss about a quarter of the atmospheric nitrogen input, and around half of it in some nitrogen-poor regions.",
-   "limitations": "The global numbers come from a model constrained by ship-based samples, so their uncertainty ranges are wide (for example, roughly 4 to 23 Tg N per year in total). The abstract also does not say how much of the deposited organic nitrogen marine organisms can actually use.",
+   "reason": "One of the first direct observations of a companion star spiralling inside a giant's shared envelope, a long-theorised but unseen step in how compact binaries form.",
+   "summary": "Many tight pairs of stars, including the compact stellar remnants that orbit each other closely, are thought to start out much farther apart. A leading idea is \"common envelope evolution\": when one star swells into a giant, its companion ends up orbiting inside the giant's puffy outer layers. Friction-like drag then makes the companion spiral inward. This spiralling had been predicted but never directly seen. The team studied AT 2025abao, an eruption in the Andromeda Galaxy. It involved a giant star of about 7 solar masses, late in its life (an asymptotic giant branch, or AGB, star), and a companion. They used spectra (light split into its wavelengths) taken both before and after the outburst.\n\nThe data fit best with a companion of roughly 0.7 solar masses sinking through the giant's churning outer envelope. For about seven years, the system slowly got brighter, powered by energy released by the drag. That energy escaped efficiently as light, as models of heat carried by convection predicted. The companion then merged with the giant's core. The merger threw off the outermost tenth of the envelope at about ten times the speed needed to escape the star. From this, the authors estimated how efficiently lost orbital energy can push away the shared envelope. That efficiency, called α, came out between roughly 0.01 and 0.4.",
+   "why_it_matters": "Common envelope evolution is a key step in how close binaries form, and models of it rely on poorly known numbers such as the energy-efficiency factor α. This event gives one of the first direct observational looks at the inspiral phase and a measured range for α. It also shows that sky surveys could be used to find and study more such events.",
+   "limitations": "This is a single event, and the companion inspiral is the scenario that best explains the spectra rather than something imaged directly. The efficiency α is only pinned down to a broad range.",
    "key_terms": [
     {
-     "term": "Nitrogen deposition",
-     "meaning": "Nitrogen compounds moving from the atmosphere onto the Earth's surface (here the ocean), either settling directly or carried down by rain."
+     "term": "Common envelope evolution (CEE)",
+     "meaning": "A phase in which two stars orbit inside a single shared, loosely held outer gas layer. Drag there shrinks their orbit."
     },
     {
-     "term": "Organic nitrogen (ON)",
-     "meaning": "Nitrogen bound within carbon-based molecules, in contrast to simple inorganic forms such as nitrate or ammonium."
+     "term": "Asymptotic giant branch (AGB) star",
+     "meaning": "A late stage in a star's life when it has swollen into a large, cool giant with a turbulent outer envelope."
     },
     {
-     "term": "Aerosols",
-     "meaning": "Tiny solid or liquid particles suspended in the air."
+     "term": "Inspiral",
+     "meaning": "The gradual inward spiralling of one object toward another as its orbit loses energy."
     },
     {
-     "term": "Atmospheric chemistry model",
-     "meaning": "A computer simulation of how chemicals are emitted, transported, transformed and removed in the atmosphere."
+     "term": "Convective envelope",
+     "meaning": "An outer layer of a star where heat is carried by rising and sinking gas, like boiling water."
     },
     {
-     "term": "Teragram (Tg)",
-     "meaning": "A trillion grams, which equals one million tonnes."
+     "term": "α (alpha) efficiency",
+     "meaning": "The fraction of the orbital energy lost during the inspiral that goes into pushing the envelope away from the star."
     },
     {
-     "term": "N-limited regions",
-     "meaning": "Ocean areas where nitrogen shortage is the main factor holding back the growth of plankton."
+     "term": "Transient",
+     "meaning": "An astronomical object that suddenly brightens or appears for a limited time."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Xu Yu",
-    "Yumin Li",
-    "Guitao Shi",
-    "Liuqian Yu",
-    "Yujue Wang",
-    "Senchao Lai",
-    "Yang Zhou",
-    "Yingyi Zhang",
-    "Ningning Sun",
-    "Bo Zhang",
-    "Ye Hu",
-    "Zhe Li",
-    "Yue Jiang",
-    "Wenshuai Li",
-    "Tzung-May Fu",
-    "Jian Zhen Yu"
+    "Viraj Karambelkar",
+    "Kishalay De",
+    "Karel D. Temmink",
+    "Brian D. Metzger",
+    "Nadejda Blagorodnova",
+    "G. C. Anupama",
+    "Sudhanshu Barway",
+    "Judhajeet Basu",
+    "Eric C. Bellm",
+    "Varun Bhalerao",
+    "Aleksandra Bochenek",
+    "Shatakshi Chamoli",
+    "Kaustav Das",
+    "Christoffer Fremling",
+    "Danielle Frostig",
+    "Marco A. Gómez-Muñoz",
+    "Steven L. Groom",
+    "K-Ryan Hinds",
+    "Joahan Castaneda Jaimes",
+    "Jacob Jencson",
+    "David Jones",
+    "Mansi Kasliwal",
+    "Grace Katusiime",
+    "Rubina Kotak",
+    "S. R. Kulkarni",
+    "Ryan Lau",
+    "Chang Liu",
+    "Nathan P. Lourie",
+    "Morgan MacLeod",
+    "Keiichi Maeda",
+    "Zoe McGrath",
+    "Geoffrey Mo",
+    "Gerard Garcia-Moreno",
+    "Josiah Purdum",
+    "Nabeel Rehemtulla",
+    "R. Michael Rich",
+    "Reed L. Riddle",
+    "Sam Rose",
+    "Robert A. Simcoe",
+    "Jesper Sollerman",
+    "Robert Stein",
+    "Hugo Tranin",
+    "Maxime Wavasseur",
+    "Simon de Wet",
+    "Jacob Wise"
    ],
-   "published": "2026-11-19T07:00:11+00:00",
-   "doi": "10.1126/science.aeg4265",
-   "url": "https://doi.org/10.1126/science.aeg4265",
-   "citation": "Yu, X., Li, Y., Shi, G., Yu, L., Wang, Y., Lai, S., Zhou, Y., Zhang, Y., Sun, N., Zhang, B., Hu, Y., Li, Z., Jiang, Y., Li, W., Fu, T., & Yu, J. Z. (2026). Atmospheric organic nitrogen is a major nutrient source to global oceans. Science, 394(6826), 901-906. https://doi.org/10.1126/science.aeg4265",
-   "free_copy": null
+   "published": "2026-11-18T00:00:00+00:00",
+   "doi": "10.1038/s41586-026-11221-z",
+   "url": "https://doi.org/10.1038/s41586-026-11221-z",
+   "citation": "Karambelkar, V., De, K., Temmink, K. D., Metzger, B. D., Blagorodnova, N., Anupama, G. C., Barway, S., Basu, J., Bellm, E. C., Bhalerao, V., Bochenek, A., Chamoli, S., Das, K., Fremling, C., Frostig, D., Gómez-Muñoz, M. A., Groom, S. L., Hinds, K., Jaimes, J. C., ... Wise, J. (2026). An inspiral of a star inside a common envelope with its giant companion. Nature, 659(8141), 628-633. https://doi.org/10.1038/s41586-026-11221-z",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/960px-Andromeda_Galaxy_%28with_h-alpha%29.jpg",
+    "caption": "Andromeda galaxy",
+    "credit": "Adam Evans, via Wikimedia Commons",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Andromeda_Galaxy_(with_h-alpha).jpg"
+   }
   },
   {
    "rank": 4,
-   "headline": "A molecular 'glue' layer helps large perovskite solar panels hold together",
-   "original_title": "Molecular adhesion for durable metal halide perovskite modules",
-   "journal": "Science",
-   "field": "Energy Materials",
+   "headline": "Brain region that controls metabolism and sleep cycles shrinks in Alzheimer's",
+   "original_title": "Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease",
+   "journal": "Nature",
+   "field": "Neuroscience",
    "significance": 8,
-   "reason": "A molecular adhesion layer lets large perovskite solar modules reach 21–23% efficiency and stay stable through 105 days of independently measured outdoor testing, a step toward commercial durability.",
-   "summary": "Perovskite solar cells are a promising, low-cost alternative to silicon, but large panels tend to wear out because the layers inside them can weaken or come apart. The researchers focused on the hidden boundary at the bottom of the perovskite layer, where it sits on the layer that carries positive charges ('holes') out of the cell. They added a thin molecular layer made from a ring-shaped (aromatic) molecule that can grab onto materials at two different points, so it attaches both to the hole-carrying layer and to the perovskite.\n\nThis interlayer held the stack together through attractions between molecules and through strong chemical bonds. The perovskite stuck better to the layer below it, and built-up mechanical strain at the boundary was relieved, so the devices coped better with stresses from heating and cooling. Mid-sized panels (900 cm², with 655 cm² active) converted 22.7% of incoming sunlight into electricity, and full-sized panels (7200 cm², with 6380 cm² active) reached 21.3%. The best full-sized panel kept steady performance over 105 days outdoors, as measured by an independent testing center (PACT).",
-   "why_it_matters": "Small perovskite lab cells already work well, but turning them into large, long-lasting commercial panels is the main hurdle. This work shows that improving adhesion between internal layers can deliver both high efficiency and early stability at real module sizes, with outdoor results checked by an outside lab.",
-   "limitations": "The outdoor test lasted 105 days and covered the best-performing panel only. Commercial panels are expected to last for decades, so much longer testing is still needed.",
+   "reason": "A large atlas combining MRI from 458 people with 600,000+ single-nucleus profiles shows which hypothalamic regions and cell types are most vulnerable in ageing and Alzheimer's disease.",
+   "summary": "The hypothalamus is a small region deep in the brain that helps run body functions such as metabolism, hormone release and daily (circadian) rhythms. Researchers wanted to know how this region changes with normal ageing and with Alzheimer's disease, both in its overall size and in the kinds of cells it contains. They built an atlas, called HypoAD, that combines two kinds of data. One is detailed MRI brain scans from 458 people. The other is single-nucleus RNA sequencing of 614,403 individual cell nuclei, which shows which genes each cell is using.\n\nBy combining these measurements, the team found that the hypothalamus is not affected evenly. Subregions that regulate metabolism and circadian rhythms looked especially vulnerable. Within these areas, two cell types stood out. One was inhibitory neurons, which are nerve cells that dampen the activity of other cells. The other was microglia, the brain's resident immune cells.",
+   "why_it_matters": "Changes in sleep patterns, appetite and body weight are common in Alzheimer's disease, and this work points to particular parts of the hypothalamus and particular cell types that may be involved. The atlas also gives other scientists a shared reference for studying this hard-to-measure brain region in older adults.",
+   "limitations": "The summary available here does not say whether these changes cause Alzheimer's symptoms or are a consequence of the disease. It also does not say how much the MRI group overlaps with the people whose tissue was sequenced.",
    "key_terms": [
     {
-     "term": "Metal halide perovskite",
-     "meaning": "A family of crystalline materials, made of metal and halogen ions (such as lead and iodide), that absorb sunlight well and can be used in solar cells."
+     "term": "Hypothalamus",
+     "meaning": "A small structure at the base of the brain that controls hunger, body temperature, hormones and sleep–wake cycles."
     },
     {
-     "term": "Buried interface",
-     "meaning": "The boundary underneath the perovskite layer, where it contacts the layer beneath it. It is hard to reach once the device is built."
+     "term": "Single-nucleus RNA sequencing",
+     "meaning": "A method that reads which genes are active in thousands of individual cell nuclei, so researchers can identify cell types and their states."
     },
     {
-     "term": "Hole-selective layer",
-     "meaning": "A layer that lets positive charge carriers (holes) pass out of the cell while blocking electrons."
+     "term": "Circadian rhythm",
+     "meaning": "The body's roughly 24-hour internal clock that governs sleep, alertness and many physiological processes."
     },
     {
-     "term": "Dual-site-binding ligand",
-     "meaning": "A molecule with two parts that can each attach to a surface, so it can link two different materials together."
+     "term": "Inhibitory neurons",
+     "meaning": "Nerve cells that reduce or block activity in other neurons, helping balance brain signalling."
     },
     {
-     "term": "Thermomechanical stress",
-     "meaning": "Strain caused by repeated heating and cooling, which makes layers expand and shrink by different amounts."
-    },
-    {
-     "term": "Power conversion efficiency",
-     "meaning": "The percentage of incoming sunlight energy that a solar device turns into electrical energy."
-    },
-    {
-     "term": "Aperture area",
-     "meaning": "The part of a panel that actually collects light, not counting edges and frame."
+     "term": "Microglia",
+     "meaning": "Immune cells of the brain that clear debris and respond to injury or disease."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Chenglin Yang",
-    "Tian Hou",
-    "Yafeng Xu",
-    "Charles Robinson",
-    "Joshua S. Stein",
-    "Yingtong Guo",
-    "Qingchao Chang",
-    "Hong Li",
-    "Lang Yu",
-    "Yuanyuan Qin",
-    "Omar F. Mohammed",
-    "Yuelong Huang",
-    "Shuai You",
-    "Xiaopeng Zheng"
+    "Doudou Yu",
+    "Jürgen Germann",
+    "Ghulam Murtaza",
+    "Kaitlyn H. Hajdarovic",
+    "Kelsey R. Babcock",
+    "Shiva Kazempour Dehkordi",
+    "Alexander C. Jackson",
+    "Ivana Delalle",
+    "Miranda E. Orr",
+    "Habil Zare",
+    "Ritambhara Singh",
+    "Michael J. MacCoss",
+    "William Stafford Noble",
+    "Andrei G. Vlassenko",
+    "Manu S. Goyal",
+    "Ashley E. Webb"
    ],
-   "published": "2026-11-19T08:00:00+00:00",
-   "doi": "10.1126/science.aej5001",
-   "url": "https://doi.org/10.1126/science.aej5001",
-   "citation": "Yang, C., Hou, T., Xu, Y., Robinson, C., Stein, J. S., Guo, Y., Chang, Q., Li, H., Yu, L., Qin, Y., Mohammed, O. F., Huang, Y., You, S., & Zheng, X. (2026). Molecular adhesion for durable metal halide perovskite modules. Science, 394(6826), eaej5001. https://doi.org/10.1126/science.aej5001",
-   "free_copy": null
+   "published": "2026-11-18T00:00:00+00:00",
+   "doi": "10.1038/s41586-026-11305-w",
+   "url": "https://doi.org/10.1038/s41586-026-11305-w",
+   "citation": "Yu, D., Germann, J., Murtaza, G., Hajdarovic, K. H., Babcock, K. R., Dehkordi, S. K., Jackson, A. C., Delalle, I., Orr, M. E., Zare, H., Singh, R., MacCoss, M. J., Noble, W. S., Vlassenko, A. G., Goyal, M. S., & Webb, A. E. (2026). Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease. Nature. https://doi.org/10.1038/s41586-026-11305-w",
+   "free_copy": {
+    "url": "https://doi.org/10.1038/s41586-026-11305-w",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by-nc-nd"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg",
+    "caption": "Brain mri scan",
+    "credit": "Wei-yuan Huang, Gang Wu, Feng Chen, Meng-meng Li and Jian-jun Li, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg"
+   }
   },
   {
    "rank": 5,
-   "headline": "Lattice math finds a hidden gamma-ray pulsar in hours, not centuries",
-   "original_title": "Gamma-Ray Pulsar Discovery Using a Lattice-Based Method",
-   "journal": "Physical Review Letters",
-   "field": "Astrophysics",
-   "significance": 8,
-   "reason": "A lattice-based search algorithm found a new gamma-ray pulsar in about ten CPU hours where a conventional search failed after roughly 600 CPU years, which could unlock many new discoveries.",
-   "summary": "Pulsars are rapidly spinning neutron stars that emit beams of radiation, which we see as regular pulses. Spotting them through their gamma rays is hard because the signal is so sparse: on average a telescope catches roughly one gamma-ray photon for every hundred million turns of the star. The usual approach is to try enormous numbers of possible spin rates and spin-down patterns until the photon arrival times line up, which is computationally very expensive. The authors extended a recently proposed algorithm that instead recasts the problem as finding short vectors in a high-dimensional lattice (a regular grid of points in many dimensions), a task for which efficient mathematical tools already exist.\n\nApplying this method to 15 years of data from the Fermi Large Area Telescope (Fermi-LAT), they found a previously unknown pulsar, PSR J1622−7204. It is isolated (it has no companion star) and spins 261 times per second. The search took about ten hours of computer processor time. The best earlier technique, called a semicoherent search, had looked at the same target and come up empty after roughly 600 years of processor time. The authors describe this as the first gamma-ray pulsar found with this kind of lattice-based method.",
-   "why_it_matters": "A cut in computing cost this large could let astronomers search many more gamma-ray sources for hidden pulsars. The authors say it may be especially useful for pulsars orbiting a companion star. Finding those has been close to impossible unless the orbit was already known in detail, because the orbital motion adds many more unknowns to the search.",
-   "limitations": "So far the method has produced one discovery, an isolated pulsar. Its promise for pulsars in binary systems, and for finding many new pulsars, is still a hope that has not yet been shown.",
+   "headline": "Tiny diamond particles help perovskite solar cells withstand heat and long use",
+   "original_title": "Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells",
+   "journal": "Science",
+   "field": "Materials Science / Energy",
+   "significance": 7,
+   "reason": "Nanodiamond inclusions stabilise perovskite solar cells, which reach a certified 27.6% efficiency and long operating lifetimes, tackling the field's main barrier to commercial use.",
+   "summary": "Halide perovskites are crystals that turn sunlight into electricity very efficiently, partly because their atomic lattice is soft and flexible. That same softness is a weakness: under heat and light the lattice deforms, internal strain builds up, and the material slowly degrades. The researchers asked whether adding hard nanodiamond particles to the perovskite could stop this. They report that the nanodiamonds pass mechanical stress from the inside of each crystal grain out to the grain boundaries (the borders between neighbouring crystals). There the stress is spread out and released instead of piling up inside the grains.\n\nThe nanodiamonds also kept neighbouring grains from sliding past one another. This limited distortion of the lattice and reduced the number of defects that formed over long operation. Small test cells (0.09 cm²) reached an independently certified efficiency of 27.6%, and larger minimodules (16.1 cm²) reached 24.3%. The cells kept 80% of their starting efficiency after 5000 hours of continuous operation at 85°C. They kept 98% after 5000 hours of simulated day-night cycles with changing light levels.",
+   "why_it_matters": "Perovskite solar cells are already very efficient, but poor durability is a major barrier to selling them. This work suggests that mechanically reinforcing the material can make it more stable without giving up efficiency, and the approach also worked on larger minimodules.",
+   "limitations": "The certified efficiencies come from small cells and minimodules, not full-size panels. The abstract does not describe tests under real outdoor conditions or over periods longer than 5000 hours (about seven months).",
    "key_terms": [
     {
-     "term": "Pulsar",
-     "meaning": "A fast-rotating, highly magnetized neutron star whose beams of radiation sweep past Earth, producing regular pulses."
+     "term": "Halide perovskite",
+     "meaning": "A family of crystalline materials, containing halogen ions such as iodide, used to make cheap, high-efficiency solar cells."
     },
     {
-     "term": "Fermi-LAT",
-     "meaning": "The Large Area Telescope on NASA's Fermi spacecraft, which detects gamma-ray photons from across the sky."
+     "term": "Soft lattice",
+     "meaning": "A crystal structure whose atoms are held together loosely enough that it deforms easily under stress or heat."
     },
     {
-     "term": "Lattice",
-     "meaning": "A regularly repeating arrangement of points in space. Here the space has many dimensions, and the task is to find especially short vectors (arrows between lattice points)."
+     "term": "Elastic field",
+     "meaning": "The pattern of internal strain and stress spread through a material."
     },
     {
-     "term": "Semicoherent search",
-     "meaning": "The previous standard technique, which splits long data sets into shorter pieces, analyzes each piece, and then combines the results to look for a periodic signal."
+     "term": "Grain boundary",
+     "meaning": "The interface where two small crystals (grains) in a film meet."
     },
     {
-     "term": "CPU hours/years",
-     "meaning": "A measure of computing effort: how long a single computer processor would need to run to complete the work."
+     "term": "Nanodiamond",
+     "meaning": "Diamond particles only nanometres across; very hard and rigid."
     },
     {
-     "term": "Isolated pulsar",
-     "meaning": "A pulsar that is not orbiting another star."
+     "term": "Power conversion efficiency (PCE)",
+     "meaning": "The percentage of incoming light energy that a solar cell turns into electricity."
+    },
+    {
+     "term": "Maximum power point operation",
+     "meaning": "Running a solar cell continuously at the voltage and current that give its highest power output, a standard stress test."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Daniel Pook-Kolb",
-    "Dotan Gazith",
-    "Colin J. Clark",
-    "Erik Agrell",
-    "Barak Zackay",
-    "Bruce Allen"
+    "Biao Li",
+    "Tianchi Zhang",
+    "Xingtao Wang",
+    "Yehui Wen",
+    "Yong Wang",
+    "Xuegong Yu",
+    "Deren Yang"
    ],
-   "published": "2026-11-19T10:00:00+00:00",
-   "doi": "10.1103/vlt2-xzgk",
-   "url": "https://doi.org/10.1103/vlt2-xzgk",
-   "citation": "Pook-Kolb, D., Gazith, D., Clark, C. J., Agrell, E., Zackay, B., & Allen, B. (2026). Gamma-Ray Pulsar Discovery Using a Lattice-Based Method. Physical Review Letters, 137(21), 211201. https://doi.org/10.1103/vlt2-xzgk",
-   "free_copy": {
-    "url": "https://doi.org/10.1103/vlt2-xzgk",
-    "version": "Published version",
-    "host": "publisher",
-    "license": "cc-by"
+   "published": "2026-11-19T08:00:00+00:00",
+   "doi": "10.1126/science.aeh3114",
+   "url": "https://doi.org/10.1126/science.aeh3114",
+   "citation": "Li, B., Zhang, T., Wang, X., Wen, Y., Wang, Y., Yu, X., & Yang, D. (2026). Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells. Science, 394(6826), eaeh3114. https://doi.org/10.1126/science.aeh3114",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Perovskite_solar_cell.jpg/960px-Perovskite_solar_cell.jpg",
+    "caption": "Perovskite solar cell",
+    "credit": "Dennis Schroeder / National Renewable Energy Laboratory, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Perovskite_solar_cell.jpg"
    }
   },
   {
    "rank": 6,
-   "headline": "Early stress primes a brain pathway that worsens pain in female mice",
-   "original_title": "A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress",
-   "journal": "Science",
-   "field": "Neuroscience",
+   "headline": "Farming intensity in Indonesia reshuffles which species live where, not just how many",
+   "original_title": "Tropical land-use intensification restructures biodiversity",
+   "journal": "Nature",
+   "field": "Ecology / Conservation",
    "significance": 7,
-   "reason": "In mice, a female-specific thalamus-to-amygdala circuit explains how early-life stress raises later vulnerability to chronic pain, offering a mechanistic basis for the sex difference seen in people.",
-   "summary": "Children who face adversity are more likely to develop chronic pain and anxiety as adults, and this link is stronger in women — but it hasn't been clear what in the brain causes it. This mouse study tested whether early-life stress (social isolation during development) changes how a specific brain circuit responds to a later injury. The circuit runs from the paraventricular thalamus, a relay region involved in alertness and threat, to the central amygdala, a hub for fear and emotional responses to pain.\n\nIn female mice, but not males, isolation plus a later nerve injury combined to strengthen the signalling in this pathway, and the circuit also became active in anticipation of a painful or threatening event. These females showed stronger sensitivity to touch and more avoidance behaviour. Using chemogenetics — engineered receptors that let researchers switch specific neurons on or off with a drug — the team dampened the pathway and reduced both behaviours, but only in animals that had experienced both stress and injury. Turning the pathway on artificially produced the symptoms: steady activation caused touch hypersensitivity, while brief bursts caused avoidance. The authors describe this as a hidden, primed state in the circuit that only shows its effects once an injury occurs later.",
-   "why_it_matters": "It offers a concrete biological explanation for why early-life adversity translates into chronic pain and anxiety more often in females, rather than treating it as a vague risk factor. It also points to a specific circuit — and a specific two-hit timing (early stress, then later injury) — that could guide future treatments. Because the effect appeared only when both hits occurred, it suggests why some people with injuries develop chronic pain while others do not.",
-   "limitations": "This is a mouse study, so whether the same circuit explains sex differences in human chronic pain is untested, and social isolation in mice is only one model of childhood adversity. The abstract does not report how large or lasting the behavioural rescue was.",
+   "reason": "An assessment of about 40,000 species, from soil microbes to vertebrates, in Sumatra shows how agricultural intensification erodes and restructures tropical biodiversity across spatial scales.",
+   "summary": "Most studies of biodiversity in tropical farmland count species at a single spot, missing how farming changes the mix of species across a whole landscape and across many kinds of organisms. This team surveyed 24 groups of organisms spanning all domains of life, about 40,000 species in total, in Indonesian landscapes. Sites ranged from lowland forest to smallholder farms growing a single cash crop intensively.\n\nIn the single-crop plantations, roughly 78% of combined diversity was lost at the landscape scale and about 50% at the local scale. The researchers expected these farms to become more alike in their species (homogenization), but they found no consistent sign of this. Instead, for organisms living above ground, the pattern shifted. In forest, different sites held largely different species (turnover). In plantations, poorer sites tended to hold a subset of the species found at richer sites (nestedness). The authors suggest this may be an early step of community simplification that could eventually lead to homogenization. Meanwhile, remaining differences among sites can help prop up total regional diversity.",
+   "why_it_matters": "Agricultural expansion is a major threat to tropical biodiversity. This study shows the damage involves both losing species and rearranging communities across the food chain. It points to practical options such as keeping patches of traditional farming, using more sustainable management, and protecting natural habitat alongside farmland.",
+   "limitations": "The work comes from Indonesian landscapes, so it may not apply to all tropical regions. The suggestion that current differences between sites may hide a future slide toward homogenization is an interpretation that remains to be tested over time.",
    "key_terms": [
     {
-     "term": "Paraventricular thalamus",
-     "meaning": "A small brain region that relays signals about arousal, stress and threat to emotional brain centres."
+     "term": "Multidiversity",
+     "meaning": "A combined measure of diversity averaged across many different groups of organisms at once."
     },
     {
-     "term": "Central amygdala",
-     "meaning": "Part of the amygdala that organises fear, avoidance and the emotional side of pain."
+     "term": "Biotic homogenization",
+     "meaning": "When different places come to hold increasingly similar sets of species."
     },
     {
-     "term": "Chemogenetics",
-     "meaning": "A technique where specific neurons are genetically engineered to carry a custom receptor, so a harmless drug can activate or silence just those cells."
+     "term": "Turnover",
+     "meaning": "Sites differ because they contain different species that replace one another."
     },
     {
-     "term": "Synaptic gain",
-     "meaning": "How strongly a connection between neurons amplifies incoming signals; higher gain means a bigger response to the same input."
+     "term": "Nestedness",
+     "meaning": "Species-poor sites contain mainly a subset of the species found at richer sites."
     },
     {
-     "term": "Mechanical hypersensitivity",
-     "meaning": "Reacting to light touch or pressure as though it were painful."
+     "term": "γ-diversity (gamma diversity)",
+     "meaning": "The total number of species across a whole region or landscape."
+    },
+    {
+     "term": "Land-use intensification gradient",
+     "meaning": "A series of sites ranging from natural forest to the most intensively managed farmland."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Anna Maria Borruto",
-    "Tabea Kohlund",
-    "Lukas Rettig",
-    "Martin von Renesse",
-    "Christian Alexander Hammer",
-    "Nikolas Leonhardt",
-    "Barbara Kurpiers",
-    "Claudia Calpe-López",
-    "Luca Benn",
-    "Hans-Christoph Friederich",
-    "Thomas Kuner",
-    "Rainer Spanagel",
-    "Sebastian Wieland"
+    "Nathaly R. Guerrero-Ramírez",
+    "Jan Salecker",
+    "Craig E. Simpkins",
+    "Fabian Brambach",
+    "Marife D. Corre",
+    "Kevin F. A. Darras",
+    "Jochen Drescher",
+    "Ingo Grass",
+    "Christian König",
+    "Gustavo B. Paterno",
+    "Kerstin Wiegand",
+    "Azru Azhar",
+    "Andrew D. Barnes",
+    "Ulrich Brose",
+    "Damayanti Buchori",
+    "Rolf Daniel",
+    "Dietrich Hertel",
+    "Purnama Hidayat",
+    "Malte Jochum",
+    "Kasmiatun",
+    "Bernhard Klarner",
+    "Alexander Knohl",
+    "Martyna M. Kotowska",
+    "Valentyna Krashevska",
+    "Amanda Mawan",
+    "Ana Meijide",
+    "Rizky Nazarreta",
+    "Rawati Panjaitan",
+    "Andrea Polle",
+    "Anton Potapov",
+    "Daniel Ramos",
+    "Katja Rembold",
+    "Akhmad Rizali",
+    "Dorothee Sandmann",
+    "Dominik Schneider",
+    "Garvin Schulz",
+    "Christian Stiegler",
+    "Winda Ika Susanti",
+    "Sri Sudarmiyati Tjitrosoedirdjo",
+    "Aiyen Tjoa",
+    "Teja Tscharntke",
+    "Ulfa Ulinnuha",
+    "Edzo Veldkamp",
+    "Jan Wohlert",
+    "Delphine Clara Zemp",
+    "Stefan Scheu",
+    "Holger Kreft"
    ],
-   "published": "2026-11-19T07:00:11+00:00",
-   "doi": "10.1126/science.adx5757",
-   "url": "https://doi.org/10.1126/science.adx5757",
-   "citation": "Borruto, A. M., Kohlund, T., Rettig, L., Renesse, M. v., Hammer, C. A., Leonhardt, N., Kurpiers, B., Calpe-López, C., Benn, L., Friederich, H., Kuner, T., Spanagel, R., & Wieland, S. (2026). A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress. Science, 394(6826), 864-869. https://doi.org/10.1126/science.adx5757",
-   "free_copy": null
+   "published": "2026-11-18T00:00:00+00:00",
+   "doi": "10.1038/s41586-026-11298-6",
+   "url": "https://doi.org/10.1038/s41586-026-11298-6",
+   "citation": "Guerrero-Ramírez, N. R., Salecker, J., Simpkins, C. E., Brambach, F., Corre, M. D., Darras, K. F. A., Drescher, J., Grass, I., König, C., Paterno, G. B., Wiegand, K., Azhar, A., Barnes, A. D., Brose, U., Buchori, D., Daniel, R., Hertel, D., Hidayat, P., Jochum, M., ... Kreft, H. (2026). Tropical land-use intensification restructures biodiversity. Nature. https://doi.org/10.1038/s41586-026-11298-6",
+   "free_copy": {
+    "url": "https://doi.org/10.1038/s41586-026-11298-6",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg/960px-Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg",
+    "caption": "Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu",
+    "credit": "CEphoto, Uwe Aranas, via Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg"
+   }
   },
   {
    "rank": 7,
-   "headline": "A nuclear tug-of-war over unfinished RNAs tunes mitochondria and nerve health",
-   "original_title": "The fate of poised pre-mRNAs shapes mitochondrial activity and cellular differentiation",
-   "journal": "Science",
-   "field": "Molecular Biology",
+   "headline": "Homo erectus lived in southern China's rainforests later than once thought",
+   "original_title": "Rainforest adaptation in late Homo erectus from southern China",
+   "journal": "Nature",
+   "field": "Palaeoanthropology",
    "significance": 7,
-   "reason": "The paper uncovers a nuclear quality-control mechanism for unspliced RNAs that governs mitochondrial function and is linked to human neurological disease from RNA exosome mutations.",
-   "summary": "Genes are first copied into precursor messenger RNAs (pre-mRNAs), which must have their non-coding stretches (introns) cut out before they can be used to make proteins. Cells also run quality-control systems that destroy faulty RNAs, but how far this control reaches inside the nucleus is not well understood. This study looked at a group of pre-mRNAs the authors call PIA-RNAs: molecules that already carry their finishing tail of adenines but still contain an intron and sit on chromatin (the DNA-protein material of chromosomes), apparently waiting.\n\nThe researchers found that the fate of these waiting RNAs depends on which protein binds them. If a protein called NCBP3 grabs them, they are kept as immature mRNAs that can finish splicing later. If a protein called anillin binds instead, they are sent to the nuclear RNA exosome, a machine that breaks RNA down. Many of the RNAs caught in this competition code for proteins used by mitochondria, the cell's energy producers. Mice lacking NCBP3, and people carrying disease-causing mutations in the RNA exosome, both showed weaker mitochondrial activity, muscle weakness, poor insulation (myelin) of nerves in the cerebellum, and reduced motor coordination.",
-   "why_it_matters": "The work suggests that deciding whether to save or destroy unfinished RNAs is not just housekeeping but a way of controlling how well mitochondria work and how cells mature. It also offers a possible explanation for how defects in RNA-processing machinery lead to certain neurological diseases.",
-   "limitations": "The abstract does not give details on how many RNAs or patients were studied, and the link to human disease rests on existing exosome mutations rather than direct manipulation of NCBP3 in people. Effects of removing NCBP3 were shown in mice, so how closely this applies to humans remains to be confirmed.",
+   "reason": "Homo erectus teeth from southern China dated to 324–184 thousand years ago show the species lived in closed rainforests, challenging assumptions about its ecological limits.",
+   "summary": "Homo erectus, an early human species, existed for a very long time, from roughly 1.9 million years ago until about 108,000 years ago, and spread from Africa across to eastern Asia. Researchers have long assumed it preferred open landscapes mixing woodland and grassland, partly because of famous fossil sites on Java, but few direct chemical measurements from Asian fossils have tested this. The team studied nine hominin teeth from two linked caves in Guangxi province, southern China. Eight had earlier been identified as H. erectus using both tooth shape and genetic evidence.\n\nTo date the teeth, the researchers combined 43 age measurements from five different dating methods into a single timeline. They then analysed isotopes (versions of chemical elements that differ in weight) and trace elements locked in the teeth to reconstruct the surrounding environment and how the hominins behaved. They conclude that H. erectus was in southern China between about 324,000 and 184,000 years ago. That is clearly younger than the roughly 400,000-year age previously accepted for definite H. erectus fossils in this region. The chemical evidence points to these hominins living in closed rainforest, a habitat often thought to have been used only by our own species, and suggests they moved around over long periods and adapted flexibly to their surroundings.",
+   "why_it_matters": "The findings question the view that H. erectus was limited to open grassy habitats and was less able than Homo sapiens to cope with dense forest. They also push back the known survival date of this species in southern China, which affects how scientists picture which human species shared Asia and when.",
+   "limitations": "The conclusions rest on nine teeth from a single pair of caves, so it is unclear how typical this rainforest lifestyle was for H. erectus elsewhere in Asia.",
    "key_terms": [
     {
-     "term": "Pre-mRNA",
-     "meaning": "The first, unprocessed RNA copy of a gene, which still contains introns that must be removed before it becomes a usable messenger RNA."
+     "term": "Homo erectus",
+     "meaning": "An extinct early human species that walked upright and spread from Africa into Asia. It is one of the longest-lasting human species known."
     },
     {
-     "term": "Intron and splicing",
-     "meaning": "Introns are non-coding segments inside a gene's RNA; splicing is the process of cutting them out and joining the remaining pieces."
+     "term": "Hominin",
+     "meaning": "Any member of the human lineage, including modern humans and extinct relatives such as H. erectus."
     },
     {
-     "term": "Polyadenylation",
-     "meaning": "Adding a tail of adenine nucleotides to the end of an RNA, normally a sign it is nearly finished."
+     "term": "Radiometric dating",
+     "meaning": "Working out the age of material by measuring how much of certain radioactive or radiation-affected substances it contains."
     },
     {
-     "term": "Nuclear RNA exosome",
-     "meaning": "A protein complex in the nucleus that degrades unwanted or faulty RNA molecules."
+     "term": "Stable carbon isotopes",
+     "meaning": "Non-radioactive forms of carbon whose ratios in teeth reflect the kinds of plants at the base of an animal's diet. This can show whether the landscape was forest or grassland."
     },
     {
-     "term": "NCBP3",
-     "meaning": "Nuclear cap-binding protein 3, which binds the start (cap) of RNAs; here it protects waiting pre-mRNAs so they can be spliced later."
+     "term": "Clumped isotopes",
+     "meaning": "A measurement of how often heavy isotopes bond together within a mineral. It can give clues about temperature or the environment when the mineral formed."
     },
     {
-     "term": "Anillin",
-     "meaning": "A protein that, in this study, steers waiting pre-mRNAs toward destruction by the exosome."
-    },
-    {
-     "term": "Cerebellar hypomyelination",
-     "meaning": "Too little myelin, the insulating layer around nerve fibres, in the cerebellum, a brain region that coordinates movement."
+     "term": "Trace elements",
+     "meaning": "Elements present in tiny amounts in teeth that can reflect diet, water sources and movement across the landscape."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Xavier Rambout",
-    "Rina Nagao",
-    "Victor Gu",
-    "Sophie Werner",
-    "Justin Youngyunpipatkul",
-    "Jadon Schlierf",
-    "Christoph Pröschel",
-    "Lynne E. Maquat"
+    "K. E. Westaway",
+    "R. Joannes-Boyau",
+    "W. Liao",
+    "Q. Shao",
+    "W. Yu",
+    "M. Quinn",
+    "A.-M. Bacon",
+    "H. Liang",
+    "N. Bourgon",
+    "J.-x. Zhao",
+    "P. Roberts",
+    "R. Kono",
+    "Y. Pan",
+    "L. Yang",
+    "Y. Wang",
+    "C. Jin",
+    "Z. Wu",
+    "S. Murray",
+    "C. Zanolli",
+    "F. Demeter",
+    "F. Welker",
+    "R. D. Ásmundsdóttir",
+    "Q. Fu",
+    "V. Balter",
+    "W. Wang",
+    "Y. Zhang"
    ],
-   "published": "2026-11-19T08:00:00+00:00",
-   "doi": "10.1126/science.aee8018",
-   "url": "https://doi.org/10.1126/science.aee8018",
-   "citation": "Rambout, X., Nagao, R., Gu, V., Werner, S., Youngyunpipatkul, J., Schlierf, J., Pröschel, C., & Maquat, L. E. (2026). The fate of poised pre-mRNAs shapes mitochondrial activity and cellular differentiation. Science, 394(6826), eaee8018. https://doi.org/10.1126/science.aee8018",
-   "free_copy": null
+   "published": "2026-11-18T00:00:00+00:00",
+   "doi": "10.1038/s41586-026-11155-6",
+   "url": "https://doi.org/10.1038/s41586-026-11155-6",
+   "citation": "Westaway, K. E., Joannes-Boyau, R., Liao, W., Shao, Q., Yu, W., Quinn, M., Bacon, A., Liang, H., Bourgon, N., Zhao, J., Roberts, P., Kono, R., Pan, Y., Yang, L., Wang, Y., Jin, C., Wu, Z., Murray, S., Zanolli, C., ... Zhang, Y. (2026). Rainforest adaptation in late Homo erectus from southern China. Nature. https://doi.org/10.1038/s41586-026-11155-6",
+   "free_copy": {
+    "url": "https://doi.org/10.1038/s41586-026-11155-6",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by-nc-nd"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Karst_Landscape%2C_China_%28ASTER%29.jpg/960px-Karst_Landscape%2C_China_%28ASTER%29.jpg",
+    "caption": "Guangxi karst cave",
+    "credit": "NASA/METI/AIST/Japan Space Systems, and U.S./Japan ASTER Science Team, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Karst_Landscape,_China_(ASTER).jpg"
+   }
   },
   {
    "rank": 8,
-   "headline": "Hollow shells with one opening use turbulence to sort and trap particles",
-   "original_title": "Quiet within, chaos without: Turbulence shelters drive selective particle capture and release",
-   "journal": "Science",
-   "field": "Physics / Fluid Dynamics",
+   "headline": "Bogong moths steer by the tilt of Earth's magnetic field, using light",
+   "original_title": "Bogong moths navigate with a light-dependent geomagnetic inclination compass",
+   "journal": "Nature",
+   "field": "Animal Behaviour",
    "significance": 7,
-   "reason": "Hollow \"turbulence shelters\" use eddy filtering to sort particles by size down to tens of nanometres with no net fluid flow, a new design principle for filtration.",
-   "summary": "Turbulent flow looks random, but its swirls (eddies) pass energy from large scales down to small ones in an organized way. Because turbulence is not in thermal equilibrium, it is not bound by the rules that stop anyone from pulling useful work out of the random jiggling of gas molecules. The researchers asked whether this structure could be used to move particles in a chosen direction without any overall flow of fluid. They built what they call turbulence shelters: hollow shells with a single hole. The hole lets only eddies of certain sizes inside, so the interior stays calmer than the churning fluid outside.\n\nThis difference in how strongly the fluid fluctuates inside versus outside pushes particles in one direction, either into the shelter or out of it, even though no net fluid passes through the hole. The effect held for shelters spanning a thousandfold range of sizes, and particle concentrations inside and outside ended up different. Which particles were captured or released depended on their shape, their inertia (how hard they are to speed up or slow down), random thermal motion, and electrostatic forces. At the smallest scale, shelters could tell apart particles whose sizes differed by only tens of nanometers, whatever material the particles were made of.",
-   "why_it_matters": "The work suggests a new principle for filtering: shape a container so it separates calm and turbulent regions, and existing background turbulence will do the sorting with no pump-driven flow through a membrane. Being able to separate particles by size regardless of composition could be useful wherever turbulent fluids carry mixed particles.",
-   "limitations": "The abstract does not give capture efficiencies, speeds, or energy costs, and does not say how well the approach works outside the tested setups or compares with existing filters.",
+   "reason": "Shows that migrating Bogong moths carry a light-dependent magnetic inclination compass as a backup to their star compass, a striking finding about how insects navigate.",
+   "summary": "Bogong moths travel up to about 1,000 km twice a year between where they breed and a limited set of cool resting sites in the Australian Alps, where they spend summer in a dormant state. Earlier work showed they can use the stars to hold their course, yet they still head the right way under cloudy skies, hinting that they also sense Earth's magnetic field. This study asked what kind of magnetic compass they use and how it might work. The researchers tethered moths inside a flight arena beneath an artificial night sky whose star positions were scrambled, so the stars gave no useful direction, and then altered the magnetic field around them.\n\nThe moths still flew in their inborn migratory direction using the magnetic field alone. Rotating the field by 180°, or flipping its inclination (the angle at which field lines dip into the ground), made them fly the opposite way. Flipping only the field's polarity (which end counts as north) did not make them turn. Magnetic orientation also disappeared when violet-to-blue light was removed from the lighting, or when weak radio-frequency noise was added. The authors conclude that the moths use an inclination compass and that their magnetic sense likely depends on light-triggered chemical reactions involving radical pairs.",
+   "why_it_matters": "Light-dependent inclination compasses have mainly been linked to night-migrating birds, so this result suggests a similar mechanism exists in a long-distance migrating insect. It also helps explain how these moths stay on course even when clouds hide the stars.",
+   "limitations": "These were lab tests on moths tethered under an artificial sky, so how the compass is used in free flight in the wild is not shown. The radical-pair mechanism is inferred from how the moths responded to light and radio noise rather than seen directly.",
    "key_terms": [
     {
-     "term": "Turbulence",
-     "meaning": "Chaotic, swirling fluid motion with eddies of many sizes."
+     "term": "Inclination compass",
+     "meaning": "A compass that reads the angle at which Earth's magnetic field lines tilt toward the ground. It tells 'toward the pole' from 'toward the equator' rather than magnetic north from south."
     },
     {
-     "term": "Energy cascade",
-     "meaning": "The way energy in turbulence moves from large eddies to progressively smaller ones until it is lost as heat."
+     "term": "Polarity",
+     "meaning": "The direction the magnetic field points, from south to north. An inclination compass ignores it."
     },
     {
-     "term": "Nonequilibrium",
-     "meaning": "A system that is constantly driven and not settled into a steady thermal balance, so equilibrium limits on extracting work need not apply."
+     "term": "Radical pair",
+     "meaning": "Two molecules, each carrying an unpaired electron, that can be produced when light is absorbed. How their reactions proceed can be affected by weak magnetic fields."
     },
     {
-     "term": "Turbulence shelter",
-     "meaning": "A hollow shell with one opening that admits only some eddy sizes, keeping its interior less turbulent than the outside."
+     "term": "Aestivation",
+     "meaning": "A dormant, inactive period spent through the hot season, similar to hibernation in winter."
     },
     {
-     "term": "Zero mean fluid flux",
-     "meaning": "On average, no net fluid flows into or out of the shell, even though it moves back and forth."
-    },
-    {
-     "term": "Inertia",
-     "meaning": "A particle's resistance to changes in its motion, which depends mainly on its mass."
+     "term": "Radiofrequency fields",
+     "meaning": "Weak, rapidly oscillating electromagnetic fields, here between 150 kHz and 60 MHz, which can disrupt radical-pair-based magnetic sensing."
     }
    ],
    "based_on": "abstract",
    "authors": [
-    "Matteo Sabato",
-    "Sarah Chong",
-    "Yaocheng Li",
-    "Zhe Xu",
-    "Daqian Gao",
-    "Martin J. Falk",
-    "Stefano Sacanna",
-    "William T. M. Irvine"
+    "Hui Chen",
+    "Linnea Rosberg",
+    "David Dreyer",
+    "Bo Leberecht",
+    "Henrik Mouritsen",
+    "Pauline N. Fleischmann",
+    "Eric J. Warrant"
    ],
-   "published": "2026-11-19T07:00:11+00:00",
-   "doi": "10.1126/science.aee9889",
-   "url": "https://doi.org/10.1126/science.aee9889",
-   "citation": "Sabato, M., Chong, S., Li, Y., Xu, Z., Gao, D., Falk, M. J., Sacanna, S., & Irvine, W. T. M. (2026). Quiet within, chaos without: Turbulence shelters drive selective particle capture and release. Science, 394(6826), 884-889. https://doi.org/10.1126/science.aee9889",
-   "free_copy": null
+   "published": "2026-11-18T00:00:00+00:00",
+   "doi": "10.1038/s41586-026-11322-9",
+   "url": "https://doi.org/10.1038/s41586-026-11322-9",
+   "citation": "Chen, H., Rosberg, L., Dreyer, D., Leberecht, B., Mouritsen, H., Fleischmann, P. N., & Warrant, E. J. (2026). Bogong moths navigate with a light-dependent geomagnetic inclination compass. Nature. https://doi.org/10.1038/s41586-026-11322-9",
+   "free_copy": {
+    "url": "https://doi.org/10.1038/s41586-026-11322-9",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Agrotis_infusa.jpg/960px-Agrotis_infusa.jpg",
+    "caption": "Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008",
+    "credit": "Donald Hobern from Canberra, Australia, via Wikimedia Commons",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Agrotis_infusa.jpg"
+   }
   }
  ]
 }

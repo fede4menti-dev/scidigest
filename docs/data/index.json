@@ -1,24 +1,24 @@
 {
  "format": 1,
- "updated": "2026-11-20T10:29:36+00:00",
+ "updated": "2026-11-20T11:18:56+00:00",
  "days": [
   {
    "date": "2026-11-20",
    "count": 8,
    "fields": [
-    "Astrophysics",
-    "Developmental Biology",
-    "Energy Materials",
+    "Animal Behaviour",
+    "Astronomy",
+    "Ecology / Conservation",
     "Global Health",
-    "Molecular Biology",
+    "Materials Science / Energy",
     "Neuroscience",
-    "Ocean & Atmospheric Science",
-    "Physics / Fluid Dynamics"
+    "Palaeoanthropology",
+    "Virology / Microbiome"
    ],
    "top_headlines": [
-    "Vaccinating whole communities against malaria each season lowered infection rates",
-    "Molecular 'typewriter' in DNA traces a mouse embryo's family tree of cells",
-    "Organic nitrogen falling from the air feeds the oceans more than thought"
+    "Vaccinating whole communities against malaria each season cut infection rates",
+    "Newly found gut viruses are poxviruses' closest known relatives",
+    "Astronomers watch a star spiral inside its giant partner's outer layers"
    ]
   },
   {

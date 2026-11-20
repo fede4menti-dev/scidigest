@@ -19,6 +19,8 @@ struct RootView: View {
                 .tabItem { Label("Today", systemImage: "sparkles") }
             ArchiveView()
                 .tabItem { Label("Archive", systemImage: "calendar") }
+            IdeaCheckView()
+                .tabItem { Label("Idea Check", systemImage: "lightbulb") }
             SettingsView()
                 .tabItem { Label("Settings", systemImage: "gearshape") }
         }

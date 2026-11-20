@@ -1,0 +1,77 @@
+{
+ "question": "Does regular aerobic exercise improve memory in older adults?",
+ "field": "Neuroscience",
+ "verdict": "already well researched",
+ "novelty_score": 3,
+ "overall_score": 6,
+ "summary": "Several trials show exercise helps memory.",
+ "quality": {
+  "clarity": {
+   "score": 6,
+   "comment": "clarity ok"
+  },
+  "specificity": {
+   "score": 6,
+   "comment": "specificity ok"
+  },
+  "feasibility": {
+   "score": 6,
+   "comment": "feasibility ok"
+  },
+  "significance": {
+   "score": 6,
+   "comment": "significance ok"
+  },
+  "testability": {
+   "score": 6,
+   "comment": "testability ok"
+  }
+ },
+ "ethics": "None stand out.",
+ "gaps": [
+  "Dose of exercise"
+ ],
+ "suggestions": [
+  "Name the age range"
+ ],
+ "improved_question": "Does 30 minutes of daily walking improve recall in adults over 65?",
+ "related": [
+  {
+   "title": "Exercise and memory in older adults",
+   "authors": "A. One, B. Two, C. Three et al.",
+   "year": 2019,
+   "venue": "Neurology",
+   "doi": "10.1/a",
+   "url": "https://doi.org/10.1/a",
+   "cited_by": 900,
+   "source": "OpenAlex",
+   "relevance": "directly addresses it",
+   "how_it_relates": "A trial of the same idea."
+  },
+  {
+   "title": "Hippocampal volume after training",
+   "authors": "Five E",
+   "year": 2011,
+   "venue": "PNAS",
+   "doi": "10.1/b",
+   "url": "https://doi.org/10.1/b",
+   "cited_by": 3000,
+   "source": "Europe PMC",
+   "relevance": "useful background",
+   "how_it_relates": "Brain structure changes."
+  }
+ ],
+ "search": {
+  "queries": [
+   "exercise memory older adults",
+   "aerobic training cognition aging"
+  ],
+  "sources": [
+   "Europe PMC",
+   "OpenAlex"
+  ],
+  "papers_considered": 3,
+  "failures": []
+ },
+ "generated_at": "2026-11-20T00:00:00.000Z"
+}

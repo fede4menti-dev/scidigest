@@ -13,7 +13,7 @@ FIX = Path(__file__).parent / "fixtures" / "sample_nature.rss"
 
 
 def swift_struct_fields(name: str) -> dict[str, bool]:
-    src = (ROOT / "ios" / "SciDigest" / "Models.swift").read_text()
+    src = "\n".join(f.read_text() for f in sorted((ROOT / "ios" / "SciDigest").glob("*.swift")))
     body = re.search(rf"struct {name}\b[^{{]*{{(.*?)\n}}", src, re.S).group(1)
     return {m.group(1): m.group(2) == "?" for m in re.finditer(r"^\s*let (\w+): [\w\[\]]+(\??)", body, re.M)}
 
@@ -53,3 +53,13 @@ def test_models_match_published_json(tmp_path):
     check({"kind": "", "url": "", "caption": "", "credit": "", "license": "", "license_url": None, "source_url": ""},
           "PaperImage", nullable={"license_url"})
     check({"url": "", "version": "", "host": "", "license": None}, "FreeCopy", nullable={"license"})
+
+
+def test_idea_report_models_match_worker_output():
+    """tests/fixtures/idea_report.json is written by the worker's own test (worker/test)."""
+    rep = json.loads((FIX.parent / "idea_report.json").read_text())
+    check(rep, "IdeaReport")
+    check(rep["quality"], "QualityScores")
+    check(rep["quality"]["clarity"], "Scored")
+    check(rep["related"][0], "RelatedPaper", nullable={"year", "doi"})
+    check(rep["search"], "SearchInfo")

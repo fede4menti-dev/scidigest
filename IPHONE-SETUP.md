@@ -59,7 +59,7 @@ From now on it runs by itself every day at 10:17 UTC (about 5am US Eastern, 10am
 
 **B2. Swap in the SciDigest code**
 1. In the left sidebar, find `ContentView.swift` and `SciDigestApp.swift` (inside the yellow `SciDigest` folder). Select both → right-click → **Delete** → **Move to Trash**.
-2. In Finder, open `scidigest/ios/SciDigest/` and select all 11 `.swift` files.
+2. In Finder, open `scidigest/ios/SciDigest/` and select all the `.swift` files.
 3. Drag them onto the yellow `SciDigest` folder in Xcode's sidebar. In the dialog, tick **Copy items if needed** and make sure the **SciDigest** target is ticked → **Finish**.
 
 **B3. Set your report address**
@@ -139,6 +139,8 @@ Things that help it pass review:
 ---
 
 ## Using the app
+
+- **Idea Check:** type a research question to see related papers. For the full AI report, set up the idea checker first: see **IDEA-CHECKER-SETUP.md**.
 
 - **Today:** today's picks. Pull down to refresh. Tap any paper for the full explanation, caveats, key terms, citation (with a copy button), and links to the original and any free full-text copy.
 - **Archive:** every past day.

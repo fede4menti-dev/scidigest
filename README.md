@@ -18,6 +18,19 @@ When run with `--site`, it also publishes:
 
 Build one by hand with `python -m scidigest --site docs --review weekly` (or `monthly`). Every paper shows its publication date, and repeats show the other days they were featured.
 
+## Images
+
+Each paper gets an image when one can be shown legally:
+
+- **A figure from the paper** when it's open access under CC BY, CC BY-SA or CC0. Claude picks the figure that best shows the main finding and captions it in plain language.
+- **Otherwise an illustrative photo** from Wikimedia Commons under a free licence (public domain, CC0, CC BY, CC BY-SA), labelled "Illustration, not from the paper".
+
+Images under non-commercial or no-derivatives licences are never used, and every image shows credit, licence and a link to its source. Turn images off with `--no-images`.
+
+## Idea checker
+
+The app's **Idea Check** tab tells you whether a research question has already been studied, lists the most important related papers, and reviews the question's clarity, specificity, feasibility, significance and testability. It runs on a free Cloudflare Worker (`worker/`) deployed by GitHub Actions. See **[IDEA-CHECKER-SETUP.md](IDEA-CHECKER-SETUP.md)**.
+
 ## iPhone app
 
 See **[IPHONE-SETUP.md](IPHONE-SETUP.md)**: GitHub runs the digest every morning and publishes it, and a SwiftUI app (`ios/SciDigest/`) shows it on your phone.
@@ -89,4 +102,4 @@ Uses Claude Opus 5.5. A typical day (1 ranking call over ~100 abstracts + 8 summ
 
 - Only legal open-access copies are used. When none exists, the summary is based on the abstract, and the report says so. Always read the original before citing it in your own work.
 - Some publishers occasionally rate-limit or change feed URLs; a failing feed is skipped and logged, it won't break the report.
-- Tests run offline: `pip install pytest && python -m pytest tests`
+- Tests run offline: `pip install pytest && python -m pytest tests`, and for the worker `cd worker && npm ci && npm test`

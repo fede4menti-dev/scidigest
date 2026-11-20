@@ -3,6 +3,8 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(DigestStore.self) private var store
     @AppStorage(Config.feedURLKey) private var feedURL = Config.defaultFeedURL
+    @AppStorage(Config.ideaCheckerURLKey) private var ideaCheckerURL = Config.defaultIdeaCheckerURL
+    @AppStorage(Config.ideaCheckerTokenKey) private var ideaCheckerToken = Config.defaultIdeaCheckerToken
     @AppStorage("reminderOn") private var reminderOn = false
     @AppStorage("reminderHour") private var reminderHour = 8
     @AppStorage("reminderMinute") private var reminderMinute = 0
@@ -34,6 +36,20 @@ struct SettingsView: View {
                     Text("Report address")
                 } footer: {
                     Text("Your GitHub Pages address, where the daily reports are published.")
+                }
+
+                Section {
+                    TextField("https://scidigest-idea-checker.….workers.dev", text: $ideaCheckerURL)
+                        .keyboardType(.URL)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                    SecureField("App token (optional)", text: $ideaCheckerToken)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                } header: {
+                    Text("Idea checker")
+                } footer: {
+                    Text("The address of your idea checker server. Leave empty to search Europe PMC only, without the AI report.")
                 }
 
                 Section {

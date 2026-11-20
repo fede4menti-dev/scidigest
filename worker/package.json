@@ -1,0 +1,17 @@
+{
+  "name": "scidigest-idea-checker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Checks whether a research question has already been studied and reports on its quality.",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.11.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.165.0"
+  }
+}

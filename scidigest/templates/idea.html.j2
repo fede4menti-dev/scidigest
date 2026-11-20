@@ -33,6 +33,7 @@ h1{font-size:2.2rem;line-height:1.08;letter-spacing:-.03em;margin:4px 0 8px}
 .bar{height:7px;border-radius:99px;background:var(--ph);overflow:hidden;margin:6px 0 4px}.bar i{display:block;height:100%;border-radius:99px;background:var(--accent)}
 .q .c{color:var(--soft);font-size:.88rem}
 .paper{padding:12px 0;border-top:1px solid var(--line)}.paper:first-of-type{border-top:0;padding-top:0}
+.paper .mt{color:var(--accent);font-size:.75rem;font-weight:600;margin-top:4px}
 .paper a{font-weight:600;color:var(--ink);text-decoration:none}.paper a:hover{color:var(--accent)}
 .paper .m{color:var(--muted);font-size:.8rem;margin-top:2px}.paper .h{font-size:.9rem;margin-top:4px;color:var(--soft)}
 .rel{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:2px}
@@ -103,6 +104,7 @@ document.addEventListener("DOMContentLoaded",function(){
     var meta=[p.authors,p.year,p.venue].filter(Boolean).join(" · ")+(p.cited_by?" · cited "+p.cited_by+"×":"");
     d.appendChild(el("div","m",meta));
     if(p.how_it_relates)d.appendChild(el("div","h",p.how_it_relates));
+    if(p.match)d.appendChild(el("div","mt",p.match));
     parent.appendChild(d)}
 
   function renderReport(r){
@@ -131,16 +133,34 @@ document.addEventListener("DOMContentLoaded",function(){
   var STOP="a an the of in on for to and or with without by from into about is are was were be been does do did can could should would will may might how what which who whom whose why when where whether this that these those it its their there than then as at if not no more most less very".split(" ");
   function keywords(text){var seen={};return text.toLowerCase().replace(/[^a-z0-9\- ]+/g," ").split(/\s+/).filter(function(w){
     if(w.length<4||STOP.indexOf(w)>=0||seen[w])return false;seen[w]=1;return true}).slice(0,7)}
-  function epmc(query){return fetch("https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&resultType=lite&pageSize=15&query="+encodeURIComponent(query))
+  function epmc(query){return fetch("https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&resultType=core&pageSize=25&query="+encodeURIComponent(query))
     .then(function(r){if(!r.ok)throw new Error("Europe PMC "+r.status);return r.json()}).then(function(d){return (d.resultList&&d.resultList.result)||[]})}
+  // Search-only mode (no server): Europe PMC search, then a free, non-AI relevance check. Each paper
+  // shows the abstract sentence that best matches the question and the words it matched on; weak
+  // matches are dropped.
+  function stem(w){return w.length>6?w.slice(0,w.length-2):w.length>4?w.slice(0,w.length-1):w}
+  function matchInfo(kw,x){
+    var stems=kw.map(stem),text=((x.title||"")+" "+(x.abstractText||"")).toLowerCase().replace(/<[^>]+>/g," ");
+    var hit=kw.filter(function(k,i){return text.indexOf(stems[i])>=0});
+    var sents=(x.abstractText||"").replace(/<[^>]+>/g," ").split(/(?<=[.!?])\s+/),best="",bestN=0;
+    sents.forEach(function(se){var low=se.toLowerCase(),n=stems.filter(function(st){return low.indexOf(st)>=0}).length;
+      if(n>bestN&&se.length>30){bestN=n;best=se}});
+    if(best.length>240)best=best.slice(0,237).replace(/\s+\S*$/,"")+"…";
+    return {hits:hit,sentence:best}}
   function searchOnly(question){
     var kw=keywords(question);if(!kw.length)kw=[question];
-    return epmc(kw.join(" ")).then(function(res){return res.length>=5?res:epmc(kw.join(" OR "))}).then(function(res){
+    var need=Math.max(Math.min(2,kw.length),Math.ceil(kw.length*0.5));
+    return epmc(kw.join(" ")).then(function(res){return res.length>=8?res:epmc(kw.join(" OR "))}).then(function(res){
+      var scored=res.map(function(x){var m=matchInfo(kw,x);return {x:x,m:m}})
+        .filter(function(r){return r.m.hits.length>=need})
+        .sort(function(a,b){return b.m.hits.length-a.m.hits.length||(b.x.citedByCount||0)-(a.x.citedByCount||0)}).slice(0,12);
       out.innerHTML="";var p=panel("Related papers from Europe PMC");
-      if(!res.length)p.appendChild(el("p",null,"No papers found. Try different wording."));
-      res.forEach(function(x){paperRow({title:(x.title||"").replace(/\.$/,""),url:x.doi?"https://doi.org/"+x.doi:"https://europepmc.org/article/"+x.source+"/"+x.id,
-        authors:x.authorString,year:x.pubYear,venue:x.journalTitle,cited_by:x.citedByCount},p)});
-      out.appendChild(el("p","small","Search-only mode. For the verdict, the most important papers and a review of your question, set up the idea checker (IDEA-CHECKER-SETUP.md) and add its address in Settings."))})}
+      if(!scored.length)p.appendChild(el("p",null,"No closely matching papers found. Try other words for the same idea, or connect the idea checker for an AI search."));
+      scored.forEach(function(r){var x=r.x;
+        paperRow({title:(x.title||"").replace(/\.$/,""),url:x.doi?"https://doi.org/"+x.doi:"https://europepmc.org/article/"+x.source+"/"+x.id,
+          authors:x.authorString,year:x.pubYear,venue:x.journalTitle||(x.journalInfo&&x.journalInfo.journal&&x.journalInfo.journal.title),cited_by:x.citedByCount,
+          how_it_relates:r.m.sentence?"From the abstract: “"+r.m.sentence+"”":"",match:"Matches your question on: "+r.m.hits.join(", ")},p)});
+      out.appendChild(el("p","small","Search-only mode: papers are matched on your keywords and shown with the abstract sentence that fits your question best. This is automatic, not checked by AI, so papers that use different words can be missed. For AI-checked relevance, an explanation for every paper and a review of your question, connect the idea checker in Settings."))})}
 
   var hist=document.getElementById("history");
   function renderHistory(){hist.innerHTML="";var ideas=(app.state.ideas||[]);if(!ideas.length){hist.classList.add("hidden");return}

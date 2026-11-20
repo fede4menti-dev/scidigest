@@ -13,7 +13,7 @@
   // ------------------------------------------------------------- storage
   function load(key) { try { return JSON.parse(localStorage.getItem(key) || "null"); } catch (e) { return null; } }
   function save(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {} }
-  function remove(key) { try { localStorage.removeItem(key); } catch (e) {} }
+  function forget(key) { try { localStorage.removeItem(key); } catch (e) {} }
 
   function defaults() {
     return { topics: [], theme: "", size: "m", saver: false, motion: false, dimread: true,
@@ -68,6 +68,23 @@
   function $$(sel, root) { return [].slice.call((root || document).querySelectorAll(sel)); }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 
+  // App-style pop-up instead of the browser's alert/confirm. Tapping outside or Esc closes it.
+  function modal(title, message, okLabel, cancelLabel, danger) {
+    return new Promise(function (resolve) {
+      var d = el("dialog", "mini"), body = el("div", "mb"), foot = el("div", "mf");
+      body.appendChild(el("h2", null, title)); if (message) body.appendChild(el("p", null, message));
+      if (cancelLabel) { var c = el("button", "secondary", cancelLabel); c.type = "button"; c.onclick = function () { done(false); }; foot.appendChild(c); }
+      var ok = el("button", "primary" + (danger ? " danger" : ""), okLabel || "OK"); ok.type = "button"; ok.onclick = function () { done(true); }; foot.appendChild(ok);
+      d.appendChild(body); d.appendChild(foot); document.body.appendChild(d);
+      function done(v) { if (d.open) d.close(); d.parentNode && d.parentNode.removeChild(d); resolve(v); }
+      d.addEventListener("cancel", function (e) { e.preventDefault(); done(false); });
+      d.addEventListener("click", function (e) { if (e.target === d) done(false); });
+      d.showModal(); ok.focus();
+    });
+  }
+  function ask(title, message, okLabel, danger) { return modal(title, message, okLabel, "Cancel", danger); }
+  function tell(title, message) { return modal(title, message, "OK"); }
+
   function toast(msg) {
     var old = $(".toast"); if (old) old.remove();
     var t = el("div", "toast", msg); t.setAttribute("role", "status");
@@ -116,7 +133,7 @@
     return api("/me/data", "PUT", { data: syncable() }).then(function () {
       account.lastSync = Date.now(); save(ACCOUNT_KEY, account); renderAccount();
     }, function (e) {
-      if (e.status === 401) { account = null; remove(ACCOUNT_KEY); renderAccount(); toast("Please sign in again to keep syncing."); }
+      if (e.status === 401) { account = null; forget(ACCOUNT_KEY); renderAccount(); toast("Please sign in again to keep syncing."); }
     });
   }
 
@@ -153,7 +170,7 @@
       merge(me.data); commit({ noSync: true });
       account.lastSync = Date.now(); save(ACCOUNT_KEY, account);
       if (JSON.stringify(syncable()) !== before) { applyLook(); pushNow(); }
-    }, function (e) { if (e.status === 401) { account = null; remove(ACCOUNT_KEY); } });
+    }, function (e) { if (e.status === 401) { account = null; forget(ACCOUNT_KEY); } });
   }
 
   // ------------------------------------------------------------- account UI
@@ -173,7 +190,7 @@
       var syncBtn = el("button", "listbtn", "Sync now"); syncBtn.type = "button";
       syncBtn.onclick = function () { syncBtn.disabled = true; pushNow().then(function () { syncBtn.disabled = false; toast("Synced"); }); };
       var out = el("button", "listbtn", "Sign out"); out.type = "button";
-      out.onclick = function () { account = null; remove(ACCOUNT_KEY); renderAccount(); toast("Signed out. Your settings stay on this device."); };
+      out.onclick = function () { account = null; forget(ACCOUNT_KEY); renderAccount(); toast("Signed out. Your settings stay on this device."); };
       var del = el("button", "listbtn danger", "Delete account"); del.type = "button";
       del.onclick = function () { acctMode = "delete"; renderDelete(wrap); };
       row.appendChild(syncBtn); row.appendChild(out); row.appendChild(del); wrap.appendChild(row);
@@ -268,7 +285,7 @@
     go.onclick = function () {
       go.disabled = true;
       api("/me/delete", "POST", { password: pw.value }).then(function () {
-        account = null; remove(ACCOUNT_KEY); renderAccount(); toast("Your account was deleted.");
+        account = null; forget(ACCOUNT_KEY); renderAccount(); toast("Your account was deleted.");
       }, function (e) { msg.textContent = e.message; msg.className = "msg err"; go.disabled = false; });
     };
     row.appendChild(go); row.appendChild(cancel); wrap.appendChild(row);
@@ -340,17 +357,20 @@
       document.body.appendChild(a); a.click(); a.remove();
     });
     $("#clear-history").addEventListener("click", function () {
-      if (!confirm("Remove your saved papers, reading history and idea checks?" + (account ? " This also clears them from your account." : ""))) return;
-      S.saved = {}; S.read = {}; S.ideas = []; commit(); markCards(); toast("Cleared.");
+      ask("Clear history?", "Remove your saved papers, reading history and idea checks?" + (account ? " This also clears them from your account." : ""), "Clear", true)
+        .then(function (yes) { if (!yes) return; S.saved = {}; S.read = {}; S.ideas = []; commit(); markCards(); toast("Cleared."); });
     });
     $("#reset-all").addEventListener("click", function () {
-      if (!confirm("Reset all settings on this device and sign out? Your account (if any) is not deleted.")) return;
-      remove(STATE_KEY); remove(ACCOUNT_KEY);
-      try { sessionStorage.setItem(FLASH_KEY, "Everything on this device was reset."); } catch (e) {}
-      location.reload();
+      ask("Reset this device?", "This resets all settings on this device and signs you out. Your account, if you have one, is not deleted.", "Reset", true)
+        .then(function (yes) {
+          if (!yes) return;
+          forget(STATE_KEY); forget(ACCOUNT_KEY);
+          try { sessionStorage.setItem(FLASH_KEY, "Everything on this device was reset."); } catch (e) {}
+          location.reload();
+        });
     });
     $("#install-help").addEventListener("click", function () {
-      alert("iPhone or iPad: open this site in Safari, tap the Share button, then “Add to Home Screen”.\n\nAndroid: open the browser menu (⋮), then “Install app” or “Add to Home screen”.\n\nComputer (Chrome or Edge): click the install icon at the right of the address bar.");
+      tell("Add to your home screen", "iPhone or iPad: open this site in Safari, tap the Share button, then \u201cAdd to Home Screen\u201d.\n\nAndroid: open the browser menu (\u22ee), then \u201cInstall app\u201d or \u201cAdd to Home screen\u201d.\n\nComputer (Chrome or Edge): click the install icon at the right of the address bar.");
     });
 
     $$("[data-open-settings]").forEach(function (b) { b.addEventListener("click", open); });
@@ -422,6 +442,22 @@
       else copy(link).then(function () { toast("Link copied"); });
     }
   });
+  // Tapping outside an expanded card (or pressing Esc) closes it, like a pop-up.
+  function closeCards(except) {
+    $$("details.card[open]").forEach(function (c) { if (c !== except) { c.open = false; c.classList.toggle("open", false); } });
+  }
+  document.addEventListener("click", function (ev) {
+    if (!$("details.card[open]")) return;
+    var t = ev.target;
+    var inCard = t.closest && t.closest("details.card");
+    if (inCard) { if (t.closest("summary")) closeCards(inCard); return; }   // opening one card closes the others
+    if (t.closest && (t.closest("dialog") || t.closest(".tabbar") || t.closest(".topbar"))) return;
+    closeCards();
+  });
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape" && !$("dialog[open]")) closeCards();
+  });
+
   // Open the card a shared link points to.
   if (location.hash && /^#p\d+$/.test(location.hash)) {
     var target = $(location.hash);
@@ -431,7 +467,7 @@
   // ------------------------------------------------------------- shared API for other pages
   window.SciDigestApp = {
     state: S, commit: commit, server: server, token: function () { return S.ideaToken; },
-    toast: toast, copy: copy, el: el,
+    toast: toast, copy: copy, el: el, ask: ask, tell: tell,
     addIdea: function (entry) {
       S.ideas = [entry].concat((S.ideas || []).filter(function (i) { return qkey(i.q) !== qkey(entry.q); }));
       commit();

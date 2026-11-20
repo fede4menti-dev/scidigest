@@ -41,7 +41,15 @@ plain language a science student understands.
    or findings. The search covers a limited set of results, so "little prior research found" means
    "not found in this search", not "proven new"; say so in the summary when relevant.
 2. Related papers: choose up to ${MAX_RELATED} of the listed papers that matter most for this question,
-   most important first, and say in one sentence how each relates.
+   most important first. Judge relevance from what each paper actually studied (its abstract), not from
+   shared words: papers often use different terms for the same thing (e.g. "physical activity" for
+   "exercise", "cognition" for "memory"), and a paper can share words with the question but be about
+   something else. Only include a paper if it genuinely helps answer, test or frame this question; if it
+   is only loosely connected, leave it out. It is fine to return fewer papers, or none.
+   For each paper write one specific sentence (max ~30 words) saying what it found or did and how that
+   connects to the student's idea, naming the shared variable, population or method. If the paper uses
+   different wording for the same concept, say so briefly. Never write generic phrases like "related
+   to the topic".
 3. Quality of the question: score 1 to 10 and comment briefly on clarity (is it unambiguous),
    specificity (are variables, population and scope defined), feasibility (could a student or small
    lab realistically study it, with what data or methods), significance (why the answer would matter)
@@ -75,7 +83,7 @@ export const REPORT_SCHEMA = {
         properties: {
           index: { type: "integer" },
           relevance: { type: "string", enum: ["directly addresses it", "closely related", "useful background"] },
-          how_it_relates: { type: "string" },
+          how_it_relates: { type: "string", description: "one specific sentence: what the paper found or did, and how it connects to the student's idea" },
         },
         required: ["index", "relevance", "how_it_relates"],
         additionalProperties: false,

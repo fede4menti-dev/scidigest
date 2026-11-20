@@ -68,7 +68,7 @@ export function makeClaude(client) {
 async function questionKey(question) {
   const norm = String(question || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(norm));
-  return "idea:" + [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 40);
+  return "idea2:" + [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 40);
 }
 
 const today = () => new Date().toISOString().slice(0, 10);

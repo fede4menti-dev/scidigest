@@ -11,6 +11,10 @@
       {% for t in g.topics %}
       <label class="opt"><input type="checkbox" name="topic" value="{{ t.id }}" data-group="{{ g.id }}"><span><span class="n">{{ t.name }}</span><br><span class="c">{{ t.covers|capitalize }}</span></span></label>
       {% endfor %}{% endfor %}
+      <h3>Idea checker</h3>
+      <label class="field"><span>Server address</span><input type="url" id="idea-url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="{{ idea_url or 'https://scidigest-idea-checker.yourname.workers.dev' }}"></label>
+      <label class="field"><span>App token (only if you set one)</span><input type="password" id="idea-token" autocomplete="off"></label>
+      <p class="help" style="margin-top:4px">{% if idea_url %}Leave the address empty to use this site's idea checker.{% else %}Without a server, Idea Check lists related papers from Europe PMC but can't write the full report. See IDEA-CHECKER-SETUP.md.{% endif %}</p>
       <h3>Appearance</h3>
       <div class="seg" role="radiogroup" aria-label="Appearance">
         <label><input type="radio" name="theme" value="">System</label>
@@ -25,7 +29,7 @@
 <script>
 (function(){
   var TOPICS={{ topic_names|tojson }};
-  var KEY="scidigest-topics",THEME="scidigest-theme",FLASH="scidigest-saved";
+  var KEY="scidigest-topics",THEME="scidigest-theme",FLASH="scidigest-saved",IURL="scidigest-idea-url",ITOK="scidigest-idea-token";
   function get(k){try{return localStorage.getItem(k)||""}catch(e){return ""}}
   function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   function followed(){return get(KEY).split(",").filter(function(t){return TOPICS[t]})}
@@ -39,6 +43,7 @@
       btn.textContent=g.every(function(b){return b.checked})?"Clear":"Select all"})}
   function open(){var f=followed();boxes.forEach(function(b){b.checked=f.indexOf(b.value)>=0});
     var th=get(THEME);[].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.checked=r.value===th});
+    document.getElementById("idea-url").value=get(IURL);document.getElementById("idea-token").value=get(ITOK);
     syncAll();dlg.showModal()}
   boxes.forEach(function(b){b.addEventListener("change",syncAll)});
   all.addEventListener("change",function(){if(all.checked)boxes.forEach(function(b){b.checked=false});syncAll()});
@@ -48,6 +53,7 @@
   [].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.addEventListener("change",function(){set(THEME,r.value);applyTheme()})});
   document.getElementById("save-settings").addEventListener("click",function(){
     set(KEY,boxes.filter(function(b){return b.checked}).map(function(b){return b.value}).join(","));
+    set(IURL,document.getElementById("idea-url").value.trim());set(ITOK,document.getElementById("idea-token").value.trim());
     try{sessionStorage.setItem(FLASH,"1")}catch(e){}
     location.reload()});
   [].forEach.call(document.querySelectorAll("[data-open-settings]"),function(el){el.addEventListener("click",open)});

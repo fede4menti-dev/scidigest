@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Idea Check · SciDigest</title>
+<meta name="description" content="Check whether a research question has already been studied, see the most important related papers and get a review of the question.">
+<style>
+:root{
+  --bg:#edf1f5;--ink:#0f1419;--soft:#3f4a57;--muted:#6b7684;--line:rgba(15,23,42,.08);
+  --accent:#0d7a70;--accent-ink:#fff;--accent-bg:rgba(13,122,112,.12);
+  --warn:#a85a07;--warn-bg:rgba(245,158,11,.16);--ok:#15803d;--ok-bg:rgba(34,197,94,.15);--ph:rgba(15,23,42,.06);
+  --glass:rgba(255,255,255,.55);--glass-strong:rgba(255,255,255,.82);--glass-border:rgba(255,255,255,.7);
+  --glass-shadow:0 1px 0 rgba(255,255,255,.65) inset,0 10px 30px rgba(30,41,59,.08);
+  --blur:saturate(180%) blur(22px);
+  --glow1:rgba(45,212,191,.38);--glow2:rgba(167,139,250,.32);--glow3:rgba(251,191,36,.22);--glow4:rgba(56,189,248,.26);
+  --shadow:0 20px 60px rgba(15,23,42,.22);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#080a0d;--ink:#eef1f4;--soft:#c0c7d0;--muted:#8b94a0;--line:rgba(255,255,255,.08);
+  --accent:#5eead4;--accent-ink:#04201c;--accent-bg:rgba(94,234,212,.14);
+  --warn:#fbbf24;--warn-bg:rgba(251,191,36,.14);--ok:#86efac;--ok-bg:rgba(134,239,172,.12);--ph:rgba(255,255,255,.05);
+  --glass:rgba(24,28,34,.55);--glass-strong:rgba(22,26,32,.86);--glass-border:rgba(255,255,255,.10);
+  --glass-shadow:0 1px 0 rgba(255,255,255,.07) inset,0 10px 30px rgba(0,0,0,.35);
+  --glow1:rgba(20,184,166,.24);--glow2:rgba(139,92,246,.24);--glow3:rgba(245,158,11,.10);--glow4:rgba(14,165,233,.18);
+  --shadow:0 20px 60px rgba(0,0,0,.6);}}
+:root[data-theme="dark"]{
+  --bg:#080a0d;--ink:#eef1f4;--soft:#c0c7d0;--muted:#8b94a0;--line:rgba(255,255,255,.08);
+  --accent:#5eead4;--accent-ink:#04201c;--accent-bg:rgba(94,234,212,.14);
+  --warn:#fbbf24;--warn-bg:rgba(251,191,36,.14);--ok:#86efac;--ok-bg:rgba(134,239,172,.12);--ph:rgba(255,255,255,.05);
+  --glass:rgba(24,28,34,.55);--glass-strong:rgba(22,26,32,.86);--glass-border:rgba(255,255,255,.10);
+  --glass-shadow:0 1px 0 rgba(255,255,255,.07) inset,0 10px 30px rgba(0,0,0,.35);
+  --glow1:rgba(20,184,166,.24);--glow2:rgba(139,92,246,.24);--glow3:rgba(245,158,11,.10);--glow4:rgba(14,165,233,.18);
+  --shadow:0 20px 60px rgba(0,0,0,.6)}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--ink);background:transparent;font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:-10vmax;z-index:-1;pointer-events:none;background:
+  radial-gradient(38vmax 34vmax at 12% 8%,var(--glow1),transparent 70%),
+  radial-gradient(34vmax 30vmax at 92% 14%,var(--glow2),transparent 70%),
+  radial-gradient(40vmax 32vmax at 78% 96%,var(--glow3),transparent 70%),
+  radial-gradient(34vmax 30vmax at 4% 88%,var(--glow4),transparent 70%)}
+a{color:var(--accent)}
+.glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn{background:var(--glass-strong)}}
+.wrap{max-width:1080px;margin:0 auto;padding:16px 16px 110px}
+@media (min-width:760px){.wrap{padding-bottom:64px}}
+/* top bar */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+@media (min-width:760px){.topbar{position:sticky;top:10px;z-index:5;padding:6px 6px 6px 14px;border-radius:999px;background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow)}
+.topbar .navpill{background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:0}}
+.brand{display:inline-flex;align-items:center;gap:8px;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-decoration:none;font-size:1.02rem}
+.brand img{width:28px;height:28px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.navpill{display:none;gap:4px;padding:4px;border-radius:999px}
+.navpill a,.navpill button{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;border:0;background:none;color:var(--soft);font:inherit;font-size:.9rem;font-weight:500;text-decoration:none;cursor:pointer}
+.navpill a:hover,.navpill button:hover{color:var(--ink)}
+.navpill [aria-current=page]{background:var(--glass-strong);color:var(--ink);font-weight:600;box-shadow:0 1px 6px rgba(15,23,42,.10)}
+.navpill svg,.tabbar svg{width:18px;height:18px;flex:none}
+@media (min-width:760px){.navpill{display:inline-flex}.tabbar{display:none!important}}
+/* mobile tab bar */
+.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));z-index:6;display:flex;gap:2px;padding:6px;border-radius:26px;width:min(380px,calc(100vw - 32px))}
+.tabbar a,.tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 4px;border:0;border-radius:20px;background:none;color:var(--muted);font:inherit;font-size:.7rem;font-weight:600;text-decoration:none;cursor:pointer}
+.tabbar svg{width:22px;height:22px}
+.tabbar [aria-current=page]{color:var(--accent);background:var(--accent-bg)}
+.iconbtn{display:inline-flex;align-items:center;gap:6px;color:var(--ink);padding:8px 13px;border-radius:999px;font:inherit;font-size:.88rem;cursor:pointer}
+.iconbtn svg{width:16px;height:16px}
+@media (min-width:760px){.topbar .iconbtn{display:none}}
+.back{display:inline-flex;align-items:center;gap:4px;color:var(--soft);text-decoration:none;font-size:.9rem;font-weight:500;margin:0 0 10px}
+.back:hover{color:var(--ink)}
+/* "your topics" bar */
+.mytopics{display:flex;align-items:center;gap:12px;border-radius:18px;padding:12px 14px;margin:18px 0 4px;cursor:pointer;width:100%;text-align:left;font:inherit;color:inherit}
+.mytopics .t{display:block;font-weight:600;font-size:.92rem}.mytopics .s{display:block;color:var(--muted);font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mytopics .grow{flex:1;min-width:0}.mytopics .act{flex:none;color:var(--accent);font-weight:600;font-size:.88rem}
+/* settings panel */
+dialog.settings{border:1px solid var(--glass-border);padding:0;border-radius:26px;width:min(640px,100vw - 24px);max-height:min(860px,100vh - 24px);background:var(--glass-strong);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);color:var(--ink);box-shadow:var(--shadow)}
+dialog.settings::backdrop{background:rgba(8,12,20,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+@media (max-width:600px){dialog.settings{width:100vw;max-width:100vw;height:100%;max-height:100%;border-radius:0;margin:0;border:0}}
+.sheet{display:flex;flex-direction:column;max-height:inherit;height:100%}
+.sheet header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.sheet header h2{margin:0;font-size:1.15rem}
+.sheet .close{border:0;background:var(--ph);color:var(--soft);width:32px;height:32px;border-radius:50%;font-size:1.2rem;line-height:1;cursor:pointer}
+.sheet .content{overflow:auto;padding:4px 20px 20px;flex:1}
+.sheet h3{font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:24px 0 8px;display:flex;justify-content:space-between;align-items:center}
+.sheet h3 button{border:0;background:none;color:var(--accent);font:inherit;font-size:.75rem;font-weight:600;text-transform:none;letter-spacing:0;cursor:pointer}
+.sheet .help{color:var(--soft);font-size:.9rem;margin:14px 0 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:11px 13px;border:1px solid var(--line);background:var(--glass);border-radius:14px;margin-bottom:8px;cursor:pointer;transition:background .15s,border-color .15s}
+.opt:hover{border-color:var(--muted)}
+.opt input{margin:3px 0 0;width:18px;height:18px;accent-color:var(--accent);flex:none}
+.opt .n{font-weight:600;font-size:.93rem}.opt .c{color:var(--muted);font-size:.8rem}
+.opt:has(input:checked){border-color:var(--accent);background:var(--accent-bg)}
+.field{display:block;margin-bottom:10px}.field span{display:block;font-size:.82rem;color:var(--soft);margin-bottom:4px}
+.field input{width:100%;padding:11px 13px;border-radius:12px;border:1px solid var(--line);background:var(--glass);color:var(--ink);font:inherit;font-size:.92rem}
+.field input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.seg{display:flex;background:var(--ph);border-radius:12px;padding:3px;gap:3px}
+.seg label{flex:1;text-align:center;padding:8px;border-radius:10px;font-size:.88rem;cursor:pointer;color:var(--soft)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){background:var(--glass-strong);color:var(--ink);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.sheet footer{padding:14px 20px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;gap:10px}
+.primary{flex:1;border:0;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 88%,#fff),var(--accent));color:var(--accent-ink);padding:13px 18px;border-radius:14px;font:inherit;font-weight:600;cursor:pointer;box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 6px 18px color-mix(in srgb,var(--accent) 35%,transparent)}
+.primary:disabled{opacity:.55;cursor:default}
+.secondary{border:1px solid var(--line);background:var(--glass);color:var(--ink);padding:13px 18px;border-radius:14px;font:inherit;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);background:rgba(15,20,25,.82);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);color:#fff;padding:11px 16px;border-radius:14px;font-size:.9rem;box-shadow:var(--shadow);max-width:calc(100vw - 32px);z-index:10}
+@media (min-width:760px){.toast{bottom:28px}}
+.hidden{display:none!important}
+</style>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SciDigest">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#0f766e">
+<style>
+h1{font-size:2.2rem;line-height:1.08;letter-spacing:-.03em;margin:4px 0 8px}
+.lead{color:var(--soft);margin:0 0 18px;max-width:640px}
+.panel{border-radius:24px;padding:18px}
+.ask textarea{width:100%;min-height:110px;resize:vertical;border:1px solid var(--line);background:var(--glass);color:var(--ink);border-radius:16px;padding:14px;font:inherit;font-size:1.02rem;line-height:1.45}
+.ask textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.ask .row2{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:12px}
+.ask .hint{color:var(--muted);font-size:.82rem}
+.ask .primary{flex:none;min-width:190px}
+.examples{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.examples button{border:1px solid var(--glass-border);background:var(--glass);color:var(--soft);padding:7px 12px;border-radius:999px;font:inherit;font-size:.82rem;cursor:pointer;text-align:left}
+.status{display:flex;gap:12px;align-items:center;margin-top:18px}
+.spinner{width:22px;height:22px;border-radius:50%;border:3px solid var(--accent-bg);border-top-color:var(--accent);animation:spin 1s linear infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error{margin-top:16px;background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:12px 14px;font-size:.92rem}
+.result{display:grid;gap:16px;margin-top:20px}
+.verdict{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.vchip{display:inline-block;padding:5px 12px;border-radius:999px;font-weight:700;font-size:.82rem;text-transform:capitalize}
+.v-well{background:var(--warn-bg);color:var(--warn)}.v-partly{background:rgba(59,130,246,.14);color:#2563eb}.v-new{background:var(--ok-bg);color:var(--ok)}
+.score{display:flex;flex-direction:column}.score .l{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.score .v{font-size:1.6rem;font-weight:700;letter-spacing:-.02em}
+.panel h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0 0 12px}
+.q{display:grid;gap:12px}
+.q .top{display:flex;justify-content:space-between;font-weight:600;font-size:.95rem}
+.bar{height:7px;border-radius:99px;background:var(--ph);overflow:hidden;margin:6px 0 4px}.bar i{display:block;height:100%;border-radius:99px;background:var(--accent)}
+.q .c{color:var(--soft);font-size:.88rem}
+.paper{padding:12px 0;border-top:1px solid var(--line)}.paper:first-of-type{border-top:0;padding-top:0}
+.paper a{font-weight:600;color:var(--ink);text-decoration:none}.paper a:hover{color:var(--accent)}
+.paper .m{color:var(--muted);font-size:.8rem;margin-top:2px}.paper .h{font-size:.9rem;margin-top:4px;color:var(--soft)}
+.rel{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:2px}
+ul.b{margin:0;padding-left:18px}ul.b li{margin-bottom:6px}
+.improved{font-size:1.05rem;font-style:italic;margin:0 0 12px}
+.small{color:var(--muted);font-size:.8rem}
+.mode{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-top:10px}
+.mode i{width:8px;height:8px;border-radius:50%;background:var(--muted)}.mode.on i{background:var(--ok)}
+</style>
+</head>
+<body><div class="wrap">
+
+<div class="topbar">
+  <a class="brand" href="index.html"><img src="apple-touch-icon.png" alt="">SciDigest</a>
+  <nav class="navpill" aria-label="Main">
+    <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>Home</a>
+    <a href="idea.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
+    <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
+  </nav>
+</div>
+<nav class="tabbar" aria-label="Main">
+  <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>Home</a>
+  <a href="idea.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
+  <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
+</nav>
+
+<h1>Idea Check</h1>
+<p class="lead">Has your research question already been studied? See the most important related papers and get an honest review of the question itself.</p>
+
+<form class="panel ask" id="ask">
+  <label for="question" class="hidden">Your research question</label>
+  <textarea id="question" maxlength="1500" placeholder="e.g. Does 30 minutes of daily walking improve memory in adults over 65?"></textarea>
+  <div class="row2">
+    <span class="hint" id="count">At least one full sentence</span>
+    <button class="primary" id="go" type="submit">Check my idea</button>
+  </div>
+  <div class="examples" aria-label="Examples">
+    <button type="button">Can microplastics in soil reduce earthworm populations?</button>
+    <button type="button">Does social media use before bed affect sleep quality in teenagers?</button>
+    <button type="button">Could machine learning predict solar flares from magnetogram images?</button>
+  </div>
+  <div class="mode" id="mode"><i></i><span></span></div>
+</form>
+
+<div class="status hidden" id="status" role="status"><div class="spinner"></div><span id="status-text"></span></div>
+<div class="error hidden" id="error" role="alert"></div>
+<div class="result" id="result"></div>
+
+</div>
+
+<dialog class="settings" id="settings" aria-labelledby="settings-title">
+  <form method="dialog" class="sheet" id="settings-form">
+    <header><h2 id="settings-title">Settings</h2><button class="close" value="cancel" aria-label="Close">×</button></header>
+    <div class="content">
+      <h3>Your topics</h3>
+      <p class="help" style="margin-top:0">Choose the fields you want to read about. Every daily digest and every weekly and monthly review will show these first.</p>
+      <label class="opt" style="margin-top:12px"><input type="checkbox" id="all-topics"><span><span class="n">All topics</span><br><span class="c">The editor's picks across every field</span></span></label>
+      
+      <h3><span>Physical Sciences, Math &amp; Computing</span><button type="button" class="selgroup" data-group="physical">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="physics" data-group="physical"><span><span class="n">Physics</span><br><span class="c">Classical mechanics, quantum science, optics and photonics, condensed matter, mathematical physics, space physics</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="chemistry" data-group="physical"><span><span class="n">Chemistry</span><br><span class="c">Organic, inorganic, physical and analytical chemistry, chemical biology</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="math_stats" data-group="physical"><span><span class="n">Mathematics &amp; Statistics</span><br><span class="c">Algebra, geometry, topology, differential equations, probability, numerical analysis, optimization, statistics theory</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="computing" data-group="physical"><span><span class="n">Computer Science &amp; IT</span><br><span class="c">Artificial intelligence and machine learning, cybersecurity, data science, information theory, computational systems</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="astronomy" data-group="physical"><span><span class="n">Astronomy &amp; Planetary Science</span><br><span class="c">Astrophysics, observational astronomy, planetary geology, cosmology</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="materials" data-group="physical"><span><span class="n">Materials &amp; Nanoscience</span><br><span class="c">Nanomaterials, polymers, metallurgy, semiconductors, energy materials</span></span></label>
+      
+      <h3><span>Engineering &amp; Technology</span><button type="button" class="selgroup" data-group="engineering">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="core_engineering" data-group="engineering"><span><span class="n">Core Engineering</span><br><span class="c">Mechanical, electrical, civil, chemical and aerospace engineering</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="applied_tech" data-group="engineering"><span><span class="n">Applied &amp; Emerging Tech</span><br><span class="c">Biomedical engineering, robotics, automation and control systems, energy science, biotechnology</span></span></label>
+      
+      <h3><span>Biological &amp; Life Sciences</span><button type="button" class="selgroup" data-group="life">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="cell_molecular" data-group="life"><span><span class="n">Cellular &amp; Molecular</span><br><span class="c">Cell biology, molecular biology, genetics, genomics, biochemistry, structural biology</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="organismal" data-group="life"><span><span class="n">Organismal &amp; Systems</span><br><span class="c">Microbiology, immunology, neuroscience, physiology, developmental biology, evolutionary biology</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="ecology" data-group="life"><span><span class="n">Ecology &amp; Biodiversity</span><br><span class="c">Ecology, conservation biology, zoology, plant sciences, entomology, computational biology and bioinformatics</span></span></label>
+      
+      <h3><span>Health &amp; Medical Sciences</span><button type="button" class="selgroup" data-group="health">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="clinical" data-group="health"><span><span class="n">Clinical &amp; Disease Research</span><br><span class="c">Oncology, cardiology, neurology, infectious diseases, clinical immunology</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="therapeutics" data-group="health"><span><span class="n">Therapeutics &amp; Care</span><br><span class="c">Pharmacology, drug discovery, nursing, dentistry, medical informatics, public and occupational health</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="behavioral" data-group="health"><span><span class="n">Behavioral &amp; Mental Health</span><br><span class="c">Clinical, cognitive, experimental and social psychology, behavioral sciences</span></span></label>
+      
+      <h3><span>Earth &amp; Environmental Sciences</span><button type="button" class="selgroup" data-group="earth">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="earth_water" data-group="earth"><span><span class="n">Earth &amp; Water</span><br><span class="c">Geology (solid earth), hydrology, ocean sciences, limnology, natural hazards</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="climate" data-group="earth"><span><span class="n">Climate &amp; Environment</span><br><span class="c">Climate science, atmospheric science, environmental science, biogeochemistry, sustainability</span></span></label>
+      
+      <h3><span>Society, Policy &amp; Interdisciplinary Studies</span><button type="button" class="selgroup" data-group="society">Select all</button></h3>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="social_economic" data-group="society"><span><span class="n">Social &amp; Economic Sciences</span><br><span class="c">Economics, finance, sociology, political science, public policy, education, geography</span></span></label>
+      
+      <label class="opt"><input type="checkbox" name="topic" value="resources" data-group="society"><span><span class="n">Resource &amp; Applied Fields</span><br><span class="c">Agriculture, forestry, water resources, food science, veterinary science, science communication and ethics</span></span></label>
+      
+      <h3>Idea checker</h3>
+      <label class="field"><span>Server address</span><input type="url" id="idea-url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://scidigest-idea-checker.yourname.workers.dev"></label>
+      <label class="field"><span>App token (only if you set one)</span><input type="password" id="idea-token" autocomplete="off"></label>
+      <p class="help" style="margin-top:4px">Without a server, Idea Check lists related papers from Europe PMC but can't write the full report. See IDEA-CHECKER-SETUP.md.</p>
+      <h3>Appearance</h3>
+      <div class="seg" role="radiogroup" aria-label="Appearance">
+        <label><input type="radio" name="theme" value="">System</label>
+        <label><input type="radio" name="theme" value="light">Light</label>
+        <label><input type="radio" name="theme" value="dark">Dark</label>
+      </div>
+      <p class="help">Settings are saved in this browser only.</p>
+    </div>
+    <footer><button class="secondary" value="cancel">Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
+  </form>
+</dialog>
+<script>
+(function(){
+  var TOPICS={"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"};
+  var KEY="scidigest-topics",THEME="scidigest-theme",FLASH="scidigest-saved",IURL="scidigest-idea-url",ITOK="scidigest-idea-token";
+  function get(k){try{return localStorage.getItem(k)||""}catch(e){return ""}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function followed(){return get(KEY).split(",").filter(function(t){return TOPICS[t]})}
+  function summary(f){if(!f.length)return "All topics";var n=f.map(function(t){return TOPICS[t]});return n.length<=2?n.join(", "):n[0]+", "+n[1]+" +"+(n.length-2)}
+  function applyTheme(){var t=get(THEME);if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme}
+  applyTheme();
+
+  var dlg=document.getElementById("settings"),boxes=[].slice.call(dlg.querySelectorAll('input[name=topic]')),all=document.getElementById("all-topics");
+  function syncAll(){all.checked=!boxes.some(function(b){return b.checked});
+    [].forEach.call(dlg.querySelectorAll(".selgroup"),function(btn){var g=boxes.filter(function(b){return b.dataset.group===btn.dataset.group});
+      btn.textContent=g.every(function(b){return b.checked})?"Clear":"Select all"})}
+  function open(){var f=followed();boxes.forEach(function(b){b.checked=f.indexOf(b.value)>=0});
+    var th=get(THEME);[].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.checked=r.value===th});
+    document.getElementById("idea-url").value=get(IURL);document.getElementById("idea-token").value=get(ITOK);
+    syncAll();dlg.showModal()}
+  boxes.forEach(function(b){b.addEventListener("change",syncAll)});
+  all.addEventListener("change",function(){if(all.checked)boxes.forEach(function(b){b.checked=false});syncAll()});
+  [].forEach.call(dlg.querySelectorAll(".selgroup"),function(btn){btn.addEventListener("click",function(){
+    var g=boxes.filter(function(b){return b.dataset.group===btn.dataset.group}),on=!g.every(function(b){return b.checked});
+    g.forEach(function(b){b.checked=on});syncAll()})});
+  [].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.addEventListener("change",function(){set(THEME,r.value);applyTheme()})});
+  document.getElementById("save-settings").addEventListener("click",function(){
+    set(KEY,boxes.filter(function(b){return b.checked}).map(function(b){return b.value}).join(","));
+    set(IURL,document.getElementById("idea-url").value.trim());set(ITOK,document.getElementById("idea-token").value.trim());
+    try{sessionStorage.setItem(FLASH,"1")}catch(e){}
+    location.reload()});
+  [].forEach.call(document.querySelectorAll("[data-open-settings]"),function(el){el.addEventListener("click",open)});
+
+  // "Your topics" banner
+  var f=followed();
+  [].forEach.call(document.querySelectorAll(".mytopics"),function(el){
+    el.querySelector(".t").textContent=f.length?"Your topics":"Showing all topics";
+    el.querySelector(".s").textContent=summary(f);
+    el.querySelector(".act").textContent=f.length?"Edit":"Choose topics"});
+
+  // Rearrange a report page: "For you" first, then the rest.
+  var main=document.querySelector("main[data-report]");
+  if(main&&f.length){
+    var cards=[].slice.call(main.querySelectorAll("details.card"));
+    var mine=cards.filter(function(c){return f.indexOf(c.dataset.topic)>=0});
+    mine.sort(function(a,b){var ea=a.dataset.editors==="1",eb=b.dataset.editors==="1";
+      if(ea!==eb)return ea?-1:1;return ea?(+a.dataset.rank- +b.dataset.rank):(+b.dataset.score- +a.dataset.score)});
+    var sec=document.createElement("section"),h=document.createElement("h2"),grid=document.createElement("div");
+    h.textContent="For you";grid.className="grid";sec.appendChild(h);
+    if(mine.length){mine.forEach(function(c){grid.appendChild(c)});sec.appendChild(grid)}
+    else{var p=document.createElement("p");p.className="sub";p.textContent="Nothing new in your topics in this report. Here are the other highlights instead.";sec.appendChild(p)}
+    main.insertBefore(sec,main.firstChild);
+    var eh=main.querySelector("h2.editors"),eg=main.querySelector(".editors-grid");
+    if(eh){if(eg&&eg.children.length)eh.textContent="Also worth reading";else{eh.classList.add("hidden");eg&&eg.classList.add("hidden")}}
+    [].forEach.call(main.querySelectorAll(".topic-section"),function(s){if(!s.querySelector("details.card"))s.classList.add("hidden")});
+    var bt=main.querySelector("h2.by-topic");if(bt&&!main.querySelector(".topic-section:not(.hidden)"))bt.classList.add("hidden");
+    var chips=document.querySelector(".chips");if(chips)chips.classList.add("hidden");
+  }
+
+  var flash="";try{flash=sessionStorage.getItem(FLASH)||"";sessionStorage.removeItem(FLASH)}catch(e){}
+  if(flash){var t=document.createElement("div");t.className="toast";t.setAttribute("role","status");
+    t.textContent=f.length?"Saved. Every day and review now shows your topics first.":"Saved. Showing all topics.";
+    document.body.appendChild(t);setTimeout(function(){t.remove()},3500)}
+})();
+</script>
+<script>
+(function(){
+  var DEFAULT_URL="";
+  function get(k){try{return localStorage.getItem(k)||""}catch(e){return ""}}
+  function server(){return (get("scidigest-idea-url")||DEFAULT_URL||"").replace(/\/+$/,"")}
+  var form=document.getElementById("ask"),q=document.getElementById("question"),go=document.getElementById("go"),
+      statusEl=document.getElementById("status"),statusText=document.getElementById("status-text"),
+      errEl=document.getElementById("error"),out=document.getElementById("result"),count=document.getElementById("count");
+
+  var mode=document.getElementById("mode");
+  if(server()){mode.classList.add("on");mode.querySelector("span").textContent="Full report: searches OpenAlex and Europe PMC, then reviews your question"}
+  else{mode.querySelector("span").textContent="Search-only mode: related papers from Europe PMC. Add an idea checker in Settings for the full report"}
+
+  q.addEventListener("input",function(){var n=q.value.trim().length;count.textContent=n<15?"At least one full sentence":n+" / 1500"});
+  [].forEach.call(document.querySelectorAll(".examples button"),function(b){b.addEventListener("click",function(){q.value=b.textContent;q.dispatchEvent(new Event("input"));q.focus()})});
+
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
+  function panel(title){var p=el("section","panel");if(title)p.appendChild(el("h2",null,title));out.appendChild(p);return p}
+  function link(href,text){var a=el("a",null,text);a.href=href;a.target="_blank";a.rel="noopener";return a}
+
+  var steps=["Planning searches…","Searching OpenAlex and Europe PMC…","Reading the most relevant papers…","Reviewing your question…","Writing your report…"],timer;
+  function busy(on,list){go.disabled=on;statusEl.classList.toggle("hidden",!on);clearInterval(timer);
+    if(on){var i=0;statusText.textContent=list[0];timer=setInterval(function(){i=Math.min(i+1,list.length-1);statusText.textContent=list[i]},9000)}}
+  function fail(msg){errEl.textContent=msg;errEl.classList.remove("hidden")}
+
+  function paperRow(p,parent){
+    var d=el("div","paper");
+    if(p.relevance&&p.relevance!=="search result")d.appendChild(el("span","rel",p.relevance));
+    d.appendChild(el("div")).appendChild(link(p.url,p.title));
+    var meta=[p.authors,p.year,p.venue].filter(Boolean).join(" · ")+(p.cited_by?" · cited "+p.cited_by+"×":"");
+    d.appendChild(el("div","m",meta));
+    if(p.how_it_relates)d.appendChild(el("div","h",p.how_it_relates));
+    parent.appendChild(d)}
+
+  function renderReport(r){
+    out.innerHTML="";
+    var top=panel(),v=el("div","verdict"),cls=r.verdict==="already well researched"?"v-well":r.verdict==="partly researched"?"v-partly":"v-new";
+    v.appendChild(el("span","vchip "+cls,r.verdict));
+    [["Novelty",r.novelty_score],["Question quality",r.overall_score]].forEach(function(x){var s=el("div","score");s.appendChild(el("span","l",x[0]));s.appendChild(el("span","v",x[1]+"/10"));v.appendChild(s)});
+    top.appendChild(v);var sm=el("p",null,r.summary);sm.style.margin="12px 0 0";top.appendChild(sm);
+
+    var qp=panel("Quality of your question"),qg=el("div","q");
+    [["Clarity","clarity"],["Specificity","specificity"],["Feasibility","feasibility"],["Significance","significance"],["Testability","testability"]].forEach(function(k){
+      var s=r.quality[k[1]],row=el("div"),t=el("div","top");t.appendChild(el("span",null,k[0]));t.appendChild(el("span",null,s.score+"/10"));
+      row.appendChild(t);var bar=el("div","bar"),fill=el("i");fill.style.width=(s.score*10)+"%";bar.appendChild(fill);row.appendChild(bar);
+      row.appendChild(el("div","c",s.comment));qg.appendChild(row)});
+    qp.appendChild(qg);var eth=el("p","small","Ethics: "+r.ethics);eth.style.margin="12px 0 0";qp.appendChild(eth);
+
+    if(r.related&&r.related.length){var rp=panel("Most important related research");r.related.forEach(function(p){paperRow(p,rp)})}
+    if(r.gaps&&r.gaps.length){var gp=panel("What's still open"),ul=el("ul","b");r.gaps.forEach(function(g){ul.appendChild(el("li",null,g))});gp.appendChild(ul)}
+    if(r.suggestions&&r.suggestions.length){var sp=panel("How to make it stronger"),ul2=el("ul","b");r.suggestions.forEach(function(g){ul2.appendChild(el("li",null,g))});sp.appendChild(ul2)}
+    var ip=panel("Suggested version");ip.appendChild(el("p","improved",r.improved_question));
+    var again=el("button","secondary","Check this version");again.type="button";
+    again.addEventListener("click",function(){q.value=r.improved_question;window.scrollTo({top:0,behavior:"smooth"});q.dispatchEvent(new Event("input"))});ip.appendChild(again);
+    var s=r.search||{};out.appendChild(el("p","small","Searched "+(s.sources||[]).join(" and ")+" with: "+(s.queries||[]).map(function(x){return "“"+x+"”"}).join(", ")+
+      ". "+(s.papers_considered||0)+" papers reviewed. A search can miss work, so treat “little prior research” as a starting point, not proof. Summaries are AI-written; check the papers themselves."))}
+
+  var STOP="a an the of in on for to and or with without by from into about is are was were be been does do did can could should would will may might how what which who whom whose why when where whether this that these those it its their there than then as at if not no more most less very".split(" ");
+  function keywords(text){var seen={};return text.toLowerCase().replace(/[^a-z0-9\- ]+/g," ").split(/\s+/).filter(function(w){
+    if(w.length<4||STOP.indexOf(w)>=0||seen[w])return false;seen[w]=1;return true}).slice(0,7)}
+  function epmc(query){return fetch("https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&resultType=lite&pageSize=15&query="+encodeURIComponent(query))
+    .then(function(r){if(!r.ok)throw new Error("Europe PMC "+r.status);return r.json()}).then(function(d){return (d.resultList&&d.resultList.result)||[]})}
+  function searchOnly(question){
+    var kw=keywords(question);if(!kw.length)kw=[question];
+    return epmc(kw.join(" ")).then(function(res){return res.length>=5?res:epmc(kw.join(" OR "))}).then(function(res){
+      out.innerHTML="";var p=panel("Related papers from Europe PMC");
+      if(!res.length)p.appendChild(el("p",null,"No papers found. Try different wording."));
+      res.forEach(function(x){paperRow({title:(x.title||"").replace(/\.$/,""),url:x.doi?"https://doi.org/"+x.doi:"https://europepmc.org/article/"+x.source+"/"+x.id,
+        authors:x.authorString,year:x.pubYear,venue:x.journalTitle,cited_by:x.citedByCount},p)});
+      out.appendChild(el("p","small","Search-only mode. For the verdict, the most important papers and a review of your question, set up the idea checker (IDEA-CHECKER-SETUP.md) and add its address in Settings."))})}
+
+  form.addEventListener("submit",function(ev){ev.preventDefault();
+    var question=q.value.trim();errEl.classList.add("hidden");
+    if(question.length<15){fail("Please write your research question as a full sentence.");return}
+    var url=server();
+    if(!url){busy(true,["Searching Europe PMC…"]);searchOnly(question).catch(function(e){fail("Couldn't reach Europe PMC. Check your connection and try again.")}).then(function(){busy(false)});return}
+    busy(true,steps);var headers={"Content-Type":"application/json"},tok=get("scidigest-idea-token");if(tok)headers["X-App-Token"]=tok;
+    fetch(url+"/check",{method:"POST",headers:headers,body:JSON.stringify({question:question})})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(d){if(!r.ok)throw new Error(d.error||("The idea checker answered with an error ("+r.status+")."));return d})})
+      .then(renderReport).catch(function(e){fail(e.message==="Failed to fetch"?"Couldn't reach the idea checker. Check the address in Settings.":e.message)})
+      .then(function(){busy(false);out.scrollIntoView&&out.firstChild&&out.scrollIntoView({behavior:"smooth",block:"start"})})});
+})();
+</script>
+</body></html>

@@ -55,7 +55,19 @@ Open **https://github.com/fede4menti-dev/scidigest/settings/secrets/actions** an
 3. Open the run → **Deploy to Cloudflare Workers** step. Near the end it prints your URL, like `https://scidigest-idea-checker.yourname.workers.dev`.
 4. Check it: open `<that URL>/health` in a browser. You should see `{"ok":true,"ai":true,"openalex_key":true}`.
 
-## 6. Connect the app
+## 6. Connect the website
+
+So everyone who opens your site gets the full Idea Check report:
+
+1. Open **https://github.com/fede4menti-dev/scidigest/settings/variables/actions** → **New repository variable**.
+2. Name `IDEA_CHECKER_URL`, value = the address from step 5 (e.g. `https://scidigest-idea-checker.yourname.workers.dev`).
+3. Run **Actions → Daily digest → Run workflow** once so the site picks it up (or wait for tomorrow's run).
+
+Or, just for yourself: on the website open **Settings → Idea checker** and paste the address.
+
+If you set an `IDEA_CHECKER_APP_TOKEN`, the website can't keep it secret, so visitors would need to enter it in Settings. For a public site, leave the token unset and rely on the per-person hourly limit and your Anthropic spend limit.
+
+## 7. Connect the app
 
 Either:
 

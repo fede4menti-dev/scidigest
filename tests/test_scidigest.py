@@ -322,3 +322,16 @@ def test_untagged_papers_do_not_match_a_topic_filter(tmp_path):
     site = _run(tmp_path, "2026-11-18")
     html = (site / "reports" / "2026-11-18.html").read_text()
     assert "!c.dataset.topic||" not in html
+
+
+def test_idea_page_and_navigation(tmp_path, monkeypatch):
+    monkeypatch.setenv("SCIDIGEST_IDEA_URL", "https://checker.example.dev")
+    site = _run(tmp_path, "2026-11-18")
+    idea = (site / "idea.html").read_text()
+    assert "Idea Check" in idea and 'id="question"' in idea and '"https://checker.example.dev"' in idea
+    assert 'href="idea.html" aria-current="page"' in idea                        # active tab
+    home = (site / "index.html").read_text()
+    assert 'href="index.html" aria-current="page"' in home and 'href="idea.html"' in home
+    rep = (site / "reports" / "2026-11-18.html").read_text()
+    assert 'class="back" href="../index.html"' in rep and 'href="../idea.html"' in rep
+    assert 'class="tabbar"' in rep and 'id="idea-url"' in rep                      # tab bar + idea settings

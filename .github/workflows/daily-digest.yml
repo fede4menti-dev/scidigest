@@ -34,6 +34,8 @@ jobs:
           # Extra papers per topic for readers who follow topics. Main cost lever:
           # set a repository variable SCIDIGEST_PER_TOPIC (Settings > Secrets and variables > Actions > Variables).
           SCIDIGEST_PER_TOPIC: ${{ vars.SCIDIGEST_PER_TOPIC || '2' }}
+          # Your idea checker's address, so the website's Idea Check page uses it by default.
+          SCIDIGEST_IDEA_URL: ${{ vars.IDEA_CHECKER_URL }}
         run: python -m scidigest --top 8 --out reports --site docs
 
       - name: Publish to GitHub Pages

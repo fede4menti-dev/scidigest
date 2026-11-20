@@ -7,31 +7,45 @@
 {% include "_base_css.html.j2" %}
 {% include "_head_app.html.j2" %}
 <style>
-h1{font-size:2rem;letter-spacing:-.02em;margin:4px 0 4px}
-.lead{color:var(--soft);margin:0}
-h2{font-size:1.15rem;letter-spacing:-.01em;margin:30px 0 12px}
-.list{display:grid;gap:10px}.list>*{min-width:0}
-.row{display:block;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-decoration:none;color:inherit;transition:border-color .15s}
-.row:hover{border-color:var(--muted)}
+.hero{padding:10px 0 4px}
+h1{font-size:2.3rem;line-height:1.08;letter-spacing:-.03em;margin:4px 0 8px}
+.lead{color:var(--soft);margin:0;max-width:640px;font-size:1.02rem}
+h2{font-size:1.2rem;letter-spacing:-.015em;margin:30px 0 12px}
+.list{display:grid;gap:12px}.list>*{min-width:0}
+.row{display:block;overflow:hidden;border-radius:22px;padding:16px 18px;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s}
+.row:hover{transform:translateY(-2px)}
 .row .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
-.row .d{font-weight:600}.row .n{color:var(--muted);font-size:.82rem;white-space:nowrap}
-.row ul{margin:6px 0 0;padding-left:18px;color:var(--soft);font-size:.9rem}
-.row ul{min-width:0}.row li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tag{display:inline-block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:2px}
-.latest{border-color:var(--accent)}
+.row .d{font-weight:650;font-size:1.02rem}.row .n{color:var(--muted);font-size:.82rem;white-space:nowrap}
+.row ul{margin:8px 0 0;padding-left:18px;color:var(--soft);font-size:.9rem;min-width:0}
+.row li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);margin-bottom:4px}
+.latest{background:linear-gradient(135deg,var(--accent-bg),transparent 60%),var(--glass)}
+.go{display:inline-flex;margin-top:10px;color:var(--accent);font-weight:600;font-size:.88rem}
+.go::after{content:" ›"}
+.cta{display:flex;align-items:center;gap:14px}
+.cta .ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--accent-bg);color:var(--accent)}
+.cta .ic svg{width:24px;height:24px}
+.two{display:grid;gap:12px}@media (min-width:760px){.two{grid-template-columns:1.4fr 1fr}}
 footer{color:var(--muted);font-size:.8rem;margin-top:34px}
 </style>
 </head>
 <body><div class="wrap">
-{% set home = "index.html" %}{% include "_topbar.html.j2" %}
+{% from "_icons.html.j2" import icon %}
+{% include "_topbar.html.j2" %}
+<section class="hero">
 <h1>Science, explained daily</h1>
 <p class="lead">The most important new research from leading journals, in plain language for science students. Daily picks, a weekly review every Sunday and a monthly review on the 1st.</p>
+</section>
 {% include "_mytopics.html.j2" %}
 
 {% if days %}<h2>Latest</h2>
-<div class="list">{% set d = days[0] %}<a class="row latest" href="reports/{{ d.id }}.html"><span class="tag">Today's digest</span>
-  <div class="top"><span class="d">{{ d.label }}</span><span class="n">{{ d.count }} papers</span></div>
-  <ul>{% for h in d.headlines %}<li>{{ h }}</li>{% endfor %}</ul></a></div>{% endif %}
+<div class="two">{% set d = days[0] %}
+  <a class="row latest" href="reports/{{ d.id }}.html"><span class="tag">Today's digest</span>
+    <div class="top"><span class="d">{{ d.label }}</span><span class="n">{{ d.count }} papers</span></div>
+    <ul>{% for h in d.headlines %}<li>{{ h }}</li>{% endfor %}</ul><span class="go">Read today's papers</span></a>
+  <a class="row cta" href="idea.html"><span class="ic">{{ icon("idea") }}</span>
+    <span><span class="tag">Idea Check</span><br><span class="d">Has your research question been studied?</span><br><span class="go">Check an idea</span></span></a>
+</div>{% endif %}
 
 {% for title, items in sections if items %}
 <h2>{{ title }}</h2>

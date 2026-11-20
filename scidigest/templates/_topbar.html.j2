@@ -1,7 +1,15 @@
+{% from "_icons.html.j2" import icon %}
 <div class="topbar">
-  <a class="brand" href="{{ home }}">SciDigest</a>
-  <button type="button" class="iconbtn" data-open-settings aria-haspopup="dialog">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-    Settings
-  </button>
+  <a class="brand" href="{{ root }}index.html"><img src="{{ root }}apple-touch-icon.png" alt="">SciDigest</a>
+  <nav class="navpill" aria-label="Main">
+    <a href="{{ root }}index.html"{% if active in ("home", "report") %} aria-current="page"{% endif %}>{{ icon("home") }}Home</a>
+    <a href="{{ root }}idea.html"{% if active == "idea" %} aria-current="page"{% endif %}>{{ icon("idea") }}Idea Check</a>
+    <button type="button" data-open-settings aria-haspopup="dialog">{{ icon("settings") }}Settings</button>
+  </nav>
 </div>
+<nav class="tabbar" aria-label="Main">
+  <a href="{{ root }}index.html"{% if active in ("home", "report") %} aria-current="page"{% endif %}>{{ icon("home") }}Home</a>
+  <a href="{{ root }}idea.html"{% if active == "idea" %} aria-current="page"{% endif %}>{{ icon("idea") }}Idea Check</a>
+  <button type="button" data-open-settings aria-haspopup="dialog">{{ icon("settings") }}Settings</button>
+</nav>
+{% if active == "report" %}<a class="back" href="{{ root }}index.html">{{ icon("back") }}All digests</a>{% endif %}

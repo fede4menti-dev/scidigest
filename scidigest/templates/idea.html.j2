@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Idea Check · SciDigest</title>
+<meta name="description" content="Check whether a research question has already been studied, see the most important related papers and get a review of the question.">
+{% include "_base_css.html.j2" %}
+{% include "_head_app.html.j2" %}
+<style>
+h1{font-size:2.2rem;line-height:1.08;letter-spacing:-.03em;margin:4px 0 8px}
+.lead{color:var(--soft);margin:0 0 18px;max-width:640px}
+.panel{border-radius:24px;padding:18px}
+.ask textarea{width:100%;min-height:110px;resize:vertical;border:1px solid var(--line);background:var(--glass);color:var(--ink);border-radius:16px;padding:14px;font:inherit;font-size:1.02rem;line-height:1.45}
+.ask textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.ask .row2{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:12px}
+.ask .hint{color:var(--muted);font-size:.82rem}
+.ask .primary{flex:none;min-width:190px}
+.examples{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.examples button{border:1px solid var(--glass-border);background:var(--glass);color:var(--soft);padding:7px 12px;border-radius:999px;font:inherit;font-size:.82rem;cursor:pointer;text-align:left}
+.status{display:flex;gap:12px;align-items:center;margin-top:18px}
+.spinner{width:22px;height:22px;border-radius:50%;border:3px solid var(--accent-bg);border-top-color:var(--accent);animation:spin 1s linear infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error{margin-top:16px;background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:12px 14px;font-size:.92rem}
+.result{display:grid;gap:16px;margin-top:20px}
+.verdict{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.vchip{display:inline-block;padding:5px 12px;border-radius:999px;font-weight:700;font-size:.82rem;text-transform:capitalize}
+.v-well{background:var(--warn-bg);color:var(--warn)}.v-partly{background:rgba(59,130,246,.14);color:#2563eb}.v-new{background:var(--ok-bg);color:var(--ok)}
+.score{display:flex;flex-direction:column}.score .l{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.score .v{font-size:1.6rem;font-weight:700;letter-spacing:-.02em}
+.panel h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0 0 12px}
+.q{display:grid;gap:12px}
+.q .top{display:flex;justify-content:space-between;font-weight:600;font-size:.95rem}
+.bar{height:7px;border-radius:99px;background:var(--ph);overflow:hidden;margin:6px 0 4px}.bar i{display:block;height:100%;border-radius:99px;background:var(--accent)}
+.q .c{color:var(--soft);font-size:.88rem}
+.paper{padding:12px 0;border-top:1px solid var(--line)}.paper:first-of-type{border-top:0;padding-top:0}
+.paper a{font-weight:600;color:var(--ink);text-decoration:none}.paper a:hover{color:var(--accent)}
+.paper .m{color:var(--muted);font-size:.8rem;margin-top:2px}.paper .h{font-size:.9rem;margin-top:4px;color:var(--soft)}
+.rel{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:2px}
+ul.b{margin:0;padding-left:18px}ul.b li{margin-bottom:6px}
+.improved{font-size:1.05rem;font-style:italic;margin:0 0 12px}
+.small{color:var(--muted);font-size:.8rem}
+.mode{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-top:10px}
+.mode i{width:8px;height:8px;border-radius:50%;background:var(--muted)}.mode.on i{background:var(--ok)}
+</style>
+</head>
+<body><div class="wrap">
+{% include "_topbar.html.j2" %}
+<h1>Idea Check</h1>
+<p class="lead">Has your research question already been studied? See the most important related papers and get an honest review of the question itself.</p>
+
+<form class="panel ask" id="ask">
+  <label for="question" class="hidden">Your research question</label>
+  <textarea id="question" maxlength="1500" placeholder="e.g. Does 30 minutes of daily walking improve memory in adults over 65?"></textarea>
+  <div class="row2">
+    <span class="hint" id="count">At least one full sentence</span>
+    <button class="primary" id="go" type="submit">Check my idea</button>
+  </div>
+  <div class="examples" aria-label="Examples">
+    <button type="button">Can microplastics in soil reduce earthworm populations?</button>
+    <button type="button">Does social media use before bed affect sleep quality in teenagers?</button>
+    <button type="button">Could machine learning predict solar flares from magnetogram images?</button>
+  </div>
+  <div class="mode" id="mode"><i></i><span></span></div>
+</form>
+
+<div class="status hidden" id="status" role="status"><div class="spinner"></div><span id="status-text"></span></div>
+<div class="error hidden" id="error" role="alert"></div>
+<div class="result" id="result"></div>
+
+</div>
+{% include "_settings.html.j2" %}
+<script>
+(function(){
+  var DEFAULT_URL={{ idea_url|tojson }};
+  function get(k){try{return localStorage.getItem(k)||""}catch(e){return ""}}
+  function server(){return (get("scidigest-idea-url")||DEFAULT_URL||"").replace(/\/+$/,"")}
+  var form=document.getElementById("ask"),q=document.getElementById("question"),go=document.getElementById("go"),
+      statusEl=document.getElementById("status"),statusText=document.getElementById("status-text"),
+      errEl=document.getElementById("error"),out=document.getElementById("result"),count=document.getElementById("count");
+
+  var mode=document.getElementById("mode");
+  if(server()){mode.classList.add("on");mode.querySelector("span").textContent="Full report: searches OpenAlex and Europe PMC, then reviews your question"}
+  else{mode.querySelector("span").textContent="Search-only mode: related papers from Europe PMC. Add an idea checker in Settings for the full report"}
+
+  q.addEventListener("input",function(){var n=q.value.trim().length;count.textContent=n<15?"At least one full sentence":n+" / 1500"});
+  [].forEach.call(document.querySelectorAll(".examples button"),function(b){b.addEventListener("click",function(){q.value=b.textContent;q.dispatchEvent(new Event("input"));q.focus()})});
+
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
+  function panel(title){var p=el("section","panel");if(title)p.appendChild(el("h2",null,title));out.appendChild(p);return p}
+  function link(href,text){var a=el("a",null,text);a.href=href;a.target="_blank";a.rel="noopener";return a}
+
+  var steps=["Planning searches…","Searching OpenAlex and Europe PMC…","Reading the most relevant papers…","Reviewing your question…","Writing your report…"],timer;
+  function busy(on,list){go.disabled=on;statusEl.classList.toggle("hidden",!on);clearInterval(timer);
+    if(on){var i=0;statusText.textContent=list[0];timer=setInterval(function(){i=Math.min(i+1,list.length-1);statusText.textContent=list[i]},9000)}}
+  function fail(msg){errEl.textContent=msg;errEl.classList.remove("hidden")}
+
+  function paperRow(p,parent){
+    var d=el("div","paper");
+    if(p.relevance&&p.relevance!=="search result")d.appendChild(el("span","rel",p.relevance));
+    d.appendChild(el("div")).appendChild(link(p.url,p.title));
+    var meta=[p.authors,p.year,p.venue].filter(Boolean).join(" · ")+(p.cited_by?" · cited "+p.cited_by+"×":"");
+    d.appendChild(el("div","m",meta));
+    if(p.how_it_relates)d.appendChild(el("div","h",p.how_it_relates));
+    parent.appendChild(d)}
+
+  function renderReport(r){
+    out.innerHTML="";
+    var top=panel(),v=el("div","verdict"),cls=r.verdict==="already well researched"?"v-well":r.verdict==="partly researched"?"v-partly":"v-new";
+    v.appendChild(el("span","vchip "+cls,r.verdict));
+    [["Novelty",r.novelty_score],["Question quality",r.overall_score]].forEach(function(x){var s=el("div","score");s.appendChild(el("span","l",x[0]));s.appendChild(el("span","v",x[1]+"/10"));v.appendChild(s)});
+    top.appendChild(v);var sm=el("p",null,r.summary);sm.style.margin="12px 0 0";top.appendChild(sm);
+
+    var qp=panel("Quality of your question"),qg=el("div","q");
+    [["Clarity","clarity"],["Specificity","specificity"],["Feasibility","feasibility"],["Significance","significance"],["Testability","testability"]].forEach(function(k){
+      var s=r.quality[k[1]],row=el("div"),t=el("div","top");t.appendChild(el("span",null,k[0]));t.appendChild(el("span",null,s.score+"/10"));
+      row.appendChild(t);var bar=el("div","bar"),fill=el("i");fill.style.width=(s.score*10)+"%";bar.appendChild(fill);row.appendChild(bar);
+      row.appendChild(el("div","c",s.comment));qg.appendChild(row)});
+    qp.appendChild(qg);var eth=el("p","small","Ethics: "+r.ethics);eth.style.margin="12px 0 0";qp.appendChild(eth);
+
+    if(r.related&&r.related.length){var rp=panel("Most important related research");r.related.forEach(function(p){paperRow(p,rp)})}
+    if(r.gaps&&r.gaps.length){var gp=panel("What's still open"),ul=el("ul","b");r.gaps.forEach(function(g){ul.appendChild(el("li",null,g))});gp.appendChild(ul)}
+    if(r.suggestions&&r.suggestions.length){var sp=panel("How to make it stronger"),ul2=el("ul","b");r.suggestions.forEach(function(g){ul2.appendChild(el("li",null,g))});sp.appendChild(ul2)}
+    var ip=panel("Suggested version");ip.appendChild(el("p","improved",r.improved_question));
+    var again=el("button","secondary","Check this version");again.type="button";
+    again.addEventListener("click",function(){q.value=r.improved_question;window.scrollTo({top:0,behavior:"smooth"});q.dispatchEvent(new Event("input"))});ip.appendChild(again);
+    var s=r.search||{};out.appendChild(el("p","small","Searched "+(s.sources||[]).join(" and ")+" with: "+(s.queries||[]).map(function(x){return "“"+x+"”"}).join(", ")+
+      ". "+(s.papers_considered||0)+" papers reviewed. A search can miss work, so treat “little prior research” as a starting point, not proof. Summaries are AI-written; check the papers themselves."))}
+
+  var STOP="a an the of in on for to and or with without by from into about is are was were be been does do did can could should would will may might how what which who whom whose why when where whether this that these those it its their there than then as at if not no more most less very".split(" ");
+  function keywords(text){var seen={};return text.toLowerCase().replace(/[^a-z0-9\- ]+/g," ").split(/\s+/).filter(function(w){
+    if(w.length<4||STOP.indexOf(w)>=0||seen[w])return false;seen[w]=1;return true}).slice(0,7)}
+  function epmc(query){return fetch("https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&resultType=lite&pageSize=15&query="+encodeURIComponent(query))
+    .then(function(r){if(!r.ok)throw new Error("Europe PMC "+r.status);return r.json()}).then(function(d){return (d.resultList&&d.resultList.result)||[]})}
+  function searchOnly(question){
+    var kw=keywords(question);if(!kw.length)kw=[question];
+    return epmc(kw.join(" ")).then(function(res){return res.length>=5?res:epmc(kw.join(" OR "))}).then(function(res){
+      out.innerHTML="";var p=panel("Related papers from Europe PMC");
+      if(!res.length)p.appendChild(el("p",null,"No papers found. Try different wording."));
+      res.forEach(function(x){paperRow({title:(x.title||"").replace(/\.$/,""),url:x.doi?"https://doi.org/"+x.doi:"https://europepmc.org/article/"+x.source+"/"+x.id,
+        authors:x.authorString,year:x.pubYear,venue:x.journalTitle,cited_by:x.citedByCount},p)});
+      out.appendChild(el("p","small","Search-only mode. For the verdict, the most important papers and a review of your question, set up the idea checker (IDEA-CHECKER-SETUP.md) and add its address in Settings."))})}
+
+  form.addEventListener("submit",function(ev){ev.preventDefault();
+    var question=q.value.trim();errEl.classList.add("hidden");
+    if(question.length<15){fail("Please write your research question as a full sentence.");return}
+    var url=server();
+    if(!url){busy(true,["Searching Europe PMC…"]);searchOnly(question).catch(function(e){fail("Couldn't reach Europe PMC. Check your connection and try again.")}).then(function(){busy(false)});return}
+    busy(true,steps);var headers={"Content-Type":"application/json"},tok=get("scidigest-idea-token");if(tok)headers["X-App-Token"]=tok;
+    fetch(url+"/check",{method:"POST",headers:headers,body:JSON.stringify({question:question})})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(d){if(!r.ok)throw new Error(d.error||("The idea checker answered with an error ("+r.status+")."));return d})})
+      .then(renderReport).catch(function(e){fail(e.message==="Failed to fetch"?"Couldn't reach the idea checker. Check the address in Settings.":e.message)})
+      .then(function(){busy(false);out.scrollIntoView&&out.firstChild&&out.scrollIntoView({behavior:"smooth",block:"start"})})});
+})();
+</script>
+</body></html>

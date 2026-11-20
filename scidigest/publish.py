@@ -194,13 +194,15 @@ def rebuild_site(site: Path) -> None:
                 "headlines": [p["headline"] for p in d["papers"][:3]]}
 
     page = _env().get_template("index.html.j2").render(
-        **site_context(root=""),
+        **site_context(root="", active="home"),
         days=[item(d) for d in days],
         sections=[("Monthly reviews", [item(d) for d in monthly]),
                   ("Weekly reviews", [item(d) for d in weekly]),
                   ("Earlier daily digests", [item(d) for d in days[1:]])],
     )
     (site / "index.html").write_text(page, encoding="utf-8")
+    (site / "idea.html").write_text(_env().get_template("idea.html.j2").render(**site_context(root="", active="idea")),
+                                   encoding="utf-8")
     for f in STATIC.iterdir():      # app icon + manifest so the site can be added to a home screen
         shutil.copyfile(f, site / f.name)
     (site / "privacy.html").write_text(PRIVACY_HTML, encoding="utf-8")

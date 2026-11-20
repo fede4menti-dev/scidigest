@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import time
 import os
 import sys
@@ -95,14 +96,16 @@ def main(argv=None):
     p.add_argument("--email", default=os.environ.get("SCIDIGEST_EMAIL"),
                    help="your contact email for Unpaywall (or set SCIDIGEST_EMAIL)")
     p.add_argument("--no-fulltext", action="store_true", help="don't look for free full-text copies")
-    p.add_argument("--max-fulltext-chars", type=int, default=150_000,
-                   help="cap on full-text characters sent per paper (default 150000, about 37K tokens)")
+    p.add_argument("--max-fulltext-chars", type=int, default=60_000,
+                   help="cap on full-text characters sent per paper (default 60000, about 15K tokens; "
+                        "methods and results are near the start)")
     p.add_argument("--no-images", action="store_true", help="don't add figures or illustrative photos")
     p.add_argument("--site", type=Path, help="also publish JSON + HTML for the iPhone app into this folder")
     p.add_argument("--review", choices=["weekly", "monthly"],
                    help="only build this review now (needs --site with past daily digests)")
     p.add_argument("--no-reviews", action="store_true",
                    help="don't build the automatic Sunday weekly / 1st-of-month monthly reviews")
+    p.add_argument("--force", action="store_true", help="rebuild today's digest even if it already exists")
     p.add_argument("--today", type=date.fromisoformat, default=None, help=argparse.SUPPRESS)
     p.add_argument("--feed-file", nargs=2, action="append", metavar=("JOURNAL", "PATH"),
                    help="read a saved feed file instead of the web (repeatable; for testing)")
@@ -121,6 +124,19 @@ def main(argv=None):
         backfill_topics(args.site, use_ai)
         make_review(args, args.review, today, use_ai)
         return
+
+    existing = args.site / "data" / f"{today.isoformat()}.json" if args.site else None
+    if existing and existing.exists() and not args.force and not args.feed_file:
+        try:
+            done_today = json.loads(existing.read_text(encoding="utf-8")).get("ai_summaries")
+        except ValueError:
+            done_today = False
+        if done_today or not use_ai:
+            print(f"Today's digest ({today}) already exists; skipping to avoid paying twice. Use --force to rebuild it.")
+            if args.site and not args.no_reviews:
+                for kind in due_reviews(today):
+                    make_review(args, kind, today, use_ai)
+            return
 
     print("Scanning journals...")
     if args.feed_file:
@@ -211,11 +227,21 @@ def main(argv=None):
     for i in repeats:
         summaries[i] = summary_from_paper(history[key(picks[i][0])]["paper"])
     if use_ai and new:
-        print(f"Writing {len(new)} student-level summaries...")
+        print(f"Writing {len(new)} student-level summaries (editor's picks first)...")
         jobs = [(picks[i][0], free[i].text if free[i] else "", free[i].version if free[i] else "",
                  free[i].figures if free[i] else []) for i in new]
         for i, s in zip(new, ai.summarize_many(jobs, max_chars=args.max_fulltext_chars)):
             summaries[i] = s
+        skipped = [i for i in new if summaries[i] is None]
+        if skipped:
+            print(f"  ! spending cap reached: {len(skipped)} paper(s) not summarised")
+            for i in skipped:
+                if picks[i][1].get("editors_pick"):
+                    summaries[i] = quoted_summary(picks[i][0])   # keep editor's picks, quoting the abstract
+            keep = [i for i in range(len(picks)) if summaries[i] is not None]
+            picks, summaries, free = [picks[i] for i in keep], [summaries[i] for i in keep], [free[i] for i in keep]
+            new = [keep.index(i) for i in new if i in keep]
+            repeats = {keep.index(i) for i in repeats if i in keep}
         if not args.no_images:
             print("Finding images (open-access figures, else free-licensed photos)...")
             for i in new:
@@ -245,6 +271,12 @@ def main(argv=None):
 
 
 def make_review(args, kind, today, use_ai):
+    if use_ai:
+        try:
+            ai.check_budget()
+        except ai.BudgetExceeded:
+            print(f"\nSkipping the {kind} review: spending cap reached.")
+            return
     print(f"\nBuilding the {kind} review...")
     review = build_review(args.site, kind, today, args.top, use_ai, per_topic=args.per_topic)
     if review is None:
@@ -258,6 +290,8 @@ def make_review(args, kind, today, use_ai):
 def run():
     try:
         main()
+        if ai._usage["calls"]:
+            print("\n" + ai.usage_line())
     except ai.anthropic.AuthenticationError:
         sys.exit("\nERROR: Anthropic rejected the API key (401). Check the ANTHROPIC_API_KEY secret: it should "
                  "be one line starting with sk-ant-api03-, with no quotes or spaces. Create a new key at "

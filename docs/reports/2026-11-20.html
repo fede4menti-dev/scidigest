@@ -32,8 +32,13 @@
   --glow1:rgba(20,184,166,.24);--glow2:rgba(139,92,246,.24);--glow3:rgba(245,158,11,.10);--glow4:rgba(14,165,233,.18);
   --shadow:0 20px 60px rgba(0,0,0,.6)}
 *{box-sizing:border-box}
-html{background:var(--bg)}
-body{margin:0;min-height:100vh;color:var(--ink);background:transparent;font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+html{background:var(--bg);font-size:16px}
+html[data-size="s"]{font-size:14.5px}html[data-size="l"]{font-size:17.5px}html[data-size="xl"]{font-size:19px}
+html:has(dialog[open]){overflow:hidden}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+html[data-motion="reduce"] *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+html[data-saver] .thumb img,html[data-saver] .pic img{display:none!important}
+body{margin:0;min-height:100vh;color:var(--ink);background:transparent;font:1rem/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:-10vmax;z-index:-1;pointer-events:none;background:
   radial-gradient(38vmax 34vmax at 12% 8%,var(--glow1),transparent 70%),
   radial-gradient(34vmax 30vmax at 92% 14%,var(--glow2),transparent 70%),
@@ -52,14 +57,14 @@ a{color:var(--accent)}
 .brand{display:inline-flex;align-items:center;gap:8px;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-decoration:none;font-size:1.02rem}
 .brand img{width:28px;height:28px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .navpill{display:none;gap:4px;padding:4px;border-radius:999px}
-.navpill a,.navpill button{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;border:0;background:none;color:var(--soft);font:inherit;font-size:.9rem;font-weight:500;text-decoration:none;cursor:pointer}
+.navpill a,.navpill button{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;border:0;background:none;color:var(--soft);font:inherit;font-size:.9rem;font-weight:500;text-decoration:none;cursor:pointer}
 .navpill a:hover,.navpill button:hover{color:var(--ink)}
 .navpill [aria-current=page]{background:var(--glass-strong);color:var(--ink);font-weight:600;box-shadow:0 1px 6px rgba(15,23,42,.10)}
 .navpill svg,.tabbar svg{width:18px;height:18px;flex:none}
 @media (min-width:760px){.navpill{display:inline-flex}.tabbar{display:none!important}}
 /* mobile tab bar */
-.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));z-index:6;display:flex;gap:2px;padding:6px;border-radius:26px;width:min(380px,calc(100vw - 32px))}
-.tabbar a,.tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 4px;border:0;border-radius:20px;background:none;color:var(--muted);font:inherit;font-size:.7rem;font-weight:600;text-decoration:none;cursor:pointer}
+.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:6;display:flex;gap:0;padding:5px;border-radius:26px;width:min(440px,calc(100vw - 20px))}
+.tabbar a,.tabbar button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 2px;white-space:nowrap;border:0;border-radius:20px;background:none;color:var(--muted);font:inherit;font-size:.64rem;font-weight:600;text-decoration:none;cursor:pointer}
 .tabbar svg{width:22px;height:22px}
 .tabbar [aria-current=page]{color:var(--accent);background:var(--accent-bg)}
 .iconbtn{display:inline-flex;align-items:center;gap:6px;color:var(--ink);padding:8px 13px;border-radius:999px;font:inherit;font-size:.88rem;cursor:pointer}
@@ -74,12 +79,36 @@ a{color:var(--accent)}
 /* settings panel */
 dialog.settings{border:1px solid var(--glass-border);padding:0;border-radius:26px;width:min(640px,100vw - 24px);max-height:min(860px,100vh - 24px);background:var(--glass-strong);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);color:var(--ink);box-shadow:var(--shadow)}
 dialog.settings::backdrop{background:rgba(8,12,20,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-@media (max-width:600px){dialog.settings{width:100vw;max-width:100vw;height:100%;max-height:100%;border-radius:0;margin:0;border:0}}
+@media (max-width:600px){dialog.settings{position:fixed;inset:0;width:100%;max-width:100%;height:100vh;height:100dvh;max-height:100vh;max-height:100dvh;border-radius:0;margin:0;border:0;overflow:hidden}}
+.sheet .content{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .sheet{display:flex;flex-direction:column;max-height:inherit;height:100%}
 .sheet header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
 .sheet header h2{margin:0;font-size:1.15rem}
 .sheet .close{border:0;background:var(--ph);color:var(--soft);width:32px;height:32px;border-radius:50%;font-size:1.2rem;line-height:1;cursor:pointer}
 .sheet .content{overflow:auto;padding:4px 20px 20px;flex:1}
+.sheet section{padding-bottom:6px}
+.sheet h4.grp{font-size:.82rem;color:var(--soft);margin:18px 0 8px;display:flex;justify-content:space-between;align-items:center}
+.sheet h4.grp button{border:0;background:none;color:var(--accent);font:inherit;font-size:.78rem;font-weight:600;cursor:pointer}
+.setrow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 14px;border:1px solid var(--line);background:var(--glass);border-radius:14px;margin-bottom:8px}
+.setrow .n{font-weight:600;font-size:.93rem}.setrow .c{color:var(--muted);font-size:.8rem}
+.seg.small{flex:none;width:190px}.seg.small label{padding:5px}
+.switch{cursor:pointer}
+.switch input{appearance:none;-webkit-appearance:none;flex:none;width:50px;height:30px;border-radius:99px;background:var(--line);position:relative;cursor:pointer;transition:background .2s;margin:0;border:1px solid var(--line)}
+.switch input::after{content:"";position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.25);transition:transform .2s}
+.switch input:checked{background:var(--accent)}.switch input:checked::after{transform:translateX(20px)}
+.btnlist{display:grid;gap:8px}
+.listbtn{display:block;width:100%;text-align:left;padding:12px 14px;border:1px solid var(--line);background:var(--glass);color:var(--ink);border-radius:14px;font:inherit;font-size:.93rem;font-weight:500;text-decoration:none;cursor:pointer}
+.listbtn small{display:block;color:var(--muted);font-size:.8rem;font-weight:400}
+.listbtn:hover{border-color:var(--muted)}.listbtn.danger{color:#dc2626}
+.acct{display:grid;gap:10px}
+.acct .who{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);background:var(--glass);border-radius:14px}
+.acct .av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-weight:700}
+.acct .em{font-weight:600;overflow-wrap:anywhere}.acct .st{color:var(--muted);font-size:.8rem}
+.acct .tabs{display:flex;gap:6px}.acct .tabs button{flex:1}
+.acct .msg{font-size:.86rem;border-radius:12px;padding:10px 12px}
+.acct .msg.err{background:var(--warn-bg);color:var(--warn)}.acct .msg.ok{background:var(--ok-bg);color:var(--ok)}
+.acct .code{font:600 1.15rem/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;text-align:center;padding:12px;border-radius:12px;background:var(--ph)}
+.linkbtn{border:0;background:none;color:var(--accent);font:inherit;font-size:.86rem;cursor:pointer;padding:4px 0;text-align:left}
 .sheet h3{font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:24px 0 8px;display:flex;justify-content:space-between;align-items:center}
 .sheet h3 button{border:0;background:none;color:var(--accent);font:inherit;font-size:.75rem;font-weight:600;text-transform:none;letter-spacing:0;cursor:pointer}
 .sheet .help{color:var(--soft);font-size:.9rem;margin:14px 0 0}
@@ -156,6 +185,14 @@ sup a{text-decoration:none;font-size:.7rem}
 .refs-wrap{border-radius:22px;padding:6px 18px 10px;margin-top:8px}
 .refs{font-size:.85rem;color:var(--soft);padding-left:20px}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
 footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
+.act{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--ink);padding:8px 13px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:500;cursor:pointer}
+.act svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card.is-saved .act[data-act=save]{background:var(--accent-bg);color:var(--accent);border-color:transparent}
+.card.is-saved .act[data-act=save] svg{fill:currentColor}
+.card.is-saved .kicker::after{content:"Saved";padding:2px 8px;border-radius:999px;background:var(--accent-bg);color:var(--accent)}
+html[data-dimread] .card.is-read:not(.open){opacity:.62}
+html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </style>
 </head>
 <body><div class="wrap">
@@ -163,14 +200,20 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
 <div class="topbar">
   <a class="brand" href="../index.html"><img src="../apple-touch-icon.png" alt="">SciDigest</a>
   <nav class="navpill" aria-label="Main">
+    
     <a href="../index.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>Home</a>
+    <a href="../search.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search</a>
+    <a href="../saved.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>Saved</a>
     <a href="../idea.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
     <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
   </nav>
 </div>
 <nav class="tabbar" aria-label="Main">
-  <a href="../index.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>Home</a>
-  <a href="../idea.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
+  
+    <a href="../index.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>Home</a>
+    <a href="../search.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search</a>
+    <a href="../saved.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>Saved</a>
+    <a href="../idea.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
   <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
 </nav>
 <a class="back" href="../index.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All digests</a>
@@ -199,7 +242,10 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
 <main data-report>
   <h2 class="editors">Editor&#39;s picks</h2>
   <div class="grid editors-grid">
-<details class="card" id="p1" data-topic="clinical" data-editors="1" data-rank="1" data-score="9">
+<details class="card" id="p1" data-topic="clinical" data-editors="1" data-rank="1" data-score="9"
+  data-key="https://doi.org/10.1016/S0140-6736(26)01562-X" data-headline="Vaccinating whole communities against malaria each season cut infection rates" data-url="https://doi.org/10.1016/S0140-6736(26)01562-X" data-cite="Dabira, E. D., Natama, H. M., Erhart, A., Bihoun, B., Keita, M. L., Derra, K., Bah, A., Ilboudo, N., Ndiath, M. O., Bonko, M. D. A., Saidy, L., Ilboudo, A. H., Kafando, M. H. O., Jaiteh, F., Bocoum, F. Y., Grietens, K. P., Gibba, B., Kompaore, S. C. B., Hill, A. V. S., ... Sanyang, D. (2026). Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial. The Lancet. https://doi.org/10.1016/S0140-6736(26)01562-X"
+  data-topicname="Clinical &amp; Disease Research" data-journal="The Lancet" data-date="Nov 19, 2026"
+  data-report="reports/2026-11-20.html#p1" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg/960px-U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg/960px-U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg" alt="Malaria vaccine africa" loading="lazy" onerror="this.remove()" style="position:relative"></div>
     <div class="body">
@@ -216,6 +262,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </summary>
   <div class="credit">Illustration, not from the paper. Malaria vaccine africa · U.S. Army Southern European Task Force, Africa, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></div>
   <div class="full">
+    <div class="actions">
+      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
+      <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
+      <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
+    </div>
     <p class="orig">Original title: “Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial”<br>Published Nov 19, 2026</p>
     <p>Malaria in parts of West Africa spreads mostly during a rainy season, so researchers asked whether vaccinating entire communities just before that season could lower how many people carry the parasite. They tested a malaria vaccine called R21/Matrix-M in The Gambia and Burkina Faso. They used a cluster-randomised trial, in which whole groups such as villages, not individuals, are randomly assigned to receive the intervention or serve as controls. The trial was open-label, meaning participants and researchers knew who got the vaccine.</p><p>The publisher&#39;s summary reports that this seasonal mass vaccination lowered malaria prevalence, the share of people infected at a given time, in both countries. The authors propose it as an extra control tool where transmission is seasonal. In areas with low to moderate malaria it might speed progress toward elimination. In high-transmission areas it might further reduce the disease burden.<sup><a href="#ref1">[1]</a></sup></p>
     <h5>Why it matters</h5><p>Malaria vaccines have mainly been given to young children. Vaccinating whole communities at the right time of year could add a new layer of protection on top of bed nets and drugs. That approach may help countries move closer to getting rid of malaria.</p>
@@ -226,7 +277,10 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p2" data-topic="organismal" data-editors="1" data-rank="2" data-score="8">
+<details class="card" id="p2" data-topic="organismal" data-editors="1" data-rank="2" data-score="8"
+  data-key="https://doi.org/10.1038/s41586-026-11283-z" data-headline="Newly found gut viruses are poxviruses&#39; closest known relatives" data-url="https://doi.org/10.1038/s41586-026-11283-z" data-cite="Gaïa, M., Guyet, U., Ruscheweyh, H., Eren, A. M., Sunagawa, S., Koonin, E. V., Krupovic, M., &amp; Delmont, T. O. (2026). Closest relatives of poxviruses prevail in human and animal guts worldwide. Nature. https://doi.org/10.1038/s41586-026-11283-z"
+  data-topicname="Organismal &amp; Systems" data-journal="Nature" data-date="Nov 18, 2026"
+  data-report="reports/2026-11-20.html#p2" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Trichomonas_Gram_stain.jpg/960px-Trichomonas_Gram_stain.jpg">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">O</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Trichomonas_Gram_stain.jpg/960px-Trichomonas_Gram_stain.jpg" alt="Trichomonas vaginalis microscope" loading="lazy" onerror="this.remove()" style="position:relative"></div>
     <div class="body">
@@ -243,6 +297,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </summary>
   <div class="credit">Illustration, not from the paper. Trichomonas vaginalis microscope · Dr Graham Beards, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
+    <div class="actions">
+      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
+      <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
+      <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
+    </div>
     <p class="orig">Original title: “Closest relatives of poxviruses prevail in human and animal guts worldwide”<br>Published Nov 18, 2026</p>
     <p>Large double-stranded DNA viruses are common in soil and water but have rarely been spotted inside animal digestive systems. Researchers sifting through genetic data from gut samples found a whole new group of such viruses, which they call egoviruses, with big linear DNA genomes. These viruses turn up worldwide and almost only in the guts of humans, farm animals and wild animals, and one human-associated type is found across continents, suggesting a long shared history with the human gut microbiome.</p><p>By comparing egovirus genes with those of single-celled organisms, the team concluded that the viruses probably infect not animal cells but gut-dwelling protists: ciliates that help cows and other ruminants digest food, and parabasalids that affect immunity and gut ecology. Family-tree analysis places egoviruses as the nearest known relatives of poxviruses (the group that includes smallpox). Unlike the brick-shaped poxvirus particle, egoviruses are predicted to build many-layered icosahedral (20-sided) shells, which the authors argue is the older, ancestral shape. They propose that poxvirus ancestors first infected oxygen-free single-celled organisms inside ancient animal guts before switching to infecting animal cells themselves.<sup><a href="#ref2">[2]</a></sup></p>
     <h5>Why it matters</h5><p>Poxviruses cause serious human and animal disease, but where they came from has been unclear. This work points to a possible origin in gut-dwelling single-celled organisms and shows that a large, previously unrecognised family of DNA viruses is a routine part of gut ecosystems worldwide.</p>
@@ -253,7 +312,10 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p3" data-topic="astronomy" data-editors="1" data-rank="3" data-score="8">
+<details class="card" id="p3" data-topic="astronomy" data-editors="1" data-rank="3" data-score="8"
+  data-key="https://doi.org/10.1038/s41586-026-11221-z" data-headline="Astronomers watch a star spiral inside its giant partner&#39;s outer layers" data-url="https://doi.org/10.1038/s41586-026-11221-z" data-cite="Karambelkar, V., De, K., Temmink, K. D., Metzger, B. D., Blagorodnova, N., Anupama, G. C., Barway, S., Basu, J., Bellm, E. C., Bhalerao, V., Bochenek, A., Chamoli, S., Das, K., Fremling, C., Frostig, D., Gómez-Muñoz, M. A., Groom, S. L., Hinds, K., Jaimes, J. C., ... Wise, J. (2026). An inspiral of a star inside a common envelope with its giant companion. Nature, 659(8141), 628-633. https://doi.org/10.1038/s41586-026-11221-z"
+  data-topicname="Astronomy &amp; Planetary Science" data-journal="Nature" data-date="Nov 18, 2026"
+  data-report="reports/2026-11-20.html#p3" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/960px-Andromeda_Galaxy_%28with_h-alpha%29.jpg">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">A</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/960px-Andromeda_Galaxy_%28with_h-alpha%29.jpg" alt="Andromeda galaxy" loading="lazy" onerror="this.remove()" style="position:relative"></div>
     <div class="body">
@@ -270,6 +332,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </summary>
   <div class="credit">Illustration, not from the paper. Andromeda galaxy · Adam Evans, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></div>
   <div class="full">
+    <div class="actions">
+      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
+      <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
+      <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
+    </div>
     <p class="orig">Original title: “An inspiral of a star inside a common envelope with its giant companion”<br>Published Nov 18, 2026</p>
     <p>Many tight pairs of stars, including the compact stellar remnants that orbit each other closely, are thought to start out much farther apart. A leading idea is &#34;common envelope evolution&#34;: when one star swells into a giant, its companion ends up orbiting inside the giant&#39;s puffy outer layers. Friction-like drag then makes the companion spiral inward. This spiralling had been predicted but never directly seen. The team studied AT 2025abao, an eruption in the Andromeda Galaxy. It involved a giant star of about 7 solar masses, late in its life (an asymptotic giant branch, or AGB, star), and a companion. They used spectra (light split into its wavelengths) taken both before and after the outburst.</p><p>The data fit best with a companion of roughly 0.7 solar masses sinking through the giant&#39;s churning outer envelope. For about seven years, the system slowly got brighter, powered by energy released by the drag. That energy escaped efficiently as light, as models of heat carried by convection predicted. The companion then merged with the giant&#39;s core. The merger threw off the outermost tenth of the envelope at about ten times the speed needed to escape the star. From this, the authors estimated how efficiently lost orbital energy can push away the shared envelope. That efficiency, called α, came out between roughly 0.01 and 0.4.<sup><a href="#ref3">[3]</a></sup></p>
     <h5>Why it matters</h5><p>Common envelope evolution is a key step in how close binaries form, and models of it rely on poorly known numbers such as the energy-efficiency factor α. This event gives one of the first direct observational looks at the inspiral phase and a measured range for α. It also shows that sky surveys could be used to find and study more such events.</p>
@@ -280,7 +347,10 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p4" data-topic="clinical" data-editors="1" data-rank="4" data-score="8">
+<details class="card" id="p4" data-topic="clinical" data-editors="1" data-rank="4" data-score="8"
+  data-key="https://doi.org/10.1038/s41586-026-11305-w" data-headline="Brain region that controls metabolism and sleep cycles shrinks in Alzheimer&#39;s" data-url="https://doi.org/10.1038/s41586-026-11305-w" data-cite="Yu, D., Germann, J., Murtaza, G., Hajdarovic, K. H., Babcock, K. R., Dehkordi, S. K., Jackson, A. C., Delalle, I., Orr, M. E., Zare, H., Singh, R., MacCoss, M. J., Noble, W. S., Vlassenko, A. G., Goyal, M. S., &amp; Webb, A. E. (2026). Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease. Nature. https://doi.org/10.1038/s41586-026-11305-w"
+  data-topicname="Clinical &amp; Disease Research" data-journal="Nature" data-date="Nov 18, 2026"
+  data-report="reports/2026-11-20.html#p4" data-image="https://upload.wikimedia.org/wikipedia/commons/9/91/CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg" alt="Brain mri scan" loading="lazy" onerror="this.remove()" style="position:relative"></div>
     <div class="body">
@@ -297,6 +367,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </summary>
   <div class="credit">Illustration, not from the paper. Brain mri scan · Wei-yuan Huang, Gang Wu, Feng Chen, Meng-meng Li and Jian-jun Li, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
+    <div class="actions">
+      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
+      <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
+      <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
+    </div>
     <p class="orig">Original title: “Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease”<br>Published Nov 18, 2026</p>
     <p>The hypothalamus is a small region deep in the brain that helps run body functions such as metabolism, hormone release and daily (circadian) rhythms. Researchers wanted to know how this region changes with normal ageing and with Alzheimer&#39;s disease, both in its overall size and in the kinds of cells it contains. They built an atlas, called HypoAD, that combines two kinds of data. One is detailed MRI brain scans from 458 people. The other is single-nucleus RNA sequencing of 614,403 individual cell nuclei, which shows which genes each cell is using.</p><p>By combining these measurements, the team found that the hypothalamus is not affected evenly. Subregions that regulate metabolism and circadian rhythms looked especially vulnerable. Within these areas, two cell types stood out. One was inhibitory neurons, which are nerve cells that dampen the activity of other cells. The other was microglia, the brain&#39;s resident immune cells.<sup><a href="#ref4">[4]</a></sup></p>
     <h5>Why it matters</h5><p>Changes in sleep patterns, appetite and body weight are common in Alzheimer&#39;s disease, and this work points to particular parts of the hypothalamus and particular cell types that may be involved. The atlas also gives other scientists a shared reference for studying this hard-to-measure brain region in older adults.</p>
@@ -307,7 +382,10 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p5" data-topic="materials" data-editors="1" data-rank="5" data-score="7">
+<details class="card" id="p5" data-topic="materials" data-editors="1" data-rank="5" data-score="7"
+  data-key="https://doi.org/10.1126/science.aeh3114" data-headline="Tiny diamond particles help perovskite solar cells withstand heat and long use" data-url="https://doi.org/10.1126/science.aeh3114" data-cite="Li, B., Zhang, T., Wang, X., Wen, Y., Wang, Y., Yu, X., &amp; Yang, D. (2026). Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells. Science, 394(6826), eaeh3114. https://doi.org/10.1126/science.aeh3114"
+  data-topicname="Materials &amp; Nanoscience" data-journal="Science" data-date="Nov 19, 2026"
+  data-report="reports/2026-11-20.html#p5" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Perovskite_solar_cell.jpg/960px-Perovskite_solar_cell.jpg">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">M</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Perovskite_solar_cell.jpg/960px-Perovskite_solar_cell.jpg" alt="Perovskite solar cell" loading="lazy" onerror="this.remove()" style="position:relative"></div>
     <div class="body">
@@ -324,6 +402,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </summary>
   <div class="credit">Illustration, not from the paper. Perovskite solar cell · Dennis Schroeder / National Renewable Energy Laboratory, via Wikimedia Commons · Public domain</div>
   <div class="full">
+    <div class="actions">
+      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
+      <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
+      <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
+    </div>
     <p class="orig">Original title: “Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells”<br>Published Nov 19, 2026</p>
     <p>Halide perovskites are crystals that turn sunlight into electricity very efficiently, partly because their atomic lattice is soft and flexible. That same softness is a weakness: under heat and light the lattice deforms, internal strain builds up, and the material slowly degrades. The researchers asked whether adding hard nanodiamond particles to the perovskite could stop this. They report that the nanodiamonds pass mechanical stress from the inside of each crystal grain out to the grain boundaries (the borders between neighbouring crystals). There the stress is spread out and released instead of piling up inside the grains.</p><p>The nanodiamonds also kept neighbouring grains from sliding past one another. This limited distortion of the lattice and reduced the number of defects that formed over long operation. Small test cells (0.09 cm²) reached an independently certified efficiency of 27.6%, and larger minimodules (16.1 cm²) reached 24.3%. The cells kept 80% of their starting efficiency after 5000 hours of continuous operation at 85°C. They kept 98% after 5000 hours of simulated day-night cycles with changing light levels.<sup><a href="#ref5">[5]</a></sup></p>
     <h5>Why it matters</h5><p>Perovskite solar cells are already very efficient, but poor durability is a major barrier to selling them. This work suggests that mechanically reinforcing the material can make it more stable without giving up efficiency, and the approach also worked on larger minimodules.</p>
@@ -334,7 +417,10 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p6" data-topic="ecology" data-editors="1" data-rank="6" data-score="7">
+<details class="card" id="p6" data-topic="ecology" data-editors="1" data-rank="6" data-score="7"
+  data-key="https://doi.org/10.1038/s41586-026-11298-6" data-headline="Farming intensity in Indonesia reshuffles which species live where, not just how many" data-url="https://doi.org/10.1038/s41586-026-11298-6" data-cite="Guerrero-Ramírez, N. R., Salecker, J., Simpkins, C. E., Brambach, F., Corre, M. D., Darras, K. F. A., Drescher, J., Grass, I., König, C., Paterno, G. B., Wiegand, K., Azhar, A., Barnes, A. D., Brose, U., Buchori, D., Daniel, R., Hertel, D., Hidayat, P., Jochum, M., ... Kreft, H. (2026). Tropical land-use intensification restructures biodiversity. Nature. https://doi.org/10.1038/s41586-026-11298-6"
+  data-topicname="Ecology &amp; Biodiversity" data-journal="Nature" data-date="Nov 18, 2026"
+  data-report="reports/2026-11-20.html#p6" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg/960px-Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">E</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg/960px-Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg" alt="Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu" loading="lazy" onerror="this.remove()" style="position:relative"></div>
     <div class="body">
@@ -351,6 +437,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </summary>
   <div class="credit">Illustration, not from the paper. Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu · CEphoto, Uwe Aranas, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a></div>
   <div class="full">
+    <div class="actions">
+      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
+      <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
+      <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
+    </div>
     <p class="orig">Original title: “Tropical land-use intensification restructures biodiversity”<br>Published Nov 18, 2026</p>
     <p>Most studies of biodiversity in tropical farmland count species at a single spot, missing how farming changes the mix of species across a whole landscape and across many kinds of organisms. This team surveyed 24 groups of organisms spanning all domains of life, about 40,000 species in total, in Indonesian landscapes. Sites ranged from lowland forest to smallholder farms growing a single cash crop intensively.</p><p>In the single-crop plantations, roughly 78% of combined diversity was lost at the landscape scale and about 50% at the local scale. The researchers expected these farms to become more alike in their species (homogenization), but they found no consistent sign of this. Instead, for organisms living above ground, the pattern shifted. In forest, different sites held largely different species (turnover). In plantations, poorer sites tended to hold a subset of the species found at richer sites (nestedness). The authors suggest this may be an early step of community simplification that could eventually lead to homogenization. Meanwhile, remaining differences among sites can help prop up total regional diversity.<sup><a href="#ref6">[6]</a></sup></p>
     <h5>Why it matters</h5><p>Agricultural expansion is a major threat to tropical biodiversity. This study shows the damage involves both losing species and rearranging communities across the food chain. It points to practical options such as keeping patches of traditional farming, using more sustainable management, and protecting natural habitat alongside farmland.</p>
@@ -361,7 +452,10 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p7" data-topic="organismal" data-editors="1" data-rank="7" data-score="7">
+<details class="card" id="p7" data-topic="organismal" data-editors="1" data-rank="7" data-score="7"
+  data-key="https://doi.org/10.1038/s41586-026-11155-6" data-headline="Homo erectus lived in southern China&#39;s rainforests later than once thought" data-url="https://doi.org/10.1038/s41586-026-11155-6" data-cite="Westaway, K. E., Joannes-Boyau, R., Liao, W., Shao, Q., Yu, W., Quinn, M., Bacon, A., Liang, H., Bourgon, N., Zhao, J., Roberts, P., Kono, R., Pan, Y., Yang, L., Wang, Y., Jin, C., Wu, Z., Murray, S., Zanolli, C., ... Zhang, Y. (2026). Rainforest adaptation in late Homo erectus from southern China. Nature. https://doi.org/10.1038/s41586-026-11155-6"
+  data-topicname="Organismal &amp; Systems" data-journal="Nature" data-date="Nov 18, 2026"
+  data-report="reports/2026-11-20.html#p7" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Karst_Landscape%2C_China_%28ASTER%29.jpg/960px-Karst_Landscape%2C_China_%28ASTER%29.jpg">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">O</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Karst_Landscape%2C_China_%28ASTER%29.jpg/960px-Karst_Landscape%2C_China_%28ASTER%29.jpg" alt="Guangxi karst cave" loading="lazy" onerror="this.remove()" style="position:relative"></div>
     <div class="body">
@@ -378,6 +472,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </summary>
   <div class="credit">Illustration, not from the paper. Guangxi karst cave · NASA/METI/AIST/Japan Space Systems, and U.S./Japan ASTER Science Team, via Wikimedia Commons · Public domain</div>
   <div class="full">
+    <div class="actions">
+      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
+      <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
+      <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
+    </div>
     <p class="orig">Original title: “Rainforest adaptation in late Homo erectus from southern China”<br>Published Nov 18, 2026</p>
     <p>Homo erectus, an early human species, existed for a very long time, from roughly 1.9 million years ago until about 108,000 years ago, and spread from Africa across to eastern Asia. Researchers have long assumed it preferred open landscapes mixing woodland and grassland, partly because of famous fossil sites on Java, but few direct chemical measurements from Asian fossils have tested this. The team studied nine hominin teeth from two linked caves in Guangxi province, southern China. Eight had earlier been identified as H. erectus using both tooth shape and genetic evidence.</p><p>To date the teeth, the researchers combined 43 age measurements from five different dating methods into a single timeline. They then analysed isotopes (versions of chemical elements that differ in weight) and trace elements locked in the teeth to reconstruct the surrounding environment and how the hominins behaved. They conclude that H. erectus was in southern China between about 324,000 and 184,000 years ago. That is clearly younger than the roughly 400,000-year age previously accepted for definite H. erectus fossils in this region. The chemical evidence points to these hominins living in closed rainforest, a habitat often thought to have been used only by our own species, and suggests they moved around over long periods and adapted flexibly to their surroundings.<sup><a href="#ref7">[7]</a></sup></p>
     <h5>Why it matters</h5><p>The findings question the view that H. erectus was limited to open grassy habitats and was less able than Homo sapiens to cope with dense forest. They also push back the known survival date of this species in southern China, which affects how scientists picture which human species shared Asia and when.</p>
@@ -388,7 +487,10 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </div>
 </details>
 
-<details class="card" id="p8" data-topic="ecology" data-editors="1" data-rank="8" data-score="7">
+<details class="card" id="p8" data-topic="ecology" data-editors="1" data-rank="8" data-score="7"
+  data-key="https://doi.org/10.1038/s41586-026-11322-9" data-headline="Bogong moths steer by the tilt of Earth&#39;s magnetic field, using light" data-url="https://doi.org/10.1038/s41586-026-11322-9" data-cite="Chen, H., Rosberg, L., Dreyer, D., Leberecht, B., Mouritsen, H., Fleischmann, P. N., &amp; Warrant, E. J. (2026). Bogong moths navigate with a light-dependent geomagnetic inclination compass. Nature. https://doi.org/10.1038/s41586-026-11322-9"
+  data-topicname="Ecology &amp; Biodiversity" data-journal="Nature" data-date="Nov 18, 2026"
+  data-report="reports/2026-11-20.html#p8" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Agrotis_infusa.jpg/960px-Agrotis_infusa.jpg">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">E</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Agrotis_infusa.jpg/960px-Agrotis_infusa.jpg" alt="Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008" loading="lazy" onerror="this.remove()" style="position:relative"></div>
     <div class="body">
@@ -405,6 +507,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </summary>
   <div class="credit">Illustration, not from the paper. Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008 · Donald Hobern from Canberra, Australia, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></div>
   <div class="full">
+    <div class="actions">
+      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
+      <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
+      <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
+    </div>
     <p class="orig">Original title: “Bogong moths navigate with a light-dependent geomagnetic inclination compass”<br>Published Nov 18, 2026</p>
     <p>Bogong moths travel up to about 1,000 km twice a year between where they breed and a limited set of cool resting sites in the Australian Alps, where they spend summer in a dormant state. Earlier work showed they can use the stars to hold their course, yet they still head the right way under cloudy skies, hinting that they also sense Earth&#39;s magnetic field. This study asked what kind of magnetic compass they use and how it might work. The researchers tethered moths inside a flight arena beneath an artificial night sky whose star positions were scrambled, so the stars gave no useful direction, and then altered the magnetic field around them.</p><p>The moths still flew in their inborn migratory direction using the magnetic field alone. Rotating the field by 180°, or flipping its inclination (the angle at which field lines dip into the ground), made them fly the opposite way. Flipping only the field&#39;s polarity (which end counts as north) did not make them turn. Magnetic orientation also disappeared when violet-to-blue light was removed from the lighting, or when weak radio-frequency noise was added. The authors conclude that the moths use an inclination compass and that their magnetic sense likely depends on light-triggered chemical reactions involving radical pairs.<sup><a href="#ref8">[8]</a></sup></p>
     <h5>Why it matters</h5><p>Light-dependent inclination compasses have mainly been linked to night-migrating birds, so this result suggests a similar mechanism exists in a long-distance migrating insect. It also helps explain how these moths stay on course even when clouds hide the stars.</p>
@@ -428,140 +535,125 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
 </div>
 
 <dialog class="settings" id="settings" aria-labelledby="settings-title">
-  <form method="dialog" class="sheet" id="settings-form">
-    <header><h2 id="settings-title">Settings</h2><button class="close" value="cancel" aria-label="Close">×</button></header>
+  <div class="sheet">
+    <header><h2 id="settings-title">Settings</h2><button type="button" class="close" data-close aria-label="Close">×</button></header>
     <div class="content">
-      <h3>Your topics</h3>
-      <p class="help" style="margin-top:0">Choose the fields you want to read about. Every daily digest and every weekly and monthly review will show these first.</p>
-      <label class="opt" style="margin-top:12px"><input type="checkbox" id="all-topics"><span><span class="n">All topics</span><br><span class="c">The editor's picks across every field</span></span></label>
-      
-      <h3><span>Physical Sciences, Math &amp; Computing</span><button type="button" class="selgroup" data-group="physical">Select all</button></h3>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="physics" data-group="physical"><span><span class="n">Physics</span><br><span class="c">Classical mechanics, quantum science, optics and photonics, condensed matter, mathematical physics, space physics</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="chemistry" data-group="physical"><span><span class="n">Chemistry</span><br><span class="c">Organic, inorganic, physical and analytical chemistry, chemical biology</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="math_stats" data-group="physical"><span><span class="n">Mathematics &amp; Statistics</span><br><span class="c">Algebra, geometry, topology, differential equations, probability, numerical analysis, optimization, statistics theory</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="computing" data-group="physical"><span><span class="n">Computer Science &amp; IT</span><br><span class="c">Artificial intelligence and machine learning, cybersecurity, data science, information theory, computational systems</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="astronomy" data-group="physical"><span><span class="n">Astronomy &amp; Planetary Science</span><br><span class="c">Astrophysics, observational astronomy, planetary geology, cosmology</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="materials" data-group="physical"><span><span class="n">Materials &amp; Nanoscience</span><br><span class="c">Nanomaterials, polymers, metallurgy, semiconductors, energy materials</span></span></label>
-      
-      <h3><span>Engineering &amp; Technology</span><button type="button" class="selgroup" data-group="engineering">Select all</button></h3>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="core_engineering" data-group="engineering"><span><span class="n">Core Engineering</span><br><span class="c">Mechanical, electrical, civil, chemical and aerospace engineering</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="applied_tech" data-group="engineering"><span><span class="n">Applied &amp; Emerging Tech</span><br><span class="c">Biomedical engineering, robotics, automation and control systems, energy science, biotechnology</span></span></label>
-      
-      <h3><span>Biological &amp; Life Sciences</span><button type="button" class="selgroup" data-group="life">Select all</button></h3>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="cell_molecular" data-group="life"><span><span class="n">Cellular &amp; Molecular</span><br><span class="c">Cell biology, molecular biology, genetics, genomics, biochemistry, structural biology</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="organismal" data-group="life"><span><span class="n">Organismal &amp; Systems</span><br><span class="c">Microbiology, immunology, neuroscience, physiology, developmental biology, evolutionary biology</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="ecology" data-group="life"><span><span class="n">Ecology &amp; Biodiversity</span><br><span class="c">Ecology, conservation biology, zoology, plant sciences, entomology, computational biology and bioinformatics</span></span></label>
-      
-      <h3><span>Health &amp; Medical Sciences</span><button type="button" class="selgroup" data-group="health">Select all</button></h3>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="clinical" data-group="health"><span><span class="n">Clinical &amp; Disease Research</span><br><span class="c">Oncology, cardiology, neurology, infectious diseases, clinical immunology</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="therapeutics" data-group="health"><span><span class="n">Therapeutics &amp; Care</span><br><span class="c">Pharmacology, drug discovery, nursing, dentistry, medical informatics, public and occupational health</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="behavioral" data-group="health"><span><span class="n">Behavioral &amp; Mental Health</span><br><span class="c">Clinical, cognitive, experimental and social psychology, behavioral sciences</span></span></label>
-      
-      <h3><span>Earth &amp; Environmental Sciences</span><button type="button" class="selgroup" data-group="earth">Select all</button></h3>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="earth_water" data-group="earth"><span><span class="n">Earth &amp; Water</span><br><span class="c">Geology (solid earth), hydrology, ocean sciences, limnology, natural hazards</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="climate" data-group="earth"><span><span class="n">Climate &amp; Environment</span><br><span class="c">Climate science, atmospheric science, environmental science, biogeochemistry, sustainability</span></span></label>
-      
-      <h3><span>Society, Policy &amp; Interdisciplinary Studies</span><button type="button" class="selgroup" data-group="society">Select all</button></h3>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="social_economic" data-group="society"><span><span class="n">Social &amp; Economic Sciences</span><br><span class="c">Economics, finance, sociology, political science, public policy, education, geography</span></span></label>
-      
-      <label class="opt"><input type="checkbox" name="topic" value="resources" data-group="society"><span><span class="n">Resource &amp; Applied Fields</span><br><span class="c">Agriculture, forestry, water resources, food science, veterinary science, science communication and ethics</span></span></label>
-      
-      <h3>Idea checker</h3>
-      <label class="field"><span>Server address</span><input type="url" id="idea-url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://scidigest-idea-checker.yourname.workers.dev"></label>
-      <label class="field"><span>App token (only if you set one)</span><input type="password" id="idea-token" autocomplete="off"></label>
-      <p class="help" style="margin-top:4px">Without a server, Idea Check lists related papers from Europe PMC but can't write the full report. See IDEA-CHECKER-SETUP.md.</p>
-      <h3>Appearance</h3>
-      <div class="seg" role="radiogroup" aria-label="Appearance">
-        <label><input type="radio" name="theme" value="">System</label>
-        <label><input type="radio" name="theme" value="light">Light</label>
-        <label><input type="radio" name="theme" value="dark">Dark</label>
-      </div>
-      <p class="help">Settings are saved in this browser only.</p>
+
+      <section aria-labelledby="s-account">
+        <h3 id="s-account">Account</h3>
+        <div id="account-box"></div>
+      </section>
+
+      <section aria-labelledby="s-topics">
+        <h3 id="s-topics">Your topics</h3>
+        <p class="help" style="margin-top:0">Choose the fields you want to read about. Every daily digest and every weekly and monthly review will show these first. Changing topics costs nothing: papers are re-sorted on your device.</p>
+        <label class="opt" style="margin-top:12px"><input type="checkbox" id="all-topics"><span><span class="n">All topics</span><br><span class="c">The editor's picks across every field</span></span></label>
+        
+        <h4 class="grp"><span>Physical Sciences, Math &amp; Computing</span><button type="button" class="selgroup" data-group="physical">Select all</button></h4>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="physics" data-group="physical"><span><span class="n">Physics</span><br><span class="c">Classical mechanics, quantum science, optics and photonics, condensed matter, mathematical physics, space physics</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="chemistry" data-group="physical"><span><span class="n">Chemistry</span><br><span class="c">Organic, inorganic, physical and analytical chemistry, chemical biology</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="math_stats" data-group="physical"><span><span class="n">Mathematics &amp; Statistics</span><br><span class="c">Algebra, geometry, topology, differential equations, probability, numerical analysis, optimization, statistics theory</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="computing" data-group="physical"><span><span class="n">Computer Science &amp; IT</span><br><span class="c">Artificial intelligence and machine learning, cybersecurity, data science, information theory, computational systems</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="astronomy" data-group="physical"><span><span class="n">Astronomy &amp; Planetary Science</span><br><span class="c">Astrophysics, observational astronomy, planetary geology, cosmology</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="materials" data-group="physical"><span><span class="n">Materials &amp; Nanoscience</span><br><span class="c">Nanomaterials, polymers, metallurgy, semiconductors, energy materials</span></span></label>
+        
+        <h4 class="grp"><span>Engineering &amp; Technology</span><button type="button" class="selgroup" data-group="engineering">Select all</button></h4>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="core_engineering" data-group="engineering"><span><span class="n">Core Engineering</span><br><span class="c">Mechanical, electrical, civil, chemical and aerospace engineering</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="applied_tech" data-group="engineering"><span><span class="n">Applied &amp; Emerging Tech</span><br><span class="c">Biomedical engineering, robotics, automation and control systems, energy science, biotechnology</span></span></label>
+        
+        <h4 class="grp"><span>Biological &amp; Life Sciences</span><button type="button" class="selgroup" data-group="life">Select all</button></h4>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="cell_molecular" data-group="life"><span><span class="n">Cellular &amp; Molecular</span><br><span class="c">Cell biology, molecular biology, genetics, genomics, biochemistry, structural biology</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="organismal" data-group="life"><span><span class="n">Organismal &amp; Systems</span><br><span class="c">Microbiology, immunology, neuroscience, physiology, developmental biology, evolutionary biology</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="ecology" data-group="life"><span><span class="n">Ecology &amp; Biodiversity</span><br><span class="c">Ecology, conservation biology, zoology, plant sciences, entomology, computational biology and bioinformatics</span></span></label>
+        
+        <h4 class="grp"><span>Health &amp; Medical Sciences</span><button type="button" class="selgroup" data-group="health">Select all</button></h4>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="clinical" data-group="health"><span><span class="n">Clinical &amp; Disease Research</span><br><span class="c">Oncology, cardiology, neurology, infectious diseases, clinical immunology</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="therapeutics" data-group="health"><span><span class="n">Therapeutics &amp; Care</span><br><span class="c">Pharmacology, drug discovery, nursing, dentistry, medical informatics, public and occupational health</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="behavioral" data-group="health"><span><span class="n">Behavioral &amp; Mental Health</span><br><span class="c">Clinical, cognitive, experimental and social psychology, behavioral sciences</span></span></label>
+        
+        <h4 class="grp"><span>Earth &amp; Environmental Sciences</span><button type="button" class="selgroup" data-group="earth">Select all</button></h4>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="earth_water" data-group="earth"><span><span class="n">Earth &amp; Water</span><br><span class="c">Geology (solid earth), hydrology, ocean sciences, limnology, natural hazards</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="climate" data-group="earth"><span><span class="n">Climate &amp; Environment</span><br><span class="c">Climate science, atmospheric science, environmental science, biogeochemistry, sustainability</span></span></label>
+        
+        <h4 class="grp"><span>Society, Policy &amp; Interdisciplinary Studies</span><button type="button" class="selgroup" data-group="society">Select all</button></h4>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="social_economic" data-group="society"><span><span class="n">Social &amp; Economic Sciences</span><br><span class="c">Economics, finance, sociology, political science, public policy, education, geography</span></span></label>
+        
+        <label class="opt"><input type="checkbox" name="topic" value="resources" data-group="society"><span><span class="n">Resource &amp; Applied Fields</span><br><span class="c">Agriculture, forestry, water resources, food science, veterinary science, science communication and ethics</span></span></label>
+        
+      </section>
+
+      <section aria-labelledby="s-reading">
+        <h3 id="s-reading">Reading</h3>
+        <div class="setrow"><span class="n">Text size</span>
+          <div class="seg small" role="radiogroup" aria-label="Text size">
+            <label><input type="radio" name="size" value="s"><span style="font-size:.8em">A</span></label>
+            <label><input type="radio" name="size" value="m">A</label>
+            <label><input type="radio" name="size" value="l"><span style="font-size:1.15em">A</span></label>
+            <label><input type="radio" name="size" value="xl"><span style="font-size:1.3em">A</span></label>
+          </div></div>
+        <label class="setrow switch"><span><span class="n">Data saver</span><br><span class="c">Don't load images</span></span><input type="checkbox" id="opt-saver" role="switch"></label>
+        <label class="setrow switch"><span><span class="n">Reduce motion</span><br><span class="c">Turn off animations</span></span><input type="checkbox" id="opt-motion" role="switch"></label>
+        <label class="setrow switch"><span><span class="n">Dim papers I've read</span><br><span class="c">Papers you opened fade slightly</span></span><input type="checkbox" id="opt-dimread" role="switch"></label>
+      </section>
+
+      <section aria-labelledby="s-look">
+        <h3 id="s-look">Appearance</h3>
+        <div class="seg" role="radiogroup" aria-label="Appearance">
+          <label><input type="radio" name="theme" value="">System</label>
+          <label><input type="radio" name="theme" value="light">Light</label>
+          <label><input type="radio" name="theme" value="dark">Dark</label>
+        </div>
+      </section>
+
+      <section aria-labelledby="s-idea">
+        <h3 id="s-idea">Server for Idea Check and accounts</h3>
+        <label class="field"><span>Server address</span><input type="url" id="idea-url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://scidigest-idea-checker.yourname.workers.dev"></label>
+        <label class="field"><span>App token (only if you set one)</span><input type="password" id="idea-token" autocomplete="off"></label>
+        <p class="help" style="margin-top:4px">Needed for the full Idea Check report and for accounts. See IDEA-CHECKER-SETUP.md.</p>
+      </section>
+
+      <section aria-labelledby="s-data">
+        <h3 id="s-data">Data and privacy</h3>
+        <div class="btnlist">
+          <button type="button" class="listbtn" id="export-data">Export my data<small>Settings, saved papers and idea checks as a file</small></button>
+          <button type="button" class="listbtn" id="clear-history">Clear reading history and saved papers</button>
+          <button type="button" class="listbtn danger" id="reset-all">Reset everything on this device</button>
+          <a class="listbtn" href="../privacy.html">Privacy policy</a>
+        </div>
+      </section>
+
+      <section aria-labelledby="s-about">
+        <h3 id="s-about">About</h3>
+        <p class="help" style="margin-top:0"><strong>SciDigest</strong> picks the most important new research each day from about 40 journals (Nature, Science, Cell, NEJM, The Lancet and more) and arXiv preprints, and explains it for science students. Summaries are written by AI from abstracts and open-access papers, and every paper links to its source.</p>
+        <p class="help">Version 1.4 · Updated Nov 20, 2026</p>
+        <div class="btnlist" style="margin-top:12px">
+          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Send feedback or report a problem</a>
+          <button type="button" class="listbtn" id="install-help">Add SciDigest to your home screen</button>
+        </div>
+      </section>
     </div>
-    <footer><button class="secondary" value="cancel">Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
-  </form>
+    <footer><button type="button" class="secondary" data-close>Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
+  </div>
 </dialog>
-<script>
-(function(){
-  var TOPICS={"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"};
-  var KEY="scidigest-topics",THEME="scidigest-theme",FLASH="scidigest-saved",IURL="scidigest-idea-url",ITOK="scidigest-idea-token";
-  function get(k){try{return localStorage.getItem(k)||""}catch(e){return ""}}
-  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
-  function followed(){return get(KEY).split(",").filter(function(t){return TOPICS[t]})}
-  function summary(f){if(!f.length)return "All topics";var n=f.map(function(t){return TOPICS[t]});return n.length<=2?n.join(", "):n[0]+", "+n[1]+" +"+(n.length-2)}
-  function applyTheme(){var t=get(THEME);if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme}
-  applyTheme();
-
-  var dlg=document.getElementById("settings"),boxes=[].slice.call(dlg.querySelectorAll('input[name=topic]')),all=document.getElementById("all-topics");
-  function syncAll(){all.checked=!boxes.some(function(b){return b.checked});
-    [].forEach.call(dlg.querySelectorAll(".selgroup"),function(btn){var g=boxes.filter(function(b){return b.dataset.group===btn.dataset.group});
-      btn.textContent=g.every(function(b){return b.checked})?"Clear":"Select all"})}
-  function open(){var f=followed();boxes.forEach(function(b){b.checked=f.indexOf(b.value)>=0});
-    var th=get(THEME);[].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.checked=r.value===th});
-    document.getElementById("idea-url").value=get(IURL);document.getElementById("idea-token").value=get(ITOK);
-    syncAll();dlg.showModal()}
-  boxes.forEach(function(b){b.addEventListener("change",syncAll)});
-  all.addEventListener("change",function(){if(all.checked)boxes.forEach(function(b){b.checked=false});syncAll()});
-  [].forEach.call(dlg.querySelectorAll(".selgroup"),function(btn){btn.addEventListener("click",function(){
-    var g=boxes.filter(function(b){return b.dataset.group===btn.dataset.group}),on=!g.every(function(b){return b.checked});
-    g.forEach(function(b){b.checked=on});syncAll()})});
-  [].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.addEventListener("change",function(){set(THEME,r.value);applyTheme()})});
-  document.getElementById("save-settings").addEventListener("click",function(){
-    set(KEY,boxes.filter(function(b){return b.checked}).map(function(b){return b.value}).join(","));
-    set(IURL,document.getElementById("idea-url").value.trim());set(ITOK,document.getElementById("idea-token").value.trim());
-    try{sessionStorage.setItem(FLASH,"1")}catch(e){}
-    location.reload()});
-  [].forEach.call(document.querySelectorAll("[data-open-settings]"),function(el){el.addEventListener("click",open)});
-
-  // "Your topics" banner
-  var f=followed();
-  [].forEach.call(document.querySelectorAll(".mytopics"),function(el){
-    el.querySelector(".t").textContent=f.length?"Your topics":"Showing all topics";
-    el.querySelector(".s").textContent=summary(f);
-    el.querySelector(".act").textContent=f.length?"Edit":"Choose topics"});
-
-  // Rearrange a report page: "For you" first, then the rest.
-  var main=document.querySelector("main[data-report]");
-  if(main&&f.length){
-    var cards=[].slice.call(main.querySelectorAll("details.card"));
-    var mine=cards.filter(function(c){return f.indexOf(c.dataset.topic)>=0});
-    mine.sort(function(a,b){var ea=a.dataset.editors==="1",eb=b.dataset.editors==="1";
-      if(ea!==eb)return ea?-1:1;return ea?(+a.dataset.rank- +b.dataset.rank):(+b.dataset.score- +a.dataset.score)});
-    var sec=document.createElement("section"),h=document.createElement("h2"),grid=document.createElement("div");
-    h.textContent="For you";grid.className="grid";sec.appendChild(h);
-    if(mine.length){mine.forEach(function(c){grid.appendChild(c)});sec.appendChild(grid)}
-    else{var p=document.createElement("p");p.className="sub";p.textContent="Nothing new in your topics in this report. Here are the other highlights instead.";sec.appendChild(p)}
-    main.insertBefore(sec,main.firstChild);
-    var eh=main.querySelector("h2.editors"),eg=main.querySelector(".editors-grid");
-    if(eh){if(eg&&eg.children.length)eh.textContent="Also worth reading";else{eh.classList.add("hidden");eg&&eg.classList.add("hidden")}}
-    [].forEach.call(main.querySelectorAll(".topic-section"),function(s){if(!s.querySelector("details.card"))s.classList.add("hidden")});
-    var bt=main.querySelector("h2.by-topic");if(bt&&!main.querySelector(".topic-section:not(.hidden)"))bt.classList.add("hidden");
-    var chips=document.querySelector(".chips");if(chips)chips.classList.add("hidden");
-  }
-
-  var flash="";try{flash=sessionStorage.getItem(FLASH)||"";sessionStorage.removeItem(FLASH)}catch(e){}
-  if(flash){var t=document.createElement("div");t.className="toast";t.setAttribute("role","status");
-    t.textContent=f.length?"Saved. Every day and review now shows your topics first.":"Saved. Showing all topics.";
-    document.body.appendChild(t);setTimeout(function(){t.remove()},3500)}
-})();
-</script>
+<script>window.SCIDIGEST={"build": "Nov 20, 2026", "ideaUrl": "", "page": "report", "root": "../", "topics": {"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"}};</script>
+<script src="../app.js" defer></script>
 <script>
 document.querySelectorAll("details.card").forEach(function(d){d.addEventListener("toggle",function(){d.classList.toggle("open",d.open)})});
 (function(){var KEY="scidigest-topic",btns=[].slice.call(document.querySelectorAll(".chips button"));if(!btns.length)return;

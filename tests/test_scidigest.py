@@ -113,7 +113,7 @@ def test_site_publish_json_contract(tmp_path):
                       "category", "category_name", "editors_pick", "preprint"}
     assert "*" not in p["citation"] and isinstance(p["significance"], int)
     assert (site / "reports" / f"{day['date']}.html").exists() and (site / "index.html").exists()
-    assert "does not collect" in (site / "privacy.html").read_text()
+    assert "collects as little as possible" in (site / "privacy.html").read_text()
     # rerun same day: still one entry (idempotent)
     main(["--no-ai", "--no-fulltext", "--no-crossref", "--feed-file", "Nature", str(FIX),
           "--out", str(tmp_path / "r"), "--site", str(site)])
@@ -335,3 +335,47 @@ def test_idea_page_and_navigation(tmp_path, monkeypatch):
     rep = (site / "reports" / "2026-11-18.html").read_text()
     assert 'class="back" href="../index.html"' in rep and 'href="../idea.html"' in rep
     assert 'class="tabbar"' in rep and 'id="idea-url"' in rep                      # tab bar + idea settings
+
+
+def test_spending_cap_keeps_editors_picks_and_drops_topic_picks(tmp_path, monkeypatch):
+    calls = []
+    def create(**kw):
+        calls.append(1)
+        r = fake_create(**kw)
+        r.usage = SimpleNamespace(input_tokens=200_000, output_tokens=20_000)   # ~$1.20 per call
+        return r
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test")
+    monkeypatch.setenv("SCIDIGEST_MAX_RUN_USD", "1.0")
+    monkeypatch.setattr(ai, "_usage", {"input": 0, "output": 0, "calls": 0})
+    fake = SimpleNamespace(beta=SimpleNamespace(messages=SimpleNamespace(create=create)))
+    site = tmp_path / "site"
+    with mock.patch.object(ai, "client", return_value=fake):
+        main(["--feed-file", "Nature", str(FIX), "--no-crossref", "--no-fulltext", "--no-images",
+              "--out", str(tmp_path / "r"), "--site", str(site), "--today", "2026-11-18", "--no-reviews"])
+    assert len(calls) == 1, "only the ranking call ran; the cap stopped the summaries"
+    d = json.loads((site / "data" / "2026-11-18.json").read_text())
+    assert [p["editors_pick"] for p in d["papers"]] == [True]          # topic pick dropped
+    assert d["papers"][0]["based_on"] == "abstract"                     # editor's pick kept, abstract quoted
+    assert "about $1.20" in ai.usage_line()
+
+
+def test_second_run_same_day_is_skipped_unless_forced(tmp_path, capsys):
+    site = _run(tmp_path, "2026-11-18")
+    capsys.readouterr()
+    main(["--no-ai", "--site", str(site), "--out", str(tmp_path / "r"), "--today", "2026-11-18"])
+    assert "already exists; skipping" in capsys.readouterr().out
+
+
+def test_search_saved_pages_and_offline_files(tmp_path):
+    site = _run(tmp_path, "2026-11-18")
+    idx = json.loads((site / "data" / "search.json").read_text())
+    assert len(idx["papers"]) == 2 and idx["papers"][0]["r"].startswith("reports/2026-11-18.html#p")
+    for page in ("search.html", "saved.html", "idea.html", "index.html"):
+        html = (site / page).read_text()
+        assert 'href="search.html"' in html and 'href="saved.html"' in html and 'src="app.js"' in html
+        assert 'id="account-box"' in html and 'id="export-data"' in html and 'name="size"' in html
+    for f in ("app.js", "sw.js"):
+        assert (site / f).exists()
+    rep = (site / "reports" / "2026-11-18.html").read_text()
+    assert 'data-act="save"' in rep and 'data-act="cite"' in rep and 'data-report="reports/2026-11-18.html#p1"' in rep
+    assert 'src="../app.js"' in rep

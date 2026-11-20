@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search · SciDigest</title>
+{% include "_base_css.html.j2" %}
+{% include "_head_app.html.j2" %}
+{% include "_list_css.html.j2" %}
+</head>
+<body><div class="wrap">
+{% from "_icons.html.j2" import icon %}
+{% include "_topbar.html.j2" %}
+<h1>Search</h1>
+<p class="lead">Find any paper from every daily digest so far.</p>
+<div class="glass searchbox" role="search">
+  {{ icon("search") }}
+  <input id="q" type="search" placeholder="Try “malaria”, “black hole” or “Nature”" autocomplete="off" aria-label="Search papers">
+  <select id="topic" aria-label="Topic"><option value="">All topics</option>{% for g in taxonomy %}<optgroup label="{{ g.name }}">{% for t in g.topics %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}</optgroup>{% endfor %}</select>
+</div>
+<div class="count" id="count" aria-live="polite"></div>
+<div class="items" id="items"></div>
+</div>
+{% include "_settings.html.j2" %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var q = document.getElementById("q"), topic = document.getElementById("topic"), list = document.getElementById("items"), count = document.getElementById("count");
+  var papers = [], root = (window.SCIDIGEST || {}).root || "";
+  function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+  function norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+  function render() {
+    var words = norm(q.value).split(/\s+/).filter(Boolean), t = topic.value;
+    var hits = papers.filter(function (p) {
+      if (t && p.t !== t) return false;
+      var hay = norm([p.h, p.i, p.j, p.tn, p.o].join(" "));
+      return words.every(function (w) { return hay.indexOf(w) >= 0; });
+    });
+    count.textContent = (words.length || t) ? hits.length + " paper" + (hits.length === 1 ? "" : "s") : papers.length + " papers so far, newest first";
+    list.innerHTML = "";
+    if (!hits.length) {
+      var e = el("div", "glass empty"); e.appendChild(el("strong", null, "No papers found")); e.appendChild(document.createTextNode("Try a different word or topic."));
+      list.appendChild(e); return;
+    }
+    hits.slice(0, 120).forEach(function (p) {
+      var a = el("a", "glass item"); a.href = root + p.r;
+      var im = el("div", "im", p.tn ? p.tn[0] : ""); if (p.img) im.style.backgroundImage = "url(\"" + p.img.replace(/"/g, "") + "\")";
+      var tx = el("div", "tx"); tx.appendChild(el("div", "tp", p.tn || "")); tx.appendChild(el("div", "hd", p.h));
+      tx.appendChild(el("div", "m", p.j + " · " + p.d)); tx.appendChild(el("div", "ln", p.i));
+      a.appendChild(im); a.appendChild(tx); list.appendChild(a);
+    });
+  }
+  fetch(root + "data/search.json").then(function (r) { return r.json(); }).then(function (d) { papers = d.papers || []; render(); })
+    .catch(function () { count.textContent = "Search isn't available offline yet. Open it once while connected."; });
+  q.addEventListener("input", render); topic.addEventListener("change", render);
+  var params = new URLSearchParams(location.search); if (params.get("q")) q.value = params.get("q");
+  q.focus();
+});
+</script>
+</body></html>

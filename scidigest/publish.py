@@ -116,19 +116,35 @@ PRIVACY_HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"><title>SciDigest Privacy Policy</title>
 <style>body{margin:0;font:17px/1.6 -apple-system,system-ui,sans-serif;background:#fbfaf7;color:#1d1d1f}
 @media (prefers-color-scheme:dark){body{background:#141517;color:#ececec}}
-main{max-width:700px;margin:0 auto;padding:40px 16px}</style></head><body><main>
+main{max-width:700px;margin:0 auto;padding:40px 16px}h2{font-size:1.1rem;margin-top:28px}</style></head><body><main>
 <h1>SciDigest Privacy Policy</h1>
-<p><strong>SciDigest does not collect, store or share any personal data.</strong></p>
+<p><strong>SciDigest collects as little as possible. No advertising, no analytics, no tracking, and nothing is sold or shared.</strong></p>
+<h2>Without an account</h2>
 <ul>
-<li>No account, sign-in, analytics, advertising or tracking.</li>
-<li>The app downloads the daily report files from this website (hosted on GitHub Pages). Like any website,
-GitHub may keep standard server logs such as IP addresses; see GitHub's privacy statement.</li>
-<li>Your settings (report address, reminder time) and downloaded reports are stored only on your device.</li>
-<li>Daily reminders are local notifications scheduled on your device. No push server is used.</li>
-<li>Links to papers open in your browser and are subject to those websites' own policies.</li>
+<li>Your settings (topics, appearance, text size), saved papers, reading history and idea checks are stored only on your device
+(in your browser, or in the iPhone app).</li>
+<li>Reports are downloaded from this website (hosted on GitHub Pages). Like any website, GitHub may keep standard server logs such as IP addresses; see GitHub's privacy statement.</li>
+<li>Daily reminders in the iPhone app are local notifications on your device. No push server is used.</li>
 </ul>
-<p>Summaries in SciDigest are written by an AI model from publicly available abstracts and open-access papers,
-and may contain mistakes. Always check the original paper.</p>
+<h2>With an account (optional)</h2>
+<ul>
+<li>We store your email address, your password as a one-way secure hash (PBKDF2), a hash of your recovery code, and the data you choose to sync:
+topics, appearance and reading settings, saved papers, which papers you opened, and your recent idea checks.</li>
+<li>This is stored on Cloudflare (Workers KV) and used only to sync your data between your devices.</li>
+<li>You can export your data and delete your account at any time in Settings. Deleting your account removes it and its synced data from the server immediately.</li>
+</ul>
+<h2>Idea Check</h2>
+<ul>
+<li>Questions you check are sent to our server, which searches OpenAlex and Europe PMC and asks an AI model (Anthropic's Claude) to write the report.
+The question and report are cached for up to 30 days, without any link to who asked, so identical questions are answered instantly.</li>
+<li>To prevent abuse, the server counts requests per IP address for up to one hour; this count is not stored.</li>
+</ul>
+<h2>Links and summaries</h2>
+<ul>
+<li>Links to papers and images open other websites, which have their own policies.</li>
+<li>Summaries are written by an AI model from publicly available abstracts and open-access papers and may contain mistakes. Always check the original paper.</li>
+</ul>
+<p>Questions or deletion requests: open an issue at github.com/fede4menti-dev/scidigest.</p>
 </main></body></html>
 """
 
@@ -156,12 +172,30 @@ def _review_entry(d: dict) -> dict:
             "count": len(d["papers"]), "top_headlines": [p["headline"] for p in d["papers"][:3]]}
 
 
+def search_index(days: list[dict]) -> list[dict]:
+    """Compact list of every paper in the daily digests (newest first, each paper once) for site search."""
+    from .report import entries_from_json, short_date
+    seen, out = set(), []
+    for d in days:
+        ident = d.get("id") or d["date"]
+        for e, p in zip(entries_from_json(d), d["papers"]):
+            key = paper_key(p.get("doi"), p.get("url"), p.get("original_title", ""))
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append({"k": p["url"], "h": p["headline"], "i": e["intro"], "j": p["journal"],
+                        "t": p.get("category") or "", "tn": e["topic_name"], "o": p["original_title"],
+                        "d": e["published_label"].replace("Published ", ""), "r": f"reports/{ident}.html#p{p['rank']}",
+                        "img": (p.get("image") or {}).get("url", "")})
+    return out
+
+
 def rebuild_site(site: Path) -> None:
     data, reports = site / "data", site / "reports"
     reports.mkdir(parents=True, exist_ok=True)
     digests = {}
     for f in data.glob("*.json"):
-        if f.stem in ("index", "latest", "topics"):
+        if f.stem in ("index", "latest", "topics", "search"):
             continue
         digests[f.stem] = json.loads(f.read_text(encoding="utf-8"))
         # Re-render every page, so missing pages come back and design changes reach old reports.
@@ -201,8 +235,10 @@ def rebuild_site(site: Path) -> None:
                   ("Earlier daily digests", [item(d) for d in days[1:]])],
     )
     (site / "index.html").write_text(page, encoding="utf-8")
-    (site / "idea.html").write_text(_env().get_template("idea.html.j2").render(**site_context(root="", active="idea")),
-                                   encoding="utf-8")
+    for name in ("idea", "search", "saved"):
+        (site / f"{name}.html").write_text(
+            _env().get_template(f"{name}.html.j2").render(**site_context(root="", active=name)), encoding="utf-8")
+    _dump(data / "search.json", {"format": FORMAT_VERSION, "papers": search_index(days)})
     for f in STATIC.iterdir():      # app icon + manifest so the site can be added to a home screen
         shutil.copyfile(f, site / f.name)
     (site / "privacy.html").write_text(PRIVACY_HTML, encoding="utf-8")

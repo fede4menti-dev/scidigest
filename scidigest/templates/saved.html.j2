@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saved · SciDigest</title>
+{% include "_base_css.html.j2" %}
+{% include "_head_app.html.j2" %}
+{% include "_list_css.html.j2" %}
+</head>
+<body><div class="wrap">
+{% include "_topbar.html.j2" %}
+<h1>Saved</h1>
+<p class="lead">Papers you saved, newest first. Open any paper and tap <b>Save</b> to add it here. Sign in under Settings to keep them on all your devices.</p>
+<div class="items" id="items"></div>
+</div>
+{% include "_settings.html.j2" %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var app = window.SciDigestApp, list = document.getElementById("items"), root = (window.SCIDIGEST || {}).root || "";
+  function render() {
+    var S = app.state, el = app.el, keys = Object.keys(S.saved).sort(function (a, b) { return (S.saved[b].at || 0) - (S.saved[a].at || 0); });
+    list.innerHTML = "";
+    if (!keys.length) {
+      var e = el("div", "glass empty"); e.appendChild(el("strong", null, "Nothing saved yet"));
+      e.appendChild(document.createTextNode("Open a paper in any digest and tap Save."));
+      list.appendChild(e); return;
+    }
+    keys.forEach(function (k) {
+      var p = S.saved[k], row = el("div", "glass item");
+      var im = el("div", "im", p.t ? p.t[0] : ""); if (p.i) im.style.backgroundImage = "url(\"" + p.i.replace(/"/g, "") + "\")";
+      var tx = el("div", "tx"); tx.appendChild(el("div", "tp", p.t || ""));
+      var h = el("a", "hd", p.h); h.href = root + p.r; h.style.display = "block"; h.style.color = "inherit"; h.style.textDecoration = "none"; tx.appendChild(h);
+      tx.appendChild(el("div", "m", [p.j, p.d].filter(Boolean).join(" · ")));
+      var acts = el("div", "acts");
+      var read = el("a", null, "Read summary"); read.href = root + p.r;
+      var orig = el("a", null, "Original paper"); orig.href = p.u; orig.target = "_blank"; orig.rel = "noopener";
+      var cite = el("button", null, "Copy citation"); cite.type = "button"; cite.onclick = function () { app.copy(p.c).then(function () { app.toast("Citation copied (APA)"); }); };
+      var del = el("button", null, "Remove"); del.type = "button"; del.onclick = function () { delete S.saved[k]; app.commit(); render(); app.toast("Removed"); };
+      [read, orig, cite, del].forEach(function (b) { acts.appendChild(b); });
+      tx.appendChild(acts); row.appendChild(im); row.appendChild(tx); list.appendChild(row);
+    });
+  }
+  render();
+});
+</script>
+</body></html>

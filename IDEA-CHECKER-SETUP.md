@@ -1,4 +1,6 @@
-# Setting up the Idea Checker
+# Setting up the SciDigest server (Idea Check and accounts)
+
+The same free Cloudflare Worker powers **Idea Check** and **reader accounts** (sync of topics, saved papers and idea checks across devices). The deploy workflow creates its storage automatically.
 
 The Idea Check tab in the app takes a research question and returns:
 
@@ -11,7 +13,14 @@ It runs on a small free **Cloudflare Worker** that GitHub deploys for you. The w
 
 Without the worker, the Idea Check tab still works in a simpler mode: it searches Europe PMC directly and lists related papers, with no AI report.
 
-**Cost:** each check makes two Claude calls, roughly $0.05 to $0.15 per check (an estimate, not measured). The worker allows 10 checks per hour per person, and a monthly spend limit on your Anthropic key (console.anthropic.com → Billing → Limits) is your safety net.
+**Cost:** each new check makes two Claude calls, roughly $0.05 to $0.15 (an estimate, not measured). Safeguards built in:
+
+- the same question asked again within 30 days is answered from a cache, free;
+- 10 checks per person per hour;
+- a daily limit for the whole site: set a repository variable `IDEA_CHECKS_PER_DAY` (default 150, so at most roughly $8 to $20 a day even under heavy use);
+- and, as the final hard stop, a monthly spend limit on your Anthropic key (console.anthropic.com → Billing → Limits).
+
+Accounts themselves use no AI and fit easily in Cloudflare's free tier.
 
 ---
 
@@ -53,7 +62,7 @@ Open **https://github.com/fede4menti-dev/scidigest/settings/secrets/actions** an
 1. Go to **Actions** → **Deploy idea checker** → **Run workflow** → **Run workflow**.
 2. Wait for the green tick (1 to 2 minutes). It also redeploys by itself whenever the `worker/` code changes.
 3. Open the run → **Deploy to Cloudflare Workers** step. Near the end it prints your URL, like `https://scidigest-idea-checker.yourname.workers.dev`.
-4. Check it: open `<that URL>/health` in a browser. You should see `{"ok":true,"ai":true,"openalex_key":true}`.
+4. Check it: open `<that URL>/health` in a browser. You should see `{"ok":true,"ai":true,"openalex_key":true,"accounts":true}`.
 
 ## 6. Connect the website
 

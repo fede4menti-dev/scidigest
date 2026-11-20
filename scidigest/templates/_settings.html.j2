@@ -1,92 +1,77 @@
-{# Settings panel shared by every page. Preferences live in this browser (localStorage). #}
+{# Settings sheet shared by every page. Behaviour lives in app.js. #}
 <dialog class="settings" id="settings" aria-labelledby="settings-title">
-  <form method="dialog" class="sheet" id="settings-form">
-    <header><h2 id="settings-title">Settings</h2><button class="close" value="cancel" aria-label="Close">×</button></header>
+  <div class="sheet">
+    <header><h2 id="settings-title">Settings</h2><button type="button" class="close" data-close aria-label="Close">×</button></header>
     <div class="content">
-      <h3>Your topics</h3>
-      <p class="help" style="margin-top:0">Choose the fields you want to read about. Every daily digest and every weekly and monthly review will show these first.</p>
-      <label class="opt" style="margin-top:12px"><input type="checkbox" id="all-topics"><span><span class="n">All topics</span><br><span class="c">The editor's picks across every field</span></span></label>
-      {% for g in taxonomy %}
-      <h3><span>{{ g.name }}</span><button type="button" class="selgroup" data-group="{{ g.id }}">Select all</button></h3>
-      {% for t in g.topics %}
-      <label class="opt"><input type="checkbox" name="topic" value="{{ t.id }}" data-group="{{ g.id }}"><span><span class="n">{{ t.name }}</span><br><span class="c">{{ t.covers|capitalize }}</span></span></label>
-      {% endfor %}{% endfor %}
-      <h3>Idea checker</h3>
-      <label class="field"><span>Server address</span><input type="url" id="idea-url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="{{ idea_url or 'https://scidigest-idea-checker.yourname.workers.dev' }}"></label>
-      <label class="field"><span>App token (only if you set one)</span><input type="password" id="idea-token" autocomplete="off"></label>
-      <p class="help" style="margin-top:4px">{% if idea_url %}Leave the address empty to use this site's idea checker.{% else %}Without a server, Idea Check lists related papers from Europe PMC but can't write the full report. See IDEA-CHECKER-SETUP.md.{% endif %}</p>
-      <h3>Appearance</h3>
-      <div class="seg" role="radiogroup" aria-label="Appearance">
-        <label><input type="radio" name="theme" value="">System</label>
-        <label><input type="radio" name="theme" value="light">Light</label>
-        <label><input type="radio" name="theme" value="dark">Dark</label>
-      </div>
-      <p class="help">Settings are saved in this browser only.</p>
+
+      <section aria-labelledby="s-account">
+        <h3 id="s-account">Account</h3>
+        <div id="account-box"></div>
+      </section>
+
+      <section aria-labelledby="s-topics">
+        <h3 id="s-topics">Your topics</h3>
+        <p class="help" style="margin-top:0">Choose the fields you want to read about. Every daily digest and every weekly and monthly review will show these first. Changing topics costs nothing: papers are re-sorted on your device.</p>
+        <label class="opt" style="margin-top:12px"><input type="checkbox" id="all-topics"><span><span class="n">All topics</span><br><span class="c">The editor's picks across every field</span></span></label>
+        {% for g in taxonomy %}
+        <h4 class="grp"><span>{{ g.name }}</span><button type="button" class="selgroup" data-group="{{ g.id }}">Select all</button></h4>
+        {% for t in g.topics %}
+        <label class="opt"><input type="checkbox" name="topic" value="{{ t.id }}" data-group="{{ g.id }}"><span><span class="n">{{ t.name }}</span><br><span class="c">{{ t.covers|capitalize }}</span></span></label>
+        {% endfor %}{% endfor %}
+      </section>
+
+      <section aria-labelledby="s-reading">
+        <h3 id="s-reading">Reading</h3>
+        <div class="setrow"><span class="n">Text size</span>
+          <div class="seg small" role="radiogroup" aria-label="Text size">
+            <label><input type="radio" name="size" value="s"><span style="font-size:.8em">A</span></label>
+            <label><input type="radio" name="size" value="m">A</label>
+            <label><input type="radio" name="size" value="l"><span style="font-size:1.15em">A</span></label>
+            <label><input type="radio" name="size" value="xl"><span style="font-size:1.3em">A</span></label>
+          </div></div>
+        <label class="setrow switch"><span><span class="n">Data saver</span><br><span class="c">Don't load images</span></span><input type="checkbox" id="opt-saver" role="switch"></label>
+        <label class="setrow switch"><span><span class="n">Reduce motion</span><br><span class="c">Turn off animations</span></span><input type="checkbox" id="opt-motion" role="switch"></label>
+        <label class="setrow switch"><span><span class="n">Dim papers I've read</span><br><span class="c">Papers you opened fade slightly</span></span><input type="checkbox" id="opt-dimread" role="switch"></label>
+      </section>
+
+      <section aria-labelledby="s-look">
+        <h3 id="s-look">Appearance</h3>
+        <div class="seg" role="radiogroup" aria-label="Appearance">
+          <label><input type="radio" name="theme" value="">System</label>
+          <label><input type="radio" name="theme" value="light">Light</label>
+          <label><input type="radio" name="theme" value="dark">Dark</label>
+        </div>
+      </section>
+
+      <section aria-labelledby="s-idea">
+        <h3 id="s-idea">Server for Idea Check and accounts</h3>
+        <label class="field"><span>Server address</span><input type="url" id="idea-url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="{{ idea_url or 'https://scidigest-idea-checker.yourname.workers.dev' }}"></label>
+        <label class="field"><span>App token (only if you set one)</span><input type="password" id="idea-token" autocomplete="off"></label>
+        <p class="help" style="margin-top:4px">{% if idea_url %}Leave the address empty to use this site's server.{% else %}Needed for the full Idea Check report and for accounts. See IDEA-CHECKER-SETUP.md.{% endif %}</p>
+      </section>
+
+      <section aria-labelledby="s-data">
+        <h3 id="s-data">Data and privacy</h3>
+        <div class="btnlist">
+          <button type="button" class="listbtn" id="export-data">Export my data<small>Settings, saved papers and idea checks as a file</small></button>
+          <button type="button" class="listbtn" id="clear-history">Clear reading history and saved papers</button>
+          <button type="button" class="listbtn danger" id="reset-all">Reset everything on this device</button>
+          <a class="listbtn" href="{{ root }}privacy.html">Privacy policy</a>
+        </div>
+      </section>
+
+      <section aria-labelledby="s-about">
+        <h3 id="s-about">About</h3>
+        <p class="help" style="margin-top:0"><strong>SciDigest</strong> picks the most important new research each day from about 40 journals (Nature, Science, Cell, NEJM, The Lancet and more) and arXiv preprints, and explains it for science students. Summaries are written by AI from abstracts and open-access papers, and every paper links to its source.</p>
+        <p class="help">Version 1.4 · Updated {{ build }}</p>
+        <div class="btnlist" style="margin-top:12px">
+          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Send feedback or report a problem</a>
+          <button type="button" class="listbtn" id="install-help">Add SciDigest to your home screen</button>
+        </div>
+      </section>
     </div>
-    <footer><button class="secondary" value="cancel">Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
-  </form>
+    <footer><button type="button" class="secondary" data-close>Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
+  </div>
 </dialog>
-<script>
-(function(){
-  var TOPICS={{ topic_names|tojson }};
-  var KEY="scidigest-topics",THEME="scidigest-theme",FLASH="scidigest-saved",IURL="scidigest-idea-url",ITOK="scidigest-idea-token";
-  function get(k){try{return localStorage.getItem(k)||""}catch(e){return ""}}
-  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
-  function followed(){return get(KEY).split(",").filter(function(t){return TOPICS[t]})}
-  function summary(f){if(!f.length)return "All topics";var n=f.map(function(t){return TOPICS[t]});return n.length<=2?n.join(", "):n[0]+", "+n[1]+" +"+(n.length-2)}
-  function applyTheme(){var t=get(THEME);if(t)document.documentElement.dataset.theme=t;else delete document.documentElement.dataset.theme}
-  applyTheme();
-
-  var dlg=document.getElementById("settings"),boxes=[].slice.call(dlg.querySelectorAll('input[name=topic]')),all=document.getElementById("all-topics");
-  function syncAll(){all.checked=!boxes.some(function(b){return b.checked});
-    [].forEach.call(dlg.querySelectorAll(".selgroup"),function(btn){var g=boxes.filter(function(b){return b.dataset.group===btn.dataset.group});
-      btn.textContent=g.every(function(b){return b.checked})?"Clear":"Select all"})}
-  function open(){var f=followed();boxes.forEach(function(b){b.checked=f.indexOf(b.value)>=0});
-    var th=get(THEME);[].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.checked=r.value===th});
-    document.getElementById("idea-url").value=get(IURL);document.getElementById("idea-token").value=get(ITOK);
-    syncAll();dlg.showModal()}
-  boxes.forEach(function(b){b.addEventListener("change",syncAll)});
-  all.addEventListener("change",function(){if(all.checked)boxes.forEach(function(b){b.checked=false});syncAll()});
-  [].forEach.call(dlg.querySelectorAll(".selgroup"),function(btn){btn.addEventListener("click",function(){
-    var g=boxes.filter(function(b){return b.dataset.group===btn.dataset.group}),on=!g.every(function(b){return b.checked});
-    g.forEach(function(b){b.checked=on});syncAll()})});
-  [].forEach.call(dlg.querySelectorAll('input[name=theme]'),function(r){r.addEventListener("change",function(){set(THEME,r.value);applyTheme()})});
-  document.getElementById("save-settings").addEventListener("click",function(){
-    set(KEY,boxes.filter(function(b){return b.checked}).map(function(b){return b.value}).join(","));
-    set(IURL,document.getElementById("idea-url").value.trim());set(ITOK,document.getElementById("idea-token").value.trim());
-    try{sessionStorage.setItem(FLASH,"1")}catch(e){}
-    location.reload()});
-  [].forEach.call(document.querySelectorAll("[data-open-settings]"),function(el){el.addEventListener("click",open)});
-
-  // "Your topics" banner
-  var f=followed();
-  [].forEach.call(document.querySelectorAll(".mytopics"),function(el){
-    el.querySelector(".t").textContent=f.length?"Your topics":"Showing all topics";
-    el.querySelector(".s").textContent=summary(f);
-    el.querySelector(".act").textContent=f.length?"Edit":"Choose topics"});
-
-  // Rearrange a report page: "For you" first, then the rest.
-  var main=document.querySelector("main[data-report]");
-  if(main&&f.length){
-    var cards=[].slice.call(main.querySelectorAll("details.card"));
-    var mine=cards.filter(function(c){return f.indexOf(c.dataset.topic)>=0});
-    mine.sort(function(a,b){var ea=a.dataset.editors==="1",eb=b.dataset.editors==="1";
-      if(ea!==eb)return ea?-1:1;return ea?(+a.dataset.rank- +b.dataset.rank):(+b.dataset.score- +a.dataset.score)});
-    var sec=document.createElement("section"),h=document.createElement("h2"),grid=document.createElement("div");
-    h.textContent="For you";grid.className="grid";sec.appendChild(h);
-    if(mine.length){mine.forEach(function(c){grid.appendChild(c)});sec.appendChild(grid)}
-    else{var p=document.createElement("p");p.className="sub";p.textContent="Nothing new in your topics in this report. Here are the other highlights instead.";sec.appendChild(p)}
-    main.insertBefore(sec,main.firstChild);
-    var eh=main.querySelector("h2.editors"),eg=main.querySelector(".editors-grid");
-    if(eh){if(eg&&eg.children.length)eh.textContent="Also worth reading";else{eh.classList.add("hidden");eg&&eg.classList.add("hidden")}}
-    [].forEach.call(main.querySelectorAll(".topic-section"),function(s){if(!s.querySelector("details.card"))s.classList.add("hidden")});
-    var bt=main.querySelector("h2.by-topic");if(bt&&!main.querySelector(".topic-section:not(.hidden)"))bt.classList.add("hidden");
-    var chips=document.querySelector(".chips");if(chips)chips.classList.add("hidden");
-  }
-
-  var flash="";try{flash=sessionStorage.getItem(FLASH)||"";sessionStorage.removeItem(FLASH)}catch(e){}
-  if(flash){var t=document.createElement("div");t.className="toast";t.setAttribute("role","status");
-    t.textContent=f.length?"Saved. Every day and review now shows your topics first.":"Saved. Showing all topics.";
-    document.body.appendChild(t);setTimeout(function(){t.remove()},3500)}
-})();
-</script>
+<script>window.SCIDIGEST={{ {"root": root, "ideaUrl": idea_url, "topics": topic_names, "page": active, "build": build}|tojson }};</script>
+<script src="{{ root }}app.js" defer></script>

@@ -142,8 +142,10 @@ def site_context(root: str, active: str = "home") -> dict:
     which tab is active, and the default idea checker address (SCIDIGEST_IDEA_URL)."""
     import os
     from .taxonomy import TOPICS, as_json
+    from datetime import datetime, timezone
     return dict(taxonomy=as_json(), topic_names={t: v["name"] for t, v in TOPICS.items()}, root=root,
-                active=active, idea_url=os.environ.get("SCIDIGEST_IDEA_URL", "").strip())
+                active=active, idea_url=os.environ.get("SCIDIGEST_IDEA_URL", "").strip(),
+                build=datetime.now(timezone.utc).strftime("%b %d, %Y"))
 
 
 def _context(digest: dict) -> dict:
@@ -157,7 +159,7 @@ def _context(digest: dict) -> dict:
         groups.setdefault(e["topic_name"], []).append(e)
     topics = sorted({(e["topic"], e["topic_name"]) for e in entries if e["topic"]},
                     key=lambda t: order.get(t[0], 99))
-    return dict(**site_context(root="../", active="report"), entries=entries, editors=[e for e in entries if e["editors_pick"]],
+    return dict(**site_context(root="../", active="report"), report_id=digest.get("id") or digest["date"], entries=entries, editors=[e for e in entries if e["editors_pick"]],
                 by_topic=list(groups.items()), topics=topics, title=title, subtitle=subtitle,
                 intro=digest.get("intro", ""), ai=digest["ai_summaries"],
                 is_review=digest.get("kind", "daily") != "daily")

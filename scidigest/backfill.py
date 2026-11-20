@@ -63,7 +63,7 @@ def backfill_topics(site: Path, use_ai: bool, log=print) -> int:
         return 0
     files, missing = {}, []
     for f in data.glob("*.json"):
-        if f.stem in ("index", "latest", "topics"):
+        if f.stem in ("index", "latest", "topics", "search"):
             continue
         d = json.loads(f.read_text(encoding="utf-8"))
         files[f] = d

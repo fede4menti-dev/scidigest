@@ -9,6 +9,21 @@ A daily report of the most significant new scientific research. Each morning it:
 5. **Paraphrases** each paper for an average undergrad science student: plain headline, summary, why it matters, caveats, and a mini glossary of key terms. It only uses facts from the abstract, and an automatic check rewrites any summary that copies too much original wording.
 6. **Writes the report** as HTML and Markdown, with numbered in-text citations, a source link on every item and an APA-style reference list.
 
+## Costs and safeguards
+
+Readers never trigger AI costs by changing settings: topics, sorting, saving, searching and accounts all work on data that was already generated. AI is only used in two places, both capped:
+
+| Where | What it costs | Safeguards |
+|---|---|---|
+| **Daily run** (GitHub Actions, once a day) | Fixed per day, the same for 1 reader or 10,000 | Hard cap per run: `SCIDIGEST_MAX_RUN_USD` repository variable (default **$4**). Editor's picks are written first; if the cap is reached, remaining topic picks are dropped and weekly/monthly reviews wait for the next run. A second run on the same day is skipped (use **Run workflow → force** to rebuild). Full text is capped at 60,000 characters per paper, repeats reuse earlier summaries, and the run log ends with tokens used and an estimated cost. |
+| **Idea Check** (per request) | A few cents per new question | Identical questions are answered from a 30-day cache for free; 10 checks per person per hour; a site-wide daily limit (`IDEA_CHECKS_PER_DAY` repository variable, default **150**); question length capped. |
+
+**Always also set a monthly spend limit on your key:** console.anthropic.com → Billing → Limits. That is the final, hard stop.
+
+## Accounts
+
+Readers can create an account in **Settings → Account** (email and password, plus a one-time recovery code). Topics, appearance and reading settings, saved papers, reading history and idea checks then sync across devices. Passwords are stored only as PBKDF2 hashes on the same Cloudflare Worker as the idea checker (Workers KV, created automatically by the deploy workflow). Readers can export their data and delete their account at any time.
+
 ## Topics
 
 Every selected paper is assigned to one of 18 topics in 6 groups (Physical Sciences, Math & Computing; Engineering & Technology; Biological & Life Sciences; Health & Medical Sciences; Earth & Environmental Sciences; Society, Policy & Interdisciplinary Studies; full list in `scidigest/taxonomy.py`).

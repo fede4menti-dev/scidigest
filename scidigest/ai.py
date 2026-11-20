@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import threading
 from concurrent.futures import ThreadPoolExecutor
 
 import anthropic
@@ -24,8 +25,53 @@ def client() -> anthropic.Anthropic:
     return _client
 
 
+# ------------------------------------------------------------ spending guard
+# Claude Opus 5.5 list prices, USD per million tokens (thinking is billed as output).
+PRICE_IN, PRICE_OUT = 4.00, 20.00
+_usage = {"input": 0, "output": 0, "calls": 0}
+_usage_lock = threading.Lock()
+
+
+class BudgetExceeded(RuntimeError):
+    pass
+
+
+def budget_usd() -> float:
+    """Hard cap for one run (SCIDIGEST_MAX_RUN_USD, default $4). 0 or less = no cap."""
+    try:
+        return float(os.environ.get("SCIDIGEST_MAX_RUN_USD", "4"))
+    except ValueError:
+        return 4.0
+
+
+def spent_usd() -> float:
+    return (_usage["input"] * PRICE_IN + _usage["output"] * PRICE_OUT) / 1_000_000
+
+
+def usage_line() -> str:
+    return (f"Claude usage this run: {_usage['calls']} calls, {_usage['input']:,} input + "
+            f"{_usage['output']:,} output tokens, about ${spent_usd():.2f} (cap ${budget_usd():.2f})")
+
+
+def _record(resp) -> None:
+    u = getattr(resp, "usage", None)
+    if u is None:
+        return
+    with _usage_lock:
+        _usage["calls"] += 1
+        _usage["input"] += (getattr(u, "input_tokens", 0) or 0) + (getattr(u, "cache_creation_input_tokens", 0) or 0)
+        _usage["output"] += getattr(u, "output_tokens", 0) or 0
+
+
+def check_budget() -> None:
+    cap = budget_usd()
+    if cap > 0 and spent_usd() >= cap:
+        raise BudgetExceeded(f"run budget of ${cap:.2f} reached")
+
+
 def _ask_json(system: str, prompt: str, schema: dict, effort: str = "medium",
               max_tokens: int = 16000) -> dict:
+    check_budget()
     resp = client().beta.messages.create(
         model=MODEL,
         max_tokens=max_tokens,
@@ -35,6 +81,7 @@ def _ask_json(system: str, prompt: str, schema: dict, effort: str = "medium",
         system=system,
         messages=[{"role": "user", "content": prompt}],
     )
+    _record(resp)
     if resp.stop_reason == "refusal":
         raise RuntimeError("model declined this request")
     if resp.stop_reason == "max_tokens":
@@ -320,6 +367,8 @@ def summarize_many(jobs: list[tuple[Article, str, str]], workers: int = 4, **kw)
         article = job[0]
         try:
             return summarize(*job, **kw)
+        except BudgetExceeded:
+            return None           # caller drops (topic picks) or quotes the abstract (editor's picks)
         except Exception as exc:  # keep the rest of the report
             print(f"  ! summary failed for '{article.title[:60]}': {exc}")
             return {"headline": article.title,

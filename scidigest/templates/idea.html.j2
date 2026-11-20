@@ -41,6 +41,8 @@ ul.b{margin:0;padding-left:18px}ul.b li{margin-bottom:6px}
 .small{color:var(--muted);font-size:.8rem}
 .mode{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-top:10px}
 .mode i{width:8px;height:8px;border-radius:50%;background:var(--muted)}.mode.on i{background:var(--ok)}
+.hist{display:block;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:none;color:var(--ink);padding:10px 0;font:inherit;cursor:pointer}
+.hist:first-of-type{border-top:0}.hist .hq{display:block;font-weight:600;font-size:.93rem}.hist .hm{display:block;color:var(--muted);font-size:.78rem;text-transform:none}
 </style>
 </head>
 <body><div class="wrap">
@@ -66,14 +68,14 @@ ul.b{margin:0;padding-left:18px}ul.b li{margin-bottom:6px}
 <div class="status hidden" id="status" role="status"><div class="spinner"></div><span id="status-text"></span></div>
 <div class="error hidden" id="error" role="alert"></div>
 <div class="result" id="result"></div>
+<section class="panel hidden" id="history" style="margin-top:20px"></section>
 
 </div>
 {% include "_settings.html.j2" %}
 <script>
-(function(){
-  var DEFAULT_URL={{ idea_url|tojson }};
-  function get(k){try{return localStorage.getItem(k)||""}catch(e){return ""}}
-  function server(){return (get("scidigest-idea-url")||DEFAULT_URL||"").replace(/\/+$/,"")}
+document.addEventListener("DOMContentLoaded",function(){
+  var app=window.SciDigestApp;
+  function server(){return app.server()}
   var form=document.getElementById("ask"),q=document.getElementById("question"),go=document.getElementById("go"),
       statusEl=document.getElementById("status"),statusText=document.getElementById("status-text"),
       errEl=document.getElementById("error"),out=document.getElementById("result"),count=document.getElementById("count");
@@ -108,7 +110,7 @@ ul.b{margin:0;padding-left:18px}ul.b li{margin-bottom:6px}
     var top=panel(),v=el("div","verdict"),cls=r.verdict==="already well researched"?"v-well":r.verdict==="partly researched"?"v-partly":"v-new";
     v.appendChild(el("span","vchip "+cls,r.verdict));
     [["Novelty",r.novelty_score],["Question quality",r.overall_score]].forEach(function(x){var s=el("div","score");s.appendChild(el("span","l",x[0]));s.appendChild(el("span","v",x[1]+"/10"));v.appendChild(s)});
-    top.appendChild(v);var sm=el("p",null,r.summary);sm.style.margin="12px 0 0";top.appendChild(sm);
+    top.appendChild(v);if(r.cached){var cn=el("p","small","Answered from a recent identical check, so it was instant and free.");cn.style.margin="8px 0 0";top.appendChild(cn)}var sm=el("p",null,r.summary);sm.style.margin="12px 0 0";top.appendChild(sm);
 
     var qp=panel("Quality of your question"),qg=el("div","q");
     [["Clarity","clarity"],["Specificity","specificity"],["Feasibility","feasibility"],["Significance","significance"],["Testability","testability"]].forEach(function(k){
@@ -140,16 +142,23 @@ ul.b{margin:0;padding-left:18px}ul.b li{margin-bottom:6px}
         authors:x.authorString,year:x.pubYear,venue:x.journalTitle,cited_by:x.citedByCount},p)});
       out.appendChild(el("p","small","Search-only mode. For the verdict, the most important papers and a review of your question, set up the idea checker (IDEA-CHECKER-SETUP.md) and add its address in Settings."))})}
 
+  var hist=document.getElementById("history");
+  function renderHistory(){hist.innerHTML="";var ideas=(app.state.ideas||[]);if(!ideas.length){hist.classList.add("hidden");return}
+    hist.classList.remove("hidden");hist.appendChild(el("h2",null,"Your recent checks"));
+    ideas.slice(0,8).forEach(function(i){var b=el("button","hist");b.type="button";
+      b.appendChild(el("span","hq",i.q));b.appendChild(el("span","hm",(i.verdict||"")+" · novelty "+i.novelty+"/10 · quality "+i.overall+"/10 · "+new Date(i.at).toLocaleDateString()));
+      b.onclick=function(){q.value=i.q;q.dispatchEvent(new Event("input"));window.scrollTo({top:0,behavior:"smooth"})};hist.appendChild(b)})}
+  renderHistory();
   form.addEventListener("submit",function(ev){ev.preventDefault();
     var question=q.value.trim();errEl.classList.add("hidden");
     if(question.length<15){fail("Please write your research question as a full sentence.");return}
     var url=server();
     if(!url){busy(true,["Searching Europe PMC…"]);searchOnly(question).catch(function(e){fail("Couldn't reach Europe PMC. Check your connection and try again.")}).then(function(){busy(false)});return}
-    busy(true,steps);var headers={"Content-Type":"application/json"},tok=get("scidigest-idea-token");if(tok)headers["X-App-Token"]=tok;
+    busy(true,steps);var headers={"Content-Type":"application/json"},tok=app.token();if(tok)headers["X-App-Token"]=tok;
     fetch(url+"/check",{method:"POST",headers:headers,body:JSON.stringify({question:question})})
       .then(function(r){return r.json().catch(function(){return {}}).then(function(d){if(!r.ok)throw new Error(d.error||("The idea checker answered with an error ("+r.status+")."));return d})})
-      .then(renderReport).catch(function(e){fail(e.message==="Failed to fetch"?"Couldn't reach the idea checker. Check the address in Settings.":e.message)})
+      .then(function(r){renderReport(r);app.addIdea({q:question,verdict:r.verdict,novelty:r.novelty_score,overall:r.overall_score,improved:r.improved_question,at:Date.now()});renderHistory()}).catch(function(e){fail(e.message==="Failed to fetch"?"Couldn't reach the idea checker. Check the address in Settings.":e.message)})
       .then(function(){busy(false);out.scrollIntoView&&out.firstChild&&out.scrollIntoView({behavior:"smooth",block:"start"})})});
-})();
+});
 </script>
 </body></html>

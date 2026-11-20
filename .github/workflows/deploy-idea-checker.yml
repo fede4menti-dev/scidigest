@@ -41,12 +41,38 @@ jobs:
             echo "ready=true" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Create the account storage (first deploy only) and connect it
+        if: steps.check.outputs.ready == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          find_id() {
+            npx wrangler kv namespace list 2>/dev/null | node -e '
+              let s = ""; process.stdin.on("data", d => s += d).on("end", () => {
+                const i = s.indexOf("["); if (i < 0) return;
+                const list = JSON.parse(s.slice(i));
+                const ns = list.find(n => n.title === "scidigest-data" || n.title.endsWith("-scidigest-data"));
+                if (ns) process.stdout.write(ns.id);
+              });'
+          }
+          id="$(find_id)"
+          if [ -z "$id" ]; then
+            npx wrangler kv namespace create scidigest-data
+            id="$(find_id)"
+          fi
+          if [ -z "$id" ]; then echo "::error::Couldn't create the KV namespace"; exit 1; fi
+          printf '\n[[kv_namespaces]]\nbinding = "DATA"\nid = "%s"\n' "$id" >> wrangler.toml
+          echo "Account storage: $id"
+
       - name: Deploy to Cloudflare Workers
         if: steps.check.outputs.ready == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npx wrangler deploy
+          # Idea checks per day for the whole site (repository variable IDEA_CHECKS_PER_DAY, default 150).
+          DAILY_LIMIT: ${{ vars.IDEA_CHECKS_PER_DAY || '150' }}
+        run: npx wrangler deploy --var "DAILY_CHECK_LIMIT:$DAILY_LIMIT"
 
       - name: Upload secrets to the worker (only those that are set)
         if: steps.check.outputs.ready == 'true'

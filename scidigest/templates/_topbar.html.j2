@@ -2,14 +2,14 @@
 <div class="topbar">
   <a class="brand" href="{{ root }}index.html"><img src="{{ root }}apple-touch-icon.png" alt="">SciDigest</a>
   <nav class="navpill" aria-label="Main">
-    <a href="{{ root }}index.html"{% if active in ("home", "report") %} aria-current="page"{% endif %}>{{ icon("home") }}Home</a>
-    <a href="{{ root }}idea.html"{% if active == "idea" %} aria-current="page"{% endif %}>{{ icon("idea") }}Idea Check</a>
+    {% for key, label, href in [("home", "Home", "index.html"), ("search", "Search", "search.html"), ("saved", "Saved", "saved.html"), ("idea", "Idea Check", "idea.html")] %}
+    <a href="{{ root }}{{ href }}"{% if active == key or (key == "home" and active == "report") %} aria-current="page"{% endif %}>{{ icon(key) }}{{ label }}</a>{% endfor %}
     <button type="button" data-open-settings aria-haspopup="dialog">{{ icon("settings") }}Settings</button>
   </nav>
 </div>
 <nav class="tabbar" aria-label="Main">
-  <a href="{{ root }}index.html"{% if active in ("home", "report") %} aria-current="page"{% endif %}>{{ icon("home") }}Home</a>
-  <a href="{{ root }}idea.html"{% if active == "idea" %} aria-current="page"{% endif %}>{{ icon("idea") }}Idea Check</a>
+  {% for key, label, href in [("home", "Home", "index.html"), ("search", "Search", "search.html"), ("saved", "Saved", "saved.html"), ("idea", "Idea Check", "idea.html")] %}
+    <a href="{{ root }}{{ href }}"{% if active == key or (key == "home" and active == "report") %} aria-current="page"{% endif %}>{{ icon(key) }}{{ label }}</a>{% endfor %}
   <button type="button" data-open-settings aria-haspopup="dialog">{{ icon("settings") }}Settings</button>
 </nav>
 {% if active == "report" %}<a class="back" href="{{ root }}index.html">{{ icon("back") }}All digests</a>{% endif %}

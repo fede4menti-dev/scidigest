@@ -51,6 +51,14 @@ sup a{text-decoration:none;font-size:.7rem}
 .refs-wrap{border-radius:22px;padding:6px 18px 10px;margin-top:8px}
 .refs{font-size:.85rem;color:var(--soft);padding-left:20px}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
 footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
+.act{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--ink);padding:8px 13px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:500;cursor:pointer}
+.act svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card.is-saved .act[data-act=save]{background:var(--accent-bg);color:var(--accent);border-color:transparent}
+.card.is-saved .act[data-act=save] svg{fill:currentColor}
+.card.is-saved .kicker::after{content:"Saved";padding:2px 8px;border-radius:999px;background:var(--accent-bg);color:var(--accent)}
+html[data-dimread] .card.is-read:not(.open){opacity:.62}
+html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </style>
 </head>
 <body><div class="wrap">
@@ -71,7 +79,10 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
 {% endif %}
 
 {% macro card(e) %}
-<details class="card" id="p{{ e.n }}" data-topic="{{ e.topic }}" data-editors="{{ 1 if e.editors_pick else 0 }}" data-rank="{{ e.n }}" data-score="{{ e.pick.score }}">
+<details class="card" id="p{{ e.n }}" data-topic="{{ e.topic }}" data-editors="{{ 1 if e.editors_pick else 0 }}" data-rank="{{ e.n }}" data-score="{{ e.pick.score }}"
+  data-key="{{ e.url }}" data-headline="{{ e.s.headline }}" data-url="{{ e.url }}" data-cite="{{ e.citation|replace('*', '') }}"
+  data-topicname="{{ e.topic_name }}" data-journal="{{ e.article.journal }}" data-date="{{ e.published_label|replace('Published ', '') }}"
+  data-report="reports/{{ report_id }}.html#p{{ e.n }}" data-image="{{ e.image.url if e.image else '' }}">
   <summary>
     <div class="thumb"><div class="ph" aria-hidden="true">{{ e.topic_name[:1] }}</div>{% if e.image %}<img src="{{ e.image.url }}" alt="{{ e.image.caption or e.s.headline }}" loading="lazy" onerror="this.remove()" style="position:relative">{% endif %}</div>
     <div class="body">
@@ -88,6 +99,11 @@ footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
   </summary>
   {% if e.image %}<div class="credit">{% if e.image.kind == "illustration" %}Illustration, not from the paper. {% endif %}{{ e.image.caption }} · {{ e.image.credit }}{% if e.image.license %} · {% if e.image.license_url %}<a href="{{ e.image.license_url }}" target="_blank" rel="noopener">{{ e.image.license }}</a>{% else %}{{ e.image.license }}{% endif %}{% endif %}</div>{% endif %}
   <div class="full">
+    <div class="actions">
+      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
+      <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
+      <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
+    </div>
     <p class="orig">Original title: “{{ e.article.title }}”<br>{{ e.published_label }}{% if e.featured_label %} · {{ e.featured_label }}{% endif %}</p>
     {% for para in e.s.summary.split("\n") if para.strip() %}<p>{{ para }}{% if loop.last %}<sup><a href="#ref{{ e.n }}">[{{ e.n }}]</a></sup>{% endif %}</p>{% endfor %}
     <h5>Why it matters</h5><p>{{ e.s.why_it_matters }}</p>

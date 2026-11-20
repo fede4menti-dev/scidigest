@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "17 10 * * *"   # every day at 10:17 UTC; change to suit your time zone
   workflow_dispatch:         # adds a "Run workflow" button for manual runs
+    inputs:
+      force:
+        description: "Rebuild today's digest even if it already exists (costs another run)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -36,7 +41,9 @@ jobs:
           SCIDIGEST_PER_TOPIC: ${{ vars.SCIDIGEST_PER_TOPIC || '2' }}
           # Your idea checker's address, so the website's Idea Check page uses it by default.
           SCIDIGEST_IDEA_URL: ${{ vars.IDEA_CHECKER_URL }}
-        run: python -m scidigest --top 8 --out reports --site docs
+          # Hard spending cap for one run in USD (repository variable SCIDIGEST_MAX_RUN_USD).
+          SCIDIGEST_MAX_RUN_USD: ${{ vars.SCIDIGEST_MAX_RUN_USD || '4' }}
+        run: python -m scidigest --top 8 --out reports --site docs ${{ inputs.force && '--force' || '' }}
 
       - name: Publish to GitHub Pages
         run: |

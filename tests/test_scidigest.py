@@ -109,7 +109,7 @@ def test_site_publish_json_contract(tmp_path):
     p = d["papers"][0]
     assert set(p) == {"rank", "headline", "original_title", "journal", "field", "significance", "reason",
                       "summary", "why_it_matters", "limitations", "key_terms", "based_on", "authors",
-                      "published", "doi", "url", "citation", "free_copy", "featured_on", "image",
+                      "published", "doi", "url", "citation", "free_copy", "featured_on", "image", "image_query",
                       "category", "category_name", "editors_pick", "preprint"}
     assert "*" not in p["citation"] and isinstance(p["significance"], int)
     assert (site / "reports" / f"{day['date']}.html").exists() and (site / "index.html").exists()
@@ -363,7 +363,7 @@ def test_second_run_same_day_is_skipped_unless_forced(tmp_path, capsys):
     site = _run(tmp_path, "2026-11-18")
     capsys.readouterr()
     (site / "idea.html").unlink()
-    main(["--no-ai", "--site", str(site), "--out", str(tmp_path / "r"), "--today", "2026-11-18"])
+    main(["--no-ai", "--no-images", "--site", str(site), "--out", str(tmp_path / "r"), "--today", "2026-11-18"])
     assert "already exists; skipping" in capsys.readouterr().out
     assert (site / "idea.html").exists(), "pages are still rebuilt (free) on a skipped run"
 

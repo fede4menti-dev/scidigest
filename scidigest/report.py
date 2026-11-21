@@ -81,6 +81,11 @@ def headings(digest: dict) -> tuple[str, str]:
     return digest["title"], sub
 
 
+def _group(topic: str | None) -> str:
+    from .taxonomy import TOPICS
+    return TOPICS[topic]["group"] if topic in TOPICS else ""
+
+
 def excerpt(summary: str, limit: int = 230) -> str:
     """The opening of the summary, cut at a sentence or word boundary."""
     first = next((p.strip() for p in summary.split("\n") if p.strip()), "")
@@ -123,6 +128,7 @@ def entries_from_json(digest: dict) -> list[dict]:
             "image": NS(**p["image"]) if p.get("image") else None,
             "intro": excerpt(p["summary"]),
             "topic": p.get("category") or "",
+            "group": _group(p.get("category")),
             "topic_name": p.get("category_name") or p["field"],
             "editors_pick": p.get("editors_pick", True),
             "preprint": p.get("preprint", False),

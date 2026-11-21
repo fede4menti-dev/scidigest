@@ -149,6 +149,10 @@ dialog.mini .primary.danger{background:#dc2626;color:#fff;box-shadow:none}
 <meta name="apple-mobile-web-app-title" content="SciDigest">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#0f766e">
+<script>
+/* Images: retry once after a short pause (Wikimedia sometimes refuses a burst of requests), then fall back to the placeholder. */
+function sdImgErr(img){if(!img.dataset.retry){img.dataset.retry="1";var s=img.src;setTimeout(function(){img.src=s+(s.indexOf("?")<0?"?":"&")+"retry=1"},1800)}else if(img.parentNode){img.parentNode.removeChild(img)}}
+</script>
 <style>
 h1{font-size:2.1rem;line-height:1.12;letter-spacing:-.025em;margin:4px 0 6px}
 .sub{color:var(--soft);font-size:.95rem}
@@ -167,7 +171,12 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .card summary::-webkit-details-marker{display:none}
 .thumb{aspect-ratio:16/9;background:var(--ph);overflow:hidden;position:relative;margin:8px 8px 0;border-radius:18px}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:2.4rem;font-weight:700;color:var(--muted);background:linear-gradient(135deg,var(--accent-bg),transparent)}
+.thumb{--g:#0d7a70}.thumb[data-group=physical]{--g:#6366f1}.thumb[data-group=engineering]{--g:#ea580c}.thumb[data-group=life]{--g:#16a34a}
+.thumb[data-group=health]{--g:#db2777}.thumb[data-group=earth]{--g:#0891b2}.thumb[data-group=society]{--g:#9333ea}
+.thumb .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--g);
+  background:radial-gradient(120% 90% at 20% 10%,color-mix(in srgb,var(--g) 30%,transparent),transparent 60%),linear-gradient(135deg,color-mix(in srgb,var(--g) 16%,transparent),color-mix(in srgb,var(--g) 6%,transparent))}
+.thumb .ph svg{width:46px;height:46px;opacity:.85}
+.thumb .ph span{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
 .card.open .thumb{aspect-ratio:auto;max-height:460px}
 .card.open .thumb img{object-fit:contain;max-height:460px}
 .body{padding:14px 18px 18px}
@@ -248,15 +257,16 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 
 
 
+
 <main data-report>
   <h2 class="editors">Editor&#39;s picks</h2>
   <div class="grid editors-grid">
 <details class="card" id="p1" data-topic="organismal" data-editors="1" data-rank="1" data-score="9"
   data-key="https://doi.org/10.1126/science.ael0508" data-headline="Molecular recorder traces family tree of over a million mouse embryo cells" data-url="https://doi.org/10.1126/science.ael0508" data-cite="Yu, Q., Kim, H., Seidel, S., Acosta-Clark, J. F., Martin, B. K., O’Connor, K., Daza, R. M., Gasperini, M., Nathans, J. F., Lam, M., Gamo, E., VijayKumar, S., Kuo, L., Lalanne, J., Simeonov, K. P., Pepper, M., Trapnell, C., Gray, J. M., Choi, J., ... Shendure, J. (2026). A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis. Science, 394(6826), eael0508. https://doi.org/10.1126/science.ael0508"
   data-topicname="Organismal &amp; Systems" data-journal="Science" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-19.html#p1" data-image="">
+  data-report="reports/2026-11-19.html#p1" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/MIT_7.22_-_7.72_Developmental_Biology%2C_Fall_2005_-_Developmental_BiologyLung_Mesenchyme.jpg/500px-MIT_7.22_-_7.72_Developmental_Biology%2C_Fall_2005_-_Developmental_BiologyLung_Mesenchyme.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">O</div></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/MIT_7.22_-_7.72_Developmental_Biology%2C_Fall_2005_-_Developmental_BiologyLung_Mesenchyme.jpg/500px-MIT_7.22_-_7.72_Developmental_Biology%2C_Fall_2005_-_Developmental_BiologyLung_Mesenchyme.jpg" alt="Developmental biology" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
@@ -269,7 +279,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Developmental biology · mitopencourseware, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -289,9 +299,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p2" data-topic="organismal" data-editors="1" data-rank="2" data-score="9"
   data-key="https://doi.org/10.1126/science.aef8963" data-headline="A small patch of the brain&#39;s &#39;listening&#39; area helps plan spoken words" data-url="https://doi.org/10.1126/science.aef8963" data-cite="Silva, A. B., Leonard, M. K., Hullett, P. W., Levy, D. F., Wang, C., Xu, D., Bhaya-Grossman, I., &amp; Chang, E. F. (2026). A neural code for generative speech production in human Wernicke’s area. Science, 394(6826), eaef8963. https://doi.org/10.1126/science.aef8963"
   data-topicname="Organismal &amp; Systems" data-journal="Science" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-19.html#p2" data-image="">
+  data-report="reports/2026-11-19.html#p2" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">O</div></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg" alt="Neuroscience" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
@@ -304,7 +314,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Neuroscience · Syed07, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -324,9 +334,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p3" data-topic="climate" data-editors="1" data-rank="3" data-score="8"
   data-key="https://doi.org/10.1126/science.aeg4265" data-headline="Organic nitrogen falling from the air feeds the oceans more than thought" data-url="https://doi.org/10.1126/science.aeg4265" data-cite="Yu, X., Li, Y., Shi, G., Yu, L., Wang, Y., Lai, S., Zhou, Y., Zhang, Y., Sun, N., Zhang, B., Hu, Y., Li, Z., Jiang, Y., Li, W., Fu, T., &amp; Yu, J. Z. (2026). Atmospheric organic nitrogen is a major nutrient source to global oceans. Science, 394(6826), 901-906. https://doi.org/10.1126/science.aeg4265"
   data-topicname="Climate &amp; Environment" data-journal="Science" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-19.html#p3" data-image="">
+  data-report="reports/2026-11-19.html#p3" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/ISS-66_Atmospheric_plume_from_2022_Hunga_Tonga_eruption_-_edited.jpg/960px-ISS-66_Atmospheric_plume_from_2022_Hunga_Tonga_eruption_-_edited.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div></div>
+    <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Climate &amp; Environment</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/ISS-66_Atmospheric_plume_from_2022_Hunga_Tonga_eruption_-_edited.jpg/960px-ISS-66_Atmospheric_plume_from_2022_Hunga_Tonga_eruption_-_edited.jpg" alt="Ocean and atmospheric science" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Climate &amp; Environment</span>
         
@@ -339,7 +349,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Ocean and atmospheric science · NASA / Kayla Barron, via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -359,9 +369,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p4" data-topic="materials" data-editors="1" data-rank="4" data-score="8"
   data-key="https://doi.org/10.1126/science.aej5001" data-headline="A molecular &#39;glue&#39; layer helps large perovskite solar panels hold together" data-url="https://doi.org/10.1126/science.aej5001" data-cite="Yang, C., Hou, T., Xu, Y., Robinson, C., Stein, J. S., Guo, Y., Chang, Q., Li, H., Yu, L., Qin, Y., Mohammed, O. F., Huang, Y., You, S., &amp; Zheng, X. (2026). Molecular adhesion for durable metal halide perovskite modules. Science, 394(6826), eaej5001. https://doi.org/10.1126/science.aej5001"
   data-topicname="Materials &amp; Nanoscience" data-journal="Science" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-19.html#p4" data-image="">
+  data-report="reports/2026-11-19.html#p4" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/U.S._Department_of_Energy_-_Science_-_395_056_001_%2815023674023%29.jpg/960px-U.S._Department_of_Energy_-_Science_-_395_056_001_%2815023674023%29.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">M</div></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Materials &amp; Nanoscience</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/U.S._Department_of_Energy_-_Science_-_395_056_001_%2815023674023%29.jpg/960px-U.S._Department_of_Energy_-_Science_-_395_056_001_%2815023674023%29.jpg" alt="Materials science and energy" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Materials &amp; Nanoscience</span>
         
@@ -374,7 +384,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Materials science and energy · U.S. Department of Energy from United States, via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -394,9 +404,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p5" data-topic="physics" data-editors="1" data-rank="5" data-score="7"
   data-key="https://doi.org/10.1126/science.aeh0182" data-headline="Twisted laser light makes a trapped ion spin in measurable steps" data-url="https://doi.org/10.1126/science.aeh0182" data-cite="Tang, Y., Tollefsen, R., Yadav, N., Zuerch, M. W., &amp; Häffner, H. (2026). Angular momentum transfer from an optical vortex to an atomic rotor. Science, 394(6826), 890-894. https://doi.org/10.1126/science.aeh0182"
   data-topicname="Physics" data-journal="Science" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-19.html#p5" data-image="">
+  data-report="reports/2026-11-19.html#p5" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/CollageFisica.jpg/500px-CollageFisica.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">P</div></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Physics</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/CollageFisica.jpg/500px-CollageFisica.jpg" alt="Physics" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Physics</span>
         
@@ -409,7 +419,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Physics · Daniele Pugliesi, via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -429,9 +439,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p6" data-topic="clinical" data-editors="1" data-rank="6" data-score="7"
   data-key="https://doi.org/10.1038/s41591-026-04783-y" data-headline="Gut inflammation after a myeloma CAR T therapy often persists and can be fatal" data-url="https://doi.org/10.1038/s41591-026-04783-y" data-cite="Mikkilineni, L., Hamilton, M. P., Jensen, A., Lim, K. J., Galarza-Fortuna, G. M., Kumar, A. D., Ferreri, C. J., Portuguese, A. J., Hosoya, H., Dong, S., Abdallah, N. H., Song, J., Gonzalez, R., Shestakova, A., Chowla, N., Chen, Z. E., Godara, A., Mohyuddin, G. R., Brondfield, M. N., ... Wolf, J. L. (2026). Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy. Nature Medicine. https://doi.org/10.1038/s41591-026-04783-y"
   data-topicname="Clinical &amp; Disease Research" data-journal="Nature Medicine" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-19.html#p6" data-image="">
+  data-report="reports/2026-11-19.html#p6" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Contact_in_Oncology_first_bill.jpg/960px-Contact_in_Oncology_first_bill.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Clinical &amp; Disease Research</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Contact_in_Oncology_first_bill.jpg/960px-Contact_in_Oncology_first_bill.jpg" alt="first bill in contact therapy" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Clinical &amp; Disease Research</span>
         
@@ -444,7 +454,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. first bill in contact therapy · Stéphane90002, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -464,9 +474,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p7" data-topic="organismal" data-editors="1" data-rank="7" data-score="7"
   data-key="https://doi.org/10.1126/science.adx5757" data-headline="Early-life stress primes a brain pathway that worsens pain in female mice" data-url="https://doi.org/10.1126/science.adx5757" data-cite="Borruto, A. M., Kohlund, T., Rettig, L., Renesse, M. v., Hammer, C. A., Leonhardt, N., Kurpiers, B., Calpe-López, C., Benn, L., Friederich, H., Kuner, T., Spanagel, R., &amp; Wieland, S. (2026). A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress. Science, 394(6826), 864-869. https://doi.org/10.1126/science.adx5757"
   data-topicname="Organismal &amp; Systems" data-journal="Science" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-19.html#p7" data-image="">
+  data-report="reports/2026-11-19.html#p7" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">O</div></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg" alt="Neuroscience" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
@@ -479,7 +489,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Neuroscience · Syed07, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -499,9 +509,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p8" data-topic="physics" data-editors="1" data-rank="8" data-score="7"
   data-key="https://doi.org/10.1126/science.aee9889" data-headline="Hollow shells with one opening use turbulence to sort and trap particles" data-url="https://doi.org/10.1126/science.aee9889" data-cite="Sabato, M., Chong, S., Li, Y., Xu, Z., Gao, D., Falk, M. J., Sacanna, S., &amp; Irvine, W. T. M. (2026). Quiet within, chaos without: Turbulence shelters drive selective particle capture and release. Science, 394(6826), 884-889. https://doi.org/10.1126/science.aee9889"
   data-topicname="Physics" data-journal="Science" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-19.html#p8" data-image="">
+  data-report="reports/2026-11-19.html#p8" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Thermal_Boundary_Layer_Thickness_formed_by_heated_fluid_flow_along_a_plate.jpg/960px-Thermal_Boundary_Layer_Thickness_formed_by_heated_fluid_flow_along_a_plate.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">P</div></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Physics</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Thermal_Boundary_Layer_Thickness_formed_by_heated_fluid_flow_along_a_plate.jpg/960px-Thermal_Boundary_Layer_Thickness_formed_by_heated_fluid_flow_along_a_plate.jpg" alt="Physics and fluid dynamics" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Physics</span>
         
@@ -514,7 +524,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Physics and fluid dynamics · David Weyburne, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>

@@ -149,6 +149,10 @@ dialog.mini .primary.danger{background:#dc2626;color:#fff;box-shadow:none}
 <meta name="apple-mobile-web-app-title" content="SciDigest">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#0f766e">
+<script>
+/* Images: retry once after a short pause (Wikimedia sometimes refuses a burst of requests), then fall back to the placeholder. */
+function sdImgErr(img){if(!img.dataset.retry){img.dataset.retry="1";var s=img.src;setTimeout(function(){img.src=s+(s.indexOf("?")<0?"?":"&")+"retry=1"},1800)}else if(img.parentNode){img.parentNode.removeChild(img)}}
+</script>
 <style>
 h1{font-size:2.1rem;line-height:1.12;letter-spacing:-.025em;margin:4px 0 6px}
 .sub{color:var(--soft);font-size:.95rem}
@@ -167,7 +171,12 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .card summary::-webkit-details-marker{display:none}
 .thumb{aspect-ratio:16/9;background:var(--ph);overflow:hidden;position:relative;margin:8px 8px 0;border-radius:18px}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:2.4rem;font-weight:700;color:var(--muted);background:linear-gradient(135deg,var(--accent-bg),transparent)}
+.thumb{--g:#0d7a70}.thumb[data-group=physical]{--g:#6366f1}.thumb[data-group=engineering]{--g:#ea580c}.thumb[data-group=life]{--g:#16a34a}
+.thumb[data-group=health]{--g:#db2777}.thumb[data-group=earth]{--g:#0891b2}.thumb[data-group=society]{--g:#9333ea}
+.thumb .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--g);
+  background:radial-gradient(120% 90% at 20% 10%,color-mix(in srgb,var(--g) 30%,transparent),transparent 60%),linear-gradient(135deg,color-mix(in srgb,var(--g) 16%,transparent),color-mix(in srgb,var(--g) 6%,transparent))}
+.thumb .ph svg{width:46px;height:46px;opacity:.85}
+.thumb .ph span{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
 .card.open .thumb{aspect-ratio:auto;max-height:460px}
 .card.open .thumb img{object-fit:contain;max-height:460px}
 .body{padding:14px 18px 18px}
@@ -248,15 +257,16 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 
 
 
+
 <main data-report>
   <h2 class="editors">Editor&#39;s picks</h2>
   <div class="grid editors-grid">
 <details class="card" id="p1" data-topic="clinical" data-editors="1" data-rank="1" data-score="9"
   data-key="https://doi.org/10.1056/NEJMoa2611913" data-headline="Two new four-drug tuberculosis combinations pass an early screening trial" data-url="https://doi.org/10.1056/NEJMoa2611913" data-cite="Esmail, H., Paton, N. I., Schildkraut, J. A., Motta, I., Szubert, A. J., Dufault, S. M., Heinrich, N., Tiberi, S., Kityo, C. M., McHugh, T. D., Ryklief, F., Cirillo, D. M., Dawson, R., Sanders, K., Mpagama, S., Thompson, L. C., Van, L. H., Wakerley, D., Tudor, E., ... Hoelscher, M. (2026). Assessing Multiple Treatment Regimens for Tuberculosis. The New England Journal of Medicine, NEJMoa2611913. https://doi.org/10.1056/NEJMoa2611913"
   data-topicname="Clinical &amp; Disease Research" data-journal="The New England Journal of Medicine" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-21.html#p1" data-image="">
+  data-report="reports/2026-11-21.html#p1" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Infectious_Diseases_Hospital%2C_Rajshahi_18.jpg/960px-Infectious_Diseases_Hospital%2C_Rajshahi_18.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Clinical &amp; Disease Research</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Infectious_Diseases_Hospital%2C_Rajshahi_18.jpg/960px-Infectious_Diseases_Hospital%2C_Rajshahi_18.jpg" alt="Infectious Diseases Hospital, Rajshahi was established in 1962." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Clinical &amp; Disease Research</span>
         
@@ -269,7 +279,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Infectious Diseases Hospital, Rajshahi was established in 1962. · Nahid Hossain, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -289,9 +299,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p2" data-topic="therapeutics" data-editors="1" data-rank="2" data-score="9"
   data-key="https://doi.org/10.1056/NEJMoa2604058" data-headline="Weekly semaglutide injections lowered BMI in children aged 6 to 11 with obesity" data-url="https://doi.org/10.1056/NEJMoa2604058" data-cite="Jastreboff, A. M., Harder-Lauridsen, N. M., Name, M. V., Körner, A., Kelly, A. S., Weghuber, D., Holm, J., Frithioff-Bøjsøe, C., Middolu, S., Buch, T., &amp; Wabitsch, M. (2026). Semaglutide for the Treatment of Obesity in Children 6 to &lt;12 Years of Age. The New England Journal of Medicine, NEJMoa2604058. https://doi.org/10.1056/NEJMoa2604058"
   data-topicname="Therapeutics &amp; Care" data-journal="The New England Journal of Medicine" data-date="Nov 16, 2026"
-  data-report="reports/2026-11-21.html#p2" data-image="">
+  data-report="reports/2026-11-21.html#p2" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/AWH_Pediatric_Physical_Therapy.JPG/960px-AWH_Pediatric_Physical_Therapy.JPG">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">T</div></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Therapeutics &amp; Care</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/AWH_Pediatric_Physical_Therapy.JPG/960px-AWH_Pediatric_Physical_Therapy.JPG" alt="Pediatric pharmacology" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Therapeutics &amp; Care</span>
         
@@ -304,7 +314,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Pediatric pharmacology · Dr. P. K. Abdul Kader, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -326,7 +336,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Physics" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p3" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png/960px-6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">P</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png/960px-6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png" alt="Superconducting quantum processor" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Physics</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png/960px-6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png" alt="Superconducting quantum processor" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Physics</span>
         
@@ -361,7 +371,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Chemistry" data-journal="Nature" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p4" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Calcium-fluoride-3D-ionic.png/960px-Calcium-fluoride-3D-ionic.png">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Calcium-fluoride-3D-ionic.png/960px-Calcium-fluoride-3D-ionic.png" alt="A calcium catalyst shuttles fluoride ions to build fluorine-containing molecules" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Chemistry</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Calcium-fluoride-3D-ionic.png/960px-Calcium-fluoride-3D-ionic.png" alt="A calcium catalyst shuttles fluoride ions to build fluorine-containing molecules" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Chemistry</span>
         
@@ -396,7 +406,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Astronomy &amp; Planetary Science" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p5" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/ALMA_and_a_Starry_Night.jpg/960px-ALMA_and_a_Starry_Night.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">A</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/ALMA_and_a_Starry_Night.jpg/960px-ALMA_and_a_Starry_Night.jpg" alt="Alma radio telescope" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Astronomy &amp; Planetary Science</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/ALMA_and_a_Starry_Night.jpg/960px-ALMA_and_a_Starry_Night.jpg" alt="Alma radio telescope" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Astronomy &amp; Planetary Science</span>
         
@@ -431,7 +441,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Cellular &amp; Molecular" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p6" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Heart_frontally_PDA.jpg/960px-Heart_frontally_PDA.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Heart_frontally_PDA.jpg/960px-Heart_frontally_PDA.jpg" alt="Human heart model" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Cellular &amp; Molecular</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Heart_frontally_PDA.jpg/960px-Heart_frontally_PDA.jpg" alt="Human heart model" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Cellular &amp; Molecular</span>
         
@@ -466,7 +476,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Organismal &amp; Systems" data-journal="Cell" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p7" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Anopheles_stephensi.jpeg/960px-Anopheles_stephensi.jpeg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">O</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Anopheles_stephensi.jpeg/960px-Anopheles_stephensi.jpeg" alt="الأنوفيلة الاصْطِفانِيَّة" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Anopheles_stephensi.jpeg/960px-Anopheles_stephensi.jpeg" alt="الأنوفيلة الاصْطِفانِيَّة" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
@@ -501,7 +511,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Climate &amp; Environment" data-journal="Nature Climate Change" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p8" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Glacial_lakes%2C_Bhutan.jpg/960px-Glacial_lakes%2C_Bhutan.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Glacial_lakes%2C_Bhutan.jpg/960px-Glacial_lakes%2C_Bhutan.jpg" alt="Glacial lake glacier" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Climate &amp; Environment</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Glacial_lakes%2C_Bhutan.jpg/960px-Glacial_lakes%2C_Bhutan.jpg" alt="Glacial lake glacier" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Climate &amp; Environment</span>
         
@@ -538,7 +548,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Physics" data-journal="Physical Review Letters" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p9" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG/960px-A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">P</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG/960px-A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG" alt="A niobium 1.3 GHz nine-cell superconducting radio frequency microwave cavity at Fermilab ." loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Physics</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG/960px-A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG" alt="A niobium 1.3 GHz nine-cell superconducting radio frequency microwave cavity at Fermilab ." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Physics</span>
         
@@ -573,7 +583,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Physics" data-journal="Physical Review Letters" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p20" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Magnificent_CME_Erupts_on_the_Sun_-_August_31.jpg/960px-Magnificent_CME_Erupts_on_the_Sun_-_August_31.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">P</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Magnificent_CME_Erupts_on_the_Sun_-_August_31.jpg/960px-Magnificent_CME_Erupts_on_the_Sun_-_August_31.jpg" alt="Solar flare" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Physics</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Magnificent_CME_Erupts_on_the_Sun_-_August_31.jpg/960px-Magnificent_CME_Erupts_on_the_Sun_-_August_31.jpg" alt="Solar flare" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Physics</span>
         
@@ -608,7 +618,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Chemistry" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p10" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Schlenk_flask_500mL.jpg/960px-Schlenk_flask_500mL.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Schlenk_flask_500mL.jpg/960px-Schlenk_flask_500mL.jpg" alt="Drei Schlenk-Kolben mit 500, 250 und 100 mL Volumen auf Korkringen." loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Chemistry</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Schlenk_flask_500mL.jpg/960px-Schlenk_flask_500mL.jpg" alt="Drei Schlenk-Kolben mit 500, 250 und 100 mL Volumen auf Korkringen." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Chemistry</span>
         
@@ -643,7 +653,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Chemistry" data-journal="Nature Chemistry" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p21" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Porphyrin-3D-balls.png/960px-Porphyrin-3D-balls.png">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Porphyrin-3D-balls.png/960px-Porphyrin-3D-balls.png" alt="Porphyrin molecule model" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Chemistry</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Porphyrin-3D-balls.png/960px-Porphyrin-3D-balls.png" alt="Porphyrin molecule model" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Chemistry</span>
         
@@ -678,7 +688,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Astronomy &amp; Planetary Science" data-journal="Physical Review Letters" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p11" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Fermi_Gamma-ray_Space_Telescope_spacecraft_model.png/960px-Fermi_Gamma-ray_Space_Telescope_spacecraft_model.png">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">A</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Fermi_Gamma-ray_Space_Telescope_spacecraft_model.png/960px-Fermi_Gamma-ray_Space_Telescope_spacecraft_model.png" alt="Artist&#39;s concept of the Fermi Gamma-ray Space Telescope spacecraft." loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Astronomy &amp; Planetary Science</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Fermi_Gamma-ray_Space_Telescope_spacecraft_model.png/960px-Fermi_Gamma-ray_Space_Telescope_spacecraft_model.png" alt="Artist&#39;s concept of the Fermi Gamma-ray Space Telescope spacecraft." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Astronomy &amp; Planetary Science</span>
         
@@ -713,7 +723,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Astronomy &amp; Planetary Science" data-journal="Nature Astronomy" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p22" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Milky_way_in_Elbrus.jpg/960px-Milky_way_in_Elbrus.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">A</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Milky_way_in_Elbrus.jpg/960px-Milky_way_in_Elbrus.jpg" alt="Milky way galaxy" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Astronomy &amp; Planetary Science</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Milky_way_in_Elbrus.jpg/960px-Milky_way_in_Elbrus.jpg" alt="Milky way galaxy" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Astronomy &amp; Planetary Science</span>
         
@@ -748,7 +758,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Materials &amp; Nanoscience" data-journal="Nature Materials" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p12" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/HP_Mini_1000.png/960px-HP_Mini_1000.png">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">M</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/HP_Mini_1000.png/960px-HP_Mini_1000.png" alt="Solid-state battery cell" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Materials &amp; Nanoscience</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/HP_Mini_1000.png/960px-HP_Mini_1000.png" alt="Solid-state battery cell" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Materials &amp; Nanoscience</span>
         
@@ -781,9 +791,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p23" data-topic="materials" data-editors="0" data-rank="23" data-score="6"
   data-key="https://doi.org/10.1126/science.aei6161" data-headline="New zeolite catalysts combine tiny and larger pores to crack heavy oil better" data-url="https://doi.org/10.1126/science.aei6161" data-cite="Zhang, Z., Sun, J., Ma, C., Tian, X., Luo, M., Jiang, Q., Han, L., Lin, C., Song, H., Xu, L., Lin, W., &amp; Li, J. (2026). Meso–microporous zeolitic materials with thin walls containing ordered 10-ring channels. Science, 394(6826), 907-912. https://doi.org/10.1126/science.aei6161"
   data-topicname="Materials &amp; Nanoscience" data-journal="Science" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-21.html#p23" data-image="">
+  data-report="reports/2026-11-21.html#p23" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Porous_material.png/500px-Porous_material.png">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">M</div></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Materials &amp; Nanoscience</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Porous_material.png/500px-Porous_material.png" alt="Porous materials" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Materials &amp; Nanoscience</span>
         
@@ -796,7 +806,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Porous materials · Wang R, Wang P, Yan X, et al, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -816,9 +826,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p24" data-topic="core_engineering" data-editors="0" data-rank="24" data-score="6"
   data-key="https://doi.org/10.1126/sciadv.aei9286" data-headline="Light-patterned soft layers stack into stretchy, breathable skin electronics" data-url="https://doi.org/10.1126/sciadv.aei9286" data-cite="Xie, X., Ju, G., Luo, X., Feng, S., Li, H., Zhang, Y., &amp; Feng, W. (2026). Monolithic tiered microlithography for stretchable multilayer electronics with high-density, soft, and ultrathin VIAs. Science Advances, 12(47), eaei9286. https://doi.org/10.1126/sciadv.aei9286"
   data-topicname="Core Engineering" data-journal="Science Advances" data-date="Nov 20, 2026"
-  data-report="reports/2026-11-21.html#p24" data-image="">
+  data-report="reports/2026-11-21.html#p24" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Linda_Garza%2C_first_female_Electrical_Engineering_student%2C_University_of_Texas_at_Arlington_%2810002855%29.jpg/960px-Linda_Garza%2C_first_female_Electrical_Engineering_student%2C_University_of_Texas_at_Arlington_%2810002855%29.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div></div>
+    <div class="thumb" data-group="engineering"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg><span>Core Engineering</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Linda_Garza%2C_first_female_Electrical_Engineering_student%2C_University_of_Texas_at_Arlington_%2810002855%29.jpg/960px-Linda_Garza%2C_first_female_Electrical_Engineering_student%2C_University_of_Texas_at_Arlington_%2810002855%29.jpg" alt="Linda Garza, first female Electrical Engineering student, University of Texas at Arlington." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Core Engineering</span>
         
@@ -831,7 +841,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Linda Garza, first female Electrical Engineering student, University of Texas at Arlington. · University of Texas at Arlington News Service Photograph Collection, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -853,7 +863,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Core Engineering" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p38" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Toyota_Mirai_fuel_cell_stack_and_hydrogen_tank_SAO_2016_9026.jpg/960px-Toyota_Mirai_fuel_cell_stack_and_hydrogen_tank_SAO_2016_9026.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Toyota_Mirai_fuel_cell_stack_and_hydrogen_tank_SAO_2016_9026.jpg/960px-Toyota_Mirai_fuel_cell_stack_and_hydrogen_tank_SAO_2016_9026.jpg" alt="Hydrogen fuel cell stack" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="engineering"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg><span>Core Engineering</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Toyota_Mirai_fuel_cell_stack_and_hydrogen_tank_SAO_2016_9026.jpg/960px-Toyota_Mirai_fuel_cell_stack_and_hydrogen_tank_SAO_2016_9026.jpg" alt="Hydrogen fuel cell stack" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Core Engineering</span>
         
@@ -886,9 +896,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p13" data-topic="applied_tech" data-editors="0" data-rank="13" data-score="7"
   data-key="https://doi.org/10.1126/science.aef9553" data-headline="A soft, liquid-free rubber that carries ultrasound with little loss" data-url="https://doi.org/10.1126/science.aef9553" data-cite="Wang, S., Li, R., Tang, Z., Li, Y., Gong, C., Song, W. J., Lim, C. T., Chen, X., &amp; Zhao, X. (2026). Interpenetrating bottlebrush elastomer for low-loss soft ultrasonic interfaces. Science, 394(6826), 895-900. https://doi.org/10.1126/science.aef9553"
   data-topicname="Applied &amp; Emerging Tech" data-journal="Science" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-21.html#p13" data-image="">
+  data-report="reports/2026-11-21.html#p13" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Notice_Board_of_Department_of_Biomedical_Engineering_%28BME%29%2C_BUET.jpg/960px-Notice_Board_of_Department_of_Biomedical_Engineering_%28BME%29%2C_BUET.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">A</div></div>
+    <div class="thumb" data-group="engineering"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg><span>Applied &amp; Emerging Tech</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Notice_Board_of_Department_of_Biomedical_Engineering_%28BME%29%2C_BUET.jpg/960px-Notice_Board_of_Department_of_Biomedical_Engineering_%28BME%29%2C_BUET.jpg" alt="Biomedical engineering" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Applied &amp; Emerging Tech</span>
         
@@ -901,7 +911,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Biomedical engineering · Md. Redwan Hossain6333, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -921,9 +931,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p14" data-topic="applied_tech" data-editors="0" data-rank="14" data-score="7"
   data-key="https://doi.org/10.1038/s41587-026-03362-3" data-headline="An AI &#39;virtual scientist&#39; designs working RNA molecules from scratch" data-url="https://doi.org/10.1038/s41587-026-03362-3" data-cite="Huang, H., Zhang, T., Hong, L., Lin, Z., He, D., Wang, J., Wu, T., Li, H., Han, D., Yu, L., Jiang, J., Fan, Y., Shao, Y., King, I., Chen, P., Kwok, C. K., Collins, J. J., &amp; Li, Y. (2026). Programmable functional RNA design with a virtual scientist. Nature Biotechnology. https://doi.org/10.1038/s41587-026-03362-3"
   data-topicname="Applied &amp; Emerging Tech" data-journal="Nature Biotechnology" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-21.html#p14" data-image="https://upload.wikimedia.org/wikipedia/commons/9/92/G_riboswitch_RNA_ribbon.jpg">
+  data-report="reports/2026-11-21.html#p14" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/G_riboswitch_RNA_ribbon.jpg/500px-G_riboswitch_RNA_ribbon.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">A</div><img src="https://upload.wikimedia.org/wikipedia/commons/9/92/G_riboswitch_RNA_ribbon.jpg" alt="Rna molecule structure" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="engineering"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg><span>Applied &amp; Emerging Tech</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/G_riboswitch_RNA_ribbon.jpg/500px-G_riboswitch_RNA_ribbon.jpg" alt="Rna molecule structure" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Applied &amp; Emerging Tech</span>
         
@@ -958,7 +968,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Cellular &amp; Molecular" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p15" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg" alt="Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Cellular &amp; Molecular</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg" alt="Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Cellular &amp; Molecular</span>
         
@@ -993,7 +1003,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Cellular &amp; Molecular" data-journal="Nature Genetics" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p16" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg" alt="Microglia microscope" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Cellular &amp; Molecular</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg" alt="Microglia microscope" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Cellular &amp; Molecular</span>
         
@@ -1028,7 +1038,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Organismal &amp; Systems" data-journal="Cell" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p25" data-image="">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">O</div></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div></div>
     <div class="body">
       <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
@@ -1063,7 +1073,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Organismal &amp; Systems" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p26" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Abgerollte-schnecke.png/960px-Abgerollte-schnecke.png">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">O</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Abgerollte-schnecke.png/960px-Abgerollte-schnecke.png" alt="Weg der Schallwelle durch die Cochlea" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Abgerollte-schnecke.png/960px-Abgerollte-schnecke.png" alt="Weg der Schallwelle durch die Cochlea" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
@@ -1096,9 +1106,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p27" data-topic="ecology" data-editors="0" data-rank="27" data-score="6"
   data-key="https://doi.org/10.1126/sciadv.aei5142" data-headline="A single block of genes turns would-be winged ant queens into wingless ones" data-url="https://doi.org/10.1126/sciadv.aei5142" data-cite="Arsenault, S. V., Bienvenu, G., Daly, C. M., &amp; Trible, W. (2026). A supergene converts queen-destined larvae into a novel caste in ants. Science Advances, 12(47), eaei5142. https://doi.org/10.1126/sciadv.aei5142"
   data-topicname="Ecology &amp; Biodiversity" data-journal="Science Advances" data-date="Nov 20, 2026"
-  data-report="reports/2026-11-21.html#p27" data-image="https://upload.wikimedia.org/wikipedia/commons/e/ea/Leptothorax_pacis_casent0003204_head_1.jpg">
+  data-report="reports/2026-11-21.html#p27" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Leptothorax_pacis_casent0003204_head_1.jpg/500px-Leptothorax_pacis_casent0003204_head_1.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">E</div><img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Leptothorax_pacis_casent0003204_head_1.jpg" alt="Head view of ant Leptothorax pacis specimen casent0003204 ." loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Ecology &amp; Biodiversity</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Leptothorax_pacis_casent0003204_head_1.jpg/500px-Leptothorax_pacis_casent0003204_head_1.jpg" alt="Head view of ant Leptothorax pacis specimen casent0003204 ." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Ecology &amp; Biodiversity</span>
         
@@ -1133,7 +1143,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Ecology &amp; Biodiversity" data-journal="Nature Ecology &amp; Evolution" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p28" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Chytrid-infected_female_Atelopus_limosus_%285421621532%29.jpg/960px-Chytrid-infected_female_Atelopus_limosus_%285421621532%29.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">E</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Chytrid-infected_female_Atelopus_limosus_%285421621532%29.jpg/960px-Chytrid-infected_female_Atelopus_limosus_%285421621532%29.jpg" alt="Chytrid infected frog" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Ecology &amp; Biodiversity</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Chytrid-infected_female_Atelopus_limosus_%285421621532%29.jpg/960px-Chytrid-infected_female_Atelopus_limosus_%285421621532%29.jpg" alt="Chytrid infected frog" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Ecology &amp; Biodiversity</span>
         
@@ -1166,9 +1176,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p17" data-topic="clinical" data-editors="0" data-rank="17" data-score="7"
   data-key="https://doi.org/10.1016/j.cell.2026.10.051" data-headline="85,000 virus genomes show who actually spread COVID, and where" data-url="https://doi.org/10.1016/j.cell.2026.10.051" data-cite="Moreno, G. K., Brock-Fisher, T., Krasilnikova, L. A., Schaffner, S. F., Burns, M., Casiello, C. E., Messer, K. S., Petros, B., Specht, I., DeRuff, K. C., Siddle, K. J., Loreth, C., Fitzgerald, N. A., Rooke, H. M., Gabriel, S. B., Smole, S., Wohl, S., Park, D. J., Madoff, L. C., ... Sabeti, P. C. (2026). Genomic surveillance reveals age-structured SARS-CoV-2 transmission across settings. Cell. https://doi.org/10.1016/j.cell.2026.10.051"
   data-topicname="Clinical &amp; Disease Research" data-journal="Cell" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-21.html#p17" data-image="">
+  data-report="reports/2026-11-21.html#p17" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Coes-microcefalias---informe-epidemiol--gico---se-47.jpg/500px-Coes-microcefalias---informe-epidemiol--gico---se-47.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Clinical &amp; Disease Research</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Coes-microcefalias---informe-epidemiol--gico---se-47.jpg/500px-Coes-microcefalias---informe-epidemiol--gico---se-47.jpg" alt="Acompanhamento microcefalia 28/11/2015 - Dados do Ministério da Saúde" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Clinical &amp; Disease Research</span>
         
@@ -1181,7 +1191,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Acompanhamento microcefalia 28/11/2015 - Dados do Ministério da Saúde · Poligamix, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -1203,7 +1213,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Clinical &amp; Disease Research" data-journal="Cell" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p18" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Regulation_of_the_core_and_extended_pluripotency_networks_in_mouse_embryonic_stem_cells.png/960px-Regulation_of_the_core_and_extended_pluripotency_networks_in_mouse_embryonic_stem_cells.png">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Regulation_of_the_core_and_extended_pluripotency_networks_in_mouse_embryonic_stem_cells.png/960px-Regulation_of_the_core_and_extended_pluripotency_networks_in_mouse_embryonic_stem_cells.png" alt="Mouse embryonic stem cells" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Clinical &amp; Disease Research</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Regulation_of_the_core_and_extended_pluripotency_networks_in_mouse_embryonic_stem_cells.png/960px-Regulation_of_the_core_and_extended_pluripotency_networks_in_mouse_embryonic_stem_cells.png" alt="Mouse embryonic stem cells" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Clinical &amp; Disease Research</span>
         
@@ -1236,9 +1246,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p19" data-topic="therapeutics" data-editors="0" data-rank="19" data-score="7"
   data-key="https://doi.org/10.1001/jama.2026.18828" data-headline="Vitamin B3 supplement failed to slow early Parkinson disease in large trial" data-url="https://doi.org/10.1001/jama.2026.18828" data-cite="Brakedal, B., Skeie, G. O., Derad, C., Alstadhaug, K. B., Anundskås, I., Berven, H., Biermann, M., Bjørnarå, K. A., Cleuren, Y. N. T., Dalbro, S. E. J., Eidelberg, D., Foldnes, K., Fortes, G., Haugarvoll, K., Herlofson, K., Hustad, E., HogenEsch, R. I., Johanson, G. A. S., Johnsen, S. H., ... Tzoulis, C. (2026). Nicotinamide Riboside for Patients With Early-Stage Parkinson Disease. JAMA, 336(19), 1723. https://doi.org/10.1001/jama.2026.18828"
   data-topicname="Therapeutics &amp; Care" data-journal="JAMA" data-date="Nov 17, 2026"
-  data-report="reports/2026-11-21.html#p19" data-image="https://upload.wikimedia.org/wikipedia/commons/2/2e/Vitamin_B12_capsule.jpg">
+  data-report="reports/2026-11-21.html#p19" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Vitamin_B12_capsule.jpg/500px-Vitamin_B12_capsule.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">T</div><img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Vitamin_B12_capsule.jpg" alt="A Swedish vegan Vitamin 12 brand" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Therapeutics &amp; Care</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Vitamin_B12_capsule.jpg/500px-Vitamin_B12_capsule.jpg" alt="A Swedish vegan Vitamin 12 brand" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Therapeutics &amp; Care</span>
         
@@ -1271,9 +1281,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p29" data-topic="therapeutics" data-editors="0" data-rank="29" data-score="6"
   data-key="https://doi.org/10.1126/sciadv.aeg5378" data-headline="A PEG substitute for mRNA nanoparticles shifts delivery away from the liver" data-url="https://doi.org/10.1126/sciadv.aeg5378" data-cite="Basham, C., Haney, M., Zhao, Y., Hutsell, H., Kornahrens, R., Palchak, L., Lukyanov, K. A., Kim, K., Baysal, A., Brown, M. C., Kabanov, A. V., &amp; Ramsey, J. D. (2026). PEG-free tunable poly(2-oxazoline) lipids modulate mRNA-LNP biodistribution and expression in vivo. Science Advances, 12(47), eaeg5378. https://doi.org/10.1126/sciadv.aeg5378"
   data-topicname="Therapeutics &amp; Care" data-journal="Science Advances" data-date="Nov 20, 2026"
-  data-report="reports/2026-11-21.html#p29" data-image="">
+  data-report="reports/2026-11-21.html#p29" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Bio-inspired_hybrid_multifunctional_drug_delivery_system_%28cropped%29.png/960px-Bio-inspired_hybrid_multifunctional_drug_delivery_system_%28cropped%29.png">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">T</div></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Therapeutics &amp; Care</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Bio-inspired_hybrid_multifunctional_drug_delivery_system_%28cropped%29.png/960px-Bio-inspired_hybrid_multifunctional_drug_delivery_system_%28cropped%29.png" alt="Drug delivery" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Therapeutics &amp; Care</span>
         
@@ -1286,7 +1296,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. Drug delivery · Joachim Delasoie, Philippe Schiel, Sandra Vojnovic, Jasmina Nikodinovic-Runic and Fabio Zobi, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -1308,7 +1318,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Behavioral &amp; Mental Health" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p30" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">B</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg" alt="Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Behavioral &amp; Mental Health</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg" alt="Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Behavioral &amp; Mental Health</span>
         
@@ -1341,9 +1351,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p31" data-topic="behavioral" data-editors="0" data-rank="31" data-score="6"
   data-key="https://doi.org/10.7554/eLife.111304" data-headline="Brain ripples in the hippocampus grow while people hold images in short-term memory" data-url="https://doi.org/10.7554/eLife.111304" data-cite="Yang, C., Xue, G., Liu, J., Axmacher, N., Zhang, S., He, X., &amp; Cai, Y. (2026). Ramping-up hippocampal ripples and their neocortical coupling support human visual short-term memory. eLife. https://doi.org/10.7554/eLife.111304"
   data-topicname="Behavioral &amp; Mental Health" data-journal="eLife" data-date="Nov 20, 2026"
-  data-report="reports/2026-11-21.html#p31" data-image="">
+  data-report="reports/2026-11-21.html#p31" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/An_Introduction_to_Mind%2C_Language_and_Cognitive_Science.jpg/960px-An_Introduction_to_Mind%2C_Language_and_Cognitive_Science.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">B</div></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Behavioral &amp; Mental Health</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/An_Introduction_to_Mind%2C_Language_and_Cognitive_Science.jpg/960px-An_Introduction_to_Mind%2C_Language_and_Cognitive_Science.jpg" alt="For those whom interested in Cognitive Science, Psychology, Language and Logic." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Behavioral &amp; Mental Health</span>
         
@@ -1356,7 +1366,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
       <div class="more">Read more</div>
     </div>
   </summary>
-  
+  <div class="credit">Illustration, not from the paper. For those whom interested in Cognitive Science, Psychology, Language and Logic. · Or.taheri, via Wikimedia Commons · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a></div>
   <div class="full">
     <div class="actions">
       <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
@@ -1376,9 +1386,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p32" data-topic="earth_water" data-editors="0" data-rank="32" data-score="6"
   data-key="https://doi.org/10.1038/s41561-026-02137-4" data-headline="Satellites catch an Ethiopian volcano releasing record amounts of methane without erupting" data-url="https://doi.org/10.1038/s41561-026-02137-4" data-cite="Dualeh, E. W., Biggs, J., Sharma, S., Stix, J., Hutchison, W., Etiope, G., Jervis, D., Way, L., Dogniaux, M., Maasakkers, J. D., Aveni, S., Cusworth, D., Ireland, B., Grandin, R., Girard, M., Ramier, A., Zheng, W., Davis, T., Howell, K., ... Lewi, E. (2026). Methane outburst driven by magma–sediment interactions at Fentale Volcano detected by satellite. Nature Geoscience. https://doi.org/10.1038/s41561-026-02137-4"
   data-topicname="Earth &amp; Water" data-journal="Nature Geoscience" data-date="Nov 19, 2026"
-  data-report="reports/2026-11-21.html#p32" data-image="https://upload.wikimedia.org/wikipedia/commons/a/a0/Fentale_aerial.jpg">
+  data-report="reports/2026-11-21.html#p32" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fentale_aerial.jpg/500px-Fentale_aerial.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">E</div><img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Fentale_aerial.jpg" alt="Fentale volcano ethiopia" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Earth &amp; Water</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fentale_aerial.jpg/500px-Fentale_aerial.jpg" alt="Fentale volcano ethiopia" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Earth &amp; Water</span>
         
@@ -1413,7 +1423,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Earth &amp; Water" data-journal="Nature Geoscience" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p33" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg/960px-Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">E</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg/960px-Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg" alt="Foraminifera shells microscope" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Earth &amp; Water</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg/960px-Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg" alt="Foraminifera shells microscope" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Earth &amp; Water</span>
         
@@ -1448,7 +1458,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Climate &amp; Environment" data-journal="Nature Communications" data-date="Nov 21, 2026"
   data-report="reports/2026-11-21.html#p34" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Fish1857_-_Flickr_-_NOAA_Photo_Library.jpg/960px-Fish1857_-_Flickr_-_NOAA_Photo_Library.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Fish1857_-_Flickr_-_NOAA_Photo_Library.jpg/960px-Fish1857_-_Flickr_-_NOAA_Photo_Library.jpg" alt="Scientist at microscope studying plankton obtained during Bongo net tow." loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Climate &amp; Environment</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Fish1857_-_Flickr_-_NOAA_Photo_Library.jpg/960px-Fish1857_-_Flickr_-_NOAA_Photo_Library.jpg" alt="Scientist at microscope studying plankton obtained during Bongo net tow." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Climate &amp; Environment</span>
         
@@ -1483,7 +1493,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Climate &amp; Environment" data-journal="Nature Energy" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p35" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Elshitsa-open-pit-copper-mine.jpg/960px-Elshitsa-open-pit-copper-mine.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Elshitsa-open-pit-copper-mine.jpg/960px-Elshitsa-open-pit-copper-mine.jpg" alt="Elshitsa open-pit closed copper mine, Bulgaria" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Climate &amp; Environment</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Elshitsa-open-pit-copper-mine.jpg/960px-Elshitsa-open-pit-copper-mine.jpg" alt="Elshitsa open-pit closed copper mine, Bulgaria" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Climate &amp; Environment</span>
         
@@ -1518,7 +1528,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Social &amp; Economic Sciences" data-journal="Nature Energy" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p36" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg/960px-Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">S</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg/960px-Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg" alt="Residential heat pump unit" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="society"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3.5 19c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5M15 14.4c2.6-.4 4.8 1.1 5.5 4.6"/></svg><span>Social &amp; Economic Sciences</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg/960px-Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg" alt="Residential heat pump unit" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Social &amp; Economic Sciences</span>
         
@@ -1553,7 +1563,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Resource &amp; Applied Fields" data-journal="PLOS Biology" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p37" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Varroa_destructor_on_honeybee_host.jpg/960px-Varroa_destructor_on_honeybee_host.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">R</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Varroa_destructor_on_honeybee_host.jpg/960px-Varroa_destructor_on_honeybee_host.jpg" alt="Varroa mite honey bee" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="society"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3.5 19c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5M15 14.4c2.6-.4 4.8 1.1 5.5 4.6"/></svg><span>Resource &amp; Applied Fields</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Varroa_destructor_on_honeybee_host.jpg/960px-Varroa_destructor_on_honeybee_host.jpg" alt="Varroa mite honey bee" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Resource &amp; Applied Fields</span>
         
@@ -1588,7 +1598,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Resource &amp; Applied Fields" data-journal="Nature Sustainability" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p39" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/CSIRO_ScienceImage_11243_Fusarium_head_blight_of_barley.jpg/960px-CSIRO_ScienceImage_11243_Fusarium_head_blight_of_barley.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">R</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/CSIRO_ScienceImage_11243_Fusarium_head_blight_of_barley.jpg/960px-CSIRO_ScienceImage_11243_Fusarium_head_blight_of_barley.jpg" alt="Wheat fusarium head blight" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="society"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3.5 19c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5M15 14.4c2.6-.4 4.8 1.1 5.5 4.6"/></svg><span>Resource &amp; Applied Fields</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/CSIRO_ScienceImage_11243_Fusarium_head_blight_of_barley.jpg/960px-CSIRO_ScienceImage_11243_Fusarium_head_blight_of_barley.jpg" alt="Wheat fusarium head blight" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Resource &amp; Applied Fields</span>
         

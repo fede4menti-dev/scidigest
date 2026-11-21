@@ -86,3 +86,47 @@ def backfill_topics(site: Path, use_ai: bool, log=print) -> int:
     done = sum(1 for p in missing if p.get("category") in TOPICS)
     log(f"  gave topics to {done} older paper(s)")
     return done
+
+
+def backfill_images(site: Path, days: int = 7, max_lookups: int = 20, log=print, pause: float = 1.0,
+                    prewarm_newest: bool = True) -> int:
+    """No AI. In the last `days` daily digests: turn links to full-size Wikimedia originals into
+    thumbnails, and look up a free-licensed photo for papers that still have none (a few per run,
+    politely spaced). Returns how many papers changed."""
+    import time
+    from .images import COMMONS_ORIGINAL, thumb_url, wikimedia_image
+
+    data = site / "data"
+    if not data.exists():
+        return 0
+    files = sorted(data.glob("????-??-??.json"))[-days:]
+    changed, lookups = 0, 0
+    for f in reversed(files):                       # newest first
+        d = json.loads(f.read_text(encoding="utf-8"))
+        dirty = False
+        for p in d["papers"]:
+            img = p.get("image")
+            if img and img.get("kind") == "illustration" and COMMONS_ORIGINAL.match(img.get("url", "")):
+                img["url"] = thumb_url(img["url"], None)
+                dirty = True
+                changed += 1
+            elif not img and lookups < max_lookups:
+                lookups += 1
+                query = p.get("image_query") or p.get("field") or ""
+                found = wikimedia_image(query, log=log, fallback=p.get("field", ""))
+                if found:
+                    p["image"] = found
+                    dirty = True
+                    changed += 1
+                if pause:
+                    time.sleep(pause)
+        if dirty:
+            f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+    if changed:
+        log(f"  fixed or added images for {changed} paper(s)")
+    if files and prewarm_newest:
+        from .images import prewarm
+        newest = json.loads(files[-1].read_text(encoding="utf-8"))
+        prewarm([p["image"]["url"] for p in newest["papers"]
+                 if p.get("image") and "wikimedia.org" in p["image"].get("url", "")], pause=pause, log=log)
+    return changed

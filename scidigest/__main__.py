@@ -16,7 +16,7 @@ from .fulltext import europe_pmc_abstract, find_free_copy
 from concurrent.futures import ThreadPoolExecutor
 from .fulltext import FreeCopy
 from .images import figure_image, wikimedia_image
-from .backfill import backfill_topics
+from .backfill import backfill_images, backfill_topics
 from .publish import day_json, featured_history, paper_key, publish, rebuild_site
 from .report import build_entries, render
 from .reviews import build_review, due_reviews
@@ -79,7 +79,8 @@ def pick_image(article, summary: dict, copy) -> dict | None:
     figs = copy.figures if copy else []
     if isinstance(i, int) and 0 <= i < len(figs):
         return figure_image(figs[i], article.journal, copy.license, copy.url, summary.get("figure_caption", ""))
-    return wikimedia_image(summary.get("image_query", ""))
+    field = (summary.get("field") or getattr(article, "field", "") or "")
+    return wikimedia_image(summary.get("image_query", ""), fallback=field)
 
 
 def main(argv=None):
@@ -133,6 +134,8 @@ def main(argv=None):
             done_today = False
         if done_today or not use_ai:
             print(f"Today's digest ({today}) already exists; skipping to avoid paying twice. Use --force to rebuild it.")
+            if not args.no_images and not args.feed_file:
+                backfill_images(args.site)   # no AI: fix image links, fill missing photos
             rebuild_site(args.site)   # still refresh the pages (new settings, idea checker address); no AI used
             print("Pages refreshed.")
             if args.site and not args.no_reviews:
@@ -265,7 +268,10 @@ def main(argv=None):
     print(f"\nDone.\n  HTML:     {html_path.resolve()}\n  Markdown: {md_path.resolve()}")
     if args.site:
         print(f"  App data: {publish(args.site, digest).resolve()}")
-        if backfill_topics(args.site, use_ai):
+        changed = backfill_topics(args.site, use_ai)
+        if not args.no_images and not args.feed_file:     # feed files = offline test runs
+            changed = backfill_images(args.site) or changed
+        if changed:
             rebuild_site(args.site)
         if not args.no_reviews:
             for kind in due_reviews(today):

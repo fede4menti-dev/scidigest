@@ -149,6 +149,10 @@ dialog.mini .primary.danger{background:#dc2626;color:#fff;box-shadow:none}
 <meta name="apple-mobile-web-app-title" content="SciDigest">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#0f766e">
+<script>
+/* Images: retry once after a short pause (Wikimedia sometimes refuses a burst of requests), then fall back to the placeholder. */
+function sdImgErr(img){if(!img.dataset.retry){img.dataset.retry="1";var s=img.src;setTimeout(function(){img.src=s+(s.indexOf("?")<0?"?":"&")+"retry=1"},1800)}else if(img.parentNode){img.parentNode.removeChild(img)}}
+</script>
 <style>
 h1{font-size:2.2rem;line-height:1.08;letter-spacing:-.03em;margin:4px 0 8px}
 .lead{color:var(--soft);margin:0 0 18px;max-width:640px}

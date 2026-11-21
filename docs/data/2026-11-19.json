@@ -96,7 +96,16 @@
    },
    "category": "organismal",
    "category_name": "Organismal & Systems",
-   "editors_pick": true
+   "editors_pick": true,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/MIT_7.22_-_7.72_Developmental_Biology%2C_Fall_2005_-_Developmental_BiologyLung_Mesenchyme.jpg/500px-MIT_7.22_-_7.72_Developmental_Biology%2C_Fall_2005_-_Developmental_BiologyLung_Mesenchyme.jpg",
+    "caption": "Developmental biology",
+    "credit": "mitopencourseware, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:MIT_7.22_-_7.72_Developmental_Biology,_Fall_2005_-_Developmental_BiologyLung_Mesenchyme.jpg"
+   }
   },
   {
    "rank": 2,
@@ -153,7 +162,16 @@
    "free_copy": null,
    "category": "organismal",
    "category_name": "Organismal & Systems",
-   "editors_pick": true
+   "editors_pick": true,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg",
+    "caption": "Neuroscience",
+    "credit": "Syed07, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg"
+   }
   },
   {
    "rank": 3,
@@ -218,7 +236,16 @@
    "free_copy": null,
    "category": "climate",
    "category_name": "Climate & Environment",
-   "editors_pick": true
+   "editors_pick": true,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/ISS-66_Atmospheric_plume_from_2022_Hunga_Tonga_eruption_-_edited.jpg/960px-ISS-66_Atmospheric_plume_from_2022_Hunga_Tonga_eruption_-_edited.jpg",
+    "caption": "Ocean and atmospheric science",
+    "credit": "NASA / Kayla Barron, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:ISS-66_Atmospheric_plume_from_2022_Hunga_Tonga_eruption_-_edited.jpg"
+   }
   },
   {
    "rank": 4,
@@ -285,7 +312,16 @@
    "free_copy": null,
    "category": "materials",
    "category_name": "Materials & Nanoscience",
-   "editors_pick": true
+   "editors_pick": true,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/U.S._Department_of_Energy_-_Science_-_395_056_001_%2815023674023%29.jpg/960px-U.S._Department_of_Energy_-_Science_-_395_056_001_%2815023674023%29.jpg",
+    "caption": "Materials science and energy",
+    "credit": "U.S. Department of Energy from United States, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:U.S._Department_of_Energy_-_Science_-_395_056_001_(15023674023).jpg"
+   }
   },
   {
    "rank": 5,
@@ -339,7 +375,16 @@
    "free_copy": null,
    "category": "physics",
    "category_name": "Physics",
-   "editors_pick": true
+   "editors_pick": true,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/CollageFisica.jpg/500px-CollageFisica.jpg",
+    "caption": "Physics",
+    "credit": "Daniele Pugliesi, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:CollageFisica.jpg"
+   }
   },
   {
    "rank": 6,
@@ -425,7 +470,16 @@
    "free_copy": null,
    "category": "clinical",
    "category_name": "Clinical & Disease Research",
-   "editors_pick": true
+   "editors_pick": true,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Contact_in_Oncology_first_bill.jpg/960px-Contact_in_Oncology_first_bill.jpg",
+    "caption": "first bill in contact therapy",
+    "credit": "Stéphane90002, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Contact_in_Oncology_first_bill.jpg"
+   }
   },
   {
    "rank": 7,
@@ -483,7 +537,16 @@
    "free_copy": null,
    "category": "organismal",
    "category_name": "Organismal & Systems",
-   "editors_pick": true
+   "editors_pick": true,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg",
+    "caption": "Neuroscience",
+    "credit": "Syed07, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg"
+   }
   },
   {
    "rank": 8,
@@ -540,7 +603,16 @@
    "free_copy": null,
    "category": "physics",
    "category_name": "Physics",
-   "editors_pick": true
+   "editors_pick": true,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Thermal_Boundary_Layer_Thickness_formed_by_heated_fluid_flow_along_a_plate.jpg/960px-Thermal_Boundary_Layer_Thickness_formed_by_heated_fluid_flow_along_a_plate.jpg",
+    "caption": "Physics and fluid dynamics",
+    "credit": "David Weyburne, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Thermal_Boundary_Layer_Thickness_formed_by_heated_fluid_flow_along_a_plate.jpg"
+   }
   }
  ]
 }

@@ -24,7 +24,12 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .card summary::-webkit-details-marker{display:none}
 .thumb{aspect-ratio:16/9;background:var(--ph);overflow:hidden;position:relative;margin:8px 8px 0;border-radius:18px}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:2.4rem;font-weight:700;color:var(--muted);background:linear-gradient(135deg,var(--accent-bg),transparent)}
+.thumb{--g:#0d7a70}.thumb[data-group=physical]{--g:#6366f1}.thumb[data-group=engineering]{--g:#ea580c}.thumb[data-group=life]{--g:#16a34a}
+.thumb[data-group=health]{--g:#db2777}.thumb[data-group=earth]{--g:#0891b2}.thumb[data-group=society]{--g:#9333ea}
+.thumb .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--g);
+  background:radial-gradient(120% 90% at 20% 10%,color-mix(in srgb,var(--g) 30%,transparent),transparent 60%),linear-gradient(135deg,color-mix(in srgb,var(--g) 16%,transparent),color-mix(in srgb,var(--g) 6%,transparent))}
+.thumb .ph svg{width:46px;height:46px;opacity:.85}
+.thumb .ph span{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
 .card.open .thumb{aspect-ratio:auto;max-height:460px}
 .card.open .thumb img{object-fit:contain;max-height:460px}
 .body{padding:14px 18px 18px}
@@ -78,13 +83,14 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </nav>
 {% endif %}
 
+{% from "_icons.html.j2" import icon %}
 {% macro card(e) %}
 <details class="card" id="p{{ e.n }}" data-topic="{{ e.topic }}" data-editors="{{ 1 if e.editors_pick else 0 }}" data-rank="{{ e.n }}" data-score="{{ e.pick.score }}"
   data-key="{{ e.url }}" data-headline="{{ e.s.headline }}" data-url="{{ e.url }}" data-cite="{{ e.citation|replace('*', '') }}"
   data-topicname="{{ e.topic_name }}" data-journal="{{ e.article.journal }}" data-date="{{ e.published_label|replace('Published ', '') }}"
   data-report="reports/{{ report_id }}.html#p{{ e.n }}" data-image="{{ e.image.url if e.image else '' }}">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">{{ e.topic_name[:1] }}</div>{% if e.image %}<img src="{{ e.image.url }}" alt="{{ e.image.caption or e.s.headline }}" loading="lazy" onerror="this.remove()" style="position:relative">{% endif %}</div>
+    <div class="thumb" data-group="{{ e.group }}"><div class="ph" aria-hidden="true">{{ icon("g-" ~ e.group) }}<span>{{ e.topic_name }}</span></div>{% if e.image %}<img src="{{ e.image.url }}" alt="{{ e.image.caption or e.s.headline }}" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative">{% endif %}</div>
     <div class="body">
       <div class="kicker"><span class="topic">{{ e.topic_name }}</span>
         {% if e.preprint %}<span class="pill pre">Preprint</span>{% endif %}

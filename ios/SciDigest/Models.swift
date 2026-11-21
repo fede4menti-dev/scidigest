@@ -87,6 +87,7 @@ struct Paper: Codable, Identifiable, Hashable {
     let freeCopy: FreeCopy?
     let featuredOn: [String]?
     let image: PaperImage?
+    let imageQuery: String?
     let category: String?
     let categoryName: String?
     let editorsPick: Bool?

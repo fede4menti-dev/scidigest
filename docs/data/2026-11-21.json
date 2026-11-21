@@ -123,7 +123,15 @@
    "citation": "Esmail, H., Paton, N. I., Schildkraut, J. A., Motta, I., Szubert, A. J., Dufault, S. M., Heinrich, N., Tiberi, S., Kityo, C. M., McHugh, T. D., Ryklief, F., Cirillo, D. M., Dawson, R., Sanders, K., Mpagama, S., Thompson, L. C., Van, L. H., Wakerley, D., Tudor, E., ... Hoelscher, M. (2026). Assessing Multiple Treatment Regimens for Tuberculosis. The New England Journal of Medicine, NEJMoa2611913. https://doi.org/10.1056/NEJMoa2611913",
    "free_copy": null,
    "featured_on": [],
-   "image": null,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Infectious_Diseases_Hospital%2C_Rajshahi_18.jpg/960px-Infectious_Diseases_Hospital%2C_Rajshahi_18.jpg",
+    "caption": "Infectious Diseases Hospital, Rajshahi was established in 1962.",
+    "credit": "Nahid Hossain, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Infectious_Diseases_Hospital,_Rajshahi_18.jpg"
+   },
    "category": "clinical",
    "category_name": "Clinical & Disease Research",
    "editors_pick": true,
@@ -182,7 +190,15 @@
    "citation": "Jastreboff, A. M., Harder-Lauridsen, N. M., Name, M. V., Körner, A., Kelly, A. S., Weghuber, D., Holm, J., Frithioff-Bøjsøe, C., Middolu, S., Buch, T., & Wabitsch, M. (2026). Semaglutide for the Treatment of Obesity in Children 6 to <12 Years of Age. The New England Journal of Medicine, NEJMoa2604058. https://doi.org/10.1056/NEJMoa2604058",
    "free_copy": null,
    "featured_on": [],
-   "image": null,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/AWH_Pediatric_Physical_Therapy.JPG/960px-AWH_Pediatric_Physical_Therapy.JPG",
+    "caption": "Pediatric pharmacology",
+    "credit": "Dr. P. K. Abdul Kader, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:AWH_Pediatric_Physical_Therapy.JPG"
+   },
    "category": "therapeutics",
    "category_name": "Therapeutics & Care",
    "editors_pick": true,
@@ -1266,7 +1282,15 @@
    "citation": "Wang, S., Li, R., Tang, Z., Li, Y., Gong, C., Song, W. J., Lim, C. T., Chen, X., & Zhao, X. (2026). Interpenetrating bottlebrush elastomer for low-loss soft ultrasonic interfaces. Science, 394(6826), 895-900. https://doi.org/10.1126/science.aef9553",
    "free_copy": null,
    "featured_on": [],
-   "image": null,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Notice_Board_of_Department_of_Biomedical_Engineering_%28BME%29%2C_BUET.jpg/960px-Notice_Board_of_Department_of_Biomedical_Engineering_%28BME%29%2C_BUET.jpg",
+    "caption": "Biomedical engineering",
+    "credit": "Md. Redwan Hossain6333, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Notice_Board_of_Department_of_Biomedical_Engineering_(BME),_BUET.jpg"
+   },
    "category": "applied_tech",
    "category_name": "Applied & Emerging Tech",
    "editors_pick": false,
@@ -1338,7 +1362,7 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/9/92/G_riboswitch_RNA_ribbon.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/G_riboswitch_RNA_ribbon.jpg/500px-G_riboswitch_RNA_ribbon.jpg",
     "caption": "Rna molecule structure",
     "credit": "Jane & David Richardson (Dcrjsr, via Wikimedia Commons",
     "license": "CC BY 3.0",
@@ -1546,7 +1570,15 @@
     "license": "cc-by"
    },
    "featured_on": [],
-   "image": null,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Coes-microcefalias---informe-epidemiol--gico---se-47.jpg/500px-Coes-microcefalias---informe-epidemiol--gico---se-47.jpg",
+    "caption": "Acompanhamento microcefalia 28/11/2015 - Dados do Ministério da Saúde",
+    "credit": "Poligamix, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Coes-microcefalias---informe-epidemiol--gico---se-47.jpg"
+   },
    "category": "clinical",
    "category_name": "Clinical & Disease Research",
    "editors_pick": false,
@@ -1737,7 +1769,7 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Vitamin_B12_capsule.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Vitamin_B12_capsule.jpg/500px-Vitamin_B12_capsule.jpg",
     "caption": "A Swedish vegan Vitamin 12 brand",
     "credit": "Épine, via Wikimedia Commons",
     "license": "CC0",
@@ -2020,7 +2052,15 @@
    "citation": "Zhang, Z., Sun, J., Ma, C., Tian, X., Luo, M., Jiang, Q., Han, L., Lin, C., Song, H., Xu, L., Lin, W., & Li, J. (2026). Meso–microporous zeolitic materials with thin walls containing ordered 10-ring channels. Science, 394(6826), 907-912. https://doi.org/10.1126/science.aei6161",
    "free_copy": null,
    "featured_on": [],
-   "image": null,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Porous_material.png/500px-Porous_material.png",
+    "caption": "Porous materials",
+    "credit": "Wang R, Wang P, Yan X, et al, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Porous_material.png"
+   },
    "category": "materials",
    "category_name": "Materials & Nanoscience",
    "editors_pick": false,
@@ -2079,7 +2119,15 @@
    "citation": "Xie, X., Ju, G., Luo, X., Feng, S., Li, H., Zhang, Y., & Feng, W. (2026). Monolithic tiered microlithography for stretchable multilayer electronics with high-density, soft, and ultrathin VIAs. Science Advances, 12(47), eaei9286. https://doi.org/10.1126/sciadv.aei9286",
    "free_copy": null,
    "featured_on": [],
-   "image": null,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Linda_Garza%2C_first_female_Electrical_Engineering_student%2C_University_of_Texas_at_Arlington_%2810002855%29.jpg/960px-Linda_Garza%2C_first_female_Electrical_Engineering_student%2C_University_of_Texas_at_Arlington_%2810002855%29.jpg",
+    "caption": "Linda Garza, first female Electrical Engineering student, University of Texas at Arlington.",
+    "credit": "University of Texas at Arlington News Service Photograph Collection, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Linda_Garza,_first_female_Electrical_Engineering_student,_University_of_Texas_at_Arlington_(10002855).jpg"
+   },
    "category": "core_engineering",
    "category_name": "Core Engineering",
    "editors_pick": false,
@@ -2256,7 +2304,7 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Leptothorax_pacis_casent0003204_head_1.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Leptothorax_pacis_casent0003204_head_1.jpg/500px-Leptothorax_pacis_casent0003204_head_1.jpg",
     "caption": "Head view of ant Leptothorax pacis specimen casent0003204 .",
     "credit": "April Nobile, via Wikimedia Commons",
     "license": "CC BY 4.0",
@@ -2387,7 +2435,15 @@
    "citation": "Basham, C., Haney, M., Zhao, Y., Hutsell, H., Kornahrens, R., Palchak, L., Lukyanov, K. A., Kim, K., Baysal, A., Brown, M. C., Kabanov, A. V., & Ramsey, J. D. (2026). PEG-free tunable poly(2-oxazoline) lipids modulate mRNA-LNP biodistribution and expression in vivo. Science Advances, 12(47), eaeg5378. https://doi.org/10.1126/sciadv.aeg5378",
    "free_copy": null,
    "featured_on": [],
-   "image": null,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Bio-inspired_hybrid_multifunctional_drug_delivery_system_%28cropped%29.png/960px-Bio-inspired_hybrid_multifunctional_drug_delivery_system_%28cropped%29.png",
+    "caption": "Drug delivery",
+    "credit": "Joachim Delasoie, Philippe Schiel, Sandra Vojnovic, Jasmina Nikodinovic-Runic and Fabio Zobi, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Bio-inspired_hybrid_multifunctional_drug_delivery_system_(cropped).png"
+   },
    "category": "therapeutics",
    "category_name": "Therapeutics & Care",
    "editors_pick": false,
@@ -2515,7 +2571,15 @@
     "license": "cc-by"
    },
    "featured_on": [],
-   "image": null,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/An_Introduction_to_Mind%2C_Language_and_Cognitive_Science.jpg/960px-An_Introduction_to_Mind%2C_Language_and_Cognitive_Science.jpg",
+    "caption": "For those whom interested in Cognitive Science, Psychology, Language and Logic.",
+    "credit": "Or.taheri, via Wikimedia Commons",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_url": "https://commons.wikimedia.org/wiki/File:An_Introduction_to_Mind,_Language_and_Cognitive_Science.jpg"
+   },
    "category": "behavioral",
    "category_name": "Behavioral & Mental Health",
    "editors_pick": false,
@@ -2598,7 +2662,7 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Fentale_aerial.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fentale_aerial.jpg/500px-Fentale_aerial.jpg",
     "caption": "Fentale volcano ethiopia",
     "credit": "Imperial Highway Authority of Ethiopia, via Wikimedia Commons",
     "license": "Public domain",

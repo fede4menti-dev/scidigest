@@ -149,6 +149,10 @@ dialog.mini .primary.danger{background:#dc2626;color:#fff;box-shadow:none}
 <meta name="apple-mobile-web-app-title" content="SciDigest">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#0f766e">
+<script>
+/* Images: retry once after a short pause (Wikimedia sometimes refuses a burst of requests), then fall back to the placeholder. */
+function sdImgErr(img){if(!img.dataset.retry){img.dataset.retry="1";var s=img.src;setTimeout(function(){img.src=s+(s.indexOf("?")<0?"?":"&")+"retry=1"},1800)}else if(img.parentNode){img.parentNode.removeChild(img)}}
+</script>
 <style>
 h1{font-size:2.1rem;line-height:1.12;letter-spacing:-.025em;margin:4px 0 6px}
 .sub{color:var(--soft);font-size:.95rem}
@@ -167,7 +171,12 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .card summary::-webkit-details-marker{display:none}
 .thumb{aspect-ratio:16/9;background:var(--ph);overflow:hidden;position:relative;margin:8px 8px 0;border-radius:18px}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:2.4rem;font-weight:700;color:var(--muted);background:linear-gradient(135deg,var(--accent-bg),transparent)}
+.thumb{--g:#0d7a70}.thumb[data-group=physical]{--g:#6366f1}.thumb[data-group=engineering]{--g:#ea580c}.thumb[data-group=life]{--g:#16a34a}
+.thumb[data-group=health]{--g:#db2777}.thumb[data-group=earth]{--g:#0891b2}.thumb[data-group=society]{--g:#9333ea}
+.thumb .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--g);
+  background:radial-gradient(120% 90% at 20% 10%,color-mix(in srgb,var(--g) 30%,transparent),transparent 60%),linear-gradient(135deg,color-mix(in srgb,var(--g) 16%,transparent),color-mix(in srgb,var(--g) 6%,transparent))}
+.thumb .ph svg{width:46px;height:46px;opacity:.85}
+.thumb .ph span{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
 .card.open .thumb{aspect-ratio:auto;max-height:460px}
 .card.open .thumb img{object-fit:contain;max-height:460px}
 .body{padding:14px 18px 18px}
@@ -248,6 +257,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 
 
 
+
 <main data-report>
   <h2 class="editors">Editor&#39;s picks</h2>
   <div class="grid editors-grid">
@@ -256,7 +266,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Clinical &amp; Disease Research" data-journal="The Lancet" data-date="Nov 19, 2026"
   data-report="reports/2026-11-20.html#p1" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg/960px-U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg/960px-U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg" alt="Malaria vaccine africa" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Clinical &amp; Disease Research</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg/960px-U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg" alt="Malaria vaccine africa" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Clinical &amp; Disease Research</span>
         
@@ -291,7 +301,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Organismal &amp; Systems" data-journal="Nature" data-date="Nov 18, 2026"
   data-report="reports/2026-11-20.html#p2" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Trichomonas_Gram_stain.jpg/960px-Trichomonas_Gram_stain.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">O</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Trichomonas_Gram_stain.jpg/960px-Trichomonas_Gram_stain.jpg" alt="Trichomonas vaginalis microscope" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Trichomonas_Gram_stain.jpg/960px-Trichomonas_Gram_stain.jpg" alt="Trichomonas vaginalis microscope" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
@@ -326,7 +336,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Astronomy &amp; Planetary Science" data-journal="Nature" data-date="Nov 18, 2026"
   data-report="reports/2026-11-20.html#p3" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/960px-Andromeda_Galaxy_%28with_h-alpha%29.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">A</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/960px-Andromeda_Galaxy_%28with_h-alpha%29.jpg" alt="Andromeda galaxy" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Astronomy &amp; Planetary Science</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg/960px-Andromeda_Galaxy_%28with_h-alpha%29.jpg" alt="Andromeda galaxy" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Astronomy &amp; Planetary Science</span>
         
@@ -359,9 +369,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <details class="card" id="p4" data-topic="clinical" data-editors="1" data-rank="4" data-score="8"
   data-key="https://doi.org/10.1038/s41586-026-11305-w" data-headline="Brain region that controls metabolism and sleep cycles shrinks in Alzheimer&#39;s" data-url="https://doi.org/10.1038/s41586-026-11305-w" data-cite="Yu, D., Germann, J., Murtaza, G., Hajdarovic, K. H., Babcock, K. R., Dehkordi, S. K., Jackson, A. C., Delalle, I., Orr, M. E., Zare, H., Singh, R., MacCoss, M. J., Noble, W. S., Vlassenko, A. G., Goyal, M. S., &amp; Webb, A. E. (2026). Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease. Nature. https://doi.org/10.1038/s41586-026-11305-w"
   data-topicname="Clinical &amp; Disease Research" data-journal="Nature" data-date="Nov 18, 2026"
-  data-report="reports/2026-11-20.html#p4" data-image="https://upload.wikimedia.org/wikipedia/commons/9/91/CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg">
+  data-report="reports/2026-11-20.html#p4" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg/500px-CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">C</div><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg" alt="Brain mri scan" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Clinical &amp; Disease Research</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg/500px-CT_and_MRI_scan_of_the_brain_with_melioidosis.jpg" alt="Brain mri scan" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Clinical &amp; Disease Research</span>
         
@@ -396,7 +406,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Materials &amp; Nanoscience" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-20.html#p5" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Perovskite_solar_cell.jpg/960px-Perovskite_solar_cell.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">M</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Perovskite_solar_cell.jpg/960px-Perovskite_solar_cell.jpg" alt="Perovskite solar cell" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Materials &amp; Nanoscience</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Perovskite_solar_cell.jpg/960px-Perovskite_solar_cell.jpg" alt="Perovskite solar cell" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Materials &amp; Nanoscience</span>
         
@@ -431,7 +441,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Ecology &amp; Biodiversity" data-journal="Nature" data-date="Nov 18, 2026"
   data-report="reports/2026-11-20.html#p6" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg/960px-Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">E</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg/960px-Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg" alt="Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Ecology &amp; Biodiversity</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg/960px-Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg" alt="Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Ecology &amp; Biodiversity</span>
         
@@ -466,7 +476,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Organismal &amp; Systems" data-journal="Nature" data-date="Nov 18, 2026"
   data-report="reports/2026-11-20.html#p7" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Karst_Landscape%2C_China_%28ASTER%29.jpg/960px-Karst_Landscape%2C_China_%28ASTER%29.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">O</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Karst_Landscape%2C_China_%28ASTER%29.jpg/960px-Karst_Landscape%2C_China_%28ASTER%29.jpg" alt="Guangxi karst cave" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Karst_Landscape%2C_China_%28ASTER%29.jpg/960px-Karst_Landscape%2C_China_%28ASTER%29.jpg" alt="Guangxi karst cave" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Organismal &amp; Systems</span>
         
@@ -501,7 +511,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   data-topicname="Ecology &amp; Biodiversity" data-journal="Nature" data-date="Nov 18, 2026"
   data-report="reports/2026-11-20.html#p8" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Agrotis_infusa.jpg/960px-Agrotis_infusa.jpg">
   <summary>
-    <div class="thumb"><div class="ph" aria-hidden="true">E</div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Agrotis_infusa.jpg/960px-Agrotis_infusa.jpg" alt="Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008" loading="lazy" onerror="this.remove()" style="position:relative"></div>
+    <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Ecology &amp; Biodiversity</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Agrotis_infusa.jpg/960px-Agrotis_infusa.jpg" alt="Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
       <div class="kicker"><span class="topic">Ecology &amp; Biodiversity</span>
         

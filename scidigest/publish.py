@@ -63,6 +63,7 @@ def paper_json(e: dict) -> dict:
         },
         "featured_on": list(e.get("featured_on") or []),
         "image": s.get("image"),
+        "image_query": s.get("image_query", ""),
         "category": pick.get("topic"),
         "category_name": topic_name(pick.get("topic")),
         "editors_pick": bool(pick.get("editors_pick", True)),

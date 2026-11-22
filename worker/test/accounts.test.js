@@ -4,6 +4,8 @@ import assert from "node:assert/strict";
 import { handle } from "../src/index.js";
 import { readToken } from "../src/accounts.js";
 
+const OK = { terms: true, age16: true, version: "2026-11-22" };
+
 function memoryKV() {
   const m = new Map();
   return {
@@ -21,18 +23,20 @@ const call = (env, method, path, body, token, deps = {}) => handle(new Request("
 
 test("sign up, sync data, sign in elsewhere, recover password, delete", async () => {
   const kv = memoryKV(), env = { DATA: kv };
-  let r = await call(env, "POST", "/auth/signup", { email: " Student@Uni.edu ", password: "correct horse", data: { topics: ["physics"] } });
+  let r = await call(env, "POST", "/auth/signup", { email: " Student@Uni.edu ", password: "correct horse", data: { topics: ["physics"] }, consent: OK });
   assert.equal(r.status, 201);
   const s = await r.json();
   assert.match(s.recovery_code, /^[A-Z2-9]{4}(-[A-Z2-9]{4}){3}$/);
   assert.equal(s.account.email, "student@uni.edu");
   const stored = JSON.parse(kv.m.get("user:student@uni.edu"));
+  assert.equal(stored.consent.age16, true);
+  assert.equal(stored.consent.version, "2026-11-22");
   assert.ok(!JSON.stringify(stored).includes("correct horse"), "password never stored");
   assert.ok(!JSON.stringify(stored).includes(s.recovery_code.replace(/-/g, "")), "recovery code never stored");
 
-  assert.equal((await call(env, "POST", "/auth/signup", { email: "student@uni.edu", password: "another pw" })).status, 409);
-  assert.equal((await call(env, "POST", "/auth/signup", { email: "nope", password: "12345678" })).status, 400);
-  assert.equal((await call(env, "POST", "/auth/signup", { email: "a@b.co", password: "short" })).status, 400);
+  assert.equal((await call(env, "POST", "/auth/signup", { email: "student@uni.edu", password: "another pw", consent: OK })).status, 409);
+  assert.equal((await call(env, "POST", "/auth/signup", { email: "nope", password: "12345678", consent: OK })).status, 400);
+  assert.equal((await call(env, "POST", "/auth/signup", { email: "a@b.co", password: "short", consent: OK })).status, 400);
 
   r = await call(env, "PUT", "/me/data", { data: { topics: ["physics", "chemistry"], saved: { x: 1 } } }, s.token);
   assert.equal(r.status, 200);
@@ -64,7 +68,7 @@ test("sign up, sync data, sign in elsewhere, recover password, delete", async ()
 
 test("tokens expire", async () => {
   const kv = memoryKV();
-  const s = await (await call({ DATA: kv }, "POST", "/auth/signup", { email: "e@x.io", password: "12345678" })).json();
+  const s = await (await call({ DATA: kv }, "POST", "/auth/signup", { email: "e@x.io", password: "12345678", consent: OK })).json();
   await assert.rejects(readToken(kv, s.token, Date.now() + 91 * 86_400_000), /expired/);
 });
 
@@ -102,4 +106,14 @@ test("idea checks: cached repeats cost nothing; daily cap", async () => {
   assert.equal(r.status, 429);
   assert.match((await r.json()).error, /today's limit/);
   assert.equal(claudeCalls, 4);
+});
+
+
+test("sign-up requires accepting the terms and confirming age 16+", async () => {
+  const env = { DATA: memoryKV() };
+  for (const consent of [undefined, { terms: true }, { age16: true }, { terms: "yes", age16: true }]) {
+    const r = await call(env, "POST", "/auth/signup", { email: "kid@x.io", password: "12345678", consent });
+    assert.equal(r.status, 400);
+    assert.match((await r.json()).error, /16 or older/);
+  }
 });

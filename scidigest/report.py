@@ -16,6 +16,10 @@ from .citations import apa
 
 TEMPLATES = Path(__file__).parent / "templates"
 
+# Bump when the privacy policy or terms change; sign-ups record the version accepted.
+LEGAL_VERSION = "2026-11-22"
+LEGAL_UPDATED = "November 22, 2026"
+
 
 def build_entries(picks, summaries, free=None, featured=None):
     """Combine ranked articles, their summaries and free copies into report entries."""
@@ -149,9 +153,14 @@ def site_context(root: str, active: str = "home") -> dict:
     import os
     from .taxonomy import TOPICS, as_json
     from datetime import datetime, timezone
+    email = os.environ.get("SCIDIGEST_CONTACT_EMAIL", "").strip()
+    contact_url = f"mailto:{email}" if email else "https://github.com/fede4menti-dev/scidigest/issues/new"
     return dict(taxonomy=as_json(), topic_names={t: v["name"] for t, v in TOPICS.items()}, root=root,
                 active=active, idea_url=os.environ.get("SCIDIGEST_IDEA_URL", "").strip(),
-                build=datetime.now(timezone.utc).strftime("%b %d, %Y"))
+                build=datetime.now(timezone.utc).strftime("%b %d, %Y"),
+                operator=os.environ.get("SCIDIGEST_OPERATOR", "").strip() or "the SciDigest maintainer",
+                contact_url=contact_url, contact_label=email or "open an issue on GitHub",
+                legal_updated=LEGAL_UPDATED, legal_version=LEGAL_VERSION)
 
 
 def _context(digest: dict) -> dict:

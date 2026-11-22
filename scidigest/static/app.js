@@ -243,20 +243,38 @@
       var forgot = el("button", "linkbtn", "Forgot password?"); forgot.type = "button";
       forgot.onclick = function () { acctMode = "reset"; renderAccount(); }; form.appendChild(forgot);
     } else {
-      form.appendChild(el("p", "help", "Your settings, saved papers and idea checks on this device will be copied to the new account. Your password is stored only as a secure hash."));
+      var terms = consentBox("I agree to the ", [["Terms of Service", "terms.html"], [" and ", null], ["Privacy Policy", "privacy.html"]]);
+      var age = consentBox("I'm 16 or older", []);
+      form.insertBefore(terms.wrap, msg); form.insertBefore(age.wrap, msg);
+      form.appendChild(el("p", "help", "Your settings, saved papers and idea checks on this device will be copied to the new account. Your password is stored only as a secure hash. You can delete the account at any time."));
     }
     form.onsubmit = function (ev) {
       ev.preventDefault();
       if (!email.value || !pass.value) { show("Enter your email and password."); return; }
+      if (acctMode === "signup" && !(terms.input.checked && age.input.checked)) {
+        show("To create an account, please accept the Terms and Privacy Policy and confirm you're 16 or older."); return;
+      }
       submit.disabled = true;
       if (acctMode === "signup") {
-        api("/auth/signup", "POST", { email: email.value, password: pass.value, data: syncable() })
+        api("/auth/signup", "POST", { email: email.value, password: pass.value, data: syncable(),
+                                      consent: { terms: true, age16: true, version: C.legalVersion } })
           .then(function (r) { showCode(wrap, r, "Account created. You're signed in."); }, function (e) { show(e.message); submit.disabled = false; });
       } else {
         api("/auth/login", "POST", { email: email.value, password: pass.value })
           .then(function (r) { return signedIn(r, "Signed in. Your settings are synced."); }, function (e) { show(e.message); submit.disabled = false; });
       }
     };
+  }
+
+  function consentBox(text, links) {
+    var wrap = el("label", "consent"), input = el("input"); input.type = "checkbox"; input.required = true;
+    var span = el("span", null, text);
+    links.forEach(function (l) {
+      if (!l[1]) { span.appendChild(document.createTextNode(l[0])); return; }
+      var a = el("a", null, l[0]); a.href = ROOT + l[1]; a.target = "_blank"; a.rel = "noopener"; span.appendChild(a);
+    });
+    wrap.appendChild(input); wrap.appendChild(span);
+    return { wrap: wrap, input: input };
   }
 
   function showCode(wrap, result, message) {
@@ -389,7 +407,7 @@
   });
 
   // ------------------------------------------------------------- report pages
-  var main = $("main[data-report]");
+  var main = $("#report-body");
   if (main && S.topics.length) {
     var cards = $$("details.card", main);
     var mine = cards.filter(function (c) { return S.topics.indexOf(c.dataset.topic) >= 0; });
@@ -474,6 +492,17 @@
     },
   };
   document.dispatchEvent(new Event("scidigest:ready"));
+
+  // ------------------------------------------------------------- storage notice (first visit)
+  var NOTICE_KEY = "scidigest-notice";
+  if (!load(NOTICE_KEY) && C.page !== "legal") {
+    var n = el("div", "notice"); n.setAttribute("role", "region"); n.setAttribute("aria-label", "Privacy notice");
+    var t = el("p", null, "SciDigest uses no cookies, ads or tracking. Your settings are saved only on this device. ");
+    var more = el("a", null, "Learn more"); more.href = ROOT + "cookies.html"; t.appendChild(more);
+    var ok = el("button", null, "OK"); ok.type = "button";
+    ok.onclick = function () { save(NOTICE_KEY, 1); n.parentNode.removeChild(n); };
+    n.appendChild(t); n.appendChild(ok); document.body.appendChild(n);
+  }
 
   // ------------------------------------------------------------- flash + sync + offline
   var flash = ""; try { flash = sessionStorage.getItem(FLASH_KEY) || ""; sessionStorage.removeItem(FLASH_KEY); } catch (e) {}

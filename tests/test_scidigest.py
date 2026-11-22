@@ -95,7 +95,7 @@ def test_site_publish_json_contract(tmp_path):
     """Locks the JSON fields the iPhone app (Models.swift) decodes."""
     site = tmp_path / "site"
     main(["--no-ai", "--no-fulltext", "--no-crossref", "--feed-file", "Nature", str(FIX),
-          "--out", str(tmp_path / "r"), "--site", str(site)])
+          "--out", str(tmp_path / "r"), "--site", str(site), "--no-reviews"])
     idx = json.loads((site / "data" / "index.json").read_text())
     assert idx["format"] == 1 and len(idx["days"]) == 1
     day = idx["days"][0]
@@ -113,7 +113,7 @@ def test_site_publish_json_contract(tmp_path):
                       "category", "category_name", "editors_pick", "preprint"}
     assert "*" not in p["citation"] and isinstance(p["significance"], int)
     assert (site / "reports" / f"{day['date']}.html").exists() and (site / "index.html").exists()
-    assert "collects as little as possible" in (site / "privacy.html").read_text()
+    assert "never sell or share personal data" in (site / "privacy.html").read_text()
     # rerun same day: still one entry (idempotent)
     main(["--no-ai", "--no-fulltext", "--no-crossref", "--feed-file", "Nature", str(FIX),
           "--out", str(tmp_path / "r"), "--site", str(site)])
@@ -293,7 +293,7 @@ def test_site_settings_panel_and_home_screen_files(tmp_path):
         assert 'id="settings"' in html and "Save and refresh papers" in html and "data-open-settings" in html
         assert html.count('name="topic"') == 18 and "Mathematics &amp; Statistics" in html
         assert 'rel="manifest"' in html and "apple-touch-icon" in html
-    assert '<main data-report>' in (site / "reports" / "2026-11-18.html").read_text()
+    assert 'id="report-body"' in (site / "reports" / "2026-11-18.html").read_text()
     assert 'href="../index.html"' in (site / "reports" / "2026-11-18.html").read_text()
     for f in ("manifest.webmanifest", "apple-touch-icon.png", "icon-192.png", "icon-512.png"):
         assert (site / f).exists()
@@ -381,3 +381,30 @@ def test_search_saved_pages_and_offline_files(tmp_path):
     rep = (site / "reports" / "2026-11-18.html").read_text()
     assert 'data-act="save"' in rep and 'data-act="cite"' in rep and 'data-report="reports/2026-11-18.html#p1"' in rep
     assert 'src="../app.js"' in rep
+
+
+def test_legal_pages_footer_and_accessibility_markup(tmp_path, monkeypatch):
+    monkeypatch.setenv("SCIDIGEST_OPERATOR", "Test Operator")
+    monkeypatch.setenv("SCIDIGEST_CONTACT_EMAIL", "hello@example.org")
+    site = _run(tmp_path, "2026-11-18")
+    for name in ("privacy", "terms", "cookies", "credits"):
+        html = (site / f"{name}.html").read_text()
+        assert "Last updated" in html and 'id="main"' in html
+    assert "Test Operator" in (site / "privacy.html").read_text()
+    assert "mailto:hello@example.org" in (site / "terms.html").read_text()
+    terms = (site / "terms.html").read_text()
+    assert "not medical" in terms.lower() and "free" in terms.lower() and "16 or older" in terms
+    assert "sets no cookies" in (site / "cookies.html").read_text()
+    for page in ("index.html", "idea.html", "search.html", "saved.html", "reports/2026-11-18.html"):
+        html = (site / page).read_text()
+        assert html.count('id="main"') == 1 and 'class="skip"' in html and 'role="banner"' in html
+        assert 'href="' in html and "terms.html" in html and "cookies.html" in html and "credits.html" in html
+    rep = (site / "reports" / "2026-11-18.html").read_text()
+    assert 'aria-label="AI-estimated significance' in rep and '<h3 class="ct">' in rep
+    assert "Your question is sent to" in (site / "idea.html").read_text()
+
+
+def test_fallback_quotes_only_a_short_excerpt():
+    long = "First sentence here. Second sentence follows. Third one should not appear. " + "More text. " * 50
+    ex = ai.abstract_excerpt(long)
+    assert ex.startswith("“First sentence here. Second sentence follows.") and "Third" not in ex and len(ex) < 340

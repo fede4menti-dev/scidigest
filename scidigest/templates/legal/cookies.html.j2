@@ -1,0 +1,23 @@
+{% extends "_legal_base.html.j2" %}
+{% block title %}Cookies and Storage{% endblock %}
+{% block body %}
+<h1>Cookies and storage</h1>
+<p class="upd">Last updated {{ legal_updated }}</p>
+<p class="box"><strong>SciDigest sets no cookies</strong> and uses no tracking, advertising or analytics technology. It only stores what's needed to remember your own choices, on your own device. Because all of it is strictly necessary for features you use, no consent banner is required, but we tell you exactly what's stored below.</p>
+
+<h2>What's stored on your device</h2>
+<table>
+<tr><th>Name</th><th>Type</th><th>What it holds</th><th>Kept until</th></tr>
+<tr><td><code>scidigest-v1</code></td><td>Local storage</td><td>Your topics, appearance and reading settings, saved papers, reading history, recent idea checks</td><td>You clear it (Settings → Data and privacy) or clear browser data</td></tr>
+<tr><td><code>scidigest-account</code></td><td>Local storage</td><td>Only if you sign in: your email and a sign-in token</td><td>You sign out (or 90 days)</td></tr>
+<tr><td><code>scidigest-notice</code></td><td>Local storage</td><td>That you've seen the storage notice</td><td>You clear browser data</td></tr>
+<tr><td><code>scidigest-flash</code></td><td>Session storage</td><td>A one-off "Saved" message after reloading</td><td>Read once, then removed</td></tr>
+<tr><td><code>scidigest-v15</code></td><td>Offline cache (service worker)</td><td>Copies of pages you visited, so they work offline</td><td>The next app update, or clearing browser data</td></tr>
+</table>
+
+<h2>Third parties</h2>
+<p>Images on paper cards load from Wikimedia Commons or Europe PMC. Those requests are ordinary image downloads; SciDigest doesn't add tracking to them, but the providers see your IP address as with any website. Use <em>Settings → Reading → Data saver</em> to stop loading images. No other third-party content is loaded.</p>
+
+<h2>Removing it</h2>
+<p><em>Settings → Data and privacy → Reset everything on this device</em> removes all of the above, or clear site data in your browser settings.</p>
+{% endblock %}

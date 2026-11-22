@@ -104,10 +104,13 @@ async function saveUser(kv, user) {
 
 const publicView = (u) => ({ email: u.email, created: u.created, updated: u.updated, data: u.data || {} });
 
-export async function signup(kv, { email, password, data }) {
+export async function signup(kv, { email, password, data, consent }) {
   email = normEmail(email);
   checkEmail(email);
   checkPassword(password);
+  if (!consent || consent.terms !== true || consent.age16 !== true) {
+    throw new AccountError("Please accept the Terms and Privacy Policy and confirm you're 16 or older.");
+  }
   if (await loadUser(kv, email)) throw new AccountError("An account with this email already exists. Sign in instead.", 409);
   const salt = randomBytes(16);
   const code = recoveryCode();
@@ -117,6 +120,7 @@ export async function signup(kv, { email, password, data }) {
     hash: await pbkdf2(password, salt),
     recoveryHash: await pbkdf2(code.replace(/-/g, ""), salt),
     created: now, updated: now, data: limitData(data || {}),
+    consent: { version: String(consent.version || "").slice(0, 20), accepted_at: now, age16: true },
   };
   await saveUser(kv, user);
   return { token: await makeToken(kv, user), recovery_code: code, account: publicView(user) };

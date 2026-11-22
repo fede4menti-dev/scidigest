@@ -6,9 +6,9 @@
 <title>Daily Science Digest</title>
 <style>
 :root{
-  --bg:#edf1f5;--ink:#0f1419;--soft:#3f4a57;--muted:#6b7684;--line:rgba(15,23,42,.08);
-  --accent:#0d7a70;--accent-ink:#fff;--accent-bg:rgba(13,122,112,.12);
-  --warn:#a85a07;--warn-bg:rgba(245,158,11,.16);--ok:#15803d;--ok-bg:rgba(34,197,94,.15);--ph:rgba(15,23,42,.06);
+  --bg:#edf1f5;--ink:#0f1419;--soft:#3f4a57;--muted:#5e6977;--line:rgba(15,23,42,.08);
+  --accent:#0b6e65;--accent-ink:#fff;--accent-bg:rgba(13,122,112,.12);
+  --warn:#94500a;--warn-bg:rgba(245,158,11,.16);--ok:#11602f;--ok-bg:rgba(34,197,94,.15);--ph:rgba(15,23,42,.06);
   --glass:rgba(255,255,255,.55);--glass-strong:rgba(255,255,255,.82);--glass-border:rgba(255,255,255,.7);
   --glass-shadow:0 1px 0 rgba(255,255,255,.65) inset,0 10px 30px rgba(30,41,59,.08);
   --blur:saturate(180%) blur(22px);
@@ -45,7 +45,7 @@ body::before{content:"";position:fixed;inset:-10vmax;z-index:-1;pointer-events:n
   radial-gradient(40vmax 32vmax at 78% 96%,var(--glow3),transparent 70%),
   radial-gradient(34vmax 30vmax at 4% 88%,var(--glow4),transparent 70%)}
 a{color:var(--accent)}
-.glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow)}
+.glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn,.notice{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn{background:var(--glass-strong)}}
 .wrap{max-width:1080px;margin:0 auto;padding:16px 16px 110px}
@@ -140,6 +140,19 @@ dialog.mini .primary.danger{background:#dc2626;color:#fff;box-shadow:none}
 .toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);background:rgba(15,20,25,.82);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);color:#fff;padding:11px 16px;border-radius:14px;font-size:.9rem;box-shadow:var(--shadow);max-width:calc(100vw - 32px);z-index:10}
 @media (min-width:760px){.toast{bottom:28px}}
 .hidden{display:none!important}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.skip{position:absolute;left:12px;top:-60px;z-index:20;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;font-weight:600;text-decoration:none}
+.skip:focus{top:10px}
+.sitefoot{margin-top:40px;color:var(--muted);font-size:.82rem}
+.sitefoot nav{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:8px}
+.sitefoot a{color:var(--soft);text-decoration:none}.sitefoot a:hover{color:var(--ink);text-decoration:underline}
+.sitefoot p{margin:0;max-width:720px}
+.notice{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));z-index:9;width:min(560px,calc(100vw - 24px));display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:18px;font-size:.88rem;color:var(--ink)}
+.notice p{margin:0;flex:1}.notice a{font-weight:600}
+.notice button{flex:none;border:0;background:var(--accent);color:var(--accent-ink);padding:8px 14px;border-radius:12px;font:inherit;font-weight:600;cursor:pointer}
+@media (min-width:760px){.notice{bottom:24px}}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--soft)}
+.consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent);flex:none}
 </style>
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -184,8 +197,8 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .topic{color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
 .pill{padding:2px 8px;border-radius:999px;font-weight:600}
 .pill.pre{background:var(--warn-bg);color:var(--warn)}.pill.full{background:var(--ok-bg);color:var(--ok)}.pill.rep{background:var(--accent-bg);color:var(--accent)}
-.card h4{font-size:1.1rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.card.open h4{display:block;font-size:1.35rem}
+.card .ct{font-size:1.1rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card.open .ct{display:block;font-size:1.35rem}
 .lede{color:var(--soft);font-size:.93rem;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .meta{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.8rem;margin-top:12px}
 .dots{display:inline-flex;gap:2px}.dots i{width:5px;height:10px;border-radius:3px;background:var(--line)}.dots i.on{background:var(--accent)}
@@ -202,7 +215,7 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 sup a{text-decoration:none;font-size:.7rem}
 .refs-wrap{border-radius:22px;padding:6px 18px 10px;margin-top:8px}
 .refs{font-size:.85rem;color:var(--soft);padding-left:20px}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
-footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
+.ainote{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
 .act{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--ink);padding:8px 13px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:500;cursor:pointer}
 .act svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -215,7 +228,8 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </head>
 <body><div class="wrap">
 
-<div class="topbar">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar" role="banner">
   <a class="brand" href="../index.html"><img src="../apple-touch-icon.png" alt="">SciDigest</a>
   <nav class="navpill" aria-label="Main">
     
@@ -225,7 +239,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <a href="../idea.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
     <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
   </nav>
-</div>
+</header>
 <nav class="tabbar" aria-label="Main">
   
     <a href="../index.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>Home</a>
@@ -234,8 +248,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <a href="../idea.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
   <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
 </nav>
-<a class="back" href="../index.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All digests</a>
-<header>
+<nav aria-label="Breadcrumb"><a class="back" href="../index.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All digests</a></nav>
+<main id="main">
+<header class="page-head">
   <h1>Daily Science Digest</h1>
   <div class="sub">Saturday, November 21, 2026 · 39 papers chosen from 506 recent research articles in 38 journals</div>
   
@@ -258,7 +273,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 
 
 
-<main data-report>
+<div id="report-body">
   <h2 class="editors">Editor&#39;s picks</h2>
   <div class="grid editors-grid">
 <details class="card" id="p1" data-topic="clinical" data-editors="1" data-rank="1" data-score="9"
@@ -272,10 +287,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Two new four-drug tuberculosis combinations pass an early screening trial</h4>
+      <h3 class="ct">Two new four-drug tuberculosis combinations pass an early screening trial</h3>
       <p class="lede">Standard treatment for tuberculosis (TB) uses four drugs (isoniazid, rifampin, pyrazinamide and ethambutol, called HRZE) for 24 weeks.</p>
       <div class="meta"><span>The New England Journal of Medicine · Nov 19, 2026</span>
-        <span class="dots" title="Significance 9/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 9 out of 10" title="AI-estimated significance 9/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -307,10 +322,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Weekly semaglutide injections lowered BMI in children aged 6 to 11 with obesity</h4>
+      <h3 class="ct">Weekly semaglutide injections lowered BMI in children aged 6 to 11 with obesity</h3>
       <p class="lede">Semaglutide, a once-a-week injected drug, is already approved to treat obesity in teenagers and adults, but there has been little evidence on whether it works in younger children.</p>
       <div class="meta"><span>The New England Journal of Medicine · Nov 16, 2026</span>
-        <span class="dots" title="Significance 9/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 9 out of 10" title="AI-estimated significance 9/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -342,10 +357,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         <span class="pill full">Full text</span>
         </div>
-      <h4>Google quantum chip wins cooperation games beyond any classical strategy</h4>
+      <h3 class="ct">Google quantum chip wins cooperation games beyond any classical strategy</h3>
       <p class="lede">Can quantum effects let players coordinate better than any classical plan allows, even when they cannot talk to each other?</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 8 out of 10" title="AI-estimated significance 8/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -377,10 +392,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>A calcium catalyst shuttles fluoride ions to build fluorine-containing molecules</h4>
+      <h3 class="ct">A calcium catalyst shuttles fluoride ions to build fluorine-containing molecules</h3>
       <p class="lede">Many industrial catalysts rely on transition metals such as palladium, which work through well-understood steps where the metal grabs and releases molecular fragments.</p>
       <div class="meta"><span>Nature · Nov 19, 2026</span>
-        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 8 out of 10" title="AI-estimated significance 8/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -412,10 +427,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Astronomers weigh a distant black hole by watching gas swirl around it</h4>
+      <h3 class="ct">Astronomers weigh a distant black hole by watching gas swirl around it</h3>
       <p class="lede">Giant black holes at the centres of galaxies pull on the gas and stars close to them.</p>
       <div class="meta"><span>Science Advances · Nov 20, 2026</span>
-        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 8 out of 10" title="AI-estimated significance 8/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -447,10 +462,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>How a hormone and a pill-like drug switch on the same heart receptor differently</h4>
+      <h3 class="ct">How a hormone and a pill-like drug switch on the same heart receptor differently</h3>
       <p class="lede">RXFP1 is a receptor on cell surfaces that responds to relaxin, a natural hormone.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -482,10 +497,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>A clock-gene deletion helps heat-loving mosquitoes mate and carry more malaria</h4>
+      <h3 class="ct">A clock-gene deletion helps heat-loving mosquitoes mate and carry more malaria</h3>
       <p class="lede">Anopheles stephensi is a mosquito that spreads malaria and has recently spread into Africa, where it copes well with hot city conditions. The researchers wanted to know what genetic changes let it handle the heat.</p>
       <div class="meta"><span>Cell · Nov 19, 2026</span>
-        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 8 out of 10" title="AI-estimated significance 8/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -517,10 +532,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Glacial lakes explain only a small share of glacier loss worldwide</h4>
+      <h3 class="ct">Glacial lakes explain only a small share of glacier loss worldwide</h3>
       <p class="lede">When a glacier ends in a lake, the water can speed up melting and the breaking off of ice at the glacier&#39;s front.</p>
       <div class="meta"><span>Nature Climate Change · Nov 20, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -554,10 +569,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         <span class="pill full">Full text</span>
         </div>
-      <h4>Simulations show a &#39;lens&#39; trick could make light states with exactly 10,000+ photons</h4>
+      <h3 class="ct">Simulations show a &#39;lens&#39; trick could make light states with exactly 10,000+ photons</h3>
       <p class="lede">A Fock state is a state of light holding an exact, definite number of photons, unlike laser light, whose photon count fluctuates.</p>
       <div class="meta"><span>Physical Review Letters · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -589,10 +604,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         <span class="pill full">Full text</span>
         </div>
-      <h4>Magnetic reconnection may slow down as plasma systems get bigger</h4>
+      <h3 class="ct">Magnetic reconnection may slow down as plasma systems get bigger</h3>
       <p class="lede">Magnetic reconnection is the process in which magnetic field lines in a plasma (a hot gas of charged particles) break and re-join, suddenly releasing stored magnetic energy as particle motion; it powers solar flares and space…</p>
       <div class="meta"><span>Physical Review Letters · Nov 19, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -624,10 +639,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Tiny light-powered sensors wirelessly track heat inside running chemical reactions</h4>
+      <h3 class="ct">Tiny light-powered sensors wirelessly track heat inside running chemical reactions</h3>
       <p class="lede">Chemists often want to watch a reaction as it happens, but doing so usually requires specialized instruments, specially built reaction vessels, or pulling samples out of the mixture, which can disturb it.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -659,10 +674,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Ring-shaped porphyrin molecules carry an electron current around the whole belt</h4>
+      <h3 class="ct">Ring-shaped porphyrin molecules carry an electron current around the whole belt</h3>
       <p class="lede">Chemists are interested in molecular &#39;belts&#39;: closed loops of linked rings whose electron clouds point outward, like the staves of a barrel.</p>
       <div class="meta"><span>Nature Chemistry · Nov 20, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -694,10 +709,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>A lattice-math shortcut finds a hidden gamma-ray pulsar in hours, not centuries</h4>
+      <h3 class="ct">A lattice-math shortcut finds a hidden gamma-ray pulsar in hours, not centuries</h3>
       <p class="lede">Pulsars are rapidly spinning, collapsed stars that send out beams of radiation, and some can be detected through regular pulses of gamma rays.</p>
       <div class="meta"><span>Physical Review Letters · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -729,10 +744,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Part of the Milky Way&#39;s &#39;Norma arm&#39; may actually be the bar&#39;s shock front</h4>
+      <h3 class="ct">Part of the Milky Way&#39;s &#39;Norma arm&#39; may actually be the bar&#39;s shock front</h3>
       <p class="lede">Our galaxy is usually drawn with four main spiral arms and a central bar, an elongated structure made of stars whose size and speed are still argued over.</p>
       <div class="meta"><span>Nature Astronomy · Nov 20, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -764,10 +779,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Better internal contacts let thick solid-state lithium–sulfur battery electrodes hold more charge</h4>
+      <h3 class="ct">Better internal contacts let thick solid-state lithium–sulfur battery electrodes hold more charge</h3>
       <p class="lede">Lithium–sulfur batteries could store much more energy for their weight than today&#39;s lithium-ion cells, and making them &#34;all-solid-state&#34; (using a solid material instead of a liquid to carry lithium ions) could make them safer.</p>
       <div class="meta"><span>Nature Materials · Nov 20, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -799,10 +814,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>New zeolite catalysts combine tiny and larger pores to crack heavy oil better</h4>
+      <h3 class="ct">New zeolite catalysts combine tiny and larger pores to crack heavy oil better</h3>
       <p class="lede">Zeolites are crystalline minerals made of aluminium, silicon and oxygen, riddled with pores narrower than a nanometre.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -834,10 +849,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Light-patterned soft layers stack into stretchy, breathable skin electronics</h4>
+      <h3 class="ct">Light-patterned soft layers stack into stretchy, breathable skin electronics</h3>
       <p class="lede">Skin-like electronic devices often need several stacked layers of wiring, and those layers must be linked by tiny vertical connections called VIAs (vertical interconnect accesses) that pass through the insulating material between…</p>
       <div class="meta"><span>Science Advances · Nov 20, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -869,10 +884,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Tuning where acid sits inside hot-running fuel cells improves their output</h4>
+      <h3 class="ct">Tuning where acid sits inside hot-running fuel cells improves their output</h3>
       <p class="lede">High-temperature proton exchange membrane fuel cells use a polymer membrane soaked in phosphoric acid to carry protons (hydrogen ions) between electrodes.</p>
       <div class="meta"><span>Science Advances · Nov 20, 2026</span>
-        <span class="dots" title="Significance 5/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 5 out of 10" title="AI-estimated significance 5/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -904,10 +919,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>A soft, liquid-free rubber that carries ultrasound with little loss</h4>
+      <h3 class="ct">A soft, liquid-free rubber that carries ultrasound with little loss</h3>
       <p class="lede">Ultrasound scans need a soft layer between the probe and the skin so sound waves pass through without being lost.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -939,10 +954,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>An AI &#39;virtual scientist&#39; designs working RNA molecules from scratch</h4>
+      <h3 class="ct">An AI &#39;virtual scientist&#39; designs working RNA molecules from scratch</h3>
       <p class="lede">RNA molecules can do jobs beyond carrying genetic messages: some cut other RNA (ribozymes), some grip small molecules and light up (aptamers).</p>
       <div class="meta"><span>Nature Biotechnology · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -974,10 +989,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>A tug-of-war over unfinished RNA tunes mitochondria and brain development</h4>
+      <h3 class="ct">A tug-of-war over unfinished RNA tunes mitochondria and brain development</h3>
       <p class="lede">Before a gene&#39;s message can be used to make protein, the cell copies it into a precursor RNA (pre-mRNA) and then cuts out non-coding stretches called introns, a step known as splicing.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1009,10 +1024,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Lab-grown immune brain cells link disease gene variants to cell behaviour</h4>
+      <h3 class="ct">Lab-grown immune brain cells link disease gene variants to cell behaviour</h3>
       <p class="lede">Many DNA variants that raise the risk of neurodegenerative diseases such as Alzheimer&#39;s or Parkinson&#39;s are thought to act through microglia, the brain&#39;s resident immune cells.</p>
       <div class="meta"><span>Nature Genetics · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1044,10 +1059,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>RNA folding drives species-dependent host mRNA partitioning in Ebola virus condensates</h4>
+      <h3 class="ct">RNA folding drives species-dependent host mRNA partitioning in Ebola virus condensates</h3>
       <p class="lede">RNA viruses form membraneless condensates in host cells to drive replication, but whether these compartments regulate host RNAs remains unclear.</p>
       <div class="meta"><span>Cell · Nov 19, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1079,10 +1094,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>The low-pitch end of the inner ear does not follow the usual pitch map</h4>
+      <h3 class="ct">The low-pitch end of the inner ear does not follow the usual pitch map</h3>
       <p class="lede">Textbook hearing theory says each spot along the coiled cochlea (the snail-shaped hearing organ of the inner ear) responds most strongly to one particular pitch, so that pitch is laid out along the coil like keys on a piano.</p>
       <div class="meta"><span>Science Advances · Nov 20, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1114,10 +1129,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>A single block of genes turns would-be winged ant queens into wingless ones</h4>
+      <h3 class="ct">A single block of genes turns would-be winged ant queens into wingless ones</h3>
       <p class="lede">Ant colonies contain distinct body types, called castes, such as workers and queens, and some species have evolved entirely new castes. How these new forms arise genetically and during development has been unclear.</p>
       <div class="meta"><span>Science Advances · Nov 20, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1149,10 +1164,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Pooled studies suggest exposing frogs to chytrid fungus can protect them</h4>
+      <h3 class="ct">Pooled studies suggest exposing frogs to chytrid fungus can protect them</h3>
       <p class="lede">Chytrid fungus (Bd, short for Batrachochytrium dendrobatidis) is a skin pathogen that has caused severe declines in amphibians around the world.</p>
       <div class="meta"><span>Nature Ecology &amp; Evolution · Nov 20, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1184,10 +1199,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>85,000 virus genomes show who actually spread COVID, and where</h4>
+      <h3 class="ct">85,000 virus genomes show who actually spread COVID, and where</h3>
       <p class="lede">Researchers wanted to know how much SARS-CoV-2 actually spread inside particular places — schools, colleges, nursing homes — compared with the background risk of catching it anywhere in the community.</p>
       <div class="meta"><span>Cell · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1219,10 +1234,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Jumping-gene insertion cripples a key gene in a rare movement disorder</h4>
+      <h3 class="ct">Jumping-gene insertion cripples a key gene in a rare movement disorder</h3>
       <p class="lede">X-linked dystonia-parkinsonism (XDP) is a rare inherited brain disease found mainly in men, linked to a chunk of &#39;jumping DNA&#39; (an SVA retrotransposon, a repetitive sequence that copies itself around the genome) that landed…</p>
       <div class="meta"><span>Cell · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1254,10 +1269,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Vitamin B3 supplement failed to slow early Parkinson disease in large trial</h4>
+      <h3 class="ct">Vitamin B3 supplement failed to slow early Parkinson disease in large trial</h3>
       <p class="lede">Nicotinamide riboside is a form of vitamin B3 that the body converts into NAD, a molecule cells need to produce energy.</p>
       <div class="meta"><span>JAMA · Nov 17, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1289,10 +1304,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>A PEG substitute for mRNA nanoparticles shifts delivery away from the liver</h4>
+      <h3 class="ct">A PEG substitute for mRNA nanoparticles shifts delivery away from the liver</h3>
       <p class="lede">Lipid nanoparticles (LNPs) are the fatty bubbles that carry mRNA into cells, as in COVID-19 vaccines. To keep them stable in the bloodstream they usually include polyethylene glycol (PEG), a water-loving polymer.</p>
       <div class="meta"><span>Science Advances · Nov 20, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1324,10 +1339,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Psilocybin and ketamine make mice slower but more accurate decision-makers</h4>
+      <h3 class="ct">Psilocybin and ketamine make mice slower but more accurate decision-makers</h3>
       <p class="lede">Drugs like psilocybin (the active compound in &#39;magic mushrooms&#39;) and ketamine are being studied as fast-acting treatments for mental health conditions, but it is unclear how they change the way the brain makes choices.</p>
       <div class="meta"><span>Science Advances · Nov 20, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1359,10 +1374,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Brain ripples in the hippocampus grow while people hold images in short-term memory</h4>
+      <h3 class="ct">Brain ripples in the hippocampus grow while people hold images in short-term memory</h3>
       <p class="lede">The hippocampus, a seahorse-shaped structure deep in the brain, is best known for long-term memory.</p>
       <div class="meta"><span>eLife · Nov 20, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1394,10 +1409,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         <span class="pill full">Full text</span>
         </div>
-      <h4>Satellites catch an Ethiopian volcano releasing record amounts of methane without erupting</h4>
+      <h3 class="ct">Satellites catch an Ethiopian volcano releasing record amounts of methane without erupting</h3>
       <p class="lede">Volcanoes normally give off very little methane, yet magma pushing into carbon-rich sedimentary rock is thought to have released huge amounts of greenhouse gas during episodes of sudden climate change in Earth&#39;s past.</p>
       <div class="meta"><span>Nature Geoscience · Nov 19, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1429,10 +1444,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         <span class="pill full">Full text</span>
         </div>
-      <h4>Pacific low-oxygen zone barely changed through the last three ice ages</h4>
+      <h3 class="ct">Pacific low-oxygen zone barely changed through the last three ice ages</h3>
       <p class="lede">Off the Pacific coast of Central America lies an oxygen-deficient zone (ODZ), a mid-depth layer of seawater with almost no oxygen. In it, microbes strip usable nitrogen out of the ocean (denitrification).</p>
       <div class="meta"><span>Nature Geoscience · Nov 19, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1464,10 +1479,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>More realistic plankton in climate models predict a bigger drop in ocean carbon storage</h4>
+      <h3 class="ct">More realistic plankton in climate models predict a bigger drop in ocean carbon storage</h3>
       <p class="lede">The ocean&#39;s &#39;biological pump&#39; is the process by which tiny drifting organisms (plankton) take up carbon near the surface, and some of that carbon then sinks into the deep sea when they die or are eaten.</p>
       <div class="meta"><span>Nature Communications · Nov 21, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1499,10 +1514,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Cutting carbon helps health and nature but may not ease resource demands</h4>
+      <h3 class="ct">Cutting carbon helps health and nature but may not ease resource demands</h3>
       <p class="lede">This study asks what happens to the environment and to raw materials when the world follows different routes to deep decarbonization, meaning large cuts in the greenhouse gases released by energy and industry.</p>
       <div class="meta"><span>Nature Energy · Nov 20, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1534,10 +1549,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         <span class="pill full">Full text</span>
         </div>
-      <h4>Switching California homes from gas to electric pays off mainly where AC exists</h4>
+      <h3 class="ct">Switching California homes from gas to electric pays off mainly where AC exists</h3>
       <p class="lede">Replacing gas furnaces, water heaters and stoves with electric versions is central to climate plans, but California&#39;s electricity is expensive, so it is unclear whether households come out ahead.</p>
       <div class="meta"><span>Nature Energy · Nov 19, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1569,10 +1584,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Thin air on the Tibetan Plateau stops Varroa mites from breeding</h4>
+      <h3 class="ct">Thin air on the Tibetan Plateau stops Varroa mites from breeding</h3>
       <p class="lede">Varroa mites are tiny parasites that live on the outside of honey bees and are the most damaging pest beekeepers face, so most beekeepers must treat their hives with mite-killing chemicals again and again.</p>
       <div class="meta"><span>PLOS Biology · Nov 19, 2026</span>
-        <span class="dots" title="Significance 6/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 6 out of 10" title="AI-estimated significance 6/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1604,10 +1619,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Light-activated carbon dots made from plants target a major wheat fungus</h4>
+      <h3 class="ct">Light-activated carbon dots made from plants target a major wheat fungus</h3>
       <p class="lede">Fungi that attack crops cause large financial losses and threaten the world&#39;s food supply. One of the worst is Fusarium head blight, a fungal disease that infects the grain-bearing heads of wheat.</p>
       <div class="meta"><span>Nature Sustainability · Nov 20, 2026</span>
-        <span class="dots" title="Significance 5/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 5 out of 10" title="AI-estimated significance 5/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -1629,14 +1644,25 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </details>
 </div></section>
 
-</main>
+</div>
 <section>
   <h2>References</h2>
   <div class="glass refs-wrap">
   <ol class="refs"><li id="ref1" value="1">Esmail, H., Paton, N. I., Schildkraut, J. A., Motta, I., Szubert, A. J., Dufault, S. M., Heinrich, N., Tiberi, S., Kityo, C. M., McHugh, T. D., Ryklief, F., Cirillo, D. M., Dawson, R., Sanders, K., Mpagama, S., Thompson, L. C., Van, L. H., Wakerley, D., Tudor, E., ... Hoelscher, M. (2026). Assessing Multiple Treatment Regimens for Tuberculosis. <em>The New England Journal of Medicine</em>, NEJMoa2611913. https://doi.org/10.1056/NEJMoa2611913</li><li id="ref2" value="2">Jastreboff, A. M., Harder-Lauridsen, N. M., Name, M. V., Körner, A., Kelly, A. S., Weghuber, D., Holm, J., Frithioff-Bøjsøe, C., Middolu, S., Buch, T., &amp; Wabitsch, M. (2026). Semaglutide for the Treatment of Obesity in Children 6 to &lt;12 Years of Age. <em>The New England Journal of Medicine</em>, NEJMoa2604058. https://doi.org/10.1056/NEJMoa2604058</li><li id="ref3" value="3">Collaborators, G. Q. A. a., Kumar, S., Rosenberg, E., Dau, A. G., Cortiñas, R. G., Maslov, D., Oliver, R., Zalcman, A., Neeley, M., Pagano, A., Szasz, A., Drozdov, I., Minev, Z., Gidney, C., Yosri, N., Graaf, S. J. d., Maiti, A., Abanin, D., Acharya, R., ... Devoret, M. (2026). Quantum-classical separation in bounded-resource tasks arising from measurement contextuality. <em>Science</em>, 394(6826), 870-874. https://doi.org/10.1126/science.aec3042</li><li id="ref4" value="4">Struijs, J. J. C., Crumpton, A. E., Gouverneur, V., &amp; Aldridge, S. (2026). Calcium catalysed nucleophilic fluorination. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11445-z</li><li id="ref5" value="5">Liao, M., Assef, R. J., Tsai, C., Aravena, M., Aranda, R. F., Blain, A. W., Díaz-Santos, T., Eisenhardt, P., González-López, J., Jun, H. D., Li, X., Li, G., Martin, L. R., Posses, A., Shobhana, D., Solimano, M., Stern, D., Vayner, A., Wu, J., &amp; Zewdie, D. (2026). Resolving the black hole sphere of influence in a hyperluminous obscured quasar at redshift 4.6. <em>Science Advances</em>, 12(47), eaek9035. https://doi.org/10.1126/sciadv.aek9035</li><li id="ref6" value="6">Osei-Owusu, J., Girbau, T., Wang, X., Smith, J. S., Shen, P., Erlandson, S. C., Williamson, A. K., Cong, X., Grinstaff, M. W., Kahne, D. E., Bechara, C., &amp; Kruse, A. C. (2026). Divergent activation of the RXFP1 relaxin receptor by protein and small-molecule agonists. <em>Science</em>, 394(6826), eaei0135. https://doi.org/10.1126/science.aei0135</li><li id="ref7" value="7">Wang, G., Sun, P., Yang, B., Wang, Y., Zhou, T., Shi, Y., Fang, G., Li, F., Cai, W., Huang, W., Cui, C., Gao, H., Ye, R., Liu, Z., Wang, L., Liu, J., Zhan, S., &amp; Wang, S. (2026). A natural mutation of timeless enhances mosquito thermal adaptation and malaria parasite transmission. <em>Cell</em>. https://doi.org/10.1016/j.cell.2026.10.049</li><li id="ref8" value="8">Zhao, S., Zhang, G., Huss, M., Veh, G., Carrivick, J. L., Bolch, T., Rounce, D. R., Tang, Q., Bu, Y., Song, Y., Peng, M., Wang, X., Zeng, X., Huang, D., Zhu, M., Zhou, T., &amp; Cheng, J. (2026). Climate and glacier geometry dominate global glacier–lake interactions. <em>Nature Climate Change</em>. https://doi.org/10.1038/s41558-026-02808-5</li><li id="ref9" value="9">Li, M., Cai, W., Hua, Z., Xu, Y., Zhou, Y., Chen, Z., Zou, X., Guo, G., Sun, L., &amp; Zou, C. (2026). Scalable Generation of Macroscopic Fock States Exceeding 10,000 Photons. <em>Physical Review Letters</em>, 137(21), 213602. https://doi.org/10.1103/plv9-bn9t</li><li id="ref10" value="10">Lee, S., Weingarten, E. A., Reynolds, M. F., Sun, K., Cortese, A. J., Davies, H. M. L., Molnar, A. C., McEuen, P. L., &amp; Lin, S. (2026). Telemetric calorimetry for wireless continuous reaction profiling. <em>Science</em>, 394(6826), 875-883. https://doi.org/10.1126/science.aei7840</li><li id="ref11" value="11">Pook-Kolb, D., Gazith, D., Clark, C. J., Agrell, E., Zackay, B., &amp; Allen, B. (2026). Gamma-Ray Pulsar Discovery Using a Lattice-Based Method. <em>Physical Review Letters</em>, 137(21), 211201. https://doi.org/10.1103/vlt2-xzgk</li><li id="ref12" value="12">Cho, Y., Hao, H., Kim, M., King, M., Zhang, Z., Patil, S., Hwong, J., Liu, H., Zhang, D., Quan, Y., Zheng, X., Tzeng, Y., Shong, B., Watt, J., Abild-Pedersen, F., Chueh, W. C., Cui, Y., Bent, S. F., &amp; Nanda, J. (2026). High-loading all-solid-state lithium–sulfur batteries enabled by tailored sulfur–sulfide and sulfur–carbon interfaces. <em>Nature Materials</em>. https://doi.org/10.1038/s41563-026-02813-1</li><li id="ref13" value="13">Wang, S., Li, R., Tang, Z., Li, Y., Gong, C., Song, W. J., Lim, C. T., Chen, X., &amp; Zhao, X. (2026). Interpenetrating bottlebrush elastomer for low-loss soft ultrasonic interfaces. <em>Science</em>, 394(6826), 895-900. https://doi.org/10.1126/science.aef9553</li><li id="ref14" value="14">Huang, H., Zhang, T., Hong, L., Lin, Z., He, D., Wang, J., Wu, T., Li, H., Han, D., Yu, L., Jiang, J., Fan, Y., Shao, Y., King, I., Chen, P., Kwok, C. K., Collins, J. J., &amp; Li, Y. (2026). Programmable functional RNA design with a virtual scientist. <em>Nature Biotechnology</em>. https://doi.org/10.1038/s41587-026-03362-3</li><li id="ref15" value="15">Rambout, X., Nagao, R., Gu, V., Werner, S., Youngyunpipatkul, J., Schlierf, J., Pröschel, C., &amp; Maquat, L. E. (2026). The fate of poised pre-mRNAs shapes mitochondrial activity and cellular differentiation. <em>Science</em>, 394(6826), eaee8018. https://doi.org/10.1126/science.aee8018</li><li id="ref16" value="16">Tracing genetic risk of neurodegenerative disease through variants affecting microglial function. (2026). <em>Nature Genetics</em>. https://doi.org/10.1038/s41588-026-02839-w</li><li id="ref17" value="17">Moreno, G. K., Brock-Fisher, T., Krasilnikova, L. A., Schaffner, S. F., Burns, M., Casiello, C. E., Messer, K. S., Petros, B., Specht, I., DeRuff, K. C., Siddle, K. J., Loreth, C., Fitzgerald, N. A., Rooke, H. M., Gabriel, S. B., Smole, S., Wohl, S., Park, D. J., Madoff, L. C., ... Sabeti, P. C. (2026). Genomic surveillance reveals age-structured SARS-CoV-2 transmission across settings. <em>Cell</em>. https://doi.org/10.1016/j.cell.2026.10.051</li><li id="ref18" value="18">Zhang, W., Zhao, Y., Prakash, P., Appleby, H., Barriball, K., Capponi, S., Jiang, Q., Wudzinska, A. M., Westerdahl, J. R., Maza, A. M., Mangiameli, K., Vaine, C. A., Ellis, G., Rahman, N., Markovic, S., Mishkit, O., Limberg, K. C., Maurano, M. T., Wadghiri, Y. Z., ... Boeke, J. D. (2026). Genome writing reveals SVA retrotransposon consequences in X-linked dystonia-parkinsonism. <em>Cell</em>. https://doi.org/10.1016/j.cell.2026.07.057</li><li id="ref19" value="19">Brakedal, B., Skeie, G. O., Derad, C., Alstadhaug, K. B., Anundskås, I., Berven, H., Biermann, M., Bjørnarå, K. A., Cleuren, Y. N. T., Dalbro, S. E. J., Eidelberg, D., Foldnes, K., Fortes, G., Haugarvoll, K., Herlofson, K., Hustad, E., HogenEsch, R. I., Johanson, G. A. S., Johnsen, S. H., ... Tzoulis, C. (2026). Nicotinamide Riboside for Patients With Early-Stage Parkinson Disease. <em>JAMA</em>, 336(19), 1723. https://doi.org/10.1001/jama.2026.18828</li><li id="ref20" value="20">Huang, Y., Bessho, N., Chen, L., Karpen, J. T., &amp; Bhattacharjee, A. (2026). System Size Dependence of Collisionless Reconnection Rate. <em>Physical Review Letters</em>, 137(21), 215201. https://doi.org/10.1103/xpsr-4hqn</li><li id="ref21" value="21">Goh, L. S. L., Gödde, L. A., Cheung, K. M., Gupta, P., Rodríguez-Rubio, A., &amp; Anderson, H. L. (2026). Globally antiaromatic anthracene–porphyrin nanobelts. <em>Nature Chemistry</em>. https://doi.org/10.1038/s41557-026-02302-7</li><li id="ref22" value="22">Davis, H., Bland-Hawthorn, J., Tepper-García, T., Agertz, O., &amp; Iles, E. J. (2026). The nature of the Norma arm as a bar-driven star-forming shock front. <em>Nature Astronomy</em>. https://doi.org/10.1038/s41550-026-03010-5</li><li id="ref23" value="23">Zhang, Z., Sun, J., Ma, C., Tian, X., Luo, M., Jiang, Q., Han, L., Lin, C., Song, H., Xu, L., Lin, W., &amp; Li, J. (2026). Meso–microporous zeolitic materials with thin walls containing ordered 10-ring channels. <em>Science</em>, 394(6826), 907-912. https://doi.org/10.1126/science.aei6161</li><li id="ref24" value="24">Xie, X., Ju, G., Luo, X., Feng, S., Li, H., Zhang, Y., &amp; Feng, W. (2026). Monolithic tiered microlithography for stretchable multilayer electronics with high-density, soft, and ultrathin VIAs. <em>Science Advances</em>, 12(47), eaei9286. https://doi.org/10.1126/sciadv.aei9286</li><li id="ref25" value="25">Fang, J., Lam, D. C., Mah, C. K., Watanabe, R., Tanner, H. M., Comi, T., Cai, Y., Chen, C., Velthuis, A. J. W. t., Brangwynne, C. P., Yeo, G. W., &amp; Saphire, E. O. (2026). RNA folding drives species-dependent host mRNA partitioning in Ebola virus condensates. <em>Cell</em>. https://doi.org/10.1016/j.cell.2026.10.047</li><li id="ref26" value="26">Burwood, G. W. S., Hakizimana, P., Grosh, K., Zaidi, W., Wang, R. K., Nuttall, A. L., &amp; Fridberger, A. (2026). Denoised vibrometry reveals noncanonical filtering at the apex of the cochlea. <em>Science Advances</em>, 12(47), eaei4634. https://doi.org/10.1126/sciadv.aei4634</li><li id="ref27" value="27">Arsenault, S. V., Bienvenu, G., Daly, C. M., &amp; Trible, W. (2026). A supergene converts queen-destined larvae into a novel caste in ants. <em>Science Advances</em>, 12(47), eaei5142. https://doi.org/10.1126/sciadv.aei5142</li><li id="ref28" value="28">Chung, M. J., Duncan, R. P., Noble, D. W. A., Scheele, B. C., &amp; Clulow, S. (2026). Meta-analysis shows that immunization reduces amphibian susceptibility to the chytrid fungus. <em>Nature Ecology &amp; Evolution</em>. https://doi.org/10.1038/s41559-026-03221-z</li><li id="ref29" value="29">Basham, C., Haney, M., Zhao, Y., Hutsell, H., Kornahrens, R., Palchak, L., Lukyanov, K. A., Kim, K., Baysal, A., Brown, M. C., Kabanov, A. V., &amp; Ramsey, J. D. (2026). PEG-free tunable poly(2-oxazoline) lipids modulate mRNA-LNP biodistribution and expression in vivo. <em>Science Advances</em>, 12(47), eaeg5378. https://doi.org/10.1126/sciadv.aeg5378</li><li id="ref30" value="30">Delgado-Sallent, C., Ahmed, S. A., Khawaja-Lopez, A., Lee, B. S., Mishra, U., Senne, R. A., Ramirez, S., &amp; Scott, B. B. (2026). Psychedelics shift decision strategies and reconfigure orbitofrontal dynamics. <em>Science Advances</em>, 12(47), eaeb3041. https://doi.org/10.1126/sciadv.aeb3041</li><li id="ref31" value="31">Yang, C., Xue, G., Liu, J., Axmacher, N., Zhang, S., He, X., &amp; Cai, Y. (2026). Ramping-up hippocampal ripples and their neocortical coupling support human visual short-term memory. eLife. https://doi.org/10.7554/<em>eLife</em>.111304</li><li id="ref32" value="32">Dualeh, E. W., Biggs, J., Sharma, S., Stix, J., Hutchison, W., Etiope, G., Jervis, D., Way, L., Dogniaux, M., Maasakkers, J. D., Aveni, S., Cusworth, D., Ireland, B., Grandin, R., Girard, M., Ramier, A., Zheng, W., Davis, T., Howell, K., ... Lewi, E. (2026). Methane outburst driven by magma–sediment interactions at Fentale Volcano detected by satellite. <em>Nature Geoscience</em>. https://doi.org/10.1038/s41561-026-02137-4</li><li id="ref33" value="33">Lacerra, M. L., Villacorta, S., Akiba, S., Farmer, J. R., Wang, X. T., Oleynik, S., Studer, A. S., Martínez-García, A., Haug, G. H., &amp; Sigman, D. M. (2026). Insensitivity of the North Pacific oxygen-deficient zone to recent ice age cycle climate changes. <em>Nature Geoscience</em>. https://doi.org/10.1038/s41561-026-02143-6</li><li id="ref34" value="34">Lin, F., Le, C., Chen, Y., Negrete-García, G., Luo, J. Y., Henson, S., &amp; Dutkiewicz, S. (2026). Plankton ecological complexity amplifies climate-driven weakening of the ocean biological pump. <em>Nature Communications</em>. https://doi.org/10.1038/s41467-026-79817-7</li><li id="ref35" value="35">Menacho, A. J. H., Bantje, D., Bauer, C., Bauer, N., Daioglou, V., Krey, V., Luderer, G., Maczek, F., McKenna, R., &amp; Sacchi, R. (2026). Environmental and material implications of global climate mitigation pathways. <em>Nature Energy</em>. https://doi.org/10.1038/s41560-026-02171-x</li><li id="ref36" value="36">Montañés, C. C., Elmallah, S., &amp; Callaway, D. (2026). Exploring the distributional implications of targeted residential electrification in California. <em>Nature Energy</em>. https://doi.org/10.1038/s41560-026-02155-x</li><li id="ref37" value="37">Wei, R., Yang, S., Chen, X., Lu, Y., Liu, Y., Hu, F., Martin, S. J., Zha, L., &amp; Zheng, H. (2026). Altitude-induced hypoxia suppresses Varroa mite reproduction in Tibetan honey bees. <em>PLOS Biology</em>. https://doi.org/10.1371/journal.pbio.3004091</li><li id="ref38" value="38">Lin, J., Chen, Y., Hu, J., Xu, M., Liu, D., Peng, J., &amp; Wang, L. (2026). A membrane-guided strategy for optimizing proton exchange membrane fuel cells via spatially controlled acid distribution. <em>Science Advances</em>, 12(47), eaed2935. https://doi.org/10.1126/sciadv.aed2935</li><li id="ref39" value="39">Zhu, Y., Zhao, W., Li, B., Liu, K., Chi, Q., Xu, H., Guan, P., Sun, H., Zhang, S., Cui, D., Yu, B., Wang, E., Wang, Y., Zhan, J., Ma, R., Jiao, Z., &amp; Shan, C. (2026). Plant-derived photocatalytic carbon dots for crop disease management. <em>Nature Sustainability</em>. https://doi.org/10.1038/s41893-026-01978-6</li></ol>
   </div>
 </section>
-<footer>Summaries are paraphrased by AI from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</footer>
+<p class="ainote">Summaries are paraphrased by AI from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</p>
+</main>
+<footer class="sitefoot" role="contentinfo">
+  <nav aria-label="Legal and information">
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../cookies.html">Cookies &amp; storage</a>
+    <a href="../credits.html">Credits &amp; licenses</a>
+    <a href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Contact</a>
+  </nav>
+  <p>SciDigest is free: no ads, no tracking, no paid features. Summaries are written by AI and can contain mistakes; always check the original paper. Not medical advice.</p>
+</footer>
 </div>
 
 <dialog class="settings" id="settings" aria-labelledby="settings-title">
@@ -1741,15 +1767,18 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
           <button type="button" class="listbtn" id="clear-history">Clear reading history and saved papers</button>
           <button type="button" class="listbtn danger" id="reset-all">Reset everything on this device</button>
           <a class="listbtn" href="../privacy.html">Privacy policy</a>
+          <a class="listbtn" href="../terms.html">Terms of service</a>
+          <a class="listbtn" href="../cookies.html">Cookies and storage</a>
+          <a class="listbtn" href="../credits.html">Credits and licenses</a>
         </div>
       </section>
 
       <section aria-labelledby="s-about">
         <h3 id="s-about">About</h3>
         <p class="help" style="margin-top:0"><strong>SciDigest</strong> picks the most important new research each day from about 40 journals (Nature, Science, Cell, NEJM, The Lancet and more) and arXiv preprints, and explains it for science students. Summaries are written by AI from abstracts and open-access papers, and every paper links to its source.</p>
-        <p class="help">Version 1.4 · Updated Nov 21, 2026</p>
+        <p class="help">Version 1.4 · Updated Nov 22, 2026</p>
         <div class="btnlist" style="margin-top:12px">
-          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Send feedback or report a problem</a>
+          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Contact, feedback or report a problem</a>
           <button type="button" class="listbtn" id="install-help">Add SciDigest to your home screen</button>
         </div>
       </section>
@@ -1757,7 +1786,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <footer><button type="button" class="secondary" data-close>Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
   </div>
 </dialog>
-<script>window.SCIDIGEST={"build": "Nov 21, 2026", "ideaUrl": "", "page": "report", "root": "../", "topics": {"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"}};</script>
+<script>window.SCIDIGEST={"build": "Nov 22, 2026", "ideaUrl": "", "legalVersion": "2026-11-22", "page": "report", "root": "../", "topics": {"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"}};</script>
 <script src="../app.js" defer></script>
 <script>
 document.querySelectorAll("details.card").forEach(function(d){d.addEventListener("toggle",function(){d.classList.toggle("open",d.open)})});

@@ -25,6 +25,21 @@ def client() -> anthropic.Anthropic:
     return _client
 
 
+def abstract_excerpt(text: str, limit: int = 320) -> str:
+    """At most the first two sentences of an abstract (a short quote, not a republication), in quotes."""
+    text = (text or "").strip()
+    if not text:
+        return "(No abstract available.)"
+    import re as _re
+    sentences = _re.split(r"(?<=[.!?])\s+", text)
+    out = " ".join(sentences[:2])
+    if len(out) > limit:
+        out = out[:limit].rsplit(" ", 1)[0] + "…"
+    elif len(sentences) > 2:
+        out += " …"
+    return f"“{out}”"
+
+
 # ------------------------------------------------------------ spending guard
 # Claude Opus 5.5 list prices, USD per million tokens (thinking is billed as output).
 PRICE_IN, PRICE_OUT = 4.00, 20.00
@@ -372,9 +387,9 @@ def summarize_many(jobs: list[tuple[Article, str, str]], workers: int = 4, **kw)
         except Exception as exc:  # keep the rest of the report
             print(f"  ! summary failed for '{article.title[:60]}': {exc}")
             return {"headline": article.title,
-                    "summary": article.abstract or "(No abstract available.)",
-                    "why_it_matters": "A plain-language summary could not be generated for this paper today; "
-                                      "the text above is the publisher's abstract.",
+                    "summary": abstract_excerpt(article.abstract),
+                    "why_it_matters": "A plain-language summary couldn't be written for this paper today. Above is a "
+                                      "short excerpt of the publisher's abstract; read the full paper via the link below.",
                     "key_terms": [], "limitations": "", "based_on": "abstract (not paraphrased)",
                     "figure_index": -1, "figure_caption": "", "image_query": ""}
 

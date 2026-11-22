@@ -6,9 +6,9 @@
 <title>Search · SciDigest</title>
 <style>
 :root{
-  --bg:#edf1f5;--ink:#0f1419;--soft:#3f4a57;--muted:#6b7684;--line:rgba(15,23,42,.08);
-  --accent:#0d7a70;--accent-ink:#fff;--accent-bg:rgba(13,122,112,.12);
-  --warn:#a85a07;--warn-bg:rgba(245,158,11,.16);--ok:#15803d;--ok-bg:rgba(34,197,94,.15);--ph:rgba(15,23,42,.06);
+  --bg:#edf1f5;--ink:#0f1419;--soft:#3f4a57;--muted:#5e6977;--line:rgba(15,23,42,.08);
+  --accent:#0b6e65;--accent-ink:#fff;--accent-bg:rgba(13,122,112,.12);
+  --warn:#94500a;--warn-bg:rgba(245,158,11,.16);--ok:#11602f;--ok-bg:rgba(34,197,94,.15);--ph:rgba(15,23,42,.06);
   --glass:rgba(255,255,255,.55);--glass-strong:rgba(255,255,255,.82);--glass-border:rgba(255,255,255,.7);
   --glass-shadow:0 1px 0 rgba(255,255,255,.65) inset,0 10px 30px rgba(30,41,59,.08);
   --blur:saturate(180%) blur(22px);
@@ -45,7 +45,7 @@ body::before{content:"";position:fixed;inset:-10vmax;z-index:-1;pointer-events:n
   radial-gradient(40vmax 32vmax at 78% 96%,var(--glow3),transparent 70%),
   radial-gradient(34vmax 30vmax at 4% 88%,var(--glow4),transparent 70%)}
 a{color:var(--accent)}
-.glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow)}
+.glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn,.notice{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn{background:var(--glass-strong)}}
 .wrap{max-width:1080px;margin:0 auto;padding:16px 16px 110px}
@@ -140,6 +140,19 @@ dialog.mini .primary.danger{background:#dc2626;color:#fff;box-shadow:none}
 .toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);background:rgba(15,20,25,.82);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);color:#fff;padding:11px 16px;border-radius:14px;font-size:.9rem;box-shadow:var(--shadow);max-width:calc(100vw - 32px);z-index:10}
 @media (min-width:760px){.toast{bottom:28px}}
 .hidden{display:none!important}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.skip{position:absolute;left:12px;top:-60px;z-index:20;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;font-weight:600;text-decoration:none}
+.skip:focus{top:10px}
+.sitefoot{margin-top:40px;color:var(--muted);font-size:.82rem}
+.sitefoot nav{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:8px}
+.sitefoot a{color:var(--soft);text-decoration:none}.sitefoot a:hover{color:var(--ink);text-decoration:underline}
+.sitefoot p{margin:0;max-width:720px}
+.notice{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));z-index:9;width:min(560px,calc(100vw - 24px));display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:18px;font-size:.88rem;color:var(--ink)}
+.notice p{margin:0;flex:1}.notice a{font-weight:600}
+.notice button{flex:none;border:0;background:var(--accent);color:var(--accent-ink);padding:8px 14px;border-radius:12px;font:inherit;font-weight:600;cursor:pointer}
+@media (min-width:760px){.notice{bottom:24px}}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--soft)}
+.consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent);flex:none}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -181,7 +194,8 @@ mark{background:var(--accent-bg);color:inherit;border-radius:3px;padding:0 1px}
 <body><div class="wrap">
 
 
-<div class="topbar">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar" role="banner">
   <a class="brand" href="index.html"><img src="apple-touch-icon.png" alt="">SciDigest</a>
   <nav class="navpill" aria-label="Main">
     
@@ -191,7 +205,7 @@ mark{background:var(--accent-bg);color:inherit;border-radius:3px;padding:0 1px}
     <a href="idea.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
     <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
   </nav>
-</div>
+</header>
 <nav class="tabbar" aria-label="Main">
   
     <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>Home</a>
@@ -201,6 +215,7 @@ mark{background:var(--accent-bg);color:inherit;border-radius:3px;padding:0 1px}
   <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
 </nav>
 
+<main id="main">
 <h1>Search</h1>
 <p class="lead">Find any paper from every daily digest so far.</p>
 <div class="glass searchbox" role="search">
@@ -210,6 +225,17 @@ mark{background:var(--accent-bg);color:inherit;border-radius:3px;padding:0 1px}
 </div>
 <div class="count" id="count" aria-live="polite"></div>
 <div class="items" id="items"></div>
+</main>
+<footer class="sitefoot" role="contentinfo">
+  <nav aria-label="Legal and information">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="cookies.html">Cookies &amp; storage</a>
+    <a href="credits.html">Credits &amp; licenses</a>
+    <a href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Contact</a>
+  </nav>
+  <p>SciDigest is free: no ads, no tracking, no paid features. Summaries are written by AI and can contain mistakes; always check the original paper. Not medical advice.</p>
+</footer>
 </div>
 
 <dialog class="settings" id="settings" aria-labelledby="settings-title">
@@ -314,15 +340,18 @@ mark{background:var(--accent-bg);color:inherit;border-radius:3px;padding:0 1px}
           <button type="button" class="listbtn" id="clear-history">Clear reading history and saved papers</button>
           <button type="button" class="listbtn danger" id="reset-all">Reset everything on this device</button>
           <a class="listbtn" href="privacy.html">Privacy policy</a>
+          <a class="listbtn" href="terms.html">Terms of service</a>
+          <a class="listbtn" href="cookies.html">Cookies and storage</a>
+          <a class="listbtn" href="credits.html">Credits and licenses</a>
         </div>
       </section>
 
       <section aria-labelledby="s-about">
         <h3 id="s-about">About</h3>
         <p class="help" style="margin-top:0"><strong>SciDigest</strong> picks the most important new research each day from about 40 journals (Nature, Science, Cell, NEJM, The Lancet and more) and arXiv preprints, and explains it for science students. Summaries are written by AI from abstracts and open-access papers, and every paper links to its source.</p>
-        <p class="help">Version 1.4 · Updated Nov 21, 2026</p>
+        <p class="help">Version 1.4 · Updated Nov 22, 2026</p>
         <div class="btnlist" style="margin-top:12px">
-          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Send feedback or report a problem</a>
+          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Contact, feedback or report a problem</a>
           <button type="button" class="listbtn" id="install-help">Add SciDigest to your home screen</button>
         </div>
       </section>
@@ -330,7 +359,7 @@ mark{background:var(--accent-bg);color:inherit;border-radius:3px;padding:0 1px}
     <footer><button type="button" class="secondary" data-close>Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
   </div>
 </dialog>
-<script>window.SCIDIGEST={"build": "Nov 21, 2026", "ideaUrl": "", "page": "search", "root": "", "topics": {"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"}};</script>
+<script>window.SCIDIGEST={"build": "Nov 22, 2026", "ideaUrl": "", "legalVersion": "2026-11-22", "page": "search", "root": "", "topics": {"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"}};</script>
 <script src="app.js" defer></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -353,7 +382,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     hits.slice(0, 120).forEach(function (p) {
       var a = el("a", "glass item"); a.href = root + p.r;
-      var im = el("div", "im", p.tn ? p.tn[0] : ""); if (p.img) im.style.backgroundImage = "url(\"" + p.img.replace(/"/g, "") + "\")";
+      var im = el("div", "im", p.tn ? p.tn[0] : ""); im.setAttribute("aria-hidden", "true"); if (p.img) im.style.backgroundImage = "url(\"" + p.img.replace(/"/g, "") + "\")";
       var tx = el("div", "tx"); tx.appendChild(el("div", "tp", p.tn || "")); tx.appendChild(el("div", "hd", p.h));
       tx.appendChild(el("div", "m", p.j + " · " + p.d)); tx.appendChild(el("div", "ln", p.i));
       a.appendChild(im); a.appendChild(tx); list.appendChild(a);

@@ -37,8 +37,8 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .topic{color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
 .pill{padding:2px 8px;border-radius:999px;font-weight:600}
 .pill.pre{background:var(--warn-bg);color:var(--warn)}.pill.full{background:var(--ok-bg);color:var(--ok)}.pill.rep{background:var(--accent-bg);color:var(--accent)}
-.card h4{font-size:1.1rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.card.open h4{display:block;font-size:1.35rem}
+.card .ct{font-size:1.1rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card.open .ct{display:block;font-size:1.35rem}
 .lede{color:var(--soft);font-size:.93rem;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .meta{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.8rem;margin-top:12px}
 .dots{display:inline-flex;gap:2px}.dots i{width:5px;height:10px;border-radius:3px;background:var(--line)}.dots i.on{background:var(--accent)}
@@ -55,7 +55,7 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 sup a{text-decoration:none;font-size:.7rem}
 .refs-wrap{border-radius:22px;padding:6px 18px 10px;margin-top:8px}
 .refs{font-size:.85rem;color:var(--soft);padding-left:20px}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
-footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
+.ainote{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
 .act{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--ink);padding:8px 13px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:500;cursor:pointer}
 .act svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -68,7 +68,8 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </head>
 <body><div class="wrap">
 {% include "_topbar.html.j2" %}
-<header>
+<main id="main">
+<header class="page-head">
   <h1>{{ title }}</h1>
   <div class="sub">{{ subtitle }}</div>
   {% if intro %}<p class="intro">{{ intro }}</p>{% endif %}
@@ -96,10 +97,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         {% if e.preprint %}<span class="pill pre">Preprint</span>{% endif %}
         {% if e.s.based_on == "full text" %}<span class="pill full">Full text</span>{% endif %}
         {% if e.featured_label and not is_review %}<span class="pill rep">Featured before</span>{% endif %}</div>
-      <h4>{{ e.s.headline }}</h4>
+      <h3 class="ct">{{ e.s.headline }}</h3>
       <p class="lede">{{ e.intro }}</p>
       <div class="meta"><span>{{ e.article.journal }} · {{ e.published_label|replace("Published ", "") }}</span>
-        <span class="dots" title="Significance {{ e.pick.score }}/10">{% for i in range(10) %}<i class="{{ 'on' if i < e.pick.score }}"></i>{% endfor %}</span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance {{ e.pick.score }} out of 10" title="AI-estimated significance {{ e.pick.score }}/10">{% for i in range(10) %}<i class="{{ 'on' if i < e.pick.score }}" aria-hidden="true"></i>{% endfor %}</span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -121,20 +122,22 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </details>
 {% endmacro %}
 
-<main data-report>
+<div id="report-body">
   {% if editors %}<h2 class="editors">{{ "Top papers" if is_review else "Editor's picks" }}</h2>
   <div class="grid editors-grid">{% for e in editors %}{{ card(e) }}{% endfor %}</div>{% endif %}
   {% if by_topic %}<h2 class="by-topic">More by topic</h2>
   {% for name, items in by_topic %}<section class="topic-section"><h3>{{ name }}</h3><div class="grid">{% for e in items %}{{ card(e) }}{% endfor %}</div></section>{% endfor %}{% endif %}
 
-</main>
+</div>
 <section>
   <h2>References</h2>
   <div class="glass refs-wrap">
   <ol class="refs">{% for e in entries %}<li id="ref{{ e.n }}" value="{{ e.n }}">{{ e.citation|md_italics }}</li>{% endfor %}</ol>
   </div>
 </section>
-<footer>Summaries are paraphrased{% if ai %} by AI{% endif %} from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</footer>
+<p class="ainote">Summaries are paraphrased{% if ai %} by AI{% endif %} from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</p>
+</main>
+{% include "_footer.html.j2" %}
 </div>
 {% include "_settings.html.j2" %}
 <script>

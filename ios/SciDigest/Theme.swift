@@ -62,6 +62,6 @@ struct SignificanceMeter: View {
             }
         }
         .accessibilityElement()
-        .accessibilityLabel("Significance \(score) out of 10")
+        .accessibilityLabel("AI-estimated significance \(score) out of 10")
     }
 }

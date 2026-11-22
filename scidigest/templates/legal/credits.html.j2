@@ -1,0 +1,27 @@
+{% extends "_legal_base.html.j2" %}
+{% block title %}Credits and Licenses{% endblock %}
+{% block body %}
+<h1>Credits and licenses</h1>
+<p class="upd">Last updated {{ legal_updated }}</p>
+
+<h2>Research content</h2>
+<ul>
+<li><strong>Papers</strong> are found through the public RSS feeds of about 40 journals (Nature and Science families, Cell, PNAS, NEJM, The Lancet, JAMA, The BMJ, Physical Review Letters, PLOS, eLife and others) and arXiv. Every paper links to its original and is cited in APA style. Copyright in papers remains with their authors and publishers; SciDigest shows its own plain-language summaries and at most short quoted excerpts.</li>
+<li><strong>Metadata</strong> comes from Crossref, OpenAlex (CC0) and Europe PMC; arXiv metadata is used under arXiv's terms. Free full texts are found through Europe PMC and Unpaywall.</li>
+<li><strong>Summaries, picks and significance scores</strong> are generated with Anthropic's Claude.</li>
+</ul>
+
+<h2>Images</h2>
+<ul>
+<li><strong>Figures from papers</strong> are only used when the paper is open access under CC BY, CC BY-SA or CC0. Each is credited ("Fig. X from the paper, Journal") with its licence.</li>
+<li><strong>Illustrative photos</strong> come from Wikimedia Commons and are only used under public domain, CC0, CC BY or CC BY-SA licences; each shows the author, licence and a link to its source page. They are labelled "Illustration, not from the paper". Images under non-commercial (NC) or no-derivatives (ND) licences are never used.</li>
+<li>The SciDigest app icon and interface icons were made for this project.</li>
+</ul>
+
+<h2>Fonts and software</h2>
+<ul>
+<li>The website uses your device's built-in system fonts; no font files are downloaded or licensed.</li>
+<li>Server: the Anthropic SDK (MIT licence) on Cloudflare Workers. Website: no third-party libraries. Daily pipeline: Python with feedparser, requests, Jinja2 and pypdf (open-source licences).</li>
+</ul>
+<p>Spotted a missing or wrong credit? Please tell us: <a href="{{ contact_url }}">{{ contact_label }}</a>.</p>
+{% endblock %}

@@ -1,7 +1,7 @@
 /* Offline support: pages and data are fetched fresh when online and fall back to the last
    copy when offline. Version bumps clear old caches. */
-const CACHE = "scidigest-v14";
-const CORE = ["./", "index.html", "search.html", "saved.html", "idea.html", "privacy.html", "app.js",
+const CACHE = "scidigest-v15";
+const CORE = ["./", "index.html", "search.html", "saved.html", "idea.html", "privacy.html", "terms.html", "cookies.html", "credits.html", "app.js",
               "manifest.webmanifest", "apple-touch-icon.png", "icon-192.png", "data/index.json", "data/search.json"];
 
 self.addEventListener("install", (e) => {

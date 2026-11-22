@@ -1,0 +1,55 @@
+{% extends "_legal_base.html.j2" %}
+{% block title %}Privacy Policy{% endblock %}
+{% block body %}
+<h1>Privacy Policy</h1>
+<p class="upd">Last updated {{ legal_updated }} · Version {{ legal_version }}</p>
+<p class="box"><strong>In short:</strong> SciDigest works without an account and collects nothing about you. There are no ads, no analytics, no tracking cookies, and we never sell or share personal data. If you create an optional account, we store only your email, a secure hash of your password, and the settings you choose to sync. You can export or delete it any time.</p>
+
+<h2>Who runs SciDigest</h2>
+<p>SciDigest is run by {{ operator }} ("we"). Contact: <a href="{{ contact_url }}">{{ contact_label }}</a>.</p>
+
+<h2>What we collect, and why</h2>
+<table>
+<tr><th>Situation</th><th>Data</th><th>Where it's stored</th><th>Why</th></tr>
+<tr><td>Using the site or app without an account</td><td>Nothing personal. Your settings, saved papers, reading history and idea checks stay on your device.</td><td>Your browser (local storage) or the iPhone app</td><td>So the app remembers your choices</td></tr>
+<tr><td>Creating an account (optional)</td><td>Email address; password and recovery code as one-way PBKDF2 hashes (never the actual password); the record that you accepted these terms and confirmed you're 16 or older; the data you sync (topics, appearance and reading settings, saved papers, which papers you opened, recent idea checks)</td><td>Cloudflare Workers KV</td><td>To provide your account and sync it between your devices (performing our agreement with you)</td></tr>
+<tr><td>Idea Check</td><td>The question you type, and the report written for it</td><td>Cached on Cloudflare for up to 30 days, not linked to you or your account</td><td>To answer identical questions instantly and keep costs down</td></tr>
+<tr><td>Abuse prevention</td><td>Your IP address is counted in memory for up to 1 hour to enforce rate limits, then discarded; a daily total of checks (a number, no personal data) is kept for 3 days</td><td>Cloudflare (memory)</td><td>Legitimate interest in keeping the service available</td></tr>
+</table>
+<p>We don't collect your name, location, contacts, device identifiers or payment details, and we don't build profiles. We don't send newsletters or marketing emails, so there is nothing to unsubscribe from.</p>
+
+<h2>Services we use (processors and third parties)</h2>
+<ul>
+<li><strong>GitHub Pages</strong> hosts this website. Like any web host it may keep standard server logs (such as IP addresses). See GitHub's privacy statement.</li>
+<li><strong>Cloudflare</strong> runs the SciDigest server and stores account data (Workers and Workers KV).</li>
+<li><strong>Anthropic</strong> (Claude): Idea Check questions are sent to Anthropic's API to write the report. Under Anthropic's commercial terms, API data isn't used to train its models. Please don't put personal or confidential information in a question.</li>
+<li><strong>OpenAlex</strong> and <strong>Europe PMC</strong> are searched for related papers using the words of your question (without any personal data). In search-only mode your browser contacts Europe PMC directly.</li>
+<li><strong>Wikimedia Commons</strong> and <strong>Europe PMC</strong> serve the images on paper cards, so your browser requests images from them (they see your IP address, as with any image on the web). Turn on <em>Settings → Reading → Data saver</em> to stop loading images.</li>
+<li>Links to papers open publishers' websites, which have their own policies.</li>
+</ul>
+<p>The website loads no third-party scripts, fonts, trackers or analytics, and the iPhone app contains no third-party SDKs. Some of these providers are in the United States; they protect transferred data under their own standard contractual safeguards.</p>
+
+<h2>How long we keep data</h2>
+<ul>
+<li>Account data: until you delete your account (deletion is immediate).</li>
+<li>Cached idea-check reports: up to 30 days. Rate-limit counts: up to 1 hour in memory; daily totals: 3 days.</li>
+<li>Data on your device: until you clear it (<em>Settings → Data and privacy</em>) or clear your browser data.</li>
+</ul>
+
+<h2>Your rights and choices</h2>
+<ul>
+<li><strong>Access and portability:</strong> <em>Settings → Data and privacy → Export my data</em> downloads everything as a file.</li>
+<li><strong>Correction:</strong> change any setting at any time; it syncs automatically.</li>
+<li><strong>Deletion:</strong> <em>Settings → Account → Delete account</em> removes your account and all synced data immediately. <em>Clear reading history</em> and <em>Reset everything on this device</em> remove local data. You can also ask us to delete data via <a href="{{ contact_url }}">{{ contact_label }}</a>; we respond within 30 days.</li>
+<li>Depending on where you live (for example under the GDPR or the CCPA) you may also have the right to object, to restrict processing, and to complain to your data protection authority. We never sell or "share" personal information as defined by the CCPA.</li>
+</ul>
+
+<h2>Children</h2>
+<p>SciDigest is aimed at students and is free for anyone to read. Accounts are only for people aged 16 or older, and sign-up requires confirming this. We don't knowingly collect personal data from children; if you believe a child has created an account, contact us and we will delete it.</p>
+
+<h2>Security</h2>
+<p>All connections use HTTPS. Passwords and recovery codes are stored only as salted PBKDF2-SHA256 hashes; sessions use signed tokens that expire after 90 days. Sign-in attempts are rate limited.</p>
+
+<h2>Changes</h2>
+<p>If we change this policy we'll update the date above, and for significant changes show a notice in the app.</p>
+{% endblock %}

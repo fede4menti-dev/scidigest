@@ -52,8 +52,11 @@ def heuristic_rank(articles, top):
 
 
 def quoted_summary(a):
-    return {"headline": a.title, "summary": a.abstract or "(No abstract in the feed.)",
-            "why_it_matters": "Not available without AI mode.", "key_terms": [], "limitations": ""}
+    """Used without AI, or when the spending cap is reached: a short excerpt only, never the full abstract."""
+    return {"headline": a.title, "summary": ai.abstract_excerpt(a.abstract),
+            "why_it_matters": "A plain-language summary isn't available for this paper. Above is a short excerpt "
+                              "of the publisher's abstract; read the full paper via the link below.",
+            "key_terms": [], "limitations": ""}
 
 
 MAX_APPEARANCES = 2     # a paper can be a daily pick on at most two days

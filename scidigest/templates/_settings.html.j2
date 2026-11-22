@@ -57,6 +57,9 @@
           <button type="button" class="listbtn" id="clear-history">Clear reading history and saved papers</button>
           <button type="button" class="listbtn danger" id="reset-all">Reset everything on this device</button>
           <a class="listbtn" href="{{ root }}privacy.html">Privacy policy</a>
+          <a class="listbtn" href="{{ root }}terms.html">Terms of service</a>
+          <a class="listbtn" href="{{ root }}cookies.html">Cookies and storage</a>
+          <a class="listbtn" href="{{ root }}credits.html">Credits and licenses</a>
         </div>
       </section>
 
@@ -65,7 +68,7 @@
         <p class="help" style="margin-top:0"><strong>SciDigest</strong> picks the most important new research each day from about 40 journals (Nature, Science, Cell, NEJM, The Lancet and more) and arXiv preprints, and explains it for science students. Summaries are written by AI from abstracts and open-access papers, and every paper links to its source.</p>
         <p class="help">Version 1.4 · Updated {{ build }}</p>
         <div class="btnlist" style="margin-top:12px">
-          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Send feedback or report a problem</a>
+          <a class="listbtn" href="{{ contact_url }}" target="_blank" rel="noopener">Contact, feedback or report a problem</a>
           <button type="button" class="listbtn" id="install-help">Add SciDigest to your home screen</button>
         </div>
       </section>
@@ -73,5 +76,5 @@
     <footer><button type="button" class="secondary" data-close>Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
   </div>
 </dialog>
-<script>window.SCIDIGEST={{ {"root": root, "ideaUrl": idea_url, "topics": topic_names, "page": active, "build": build}|tojson }};</script>
+<script>window.SCIDIGEST={{ {"root": root, "ideaUrl": idea_url, "topics": topic_names, "page": active, "build": build, "legalVersion": legal_version}|tojson }};</script>
 <script src="{{ root }}app.js" defer></script>

@@ -41,6 +41,9 @@ jobs:
           SCIDIGEST_PER_TOPIC: ${{ vars.SCIDIGEST_PER_TOPIC || '2' }}
           # Your idea checker's address, so the website's Idea Check page uses it by default.
           SCIDIGEST_IDEA_URL: ${{ vars.IDEA_CHECKER_URL }}
+          # Business details shown in the privacy policy and terms (repository variables).
+          SCIDIGEST_OPERATOR: ${{ vars.SCIDIGEST_OPERATOR }}
+          SCIDIGEST_CONTACT_EMAIL: ${{ vars.SCIDIGEST_CONTACT_EMAIL }}
           # Hard spending cap for one run in USD (repository variable SCIDIGEST_MAX_RUN_USD).
           SCIDIGEST_MAX_RUN_USD: ${{ vars.SCIDIGEST_MAX_RUN_USD || '4' }}
         run: python -m scidigest --top 8 --out reports --site docs ${{ inputs.force && '--force' || '' }}

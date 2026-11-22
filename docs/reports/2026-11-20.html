@@ -6,9 +6,9 @@
 <title>Daily Science Digest</title>
 <style>
 :root{
-  --bg:#edf1f5;--ink:#0f1419;--soft:#3f4a57;--muted:#6b7684;--line:rgba(15,23,42,.08);
-  --accent:#0d7a70;--accent-ink:#fff;--accent-bg:rgba(13,122,112,.12);
-  --warn:#a85a07;--warn-bg:rgba(245,158,11,.16);--ok:#15803d;--ok-bg:rgba(34,197,94,.15);--ph:rgba(15,23,42,.06);
+  --bg:#edf1f5;--ink:#0f1419;--soft:#3f4a57;--muted:#5e6977;--line:rgba(15,23,42,.08);
+  --accent:#0b6e65;--accent-ink:#fff;--accent-bg:rgba(13,122,112,.12);
+  --warn:#94500a;--warn-bg:rgba(245,158,11,.16);--ok:#11602f;--ok-bg:rgba(34,197,94,.15);--ph:rgba(15,23,42,.06);
   --glass:rgba(255,255,255,.55);--glass-strong:rgba(255,255,255,.82);--glass-border:rgba(255,255,255,.7);
   --glass-shadow:0 1px 0 rgba(255,255,255,.65) inset,0 10px 30px rgba(30,41,59,.08);
   --blur:saturate(180%) blur(22px);
@@ -45,7 +45,7 @@ body::before{content:"";position:fixed;inset:-10vmax;z-index:-1;pointer-events:n
   radial-gradient(40vmax 32vmax at 78% 96%,var(--glow3),transparent 70%),
   radial-gradient(34vmax 30vmax at 4% 88%,var(--glow4),transparent 70%)}
 a{color:var(--accent)}
-.glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow)}
+.glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn,.notice{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn{background:var(--glass-strong)}}
 .wrap{max-width:1080px;margin:0 auto;padding:16px 16px 110px}
@@ -140,6 +140,19 @@ dialog.mini .primary.danger{background:#dc2626;color:#fff;box-shadow:none}
 .toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);background:rgba(15,20,25,.82);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);color:#fff;padding:11px 16px;border-radius:14px;font-size:.9rem;box-shadow:var(--shadow);max-width:calc(100vw - 32px);z-index:10}
 @media (min-width:760px){.toast{bottom:28px}}
 .hidden{display:none!important}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.skip{position:absolute;left:12px;top:-60px;z-index:20;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;font-weight:600;text-decoration:none}
+.skip:focus{top:10px}
+.sitefoot{margin-top:40px;color:var(--muted);font-size:.82rem}
+.sitefoot nav{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:8px}
+.sitefoot a{color:var(--soft);text-decoration:none}.sitefoot a:hover{color:var(--ink);text-decoration:underline}
+.sitefoot p{margin:0;max-width:720px}
+.notice{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));z-index:9;width:min(560px,calc(100vw - 24px));display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:18px;font-size:.88rem;color:var(--ink)}
+.notice p{margin:0;flex:1}.notice a{font-weight:600}
+.notice button{flex:none;border:0;background:var(--accent);color:var(--accent-ink);padding:8px 14px;border-radius:12px;font:inherit;font-weight:600;cursor:pointer}
+@media (min-width:760px){.notice{bottom:24px}}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--soft)}
+.consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent);flex:none}
 </style>
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -184,8 +197,8 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .topic{color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
 .pill{padding:2px 8px;border-radius:999px;font-weight:600}
 .pill.pre{background:var(--warn-bg);color:var(--warn)}.pill.full{background:var(--ok-bg);color:var(--ok)}.pill.rep{background:var(--accent-bg);color:var(--accent)}
-.card h4{font-size:1.1rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.card.open h4{display:block;font-size:1.35rem}
+.card .ct{font-size:1.1rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card.open .ct{display:block;font-size:1.35rem}
 .lede{color:var(--soft);font-size:.93rem;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .meta{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.8rem;margin-top:12px}
 .dots{display:inline-flex;gap:2px}.dots i{width:5px;height:10px;border-radius:3px;background:var(--line)}.dots i.on{background:var(--accent)}
@@ -202,7 +215,7 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 sup a{text-decoration:none;font-size:.7rem}
 .refs-wrap{border-radius:22px;padding:6px 18px 10px;margin-top:8px}
 .refs{font-size:.85rem;color:var(--soft);padding-left:20px}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
-footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
+.ainote{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
 .act{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--ink);padding:8px 13px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:500;cursor:pointer}
 .act svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -215,7 +228,8 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </head>
 <body><div class="wrap">
 
-<div class="topbar">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar" role="banner">
   <a class="brand" href="../index.html"><img src="../apple-touch-icon.png" alt="">SciDigest</a>
   <nav class="navpill" aria-label="Main">
     
@@ -225,7 +239,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <a href="../idea.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
     <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
   </nav>
-</div>
+</header>
 <nav class="tabbar" aria-label="Main">
   
     <a href="../index.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>Home</a>
@@ -234,8 +248,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <a href="../idea.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
   <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
 </nav>
-<a class="back" href="../index.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All digests</a>
-<header>
+<nav aria-label="Breadcrumb"><a class="back" href="../index.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All digests</a></nav>
+<main id="main">
+<header class="page-head">
   <h1>Daily Science Digest</h1>
   <div class="sub">Friday, November 20, 2026 · 8 papers chosen from 442 recent research articles in 17 journals</div>
   
@@ -258,7 +273,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 
 
 
-<main data-report>
+<div id="report-body">
   <h2 class="editors">Editor&#39;s picks</h2>
   <div class="grid editors-grid">
 <details class="card" id="p1" data-topic="clinical" data-editors="1" data-rank="1" data-score="9"
@@ -272,10 +287,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Vaccinating whole communities against malaria each season cut infection rates</h4>
+      <h3 class="ct">Vaccinating whole communities against malaria each season cut infection rates</h3>
       <p class="lede">Malaria in parts of West Africa spreads mostly during a rainy season, so researchers asked whether vaccinating entire communities just before that season could lower how many people carry the parasite.</p>
       <div class="meta"><span>The Lancet · Nov 19, 2026</span>
-        <span class="dots" title="Significance 9/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 9 out of 10" title="AI-estimated significance 9/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -307,10 +322,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Newly found gut viruses are poxviruses&#39; closest known relatives</h4>
+      <h3 class="ct">Newly found gut viruses are poxviruses&#39; closest known relatives</h3>
       <p class="lede">Large double-stranded DNA viruses are common in soil and water but have rarely been spotted inside animal digestive systems.</p>
       <div class="meta"><span>Nature · Nov 18, 2026</span>
-        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 8 out of 10" title="AI-estimated significance 8/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -342,10 +357,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Astronomers watch a star spiral inside its giant partner&#39;s outer layers</h4>
+      <h3 class="ct">Astronomers watch a star spiral inside its giant partner&#39;s outer layers</h3>
       <p class="lede">Many tight pairs of stars, including the compact stellar remnants that orbit each other closely, are thought to start out much farther apart.</p>
       <div class="meta"><span>Nature · Nov 18, 2026</span>
-        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 8 out of 10" title="AI-estimated significance 8/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -377,10 +392,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Brain region that controls metabolism and sleep cycles shrinks in Alzheimer&#39;s</h4>
+      <h3 class="ct">Brain region that controls metabolism and sleep cycles shrinks in Alzheimer&#39;s</h3>
       <p class="lede">The hypothalamus is a small region deep in the brain that helps run body functions such as metabolism, hormone release and daily (circadian) rhythms.</p>
       <div class="meta"><span>Nature · Nov 18, 2026</span>
-        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 8 out of 10" title="AI-estimated significance 8/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -412,10 +427,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Tiny diamond particles help perovskite solar cells withstand heat and long use</h4>
+      <h3 class="ct">Tiny diamond particles help perovskite solar cells withstand heat and long use</h3>
       <p class="lede">Halide perovskites are crystals that turn sunlight into electricity very efficiently, partly because their atomic lattice is soft and flexible.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -447,10 +462,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Farming intensity in Indonesia reshuffles which species live where, not just how many</h4>
+      <h3 class="ct">Farming intensity in Indonesia reshuffles which species live where, not just how many</h3>
       <p class="lede">Most studies of biodiversity in tropical farmland count species at a single spot, missing how farming changes the mix of species across a whole landscape and across many kinds of organisms.</p>
       <div class="meta"><span>Nature · Nov 18, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -482,10 +497,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Homo erectus lived in southern China&#39;s rainforests later than once thought</h4>
+      <h3 class="ct">Homo erectus lived in southern China&#39;s rainforests later than once thought</h3>
       <p class="lede">Homo erectus, an early human species, existed for a very long time, from roughly 1.9 million years ago until about 108,000 years ago, and spread from Africa across to eastern Asia.</p>
       <div class="meta"><span>Nature · Nov 18, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -517,10 +532,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Bogong moths steer by the tilt of Earth&#39;s magnetic field, using light</h4>
+      <h3 class="ct">Bogong moths steer by the tilt of Earth&#39;s magnetic field, using light</h3>
       <p class="lede">Bogong moths travel up to about 1,000 km twice a year between where they breed and a limited set of cool resting sites in the Australian Alps, where they spend summer in a dormant state.</p>
       <div class="meta"><span>Nature · Nov 18, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -543,14 +558,25 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </div>
   
 
-</main>
+</div>
 <section>
   <h2>References</h2>
   <div class="glass refs-wrap">
   <ol class="refs"><li id="ref1" value="1">Dabira, E. D., Natama, H. M., Erhart, A., Bihoun, B., Keita, M. L., Derra, K., Bah, A., Ilboudo, N., Ndiath, M. O., Bonko, M. D. A., Saidy, L., Ilboudo, A. H., Kafando, M. H. O., Jaiteh, F., Bocoum, F. Y., Grietens, K. P., Gibba, B., Kompaore, S. C. B., Hill, A. V. S., ... Sanyang, D. (2026). Seasonal mass vaccination with R21/Matrix-M against malaria in The Gambia and Burkina Faso: an open-label, cluster-randomised, controlled trial. <em>The Lancet</em>. https://doi.org/10.1016/S0140-6736(26)01562-X</li><li id="ref2" value="2">Gaïa, M., Guyet, U., Ruscheweyh, H., Eren, A. M., Sunagawa, S., Koonin, E. V., Krupovic, M., &amp; Delmont, T. O. (2026). Closest relatives of poxviruses prevail in human and animal guts worldwide. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11283-z</li><li id="ref3" value="3">Karambelkar, V., De, K., Temmink, K. D., Metzger, B. D., Blagorodnova, N., Anupama, G. C., Barway, S., Basu, J., Bellm, E. C., Bhalerao, V., Bochenek, A., Chamoli, S., Das, K., Fremling, C., Frostig, D., Gómez-Muñoz, M. A., Groom, S. L., Hinds, K., Jaimes, J. C., ... Wise, J. (2026). An inspiral of a star inside a common envelope with its giant companion. <em>Nature</em>, 659(8141), 628-633. https://doi.org/10.1038/s41586-026-11221-z</li><li id="ref4" value="4">Yu, D., Germann, J., Murtaza, G., Hajdarovic, K. H., Babcock, K. R., Dehkordi, S. K., Jackson, A. C., Delalle, I., Orr, M. E., Zare, H., Singh, R., MacCoss, M. J., Noble, W. S., Vlassenko, A. G., Goyal, M. S., &amp; Webb, A. E. (2026). Hypothalamic volume and cell-type changes in ageing and Alzheimer’s disease. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11305-w</li><li id="ref5" value="5">Li, B., Zhang, T., Wang, X., Wen, Y., Wang, Y., Yu, X., &amp; Yang, D. (2026). Elastic-field reorganization stabilizes soft-lattice perovskites for durable solar cells. <em>Science</em>, 394(6826), eaeh3114. https://doi.org/10.1126/science.aeh3114</li><li id="ref6" value="6">Guerrero-Ramírez, N. R., Salecker, J., Simpkins, C. E., Brambach, F., Corre, M. D., Darras, K. F. A., Drescher, J., Grass, I., König, C., Paterno, G. B., Wiegand, K., Azhar, A., Barnes, A. D., Brose, U., Buchori, D., Daniel, R., Hertel, D., Hidayat, P., Jochum, M., ... Kreft, H. (2026). Tropical land-use intensification restructures biodiversity. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11298-6</li><li id="ref7" value="7">Westaway, K. E., Joannes-Boyau, R., Liao, W., Shao, Q., Yu, W., Quinn, M., Bacon, A., Liang, H., Bourgon, N., Zhao, J., Roberts, P., Kono, R., Pan, Y., Yang, L., Wang, Y., Jin, C., Wu, Z., Murray, S., Zanolli, C., ... Zhang, Y. (2026). Rainforest adaptation in late Homo erectus from southern China. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11155-6</li><li id="ref8" value="8">Chen, H., Rosberg, L., Dreyer, D., Leberecht, B., Mouritsen, H., Fleischmann, P. N., &amp; Warrant, E. J. (2026). Bogong moths navigate with a light-dependent geomagnetic inclination compass. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11322-9</li></ol>
   </div>
 </section>
-<footer>Summaries are paraphrased by AI from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</footer>
+<p class="ainote">Summaries are paraphrased by AI from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</p>
+</main>
+<footer class="sitefoot" role="contentinfo">
+  <nav aria-label="Legal and information">
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../cookies.html">Cookies &amp; storage</a>
+    <a href="../credits.html">Credits &amp; licenses</a>
+    <a href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Contact</a>
+  </nav>
+  <p>SciDigest is free: no ads, no tracking, no paid features. Summaries are written by AI and can contain mistakes; always check the original paper. Not medical advice.</p>
+</footer>
 </div>
 
 <dialog class="settings" id="settings" aria-labelledby="settings-title">
@@ -655,15 +681,18 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
           <button type="button" class="listbtn" id="clear-history">Clear reading history and saved papers</button>
           <button type="button" class="listbtn danger" id="reset-all">Reset everything on this device</button>
           <a class="listbtn" href="../privacy.html">Privacy policy</a>
+          <a class="listbtn" href="../terms.html">Terms of service</a>
+          <a class="listbtn" href="../cookies.html">Cookies and storage</a>
+          <a class="listbtn" href="../credits.html">Credits and licenses</a>
         </div>
       </section>
 
       <section aria-labelledby="s-about">
         <h3 id="s-about">About</h3>
         <p class="help" style="margin-top:0"><strong>SciDigest</strong> picks the most important new research each day from about 40 journals (Nature, Science, Cell, NEJM, The Lancet and more) and arXiv preprints, and explains it for science students. Summaries are written by AI from abstracts and open-access papers, and every paper links to its source.</p>
-        <p class="help">Version 1.4 · Updated Nov 21, 2026</p>
+        <p class="help">Version 1.4 · Updated Nov 22, 2026</p>
         <div class="btnlist" style="margin-top:12px">
-          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Send feedback or report a problem</a>
+          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Contact, feedback or report a problem</a>
           <button type="button" class="listbtn" id="install-help">Add SciDigest to your home screen</button>
         </div>
       </section>
@@ -671,7 +700,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <footer><button type="button" class="secondary" data-close>Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
   </div>
 </dialog>
-<script>window.SCIDIGEST={"build": "Nov 21, 2026", "ideaUrl": "", "page": "report", "root": "../", "topics": {"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"}};</script>
+<script>window.SCIDIGEST={"build": "Nov 22, 2026", "ideaUrl": "", "legalVersion": "2026-11-22", "page": "report", "root": "../", "topics": {"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"}};</script>
 <script src="../app.js" defer></script>
 <script>
 document.querySelectorAll("details.card").forEach(function(d){d.addEventListener("toggle",function(){d.classList.toggle("open",d.open)})});

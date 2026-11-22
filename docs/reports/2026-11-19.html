@@ -6,9 +6,9 @@
 <title>Daily Science Digest</title>
 <style>
 :root{
-  --bg:#edf1f5;--ink:#0f1419;--soft:#3f4a57;--muted:#6b7684;--line:rgba(15,23,42,.08);
-  --accent:#0d7a70;--accent-ink:#fff;--accent-bg:rgba(13,122,112,.12);
-  --warn:#a85a07;--warn-bg:rgba(245,158,11,.16);--ok:#15803d;--ok-bg:rgba(34,197,94,.15);--ph:rgba(15,23,42,.06);
+  --bg:#edf1f5;--ink:#0f1419;--soft:#3f4a57;--muted:#5e6977;--line:rgba(15,23,42,.08);
+  --accent:#0b6e65;--accent-ink:#fff;--accent-bg:rgba(13,122,112,.12);
+  --warn:#94500a;--warn-bg:rgba(245,158,11,.16);--ok:#11602f;--ok-bg:rgba(34,197,94,.15);--ph:rgba(15,23,42,.06);
   --glass:rgba(255,255,255,.55);--glass-strong:rgba(255,255,255,.82);--glass-border:rgba(255,255,255,.7);
   --glass-shadow:0 1px 0 rgba(255,255,255,.65) inset,0 10px 30px rgba(30,41,59,.08);
   --blur:saturate(180%) blur(22px);
@@ -45,7 +45,7 @@ body::before{content:"";position:fixed;inset:-10vmax;z-index:-1;pointer-events:n
   radial-gradient(40vmax 32vmax at 78% 96%,var(--glow3),transparent 70%),
   radial-gradient(34vmax 30vmax at 4% 88%,var(--glow4),transparent 70%)}
 a{color:var(--accent)}
-.glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow)}
+.glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn,.notice{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .glass,.card,.mytopics,.row,.panel,.navpill,.tabbar,.iconbtn{background:var(--glass-strong)}}
 .wrap{max-width:1080px;margin:0 auto;padding:16px 16px 110px}
@@ -140,6 +140,19 @@ dialog.mini .primary.danger{background:#dc2626;color:#fff;box-shadow:none}
 .toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);background:rgba(15,20,25,.82);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);color:#fff;padding:11px 16px;border-radius:14px;font-size:.9rem;box-shadow:var(--shadow);max-width:calc(100vw - 32px);z-index:10}
 @media (min-width:760px){.toast{bottom:28px}}
 .hidden{display:none!important}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.skip{position:absolute;left:12px;top:-60px;z-index:20;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;font-weight:600;text-decoration:none}
+.skip:focus{top:10px}
+.sitefoot{margin-top:40px;color:var(--muted);font-size:.82rem}
+.sitefoot nav{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:8px}
+.sitefoot a{color:var(--soft);text-decoration:none}.sitefoot a:hover{color:var(--ink);text-decoration:underline}
+.sitefoot p{margin:0;max-width:720px}
+.notice{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom));z-index:9;width:min(560px,calc(100vw - 24px));display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:18px;font-size:.88rem;color:var(--ink)}
+.notice p{margin:0;flex:1}.notice a{font-weight:600}
+.notice button{flex:none;border:0;background:var(--accent);color:var(--accent-ink);padding:8px 14px;border-radius:12px;font:inherit;font-weight:600;cursor:pointer}
+@media (min-width:760px){.notice{bottom:24px}}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--soft)}
+.consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent);flex:none}
 </style>
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -184,8 +197,8 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .topic{color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
 .pill{padding:2px 8px;border-radius:999px;font-weight:600}
 .pill.pre{background:var(--warn-bg);color:var(--warn)}.pill.full{background:var(--ok-bg);color:var(--ok)}.pill.rep{background:var(--accent-bg);color:var(--accent)}
-.card h4{font-size:1.1rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.card.open h4{display:block;font-size:1.35rem}
+.card .ct{font-size:1.1rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card.open .ct{display:block;font-size:1.35rem}
 .lede{color:var(--soft);font-size:.93rem;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .meta{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.8rem;margin-top:12px}
 .dots{display:inline-flex;gap:2px}.dots i{width:5px;height:10px;border-radius:3px;background:var(--line)}.dots i.on{background:var(--accent)}
@@ -202,7 +215,7 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 sup a{text-decoration:none;font-size:.7rem}
 .refs-wrap{border-radius:22px;padding:6px 18px 10px;margin-top:8px}
 .refs{font-size:.85rem;color:var(--soft);padding-left:20px}.refs li{margin-bottom:8px;overflow-wrap:anywhere}
-footer{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
+.ainote{color:var(--muted);font-size:.8rem;margin-top:30px;max-width:760px}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
 .act{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--ink);padding:8px 13px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:500;cursor:pointer}
 .act svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -215,7 +228,8 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </head>
 <body><div class="wrap">
 
-<div class="topbar">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar" role="banner">
   <a class="brand" href="../index.html"><img src="../apple-touch-icon.png" alt="">SciDigest</a>
   <nav class="navpill" aria-label="Main">
     
@@ -225,7 +239,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <a href="../idea.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
     <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
   </nav>
-</div>
+</header>
 <nav class="tabbar" aria-label="Main">
   
     <a href="../index.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>Home</a>
@@ -234,8 +248,9 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <a href="../idea.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V16h5v-.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>Idea Check</a>
   <button type="button" data-open-settings aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Settings</button>
 </nav>
-<a class="back" href="../index.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All digests</a>
-<header>
+<nav aria-label="Breadcrumb"><a class="back" href="../index.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All digests</a></nav>
+<main id="main">
+<header class="page-head">
   <h1>Daily Science Digest</h1>
   <div class="sub">Thursday, November 19, 2026 · 8 papers chosen from 74 recent research articles in 8 journals</div>
   
@@ -258,7 +273,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 
 
 
-<main data-report>
+<div id="report-body">
   <h2 class="editors">Editor&#39;s picks</h2>
   <div class="grid editors-grid">
 <details class="card" id="p1" data-topic="organismal" data-editors="1" data-rank="1" data-score="9"
@@ -272,10 +287,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Molecular recorder traces family tree of over a million mouse embryo cells</h4>
+      <h3 class="ct">Molecular recorder traces family tree of over a million mouse embryo cells</h3>
       <p class="lede">How does a single fertilized egg give rise to all the cell types of a mammal? Watching this directly is hard because development happens deep inside tissues we cannot easily see into.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 9/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 9 out of 10" title="AI-estimated significance 9/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -307,10 +322,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>A small patch of the brain&#39;s &#39;listening&#39; area helps plan spoken words</h4>
+      <h3 class="ct">A small patch of the brain&#39;s &#39;listening&#39; area helps plan spoken words</h3>
       <p class="lede">Wernicke&#39;s area, a region toward the back of the left temporal lobe (the side of the brain near the ear), has long been viewed as the hub for understanding speech.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 9/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 9 out of 10" title="AI-estimated significance 9/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -342,10 +357,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Organic nitrogen falling from the air feeds the oceans more than thought</h4>
+      <h3 class="ct">Organic nitrogen falling from the air feeds the oceans more than thought</h3>
       <p class="lede">Nitrogen is a key nutrient for ocean life, and some of it reaches the sea from the air.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 8 out of 10" title="AI-estimated significance 8/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -377,10 +392,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>A molecular &#39;glue&#39; layer helps large perovskite solar panels hold together</h4>
+      <h3 class="ct">A molecular &#39;glue&#39; layer helps large perovskite solar panels hold together</h3>
       <p class="lede">Perovskite solar cells convert sunlight to electricity efficiently and cheaply, but they tend to degrade, partly because the layers inside them can weaken or come apart at their boundaries.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 8/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 8 out of 10" title="AI-estimated significance 8/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -412,10 +427,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Twisted laser light makes a trapped ion spin in measurable steps</h4>
+      <h3 class="ct">Twisted laser light makes a trapped ion spin in measurable steps</h3>
       <p class="lede">Light can carry angular momentum, a measure of rotation, in two ways. One is spin, tied to the beam&#39;s polarization, and it is well known to govern which atomic transitions are allowed.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -447,10 +462,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Gut inflammation after a myeloma CAR T therapy often persists and can be fatal</h4>
+      <h3 class="ct">Gut inflammation after a myeloma CAR T therapy often persists and can be fatal</h3>
       <p class="lede">CAR T cell therapy reprograms a patient&#39;s own immune cells to attack cancer. One version targets BCMA, a protein found on the cancer cells of multiple myeloma, a blood cancer.</p>
       <div class="meta"><span>Nature Medicine · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -482,10 +497,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Early-life stress primes a brain pathway that worsens pain in female mice</h4>
+      <h3 class="ct">Early-life stress primes a brain pathway that worsens pain in female mice</h3>
       <p class="lede">Children who experience adversity are more likely to develop chronic pain and anxiety as adults, and this link appears stronger in women. This mouse study asked what brain wiring might carry that risk forward in time.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -517,10 +532,10 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
         
         
         </div>
-      <h4>Hollow shells with one opening use turbulence to sort and trap particles</h4>
+      <h3 class="ct">Hollow shells with one opening use turbulence to sort and trap particles</h3>
       <p class="lede">Turbulent flow looks random, but its swirls (eddies) pass energy from large scales down to small ones in an organised way that is not in thermal equilibrium.</p>
       <div class="meta"><span>Science · Nov 19, 2026</span>
-        <span class="dots" title="Significance 7/10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></span></div>
+        <span class="dots" role="img" aria-label="AI-estimated significance 7 out of 10" title="AI-estimated significance 7/10"><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="on" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i><i class="" aria-hidden="true"></i></span></div>
       <div class="more">Read more</div>
     </div>
   </summary>
@@ -543,14 +558,25 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </div>
   
 
-</main>
+</div>
 <section>
   <h2>References</h2>
   <div class="glass refs-wrap">
   <ol class="refs"><li id="ref1" value="1">Yu, Q., Kim, H., Seidel, S., Acosta-Clark, J. F., Martin, B. K., O’Connor, K., Daza, R. M., Gasperini, M., Nathans, J. F., Lam, M., Gamo, E., VijayKumar, S., Kuo, L., Lalanne, J., Simeonov, K. P., Pepper, M., Trapnell, C., Gray, J. M., Choi, J., ... Shendure, J. (2026). A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis. <em>Science</em>, 394(6826), eael0508. https://doi.org/10.1126/science.ael0508</li><li id="ref2" value="2">Silva, A. B., Leonard, M. K., Hullett, P. W., Levy, D. F., Wang, C., Xu, D., Bhaya-Grossman, I., &amp; Chang, E. F. (2026). A neural code for generative speech production in human Wernicke’s area. <em>Science</em>, 394(6826), eaef8963. https://doi.org/10.1126/science.aef8963</li><li id="ref3" value="3">Yu, X., Li, Y., Shi, G., Yu, L., Wang, Y., Lai, S., Zhou, Y., Zhang, Y., Sun, N., Zhang, B., Hu, Y., Li, Z., Jiang, Y., Li, W., Fu, T., &amp; Yu, J. Z. (2026). Atmospheric organic nitrogen is a major nutrient source to global oceans. <em>Science</em>, 394(6826), 901-906. https://doi.org/10.1126/science.aeg4265</li><li id="ref4" value="4">Yang, C., Hou, T., Xu, Y., Robinson, C., Stein, J. S., Guo, Y., Chang, Q., Li, H., Yu, L., Qin, Y., Mohammed, O. F., Huang, Y., You, S., &amp; Zheng, X. (2026). Molecular adhesion for durable metal halide perovskite modules. <em>Science</em>, 394(6826), eaej5001. https://doi.org/10.1126/science.aej5001</li><li id="ref5" value="5">Tang, Y., Tollefsen, R., Yadav, N., Zuerch, M. W., &amp; Häffner, H. (2026). Angular momentum transfer from an optical vortex to an atomic rotor. <em>Science</em>, 394(6826), 890-894. https://doi.org/10.1126/science.aeh0182</li><li id="ref6" value="6">Mikkilineni, L., Hamilton, M. P., Jensen, A., Lim, K. J., Galarza-Fortuna, G. M., Kumar, A. D., Ferreri, C. J., Portuguese, A. J., Hosoya, H., Dong, S., Abdallah, N. H., Song, J., Gonzalez, R., Shestakova, A., Chowla, N., Chen, Z. E., Godara, A., Mohyuddin, G. R., Brondfield, M. N., ... Wolf, J. L. (2026). Multicenter characterization of enterocolitis associated with BCMA-directed CAR T cell therapy. <em>Nature Medicine</em>. https://doi.org/10.1038/s41591-026-04783-y</li><li id="ref7" value="7">Borruto, A. M., Kohlund, T., Rettig, L., Renesse, M. v., Hammer, C. A., Leonhardt, N., Kurpiers, B., Calpe-López, C., Benn, L., Friederich, H., Kuner, T., Spanagel, R., &amp; Wieland, S. (2026). A thalamo-amygdalar circuit drives female vulnerability to chronic pain after early-life stress. <em>Science</em>, 394(6826), 864-869. https://doi.org/10.1126/science.adx5757</li><li id="ref8" value="8">Sabato, M., Chong, S., Li, Y., Xu, Z., Gao, D., Falk, M. J., Sacanna, S., &amp; Irvine, W. T. M. (2026). Quiet within, chaos without: Turbulence shelters drive selective particle capture and release. <em>Science</em>, 394(6826), 884-889. https://doi.org/10.1126/science.aee9889</li></ol>
   </div>
 </section>
-<footer>Summaries are paraphrased by AI from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</footer>
+<p class="ainote">Summaries are paraphrased by AI from each paper's abstract, plus its full text when a free, legal copy was available. Preprints have not been peer reviewed. Images are open-access figures from the paper or free-licensed illustrations, credited on each card. Check the original paper before citing it in your own work.</p>
+</main>
+<footer class="sitefoot" role="contentinfo">
+  <nav aria-label="Legal and information">
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../cookies.html">Cookies &amp; storage</a>
+    <a href="../credits.html">Credits &amp; licenses</a>
+    <a href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Contact</a>
+  </nav>
+  <p>SciDigest is free: no ads, no tracking, no paid features. Summaries are written by AI and can contain mistakes; always check the original paper. Not medical advice.</p>
+</footer>
 </div>
 
 <dialog class="settings" id="settings" aria-labelledby="settings-title">
@@ -655,15 +681,18 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
           <button type="button" class="listbtn" id="clear-history">Clear reading history and saved papers</button>
           <button type="button" class="listbtn danger" id="reset-all">Reset everything on this device</button>
           <a class="listbtn" href="../privacy.html">Privacy policy</a>
+          <a class="listbtn" href="../terms.html">Terms of service</a>
+          <a class="listbtn" href="../cookies.html">Cookies and storage</a>
+          <a class="listbtn" href="../credits.html">Credits and licenses</a>
         </div>
       </section>
 
       <section aria-labelledby="s-about">
         <h3 id="s-about">About</h3>
         <p class="help" style="margin-top:0"><strong>SciDigest</strong> picks the most important new research each day from about 40 journals (Nature, Science, Cell, NEJM, The Lancet and more) and arXiv preprints, and explains it for science students. Summaries are written by AI from abstracts and open-access papers, and every paper links to its source.</p>
-        <p class="help">Version 1.4 · Updated Nov 21, 2026</p>
+        <p class="help">Version 1.4 · Updated Nov 22, 2026</p>
         <div class="btnlist" style="margin-top:12px">
-          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Send feedback or report a problem</a>
+          <a class="listbtn" href="https://github.com/fede4menti-dev/scidigest/issues/new" target="_blank" rel="noopener">Contact, feedback or report a problem</a>
           <button type="button" class="listbtn" id="install-help">Add SciDigest to your home screen</button>
         </div>
       </section>
@@ -671,7 +700,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <footer><button type="button" class="secondary" data-close>Cancel</button><button type="button" class="primary" id="save-settings">Save and refresh papers</button></footer>
   </div>
 </dialog>
-<script>window.SCIDIGEST={"build": "Nov 21, 2026", "ideaUrl": "", "page": "report", "root": "../", "topics": {"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"}};</script>
+<script>window.SCIDIGEST={"build": "Nov 22, 2026", "ideaUrl": "", "legalVersion": "2026-11-22", "page": "report", "root": "../", "topics": {"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"}};</script>
 <script src="../app.js" defer></script>
 <script>
 document.querySelectorAll("details.card").forEach(function(d){d.addEventListener("toggle",function(){d.classList.toggle("open",d.open)})});

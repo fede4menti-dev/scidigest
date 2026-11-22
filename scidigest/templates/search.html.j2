@@ -11,6 +11,7 @@
 <body><div class="wrap">
 {% from "_icons.html.j2" import icon %}
 {% include "_topbar.html.j2" %}
+<main id="main">
 <h1>Search</h1>
 <p class="lead">Find any paper from every daily digest so far.</p>
 <div class="glass searchbox" role="search">
@@ -20,6 +21,8 @@
 </div>
 <div class="count" id="count" aria-live="polite"></div>
 <div class="items" id="items"></div>
+</main>
+{% include "_footer.html.j2" %}
 </div>
 {% include "_settings.html.j2" %}
 <script>
@@ -43,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     hits.slice(0, 120).forEach(function (p) {
       var a = el("a", "glass item"); a.href = root + p.r;
-      var im = el("div", "im", p.tn ? p.tn[0] : ""); if (p.img) im.style.backgroundImage = "url(\"" + p.img.replace(/"/g, "") + "\")";
+      var im = el("div", "im", p.tn ? p.tn[0] : ""); im.setAttribute("aria-hidden", "true"); if (p.img) im.style.backgroundImage = "url(\"" + p.img.replace(/"/g, "") + "\")";
       var tx = el("div", "tx"); tx.appendChild(el("div", "tp", p.tn || "")); tx.appendChild(el("div", "hd", p.h));
       tx.appendChild(el("div", "m", p.j + " · " + p.d)); tx.appendChild(el("div", "ln", p.i));
       a.appendChild(im); a.appendChild(tx); list.appendChild(a);

@@ -77,9 +77,16 @@ struct SettingsView: View {
                     Text("Pick a time after your daily report is generated.")
                 }
 
+                Section("Legal") {
+                    legalLink("Privacy policy", "privacy.html")
+                    legalLink("Terms of service", "terms.html")
+                    legalLink("Cookies and storage", "cookies.html")
+                    legalLink("Credits and licenses", "credits.html")
+                }
+
                 Section("About") {
                     Text("SciDigest picks the most significant new papers from journals such as Nature, Science, Cell, PNAS, NEJM and The Lancet, and explains them for science students.")
-                    Text("Summaries are paraphrased by AI from each paper's abstract, or its full text when a free, legal copy exists. Always read the original before citing it.")
+                    Text("Picks, significance scores and summaries are produced by AI from each paper's abstract, or its full text when a free, legal copy exists, and can contain mistakes. Not medical advice. Always read the original before citing it.")
                         .foregroundStyle(.secondary)
                 }
             }
@@ -87,6 +94,13 @@ struct SettingsView: View {
             .onChange(of: reminderOn) { scheduleReminder() }
             .onChange(of: reminderHour) { scheduleReminder() }
             .onChange(of: reminderMinute) { scheduleReminder() }
+        }
+    }
+
+    @ViewBuilder
+    private func legalLink(_ title: String, _ page: String) -> some View {
+        if let url = URL(string: store.feedBase + page) {
+            Link(title, destination: url)
         }
     }
 

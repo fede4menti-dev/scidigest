@@ -32,9 +32,10 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px}
 <body><div class="wrap">
 {% from "_icons.html.j2" import icon %}
 {% include "_topbar.html.j2" %}
+<main id="main">
 <section class="hero">
 <h1>Science, explained daily</h1>
-<p class="lead">The most important new research from leading journals, in plain language for science students. Daily picks, a weekly review every Sunday and a monthly review on the 1st.</p>
+<p class="lead">A daily selection of important new research from leading journals, chosen and explained in plain language by AI for science students. Daily picks, a weekly review every Sunday and a monthly review on the 1st.</p>
 </section>
 {% include "_mytopics.html.j2" %}
 
@@ -53,7 +54,8 @@ footer{color:var(--muted);font-size:.8rem;margin-top:34px}
   <div class="top"><span class="d">{{ d.label }}</span><span class="n">{{ d.count }} papers</span></div>
   <ul>{% for h in d.headlines %}<li>{{ h }}</li>{% endfor %}</ul></a>{% endfor %}</div>
 {% endfor %}
-<footer>Summaries are written by AI from published abstracts and open-access papers, with citations and links to every source. <a href="privacy.html">Privacy</a></footer>
+</main>
+{% include "_footer.html.j2" %}
 </div>
 {% include "_settings.html.j2" %}
 </body></html>

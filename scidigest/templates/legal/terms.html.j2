@@ -1,0 +1,47 @@
+{% extends "_legal_base.html.j2" %}
+{% block title %}Terms of Service{% endblock %}
+{% block body %}
+<h1>Terms of Service</h1>
+<p class="upd">Last updated {{ legal_updated }} · Version {{ legal_version }}</p>
+<p>These terms apply to the SciDigest website, the SciDigest iPhone app and the SciDigest server (together, "SciDigest"), run by {{ operator }}. By using SciDigest you agree to them.</p>
+
+<h2>1. What SciDigest is</h2>
+<p>SciDigest selects recent research papers from public journal feeds and preprint servers and explains them in plain language. Selections, significance scores and summaries are produced automatically by AI (Anthropic's Claude) from titles, abstracts and open-access full texts. Idea Check searches public literature databases and uses AI to comment on a research question.</p>
+
+<h2>2. Free of charge, no purchases, no refunds needed</h2>
+<p>SciDigest is free. There are no subscriptions, in-app purchases, paid features, hidden fees or ads, so there is nothing to refund. If paid features are ever added, they will come with clear prices and a refund policy before you can buy anything.</p>
+
+<h2>3. Important: AI content and no professional advice</h2>
+<ul>
+<li>Summaries and Idea Check reports are written by AI and <strong>can be incomplete or wrong</strong>. Significance scores are AI estimates, not measurements. Always read the original paper before relying on it or citing it.</li>
+<li>SciDigest is for education and general information only. <strong>It is not medical, health, legal, financial or other professional advice.</strong> Don't make health decisions based on a summary; talk to a qualified professional.</li>
+<li>Idea Check results depend on what a search finds; "little prior research found" does not prove a question is new.</li>
+<li>Preprints are labelled as such and have not been peer reviewed.</li>
+</ul>
+
+<h2>4. Accounts</h2>
+<ul>
+<li>Accounts are optional and only for people aged <strong>16 or older</strong>.</li>
+<li>Keep your password and recovery code safe; you're responsible for activity under your account.</li>
+<li>You can delete your account at any time in Settings. We may suspend or delete accounts used to abuse the service.</li>
+</ul>
+
+<h2>5. Acceptable use</h2>
+<p>Don't use SciDigest to break the law, attack or overload the service (including automated bulk requests to Idea Check), get around rate limits, access other people's accounts, or submit personal, confidential or harmful content.</p>
+
+<h2>6. Content, copyright and licences</h2>
+<ul>
+<li>Papers belong to their authors and publishers. SciDigest links to each original, quotes at most short excerpts, and gives a full citation.</li>
+<li>Images are either figures from open-access papers under licences that allow reuse (CC BY, CC BY-SA, CC0) or free-licensed photos from Wikimedia Commons, each credited with its licence. See <a href="{{ root }}credits.html">Credits &amp; licenses</a>.</li>
+<li>If you believe content infringes your rights, contact us via <a href="{{ contact_url }}">{{ contact_label }}</a> and we'll review and remove it promptly.</li>
+</ul>
+
+<h2>7. Availability and changes</h2>
+<p>We aim to publish a digest every day but don't guarantee that SciDigest will always be available, complete or error-free. Features, sources and these terms may change; we'll update the date above and highlight significant changes.</p>
+
+<h2>8. Liability</h2>
+<p>SciDigest is provided "as is", without warranties of any kind, to the extent the law allows. To the extent the law allows, we aren't liable for losses arising from using or relying on SciDigest. Nothing in these terms limits rights you have under consumer protection law that can't be limited.</p>
+
+<h2>9. Contact</h2>
+<p><a href="{{ contact_url }}">{{ contact_label }}</a>. See also the <a href="{{ root }}privacy.html">Privacy Policy</a> and <a href="{{ root }}cookies.html">Cookies &amp; storage</a>.</p>
+{% endblock %}

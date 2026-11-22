@@ -10,9 +10,12 @@
 </head>
 <body><div class="wrap">
 {% include "_topbar.html.j2" %}
+<main id="main">
 <h1>Saved</h1>
 <p class="lead">Papers you saved, newest first. Open any paper and tap <b>Save</b> to add it here. Sign in under Settings to keep them on all your devices.</p>
 <div class="items" id="items"></div>
+</main>
+{% include "_footer.html.j2" %}
 </div>
 {% include "_settings.html.j2" %}
 <script>
@@ -28,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     keys.forEach(function (k) {
       var p = S.saved[k], row = el("div", "glass item");
-      var im = el("div", "im", p.t ? p.t[0] : ""); if (p.i) im.style.backgroundImage = "url(\"" + p.i.replace(/"/g, "") + "\")";
+      var im = el("div", "im", p.t ? p.t[0] : ""); im.setAttribute("aria-hidden", "true"); if (p.i) im.style.backgroundImage = "url(\"" + p.i.replace(/"/g, "") + "\")";
       var tx = el("div", "tx"); tx.appendChild(el("div", "tp", p.t || ""));
       var h = el("a", "hd", p.h); h.href = root + p.r; h.style.display = "block"; h.style.color = "inherit"; h.style.textDecoration = "none"; tx.appendChild(h);
       tx.appendChild(el("div", "m", [p.j, p.d].filter(Boolean).join(" · ")));

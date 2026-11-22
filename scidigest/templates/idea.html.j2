@@ -48,6 +48,7 @@ ul.b{margin:0;padding-left:18px}ul.b li{margin-bottom:6px}
 </head>
 <body><div class="wrap">
 {% include "_topbar.html.j2" %}
+<main id="main">
 <h1>Idea Check</h1>
 <p class="lead">Has your research question already been studied? See the most important related papers and get an honest review of the question itself.</p>
 
@@ -64,6 +65,7 @@ ul.b{margin:0;padding-left:18px}ul.b li{margin-bottom:6px}
     <button type="button">Could machine learning predict solar flares from magnetogram images?</button>
   </div>
   <div class="mode" id="mode"><i></i><span></span></div>
+  <p class="small" style="margin:10px 0 0">Your question is sent to the SciDigest server, to the OpenAlex and Europe PMC paper databases, and to Anthropic's Claude to write the report. Don't include personal or confidential information. <a href="privacy.html">Privacy</a></p>
 </form>
 
 <div class="status hidden" id="status" role="status"><div class="spinner"></div><span id="status-text"></span></div>
@@ -71,6 +73,8 @@ ul.b{margin:0;padding-left:18px}ul.b li{margin-bottom:6px}
 <div class="result" id="result"></div>
 <section class="panel hidden" id="history" style="margin-top:20px"></section>
 
+</main>
+{% include "_footer.html.j2" %}
 </div>
 {% include "_settings.html.j2" %}
 <script>

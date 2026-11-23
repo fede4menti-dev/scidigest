@@ -2171,7 +2171,15 @@
     "license": "cc-by-nc-nd"
    },
    "featured_on": [],
-   "image": null,
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Siarhei_Besarab_%28%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%91%D0%B5%D1%81%D0%B0%D1%80%D0%B0%D0%B1%29_virology_session_Belarusian_State_University_2008.jpg/960px-Siarhei_Besarab_%28%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%91%D0%B5%D1%81%D0%B0%D1%80%D0%B0%D0%B1%29_virology_session_Belarusian_State_University_2008.jpg",
+    "caption": "Virology",
+    "credit": "Henadz Besarab, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Siarhei_Besarab_(%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%91%D0%B5%D1%81%D0%B0%D1%80%D0%B0%D0%B1)_virology_session_Belarusian_State_University_2008.jpg"
+   },
    "category": "organismal",
    "category_name": "Organismal & Systems",
    "editors_pick": false,

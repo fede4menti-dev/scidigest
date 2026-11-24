@@ -1,0 +1,1978 @@
+{
+ "format": 1,
+ "kind": "daily",
+ "id": "2026-11-24",
+ "title": "Daily Science Digest",
+ "date": "2026-11-24",
+ "period_start": "2026-11-24",
+ "period_end": "2026-11-24",
+ "generated_at": "2026-11-24T11:21:02+00:00",
+ "scanned": 619,
+ "journals": [
+  "Cell",
+  "JAMA",
+  "Nature",
+  "Nature Astronomy",
+  "Nature Biotechnology",
+  "Nature Cell Biology",
+  "Nature Chemistry",
+  "Nature Climate Change",
+  "Nature Communications",
+  "Nature Computational Science",
+  "Nature Ecology & Evolution",
+  "Nature Electronics",
+  "Nature Energy",
+  "Nature Food",
+  "Nature Genetics",
+  "Nature Geoscience",
+  "Nature Human Behaviour",
+  "Nature Machine Intelligence",
+  "Nature Materials",
+  "Nature Medicine",
+  "Nature Microbiology",
+  "Nature Nanotechnology",
+  "Nature Neuroscience",
+  "Nature Physics",
+  "Nature Plants",
+  "Nature Sustainability",
+  "Nature Water",
+  "PLOS Biology",
+  "PLOS Medicine",
+  "PNAS",
+  "Physical Review Letters",
+  "Science",
+  "Science Advances",
+  "Science Robotics",
+  "Science Translational Medicine",
+  "The Lancet",
+  "The New England Journal of Medicine",
+  "arXiv (Computer Science)",
+  "arXiv (Economics & Finance)",
+  "arXiv (Mathematics)",
+  "arXiv (Robotics & Control)",
+  "arXiv (Statistics)",
+  "eLife"
+ ],
+ "ai_summaries": true,
+ "intro": "",
+ "papers": [
+  {
+   "rank": 1,
+   "headline": "Paper wasps have brain cells tuned to their nestmates' faces",
+   "original_title": "Neural correlates of facial recognition in a social wasp",
+   "journal": "Cell",
+   "field": "Neuroethology",
+   "significance": 9,
+   "reason": "A first discovery of face-selective 'wasp cells' in an insect brain shows that face-recognition circuitry evolved convergently far outside primates.",
+   "summary": "Some paper wasps (the species Polistes fuscatus) can tell each other apart by the distinctive markings on their faces, much as people recognise one another by facial features. Humans and other primates have so-called face cells: neurons in visual areas of the brain that respond strongly to faces. The researchers asked whether these wasps, despite having a tiny and very differently built brain, have something similar.\n\nAccording to the publisher's summary, they found neurons they call \"wasp cells\" in a brain region known as the lateral protocerebrum. These cells respond in ways that distinguish one facial pattern from another, which matches what the wasps need to do when they identify social partners. The short description does not explain how the recordings were made or how many cells or animals were studied.",
+   "why_it_matters": "The finding suggests that insects and primates, which are only very distantly related, may have independently arrived at a similar brain solution for recognising individuals by face. It offers a much smaller nervous system in which to study how face recognition works.",
+   "limitations": "The available summary is very brief and gives no details on methods, sample size, or how specifically these cells respond to faces compared with other images, so the strength of the comparison to primate face cells is hard to judge from it alone.",
+   "key_terms": [
+    {
+     "term": "Face cells",
+     "meaning": "Neurons in primate visual brain areas that fire strongly when the animal sees a face."
+    },
+    {
+     "term": "Polistes fuscatus",
+     "meaning": "A species of paper wasp whose members recognise each other individually by their unique face markings."
+    },
+    {
+     "term": "Lateral protocerebrum",
+     "meaning": "A region of the insect brain that receives and processes information, including visual signals."
+    },
+    {
+     "term": "Wasp cells",
+     "meaning": "The authors' name for neurons in the wasp brain that respond differently to different wasp facial patterns."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Christopher M. Jernigan",
+    "Lorenz C.C. Mammen",
+    "Winrich A. Freiwald",
+    "Michael J. Sheehan"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1016/j.cell.2026.10.052",
+   "url": "https://doi.org/10.1016/j.cell.2026.10.052",
+   "citation": "Jernigan, C. M., Mammen, L. C. C., Freiwald, W. A., & Sheehan, M. J. (2026). Neural correlates of facial recognition in a social wasp. Cell. https://doi.org/10.1016/j.cell.2026.10.052",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/French_paper_wasp_%28Polistes_gallicus%29_female_Malta.jpg/960px-French_paper_wasp_%28Polistes_gallicus%29_female_Malta.jpg",
+    "caption": "French paper wasp ( Polistes gallicus ) female, Malta.",
+    "credit": "Charles J. Sharp, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:French_paper_wasp_(Polistes_gallicus)_female_Malta.jpg"
+   },
+   "image_query": "Polistes paper wasp",
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 2,
+   "headline": "Brains of speakers of 21 languages appear to share a common meaning signal",
+   "original_title": "A shared meaning component across languages in the human brain",
+   "journal": "Nature Neuroscience",
+   "field": "Cognitive Neuroscience",
+   "significance": 8,
+   "reason": "fMRI from speakers of 21 languages shows brain encoding models transfer to unseen languages, evidence for a shared meaning code across human languages.",
+   "summary": "Do people who speak very different languages represent the meaning of what they hear or read in a similar way in the brain? To test this, de Varda and colleagues used fMRI (brain scans that track changes in blood flow as a stand-in for neural activity) collected from speakers of 21 languages. They combined these scans with multilingual language models, which are AI systems trained on text from many languages, and built encoding models: statistical tools that learn to predict a person's brain activity from features the AI extracts from the language input.\n\nThe central test was whether an encoding model trained only on some languages could predict brain responses to languages it had never been trained on. According to the publisher's summary, it could. The authors take this as evidence that part of the brain's response to language reflects meaning shared across languages, not just features specific to each language.",
+   "why_it_matters": "The result suggests that, beneath the large differences in sounds, words and grammar, human brains may handle meaning in a partly common way. It also shows that multilingual AI models can serve as a tool for comparing how the brain processes many languages at once.",
+   "limitations": "Only a brief summary is available, so the size of the effect, the number of participants and how much of the brain response is shared versus language-specific cannot be judged here. The findings depend on how well the AI model's representations capture meaning.",
+   "key_terms": [
+    {
+     "term": "fMRI",
+     "meaning": "Functional magnetic resonance imaging, a brain-scanning method that measures blood-flow changes as an indirect sign of which brain areas are active."
+    },
+    {
+     "term": "Multilingual language model",
+     "meaning": "An AI system trained on text in many languages that turns words and sentences into numerical representations."
+    },
+    {
+     "term": "Encoding model",
+     "meaning": "A model that learns to predict measured brain activity from features of a stimulus, here taken from a language model."
+    },
+    {
+     "term": "Generalization to unseen languages",
+     "meaning": "Testing whether a model trained on some languages still makes accurate predictions for languages left out of its training."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Andrea Gregor de Varda",
+    "Saima Malik-Moraleda",
+    "Greta Tuckute",
+    "Evelina Fedorenko"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41593-026-02523-6",
+   "url": "https://doi.org/10.1038/s41593-026-02523-6",
+   "citation": "Varda, A. G. d., Malik-Moraleda, S., Tuckute, G., & Fedorenko, E. (2026). A shared meaning component across languages in the human brain. Nature Neuroscience. https://doi.org/10.1038/s41593-026-02523-6",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Pathways_of_the_dorsal_and_ventral.png/500px-Pathways_of_the_dorsal_and_ventral.png",
+    "caption": "Fmri brain scanner",
+    "credit": "MRI_brain.jpg : created by NASA + Rami Tarawneh, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Pathways_of_the_dorsal_and_ventral.png"
+   },
+   "image_query": "fMRI brain scanner",
+   "category": "behavioral",
+   "category_name": "Behavioral & Mental Health",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 3,
+   "headline": "Bumpy 'egg-box' surface helps solid-state batteries discharge faster without failing",
+   "original_title": "Contouring mitigates voiding at the lithium/ceramic electrolyte interface on discharging solid-state batteries",
+   "journal": "Nature Energy",
+   "field": "Energy Materials",
+   "significance": 8,
+   "reason": "A contoured lithium/electrolyte interface raises the voiding threshold tenfold and lets solid-state batteries handle realistic EV discharge, removing a key practical barrier.",
+   "summary": "Solid-state batteries replace the liquid inside a normal battery with a solid ceramic, and pairing that solid with a lithium metal electrode could store much more energy. A known problem is that when these batteries discharge, lithium is pulled away from the boundary between the metal and the ceramic faster than it can be replaced, leaving gaps called voids. These voids reduce contact, raise resistance and can cause the cell to fail. The researchers asked whether reshaping that boundary could help, so they gave it an 'egg-box' pattern of bumps and dips instead of a flat surface, using a sulfur-based ceramic electrolyte (Li6PS5Cl).\n\nWith the contoured surface, voids only began forming at a discharge current about ten times higher than for a flat surface (2 versus 0.2 mA per square centimetre, at 2 MPa pressure and 30 °C). The patterned cells also handled short bursts of current up to 3 mA cm−2 at 30 °C and 8 mA cm−2 at 60 °C without failing. Voids still appeared, but they grew less, and the voltage losses linked to them were smaller. The contoured cells kept running under discharge patterns modelled on a standard car driving test, while flat-interface cells failed quickly. A full battery cell with a thin contoured electrolyte showed the same benefit.",
+   "why_it_matters": "Electric vehicles demand bursts of high current, and void formation has been one barrier stopping lithium metal solid-state batteries from meeting that demand. Changing only the shape of the interface, rather than the materials, offers a relatively simple route toward practical discharge rates.",
+   "limitations": "The contouring reduces but does not fully stop void formation, and the results come from lab cells tested at specific pressures and temperatures. How well this holds up over long-term cycling or in commercial-scale cells is not addressed in the abstract.",
+   "key_terms": [
+    {
+     "term": "Solid-state battery",
+     "meaning": "A battery that uses a solid material instead of a liquid to carry ions between its electrodes."
+    },
+    {
+     "term": "Solid electrolyte (Li6PS5Cl)",
+     "meaning": "A ceramic containing lithium, phosphorus, sulfur and chlorine that lets lithium ions move through it."
+    },
+    {
+     "term": "Void formation",
+     "meaning": "Gaps that open between the lithium metal and the electrolyte when lithium is removed during discharge, cutting the contact area."
+    },
+    {
+     "term": "Voltage polarization",
+     "meaning": "An extra voltage loss caused by resistance in the cell, here made worse by voids."
+    },
+    {
+     "term": "Egg-box topography",
+     "meaning": "A surface patterned with a regular grid of bumps and hollows, like an egg carton, which increases contact area."
+    },
+    {
+     "term": "WLTP",
+     "meaning": "Worldwide Harmonized Light Vehicles Test Procedure, a standard driving cycle used to test vehicles; here it was turned into realistic current demands."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Shengming Zhang",
+    "Bingkun Hu",
+    "Dominic L. R. Melvin",
+    "Dominic Spencer-Jolly",
+    "Xiangwen Gao",
+    "Longlong Wang",
+    "Lechen Yang",
+    "Charles W. Monroe",
+    "Peter G. Bruce"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41560-026-02172-w",
+   "url": "https://doi.org/10.1038/s41560-026-02172-w",
+   "citation": "Zhang, S., Hu, B., Melvin, D. L. R., Spencer-Jolly, D., Gao, X., Wang, L., Yang, L., Monroe, C. W., & Bruce, P. G. (2026). Contouring mitigates voiding at the lithium/ceramic electrolyte interface on discharging solid-state batteries. Nature Energy. https://doi.org/10.1038/s41560-026-02172-w",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/HP_Mini_1000.png/960px-HP_Mini_1000.png",
+    "caption": "Solid-state battery cell",
+    "credit": "AnVuong1222004 (1), via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:HP_Mini_1000.png"
+   },
+   "image_query": "solid-state battery cell",
+   "category": "materials",
+   "category_name": "Materials & Nanoscience",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 4,
+   "headline": "Researchers build a 'pangenome' map covering many mouse strains, not just one",
+   "original_title": "A draft mouse pangenome graph reference",
+   "journal": "Nature Genetics",
+   "field": "Genomics",
+   "significance": 8,
+   "reason": "A telomere-to-telomere-anchored mouse pangenome graph cuts reference bias in the most widely used mammalian model organism.",
+   "summary": "Lab mouse genetics has long relied on a single reference genome taken from one standard strain, called C57BL/6J. Comparing DNA from other mouse strains against this one sequence can miss or distort their differences. This study asked whether a reference that captures the genetic variety of many mice could do a better job.\n\nThe researchers built three pangenomes, which are references that combine many genomes into one connected structure called a graph and are detailed down to individual DNA letters. All three are built on a complete, gap-free 'telomere-to-telomere' assembly of the C57BL/6J genome, used as the backbone. According to the publisher's summary, these resources improve how sequencing reads are lined up against the reference, reduce bias toward the standard strain, make detection of genetic variants more accurate, and support later studies of how genes work. The description gives no specific numbers.",
+   "why_it_matters": "Mice are among the most widely used animals in biomedical research, and many studies compare genetically different strains. A reference that reflects that diversity could make those genetic comparisons more reliable and cut down on errors caused by measuring everything against one strain.",
+   "limitations": "The authors describe this as a 'draft' resource. The publisher's summary does not say how many strains are included or how large the improvements are.",
+   "key_terms": [
+    {
+     "term": "Pangenome",
+     "meaning": "A reference that represents the DNA of many individuals or strains together, instead of a single genome."
+    },
+    {
+     "term": "Graph-based reference",
+     "meaning": "A way to store genomes as a network: shared DNA forms common paths, and differences between strains appear as alternative branches."
+    },
+    {
+     "term": "Telomere-to-telomere (T2T)",
+     "meaning": "A genome assembly that is complete from one end of each chromosome to the other, with no gaps."
+    },
+    {
+     "term": "C57BL/6J",
+     "meaning": "The most commonly used inbred laboratory mouse strain, whose genome is the standard mouse reference."
+    },
+    {
+     "term": "Reference bias",
+     "meaning": "The tendency for analyses to work better for DNA that resembles the reference genome, so differences from it can be missed or misread."
+    },
+    {
+     "term": "Variant calling",
+     "meaning": "Identifying where an individual's DNA differs from the reference."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Juan F. Macias-Velasco",
+    "John E. Garza",
+    "Wenjin Zhang",
+    "Wanying Wu",
+    "Zheng Xu",
+    "Qichen Fu",
+    "Derek A. Albracht",
+    "Chad Tomlinson",
+    "Edward A. Belter",
+    "Hang Su",
+    "Narayan Vivek",
+    "Elena Kharitonova",
+    "Yin Shen",
+    "Yun Li",
+    "Ming Hu",
+    "Yang E. Li",
+    "Ting Wang"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41588-026-02842-1",
+   "url": "https://doi.org/10.1038/s41588-026-02842-1",
+   "citation": "Macias-Velasco, J. F., Garza, J. E., Zhang, W., Wu, W., Xu, Z., Fu, Q., Albracht, D. A., Tomlinson, C., Belter, E. A., Su, H., Vivek, N., Kharitonova, E., Shen, Y., Li, Y., Hu, M., Li, Y. E., & Wang, T. (2026). A draft mouse pangenome graph reference. Nature Genetics. https://doi.org/10.1038/s41588-026-02842-1",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg",
+    "caption": "Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice",
+    "credit": "Andrey Chernogorodov, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg"
+   },
+   "image_query": "laboratory mouse",
+   "category": "cell_molecular",
+   "category_name": "Cellular & Molecular",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 5,
+   "headline": "Brain growth charts built for Chinese populations differ from Western-based charts",
+   "original_title": "Towards population-specific brain charts across the lifespan",
+   "journal": "Nature Human Behaviour",
+   "field": "Neuroimaging",
+   "significance": 8,
+   "reason": "Brain charts built from 43,037 Chinese participants aged 0–100 diverge from charts based on mostly white cohorts, which matters for equitable neuroscience and diagnosis.",
+   "summary": "Doctors use growth charts to judge whether a child's height or weight is typical for their age. Researchers have been building similar \"brain charts\" that describe how brain structure normally changes from birth to old age, but most of the brain scans behind them come from mainly white populations. This study asked whether a chart built from a different population would look different and work better for that population.\n\nThe team used what they describe as the largest available collection of brain structure scans from Chinese people across the whole lifespan: 43,037 participants aged 0 to 100. From these scans they built population-specific brain charts. The typical paths of brain development and ageing in this group differed from those seen in mostly white populations. The tailored charts were better at predicting ordinary traits (phenotypes) and better at picking up the departures from typical brain structure that are linked to disease.",
+   "why_it_matters": "If brain charts are based mainly on one group, they may misjudge what counts as normal for people from other backgrounds. That can make brain-based diagnosis less accurate for them. Population-specific charts could make brain imaging tools fairer and more precise for more people.",
+   "limitations": "The summary gives no detail on how large the differences between populations were, or what caused them. Genetics, environment, or differences in scanners and study sites could all play a part. It also does not say which diseases were tested.",
+   "key_terms": [
+    {
+     "term": "Brain chart",
+     "meaning": "A reference model showing the typical size or shape of brain structures at each age, similar to a child's growth chart."
+    },
+    {
+     "term": "Structural neuroimaging",
+     "meaning": "Brain scans, such as MRI, that capture the brain's anatomy rather than its activity."
+    },
+    {
+     "term": "Developmental trajectory",
+     "meaning": "The path a brain measure follows as it changes over a person's life."
+    },
+    {
+     "term": "Phenotype",
+     "meaning": "An observable trait of a person, such as a physical or behavioural characteristic."
+    },
+    {
+     "term": "Precision neuroscience",
+     "meaning": "An approach that tailors brain research and clinical tools to specific individuals or groups."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41562-026-02596-0",
+   "url": "https://doi.org/10.1038/s41562-026-02596-0",
+   "citation": "Towards population-specific brain charts across the lifespan. (2026). Nature Human Behaviour. https://doi.org/10.1038/s41562-026-02596-0",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/PET_MRI_Scanner_%28NIH_BioArt_687_-_782345%29.png/960px-PET_MRI_Scanner_%28NIH_BioArt_687_-_782345%29.png",
+    "caption": "Brain mri scanner",
+    "credit": "Courtesy of NIAID Malcolm Houston, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:PET_MRI_Scanner_(NIH_BioArt_687_-_782345).png"
+   },
+   "image_query": "brain MRI scanner",
+   "category": "behavioral",
+   "category_name": "Behavioral & Mental Health",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 6,
+   "headline": "Adding mRNA 'helper' proteins boosts DNA delivery into cells",
+   "original_title": "Modular mRNA-encoded helper proteins enhance DNA delivery",
+   "journal": "Nature Biotechnology",
+   "field": "Biotechnology",
+   "significance": 7,
+   "reason": "Co-delivered mRNA helper proteins boost non-viral DNA delivery across vehicles in vitro and in vivo, a modular advance for gene therapy.",
+   "summary": "Getting therapeutic DNA to work inside cells is hard: the DNA has to cross from the cell's cytoplasm into the nucleus, where genes are read, and cells also have defences that chew up or silence foreign DNA. This paper describes a system the authors call MEND (mRNA-enhanced DNA delivery), in which a dose of messenger RNA is sent in alongside the DNA. The cell translates that mRNA into short-lived helper proteins that prepare it to handle the incoming DNA better.\n\nThe authors describe three kinds of helper protein: ones that help shuttle DNA into the nucleus, ones that adjust the cell's internal machinery or state, and ones that quiet the cell's immune reaction to foreign DNA. Because the helpers are just encoded as mRNA, the approach is modular — different helpers can be mixed and matched. They report increased expression of the delivered gene across several different delivery vehicles and DNA formats, both in cultured cells and in animals using lipid nanoparticles as the carrier.",
+   "why_it_matters": "Many gene therapies and DNA vaccines fail not because the DNA is wrong but because too little of it ever reaches the nucleus and gets read. A plug-in way to temporarily make cells more receptive could lower the dose needed and widen what DNA-based medicines can do. Because the helpers are encoded in mRNA, their effect is transient rather than permanently engineered into the cell.",
+   "limitations": "The abstract gives no numbers on how large the improvement is, which animals or tissues were tested, or whether the helper proteins cause side effects; safety and durability in humans remain untested.",
+   "key_terms": [
+    {
+     "term": "mRNA",
+     "meaning": "Messenger RNA: a temporary instruction molecule that cells read to build a protein."
+    },
+    {
+     "term": "Nuclear translocation",
+     "meaning": "The movement of molecules such as DNA from the cytoplasm into the cell nucleus, where genes are transcribed."
+    },
+    {
+     "term": "Transgene expression",
+     "meaning": "How much protein a cell makes from a gene that was delivered from outside."
+    },
+    {
+     "term": "Lipid nanoparticle (LNP)",
+     "meaning": "A tiny fatty bubble used to carry nucleic acids into cells; the same type of carrier used in mRNA vaccines."
+    },
+    {
+     "term": "Modular system",
+     "meaning": "A design made of interchangeable parts that can be swapped or combined for different purposes."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Manthan N. Patel",
+    "Heewon Park",
+    "Nicolas Marzolini",
+    "Conor Dickson",
+    "Sarah O’Neill",
+    "Saw Yunn Nwe",
+    "Hsiang-Yung Wang",
+    "Shanay Desai",
+    "Taylor V. Brysgel",
+    "Sachchidanand Tiwari",
+    "Yufei Wang",
+    "Rhea Maheshwari",
+    "Eno-Obong Essien",
+    "Jacob S. Brenner"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41587-026-03351-6",
+   "url": "https://doi.org/10.1038/s41587-026-03351-6",
+   "citation": "Patel, M. N., Park, H., Marzolini, N., Dickson, C., O’Neill, S., Nwe, S. Y., Wang, H., Desai, S., Brysgel, T. V., Tiwari, S., Wang, Y., Maheshwari, R., Essien, E., & Brenner, J. S. (2026). Modular mRNA-encoded helper proteins enhance DNA delivery. Nature Biotechnology. https://doi.org/10.1038/s41587-026-03351-6",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Supported_Lipid_Bilayer_and_Nanoparticles_AFM-es.png/960px-Supported_Lipid_Bilayer_and_Nanoparticles_AFM-es.png",
+    "caption": "Lipid nanoparticle",
+    "credit": "Yurko de la traducción Pitana, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Supported_Lipid_Bilayer_and_Nanoparticles_AFM-es.png"
+   },
+   "image_query": "lipid nanoparticle vial",
+   "category": "applied_tech",
+   "category_name": "Applied & Emerging Tech",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 7,
+   "headline": "Rearranging the same DNA switch parts decides where genes turn on",
+   "original_title": "Exhaustive rearrangement of an enhancer reveals that dependency-syntax encodes tissue specificity",
+   "journal": "Nature Genetics",
+   "field": "Gene Regulation",
+   "significance": 7,
+   "reason": "Exhaustively rearranging an enhancer in whole embryos shows that binding-site order, orientation and spacing encode tissue specificity, settling a long-debated question.",
+   "summary": "Enhancers are short stretches of DNA that act like switches, telling a gene when and in which tissues to turn on. They work by providing landing spots (binding sites) for proteins called transcription factors. Scientists have long asked whether only the number and type of these landing spots matter, or whether their arrangement (the order, spacing and direction, called 'syntax') also counts. To test this, the researchers built 460,800 versions of one enhancer in embryos of Ciona, a small sea animal. Every version had exactly the same set of binding sites for two transcription factor families, ETS and GATA, with the same binding strengths; only their organization differed.\n\nDespite having identical ingredients, only about 18% of the versions switched a gene on. Simply flipping the direction of one binding site turned 54,000 inactive versions into working enhancers, showing that arrangement follows strict rules. The team found two kinds of arrangements: 'dependent' ones, whose activity relies on where stronger and weaker binding sites are placed, and 'robust' ones, which work no matter where those sites go. Using a new method that reads out enhancer activity in single cells across whole embryos (SEMPRA), they showed that dependent arrangements stay sensitive to each cell's mix of proteins and stay restricted to particular tissues, while robust arrangements switch on broadly.",
+   "why_it_matters": "The results suggest that the layout of binding sites within an enhancer, not just which sites are present, helps decide which tissues a gene is active in. This could help researchers interpret DNA changes in enhancers that alter gene activity and design synthetic enhancers that work only in chosen tissues.",
+   "limitations": "The study rearranged a single enhancer built from just two types of binding sites in one organism, so it is unclear how broadly these syntax rules apply to other enhancers or to species such as humans.",
+   "key_terms": [
+    {
+     "term": "Enhancer",
+     "meaning": "A short DNA region that boosts a gene's activity in specific cells or at specific times."
+    },
+    {
+     "term": "Transcription factor binding site (TFBS)",
+     "meaning": "A short DNA sequence that a gene-regulating protein (transcription factor) attaches to."
+    },
+    {
+     "term": "Syntax",
+     "meaning": "The arrangement of binding sites within an enhancer: their order, spacing and orientation."
+    },
+    {
+     "term": "Affinity",
+     "meaning": "How strongly a transcription factor sticks to a given binding site."
+    },
+    {
+     "term": "Massively parallel reporter assay (MPRA)",
+     "meaning": "A method that tests thousands of DNA variants at once by linking each to a measurable signal."
+    },
+    {
+     "term": "Trans environment",
+     "meaning": "The set of proteins, such as transcription factors, present in a given cell that act on the DNA."
+    },
+    {
+     "term": "Ciona",
+     "meaning": "A sea squirt, a simple marine animal whose embryos are widely used to study gene regulation."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Joe J. Solvason",
+    "Krissie Tellez",
+    "Fabian Lim",
+    "Qiyang Wang",
+    "Benjamin P. Song",
+    "Jessica L. Grudzien",
+    "Sophia H. Le",
+    "Katrina M. Olson",
+    "Granton A. Jindal",
+    "Emma K. Farley"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41588-026-02838-x",
+   "url": "https://doi.org/10.1038/s41588-026-02838-x",
+   "citation": "Solvason, J. J., Tellez, K., Lim, F., Wang, Q., Song, B. P., Grudzien, J. L., Le, S. H., Olson, K. M., Jindal, G. A., & Farley, E. K. (2026). Exhaustive rearrangement of an enhancer reveals that dependency-syntax encodes tissue specificity. Nature Genetics. https://doi.org/10.1038/s41588-026-02838-x",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Ciona_robusta_.jpg/960px-Ciona_robusta_.jpg",
+    "caption": "Ciona robusta by Kohji Hotta",
+    "credit": "Delphine Dauga, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Ciona_robusta_.jpg"
+   },
+   "image_query": "Ciona sea squirt",
+   "category": "cell_molecular",
+   "category_name": "Cellular & Molecular",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 8,
+   "headline": "Comparing how well different ocean chemistry tricks pull CO2 from the air",
+   "original_title": "Global intercomparison of ocean-based geochemical carbon dioxide removal efficiencies",
+   "journal": "Nature Communications",
+   "field": "Carbon Dioxide Removal",
+   "significance": 7,
+   "reason": "A unified global framework compares ocean CO2-removal efficiencies, which is timely for judging alkalinity-enhancement climate strategies.",
+   "summary": "Some proposed climate fixes aim to make the ocean absorb more carbon dioxide by changing its chemistry. One idea, ocean alkalinity enhancement (OAE), adds alkaline substances to seawater. Another, direct ocean removal (DOR), takes dissolved carbon out of seawater so the ocean then draws more CO2 down from the air. Whether either could work at the scale of billions of tonnes depends on how efficient it is. The researchers built a single framework for judging the efficiency of these approaches. They also covered a third category, called ADA, in which alkalinity and dissolved carbon are added together.\n\nThey used a computer model of global ocean chemistry and biology to map how DOR efficiency varies by location and season, and compared those maps with OAE. They then showed that results from separate OAE and DOR simulations can be combined to predict what happens when alkalinity and carbon are changed at the same time. This matters for methods such as spreading crushed rock on land (enhanced rock weathering), adding alkalinity to rivers, and speeding up limestone weathering. In these methods the alkalinity has already absorbed some CO2 before it reaches the sea, so the ocean effectively receives both alkalinity and carbon.",
+   "why_it_matters": "Efficiency determines how much CO2 a removal method really takes out of the air for the effort and cost involved. A common yardstick across ocean and land-based weathering approaches helps researchers and policymakers compare options and decide where and when to deploy them.",
+   "limitations": "The findings come from a computer model rather than field measurements, so real-world efficiencies may differ. The abstract does not give specific efficiency numbers or say how uncertain the model results are.",
+   "key_terms": [
+    {
+     "term": "Ocean alkalinity enhancement (OAE)",
+     "meaning": "Adding alkaline (acid-neutralizing) material to seawater so it can hold more dissolved CO2, which leads the ocean to take more from the air."
+    },
+    {
+     "term": "Direct ocean removal (DOR)",
+     "meaning": "Extracting dissolved inorganic carbon from seawater. The depleted water then absorbs CO2 from the atmosphere to make up the difference."
+    },
+    {
+     "term": "Dissolved inorganic carbon (DIC)",
+     "meaning": "The total carbon in seawater held as dissolved CO2, bicarbonate and carbonate."
+    },
+    {
+     "term": "Combined alkalinity and DIC addition (ADA)",
+     "meaning": "A change in which both alkalinity and dissolved carbon enter the ocean together, as happens with weathered rock carried by rivers."
+    },
+    {
+     "term": "Enhanced rock weathering",
+     "meaning": "Spreading finely ground rock, often on land, so it reacts with CO2 faster than it would naturally."
+    },
+    {
+     "term": "Ocean biogeochemical model",
+     "meaning": "A computer simulation of how ocean currents, chemistry and life move and transform elements such as carbon."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Mengyang Zhou",
+    "Mary-Louise Timmermans",
+    "Elizabeth Yankovsky",
+    "Michael D. Tyka",
+    "Matthew C. Long"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41467-026-78856-4",
+   "url": "https://doi.org/10.1038/s41467-026-78856-4",
+   "citation": "Zhou, M., Timmermans, M., Yankovsky, E., Tyka, M. D., & Long, M. C. (2026). Global intercomparison of ocean-based geochemical carbon dioxide removal efficiencies. Nature Communications, 17(1), 11411. https://doi.org/10.1038/s41467-026-78856-4",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Porto_Covo_Outubro_2014-3.jpg/960px-Porto_Covo_Outubro_2014-3.jpg",
+    "caption": "Breaking wave in Porto Covo, Portugal",
+    "credit": "Alvesgaspar, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Porto_Covo_Outubro_2014-3.jpg"
+   },
+   "image_query": "ocean surface waves",
+   "category": "climate",
+   "category_name": "Climate & Environment",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 9,
+   "headline": "Reweighting error-check data makes quantum error correction tolerate more noise",
+   "original_title": "Syndrome Resampling Enhances Quantum Error Correction Thresholds",
+   "journal": "Physical Review Letters",
+   "field": "Quantum Error Correction",
+   "significance": 7,
+   "reason": "A general syndrome-resampling method raises error-correction thresholds, easing the hardware demands for fault-tolerant quantum computing.",
+   "summary": "Quantum computers protect information by spreading one 'logical' qubit across many physical qubits and repeatedly checking for errors. The pattern of check results is called the syndrome. Error correction only works if the hardware's error rate is below a 'threshold', which current devices struggle to reach. The authors asked whether existing data could be reused more cleverly to lower logical errors without new hardware or a new decoder (the algorithm that guesses which correction to apply). Their idea, syndrome resampling, starts from the observation that rare syndromes tend to come from large errors that the decoder gets wrong. So they reweight the collected runs, raising each syndrome's probability to a power α, which favours the common syndromes and suppresses the rare ones. They link this to a quantity called the Rényi coherent information, whose phase transitions predict a new, higher threshold for each α.\n\nIn computer simulations of surface codes with bit-flip noise, the threshold rose from about 10.75% (no resampling) to about 17.7% for α=2 and about 20.9% for α=3 using the best possible decoder, closely matching theoretical predictions. A faster standard decoder also gained. Combined with another filtering trick based on decoder confidence, logical error rates fell by up to four orders of magnitude. They also showed the method can be estimated from a finite set of runs. Applied to real data from a superconducting-qubit experiment (about 44,000 runs), resampling with α=2 cut the logical error rate by roughly a hundredfold while keeping 40% of runs, compared with only 5% kept when discarding every run that showed any error.",
+   "why_it_matters": "The method works with any decoder and any stabilizer code, needing only statistics of the measured syndromes, so it can be applied to data that experiments already collect. It offers a way to get better logical performance from today's noisy hardware while throwing away far fewer runs than strict filtering.",
+   "limitations": "This is a preprint, so numbers in the final published paper may differ. The approach discards some runs, and estimating syndrome probabilities can need exponentially many samples at high noise or large code sizes; most tests used simple bit-flip noise and small codes.",
+   "key_terms": [
+    {
+     "term": "Syndrome",
+     "meaning": "The set of check measurements that reveal whether, and roughly where, errors occurred, without disturbing the stored quantum information."
+    },
+    {
+     "term": "Threshold",
+     "meaning": "The physical error rate below which making the code bigger reduces logical errors; above it, bigger codes do worse."
+    },
+    {
+     "term": "Decoder",
+     "meaning": "An algorithm that reads the syndrome and decides which correction to apply; maximum likelihood decoding is the optimal but usually expensive version."
+    },
+    {
+     "term": "Post-selection",
+     "meaning": "Keeping only runs where no errors were detected and discarding the rest; very accurate but wastes most data as noise grows."
+    },
+    {
+     "term": "Rényi coherent information",
+     "meaning": "An information-theory measure of how much quantum information survives noise; its sudden changes mark thresholds."
+    },
+    {
+     "term": "Surface code",
+     "meaning": "A widely used error-correcting code that arranges qubits on a 2D grid with local checks."
+    }
+   ],
+   "based_on": "full text",
+   "authors": [
+    "Luis Colmenarez",
+    "Áron Márton",
+    "Markus Müller"
+   ],
+   "published": "2026-11-23T10:00:00+00:00",
+   "doi": "10.1103/v3kk-rwk8",
+   "url": "https://doi.org/10.1103/v3kk-rwk8",
+   "citation": "Colmenarez, L., Márton, Á., & Müller, M. (2026). Syndrome Resampling Enhances Quantum Error Correction Thresholds. Physical Review Letters, 137(22), 220601. https://doi.org/10.1103/v3kk-rwk8",
+   "free_copy": {
+    "url": "https://arxiv.org/abs/2605.06101",
+    "version": "Preprint (before peer review)",
+    "host": "repository",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png/960px-6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png",
+    "caption": "Superconducting quantum processor",
+    "credit": "OJB Quantum, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png"
+   },
+   "image_query": "superconducting quantum processor",
+   "category": "physics",
+   "category_name": "Physics",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 10,
+   "headline": "Twisted terahertz light passes its twist to a superconductor's Higgs mode",
+   "original_title": "Imprinting Macroscopic Orbital Angular Momentum onto the Superconducting Higgs Mode Using a Terahertz Vortex Beam",
+   "journal": "Physical Review Letters",
+   "field": "Condensed Matter",
+   "significance": 6,
+   "reason": "A terahertz vortex beam imprints orbital angular momentum onto the superconducting Higgs mode, a new way to optically control quantum states.",
+   "summary": "Light can carry orbital angular momentum, a kind of twist in which the wavefronts spiral around the beam's axis like a corkscrew. A beam shaped this way is called a vortex beam. The researchers asked whether this twist could be transferred into a superconductor, a material that carries electric current with zero resistance. Specifically, they targeted the Higgs mode, a collective oscillation in the strength of the superconducting state, so named because it is related to the Higgs boson of particle physics.\n\nThe team shone a terahertz vortex beam onto a superconductor made of niobium nitride (NbN). Terahertz light has frequencies between microwaves and infrared. According to the publisher's short description, the beam stamped its orbital angular momentum onto the Higgs mode. In other words, the superconductor's collective oscillation picked up a large-scale twisted pattern inherited from the light.",
+   "why_it_matters": "The result points to a way of using shaped electromagnetic fields to control quantum states inside materials. Being able to hand light's twist to an excitation of a superconductor could give researchers a new tool for probing and steering these delicate states.",
+   "limitations": "Only a one-sentence description is available. Details such as the experimental conditions, how the transfer was detected, and how strong the effect is cannot be assessed from it.",
+   "key_terms": [
+    {
+     "term": "Orbital angular momentum (of light)",
+     "meaning": "A property of a light beam whose wavefront spirals around its direction of travel, giving the beam a twist."
+    },
+    {
+     "term": "Vortex beam",
+     "meaning": "A light beam carrying orbital angular momentum. It usually has a dark spot at its centre."
+    },
+    {
+     "term": "Higgs mode",
+     "meaning": "A collective oscillation in the strength (amplitude) of a superconductor's ordered state. It is analogous to the Higgs boson."
+    },
+    {
+     "term": "Terahertz",
+     "meaning": "Electromagnetic radiation with frequencies around a trillion cycles per second, lying between microwaves and infrared light."
+    },
+    {
+     "term": "NbN",
+     "meaning": "Niobium nitride, a compound that becomes superconducting at low temperatures."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Kotaro Tanaka",
+    "Daemo Kang",
+    "Naotaka Yoshikawa",
+    "Fumiya Sekiguchi",
+    "Hirotaka Terai",
+    "Takahiro Morimoto",
+    "Ryo Shimano"
+   ],
+   "published": "2026-11-23T10:00:00+00:00",
+   "doi": "10.1103/lwp9-xjym",
+   "url": "https://doi.org/10.1103/lwp9-xjym",
+   "citation": "Tanaka, K., Kang, D., Yoshikawa, N., Sekiguchi, F., Terai, H., Morimoto, T., & Shimano, R. (2026). Imprinting Macroscopic Orbital Angular Momentum onto the Superconducting Higgs Mode Using a Terahertz Vortex Beam. Physical Review Letters, 137(22), 226001. https://doi.org/10.1103/lwp9-xjym",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Gaussian_Beam_Laser_Pulsed.png/960px-Gaussian_Beam_Laser_Pulsed.png",
+    "caption": "Terahertz laser",
+    "credit": "AdamJones88, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Gaussian_Beam_Laser_Pulsed.png"
+   },
+   "image_query": "terahertz laser optics lab",
+   "category": "physics",
+   "category_name": "Physics",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 11,
+   "headline": "Proof that the 'rotation' reply always gives the second player an edge in a permutation game",
+   "original_title": "The Rotation Strategy Wins Penney's game for Permutations",
+   "journal": "arXiv (Mathematics)",
+   "field": "Probability & Combinatorics",
+   "significance": 6,
+   "reason": "Proves the Elizalde–Lin conjecture that the rotation strategy wins Penney's game for permutations for every pattern length k≥3.",
+   "summary": "Penney's game for permutations works like this: two players each pick a different ordering pattern of length k (for example, 'small, large, medium' when k=3). Random numbers are then drawn one after another, and whoever's pattern first matches the relative ranking of the latest k numbers wins. Earlier researchers, Elizalde and Lin, guessed that the second player can always beat the first by choosing the first player's pattern 'rotated', meaning the last entry is moved to the front. This preprint, which has not yet been peer reviewed, claims to prove that guess for every pattern length of 3 or more.\n\nThe author expresses the second player's advantage as a sum over 'clusters', which are chains of overlapping occurrences of the two patterns, each counted with a plus or minus sign. The key step shows that for any given ordering of the numbers, these signed counts add up to only -1, 0 or 1. That keeps the contribution of very long clusters under control. It gives a general proof for k of 8 or more, showing the rotation wins with probability at least 1/2 + 0.0053/(k+1). Exact computer calculations with fractions cover the cases k = 3 to 7.",
+   "why_it_matters": "The result settles an open conjecture about a classic kind of game: being able to see your opponent's choice can guarantee an advantage. The cluster-counting technique may also help with other problems about when patterns first appear in random sequences.",
+   "limitations": "This is a preprint that has not been peer reviewed. The guaranteed edge shown for long patterns is small and shrinks as k grows, and the small cases depend on exact computer calculations.",
+   "key_terms": [
+    {
+     "term": "Permutation pattern",
+     "meaning": "The relative order of a run of numbers, e.g. 2-3-1 means the middle value is largest and the last is smallest."
+    },
+    {
+     "term": "Continuous distribution",
+     "meaning": "A way of drawing random numbers where ties essentially never happen, so every run of numbers has a clear ranking."
+    },
+    {
+     "term": "Rotation",
+     "meaning": "Moving the last entry of a pattern to the front, turning a1a2...ak into ak a1...a(k-1)."
+    },
+    {
+     "term": "Cluster",
+     "meaning": "A chain of overlapping occurrences of the two patterns. These chains are given +1 or -1 weights and used to compute winning probabilities."
+    },
+    {
+     "term": "Conjecture",
+     "meaning": "A mathematical statement believed to be true but not yet proven."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Himaghna Roy Choudhury"
+   ],
+   "published": "2026-11-24T05:00:00+00:00",
+   "doi": "10.48550/arXiv.2611.28063",
+   "url": "https://doi.org/10.48550/arXiv.2611.28063",
+   "citation": "Choudhury, H. R. (2026). The Rotation Strategy Wins Penney's game for Permutations. arXiv (Mathematics). https://doi.org/10.48550/arXiv.2611.28063",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Dice_%28typical_role_playing_game_dice%29.jpg/960px-Dice_%28typical_role_playing_game_dice%29.jpg",
+    "caption": "Playing dice game",
+    "credit": "Diacritica, via Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Dice_(typical_role_playing_game_dice).jpg"
+   },
+   "image_query": "playing dice game",
+   "category": "math_stats",
+   "category_name": "Mathematics & Statistics",
+   "editors_pick": false,
+   "preprint": true
+  },
+  {
+   "rank": 12,
+   "headline": "AI safety tests disagree on what counts as a harmful chatbot answer",
+   "original_title": "What Counts as Attack Success? Evaluating Harmfulness in Red Teaming LLMs",
+   "journal": "arXiv (Computer Science)",
+   "field": "AI Safety",
+   "significance": 6,
+   "reason": "A review of 76 red-teaming papers shows that inconsistent harmfulness criteria can flip reported conclusions about LLM attack success.",
+   "summary": "Red teaming means deliberately trying to trick a large language model (LLM), the kind of AI behind chatbots, into producing harmful output. To score whether an attack worked, many studies hand the decision to an automated evaluator, often another AI model or a classifier, which labels each response as harmful or not. But deciding what is harmful involves judgment calls about context and values. This preprint, which has not yet been peer reviewed, asks how red-teaming papers define harm and whether those choices affect their results.\n\nThe authors reviewed 76 red-teaming papers. They found that many did not define harm themselves. Instead, they borrowed the definition built into earlier datasets, classifiers, or instructions given to judge models. When the team ran several of these evaluators on exactly the same model responses, the evaluators sometimes disagreed. These disagreements were large enough to flip conclusions about which model is safer. Part of the cause is that evaluators set the line in different places. Some treat any answer that fails to refuse as a success for the attacker. Others count only content that could realistically cause harm.",
+   "why_it_matters": "Headline claims like \"attack success rate\" are used to compare the safety of AI models and of attack or defense methods. If those numbers depend heavily on which evaluator was chosen, comparisons across studies may be misleading. The authors call for papers to state their harm criteria clearly and explain how their evaluators were picked and checked.",
+   "limitations": "This is a non-peer-reviewed preprint. The abstract does not say how many evaluators or models were tested or how large the disagreements were. It also does not propose a single correct definition of harm.",
+   "key_terms": [
+    {
+     "term": "Red teaming",
+     "meaning": "Deliberately attacking a system, here an AI model, to find ways it can be made to misbehave."
+    },
+    {
+     "term": "Large language model (LLM)",
+     "meaning": "An AI system trained on huge amounts of text that generates written responses, like a chatbot."
+    },
+    {
+     "term": "Automated evaluator / judge",
+     "meaning": "A classifier or AI model used to decide automatically whether a response counts as harmful."
+    },
+    {
+     "term": "Attack success",
+     "meaning": "The outcome where an attack gets the model to produce a response judged harmful. How \"harmful\" is defined changes this count."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Ruyuan Wan",
+    "Adriana Alvarado Garcia",
+    "Md Toufikuzzaman",
+    "Dongwon Lee",
+    "Ting-Hao `Kenneth' Huang"
+   ],
+   "published": "2026-11-24T05:00:00+00:00",
+   "doi": "10.48550/arXiv.2611.28038",
+   "url": "https://doi.org/10.48550/arXiv.2611.28038",
+   "citation": "Wan, R., Garcia, A. A., Toufikuzzaman, M., Lee, D., & Huang, T. (2026). What Counts as Attack Success? Evaluating Harmfulness in Red Teaming LLMs. arXiv (Computer Science). https://doi.org/10.48550/arXiv.2611.28038",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Character.AI_lawsuit_screenshot.png/500px-Character.AI_lawsuit_screenshot.png",
+    "caption": "A Character.AI chatbot talking about a user's parents",
+    "credit": "Character.AI, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Character.AI_lawsuit_screenshot.png"
+   },
+   "image_query": "AI chatbot screen",
+   "category": "computing",
+   "category_name": "Computer Science & IT",
+   "editors_pick": false,
+   "preprint": true
+  },
+  {
+   "rank": 13,
+   "headline": "Prime editing lets scientists tag thousands of proteins at once",
+   "original_title": "A prime-editing-based strategy for pooled protein tagging and subcellular localization mapping",
+   "journal": "Nature Cell Biology",
+   "field": "Genome Engineering",
+   "significance": 6,
+   "reason": "Pooled prime editing enables scalable endogenous protein tagging and multiplexed mapping of where proteins sit in the cell.",
+   "summary": "Biologists often want to attach a fluorescent or other tag to a protein in its natural place in the genome, so they can watch where it goes inside a cell. Doing this one gene at a time is slow. This study tests whether prime editing — a CRISPR-derived method that writes new DNA sequence into a chosen spot without cutting both strands — can be used in a pooled way, inserting tags into many genes in a single experiment.\n\nThe team screened 17,280 prime editing guide RNAs (the molecules that both target the site and carry the sequence to be written in) covering 60 different proteins. By comparing which guides worked well, they identified features that determine insertion efficiency, and used those rules to design better guides in advance. They then tagged many proteins at once and read out where each tagged protein sat in the cell using in situ sequencing, which reads DNA barcodes directly inside intact cells under a microscope.",
+   "why_it_matters": "Knowing where a protein sits in a cell is a strong clue to what it does, but tagging genes individually is laborious. A pooled, predictable tagging method could let researchers map protein locations across many genes in one go, and the design rules they extracted should make future prime-editing experiments more reliable.",
+   "limitations": "The abstract gives few details on accuracy, cell types tested, or how often tagging disrupts protein function, and 60 proteins is a small slice of the proteome.",
+   "key_terms": [
+    {
+     "term": "Prime editing",
+     "meaning": "A gene-editing method that writes a specified new DNA sequence at a chosen site without making a full double-strand break."
+    },
+    {
+     "term": "pegRNA (prime editing guide RNA)",
+     "meaning": "The guide molecule that tells the editor where to act and also carries the template for the new sequence."
+    },
+    {
+     "term": "Endogenous tagging",
+     "meaning": "Adding a label to a protein at its own gene, so it is made at normal levels and in the normal place."
+    },
+    {
+     "term": "Pooled screen",
+     "meaning": "Testing thousands of edits together in one mixed population instead of one at a time."
+    },
+    {
+     "term": "In situ sequencing",
+     "meaning": "Reading DNA or RNA sequences directly inside intact cells under a microscope, so results keep their spatial context."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Henry M. Sanchez",
+    "Deepak C. Mani",
+    "Tomer Lapidot",
+    "Yevgeniy V. Serebrenik",
+    "Ophir Shalem"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41556-026-02110-8",
+   "url": "https://doi.org/10.1038/s41556-026-02110-8",
+   "citation": "Sanchez, H. M., Mani, D. C., Lapidot, T., Serebrenik, Y. V., & Shalem, O. (2026). A prime-editing-based strategy for pooled protein tagging and subcellular localization mapping. Nature Cell Biology. https://doi.org/10.1038/s41556-026-02110-8",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Transgenic_expression_of_a_fluorescent_protein_in_Human_Embryonic_Kidney_cells.jpg/960px-Transgenic_expression_of_a_fluorescent_protein_in_Human_Embryonic_Kidney_cells.jpg",
+    "caption": "Fluorescent protein microscopy cells",
+    "credit": "Kai p53, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Transgenic_expression_of_a_fluorescent_protein_in_Human_Embryonic_Kidney_cells.jpg"
+   },
+   "image_query": "fluorescent protein microscopy cells",
+   "category": "cell_molecular",
+   "category_name": "Cellular & Molecular",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 14,
+   "headline": "Mouse frontal cortex contains neurons that respond to very specific visual spots",
+   "original_title": "Highly selective visual circuits in mouse frontal cortex",
+   "journal": "Nature Neuroscience",
+   "field": "Neuroscience",
+   "significance": 6,
+   "reason": "Identifies highly selective binocular visual neurons in mouse frontal cortex that depend on V1 input and send feedback across visual cortex.",
+   "summary": "Vision in the mammalian brain is usually linked to the visual cortex at the back of the head, but the frontal cortex, a region more associated with planning and decision-making, also gets visual information. The researchers asked whether neurons in the frontal cortex of awake mice respond to particular parts of what the animal sees, and how these neurons connect with the rest of the visual system.\n\nThey found frontal cortex neurons with highly selective receptive fields, meaning each neuron responded only to visual stimuli in a narrow, specific patch of the visual scene. These neurons mainly represented binocular visual space, the region in front of the mouse that both eyes see at once. Their visual responses depended on input from the primary visual cortex (V1). In turn, the frontal neurons sent signals back to many visual cortex areas that affected how those areas worked.",
+   "why_it_matters": "The work suggests the frontal cortex takes an active part in vision instead of only receiving a rough summary of it. A loop between front and back brain regions that focuses on the area both eyes see could help explain how mice judge depth or attend to things directly in front of them.",
+   "limitations": "This is a study in mice, and the short summary does not explain the methods used or how strongly the feedback changes visual processing. Whether similar circuits exist in primates or humans is still unknown.",
+   "key_terms": [
+    {
+     "term": "Receptive field",
+     "meaning": "The particular area of the visual scene where a stimulus must appear to make a given neuron respond."
+    },
+    {
+     "term": "Frontal cortex",
+     "meaning": "The front part of the brain's outer layer, usually linked to planning, attention and decision-making."
+    },
+    {
+     "term": "Binocular visual space",
+     "meaning": "The part of the visual field that both eyes can see at the same time, usually directly ahead."
+    },
+    {
+     "term": "V1 (primary visual cortex)",
+     "meaning": "The first area of the cortex that receives and processes visual signals arriving from the eyes."
+    },
+    {
+     "term": "Feedback",
+     "meaning": "Signals sent from a higher-level brain area back to earlier processing areas, which can change their activity."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Anthony D. Lien",
+    "Bilal Haider"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41593-026-02520-9",
+   "url": "https://doi.org/10.1038/s41593-026-02520-9",
+   "citation": "Lien, A. D., & Haider, B. (2026). Highly selective visual circuits in mouse frontal cortex. Nature Neuroscience. https://doi.org/10.1038/s41593-026-02520-9",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg",
+    "caption": "Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice",
+    "credit": "Andrey Chernogorodov, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg"
+   },
+   "image_query": "laboratory mouse",
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 15,
+   "headline": "Leaves drift toward simpler shapes because simple shapes are easier to build",
+   "original_title": "Developmental bias explains the evolutionary trend towards simple leaf shapes",
+   "journal": "eLife",
+   "field": "Plant Evolution",
+   "significance": 6,
+   "reason": "Phylogenetics combined with developmental modelling suggests developmental bias drives the angiosperm-wide trend toward simple leaf shapes.",
+   "summary": "Flowering plants have leaves ranging from simple, single blades to complex, divided forms such as compound or deeply lobed leaves. Biologists have long debated how much evolution is steered by natural selection versus developmental bias, meaning the tendency of an organism's growth processes to produce some forms more readily than others. The researchers combined large evolutionary family trees of flowering plants with leaf-shape records from herbarium collections (archives of preserved plant specimens). They confirmed that, over the history of these plants, switches from complex to simple leaves happened much more often than switches the other way.\n\nTo test whether this one-way trend could come from development itself, the team took an established computer model of leaf growth and added random mutations to it. The simulation included no natural selection. Even so, the rates of shape change it produced closely matched the rates seen in the real evolutionary data. The authors conclude that the gene networks controlling leaf growth produce simple leaves far more easily than complex ones, and that this built-in bias has strongly shaped how leaf form evolved.",
+   "why_it_matters": "The study suggests that evolutionary trends can arise partly from what development makes easy to produce, not only from what helps survival. The finding parallels earlier work showing similar biases toward simple forms in RNA folding and in how proteins assemble. This hints that a preference for simplicity may be common across many biological systems.",
+   "limitations": "The developmental evidence comes from a computer model with selection left out, so the match with real data supports the bias explanation but does not rule out a role for natural selection. The results also depend on how well that one model captures real leaf development.",
+   "key_terms": [
+    {
+     "term": "Developmental bias",
+     "meaning": "The tendency of an organism's growth and gene-control processes to produce certain body forms more readily than others."
+    },
+    {
+     "term": "Phylogenetic tree",
+     "meaning": "A branching diagram of how species are related through shared ancestry, used to work out how traits changed over time."
+    },
+    {
+     "term": "Herbarium",
+     "meaning": "A collection of dried, preserved plant specimens kept for scientific reference."
+    },
+    {
+     "term": "Angiosperms",
+     "meaning": "Flowering plants, the largest group of land plants."
+    },
+    {
+     "term": "Gene regulatory network",
+     "meaning": "A set of genes that switch one another on and off to control how cells and tissues develop."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "James S Malone",
+    "Nora S Martin",
+    "Samuel HA von der Dunk",
+    "Liliana M Dávalos",
+    "Ard A Louis"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.7554/eLife.110692",
+   "url": "https://doi.org/10.7554/eLife.110692",
+   "citation": "Malone, J. S., Martin, N. S., Dunk, S. H. v. d., Dávalos, L. M., & Louis, A. A. (2026). Developmental bias explains the evolutionary trend towards simple leaf shapes. eLife, 15, RP110692. https://doi.org/10.7554/eLife.110692",
+   "free_copy": {
+    "url": "https://doi.org/10.7554/elife.110692",
+    "version": "Preprint (before peer review)",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/PSF_L-530000_Compound_Leaves.png/500px-PSF_L-530000_Compound_Leaves.png",
+    "caption": "Compound leaves schema",
+    "credit": "PSF_L-530000.png : Pearson Scott Foresman derivative work: G.Hagedorn ( talk ), via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:PSF_L-530000_Compound_Leaves.png"
+   },
+   "image_query": "compound and simple leaves",
+   "category": "ecology",
+   "category_name": "Ecology & Biodiversity",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 16,
+   "headline": "Million-person genetic study finds 27 new DNA regions linked to endometriosis",
+   "original_title": "Multiancestry genome-wide association and integrative multiomics analyses implicate key pathways in endometriosis",
+   "journal": "Nature Genetics",
+   "field": "Women's Health Genetics",
+   "significance": 6,
+   "reason": "A multiancestry GWAS with multiomics identifies endometriosis risk loci and implicates immune and proliferation pathways in a common, under-studied disease.",
+   "summary": "Endometriosis, where tissue resembling the uterine lining grows outside the uterus, causes pain and fertility problems for roughly one in ten people with a uterus, yet its genetic causes are only partly understood. Earlier genetic studies mostly involved people of European ancestry. In this study, researchers pooled health-record and DNA data from 14 biobanks worldwide, covering about 1.06 million women (about 32% of non-European ancestry, including about 50,000 cases). They defined endometriosis in several ways, ranging from any diagnosis code to cases confirmed by surgery or imaging, and scanned the genome for variants that were more common in cases.\n\nThey found 58 genome regions tied to endometriosis, 27 of them not reported before. Some appeared only in African or admixed American groups. The genetic data also pointed to shared genetic roots with 135 other traits, such as headache, insomnia and age at first birth. Using single-cell data from the uterine lining and computer methods that link DNA variants to proteins, RNA splicing, gene activity and DNA methylation, they flagged 314 genes. These genes cluster in pathways for hormone signalling (for example, ESR1 and GREB1) and for how cells attach and move (for example, vinculin).",
+   "why_it_matters": "Including many ancestries revealed risk regions that studies of only European participants would have missed. The genes and pathways highlighted, especially those for hormone signalling and cell adhesion, give researchers concrete leads for future diagnostics and drug targets.",
+   "limitations": "All results are computational associations without lab validation. Common variants explained only about 10–13% of risk, compared with 47% heritability estimated from twin studies. Many supporting molecular datasets came mostly from European-ancestry people, which limits conclusions for other groups.",
+   "key_terms": [
+    {
+     "term": "Genome-wide association study (GWAS)",
+     "meaning": "A scan of many DNA variants across the whole genome to find those that are more common in people with a disease."
+    },
+    {
+     "term": "Biobank",
+     "meaning": "A large collection of DNA samples linked to health records from many volunteers."
+    },
+    {
+     "term": "Multiomics",
+     "meaning": "Combining several layers of molecular data, such as gene activity, proteins, RNA splicing and DNA methylation, to see how genetic variants might act."
+    },
+    {
+     "term": "Mendelian randomization",
+     "meaning": "A statistical method that uses genetic variants as natural experiments to test whether one trait may cause another."
+    },
+    {
+     "term": "SNP heritability",
+     "meaning": "The share of variation in disease risk that can be explained by common single-letter DNA differences."
+    },
+    {
+     "term": "Fine-mapping",
+     "meaning": "Statistical narrowing of a disease-linked DNA region to the specific variants most likely to be causal."
+    }
+   ],
+   "based_on": "full text",
+   "authors": [
+    "Lindsay A. Guare",
+    "Jagyashila Das",
+    "Lannawill Caruth",
+    "Ananya Rajagopalan",
+    "Alexis T. Akerele",
+    "James Jaworski",
+    "Leah Kottyan",
+    "Ashley J. Mulford",
+    "Elisa Moreno",
+    "Ben M. Brumpton",
+    "Craig Teerlink",
+    "Julie Lynch",
+    "Tzu-Ting Chen",
+    "Yen-Feng Lin",
+    "Penn Medicine Biobank",
+    "The eMERGE Network",
+    "Noemie Elhadad",
+    "Gail P. Jarvik",
+    "Yuan Luo",
+    "Wei-Qi Wei",
+    "Chunhua Weng",
+    "VA Million Veteran Program",
+    "Danielle Candelieri-Surette",
+    "Global Biobank Meta-analysis Initiative",
+    "Marija Simona Dombrovska",
+    "Andrew C. Hill",
+    "Shinichi Namba",
+    "Yukinori Okada",
+    "Vita Rovite",
+    "Alan R. Sanders",
+    "Yue Shi",
+    "Yuya Shirai",
+    "Jonathan Shortt",
+    "Yuji Yamamoto",
+    "Kyong-Mi Chang",
+    "Sinead B. Chapman",
+    "Todd Edwards",
+    "Suneeta Senapati",
+    "Digna R. Velez Edwards",
+    "Wei Zhou",
+    "Shefali Setia-Verma"
+   ],
+   "published": "2026-11-20T00:00:00+00:00",
+   "doi": "10.1038/s41588-026-02810-9",
+   "url": "https://doi.org/10.1038/s41588-026-02810-9",
+   "citation": "Guare, L. A., Das, J., Caruth, L., Rajagopalan, A., Akerele, A. T., Jaworski, J., Kottyan, L., Mulford, A. J., Moreno, E., Brumpton, B. M., Teerlink, C., Lynch, J., Chen, T., Lin, Y., Biobank, P. M., Network, T. e., Elhadad, N., Jarvik, G. P., Luo, Y., ... Setia-Verma, S. (2026). Multiancestry genome-wide association and integrative multiomics analyses implicate key pathways in endometriosis. Nature Genetics. https://doi.org/10.1038/s41588-026-02810-9",
+   "free_copy": {
+    "url": "https://doi.org/10.1038/s41588-026-02810-9",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by-nc-nd"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Blausen_0602_Laparoscopy_02.png/960px-Blausen_0602_Laparoscopy_02.png",
+    "caption": "Laparoscopy. See a related animation of this medical topic.",
+    "credit": "BruceBlaus . When using this image in external sources it can be cited as: Blausen.com staff (2014). \" Medical gallery o…, via Wikimedia Commons",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Blausen_0602_Laparoscopy_02.png"
+   },
+   "image_query": "laparoscopic surgery endometriosis",
+   "category": "clinical",
+   "category_name": "Clinical & Disease Research",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 17,
+   "headline": "Ice-age Atlantic currents helped refill the North Pacific with oxygen",
+   "original_title": "Last glacial North Pacific oxygenation due to North Atlantic circulation changes",
+   "journal": "Nature Geoscience",
+   "field": "Paleoceanography",
+   "significance": 6,
+   "reason": "Proxy records and Earth system simulations link Atlantic circulation weakening to shrinking North Pacific oxygen minimum zones during the last glacial period.",
+   "summary": "Large patches of the ocean below the surface, called oxygen minimum zones, hold very little dissolved oxygen and today span more than 30 million square kilometres. Scientists expect them to grow as the planet warms, but how much is uncertain. To learn from the past, the researchers rebuilt how these low-oxygen zones in the subarctic and eastern North Pacific changed over the last 55,000 years. They used 2,569 counts of foraminifera (tiny shelled organisms whose species mix reflects oxygen levels) from 11 seafloor sediment cores.\n\nThey found that the low-oxygen zones grew when the climate warmed, both during abrupt warm spells of the last ice age (Dansgaard–Oeschger events) and during the warming that ended the ice age. But in other ice-age episodes, called Heinrich events, the deep overturning circulation in the North Atlantic slowed. At those times the North Pacific gained oxygen and the low-oxygen zones shrank. Computer simulations of the Earth system also showed a strong link between North Atlantic circulation changes and the size of North Pacific low-oxygen zones.",
+   "why_it_matters": "Low-oxygen zones affect marine life and ocean chemistry, so predicting their growth matters. The study suggests future oxygen loss will not depend on warming alone: changes in global ocean circulation could partly offset the direct effect of warmer water.",
+   "limitations": "The record covers only the subarctic and eastern North Pacific. How well ice-age patterns predict the response to today's warming is still an open question.",
+   "key_terms": [
+    {
+     "term": "Oxygen minimum zone",
+     "meaning": "A layer of the ocean below the surface where dissolved oxygen is very scarce."
+    },
+    {
+     "term": "Foraminifera",
+     "meaning": "Single-celled marine organisms with shells. Which species are present in sediments hints at past oxygen levels."
+    },
+    {
+     "term": "Dansgaard–Oeschger events",
+     "meaning": "Sudden, short warm phases that happened repeatedly during the last ice age."
+    },
+    {
+     "term": "Heinrich events",
+     "meaning": "Ice-age episodes when many icebergs entered the North Atlantic and its overturning circulation weakened."
+    },
+    {
+     "term": "Overturning circulation",
+     "meaning": "Large-scale ocean flow in which surface water sinks in some regions and spreads through the deep ocean."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Martin Tetard",
+    "Alexandre Pohl",
+    "Yusuke Okazaki",
+    "Andy Ridgwell",
+    "Ekaterina Ovsepyan",
+    "Luc Beaufort"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41561-026-02122-x",
+   "url": "https://doi.org/10.1038/s41561-026-02122-x",
+   "citation": "Tetard, M., Pohl, A., Okazaki, Y., Ridgwell, A., Ovsepyan, E., & Beaufort, L. (2026). Last glacial North Pacific oxygenation due to North Atlantic circulation changes. Nature Geoscience. https://doi.org/10.1038/s41561-026-02122-x",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg/960px-Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg",
+    "caption": "Foraminifera shells microscope",
+    "credit": "James St. John, via Wikimedia Commons",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Marine_biogenous_aragonite_sand_(modern;_sandy_beach_at_French_Bay,_San_Salvador_Island,_Bahamas)_(48739969587).jpg"
+   },
+   "image_query": "foraminifera shells microscope",
+   "category": "earth_water",
+   "category_name": "Earth & Water",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 18,
+   "headline": "A sum-of-series set whose fuzzy edge takes up most of its length",
+   "original_title": "Measure-class classification of achievable Cantorvals",
+   "journal": "arXiv (Mathematics)",
+   "field": "Real Analysis",
+   "significance": 5,
+   "reason": "An explicit achievable Cantorval with a boundary of positive measure answers an open question and disproves a standing conjecture.",
+   "summary": "Take an infinite list of positive numbers whose total is finite, and collect every number you can get by adding up some selection of them. The resulting set is called an achievement set. Sometimes this set is a Cantorval: a set on the number line that looks like a mixture of solid intervals and dust-like Cantor-set pieces. Mathematicians had asked how large the \"boundary\" of such a set can be, meaning the dust part that is not inside any interval, when measured by length (Lebesgue measure). It had also been conjectured that every achievable Cantorval is \"standard\", which here means its boundary has zero length.\n\nIn this preprint, which has not yet been peer reviewed, the author builds an explicit example from a known \"hybrid\" series. The boundary of the resulting set has total length at least about 0.5775. After rescaling, the boundary can be made to take up almost all of the set's length. The proof finds a Cantor-like subset of the boundary using a rule about digits that appear in isolation. The paper also shows that an achievement set's boundary either has zero length or has positive length near every one of its points. So, up to continuous deformations that respect zero-length sets, there are only two kinds of achievable Cantorvals. The paper adds further results on general Cantorvals and on the group of such deformations.",
+   "why_it_matters": "The construction settles an open question in the field and disproves an existing conjecture about sets built from subsums of series. It also yields a simple two-type classification of these sets, based on whether their boundary has zero length.",
+   "limitations": "This is a preprint and has not been peer reviewed. For general Cantorvals the classification is complete only in a special case, and the author notes that additional invariants appear beyond it.",
+   "key_terms": [
+    {
+     "term": "Achievement set",
+     "meaning": "The set of all possible sums you can form by choosing some terms of a convergent series of positive numbers."
+    },
+    {
+     "term": "Cantorval",
+     "meaning": "A set on the real line that combines solid intervals with Cantor-set-like dust, arranged in a particular self-similar way."
+    },
+    {
+     "term": "Lebesgue measure",
+     "meaning": "The standard way of assigning a length to subsets of the real line. A set is null if this length is zero."
+    },
+    {
+     "term": "Boundary",
+     "meaning": "The points of the set that do not sit inside any of its solid intervals."
+    },
+    {
+     "term": "Homeomorphism",
+     "meaning": "A continuous, reversible deformation whose inverse is also continuous. Such maps treat two sets as having the same shape."
+    },
+    {
+     "term": "Meager subgroup",
+     "meaning": "A subgroup that is 'small' in a topological sense, despite possibly being infinite."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "HanYu Dong"
+   ],
+   "published": "2026-11-24T05:00:00+00:00",
+   "doi": "10.48550/arXiv.2611.28162",
+   "url": "https://doi.org/10.48550/arXiv.2611.28162",
+   "citation": "Dong, H. (2026). Measure-class classification of achievable Cantorvals. arXiv (Mathematics). https://doi.org/10.48550/arXiv.2611.28162",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Fractal_tree_%28Plate_b_-_3%29.jpg/500px-Fractal_tree_%28Plate_b_-_3%29.jpg",
+    "caption": "",
+    "credit": "Unknown author, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Fractal_tree_(Plate_b_-_3).jpg"
+   },
+   "image_query": "Cantor set fractal",
+   "category": "math_stats",
+   "category_name": "Mathematics & Statistics",
+   "editors_pick": false,
+   "preprint": true
+  },
+  {
+   "rank": 19,
+   "headline": "Smarter memory shortcuts make long-text AI models generate faster",
+   "original_title": "RefineKV: Query-Adaptive KV Cache Compression via Attention-Error Bounds",
+   "journal": "arXiv (Computer Science)",
+   "field": "Machine Learning Systems",
+   "significance": 5,
+   "reason": "Query-adaptive KV-cache compression built on attention-error bounds targets a major bottleneck in long-context LLM decoding.",
+   "summary": "When a large language model writes text one word at a time, it repeatedly looks back over a stored record of everything it has already processed, called the key-value (KV) cache. For long documents this cache gets huge, and reading it in full at every step slows the model down. The authors noticed that, for any single step, only a small part of the cache is needed to closely reproduce the model's full attention calculation, but different steps need different parts, so together they end up touching almost the whole cache. That suggests the model should choose what to read fresh at each step rather than throwing parts of the cache away permanently.\n\nTheir method, RefineKV, groups cache entries into clusters. Each cluster can either be stood in for by a compact summary or opened up to its original entries. To decide which, the authors worked out a mathematical upper limit on how much error a summary adds to the attention output. That limit depends on two things: how much a cluster matters to the current step (importance) and how well its summary captures its contents (distortion). Tested on two models and three benchmarks, RefineKV kept quality close to full attention while making the attention step up to 7.6 times faster and overall text generation up to 1.66 times faster. This is a preprint that has not yet been peer reviewed.",
+   "why_it_matters": "Handling long inputs such as whole books, codebases or long chats is costly for language models, largely because of repeated reads of the KV cache. A per-step way to compress that cache, grounded in an error bound, could make long-context AI cheaper and quicker without a noticeable drop in output quality.",
+   "limitations": "The results come from only two models and three benchmarks in a preprint that has not been peer reviewed. Quality is described as near full attention rather than identical, and the reported speedups may vary with hardware and settings.",
+   "key_terms": [
+    {
+     "term": "KV cache",
+     "meaning": "Stored 'key' and 'value' vectors for earlier tokens, which a language model reuses at each new step instead of recomputing them."
+    },
+    {
+     "term": "Attention",
+     "meaning": "The mechanism a language model uses to weigh which earlier tokens matter most when producing the next one."
+    },
+    {
+     "term": "Query-adaptive",
+     "meaning": "Adjusting which data is read according to the current step's request (query), rather than using one fixed choice for every step."
+    },
+    {
+     "term": "Importance and distortion",
+     "meaning": "Two factors in the error bound. Importance is how much a cluster affects the current output; distortion is how much information is lost when the cluster is replaced by a summary."
+    },
+    {
+     "term": "Pareto frontier",
+     "meaning": "The set of best available trade-offs, where neither speed nor quality can be improved without giving up some of the other."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Kewei Lian",
+    "Jiayi Zhai",
+    "Anji Liu"
+   ],
+   "published": "2026-11-24T05:00:00+00:00",
+   "doi": "10.48550/arXiv.2611.28171",
+   "url": "https://doi.org/10.48550/arXiv.2611.28171",
+   "citation": "Lian, K., Zhai, J., & Liu, A. (2026). RefineKV: Query-Adaptive KV Cache Compression via Attention-Error Bounds. arXiv (Computer Science). https://doi.org/10.48550/arXiv.2611.28171",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Client_Project_Hashcat_Testing_With_an_AMD_Epyc_Supermicro_Nvidia_GPU_Server_Using_Proxmox_%28Lawrence_Systems%29_08.png/960px-Client_Project_Hashcat_Testing_With_an_AMD_Epyc_Supermicro_Nvidia_GPU_Server_Using_Proxmox_%28Lawrence_Systems%29_08.png",
+    "caption": "Client Project Hashcat Testing With an AMD Epyc Supermicro Nvidia GPU Server Using Proxmox",
+    "credit": "Lawrence Systems, via Wikimedia Commons",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Client_Project_Hashcat_Testing_With_an_AMD_Epyc_Supermicro_Nvidia_GPU_Server_Using_Proxmox_(Lawrence_Systems)_08.png"
+   },
+   "image_query": "GPU server rack",
+   "category": "computing",
+   "category_name": "Computer Science & IT",
+   "editors_pick": false,
+   "preprint": true
+  },
+  {
+   "rank": 20,
+   "headline": "A ready-made layered perovskite helps build steadier perovskite solar cells",
+   "original_title": "Promoted phase transition in perovskite heterojunctions via in-situ regulated 2D intermediates enables stable solar cells",
+   "journal": "Nature Communications",
+   "field": "Photovoltaics",
+   "significance": 5,
+   "reason": "Preformed 2D intermediates guide phase growth at the buried interface, improving perovskite solar cell efficiency, stability and module scalability.",
+   "summary": "Perovskite solar cells are a fast-improving type of solar cell built from crystals with a particular structure called a perovskite. The best-performing versions usually include a junction where thin, layered (2D) perovskite sheets sit against the bulk (3D) perovskite, with the composition changing gradually between them. These layered regions are normally made by adding large 'spacer' molecules that swap ions with the existing film. According to the summary, this ion-swapping process is hard to control.\n\nYue and colleagues tried a different route. They added a layered perovskite that had already been formed beforehand, and used it to guide how the crystal phases grow vertically at the buried interface, meaning the bottom surface of the perovskite film that is covered by later layers. The publisher's summary reports that this approach improved the cells' efficiency and stability, and also made it easier to scale the devices up into larger modules. The short description does not give specific performance numbers.",
+   "why_it_matters": "Perovskite solar cells could be cheaper to make than silicon panels, but they tend to degrade quickly and are hard to scale up. A more controllable way to build the internal layered junctions could help solve both problems.",
+   "limitations": "Only a brief summary is available, so the size of the efficiency and stability gains, the testing conditions, and how long the devices last are not stated.",
+   "key_terms": [
+    {
+     "term": "Perovskite",
+     "meaning": "A family of crystalline materials that share a specific atomic arrangement. Some of them absorb sunlight very well and are used in solar cells."
+    },
+    {
+     "term": "2D (layered) perovskite",
+     "meaning": "A perovskite split into thin sheets by large organic 'spacer' molecules. It is usually more resistant to moisture and degradation than the bulk 3D form."
+    },
+    {
+     "term": "Heterojunction",
+     "meaning": "An interface between two different materials, here two different perovskite phases, inside a device."
+    },
+    {
+     "term": "Buried interface",
+     "meaning": "The bottom side of the perovskite film, which is covered by other layers in the finished cell and is therefore hard to treat afterward."
+    },
+    {
+     "term": "Phase transition",
+     "meaning": "A change from one crystal structure or form of a material to another."
+    },
+    {
+     "term": "Module",
+     "meaning": "A larger panel made of many connected solar cells, closer to a commercial product than a small lab cell."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Shengli Yue",
+    "Guanghan Zhao",
+    "Weichuan Zhang",
+    "Shuai You",
+    "Wanfei Shi",
+    "Rongshen Yang",
+    "Weichao Zhang",
+    "Tinghuan Yang",
+    "Shilin Li",
+    "Hong Zhang",
+    "Yu Chen",
+    "Chenglin Yang",
+    "Xiaopeng Zheng",
+    "Kui Zhao",
+    "Huiying Hao",
+    "Haibo Mao",
+    "Changli Ma",
+    "He Cheng",
+    "Nam-Gyu Park",
+    "Yuan Zhang",
+    "Huiqiong Zhou"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41467-026-79294-y",
+   "url": "https://doi.org/10.1038/s41467-026-79294-y",
+   "citation": "Yue, S., Zhao, G., Zhang, W., You, S., Shi, W., Yang, R., Zhang, W., Yang, T., Li, S., Zhang, H., Chen, Y., Yang, C., Zheng, X., Zhao, K., Hao, H., Mao, H., Ma, C., Cheng, H., Park, N., ... Zhou, H. (2026). Promoted phase transition in perovskite heterojunctions via in-situ regulated 2D intermediates enables stable solar cells. Nature Communications. https://doi.org/10.1038/s41467-026-79294-y",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Perovskite_solar_cell.jpg/960px-Perovskite_solar_cell.jpg",
+    "caption": "Perovskite solar cell",
+    "credit": "Dennis Schroeder / National Renewable Energy Laboratory, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Perovskite_solar_cell.jpg"
+   },
+   "image_query": "perovskite solar cell",
+   "category": "materials",
+   "category_name": "Materials & Nanoscience",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 21,
+   "headline": "Strain-sensitive materials may give stronger magnet–electric links in thin films",
+   "original_title": "Giant Room-Temperature Magnetoelectric Coupling Effect in Nanocomposite Thin Films via Strain-Sensitive Polarization",
+   "journal": "Physical Review Letters",
+   "field": "Multiferroics",
+   "significance": 5,
+   "reason": "Nanocomposite films reach giant room-temperature magnetoelectric coupling through strain-sensitive polarization, overturning the usual design rule of maximizing polarization.",
+   "summary": "Some composite materials join two kinds of ingredients: a ferroelectric, which carries a built-in electric polarization (a separation of positive and negative charge), and a ferromagnet, like an ordinary magnet. When the two are coupled, a magnetic field can change the electrical state or an electric field can change the magnetic state. This is called the magnetoelectric effect, and it is seen as useful for future electronics. The usual approach has been to pick ferroelectrics with the largest possible built-in polarization, on the assumption that this gives the strongest coupling.\n\nThe authors studied nanocomposite thin films, which are very thin layers mixing the two phases at the nanometre scale. Judging from the title, they report a very large magnetoelectric coupling at room temperature, and they credit it to a polarization that responds strongly to strain (mechanical stretching or squeezing) rather than one that is simply large. The publisher's abstract is cut off, so the specific materials, methods and measured values are not available here.",
+   "why_it_matters": "If strain sensitivity matters more than raw polarization, materials designers could look for different ferroelectrics when building magnetoelectric devices. Strong coupling at room temperature matters for practical uses such as low-power memory and sensors, because many earlier effects only worked well when cooled.",
+   "limitations": "Only a shortened abstract was available, so the materials used, the size of the effect and how it compares with earlier work cannot be checked here. How easily the films could be made into working devices is also not addressed.",
+   "key_terms": [
+    {
+     "term": "Multiferroic composite",
+     "meaning": "A material built from more than one phase that together show more than one kind of ordering, here electric and magnetic."
+    },
+    {
+     "term": "Ferroelectric",
+     "meaning": "A material with a built-in electric polarization that an applied electric field can flip."
+    },
+    {
+     "term": "Magnetoelectric coupling",
+     "meaning": "A link that allows magnetic fields to change electric properties, or electric fields to change magnetic ones."
+    },
+    {
+     "term": "Spontaneous polarization",
+     "meaning": "The charge separation a ferroelectric has on its own, with no field applied."
+    },
+    {
+     "term": "Strain",
+     "meaning": "How much a material is stretched or compressed. In composites, strain is often how the magnetic and electric parts affect each other."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Hao Li",
+    "Yali Yang",
+    "Shiqing Deng",
+    "Yajun Qi",
+    "Peng Wang",
+    "He Qi",
+    "Huifen Yu",
+    "Yuan Zhang",
+    "Yu Chen",
+    "Jiaou Wang",
+    "Jianghua Chen",
+    "Jiangyu Li",
+    "Junling Wang",
+    "Jun Chen"
+   ],
+   "published": "2026-11-23T10:00:00+00:00",
+   "doi": "10.1103/d83k-923y",
+   "url": "https://doi.org/10.1103/d83k-923y",
+   "citation": "Li, H., Yang, Y., Deng, S., Qi, Y., Wang, P., Qi, H., Yu, H., Zhang, Y., Chen, Y., Wang, J., Chen, J., Li, J., Wang, J., & Chen, J. (2026). Giant Room-Temperature Magnetoelectric Coupling Effect in Nanocomposite Thin Films via Strain-Sensitive Polarization. Physical Review Letters, 137(22), 226801. https://doi.org/10.1103/d83k-923y",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Reflection_in_a_soap_bubble_edit.jpg/960px-Reflection_in_a_soap_bubble_edit.jpg",
+    "caption": "Reflection in a soap bubble .",
+    "credit": "Brocken Inaglory . The image was edited by user:Alvesgaspar, via Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Reflection_in_a_soap_bubble_edit.jpg"
+   },
+   "image_query": "thin film deposition",
+   "category": "materials",
+   "category_name": "Materials & Nanoscience",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 22,
+   "headline": "A 3D-printed soft robot runs fast using air-powered circuits instead of electronics",
+   "original_title": "Printing powerful soft robots on a desktop",
+   "journal": "Science Robotics",
+   "field": "Soft Robotics",
+   "significance": 5,
+   "reason": "A desktop 3D-printed high-power pneumatic architecture drives electronics-free soft robots without manual assembly.",
+   "summary": "Soft robots are built from flexible materials and can be driven by fluid pressure, such as compressed air, rather than motors and chips. One idea is to print the control \"circuits\" (channels and valves that steer the fluid) right into the robot's body, so it can be made in one go by a 3D printer with no hand assembly. The catch has been that earlier printed control circuits could only handle small amounts of power, so the robots were slow and weak.\n\nThe researchers designed a 3D-printed pneumatic (air-driven) system that can handle much more power. Its central part is an oscillator, a device that turns a steady flow of high-pressure gas into rapidly repeating pressure pulses. They based its design on the compound steam engine, where gas expands in two stages, and it produces four pressure signals that rise and fall in sequence, quickly. They used it in a six-legged running robot printed as a single piece. The robot reached a top speed of 4.72 meters per second, and they estimated its mechanical power output at 169 watts. It crossed rough ground outdoors, moved through water, and could also run on tap water instead of gas.",
+   "why_it_matters": "Soft robots are often limited by low speed and power. A design that can be printed in one piece on a desktop and still deliver high power could make tough, low-cost robots without electronics more practical for real-world jobs. Examples include working in wet or rugged places.",
+   "limitations": "The 169-watt power figure is an estimate. The robot still needs an external supply of high-pressure gas or liquid, and the summary does not say how long it can run or how well it can be steered.",
+   "key_terms": [
+    {
+     "term": "Soft robot",
+     "meaning": "A robot made mainly of flexible, deformable materials rather than rigid parts and motors."
+    },
+    {
+     "term": "Pneumatic",
+     "meaning": "Driven by pressurized gas, such as compressed air."
+    },
+    {
+     "term": "Oscillator",
+     "meaning": "A device that produces a repeating signal. Here it converts a constant gas supply into regular pressure pulses."
+    },
+    {
+     "term": "Monolithic 3D printing",
+     "meaning": "Printing the whole robot as one continuous piece, so no separate parts need to be assembled."
+    },
+    {
+     "term": "Compound steam engine",
+     "meaning": "An engine design where steam expands in more than one stage to extract more work. It inspired the two-stage gas expansion in this oscillator."
+    },
+    {
+     "term": "Hexapod",
+     "meaning": "A robot with six legs."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Yichen Zhai",
+    "Michael T. Tolley"
+   ],
+   "published": "2026-11-18T08:00:00+00:00",
+   "doi": "10.1126/scirobotics.aei1264",
+   "url": "https://doi.org/10.1126/scirobotics.aei1264",
+   "citation": "Zhai, Y., & Tolley, M. T. (2026). Printing powerful soft robots on a desktop. Science Robotics, 11(120), eaei1264. https://doi.org/10.1126/scirobotics.aei1264",
+   "free_copy": {
+    "url": "https://doi.org/10.1126/scirobotics.aei1264",
+    "version": "Published version",
+    "host": "publisher",
+    "license": null
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Soft_Robotics_1.jpg/500px-Soft_Robotics_1.jpg",
+    "caption": "Soft-Legged Wheel-Based Robot with Terrestrial Locomotion Abilities",
+    "credit": "Ali Sadeghi, Alessio Mondini, Emanuela Del Dottore, Anand Kumar Mishra, and Barbara Mazzolai, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Soft_Robotics_1.jpg"
+   },
+   "image_query": "soft robot hexapod",
+   "category": "applied_tech",
+   "category_name": "Applied & Emerging Tech",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 23,
+   "headline": "Mapping where DNA copying stalls, one molecule at a time",
+   "original_title": "Single-molecule landscape of DNA replication pausing",
+   "journal": "Nature Communications",
+   "field": "DNA Replication",
+   "significance": 5,
+   "reason": "Single-molecule nanopore mapping reveals genome-wide replication pauses enriched near transcribed genes.",
+   "summary": "When a cell copies its DNA, a molecular machine called the replisome moves along the chromosome. If it hits an obstacle it can pause, and such pauses may lead to damage or rearrangements in the genome. Pauses are hard to study because each one is rare and they are spread out rather than clustered at fixed spots. The researchers used nanopore sequencing, which reads very long single DNA molecules, to find replication pauses across an entire eukaryotic genome (a genome from a cell with a nucleus). For every individual pause they recorded its position, the direction the replisome was travelling, which strand was being copied (leading or lagging), roughly how long the pause lasted, and whether copying started again afterwards.\n\nMost pauses were scattered widely across the genome. Even so, they were noticeably more common in regions being transcribed (read into RNA), and their frequency tracked with how much transcription was happening and with the amount of R-loops, which are RNA strands stuck to DNA. Collisions between replication and transcription were more frequent when the two machines approached each other head-on than when they moved in the same direction. The team also found certain sites where pauses happened mostly on the leading strand rather than the lagging strand. This pattern fits with the helicase (the DNA-unwinding enzyme) separating from polymerase epsilon (the enzyme that copies the leading strand). One of these sites lies in a gene controlled by epigenetics, so the authors suggest this separation might trigger epigenetic switching.",
+   "why_it_matters": "Stalled DNA copying is a possible source of genome instability, which is linked to disease. Following single molecules gives a detailed, genome-wide picture of where and how copying stalls, including events too rare to show up in methods that average over many cells. It also points to a possible link between replication stress and changes in which genes are switched on or off.",
+   "limitations": "The connection between helicase-polymerase uncoupling and epigenetic switching is a proposal based on a single overlapping locus and has not been shown directly. The abstract does not state which organism was studied, and pause durations are only estimated.",
+   "key_terms": [
+    {
+     "term": "Replisome",
+     "meaning": "The group of proteins that work together to unwind and copy DNA during replication."
+    },
+    {
+     "term": "Nanopore sequencing",
+     "meaning": "A technique that reads very long single DNA molecules by threading them through a tiny pore and measuring changes in electric current."
+    },
+    {
+     "term": "Leading and lagging strands",
+     "meaning": "The two DNA strands are copied differently: the leading strand is made continuously, while the lagging strand is made in short pieces."
+    },
+    {
+     "term": "R-loop",
+     "meaning": "A structure in which a newly made RNA strand stays bound to its DNA template, displacing the other DNA strand."
+    },
+    {
+     "term": "Transcription-replication conflict",
+     "meaning": "A collision between the machinery that copies DNA and the machinery that reads DNA into RNA. These can meet head-on or while moving in the same direction (co-directional)."
+    },
+    {
+     "term": "Helicase-polymerase uncoupling",
+     "meaning": "When the enzyme that unwinds DNA keeps moving while the enzyme copying the DNA falls behind or stops."
+    },
+    {
+     "term": "Epigenetic switching",
+     "meaning": "A change in whether a gene is active that does not involve changing the DNA sequence itself."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Sathish Thiyagarajan",
+    "Anna M. Rogers",
+    "Carolin A. Müller",
+    "Conrad A. Nieduszynski"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41467-026-79296-w",
+   "url": "https://doi.org/10.1038/s41467-026-79296-w",
+   "citation": "Thiyagarajan, S., Rogers, A. M., Müller, C. A., & Nieduszynski, C. A. (2026). Single-molecule landscape of DNA replication pausing. Nature Communications, 17(1), 11569. https://doi.org/10.1038/s41467-026-79296-w",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/First-ever_sequencing_of_DNA_in_space%2C_performed_by_Kate_Rubins_on_the_ISS._128f0462_sequencer_1.jpg/960px-First-ever_sequencing_of_DNA_in_space%2C_performed_by_Kate_Rubins_on_the_ISS._128f0462_sequencer_1.jpg",
+    "caption": "Nanopore dna sequencer",
+    "credit": "NASA, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:First-ever_sequencing_of_DNA_in_space,_performed_by_Kate_Rubins_on_the_ISS._128f0462_sequencer_1.jpg"
+   },
+   "image_query": "nanopore DNA sequencer",
+   "category": "cell_molecular",
+   "category_name": "Cellular & Molecular",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 24,
+   "headline": "A lipid-flipping enzyme pair keeps sound-sensing hair cells alive in mice",
+   "original_title": "ATP8B1–TMEM30B flippase activity maintains stereocilia lipid asymmetry required for hearing",
+   "journal": "eLife",
+   "field": "Auditory Physiology",
+   "significance": 5,
+   "reason": "Shows that a lipid flippase maintaining membrane asymmetry in stereocilia is required for hearing.",
+   "summary": "Hair cells in the inner ear turn sound vibrations into electrical signals using tiny channels in their hair-like projections, called stereocilia. The fatty membrane around these channels is normally lopsided: certain lipids sit mostly on the inner face and others on the outer face. Recent work showed that the channel proteins TMC1 and TMC2 can also mix lipids between the two faces (scrambling), which would erase this imbalance. The authors reasoned that hair cells must have an opposing enzyme, a flippase, that pushes lipids back to restore the imbalance.\n\nWorking in mice, they found that a flippase called ATP8B1 and its helper protein TMEM30B are made specifically in outer hair cells, concentrate in the stereocilia, and increase once the cells start detecting sound. When either protein was missing, mice needed louder sounds to produce a brain response, a lipid called phosphatidylserine appeared on the outer surface of the cells, and the outer hair cells quickly died.",
+   "why_it_matters": "The study suggests that keeping the two sides of the hair-cell membrane chemically different is necessary for outer hair cells to survive and for normal hearing. It also identifies TMEM30B as a new gene whose loss causes deafness, which could help explain some inherited hearing loss.",
+   "limitations": "The work was done in mice, so how it applies to human hearing remains to be confirmed. The abstract does not show directly that the flippase counteracts TMC1/2 scrambling during sound detection, and that link appears to be the authors' proposed explanation.",
+   "key_terms": [
+    {
+     "term": "Mechano-electrical transduction (MET)",
+     "meaning": "The conversion of mechanical movement from sound into electrical signals by hair cells."
+    },
+    {
+     "term": "Stereocilia",
+     "meaning": "Bundles of tiny finger-like projections on top of hair cells that bend in response to sound."
+    },
+    {
+     "term": "Lipid asymmetry",
+     "meaning": "The uneven sharing of different fat molecules between the inner and outer layers of a cell membrane."
+    },
+    {
+     "term": "Scramblase",
+     "meaning": "A protein that lets lipids move freely between the two membrane layers, reducing asymmetry."
+    },
+    {
+     "term": "Flippase (P4-ATPase)",
+     "meaning": "An enzyme that uses ATP energy to move specific lipids to the inner membrane layer, restoring asymmetry."
+    },
+    {
+     "term": "Outer hair cells (OHCs)",
+     "meaning": "Cochlear cells that amplify sound vibrations, important for sensitive hearing."
+    },
+    {
+     "term": "Auditory brainstem response (ABR) threshold",
+     "meaning": "The quietest sound that produces a measurable brain signal; a higher threshold means poorer hearing."
+    },
+    {
+     "term": "Phosphatidylserine (PS) externalization",
+     "meaning": "Appearance on the cell's outer surface of a lipid normally kept inside, often a sign of cell stress or dying."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Henry Newkirk De Hoyos",
+    "Sihan Li",
+    "Jun-Sub Im",
+    "Alyssa Luz-Ricca",
+    "Takesha Foster",
+    "Betsy Szeto",
+    "Rachel Jonas",
+    "Emma Kim",
+    "Nikhil Amin",
+    "Jung-Bum Shin"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.7554/eLife.110466",
+   "url": "https://doi.org/10.7554/eLife.110466",
+   "citation": "Hoyos, H. N. D., Li, S., Im, J., Luz-Ricca, A., Foster, T., Szeto, B., Jonas, R., Kim, E., Amin, N., & Shin, J. (2026). ATP8B1–TMEM30B flippase activity maintains stereocilia lipid asymmetry required for hearing. eLife, 15, RP110466. https://doi.org/10.7554/eLife.110466",
+   "free_copy": {
+    "url": "https://doi.org/10.7554/elife.110466.3",
+    "version": "Preprint (before peer review)",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Analysis_of_cochlear_hair_cells_and_their_stereocilia._cropped.png/500px-Analysis_of_cochlear_hair_cells_and_their_stereocilia._cropped.png",
+    "caption": "Cochlea hair cells stereocilia",
+    "credit": "Lorente-Cánovas B, Eckrich S, Lewis MA, Johnson SL, Marcotti W, Steel KP, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Analysis_of_cochlear_hair_cells_and_their_stereocilia._cropped.png"
+   },
+   "image_query": "cochlea hair cells stereocilia",
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 25,
+   "headline": "Bacteria in tumours trigger TLR2, stripping away immune-suppressing Tregs",
+   "original_title": "Bacteria-induced TLR2 signaling unleashes multiple mechanisms to reduce Treg immunosuppression and enhance cancer immunity",
+   "journal": "Nature Communications",
+   "field": "Cancer Immunology",
+   "significance": 5,
+   "reason": "Bacterial TLR2 signalling in dendritic cells disrupts regulatory T-cell suppression to enhance anti-tumour CD8 T-cell immunity.",
+   "summary": "Tumours often protect themselves by recruiting regulatory T cells (Tregs), which switch off killer immune cells. Researchers asked whether stimulating Toll-like receptors — sensors that detect bacterial molecules — directly inside a tumour could change how T cells behave there, not just in lymph nodes and spleen where immune responses usually start. They used a weakened strain of the bacterium Listeria monocytogenes, given both into the bloodstream and injected straight into tumours in mice.",
+   "why_it_matters": "Many cancers resist immunotherapy because regulatory T cells keep the immune response switched off inside the tumour. This work points to a specific receptor, TLR2, whose activation by bacteria both weakens those suppressive cells and boosts killer T cells, suggesting a target for bacteria-based or TLR2-targeted cancer treatments.",
+   "limitations": "This is a mouse study using an attenuated bacterium, so whether the same TLR2-driven effects occur in human tumours, and whether the approach is safe in patients, remains untested.",
+   "key_terms": [
+    {
+     "term": "Toll-like receptor (TLR)",
+     "meaning": "A sensor protein on immune cells that recognises molecular patterns typical of microbes and triggers an immune response."
+    },
+    {
+     "term": "Regulatory T cell (Treg)",
+     "meaning": "A type of T cell that dampens immune responses; inside tumours it helps the cancer escape attack."
+    },
+    {
+     "term": "Foxp3",
+     "meaning": "The master-switch gene/protein that keeps a Treg acting as a suppressor; losing it makes the cell unstable as a Treg."
+    },
+    {
+     "term": "CD8+ T cell",
+     "meaning": "A 'killer' T cell that destroys infected or cancerous cells."
+    },
+    {
+     "term": "cDC2",
+     "meaning": "A subtype of dendritic cell, an immune cell that presents antigens and shapes T cell responses."
+    },
+    {
+     "term": "Cross-presentation",
+     "meaning": "When a dendritic cell shows fragments of tumour proteins to CD8+ T cells, helping them recognise the cancer."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Timothy F. Campbell",
+    "Jesse Garcia Castillo",
+    "Sebastian Fernandez",
+    "Ola Mostafa",
+    "Diego Gonzalez Ventura",
+    "Jenna Vickery",
+    "Stefan Homentcovschi",
+    "Nicole Flores Hernandez",
+    "Julia Ybarra",
+    "Daniel A. Portnoy",
+    "Michel DuPage"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41467-026-79362-3",
+   "url": "https://doi.org/10.1038/s41467-026-79362-3",
+   "citation": "Campbell, T. F., Castillo, J. G., Fernandez, S., Mostafa, O., Ventura, D. G., Vickery, J., Homentcovschi, S., Hernandez, N. F., Ybarra, J., Portnoy, D. A., & DuPage, M. (2026). Bacteria-induced TLR2 signaling unleashes multiple mechanisms to reduce Treg immunosuppression and enhance cancer immunity. Nature Communications. https://doi.org/10.1038/s41467-026-79362-3",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Gram_staining_footage_of_Listeria_monocytogenes_in_Gram_staining_of_culture_microscopy.jpg/960px-Gram_staining_footage_of_Listeria_monocytogenes_in_Gram_staining_of_culture_microscopy.jpg",
+    "caption": "Listeria monocytogenes bacteria",
+    "credit": "Ajay Kumar Chaurasiya, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Gram_staining_footage_of_Listeria_monocytogenes_in_Gram_staining_of_culture_microscopy.jpg"
+   },
+   "image_query": "Listeria monocytogenes bacteria",
+   "category": "clinical",
+   "category_name": "Clinical & Disease Research",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 26,
+   "headline": "Yeast mutant screens reveal how fungi resist 20 different antifungal drugs",
+   "original_title": "SATAY-based chemogenomic screening uncovers antifungal resistance mechanisms and key determinants of ATI-2307 and chitosan sensitivity",
+   "journal": "eLife",
+   "field": "Antifungal Pharmacology",
+   "significance": 5,
+   "reason": "Transposon screens against 20 antifungal compounds uncover new resistance mechanisms, relevant to the threat of multidrug-resistant fungi.",
+   "summary": "Fungal infections that shrug off several drugs at once endanger both human health and crops, so researchers need new antifungal compounds and a clear picture of how fungi become resistant. This study used SATAY, a method in baker's yeast (Saccharomyces cerevisiae) where small mobile DNA pieces called transposons are inserted at random across the genome. Sequencing then shows which disrupted or altered genes help cells survive a drug. The team ran these screens against 20 antifungal compounds, picking up mutations that switch genes off (loss-of-function) as well as ones that boost a gene's activity (gain-of-function). For compounds that barely affect ordinary lab yeast, they ran the screens in specially drug-sensitive strains.\n\nThe screens turned up many resistance routes that had not been described before and pointed to several different ways the drugs act on cells. Two results stood out. Chitosan, an antifungal found in nature, appears to stick to the cell wall through electrical attraction to sugar-phosphate groups called mannosylphosphate. The experimental drug ATI-2307 is pulled into yeast cells and built up inside them by a transporter protein named Hol1. Losing or changing this transporter gives yeast an easy way to become resistant with little cost to its growth.",
+   "why_it_matters": "The collection of drug-response profiles gives other scientists a resource for studying how cells cope with chemical stress and for working out how new antifungals act. The Hol1 result could help in designing drugs that cells take up more readily. It also warns that fungi may become resistant to ATI-2307 easily and cheaply.",
+   "limitations": "The screens were done in baker's yeast, including drug-sensitive lab strains, so it is not yet known how fully these resistance mechanisms carry over to disease-causing fungi in patients or crops.",
+   "key_terms": [
+    {
+     "term": "SATAY (saturated transposon analysis in yeast)",
+     "meaning": "A method that scatters transposon insertions across the yeast genome, then sequences them to see which genes affect survival under a given condition."
+    },
+    {
+     "term": "Transposon",
+     "meaning": "A piece of DNA that can insert itself into the genome, often disrupting the gene it lands in."
+    },
+    {
+     "term": "Chemogenomic profile",
+     "meaning": "A map of which genes change a cell's sensitivity or resistance to a particular chemical."
+    },
+    {
+     "term": "Loss- / gain-of-function mutation",
+     "meaning": "A change that disables a gene, or one that increases or alters its activity."
+    },
+    {
+     "term": "Mannosylphosphate",
+     "meaning": "Negatively charged sugar-phosphate groups on the yeast cell wall."
+    },
+    {
+     "term": "Hol1",
+     "meaning": "A yeast membrane transporter that, according to this study, concentrates the drug ATI-2307 inside cells."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Matthew T Karadzas",
+    "Agnès H Michel",
+    "Andreas Mosbach",
+    "George Giannakopoulos",
+    "Ruairi McGettigan",
+    "Gabriel Scalliet",
+    "Benoit Kornmann"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.7554/eLife.105333",
+   "url": "https://doi.org/10.7554/eLife.105333",
+   "citation": "Karadzas, M. T., Michel, A. H., Mosbach, A., Giannakopoulos, G., McGettigan, R., Scalliet, G., & Kornmann, B. (2026). SATAY-based chemogenomic screening uncovers antifungal resistance mechanisms and key determinants of ATI-2307 and chitosan sensitivity. eLife, 14, RP105333. https://doi.org/10.7554/eLife.105333",
+   "free_copy": {
+    "url": "https://doi.org/10.7554/elife.105333",
+    "version": "Preprint (before peer review)",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Bakers_yeast_membrane_5.jpg/960px-Bakers_yeast_membrane_5.jpg",
+    "caption": "Baker's yeast cells",
+    "credit": "Tgru001, via Wikimedia Commons",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Bakers_yeast_membrane_5.jpg"
+   },
+   "image_query": "baker's yeast cells",
+   "category": "therapeutics",
+   "category_name": "Therapeutics & Care",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 27,
+   "headline": "Switching off a liver enzyme could treat rare metabolic diseases",
+   "original_title": "Oligonucleotide-mediated AASS silencing as a potential therapeutic strategy for ALDH7A1 deficiency and glutaric aciduria type I",
+   "journal": "Science Translational Medicine",
+   "field": "Oligonucleotide Therapeutics",
+   "significance": 5,
+   "reason": "Antisense silencing of liver AASS is presented as a potential treatment strategy for two inherited lysine-metabolism epilepsies.",
+   "summary": "Lysine, an amino acid from food, is broken down in a chain of chemical steps. In two inherited disorders — ALDH7A1 deficiency (which causes seizures that respond to vitamin B6) and glutaric aciduria type I — an enzyme partway down that chain is missing, so harmful intermediate molecules build up and can damage the nervous system. Current treatments only partly prevent this. The researchers asked whether blocking the very first step of lysine breakdown, run by the enzyme AASS, would stop these toxic products forming in the first place.\n\nThey used two kinds of gene-silencing molecules — antisense oligonucleotides and small interfering RNAs — that shut down production of AASS. In cells taken from patients with either disease, the treatment lowered the disease-linked metabolites. Attaching a sugar tag (N-acetylgalactosamine) that liver cells take up let the drug act almost only in the liver: in normal mice and in mice lacking Aldh7a1, AASS levels fell by more than 90% in the liver, the suppression lasted, and downstream lysine-derived metabolites dropped.",
+   "why_it_matters": "This is an example of \"substrate reduction\" — instead of fixing a broken enzyme, you turn down the supply of the raw material that becomes toxic. The same gene-silencing chemistry is already used in approved liver-targeted drugs, so the approach has a plausible route to the clinic for these rare, currently hard-to-treat conditions.",
+   "limitations": "The work is in patient-derived cells and mice only; it shows lower metabolite levels, not proven prevention of neurological damage or safety in people.",
+   "key_terms": [
+    {
+     "term": "AASS",
+     "meaning": "α-Aminoadipic semialdehyde synthase, the enzyme that carries out the first two steps of breaking down the amino acid lysine."
+    },
+    {
+     "term": "Antisense oligonucleotide",
+     "meaning": "A short synthetic strand of DNA-like material that binds a gene's RNA message and stops the protein being made."
+    },
+    {
+     "term": "Small interfering RNA (siRNA)",
+     "meaning": "A short double-stranded RNA that triggers the cell's own machinery to destroy a specific RNA message."
+    },
+    {
+     "term": "N-acetylgalactosamine conjugation",
+     "meaning": "Attaching a sugar that liver cells grab via a specific receptor, so the drug acts mainly in the liver."
+    },
+    {
+     "term": "Pyridoxine-dependent epilepsy",
+     "meaning": "Seizure disorder caused by ALDH7A1 deficiency that improves with vitamin B6 (pyridoxine)."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Reddy Sreekanth Vootukuri",
+    "Katarzyna Dyjach",
+    "Youssef Khalil",
+    "Joanna Toporowska",
+    "Sam Rowley",
+    "Charalambos Demetriou",
+    "Nicholas D. E. Greene",
+    "Kyle O’Sullivan",
+    "Barbara Plecko",
+    "Sidney M. Gospe",
+    "Alex Mackensie",
+    "Izabella A. Pena",
+    "Peter T. Clayton",
+    "Julien Baruteau",
+    "Paul Gissen",
+    "Haiyan Zhou",
+    "Philippa B. Mills"
+   ],
+   "published": "2026-11-18T08:00:00+00:00",
+   "doi": "10.1126/scitranslmed.aei9706",
+   "url": "https://doi.org/10.1126/scitranslmed.aei9706",
+   "citation": "Vootukuri, R. S., Dyjach, K., Khalil, Y., Toporowska, J., Rowley, S., Demetriou, C., Greene, N. D. E., O’Sullivan, K., Plecko, B., Gospe, S. M., Mackensie, A., Pena, I. A., Clayton, P. T., Baruteau, J., Gissen, P., Zhou, H., & Mills, P. B. (2026). Oligonucleotide-mediated AASS silencing as a potential therapeutic strategy for ALDH7A1 deficiency and glutaric aciduria type I. Science Translational Medicine, 18(876), eaei9706. https://doi.org/10.1126/scitranslmed.aei9706",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/YANIV_Moshe.jpg/960px-YANIV_Moshe.jpg",
+    "caption": "Laboratory mouse liver",
+    "credit": "Moshe Yaniv, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:YANIV_Moshe.jpg"
+   },
+   "image_query": "laboratory mouse liver",
+   "category": "therapeutics",
+   "category_name": "Therapeutics & Care",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 28,
+   "headline": "Soybean plants use a cell wall ingredient to keep nodule bacteria in check",
+   "original_title": "Host control of rhizobial proliferation in soybean nodules",
+   "journal": "Nature Communications",
+   "field": "Agricultural Plant Science",
+   "significance": 5,
+   "reason": "Identifies a cell-wall pectin mechanism by which soybeans restrain rhizobial growth in nodules, relevant to nitrogen-fixing crop symbiosis.",
+   "summary": "Soybeans and other legumes host helpful bacteria called rhizobia inside small root swellings called nodules, where the bacteria turn nitrogen from the air into a form the plant can use. The plant has to keep the bacterial population under control: enough bacteria to get the benefit, but not so many that the relationship tips toward something more like an infection. This study asked how soybean plants limit how much the rhizobia multiply inside nodules.\n\nThe authors report that pectin, a material in plant cell walls, helps hold back rhizobial growth in soybean nodules. Specifically, it is a chemically modified form of pectin, which has had certain methyl groups removed (demethylesterified), that appears to do this job. The short publisher summary does not explain the experiments behind this finding or exactly how the pectin acts on the bacteria.",
+   "why_it_matters": "Nitrogen-fixing partnerships let legumes like soybean grow with less nitrogen fertilizer, so understanding how plants manage their bacterial partners could help improve this process in crops. The finding also points to the plant cell wall as an active player in controlling helpful microbes, not just a passive barrier.",
+   "limitations": "Only a one-sentence summary is available, so the methods, how strong the evidence is, and how the pectin actually restricts the bacteria cannot be judged from this description.",
+   "key_terms": [
+    {
+     "term": "Rhizobia",
+     "meaning": "Soil bacteria that live inside legume root nodules and convert nitrogen gas from the air into a form plants can use."
+    },
+    {
+     "term": "Nodule",
+     "meaning": "A small growth on a legume root where rhizobia live and fix nitrogen for the plant."
+    },
+    {
+     "term": "Pectin",
+     "meaning": "A gel-like carbohydrate that forms part of plant cell walls; it is also what makes jam set."
+    },
+    {
+     "term": "Demethylesterified pectin",
+     "meaning": "Pectin that has had chemical groups called methyl esters removed, which changes how it behaves in the cell wall."
+    },
+    {
+     "term": "Symbiosis",
+     "meaning": "A close, long-term relationship between two different organisms; here, one that benefits both the plant and the bacteria."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Hui-Ru Liu",
+    "Chun-Lin Song",
+    "Peng-Fei Jia",
+    "Yu Luo",
+    "Rui-Yang Wang",
+    "De-li Wang",
+    "Jeremy D. Murray",
+    "Hai-Feng Wang",
+    "Wei-Cai Yang"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41467-026-79800-2",
+   "url": "https://doi.org/10.1038/s41467-026-79800-2",
+   "citation": "Liu, H., Song, C., Jia, P., Luo, Y., Wang, R., Wang, D., Murray, J. D., Wang, H., & Yang, W. (2026). Host control of rhizobial proliferation in soybean nodules. Nature Communications. https://doi.org/10.1038/s41467-026-79800-2",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Soybean-root-nodules.jpg/500px-Soybean-root-nodules.jpg",
+    "caption": "",
+    "credit": "Unknown author, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Soybean-root-nodules.jpg"
+   },
+   "image_query": "soybean root nodules",
+   "category": "resources",
+   "category_name": "Resource & Applied Fields",
+   "editors_pick": false,
+   "preprint": false
+  }
+ ]
+}

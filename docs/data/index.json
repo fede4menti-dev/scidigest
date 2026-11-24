@@ -1,7 +1,46 @@
 {
  "format": 1,
- "updated": "2026-11-23T11:38:45+00:00",
+ "updated": "2026-11-24T11:21:02+00:00",
  "days": [
+  {
+   "date": "2026-11-24",
+   "count": 28,
+   "fields": [
+    "AI Safety",
+    "Agricultural Plant Science",
+    "Antifungal Pharmacology",
+    "Auditory Physiology",
+    "Biotechnology",
+    "Cancer Immunology",
+    "Carbon Dioxide Removal",
+    "Cognitive Neuroscience",
+    "Condensed Matter",
+    "DNA Replication",
+    "Energy Materials",
+    "Gene Regulation",
+    "Genome Engineering",
+    "Genomics",
+    "Machine Learning Systems",
+    "Multiferroics",
+    "Neuroethology",
+    "Neuroimaging",
+    "Neuroscience",
+    "Oligonucleotide Therapeutics",
+    "Paleoceanography",
+    "Photovoltaics",
+    "Plant Evolution",
+    "Probability & Combinatorics",
+    "Quantum Error Correction",
+    "Real Analysis",
+    "Soft Robotics",
+    "Women's Health Genetics"
+   ],
+   "top_headlines": [
+    "Paper wasps have brain cells tuned to their nestmates' faces",
+    "Brains of speakers of 21 languages appear to share a common meaning signal",
+    "Bumpy 'egg-box' surface helps solid-state batteries discharge faster without failing"
+   ]
+  },
   {
    "date": "2026-11-23",
    "count": 40,

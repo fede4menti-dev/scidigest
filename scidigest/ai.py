@@ -426,7 +426,7 @@ SUMMARY_SCHEMA = {
         "limitations": {"type": "string", "description": "1-2 sentences on caveats or open questions; empty if the abstract gives no basis"},
         "figure_index": {"type": "integer", "description": "index of the paper figure that best shows the main finding, or -1 if no figures are listed or none is clear enough for a student"},
         "figure_caption": {"type": "string", "description": "plain-language caption (1-2 sentences) for that figure, based only on its original caption; empty if figure_index is -1"},
-        "image_query": {"type": "string", "description": "2-4 word search for a real photo of the paper's subject (an organism, object, place or instrument), e.g. 'malaria mosquito', 'perovskite solar panel', 'radio telescope'. Avoid abstract concepts."},
+        "image_query": {"type": "string", "description": "2-4 word search for a real photo of the paper's subject: an organism, object, material, instrument, landscape or lab setting, e.g. 'malaria mosquito', 'perovskite solar panel', 'radio telescope', 'brain MRI scan'. Never people, faces, politicians, public figures, flags, logos, wars or news events; for studies about people, pick an object or setting instead (e.g. 'hospital ward', 'stethoscope', 'classroom desk'). Avoid abstract concepts."},
     },
     "required": ["headline", "summary", "why_it_matters", "key_terms", "limitations",
                  "figure_index", "figure_caption", "image_query"],

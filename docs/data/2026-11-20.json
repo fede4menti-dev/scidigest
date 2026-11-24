@@ -136,12 +136,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg/960px-U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010%2C_Kisumu%2C_Kenya_April_25%2C_2010.jpg",
-    "caption": "Malaria vaccine africa",
-    "credit": "U.S. Army Southern European Task Force, Africa, via Wikimedia Commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Stethoscope_and_globe_on_light_blue_background_%2852102422083%29.jpg/960px-Stethoscope_and_globe_on_light_blue_background_%2852102422083%29.jpg",
+    "caption": "Stethoscope and globe on light blue background",
+    "credit": "Jernej Furman from Slovenia, via Wikimedia Commons",
     "license": "CC BY 2.0",
     "license_url": "https://creativecommons.org/licenses/by/2.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:U.S._Army_medical_researchers_take_part_in_World_Malaria_Day_2010,_Kisumu,_Kenya_April_25,_2010.jpg"
+    "source_url": "https://commons.wikimedia.org/wiki/File:Stethoscope_and_globe_on_light_blue_background_(52102422083).jpg"
    },
    "category": "clinical",
    "category_name": "Clinical & Disease Research",
@@ -573,12 +573,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg/960px-Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg",
-    "caption": "Kimanis, Sabah: Estate workers in the Oil Palm Plantation of SAWIT Kinabalu",
-    "credit": "CEphoto, Uwe Aranas, via Wikimedia Commons",
-    "license": "CC BY-SA 3.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Kimanis_Sabah_Workers-in-Palm-Oil-Plantation-02.jpg"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Studying_Conservation_Ecology_..._%286353805711%29.jpg/960px-Studying_Conservation_Ecology_..._%286353805711%29.jpg",
+    "caption": "Studying Conservation Ecology ... (6353805711)",
+    "credit": "University of Michigan School for Environment and Sustainability from Ann Arbor, via Wikimedia Commons",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Studying_Conservation_Ecology_..._(6353805711).jpg"
    },
    "category": "ecology",
    "category_name": "Ecology & Biodiversity",
@@ -728,15 +728,7 @@
     "license": "cc-by"
    },
    "featured_on": [],
-   "image": {
-    "kind": "illustration",
-    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Agrotis_infusa.jpg/960px-Agrotis_infusa.jpg",
-    "caption": "Agrotis infusa (Boisduval, 1832), to MV light, Aranda, ACT, 3/4 October 2008",
-    "credit": "Donald Hobern from Canberra, Australia, via Wikimedia Commons",
-    "license": "CC BY 2.0",
-    "license_url": "https://creativecommons.org/licenses/by/2.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Agrotis_infusa.jpg"
-   },
+   "image": null,
    "category": "ecology",
    "category_name": "Ecology & Biodiversity",
    "editors_pick": true

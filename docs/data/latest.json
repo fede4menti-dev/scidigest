@@ -227,12 +227,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/HP_Mini_1000.png/960px-HP_Mini_1000.png",
-    "caption": "Solid-state battery cell",
-    "credit": "AnVuong1222004 (1), via Wikimedia Commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/All-Solid-State_Battery.png/500px-All-Solid-State_Battery.png",
+    "caption": "All-solid-state battery showing the solid-state electrolyte",
+    "credit": "Luca Bertoli, via Wikimedia Commons",
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:HP_Mini_1000.png"
+    "source_url": "https://commons.wikimedia.org/wiki/File:All-Solid-State_Battery.png"
    },
    "image_query": "solid-state battery cell",
    "category": "materials",
@@ -305,12 +305,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg",
-    "caption": "Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice",
-    "credit": "Andrey Chernogorodov, via Wikimedia Commons",
-    "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Lab_mouse_mg_3263.jpg/960px-Lab_mouse_mg_3263.jpg",
+    "caption": "Laboratory mouse",
+    "credit": "Rama, via Wikimedia Commons",
+    "license": "CC BY-SA 2.0 fr",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/fr/deed.en",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Lab_mouse_mg_3263.jpg"
    },
    "image_query": "laboratory mouse",
    "category": "cell_molecular",
@@ -573,12 +573,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Porto_Covo_Outubro_2014-3.jpg/960px-Porto_Covo_Outubro_2014-3.jpg",
-    "caption": "Breaking wave in Porto Covo, Portugal",
-    "credit": "Alvesgaspar, via Wikimedia Commons",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Porto_Covo_Outubro_2014-3.jpg"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Mavericks_Surf_Contest_2010b.jpg/960px-Mavericks_Surf_Contest_2010b.jpg",
+    "caption": "Mavericks Surf Contest 2010.",
+    "credit": "Shalom Jacobovitz, via Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Mavericks_Surf_Contest_2010b.jpg"
    },
    "image_query": "ocean surface waves",
    "category": "climate",
@@ -640,15 +640,7 @@
     "license": "cc-by"
    },
    "featured_on": [],
-   "image": {
-    "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png/960px-6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png",
-    "caption": "Superconducting quantum processor",
-    "credit": "OJB Quantum, via Wikimedia Commons",
-    "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png"
-   },
+   "image": null,
    "image_query": "superconducting quantum processor",
    "category": "physics",
    "category_name": "Physics",
@@ -822,12 +814,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Character.AI_lawsuit_screenshot.png/500px-Character.AI_lawsuit_screenshot.png",
-    "caption": "A Character.AI chatbot talking about a user's parents",
-    "credit": "Character.AI, via Wikimedia Commons",
-    "license": "Public domain",
-    "license_url": null,
-    "source_url": "https://commons.wikimedia.org/wiki/File:Character.AI_lawsuit_screenshot.png"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/ERAI_Screen.png/960px-ERAI_Screen.png",
+    "caption": "File presenting ERAI - chatbot",
+    "credit": "ERNO, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:ERAI_Screen.png"
    },
    "image_query": "AI chatbot screen",
    "category": "computing",
@@ -884,12 +876,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Transgenic_expression_of_a_fluorescent_protein_in_Human_Embryonic_Kidney_cells.jpg/960px-Transgenic_expression_of_a_fluorescent_protein_in_Human_Embryonic_Kidney_cells.jpg",
-    "caption": "Fluorescent protein microscopy cells",
-    "credit": "Kai p53, via Wikimedia Commons",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/The_fluorescent_microscopy_image_of_the_cystic_fibrosis_transmembrane_conductance_regulator_%28CFTR%29_tagged_with_enhanced_yellow_fluorescent_protein_%28EYFP%29.jpg/500px-The_fluorescent_microscopy_image_of_the_cystic_fibrosis_transmembrane_conductance_regulator_%28CFTR%29_tagged_with_enhanced_yellow_fluorescent_protein_%28EYFP%29.jpg",
+    "caption": "The fluorescent microscopy image of the cystic fibrosis transmembrane conductance regulator (CFTR) t",
+    "credit": "Bakhrom K. Berdiev, via Wikimedia Commons",
     "license": "CC BY-SA 4.0",
     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Transgenic_expression_of_a_fluorescent_protein_in_Human_Embryonic_Kidney_cells.jpg"
+    "source_url": "https://commons.wikimedia.org/wiki/File:The_fluorescent_microscopy_image_of_the_cystic_fibrosis_transmembrane_conductance_regulator_(CFTR)_tagged_with_enhanced_yellow_fluorescent_protein_(EYFP).jpg"
    },
    "image_query": "fluorescent protein microscopy cells",
    "category": "cell_molecular",
@@ -943,12 +935,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg",
-    "caption": "Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice",
-    "credit": "Andrey Chernogorodov, via Wikimedia Commons",
-    "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/The_neuroscience_imaging_lab.JPG/960px-The_neuroscience_imaging_lab.JPG",
+    "caption": "A new imaging technology used in this neuroscience laboratory",
+    "credit": "Rosario Gulino, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:The_neuroscience_imaging_lab.JPG"
    },
    "image_query": "laboratory mouse",
    "category": "organismal",
@@ -1180,12 +1172,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg/960px-Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg",
-    "caption": "Foraminifera shells microscope",
-    "credit": "James St. John, via Wikimedia Commons",
-    "license": "CC BY 2.0",
-    "license_url": "https://creativecommons.org/licenses/by/2.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Marine_biogenous_aragonite_sand_(modern;_sandy_beach_at_French_Bay,_San_Salvador_Island,_Bahamas)_(48739969587).jpg"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Apple-pie_foraminifera_hg.jpg/960px-Apple-pie_foraminifera_hg.jpg",
+    "caption": "Apple pie decorated with foraminifera out of marzipan",
+    "credit": "Hannes Grobe /AWI, via Wikimedia Commons",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Apple-pie_foraminifera_hg.jpg"
    },
    "image_query": "foraminifera shells microscope",
    "category": "earth_water",
@@ -1455,12 +1447,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Reflection_in_a_soap_bubble_edit.jpg/960px-Reflection_in_a_soap_bubble_edit.jpg",
-    "caption": "Reflection in a soap bubble .",
-    "credit": "Brocken Inaglory . The image was edited by user:Alvesgaspar, via Wikimedia Commons",
-    "license": "CC BY-SA 3.0",
-    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
-    "source_url": "https://commons.wikimedia.org/wiki/File:Reflection_in_a_soap_bubble_edit.jpg"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/DislocatedIsland.png/500px-DislocatedIsland.png",
+    "caption": "",
+    "credit": "Unknown author, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:DislocatedIsland.png"
    },
    "image_query": "thin film deposition",
    "category": "materials",
@@ -1592,12 +1584,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/First-ever_sequencing_of_DNA_in_space%2C_performed_by_Kate_Rubins_on_the_ISS._128f0462_sequencer_1.jpg/960px-First-ever_sequencing_of_DNA_in_space%2C_performed_by_Kate_Rubins_on_the_ISS._128f0462_sequencer_1.jpg",
-    "caption": "Nanopore dna sequencer",
-    "credit": "NASA, via Wikimedia Commons",
-    "license": "Public domain",
-    "license_url": null,
-    "source_url": "https://commons.wikimedia.org/wiki/File:First-ever_sequencing_of_DNA_in_space,_performed_by_Kate_Rubins_on_the_ISS._128f0462_sequencer_1.jpg"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Oxford_Nanopore_MinION_top_cropped.jpg/960px-Oxford_Nanopore_MinION_top_cropped.jpg",
+    "caption": "Oxford Nanopore MinION top cropped",
+    "credit": "Cirosantilli2, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Oxford_Nanopore_MinION_top_cropped.jpg"
    },
    "image_query": "nanopore DNA sequencer",
    "category": "cell_molecular",
@@ -1895,12 +1887,12 @@
    "featured_on": [],
    "image": {
     "kind": "illustration",
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/YANIV_Moshe.jpg/960px-YANIV_Moshe.jpg",
-    "caption": "Laboratory mouse liver",
-    "credit": "Moshe Yaniv, via Wikimedia Commons",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source_url": "https://commons.wikimedia.org/wiki/File:YANIV_Moshe.jpg"
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Lab_mouse_mg_3263.jpg/960px-Lab_mouse_mg_3263.jpg",
+    "caption": "Laboratory mouse",
+    "credit": "Rama, via Wikimedia Commons",
+    "license": "CC BY-SA 2.0 fr",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/fr/deed.en",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Lab_mouse_mg_3263.jpg"
    },
    "image_query": "laboratory mouse liver",
    "category": "therapeutics",

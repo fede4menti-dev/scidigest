@@ -92,6 +92,61 @@ def thumb_url(original: str, width: int | None) -> str:
     return f"https://upload.wikimedia.org/wikipedia/commons/thumb/{m.group(1)}/{m.group(2)}/{step}px-{m.group(2)}"
 
 
+# Photos must be neutral science imagery: no politics, conflict, public figures or identifiable people.
+BLOCKED = re.compile(
+    r"politic|politician|president|prime.minister|\bminister|parliament|congress|senat|govern|election|campaign|"
+    r"protest|demonstrat|\brall(y|ies)\b|\bwar\b|\bwars\b|warfare|invasion|occupation|military|\barmy\b|soldier|troops|"
+    r"weapon|missile|nazi|terror|refugee|humanitarian|remembrance|memorial|funeral|\bvictory\b|\bflags?\b|"
+    r"coat.of.arms|emblem|\blogos?\b|embassy|summit|diplomat|\bking\b|\bqueen\b|royal|prince|princess|\bpope\b|"
+    r"celebrit|\bactor|actress|singer|footballer|athlete|portrait|selfie|\bcrowd|\bpeople\b|\bpersons?\b|"
+    r"\bmen\b|\bwomen\b|\bchildren\b|\bboys\b|\bgirls\b|\bfaces\b|zelensk|putin|trump|biden|"
+    r"\b(january|february|march|april|may|june|july|august|september|october|november|december) (19|20)\d\d\b",
+    re.I)
+# Words that mean the photo is of a person, checked in the file's name and categories only.
+PEOPLE = re.compile(
+    r"\b(man|men|woman|women|boy|boys|girl|girls|child|children|kid|kids|baby|babies|toddler|teen|teenager|"
+    r"person|persons|people|family|families|couple|portrait|headshot|face|faces|doctor|doctors|nurse|nurses|"
+    r"patient|patients|student|students|worker|workers|farmer|farmers|scientist|scientists|researcher|"
+    r"researchers|volunteer|volunteers|elder|elders|grandmother|grandfather|mother|father|"
+    r"mr|mrs|ms|dr|prof|sir|lady)\b", re.I)
+# In categories, groups of people show up as "Males in masks", "Geologists from ...", "Volcanologists".
+PEOPLE_CATEGORY = re.compile(r"\b(males?|females?|gentlemen|ladies|crowds?|audiences?|[a-z]{4,}ists)\b", re.I)
+_STOP = {"with", "from", "that", "this", "into", "under", "over", "about", "image", "photo", "picture"}
+
+
+def _stems(query: str) -> list[str]:
+    words = [w for w in re.findall(r"[a-z]+", (query or "").lower()) if len(w) >= 4 and w not in _STOP]
+    return [w[:-2] if len(w) > 6 else w[:-1] if len(w) > 4 else w for w in words]
+
+
+def _file_label(title: str) -> str:
+    t = re.sub(r"^File:", "", title or "")
+    t = re.sub(r"\.(jpe?g|png|gif|tiff?)$", "", t, flags=re.I).replace("_", " ")
+    t = re.sub(r"\s*\((cropped|edited|retouched)\)", "", t, flags=re.I)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def allowed_photo(title: str, meta: dict, query: str = "") -> bool:
+    """False for political, conflict, public-figure or people photos, photos with personality-rights or
+    trademark restrictions, and photos whose name and categories have nothing to do with the query."""
+    def val(k):
+        return _text(meta.get(k, {}).get("value", ""), 2000) if isinstance(meta.get(k), dict) else ""
+    name = " ".join([_file_label(title), val("ObjectName")])
+    cats = meta.get("Categories", {}).get("value", "") if isinstance(meta.get("Categories"), dict) else ""
+    desc = val("ImageDescription")[:600]
+    if val("Restrictions"):                 # personality rights, trademarks, insignia...
+        return False
+    if BLOCKED.search(" | ".join([name, cats, desc])) or PEOPLE.search(name + " | " + cats) \
+            or PEOPLE_CATEGORY.search(cats):
+        return False
+    stems = _stems(query)
+    if stems:                               # relevance: the file's own name or categories must match the query
+        hay = (name + " " + cats).lower()
+        if not any(st in hay for st in stems):
+            return False
+    return True
+
+
 def _first_usable(pages: list, query: str) -> dict | None:
     for p in pages:
         info = (p.get("imageinfo") or [{}])[0]
@@ -101,10 +156,12 @@ def _first_usable(pages: list, query: str) -> dict | None:
             continue
         if (info.get("width") or 0) < 500 or not info.get("url"):
             continue
+        if not allowed_photo(p.get("title", ""), meta, query):
+            continue
         artist = _text(meta.get("Artist", {}).get("value", "")) or "Unknown author"
         desc = _text(meta.get("ImageDescription", {}).get("value", ""), 400)
         if len(desc) > 100 or re.search(r"https?:|direct link|click", desc, re.I):
-            desc = query.strip().capitalize()   # descriptions vary a lot; keep only short, clean ones
+            desc = _file_label(p.get("title", ""))[:100]   # the photo's own name, never the search words
         return {
             "kind": "illustration",
             "url": thumb_url(info["url"], info.get("width")),
@@ -161,3 +218,27 @@ def prewarm(urls: list[str], pause: float = 1.0, log=print) -> int:
     if urls:
         log(f"  pre-loaded {ok} of {len(urls)} images")
     return ok
+
+
+def commons_metadata(titles: list[str]) -> dict:
+    """{file title: extmetadata} for up to ~40 Commons files per request."""
+    out = {}
+    for i in range(0, len(titles), 40):
+        chunk = titles[i:i + 40]
+        for attempt in range(3):
+            r = requests.get(COMMONS_API, params={"action": "query", "format": "json", "prop": "imageinfo",
+                                                  "iiprop": "extmetadata", "titles": "|".join(chunk)},
+                             headers={"User-Agent": USER_AGENT}, timeout=30)
+            if r.status_code == 429 and attempt < 2:
+                time.sleep(15)
+                continue
+            r.raise_for_status()
+            data = r.json().get("query", {})
+            norm = {n["to"]: n["from"] for n in data.get("normalized", [])}
+            for page in data.get("pages", {}).values():
+                info = (page.get("imageinfo") or [{}])[0]
+                out[norm.get(page.get("title"), page.get("title"))] = info.get("extmetadata", {})
+                out[page.get("title")] = info.get("extmetadata", {})
+            break
+        time.sleep(1)
+    return out

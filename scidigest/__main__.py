@@ -16,7 +16,7 @@ from .fulltext import europe_pmc_abstract, find_free_copy
 from concurrent.futures import ThreadPoolExecutor
 from .fulltext import FreeCopy
 from .images import figure_image, wikimedia_image
-from .backfill import backfill_images, backfill_topics
+from .backfill import audit_images, backfill_images, backfill_topics
 from .publish import day_json, featured_history, paper_key, publish, rebuild_site
 from .report import build_entries, render
 from .reviews import build_review, due_reviews
@@ -142,6 +142,7 @@ def main(argv=None):
         if done_today or not use_ai:
             print(f"Today's digest ({today}) already exists; skipping to avoid paying twice. Use --force to rebuild it.")
             if not args.no_images and not args.feed_file:
+                audit_images(args.site)      # no AI: drop photos that break the content rules
                 backfill_images(args.site)   # no AI: fix image links, fill missing photos
             rebuild_site(args.site)   # still refresh the pages (new settings, idea checker address); no AI used
             print("Pages refreshed.")
@@ -277,6 +278,7 @@ def main(argv=None):
         print(f"  App data: {publish(args.site, digest).resolve()}")
         changed = backfill_topics(args.site, use_ai)
         if not args.no_images and not args.feed_file:     # feed files = offline test runs
+            changed = audit_images(args.site) or changed
             changed = backfill_images(args.site) or changed
         if changed:
             rebuild_site(args.site)

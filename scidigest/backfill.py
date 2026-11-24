@@ -130,3 +130,49 @@ def backfill_images(site: Path, days: int = 7, max_lookups: int = 20, log=print,
         prewarm([p["image"]["url"] for p in newest["papers"]
                  if p.get("image") and "wikimedia.org" in p["image"].get("url", "")], pause=pause, log=log)
     return changed
+
+
+def audit_images(site: Path, days: int = 60, log=print) -> int:
+    """No AI. Re-check published Wikimedia photos against the content rules (no politics, conflict,
+    public figures or people) and remove any that fail, so backfill_images can find a replacement."""
+    from urllib.parse import unquote
+    from .images import allowed_photo, commons_metadata
+
+    data = site / "data"
+    if not data.exists():
+        return 0
+    files = sorted(data.glob("????-??-??.json"))[-days:]
+    docs, titles = {}, set()
+    for f in files:
+        d = json.loads(f.read_text(encoding="utf-8"))
+        docs[f] = d
+        for p in d["papers"]:
+            src = (p.get("image") or {}).get("source_url", "")
+            if (p.get("image") or {}).get("kind") == "illustration" and "/wiki/File:" in src:
+                titles.add(unquote(src.split("/wiki/", 1)[1]).replace("_", " "))
+    if not titles:
+        return 0
+    try:
+        meta = commons_metadata(sorted(titles))
+    except Exception as exc:
+        log(f"  ! couldn't re-check photos ({exc}); will try next run")
+        return 0
+    removed = 0
+    for f, d in docs.items():
+        dirty = False
+        for p in d["papers"]:
+            img = p.get("image") or {}
+            src = img.get("source_url", "")
+            if img.get("kind") != "illustration" or "/wiki/File:" not in src:
+                continue
+            title = unquote(src.split("/wiki/", 1)[1]).replace("_", " ")
+            m = meta.get(title)
+            # Content rules only; relevance is checked when a photo is first chosen.
+            if m is not None and not allowed_photo(title, m):
+                log(f"  removed photo '{title[:70]}' from '{p['headline'][:50]}'")
+                p["image"] = None
+                dirty = True
+                removed += 1
+        if dirty:
+            f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+    return removed

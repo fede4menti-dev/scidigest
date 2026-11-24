@@ -62,24 +62,44 @@ def jats_to_text(xml: bytes | str) -> str:
     if body is None:
         return "\n\n".join(out)
 
-    def walk(sec, depth=0):
+    def walk(sec, dest, depth=0):
         title_el = sec.find("title")
         title = _clean(" ".join(title_el.itertext())) if title_el is not None else ""
         if title and SKIP_SECTIONS.match(title):
             return
         if title:
-            out.append(("#" * (depth + 1)) + " " + title.upper() if depth == 0 else title)
+            dest.append(("#" * (depth + 1)) + " " + title.upper() if depth == 0 else title)
         for child in sec:
             if child.tag == "p":
-                out.append(_clean(" ".join(child.itertext())))
+                dest.append(_clean(" ".join(child.itertext())))
             elif child.tag == "sec":
-                walk(child, depth + 1)
+                walk(child, dest, depth + 1)
             elif child.tag in ("fig", "table-wrap"):
                 cap = child.find(".//caption")
                 if cap is not None:
-                    out.append("[Figure/table caption] " + _clean(" ".join(cap.itertext())))
+                    dest.append("[Figure/table caption] " + _clean(" ".join(cap.itertext())))
 
-    walk(body)
+    # Order sections so the most useful text comes first: results and conclusions, then the
+    # introduction, then methods. A length cap then trims methods detail, not findings.
+    def rank(sec):
+        t = _clean(" ".join(sec.find("title").itertext())).lower() if sec.find("title") is not None else ""
+        if re.search(r"result|finding|discussion|conclusion|summary|outlook", t):
+            return 0
+        if re.search(r"intro|background", t):
+            return 1
+        if re.search(r"method|material|procedure|experimental|supplement", t):
+            return 3
+        return 2
+    sections = [c for c in body if c.tag == "sec"]
+    loose = [c for c in body if c.tag != "sec"]
+    if sections:
+        for sec in sorted(sections, key=rank):     # stable: keeps the paper's order within each group
+            walk(sec, out)
+        for child in loose:
+            if child.tag == "p":
+                out.append(_clean(" ".join(child.itertext())))
+    else:
+        walk(body, out)
     return "\n\n".join(p for p in out if p)
 
 

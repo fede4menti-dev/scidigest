@@ -5,6 +5,7 @@ import json
 import os
 import re
 import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 
 import anthropic
@@ -12,7 +13,16 @@ import anthropic
 from .fetch import Article
 from .taxonomy import TOPIC_IDS, TOPICS, prompt_list
 
-MODEL = "claude-opus-5-5"
+# Model and effort are tradeoffs (cheaper can mean weaker); change them only on purpose, via the
+# SCIDIGEST_MODEL / SCIDIGEST_SUMMARY_EFFORT / SCIDIGEST_RANK_EFFORT repository variables.
+MODEL = os.environ.get("SCIDIGEST_MODEL", "claude-opus-5-5").strip() or "claude-opus-5-5"
+if MODEL not in ("claude-opus-5-5", "claude-sonnet-5-5"):
+    MODEL = "claude-opus-5-5"
+_EFFORTS = ("low", "medium", "high", "xhigh", "max")
+SUMMARY_EFFORT = os.environ.get("SCIDIGEST_SUMMARY_EFFORT", "medium").strip() or "medium"
+RANK_EFFORT = os.environ.get("SCIDIGEST_RANK_EFFORT", "high").strip() or "high"
+SUMMARY_EFFORT = SUMMARY_EFFORT if SUMMARY_EFFORT in _EFFORTS else "medium"
+RANK_EFFORT = RANK_EFFORT if RANK_EFFORT in _EFFORTS else "high"
 _client: anthropic.Anthropic | None = None
 
 
@@ -41,9 +51,10 @@ def abstract_excerpt(text: str, limit: int = 320) -> str:
 
 
 # ------------------------------------------------------------ spending guard
-# Claude Opus 5.5 list prices, USD per million tokens (thinking is billed as output).
-PRICE_IN, PRICE_OUT = 4.00, 20.00
-_usage = {"input": 0, "output": 0, "calls": 0}
+# List prices, USD per million tokens (thinking is billed as output). Batch requests cost half.
+PRICES = {"claude-opus-5-5": (4.00, 20.00), "claude-sonnet-5-5": (2.00, 10.00)}
+BATCH_DISCOUNT = 0.5
+_usage = {"input": 0, "output": 0, "calls": 0, "batch_input": 0, "batch_output": 0, "batch_calls": 0}
 _usage_lock = threading.Lock()
 
 
@@ -59,23 +70,34 @@ def budget_usd() -> float:
         return 4.0
 
 
+def _prices() -> tuple[float, float]:
+    return PRICES.get(MODEL, PRICES["claude-opus-5-5"])
+
+
 def spent_usd() -> float:
-    return (_usage["input"] * PRICE_IN + _usage["output"] * PRICE_OUT) / 1_000_000
+    pin, pout = _prices()
+    full = _usage["input"] * pin + _usage["output"] * pout
+    batch = (_usage["batch_input"] * pin + _usage["batch_output"] * pout) * BATCH_DISCOUNT
+    return (full + batch) / 1_000_000
 
 
 def usage_line() -> str:
-    return (f"Claude usage this run: {_usage['calls']} calls, {_usage['input']:,} input + "
-            f"{_usage['output']:,} output tokens, about ${spent_usd():.2f} (cap ${budget_usd():.2f})")
+    tin = _usage["input"] + _usage["batch_input"]
+    tout = _usage["output"] + _usage["batch_output"]
+    calls = _usage["calls"] + _usage["batch_calls"]
+    return (f"Claude usage this run: {calls} calls ({_usage['batch_calls']} at the 50% batch price), "
+            f"{tin:,} input + {tout:,} output tokens on {MODEL}, about ${spent_usd():.2f} (cap ${budget_usd():.2f})")
 
 
-def _record(resp) -> None:
+def _record(resp, batch: bool = False) -> None:
     u = getattr(resp, "usage", None)
     if u is None:
         return
+    pre = "batch_" if batch else ""
     with _usage_lock:
-        _usage["calls"] += 1
-        _usage["input"] += (getattr(u, "input_tokens", 0) or 0) + (getattr(u, "cache_creation_input_tokens", 0) or 0)
-        _usage["output"] += getattr(u, "output_tokens", 0) or 0
+        _usage[pre + "calls"] += 1
+        _usage[pre + "input"] += (getattr(u, "input_tokens", 0) or 0) + (getattr(u, "cache_creation_input_tokens", 0) or 0)
+        _usage[pre + "output"] += getattr(u, "output_tokens", 0) or 0
 
 
 def check_budget() -> None:
@@ -103,6 +125,90 @@ def _ask_json(system: str, prompt: str, schema: dict, effort: str = "medium",
         raise RuntimeError("response was cut off (max_tokens)")
     text = next(b.text for b in resp.content if b.type == "text")
     return json.loads(text)
+
+
+# ------------------------------------------------------------ Message Batches (50% off)
+# The daily run has nobody waiting on it, so its requests go through the Batches API at half price.
+# Batch requests can't use server-side fallbacks, so anything that fails, is refused, or doesn't finish
+# in time is retried as a normal request (which has fallbacks).
+
+def batch_enabled() -> bool:
+    return os.environ.get("SCIDIGEST_BATCH", "1").strip() != "0"
+
+
+def _batch_wait_seconds() -> float:
+    try:
+        return float(os.environ.get("SCIDIGEST_BATCH_WAIT_MIN", "120")) * 60
+    except ValueError:
+        return 7200.0
+
+
+POLL_SECONDS = 20
+
+
+def _params(system: str, prompt: str, schema: dict, effort: str, max_tokens: int) -> dict:
+    return {
+        "model": MODEL,
+        "max_tokens": max_tokens,
+        "output_config": {"effort": effort, "format": {"type": "json_schema", "schema": schema}},
+        "system": system,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+
+
+def _parse(msg) -> dict:
+    if msg.stop_reason == "refusal":
+        raise RuntimeError("model declined this request")
+    if msg.stop_reason == "max_tokens":
+        raise RuntimeError("response was cut off (max_tokens)")
+    return json.loads(next(b.text for b in msg.content if b.type == "text"))
+
+
+def ask_batch(requests: dict, log=print) -> dict:
+    """requests: {custom_id: (system, prompt, schema, effort, max_tokens)}.
+    Returns {custom_id: parsed dict or Exception}. Never raises for individual failures."""
+    if not requests:
+        return {}
+    check_budget()
+    c = client()
+    batch = c.messages.batches.create(requests=[
+        {"custom_id": cid, "params": _params(*args)} for cid, args in requests.items()])
+    log(f"  sent {len(requests)} request(s) as one batch (half price); waiting for results...")
+    deadline = time.monotonic() + _batch_wait_seconds()
+    while True:
+        batch = c.messages.batches.retrieve(batch.id)
+        if batch.processing_status == "ended":
+            break
+        if time.monotonic() > deadline:
+            log("  ! batch is taking too long; cancelling the rest and finishing them normally")
+            c.messages.batches.cancel(batch.id)
+            deadline = float("inf")       # wait for the cancellation to settle
+        time.sleep(POLL_SECONDS)
+    out: dict = {cid: RuntimeError("no batch result") for cid in requests}
+    for r in c.messages.batches.results(batch.id):
+        if r.result.type == "succeeded":
+            _record(r.result.message, batch=True)
+            try:
+                out[r.custom_id] = _parse(r.result.message)
+            except Exception as exc:
+                out[r.custom_id] = exc
+        else:
+            out[r.custom_id] = RuntimeError(f"batch request {r.result.type}")
+    return out
+
+
+def ask_json_cheap(system: str, prompt: str, schema: dict, effort: str = "medium", max_tokens: int = 16000) -> dict:
+    """One request at batch price when batching is on; falls back to a normal request."""
+    if batch_enabled():
+        try:
+            res = ask_batch({"only": (system, prompt, schema, effort, max_tokens)}, log=lambda *_: None)["only"]
+            if not isinstance(res, Exception):
+                return res
+        except BudgetExceeded:
+            raise
+        except Exception:
+            pass
+    return _ask_json(system, prompt, schema, effort, max_tokens)
 
 
 # ---------------------------------------------------------------- ranking
@@ -191,12 +297,12 @@ def rank(articles: list[Article], top: int, today=None, featured: dict | None = 
         kind = " | preprint, not peer reviewed" if getattr(a, "preprint", False) else ""
         lines.append(f"[{i}] {a.journal}: {a.title}\n({_age(a, today)}{kind}{note})\n{a.abstract[:snippet]}")
     system = RANK_SYSTEM + "\n\n" + TOPIC_RULES.format(topics=prompt_list(), top=top, per_topic=per_topic)
-    data = _ask_json(
+    data = ask_json_cheap(
         system,
         f"Today is {today:%A, %B %d, %Y}. Here are {len(articles)} recent papers. Make today's selections.\n\n"
         + "\n\n".join(lines),
         RANK_SCHEMA,
-        effort="high",
+        effort=RANK_EFFORT,
     )
     editors, others, used = [], [], set()
     for p in data["selections"]:
@@ -259,14 +365,14 @@ def rank_review(papers: list[dict], top: int, span: str, label: str,
     listing = "\n\n".join(
         f"[{i}] topic: {p.get('category') or 'unassigned'} | {p['field']} | {p['journal']} | "
         f"daily significance {p['significance']}/10\n"
-        f"{p['headline']}\n{p['summary'][:1200]}\nWhy it matters: {p['why_it_matters']}"
+        f"{p['headline']}\n{p['summary'][:500]}\nWhy it matters: {p['why_it_matters'][:300]}"
         for i, p in enumerate(papers))
-    data = _ask_json(
+    data = ask_json_cheap(
         REVIEW_SYSTEM.format(span=span, top=top, per_topic=per_topic),
         f"The {span}: {label}. Here are the {len(papers)} papers featured. "
         f"Make the selections and write the overview.\n\n{listing}",
         REVIEW_SCHEMA,
-        effort="high",
+        effort=RANK_EFFORT,
     )
     editors, others, used = [], [], set()
     for p in data["picks"]:
@@ -339,8 +445,8 @@ def copied_fraction(summary: str, source: str) -> float:
     return len(s & _shingles(source)) / len(s) if s else 0.0
 
 
-def summarize(article: Article, full_text: str = "", version: str = "", figures: list | None = None,
-              max_chars: int = 150_000, attempts: int = 2) -> dict:
+def _summary_prompt(article: Article, full_text: str, version: str, figures: list | None,
+                    max_chars: int) -> tuple[str, str]:
     prompt = (f"Journal: {article.journal}\nTitle: {article.title}\n\n"
               f"Abstract / description from the publisher:\n{article.abstract or '(none provided)'}")
     if getattr(article, "preprint", False):
@@ -348,50 +454,109 @@ def summarize(article: Article, full_text: str = "", version: str = "", figures:
                    "summary or limitations.")
     if figures:
         prompt += "\n\nFigures available from the paper (choose one with figure_index, or -1):\n" + "\n".join(
-            f"[{i}] {f.get('label', '')}: {f.get('caption', '')[:500]}" for i, f in enumerate(figures))
+            f"[{i}] {f.get('label', '')}: {f.get('caption', '')[:300]}" for i, f in enumerate(figures[:8]))
     else:
         prompt += "\n\nNo figures are available for this paper: set figure_index to -1 and figure_caption to empty."
     note = ""
     if full_text:
         body = full_text[:max_chars]
         if len(full_text) > max_chars:
-            note = f"(Full text shortened to its first {max_chars:,} characters.)"
+            note = f"(Full text shortened to {max_chars:,} characters, results and conclusions first.)"
         prompt += (f"\n\nFull text of a free, legal copy of this paper ({version}). Use it for "
                    f"concrete details such as methods, sample sizes and main results, but keep the "
                    f"summary short and readable. {note}\n<full_text>\n{body}\n</full_text>")
         if "Preprint" in version:
             prompt += ("\n\nThis copy is a preprint that had not been peer reviewed. Mention in "
                        "limitations that numbers in the final published paper may differ.")
-    source = article.abstract + " " + full_text
-    for _ in range(attempts):
-        out = _ask_json(SUMMARY_SYSTEM, prompt, SUMMARY_SCHEMA)
-        text = " ".join([out["summary"], out["why_it_matters"], out["limitations"]])
-        out["copied_fraction"] = round(copied_fraction(text, source), 3)
-        if out["copied_fraction"] < 0.08:
-            break
-        prompt += ("\n\nYour last draft reused too much of the original wording. Rewrite it fully "
-                   "in your own words.")
+    return prompt, note
+
+
+def _finish_summary(out: dict, article: Article, full_text: str, note: str) -> dict:
+    text = " ".join([out["summary"], out["why_it_matters"], out["limitations"]])
+    out["copied_fraction"] = round(copied_fraction(text, article.abstract + " " + full_text), 3)
     out["based_on"] = "full text" if full_text else "abstract"
     out["truncated"] = bool(note)
     return out
 
 
-def summarize_many(jobs: list[tuple[Article, str, str]], workers: int = 4, **kw) -> list[dict]:
-    """jobs: (article, full_text, version_label, figures) tuples."""
-    def safe(job):
+def summarize(article: Article, full_text: str = "", version: str = "", figures: list | None = None,
+              max_chars: int = 30_000, attempts: int = 2) -> dict:
+    prompt, note = _summary_prompt(article, full_text, version, figures, max_chars)
+    for _ in range(attempts):
+        out = _finish_summary(_ask_json(SUMMARY_SYSTEM, prompt, SUMMARY_SCHEMA, SUMMARY_EFFORT), article, full_text, note)
+        if out["copied_fraction"] < 0.08:
+            break
+        prompt += ("\n\nYour last draft reused too much of the original wording. Rewrite it fully "
+                   "in your own words.")
+    return out
+
+
+def _estimate_usd(prompt: str, out_tokens: int = 2500, batch: bool = True) -> float:
+    pin, pout = _prices()
+    cost = ((len(SUMMARY_SYSTEM) + len(prompt)) / 3.5 * pin + out_tokens * pout) / 1_000_000
+    return cost * (BATCH_DISCOUNT if batch else 1)
+
+
+def _fallback_summary(article: Article) -> dict:
+    return {"headline": article.title,
+            "summary": abstract_excerpt(article.abstract),
+            "why_it_matters": "A plain-language summary couldn't be written for this paper today. Above is a "
+                              "short excerpt of the publisher's abstract; read the full paper via the link below.",
+            "key_terms": [], "limitations": "", "based_on": "abstract (not paraphrased)",
+            "figure_index": -1, "figure_caption": "", "image_query": ""}
+
+
+def summarize_many(jobs: list[tuple[Article, str, str]], workers: int = 4, max_chars: int = 30_000, **kw) -> list:
+    """jobs: (article, full_text, version_label, figures) tuples, most important first.
+    Returns one summary per job; None where the spending cap stopped it."""
+    def standard(job):
         article = job[0]
         try:
-            return summarize(*job, **kw)
+            return summarize(*job, max_chars=max_chars, **kw)
         except BudgetExceeded:
             return None           # caller drops (topic picks) or quotes the abstract (editor's picks)
         except Exception as exc:  # keep the rest of the report
             print(f"  ! summary failed for '{article.title[:60]}': {exc}")
-            return {"headline": article.title,
-                    "summary": abstract_excerpt(article.abstract),
-                    "why_it_matters": "A plain-language summary couldn't be written for this paper today. Above is a "
-                                      "short excerpt of the publisher's abstract; read the full paper via the link below.",
-                    "key_terms": [], "limitations": "", "based_on": "abstract (not paraphrased)",
-                    "figure_index": -1, "figure_caption": "", "image_query": ""}
+            return _fallback_summary(article)
 
-    with ThreadPoolExecutor(max_workers=workers) as pool:
-        return list(pool.map(safe, jobs))
+    if not batch_enabled():
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            return list(pool.map(standard, jobs))
+
+    # Batch: include jobs in order (editor's picks first) while the estimated cost fits the cap.
+    results: list = [None] * len(jobs)
+    prepared, planned = {}, spent_usd()
+    cap = budget_usd()
+    for i, job in enumerate(jobs):
+        article, full_text, version, figures = (list(job) + ["", "", None])[:4]
+        prompt, note = _summary_prompt(article, full_text, version, figures, max_chars)
+        est = _estimate_usd(prompt)
+        if cap > 0 and planned + est > cap:
+            break
+        planned += est
+        prepared[str(i)] = (prompt, note)
+    try:
+        answers = ask_batch({cid: (SUMMARY_SYSTEM, p, SUMMARY_SCHEMA, SUMMARY_EFFORT, 16000)
+                             for cid, (p, _) in prepared.items()})
+    except BudgetExceeded:
+        return results
+    except Exception as exc:
+        print(f"  ! batch failed ({exc}); summarising normally instead")
+        answers = {}
+    retry = []
+    for cid, (prompt, note) in prepared.items():
+        i = int(cid)
+        article, full_text = jobs[i][0], (jobs[i][1] if len(jobs[i]) > 1 else "")
+        ans = answers.get(cid)
+        if isinstance(ans, dict):
+            out = _finish_summary(ans, article, full_text, note)
+            if out["copied_fraction"] < 0.08:
+                results[i] = out
+                continue
+        retry.append(i)           # failed, refused, unfinished or too close to the original wording
+    if retry:
+        print(f"  {len(retry)} summary(ies) redone as normal requests")
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            for i, out in zip(retry, pool.map(standard, [jobs[i] for i in retry])):
+                results[i] = out
+    return results

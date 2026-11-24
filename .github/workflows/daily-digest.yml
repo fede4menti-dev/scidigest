@@ -20,7 +20,7 @@ concurrency:
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 170   # batches usually finish in minutes; this allows the 2-hour wait plus fallbacks
     steps:
       - uses: actions/checkout@v4
 
@@ -46,6 +46,10 @@ jobs:
           SCIDIGEST_CONTACT_EMAIL: ${{ vars.SCIDIGEST_CONTACT_EMAIL }}
           # Hard spending cap for one run in USD (repository variable SCIDIGEST_MAX_RUN_USD).
           SCIDIGEST_MAX_RUN_USD: ${{ vars.SCIDIGEST_MAX_RUN_USD || '4' }}
+          # Tradeoff switches (leave unset for full quality): model, and AI "thinking effort".
+          SCIDIGEST_MODEL: ${{ vars.SCIDIGEST_MODEL || 'claude-opus-5-5' }}
+          SCIDIGEST_SUMMARY_EFFORT: ${{ vars.SCIDIGEST_SUMMARY_EFFORT || 'medium' }}
+          SCIDIGEST_RANK_EFFORT: ${{ vars.SCIDIGEST_RANK_EFFORT || 'high' }}
         run: python -m scidigest --top 8 --out reports --site docs ${{ inputs.force && '--force' || '' }}
 
       - name: Publish to GitHub Pages

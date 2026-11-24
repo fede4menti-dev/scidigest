@@ -178,10 +178,10 @@ document.addEventListener("DOMContentLoaded",function(){
     if(question.length<15){fail("Please write your research question as a full sentence.");return}
     var url=server();
     if(!url){busy(true,["Searching Europe PMC…"]);searchOnly(question).catch(function(e){fail("Couldn't reach Europe PMC. Check your connection and try again.")}).then(function(){busy(false)});return}
-    busy(true,steps);var headers={"Content-Type":"application/json"},tok=app.token();if(tok)headers["X-App-Token"]=tok;
+    busy(true,steps);var headers={"Content-Type":"application/json"},tok=app.token();if(tok)headers["X-App-Token"]=tok;var at=app.authToken();if(at)headers.Authorization="Bearer "+at;
     fetch(url+"/check",{method:"POST",headers:headers,body:JSON.stringify({question:question})})
-      .then(function(r){return r.json().catch(function(){return {}}).then(function(d){if(!r.ok)throw new Error(d.error||("The idea checker answered with an error ("+r.status+")."));return d})})
-      .then(function(r){renderReport(r);app.addIdea({q:question,verdict:r.verdict,novelty:r.novelty_score,overall:r.overall_score,improved:r.improved_question,at:Date.now()});renderHistory()}).catch(function(e){fail(e.message==="Failed to fetch"?"Couldn't reach the idea checker. Check the address in Settings.":e.message)})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(d){if(!r.ok){if(d.needs_account){return searchOnly(question).then(function(){fail(d.error);var b=document.createElement("button");b.className="secondary";b.type="button";b.textContent="Sign in or create an account";b.style.marginTop="10px";b.onclick=app.openSettings;errEl.appendChild(document.createElement("br"));errEl.appendChild(b);return null})}throw new Error(d.error||("The idea checker answered with an error ("+r.status+")."))}return d})})
+      .then(function(r){if(!r)return;renderReport(r);app.addIdea({q:question,verdict:r.verdict,novelty:r.novelty_score,overall:r.overall_score,improved:r.improved_question,at:Date.now()});renderHistory()}).catch(function(e){fail(e.message==="Failed to fetch"?"Couldn't reach the idea checker. Check the address in Settings.":e.message)})
       .then(function(){busy(false);out.scrollIntoView&&out.firstChild&&out.scrollIntoView({behavior:"smooth",block:"start"})})});
 });
 </script>

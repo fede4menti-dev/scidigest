@@ -117,3 +117,28 @@ test("sign-up requires accepting the terms and confirming age 16+", async () => 
     assert.match((await r.json()).error, /16 or older/);
   }
 });
+
+
+test("optional: full reports only for signed-in readers, with a daily allowance each", async () => {
+  const kv = memoryKV();
+  const claude = async (s, p, schema) => schema.properties.queries
+    ? { is_research_question: true, field: "Biology", queries: ["q"] }
+    : { verdict: "partly researched", novelty_score: 5, overall_score: 5, summary: "s", related: [],
+        quality: Object.fromEntries(["clarity", "specificity", "feasibility", "significance", "testability"].map(k => [k, { score: 5, comment: "c" }])),
+        ethics: "none", gaps: [], suggestions: [], improved_question: "q" };
+  const fetch = async () => ({ ok: true, status: 200, json: async () => ({ results: [{ display_name: "P", id: "W", cited_by_count: 1 }] }) });
+  const env = { DATA: kv, ANTHROPIC_API_KEY: "k", REQUIRE_ACCOUNT_FOR_CHECKS: "1", CHECKS_PER_ACCOUNT_PER_DAY: "2" };
+  const ask = (q, token) => call(env, "POST", "/check", { question: q }, token, { claude, fetch });
+
+  const anon = await ask("Does sleep help memory in students?");
+  assert.equal(anon.status, 401);
+  assert.equal((await anon.json()).needs_account, true);
+
+  const s = await (await call(env, "POST", "/auth/signup", { email: "q@x.io", password: "12345678", consent: OK })).json();
+  assert.equal((await ask("Does sleep help memory in students?", s.token)).status, 200);
+  assert.equal((await ask("Do bees prefer blue flowers over yellow?", s.token)).status, 200);
+  assert.equal((await ask("Does sleep help memory in students?", s.token)).status, 200, "cached answers don't use the allowance");
+  const over = await ask("Can soil microbes break down plastic?", s.token);
+  assert.equal(over.status, 429);
+  assert.match((await over.json()).error, /today's 2 idea checks/);
+});

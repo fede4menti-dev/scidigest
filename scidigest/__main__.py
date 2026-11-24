@@ -100,9 +100,11 @@ def main(argv=None):
     p.add_argument("--email", default=os.environ.get("SCIDIGEST_EMAIL"),
                    help="your contact email for Unpaywall (or set SCIDIGEST_EMAIL)")
     p.add_argument("--no-fulltext", action="store_true", help="don't look for free full-text copies")
-    p.add_argument("--max-fulltext-chars", type=int, default=60_000,
-                   help="cap on full-text characters sent per paper (default 60000, about 15K tokens; "
-                        "methods and results are near the start)")
+    p.add_argument("--max-fulltext-chars", type=int, default=30_000,
+                   help="cap on full-text characters sent per paper (default 30000, about 8K tokens; "
+                        "results and conclusions are placed first, so the cut trims methods detail)")
+    p.add_argument("--no-batch", action="store_true",
+                   help="use normal API requests instead of the half-price Batches API")
     p.add_argument("--no-images", action="store_true", help="don't add figures or illustrative photos")
     p.add_argument("--site", type=Path, help="also publish JSON + HTML for the iPhone app into this folder")
     p.add_argument("--review", choices=["weekly", "monthly"],
@@ -118,6 +120,8 @@ def main(argv=None):
     args = p.parse_args(argv)
 
     today = args.today or date.today()
+    if args.no_batch:
+        os.environ["SCIDIGEST_BATCH"] = "0"
     use_ai = not args.no_ai
     if use_ai and not (os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")):
         sys.exit("No ANTHROPIC_API_KEY set. Export one, or run with --no-ai.")

@@ -15,9 +15,10 @@
 // Vars: DAILY_CHECK_LIMIT (default 150 idea checks per day for the whole site).
 import Anthropic from "@anthropic-ai/sdk";
 import { checkIdea, IdeaError } from "./checker.js";
-import { AccountError, deleteAccount, getMe, login, putData, resetPassword, signup } from "./accounts.js";
+import { AccountError, deleteAccount, getMe, login, putData, readToken, resetPassword, signup } from "./accounts.js";
 
-const MODEL = "claude-opus-5-5";
+// IDEA_CHECK_MODEL (variable): "claude-opus-5-5" (default) or "claude-sonnet-5-5" (about half the price).
+const MODELS = ["claude-opus-5-5", "claude-sonnet-5-5"];
 const PER_IP_PER_HOUR = 10;          // idea checks per person per hour
 const AUTH_PER_IP_PER_10MIN = 20;    // sign-in attempts, to slow password guessing
 const CACHE_DAYS = 30;               // same question again -> cached report, no AI cost
@@ -46,10 +47,11 @@ function limiter(max, windowMs) {
 const ideaLimited = limiter(PER_IP_PER_HOUR, 3_600_000);
 const authLimited = limiter(AUTH_PER_IP_PER_10MIN, 600_000);
 
-export function makeClaude(client) {
+export function makeClaude(client, model = "claude-opus-5-5") {
+  if (!MODELS.includes(model)) model = "claude-opus-5-5";
   return async function claude(system, prompt, schema, effort) {
     const resp = await client.beta.messages.create({
-      model: MODEL,
+      model,
       max_tokens: 16000,
       betas: ["server-side-fallback-2026-07-01"],
       fallbacks: "default", // if a safety classifier declines, retry on a suitable model
@@ -88,6 +90,21 @@ async function handleCheck(request, env, deps) {
     if (cached) return json({ ...cached, cached: true });   // free: no AI call
   }
 
+  // Optional: full AI reports only for signed-in readers, with a daily allowance each
+  // (REQUIRE_ACCOUNT_FOR_CHECKS = "1", CHECKS_PER_ACCOUNT_PER_DAY = 5 by default).
+  let userQuotaKey = null;
+  if (env.REQUIRE_ACCOUNT_FOR_CHECKS === "1") {
+    const token = (request.headers.get("Authorization") || "").replace(/^Bearer\s+/i, "");
+    if (!kv || !token) return json({ error: "Sign in (Settings → Account) to get the full AI report. Without an account you can still see related papers.", needs_account: true }, 401);
+    let claims;
+    try { claims = await readToken(kv, token); } catch { return json({ error: "Please sign in again to use Idea Check.", needs_account: true }, 401); }
+    const perUser = Number(env.CHECKS_PER_ACCOUNT_PER_DAY || 5);
+    userQuotaKey = `uq:${claims.sub}:${today()}`;
+    if (Number((await kv.get(userQuotaKey)) || 0) >= perUser) {
+      return json({ error: `You've used today's ${perUser} idea checks. They reset tomorrow.` }, 429);
+    }
+  }
+
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
   if ((deps.rateLimited || ideaLimited)(ip)) {
     return json({ error: `Limit reached: ${PER_IP_PER_HOUR} checks per hour. Please try again later.` }, 429);
@@ -102,7 +119,7 @@ async function handleCheck(request, env, deps) {
   }
 
   const report = await checkIdea(body.question, {
-    claude: deps.claude || makeClaude(new Anthropic({ apiKey: env.ANTHROPIC_API_KEY })),
+    claude: deps.claude || makeClaude(new Anthropic({ apiKey: env.ANTHROPIC_API_KEY }), env.IDEA_CHECK_MODEL),
     fetch: deps.fetch || fetch,
     openAlexKey: env.OPENALEX_API_KEY,
   });
@@ -110,6 +127,10 @@ async function handleCheck(request, env, deps) {
     const used = Number((await kv.get(counterKey)) || 0);
     await kv.put(counterKey, String(used + 1), { expirationTtl: 3 * 86_400 });
     await kv.put(cacheKey, JSON.stringify(report), { expirationTtl: CACHE_DAYS * 86_400 });
+    if (userQuotaKey) {
+      const mine = Number((await kv.get(userQuotaKey)) || 0);
+      await kv.put(userQuotaKey, String(mine + 1), { expirationTtl: 2 * 86_400 });
+    }
   }
   return json(report);
 }

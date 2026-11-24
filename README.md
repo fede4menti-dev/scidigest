@@ -11,14 +11,26 @@ A daily report of the most significant new scientific research. Each morning it:
 
 ## Costs and safeguards
 
-Readers never trigger AI costs by changing settings: topics, sorting, saving, searching and accounts all work on data that was already generated. AI is only used in two places, both capped:
+Readers never trigger AI costs by browsing: topics, sorting, saving, searching and accounts work on data that was already generated. AI is used in two places:
 
-| Where | What it costs | Safeguards |
+| Where | How cost behaves | Built-in savings and limits |
 |---|---|---|
-| **Daily run** (GitHub Actions, once a day) | Fixed per day, the same for 1 reader or 10,000 | Hard cap per run: `SCIDIGEST_MAX_RUN_USD` repository variable (default **$4**). Editor's picks are written first; if the cap is reached, remaining topic picks are dropped and weekly/monthly reviews wait for the next run. A second run on the same day is skipped (use **Run workflow → force** to rebuild). Full text is capped at 60,000 characters per paper, repeats reuse earlier summaries, and the run log ends with tokens used and an estimated cost. |
-| **Idea Check** (per request) | A few cents per new question | Identical questions are answered from a 30-day cache for free; 10 checks per person per hour; a site-wide daily limit (`IDEA_CHECKS_PER_DAY` repository variable, default **150**); question length capped. |
+| **Daily run** | Fixed per day, the same for 1 reader or 100,000 | Ranking, summaries and reviews go through the **Batches API at half price** (falls back to normal requests for anything refused, failed or unfinished). Full text is sent results-and-conclusions first and capped at 30,000 characters. Reviews only rank the strongest papers. Repeats reuse earlier summaries. Hard cap per run (`SCIDIGEST_MAX_RUN_USD`, default $4): editor's picks first, extra topic picks dropped when reached. Same-day re-runs skipped. The log ends with tokens used and the estimated cost. |
+| **Idea Check** | Grows with how many *new* questions people ask | Identical questions answered from a 30-day cache for free; 10 per person per hour; site-wide daily limit (`IDEA_CHECKS_PER_DAY`, default 150); smaller requests (22 papers, short abstracts). Optional: `REQUIRE_ACCOUNT_FOR_CHECKS=1` gives full AI reports only to signed-in readers, with `CHECKS_PER_ACCOUNT_PER_DAY` (default 5) each; signed-out readers still get the free search-only results. |
 
-**Always also set a monthly spend limit on your key:** console.anthropic.com → Billing → Limits. That is the final, hard stop.
+**Always also set a monthly spend limit on your key:** console.anthropic.com → Billing → Limits.
+
+### Optional switches that trade quality for cost
+
+Set these as repository variables only if you want to spend less and accept somewhat weaker output. Change one at a time and compare a few days of reports.
+
+| Variable | Default | Cheaper option | Effect |
+|---|---|---|---|
+| `SCIDIGEST_MODEL` | `claude-opus-5-5` | `claude-sonnet-5-5` | About half the price per token for the daily run; summaries and picks may be a little less sharp |
+| `SCIDIGEST_SUMMARY_EFFORT` | `medium` | `low` | Less "thinking" per summary, so fewer output tokens; usually fine for plain-language summaries |
+| `SCIDIGEST_RANK_EFFORT` | `high` | `medium` | Cheaper daily ranking; for this kind of judgement medium often matches high |
+| `SCIDIGEST_PER_TOPIC` | `2` | `1` or `0` | Fewer papers summarised per day (fewer topic picks) |
+| `IDEA_CHECK_MODEL` | `claude-opus-5-5` | `claude-sonnet-5-5` | About half the price per idea check |
 
 ## Accounts
 

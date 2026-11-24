@@ -485,6 +485,8 @@
   // ------------------------------------------------------------- shared API for other pages
   window.SciDigestApp = {
     state: S, commit: commit, server: server, token: function () { return S.ideaToken; },
+    authToken: function () { return account && account.token; },
+    openSettings: function () { var b = $("[data-open-settings]"); if (b) b.click(); },
     toast: toast, copy: copy, el: el, ask: ask, tell: tell,
     addIdea: function (entry) {
       S.ideas = [entry].concat((S.ideas || []).filter(function (i) { return qkey(i.q) !== qkey(entry.q); }));

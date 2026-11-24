@@ -48,7 +48,7 @@ def _ai_topics(papers: list[dict]) -> list[str | None]:
         "additionalProperties": False,
     }
     listing = "\n".join(f"[{i}] {p['field']} | {p['journal']} | {p['headline']}" for i, p in enumerate(papers))
-    data = ai._ask_json(
+    data = ai.ask_json_cheap(
         "Assign each research paper to the single closest topic id from this list:\n" + prompt_list(),
         f"Return one topic id per paper, in order ({len(papers)} papers).\n\n{listing}",
         schema, effort="low", max_tokens=4000)

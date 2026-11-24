@@ -67,6 +67,11 @@ def build_review(site, kind: str, today: date, top: int, use_ai: bool, log=print
         p = entry["paper"]
         p["featured_on"] = sorted(set(entry["dates"]))
         papers.append(p)
+    # Keep the ranking request small: only the strongest papers of the period are considered
+    # (editor's picks first, then by daily significance).
+    limit = 80 if kind == "weekly" else 160
+    papers.sort(key=lambda p: (not p.get("editors_pick", True), -p.get("significance", 0)))
+    papers = papers[:limit]
 
     if use_ai:
         from . import ai

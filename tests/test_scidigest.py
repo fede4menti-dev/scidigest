@@ -346,7 +346,8 @@ def test_spending_cap_keeps_editors_picks_and_drops_topic_picks(tmp_path, monkey
         return r
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test")
     monkeypatch.setenv("SCIDIGEST_MAX_RUN_USD", "1.0")
-    monkeypatch.setattr(ai, "_usage", {"input": 0, "output": 0, "calls": 0})
+    monkeypatch.setattr(ai, "_usage", {"input": 0, "output": 0, "calls": 0,
+                                       "batch_input": 0, "batch_output": 0, "batch_calls": 0})
     fake = SimpleNamespace(beta=SimpleNamespace(messages=SimpleNamespace(create=create)))
     site = tmp_path / "site"
     with mock.patch.object(ai, "client", return_value=fake):
@@ -356,7 +357,7 @@ def test_spending_cap_keeps_editors_picks_and_drops_topic_picks(tmp_path, monkey
     d = json.loads((site / "data" / "2026-11-18.json").read_text())
     assert [p["editors_pick"] for p in d["papers"]] == [True]          # topic pick dropped
     assert d["papers"][0]["based_on"] == "abstract"                     # editor's pick kept, abstract quoted
-    assert "about $1.20" in ai.usage_line()
+    assert "about $1.20" in ai.usage_line() and "0 at the 50% batch price" in ai.usage_line()
 
 
 def test_second_run_same_day_is_skipped_unless_forced(tmp_path, capsys):

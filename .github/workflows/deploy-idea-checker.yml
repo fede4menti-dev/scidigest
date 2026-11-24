@@ -85,7 +85,17 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           # Idea checks per day for the whole site (repository variable IDEA_CHECKS_PER_DAY, default 150).
           DAILY_LIMIT: ${{ vars.IDEA_CHECKS_PER_DAY || '150' }}
-        run: npx wrangler deploy --var "DAILY_CHECK_LIMIT:$DAILY_LIMIT"
+          # Optional cost controls (repository variables): require sign-in for full AI reports,
+          # a daily allowance per account, and the model used for Idea Check.
+          REQUIRE_ACCOUNT: ${{ vars.REQUIRE_ACCOUNT_FOR_CHECKS || '0' }}
+          PER_ACCOUNT: ${{ vars.CHECKS_PER_ACCOUNT_PER_DAY || '5' }}
+          CHECK_MODEL: ${{ vars.IDEA_CHECK_MODEL || 'claude-opus-5-5' }}
+        run: >-
+          npx wrangler deploy
+          --var "DAILY_CHECK_LIMIT:$DAILY_LIMIT"
+          --var "REQUIRE_ACCOUNT_FOR_CHECKS:$REQUIRE_ACCOUNT"
+          --var "CHECKS_PER_ACCOUNT_PER_DAY:$PER_ACCOUNT"
+          --var "IDEA_CHECK_MODEL:$CHECK_MODEL"
 
       - name: Upload secrets to the worker (only those that are set)
         if: steps.check.outputs.ready == 'true'

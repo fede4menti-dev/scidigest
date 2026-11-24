@@ -9,7 +9,7 @@
 // Everything external is passed in via `deps`, so this file runs unchanged in tests.
 
 export const MAX_QUESTION = 1500;
-const MAX_CANDIDATES = 30;   // papers Claude reads closely
+const MAX_CANDIDATES = 22;   // papers Claude reads closely (kept small: input is the main cost)
 const MAX_RELATED = 10;      // papers shown in the report
 
 // ---------------------------------------------------------------- prompts
@@ -250,7 +250,7 @@ export async function checkIdea(question, deps) {
 
   const listing = candidates.map((p, i) =>
     `[${i}] ${p.title} (${p.year ?? "n.d."}; ${p.venue || "unknown venue"}; cited ${p.cited_by} times)\n` +
-    (p.abstract ? p.abstract.slice(0, 900) : "(no abstract available)")).join("\n\n");
+    (p.abstract ? p.abstract.slice(0, 650) : "(no abstract available)")).join("\n\n");
   const report = await deps.claude(
     REPORT_SYSTEM,
     `Student's research question: ${question}\n\nField: ${plan.field}\n\n` +

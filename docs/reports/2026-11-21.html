@@ -175,7 +175,7 @@ h1{font-size:2.1rem;line-height:1.12;letter-spacing:-.025em;margin:4px 0 6px}
 .chips button{flex:none;border:1px solid var(--glass-border);background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);color:var(--soft);padding:8px 14px;border-radius:999px;font:inherit;font-size:.85rem;cursor:pointer}
 .chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:transparent}
 h2{font-size:1.2rem;letter-spacing:-.015em;margin:32px 0 12px}
-h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:22px 0 10px}
+.topic-section>h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:22px 0 10px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px;align-items:start}
 .card{border-radius:24px;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-2px);box-shadow:0 1px 0 rgba(255,255,255,.65) inset,0 16px 40px rgba(30,41,59,.14)}
@@ -183,7 +183,7 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .card summary{list-style:none;cursor:pointer;display:block}
 .card summary::-webkit-details-marker{display:none}
 .thumb{aspect-ratio:16/9;background:var(--ph);overflow:hidden;position:relative;margin:8px 8px 0;border-radius:18px}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;color:transparent;font-size:0}
 .thumb{--g:#0d7a70}.thumb[data-group=physical]{--g:#6366f1}.thumb[data-group=engineering]{--g:#ea580c}.thumb[data-group=life]{--g:#16a34a}
 .thumb[data-group=health]{--g:#db2777}.thumb[data-group=earth]{--g:#0891b2}.thumb[data-group=society]{--g:#9333ea}
 .thumb .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--g);
@@ -197,7 +197,7 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .topic{color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
 .pill{padding:2px 8px;border-radius:999px;font-weight:600}
 .pill.pre{background:var(--warn-bg);color:var(--warn)}.pill.full{background:var(--ok-bg);color:var(--ok)}.pill.rep{background:var(--accent-bg);color:var(--accent)}
-.card .ct{font-size:1.1rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .ct{font-size:1.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;text-transform:none;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .card.open .ct{display:block;font-size:1.35rem}
 .lede{color:var(--soft);font-size:.93rem;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .meta{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.8rem;margin-top:12px}
@@ -219,6 +219,14 @@ sup a{text-decoration:none;font-size:.7rem}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
 .act{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--ink);padding:8px 13px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:500;cursor:pointer}
 .act svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card{position:relative}
+.qsave{position:absolute;top:16px;right:16px;z-index:2;width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:50%;
+  border:1px solid var(--glass-border);background:var(--glass-strong);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);
+  color:var(--ink);cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.15);transition:transform .15s}
+.qsave:hover{transform:scale(1.06)}.qsave:active{transform:scale(.94)}
+.qsave svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.card.is-saved .qsave{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.card.is-saved .qsave svg{fill:currentColor}
 .card.is-saved .act[data-act=save]{background:var(--accent-bg);color:var(--accent);border-color:transparent}
 .card.is-saved .act[data-act=save] svg{fill:currentColor}
 .card.is-saved .kicker::after{content:"Saved";padding:2px 8px;border-radius:999px;background:var(--accent-bg);color:var(--accent)}
@@ -276,10 +284,13 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <div id="report-body">
   <h2 class="editors">Editor&#39;s picks</h2>
   <div class="grid editors-grid">
-<details class="card" id="p1" data-topic="clinical" data-editors="1" data-rank="1" data-score="9"
+<article class="card" id="p1" data-topic="clinical" data-editors="1" data-rank="1" data-score="9"
   data-key="https://doi.org/10.1056/NEJMoa2611913" data-headline="Two new four-drug tuberculosis combinations pass an early screening trial" data-url="https://doi.org/10.1056/NEJMoa2611913" data-cite="Esmail, H., Paton, N. I., Schildkraut, J. A., Motta, I., Szubert, A. J., Dufault, S. M., Heinrich, N., Tiberi, S., Kityo, C. M., McHugh, T. D., Ryklief, F., Cirillo, D. M., Dawson, R., Sanders, K., Mpagama, S., Thompson, L. C., Van, L. H., Wakerley, D., Tudor, E., ... Hoelscher, M. (2026). Assessing Multiple Treatment Regimens for Tuberculosis. The New England Journal of Medicine, NEJMoa2611913. https://doi.org/10.1056/NEJMoa2611913"
   data-topicname="Clinical &amp; Disease Research" data-journal="The New England Journal of Medicine" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p1" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Infectious_Diseases_Hospital%2C_Rajshahi_18.jpg/960px-Infectious_Diseases_Hospital%2C_Rajshahi_18.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Clinical &amp; Disease Research</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Infectious_Diseases_Hospital%2C_Rajshahi_18.jpg/960px-Infectious_Diseases_Hospital%2C_Rajshahi_18.jpg" alt="Infectious Diseases Hospital, Rajshahi was established in 1962." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -297,7 +308,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Infectious Diseases Hospital, Rajshahi was established in 1962. · Nahid Hossain, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -310,11 +320,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Esmail, H., Paton, N. I., Schildkraut, J. A., Motta, I., Szubert, A. J., Dufault, S. M., Heinrich, N., Tiberi, S., Kityo, C. M., McHugh, T. D., Ryklief, F., Cirillo, D. M., Dawson, R., Sanders, K., Mpagama, S., Thompson, L. C., Van, L. H., Wakerley, D., Tudor, E., ... Hoelscher, M. (2026). Assessing Multiple Treatment Regimens for Tuberculosis. <em>The New England Journal of Medicine</em>, NEJMoa2611913. https://doi.org/10.1056/NEJMoa2611913<br><a href="https://doi.org/10.1056/NEJMoa2611913" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p2" data-topic="therapeutics" data-editors="1" data-rank="2" data-score="9"
+<article class="card" id="p2" data-topic="therapeutics" data-editors="1" data-rank="2" data-score="9"
   data-key="https://doi.org/10.1056/NEJMoa2604058" data-headline="Weekly semaglutide injections lowered BMI in children aged 6 to 11 with obesity" data-url="https://doi.org/10.1056/NEJMoa2604058" data-cite="Jastreboff, A. M., Harder-Lauridsen, N. M., Name, M. V., Körner, A., Kelly, A. S., Weghuber, D., Holm, J., Frithioff-Bøjsøe, C., Middolu, S., Buch, T., &amp; Wabitsch, M. (2026). Semaglutide for the Treatment of Obesity in Children 6 to &lt;12 Years of Age. The New England Journal of Medicine, NEJMoa2604058. https://doi.org/10.1056/NEJMoa2604058"
   data-topicname="Therapeutics &amp; Care" data-journal="The New England Journal of Medicine" data-date="Nov 16, 2026"
   data-report="reports/2026-11-21.html#p2" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/AWH_Pediatric_Physical_Therapy.JPG/960px-AWH_Pediatric_Physical_Therapy.JPG">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Therapeutics &amp; Care</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/AWH_Pediatric_Physical_Therapy.JPG/960px-AWH_Pediatric_Physical_Therapy.JPG" alt="Pediatric pharmacology" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -332,7 +346,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Pediatric pharmacology · Dr. P. K. Abdul Kader, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -345,11 +358,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Jastreboff, A. M., Harder-Lauridsen, N. M., Name, M. V., Körner, A., Kelly, A. S., Weghuber, D., Holm, J., Frithioff-Bøjsøe, C., Middolu, S., Buch, T., &amp; Wabitsch, M. (2026). Semaglutide for the Treatment of Obesity in Children 6 to &lt;12 Years of Age. <em>The New England Journal of Medicine</em>, NEJMoa2604058. https://doi.org/10.1056/NEJMoa2604058<br><a href="https://doi.org/10.1056/NEJMoa2604058" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p3" data-topic="physics" data-editors="1" data-rank="3" data-score="8"
+<article class="card" id="p3" data-topic="physics" data-editors="1" data-rank="3" data-score="8"
   data-key="https://doi.org/10.1126/science.aec3042" data-headline="Google quantum chip wins cooperation games beyond any classical strategy" data-url="https://doi.org/10.1126/science.aec3042" data-cite="Collaborators, G. Q. A. a., Kumar, S., Rosenberg, E., Dau, A. G., Cortiñas, R. G., Maslov, D., Oliver, R., Zalcman, A., Neeley, M., Pagano, A., Szasz, A., Drozdov, I., Minev, Z., Gidney, C., Yosri, N., Graaf, S. J. d., Maiti, A., Abanin, D., Acharya, R., ... Devoret, M. (2026). Quantum-classical separation in bounded-resource tasks arising from measurement contextuality. Science, 394(6826), 870-874. https://doi.org/10.1126/science.aec3042"
   data-topicname="Physics" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p3" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png/960px-6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Physics</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png/960px-6_Transmon_Superconducting_Quantum_Processor_without_Cheesing_013.png" alt="Superconducting quantum processor" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -367,7 +384,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Superconducting quantum processor · OJB Quantum, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -380,11 +396,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Collaborators, G. Q. A. a., Kumar, S., Rosenberg, E., Dau, A. G., Cortiñas, R. G., Maslov, D., Oliver, R., Zalcman, A., Neeley, M., Pagano, A., Szasz, A., Drozdov, I., Minev, Z., Gidney, C., Yosri, N., Graaf, S. J. d., Maiti, A., Abanin, D., Acharya, R., ... Devoret, M. (2026). Quantum-classical separation in bounded-resource tasks arising from measurement contextuality. <em>Science</em>, 394(6826), 870-874. https://doi.org/10.1126/science.aec3042<br><a href="https://doi.org/10.1126/science.aec3042" target="_blank" rel="noopener">Read the original</a> · <a href="http://arxiv.org/abs/2512.02284" target="_blank" rel="noopener">Free to read: Preprint (before peer review)</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p4" data-topic="chemistry" data-editors="1" data-rank="4" data-score="8"
+<article class="card" id="p4" data-topic="chemistry" data-editors="1" data-rank="4" data-score="8"
   data-key="https://doi.org/10.1038/s41586-026-11445-z" data-headline="A calcium catalyst shuttles fluoride ions to build fluorine-containing molecules" data-url="https://doi.org/10.1038/s41586-026-11445-z" data-cite="Struijs, J. J. C., Crumpton, A. E., Gouverneur, V., &amp; Aldridge, S. (2026). Calcium catalysed nucleophilic fluorination. Nature. https://doi.org/10.1038/s41586-026-11445-z"
   data-topicname="Chemistry" data-journal="Nature" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p4" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Calcium-fluoride-3D-ionic.png/960px-Calcium-fluoride-3D-ionic.png">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Chemistry</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Calcium-fluoride-3D-ionic.png/960px-Calcium-fluoride-3D-ionic.png" alt="A calcium catalyst shuttles fluoride ions to build fluorine-containing molecules" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -402,7 +422,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper.  · Benjah-bmm27, via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -415,11 +434,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Struijs, J. J. C., Crumpton, A. E., Gouverneur, V., &amp; Aldridge, S. (2026). Calcium catalysed nucleophilic fluorination. <em>Nature</em>. https://doi.org/10.1038/s41586-026-11445-z<br><a href="https://doi.org/10.1038/s41586-026-11445-z" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p5" data-topic="astronomy" data-editors="1" data-rank="5" data-score="8"
+<article class="card" id="p5" data-topic="astronomy" data-editors="1" data-rank="5" data-score="8"
   data-key="https://doi.org/10.1126/sciadv.aek9035" data-headline="Astronomers weigh a distant black hole by watching gas swirl around it" data-url="https://doi.org/10.1126/sciadv.aek9035" data-cite="Liao, M., Assef, R. J., Tsai, C., Aravena, M., Aranda, R. F., Blain, A. W., Díaz-Santos, T., Eisenhardt, P., González-López, J., Jun, H. D., Li, X., Li, G., Martin, L. R., Posses, A., Shobhana, D., Solimano, M., Stern, D., Vayner, A., Wu, J., &amp; Zewdie, D. (2026). Resolving the black hole sphere of influence in a hyperluminous obscured quasar at redshift 4.6. Science Advances, 12(47), eaek9035. https://doi.org/10.1126/sciadv.aek9035"
   data-topicname="Astronomy &amp; Planetary Science" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p5" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/ALMA_and_a_Starry_Night.jpg/960px-ALMA_and_a_Starry_Night.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Astronomy &amp; Planetary Science</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/ALMA_and_a_Starry_Night.jpg/960px-ALMA_and_a_Starry_Night.jpg" alt="Alma radio telescope" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -437,7 +460,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Alma radio telescope · ESO/B. Tafreshi (twanight.org), via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -450,11 +472,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Liao, M., Assef, R. J., Tsai, C., Aravena, M., Aranda, R. F., Blain, A. W., Díaz-Santos, T., Eisenhardt, P., González-López, J., Jun, H. D., Li, X., Li, G., Martin, L. R., Posses, A., Shobhana, D., Solimano, M., Stern, D., Vayner, A., Wu, J., &amp; Zewdie, D. (2026). Resolving the black hole sphere of influence in a hyperluminous obscured quasar at redshift 4.6. <em>Science Advances</em>, 12(47), eaek9035. https://doi.org/10.1126/sciadv.aek9035<br><a href="https://doi.org/10.1126/sciadv.aek9035" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p6" data-topic="cell_molecular" data-editors="1" data-rank="6" data-score="7"
+<article class="card" id="p6" data-topic="cell_molecular" data-editors="1" data-rank="6" data-score="7"
   data-key="https://doi.org/10.1126/science.aei0135" data-headline="How a hormone and a pill-like drug switch on the same heart receptor differently" data-url="https://doi.org/10.1126/science.aei0135" data-cite="Osei-Owusu, J., Girbau, T., Wang, X., Smith, J. S., Shen, P., Erlandson, S. C., Williamson, A. K., Cong, X., Grinstaff, M. W., Kahne, D. E., Bechara, C., &amp; Kruse, A. C. (2026). Divergent activation of the RXFP1 relaxin receptor by protein and small-molecule agonists. Science, 394(6826), eaei0135. https://doi.org/10.1126/science.aei0135"
   data-topicname="Cellular &amp; Molecular" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p6" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Heart_frontally_PDA.jpg/960px-Heart_frontally_PDA.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Cellular &amp; Molecular</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Heart_frontally_PDA.jpg/960px-Heart_frontally_PDA.jpg" alt="Human heart model" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -472,7 +498,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Human heart model · No machine-readable author provided. Ekko assumed (based on copyright claims)., via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -485,11 +510,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Osei-Owusu, J., Girbau, T., Wang, X., Smith, J. S., Shen, P., Erlandson, S. C., Williamson, A. K., Cong, X., Grinstaff, M. W., Kahne, D. E., Bechara, C., &amp; Kruse, A. C. (2026). Divergent activation of the RXFP1 relaxin receptor by protein and small-molecule agonists. <em>Science</em>, 394(6826), eaei0135. https://doi.org/10.1126/science.aei0135<br><a href="https://doi.org/10.1126/science.aei0135" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.64898/2026.06.10.731386" target="_blank" rel="noopener">Free to read: Preprint (before peer review)</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p7" data-topic="organismal" data-editors="1" data-rank="7" data-score="8"
+<article class="card" id="p7" data-topic="organismal" data-editors="1" data-rank="7" data-score="8"
   data-key="https://doi.org/10.1016/j.cell.2026.10.049" data-headline="A clock-gene deletion helps heat-loving mosquitoes mate and carry more malaria" data-url="https://doi.org/10.1016/j.cell.2026.10.049" data-cite="Wang, G., Sun, P., Yang, B., Wang, Y., Zhou, T., Shi, Y., Fang, G., Li, F., Cai, W., Huang, W., Cui, C., Gao, H., Ye, R., Liu, Z., Wang, L., Liu, J., Zhan, S., &amp; Wang, S. (2026). A natural mutation of timeless enhances mosquito thermal adaptation and malaria parasite transmission. Cell. https://doi.org/10.1016/j.cell.2026.10.049"
   data-topicname="Organismal &amp; Systems" data-journal="Cell" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p7" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Anopheles_stephensi.jpeg/960px-Anopheles_stephensi.jpeg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Anopheles_stephensi.jpeg/960px-Anopheles_stephensi.jpeg" alt="الأنوفيلة الاصْطِفانِيَّة" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -507,7 +536,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. الأنوفيلة الاصْطِفانِيَّة · Jim Gathany, via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -520,11 +548,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Wang, G., Sun, P., Yang, B., Wang, Y., Zhou, T., Shi, Y., Fang, G., Li, F., Cai, W., Huang, W., Cui, C., Gao, H., Ye, R., Liu, Z., Wang, L., Liu, J., Zhan, S., &amp; Wang, S. (2026). A natural mutation of timeless enhances mosquito thermal adaptation and malaria parasite transmission. <em>Cell</em>. https://doi.org/10.1016/j.cell.2026.10.049<br><a href="https://doi.org/10.1016/j.cell.2026.10.049" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p8" data-topic="climate" data-editors="1" data-rank="8" data-score="7"
+<article class="card" id="p8" data-topic="climate" data-editors="1" data-rank="8" data-score="7"
   data-key="https://doi.org/10.1038/s41558-026-02808-5" data-headline="Glacial lakes explain only a small share of glacier loss worldwide" data-url="https://doi.org/10.1038/s41558-026-02808-5" data-cite="Zhao, S., Zhang, G., Huss, M., Veh, G., Carrivick, J. L., Bolch, T., Rounce, D. R., Tang, Q., Bu, Y., Song, Y., Peng, M., Wang, X., Zeng, X., Huang, D., Zhu, M., Zhou, T., &amp; Cheng, J. (2026). Climate and glacier geometry dominate global glacier–lake interactions. Nature Climate Change. https://doi.org/10.1038/s41558-026-02808-5"
   data-topicname="Climate &amp; Environment" data-journal="Nature Climate Change" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p8" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Glacial_lakes%2C_Bhutan.jpg/960px-Glacial_lakes%2C_Bhutan.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Climate &amp; Environment</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Glacial_lakes%2C_Bhutan.jpg/960px-Glacial_lakes%2C_Bhutan.jpg" alt="Glacial lake glacier" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -542,7 +574,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Glacial lake glacier · NASA, via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -555,13 +586,17 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Zhao, S., Zhang, G., Huss, M., Veh, G., Carrivick, J. L., Bolch, T., Rounce, D. R., Tang, Q., Bu, Y., Song, Y., Peng, M., Wang, X., Zeng, X., Huang, D., Zhu, M., Zhou, T., &amp; Cheng, J. (2026). Climate and glacier geometry dominate global glacier–lake interactions. <em>Nature Climate Change</em>. https://doi.org/10.1038/s41558-026-02808-5<br><a href="https://doi.org/10.1038/s41558-026-02808-5" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div>
   <h2 class="by-topic">More by topic</h2>
   <section class="topic-section"><h3>Physics</h3><div class="grid">
-<details class="card" id="p9" data-topic="physics" data-editors="0" data-rank="9" data-score="7"
+<article class="card" id="p9" data-topic="physics" data-editors="0" data-rank="9" data-score="7"
   data-key="https://doi.org/10.1103/plv9-bn9t" data-headline="Simulations show a &#39;lens&#39; trick could make light states with exactly 10,000+ photons" data-url="https://doi.org/10.1103/plv9-bn9t" data-cite="Li, M., Cai, W., Hua, Z., Xu, Y., Zhou, Y., Chen, Z., Zou, X., Guo, G., Sun, L., &amp; Zou, C. (2026). Scalable Generation of Macroscopic Fock States Exceeding 10,000 Photons. Physical Review Letters, 137(21), 213602. https://doi.org/10.1103/plv9-bn9t"
   data-topicname="Physics" data-journal="Physical Review Letters" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p9" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG/960px-A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Physics</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG/960px-A_1.3_GHz_nine-cell_superconducting_radio_frequency.JPG" alt="A niobium 1.3 GHz nine-cell superconducting radio frequency microwave cavity at Fermilab ." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -579,7 +614,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. A niobium 1.3 GHz nine-cell superconducting radio frequency microwave cavity at Fermilab . · Z22, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -592,11 +626,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Li, M., Cai, W., Hua, Z., Xu, Y., Zhou, Y., Chen, Z., Zou, X., Guo, G., Sun, L., &amp; Zou, C. (2026). Scalable Generation of Macroscopic Fock States Exceeding 10,000 Photons. <em>Physical Review Letters</em>, 137(21), 213602. https://doi.org/10.1103/plv9-bn9t<br><a href="https://doi.org/10.1103/plv9-bn9t" target="_blank" rel="noopener">Read the original</a> · <a href="http://arxiv.org/abs/2601.05118" target="_blank" rel="noopener">Free to read: Preprint (before peer review)</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p20" data-topic="physics" data-editors="0" data-rank="20" data-score="6"
+<article class="card" id="p20" data-topic="physics" data-editors="0" data-rank="20" data-score="6"
   data-key="https://doi.org/10.1103/xpsr-4hqn" data-headline="Magnetic reconnection may slow down as plasma systems get bigger" data-url="https://doi.org/10.1103/xpsr-4hqn" data-cite="Huang, Y., Bessho, N., Chen, L., Karpen, J. T., &amp; Bhattacharjee, A. (2026). System Size Dependence of Collisionless Reconnection Rate. Physical Review Letters, 137(21), 215201. https://doi.org/10.1103/xpsr-4hqn"
   data-topicname="Physics" data-journal="Physical Review Letters" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p20" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Magnificent_CME_Erupts_on_the_Sun_-_August_31.jpg/960px-Magnificent_CME_Erupts_on_the_Sun_-_August_31.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Physics</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Magnificent_CME_Erupts_on_the_Sun_-_August_31.jpg/960px-Magnificent_CME_Erupts_on_the_Sun_-_August_31.jpg" alt="Solar flare" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -614,7 +652,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Solar flare · NASA Goddard Space Flight Center, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -627,11 +664,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Huang, Y., Bessho, N., Chen, L., Karpen, J. T., &amp; Bhattacharjee, A. (2026). System Size Dependence of Collisionless Reconnection Rate. <em>Physical Review Letters</em>, 137(21), 215201. https://doi.org/10.1103/xpsr-4hqn<br><a href="https://doi.org/10.1103/xpsr-4hqn" target="_blank" rel="noopener">Read the original</a> · <a href="https://arxiv.org/abs/2604.18787" target="_blank" rel="noopener">Free to read: Preprint (before peer review)</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Chemistry</h3><div class="grid">
-<details class="card" id="p10" data-topic="chemistry" data-editors="0" data-rank="10" data-score="7"
+<article class="card" id="p10" data-topic="chemistry" data-editors="0" data-rank="10" data-score="7"
   data-key="https://doi.org/10.1126/science.aei7840" data-headline="Tiny light-powered sensors wirelessly track heat inside running chemical reactions" data-url="https://doi.org/10.1126/science.aei7840" data-cite="Lee, S., Weingarten, E. A., Reynolds, M. F., Sun, K., Cortese, A. J., Davies, H. M. L., Molnar, A. C., McEuen, P. L., &amp; Lin, S. (2026). Telemetric calorimetry for wireless continuous reaction profiling. Science, 394(6826), 875-883. https://doi.org/10.1126/science.aei7840"
   data-topicname="Chemistry" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p10" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Schlenk_flask_500mL.jpg/960px-Schlenk_flask_500mL.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Chemistry</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Schlenk_flask_500mL.jpg/960px-Schlenk_flask_500mL.jpg" alt="Drei Schlenk-Kolben mit 500, 250 und 100 mL Volumen auf Korkringen." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -649,7 +690,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Drei Schlenk-Kolben mit 500, 250 und 100 mL Volumen auf Korkringen. · Ichwarsnur, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -662,11 +702,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Lee, S., Weingarten, E. A., Reynolds, M. F., Sun, K., Cortese, A. J., Davies, H. M. L., Molnar, A. C., McEuen, P. L., &amp; Lin, S. (2026). Telemetric calorimetry for wireless continuous reaction profiling. <em>Science</em>, 394(6826), 875-883. https://doi.org/10.1126/science.aei7840<br><a href="https://doi.org/10.1126/science.aei7840" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.26434/chemrxiv.15005162/v1" target="_blank" rel="noopener">Free to read: Preprint (before peer review)</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p21" data-topic="chemistry" data-editors="0" data-rank="21" data-score="6"
+<article class="card" id="p21" data-topic="chemistry" data-editors="0" data-rank="21" data-score="6"
   data-key="https://doi.org/10.1038/s41557-026-02302-7" data-headline="Ring-shaped porphyrin molecules carry an electron current around the whole belt" data-url="https://doi.org/10.1038/s41557-026-02302-7" data-cite="Goh, L. S. L., Gödde, L. A., Cheung, K. M., Gupta, P., Rodríguez-Rubio, A., &amp; Anderson, H. L. (2026). Globally antiaromatic anthracene–porphyrin nanobelts. Nature Chemistry. https://doi.org/10.1038/s41557-026-02302-7"
   data-topicname="Chemistry" data-journal="Nature Chemistry" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p21" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Porphyrin-3D-balls.png/960px-Porphyrin-3D-balls.png">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Chemistry</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Porphyrin-3D-balls.png/960px-Porphyrin-3D-balls.png" alt="Porphyrin molecule model" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -684,7 +728,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Porphyrin molecule model · Jynto ( talk ), via Wikimedia Commons · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -697,11 +740,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Goh, L. S. L., Gödde, L. A., Cheung, K. M., Gupta, P., Rodríguez-Rubio, A., &amp; Anderson, H. L. (2026). Globally antiaromatic anthracene–porphyrin nanobelts. <em>Nature Chemistry</em>. https://doi.org/10.1038/s41557-026-02302-7<br><a href="https://doi.org/10.1038/s41557-026-02302-7" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Astronomy &amp; Planetary Science</h3><div class="grid">
-<details class="card" id="p11" data-topic="astronomy" data-editors="0" data-rank="11" data-score="7"
+<article class="card" id="p11" data-topic="astronomy" data-editors="0" data-rank="11" data-score="7"
   data-key="https://doi.org/10.1103/vlt2-xzgk" data-headline="A lattice-math shortcut finds a hidden gamma-ray pulsar in hours, not centuries" data-url="https://doi.org/10.1103/vlt2-xzgk" data-cite="Pook-Kolb, D., Gazith, D., Clark, C. J., Agrell, E., Zackay, B., &amp; Allen, B. (2026). Gamma-Ray Pulsar Discovery Using a Lattice-Based Method. Physical Review Letters, 137(21), 211201. https://doi.org/10.1103/vlt2-xzgk"
   data-topicname="Astronomy &amp; Planetary Science" data-journal="Physical Review Letters" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p11" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Fermi_Gamma-ray_Space_Telescope_spacecraft_model.png/960px-Fermi_Gamma-ray_Space_Telescope_spacecraft_model.png">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Astronomy &amp; Planetary Science</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Fermi_Gamma-ray_Space_Telescope_spacecraft_model.png/960px-Fermi_Gamma-ray_Space_Telescope_spacecraft_model.png" alt="Artist&#39;s concept of the Fermi Gamma-ray Space Telescope spacecraft." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -719,7 +766,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Artist&#39;s concept of the Fermi Gamma-ray Space Telescope spacecraft. · NASA, via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -732,11 +778,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Pook-Kolb, D., Gazith, D., Clark, C. J., Agrell, E., Zackay, B., &amp; Allen, B. (2026). Gamma-Ray Pulsar Discovery Using a Lattice-Based Method. <em>Physical Review Letters</em>, 137(21), 211201. https://doi.org/10.1103/vlt2-xzgk<br><a href="https://doi.org/10.1103/vlt2-xzgk" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1103/vlt2-xzgk" target="_blank" rel="noopener">Free to read: Published version</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p22" data-topic="astronomy" data-editors="0" data-rank="22" data-score="6"
+<article class="card" id="p22" data-topic="astronomy" data-editors="0" data-rank="22" data-score="6"
   data-key="https://doi.org/10.1038/s41550-026-03010-5" data-headline="Part of the Milky Way&#39;s &#39;Norma arm&#39; may actually be the bar&#39;s shock front" data-url="https://doi.org/10.1038/s41550-026-03010-5" data-cite="Davis, H., Bland-Hawthorn, J., Tepper-García, T., Agertz, O., &amp; Iles, E. J. (2026). The nature of the Norma arm as a bar-driven star-forming shock front. Nature Astronomy. https://doi.org/10.1038/s41550-026-03010-5"
   data-topicname="Astronomy &amp; Planetary Science" data-journal="Nature Astronomy" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p22" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Milky_way_in_Elbrus.jpg/960px-Milky_way_in_Elbrus.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Astronomy &amp; Planetary Science</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Milky_way_in_Elbrus.jpg/960px-Milky_way_in_Elbrus.jpg" alt="Milky way galaxy" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -754,7 +804,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Milky way galaxy · oliwok, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -767,11 +816,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Davis, H., Bland-Hawthorn, J., Tepper-García, T., Agertz, O., &amp; Iles, E. J. (2026). The nature of the Norma arm as a bar-driven star-forming shock front. <em>Nature Astronomy</em>. https://doi.org/10.1038/s41550-026-03010-5<br><a href="https://doi.org/10.1038/s41550-026-03010-5" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Materials &amp; Nanoscience</h3><div class="grid">
-<details class="card" id="p12" data-topic="materials" data-editors="0" data-rank="12" data-score="7"
+<article class="card" id="p12" data-topic="materials" data-editors="0" data-rank="12" data-score="7"
   data-key="https://doi.org/10.1038/s41563-026-02813-1" data-headline="Better internal contacts let thick solid-state lithium–sulfur battery electrodes hold more charge" data-url="https://doi.org/10.1038/s41563-026-02813-1" data-cite="Cho, Y., Hao, H., Kim, M., King, M., Zhang, Z., Patil, S., Hwong, J., Liu, H., Zhang, D., Quan, Y., Zheng, X., Tzeng, Y., Shong, B., Watt, J., Abild-Pedersen, F., Chueh, W. C., Cui, Y., Bent, S. F., &amp; Nanda, J. (2026). High-loading all-solid-state lithium–sulfur batteries enabled by tailored sulfur–sulfide and sulfur–carbon interfaces. Nature Materials. https://doi.org/10.1038/s41563-026-02813-1"
   data-topicname="Materials &amp; Nanoscience" data-journal="Nature Materials" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p12" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/HP_Mini_1000.png/960px-HP_Mini_1000.png">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Materials &amp; Nanoscience</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/HP_Mini_1000.png/960px-HP_Mini_1000.png" alt="Solid-state battery cell" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -789,7 +842,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Solid-state battery cell · AnVuong1222004 (1), via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -802,11 +854,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Cho, Y., Hao, H., Kim, M., King, M., Zhang, Z., Patil, S., Hwong, J., Liu, H., Zhang, D., Quan, Y., Zheng, X., Tzeng, Y., Shong, B., Watt, J., Abild-Pedersen, F., Chueh, W. C., Cui, Y., Bent, S. F., &amp; Nanda, J. (2026). High-loading all-solid-state lithium–sulfur batteries enabled by tailored sulfur–sulfide and sulfur–carbon interfaces. <em>Nature Materials</em>. https://doi.org/10.1038/s41563-026-02813-1<br><a href="https://doi.org/10.1038/s41563-026-02813-1" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p23" data-topic="materials" data-editors="0" data-rank="23" data-score="6"
+<article class="card" id="p23" data-topic="materials" data-editors="0" data-rank="23" data-score="6"
   data-key="https://doi.org/10.1126/science.aei6161" data-headline="New zeolite catalysts combine tiny and larger pores to crack heavy oil better" data-url="https://doi.org/10.1126/science.aei6161" data-cite="Zhang, Z., Sun, J., Ma, C., Tian, X., Luo, M., Jiang, Q., Han, L., Lin, C., Song, H., Xu, L., Lin, W., &amp; Li, J. (2026). Meso–microporous zeolitic materials with thin walls containing ordered 10-ring channels. Science, 394(6826), 907-912. https://doi.org/10.1126/science.aei6161"
   data-topicname="Materials &amp; Nanoscience" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p23" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Porous_material.png/500px-Porous_material.png">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="physical"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="1.6" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg><span>Materials &amp; Nanoscience</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Porous_material.png/500px-Porous_material.png" alt="Porous materials" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -824,7 +880,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Porous materials · Wang R, Wang P, Yan X, et al, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -837,11 +892,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Zhang, Z., Sun, J., Ma, C., Tian, X., Luo, M., Jiang, Q., Han, L., Lin, C., Song, H., Xu, L., Lin, W., &amp; Li, J. (2026). Meso–microporous zeolitic materials with thin walls containing ordered 10-ring channels. <em>Science</em>, 394(6826), 907-912. https://doi.org/10.1126/science.aei6161<br><a href="https://doi.org/10.1126/science.aei6161" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Core Engineering</h3><div class="grid">
-<details class="card" id="p24" data-topic="core_engineering" data-editors="0" data-rank="24" data-score="6"
+<article class="card" id="p24" data-topic="core_engineering" data-editors="0" data-rank="24" data-score="6"
   data-key="https://doi.org/10.1126/sciadv.aei9286" data-headline="Light-patterned soft layers stack into stretchy, breathable skin electronics" data-url="https://doi.org/10.1126/sciadv.aei9286" data-cite="Xie, X., Ju, G., Luo, X., Feng, S., Li, H., Zhang, Y., &amp; Feng, W. (2026). Monolithic tiered microlithography for stretchable multilayer electronics with high-density, soft, and ultrathin VIAs. Science Advances, 12(47), eaei9286. https://doi.org/10.1126/sciadv.aei9286"
   data-topicname="Core Engineering" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p24" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Linda_Garza%2C_first_female_Electrical_Engineering_student%2C_University_of_Texas_at_Arlington_%2810002855%29.jpg/960px-Linda_Garza%2C_first_female_Electrical_Engineering_student%2C_University_of_Texas_at_Arlington_%2810002855%29.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="engineering"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg><span>Core Engineering</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Linda_Garza%2C_first_female_Electrical_Engineering_student%2C_University_of_Texas_at_Arlington_%2810002855%29.jpg/960px-Linda_Garza%2C_first_female_Electrical_Engineering_student%2C_University_of_Texas_at_Arlington_%2810002855%29.jpg" alt="Linda Garza, first female Electrical Engineering student, University of Texas at Arlington." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -859,7 +918,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Linda Garza, first female Electrical Engineering student, University of Texas at Arlington. · University of Texas at Arlington News Service Photograph Collection, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -872,11 +930,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Xie, X., Ju, G., Luo, X., Feng, S., Li, H., Zhang, Y., &amp; Feng, W. (2026). Monolithic tiered microlithography for stretchable multilayer electronics with high-density, soft, and ultrathin VIAs. <em>Science Advances</em>, 12(47), eaei9286. https://doi.org/10.1126/sciadv.aei9286<br><a href="https://doi.org/10.1126/sciadv.aei9286" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p38" data-topic="core_engineering" data-editors="0" data-rank="38" data-score="5"
+<article class="card" id="p38" data-topic="core_engineering" data-editors="0" data-rank="38" data-score="5"
   data-key="https://doi.org/10.1126/sciadv.aed2935" data-headline="Tuning where acid sits inside hot-running fuel cells improves their output" data-url="https://doi.org/10.1126/sciadv.aed2935" data-cite="Lin, J., Chen, Y., Hu, J., Xu, M., Liu, D., Peng, J., &amp; Wang, L. (2026). A membrane-guided strategy for optimizing proton exchange membrane fuel cells via spatially controlled acid distribution. Science Advances, 12(47), eaed2935. https://doi.org/10.1126/sciadv.aed2935"
   data-topicname="Core Engineering" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p38" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Toyota_Mirai_fuel_cell_stack_and_hydrogen_tank_SAO_2016_9026.jpg/960px-Toyota_Mirai_fuel_cell_stack_and_hydrogen_tank_SAO_2016_9026.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="engineering"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg><span>Core Engineering</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Toyota_Mirai_fuel_cell_stack_and_hydrogen_tank_SAO_2016_9026.jpg/960px-Toyota_Mirai_fuel_cell_stack_and_hydrogen_tank_SAO_2016_9026.jpg" alt="Hydrogen fuel cell stack" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -894,7 +956,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Hydrogen fuel cell stack · Mariordo (Mario Roberto Durán Ortiz), via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -907,11 +968,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Lin, J., Chen, Y., Hu, J., Xu, M., Liu, D., Peng, J., &amp; Wang, L. (2026). A membrane-guided strategy for optimizing proton exchange membrane fuel cells via spatially controlled acid distribution. <em>Science Advances</em>, 12(47), eaed2935. https://doi.org/10.1126/sciadv.aed2935<br><a href="https://doi.org/10.1126/sciadv.aed2935" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Applied &amp; Emerging Tech</h3><div class="grid">
-<details class="card" id="p13" data-topic="applied_tech" data-editors="0" data-rank="13" data-score="7"
+<article class="card" id="p13" data-topic="applied_tech" data-editors="0" data-rank="13" data-score="7"
   data-key="https://doi.org/10.1126/science.aef9553" data-headline="A soft, liquid-free rubber that carries ultrasound with little loss" data-url="https://doi.org/10.1126/science.aef9553" data-cite="Wang, S., Li, R., Tang, Z., Li, Y., Gong, C., Song, W. J., Lim, C. T., Chen, X., &amp; Zhao, X. (2026). Interpenetrating bottlebrush elastomer for low-loss soft ultrasonic interfaces. Science, 394(6826), 895-900. https://doi.org/10.1126/science.aef9553"
   data-topicname="Applied &amp; Emerging Tech" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p13" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Notice_Board_of_Department_of_Biomedical_Engineering_%28BME%29%2C_BUET.jpg/960px-Notice_Board_of_Department_of_Biomedical_Engineering_%28BME%29%2C_BUET.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="engineering"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg><span>Applied &amp; Emerging Tech</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Notice_Board_of_Department_of_Biomedical_Engineering_%28BME%29%2C_BUET.jpg/960px-Notice_Board_of_Department_of_Biomedical_Engineering_%28BME%29%2C_BUET.jpg" alt="Biomedical engineering" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -929,7 +994,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Biomedical engineering · Md. Redwan Hossain6333, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -942,11 +1006,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Wang, S., Li, R., Tang, Z., Li, Y., Gong, C., Song, W. J., Lim, C. T., Chen, X., &amp; Zhao, X. (2026). Interpenetrating bottlebrush elastomer for low-loss soft ultrasonic interfaces. <em>Science</em>, 394(6826), 895-900. https://doi.org/10.1126/science.aef9553<br><a href="https://doi.org/10.1126/science.aef9553" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p14" data-topic="applied_tech" data-editors="0" data-rank="14" data-score="7"
+<article class="card" id="p14" data-topic="applied_tech" data-editors="0" data-rank="14" data-score="7"
   data-key="https://doi.org/10.1038/s41587-026-03362-3" data-headline="An AI &#39;virtual scientist&#39; designs working RNA molecules from scratch" data-url="https://doi.org/10.1038/s41587-026-03362-3" data-cite="Huang, H., Zhang, T., Hong, L., Lin, Z., He, D., Wang, J., Wu, T., Li, H., Han, D., Yu, L., Jiang, J., Fan, Y., Shao, Y., King, I., Chen, P., Kwok, C. K., Collins, J. J., &amp; Li, Y. (2026). Programmable functional RNA design with a virtual scientist. Nature Biotechnology. https://doi.org/10.1038/s41587-026-03362-3"
   data-topicname="Applied &amp; Emerging Tech" data-journal="Nature Biotechnology" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p14" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/G_riboswitch_RNA_ribbon.jpg/500px-G_riboswitch_RNA_ribbon.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="engineering"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg><span>Applied &amp; Emerging Tech</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/G_riboswitch_RNA_ribbon.jpg/500px-G_riboswitch_RNA_ribbon.jpg" alt="Rna molecule structure" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -964,7 +1032,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Rna molecule structure · Jane &amp; David Richardson (Dcrjsr, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noopener">CC BY 3.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -977,11 +1044,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Huang, H., Zhang, T., Hong, L., Lin, Z., He, D., Wang, J., Wu, T., Li, H., Han, D., Yu, L., Jiang, J., Fan, Y., Shao, Y., King, I., Chen, P., Kwok, C. K., Collins, J. J., &amp; Li, Y. (2026). Programmable functional RNA design with a virtual scientist. <em>Nature Biotechnology</em>. https://doi.org/10.1038/s41587-026-03362-3<br><a href="https://doi.org/10.1038/s41587-026-03362-3" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Cellular &amp; Molecular</h3><div class="grid">
-<details class="card" id="p15" data-topic="cell_molecular" data-editors="0" data-rank="15" data-score="7"
+<article class="card" id="p15" data-topic="cell_molecular" data-editors="0" data-rank="15" data-score="7"
   data-key="https://doi.org/10.1126/science.aee8018" data-headline="A tug-of-war over unfinished RNA tunes mitochondria and brain development" data-url="https://doi.org/10.1126/science.aee8018" data-cite="Rambout, X., Nagao, R., Gu, V., Werner, S., Youngyunpipatkul, J., Schlierf, J., Pröschel, C., &amp; Maquat, L. E. (2026). The fate of poised pre-mRNAs shapes mitochondrial activity and cellular differentiation. Science, 394(6826), eaee8018. https://doi.org/10.1126/science.aee8018"
   data-topicname="Cellular &amp; Molecular" data-journal="Science" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p15" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Cellular &amp; Molecular</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg" alt="Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -999,7 +1070,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice · Andrey Chernogorodov, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1012,11 +1082,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Rambout, X., Nagao, R., Gu, V., Werner, S., Youngyunpipatkul, J., Schlierf, J., Pröschel, C., &amp; Maquat, L. E. (2026). The fate of poised pre-mRNAs shapes mitochondrial activity and cellular differentiation. <em>Science</em>, 394(6826), eaee8018. https://doi.org/10.1126/science.aee8018<br><a href="https://doi.org/10.1126/science.aee8018" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p16" data-topic="cell_molecular" data-editors="0" data-rank="16" data-score="7"
+<article class="card" id="p16" data-topic="cell_molecular" data-editors="0" data-rank="16" data-score="7"
   data-key="https://doi.org/10.1038/s41588-026-02839-w" data-headline="Lab-grown immune brain cells link disease gene variants to cell behaviour" data-url="https://doi.org/10.1038/s41588-026-02839-w" data-cite="Tracing genetic risk of neurodegenerative disease through variants affecting microglial function. (2026). Nature Genetics. https://doi.org/10.1038/s41588-026-02839-w"
   data-topicname="Cellular &amp; Molecular" data-journal="Nature Genetics" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p16" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Cellular &amp; Molecular</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg/960px-Fluorescently_Labeled_Microglia_in_a_Coronal_Brain_Section_from_a_C57_Mouse.jpg" alt="Microglia microscope" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1034,7 +1108,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Microglia microscope · Syed07, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1047,11 +1120,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Tracing genetic risk of neurodegenerative disease through variants affecting microglial function. (2026). <em>Nature Genetics</em>. https://doi.org/10.1038/s41588-026-02839-w<br><a href="https://doi.org/10.1038/s41588-026-02839-w" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Organismal &amp; Systems</h3><div class="grid">
-<details class="card" id="p25" data-topic="organismal" data-editors="0" data-rank="25" data-score="6"
+<article class="card" id="p25" data-topic="organismal" data-editors="0" data-rank="25" data-score="6"
   data-key="https://doi.org/10.1016/j.cell.2026.10.047" data-headline="RNA folding drives species-dependent host mRNA partitioning in Ebola virus condensates" data-url="https://doi.org/10.1016/j.cell.2026.10.047" data-cite="Fang, J., Lam, D. C., Mah, C. K., Watanabe, R., Tanner, H. M., Comi, T., Cai, Y., Chen, C., Velthuis, A. J. W. t., Brangwynne, C. P., Yeo, G. W., &amp; Saphire, E. O. (2026). RNA folding drives species-dependent host mRNA partitioning in Ebola virus condensates. Cell. https://doi.org/10.1016/j.cell.2026.10.047"
   data-topicname="Organismal &amp; Systems" data-journal="Cell" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p25" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Siarhei_Besarab_%28%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%91%D0%B5%D1%81%D0%B0%D1%80%D0%B0%D0%B1%29_virology_session_Belarusian_State_University_2008.jpg/960px-Siarhei_Besarab_%28%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%91%D0%B5%D1%81%D0%B0%D1%80%D0%B0%D0%B1%29_virology_session_Belarusian_State_University_2008.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Siarhei_Besarab_%28%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%91%D0%B5%D1%81%D0%B0%D1%80%D0%B0%D0%B1%29_virology_session_Belarusian_State_University_2008.jpg/960px-Siarhei_Besarab_%28%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%91%D0%B5%D1%81%D0%B0%D1%80%D0%B0%D0%B1%29_virology_session_Belarusian_State_University_2008.jpg" alt="Virology" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1069,7 +1146,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Virology · Henadz Besarab, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1082,11 +1158,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Fang, J., Lam, D. C., Mah, C. K., Watanabe, R., Tanner, H. M., Comi, T., Cai, Y., Chen, C., Velthuis, A. J. W. t., Brangwynne, C. P., Yeo, G. W., &amp; Saphire, E. O. (2026). RNA folding drives species-dependent host mRNA partitioning in Ebola virus condensates. <em>Cell</em>. https://doi.org/10.1016/j.cell.2026.10.047<br><a href="https://doi.org/10.1016/j.cell.2026.10.047" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1016/j.cell.2026.10.047" target="_blank" rel="noopener">Free to read: Published version</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p26" data-topic="organismal" data-editors="0" data-rank="26" data-score="6"
+<article class="card" id="p26" data-topic="organismal" data-editors="0" data-rank="26" data-score="6"
   data-key="https://doi.org/10.1126/sciadv.aei4634" data-headline="The low-pitch end of the inner ear does not follow the usual pitch map" data-url="https://doi.org/10.1126/sciadv.aei4634" data-cite="Burwood, G. W. S., Hakizimana, P., Grosh, K., Zaidi, W., Wang, R. K., Nuttall, A. L., &amp; Fridberger, A. (2026). Denoised vibrometry reveals noncanonical filtering at the apex of the cochlea. Science Advances, 12(47), eaei4634. https://doi.org/10.1126/sciadv.aei4634"
   data-topicname="Organismal &amp; Systems" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p26" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Abgerollte-schnecke.png/960px-Abgerollte-schnecke.png">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Organismal &amp; Systems</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Abgerollte-schnecke.png/960px-Abgerollte-schnecke.png" alt="Weg der Schallwelle durch die Cochlea" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1104,7 +1184,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Weg der Schallwelle durch die Cochlea · Hsebasti, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1117,11 +1196,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Burwood, G. W. S., Hakizimana, P., Grosh, K., Zaidi, W., Wang, R. K., Nuttall, A. L., &amp; Fridberger, A. (2026). Denoised vibrometry reveals noncanonical filtering at the apex of the cochlea. <em>Science Advances</em>, 12(47), eaei4634. https://doi.org/10.1126/sciadv.aei4634<br><a href="https://doi.org/10.1126/sciadv.aei4634" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Ecology &amp; Biodiversity</h3><div class="grid">
-<details class="card" id="p27" data-topic="ecology" data-editors="0" data-rank="27" data-score="6"
+<article class="card" id="p27" data-topic="ecology" data-editors="0" data-rank="27" data-score="6"
   data-key="https://doi.org/10.1126/sciadv.aei5142" data-headline="A single block of genes turns would-be winged ant queens into wingless ones" data-url="https://doi.org/10.1126/sciadv.aei5142" data-cite="Arsenault, S. V., Bienvenu, G., Daly, C. M., &amp; Trible, W. (2026). A supergene converts queen-destined larvae into a novel caste in ants. Science Advances, 12(47), eaei5142. https://doi.org/10.1126/sciadv.aei5142"
   data-topicname="Ecology &amp; Biodiversity" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p27" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Leptothorax_pacis_casent0003204_head_1.jpg/500px-Leptothorax_pacis_casent0003204_head_1.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Ecology &amp; Biodiversity</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Leptothorax_pacis_casent0003204_head_1.jpg/500px-Leptothorax_pacis_casent0003204_head_1.jpg" alt="Head view of ant Leptothorax pacis specimen casent0003204 ." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1139,7 +1222,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Head view of ant Leptothorax pacis specimen casent0003204 . · April Nobile, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1152,11 +1234,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Arsenault, S. V., Bienvenu, G., Daly, C. M., &amp; Trible, W. (2026). A supergene converts queen-destined larvae into a novel caste in ants. <em>Science Advances</em>, 12(47), eaei5142. https://doi.org/10.1126/sciadv.aei5142<br><a href="https://doi.org/10.1126/sciadv.aei5142" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p28" data-topic="ecology" data-editors="0" data-rank="28" data-score="6"
+<article class="card" id="p28" data-topic="ecology" data-editors="0" data-rank="28" data-score="6"
   data-key="https://doi.org/10.1038/s41559-026-03221-z" data-headline="Pooled studies suggest exposing frogs to chytrid fungus can protect them" data-url="https://doi.org/10.1038/s41559-026-03221-z" data-cite="Chung, M. J., Duncan, R. P., Noble, D. W. A., Scheele, B. C., &amp; Clulow, S. (2026). Meta-analysis shows that immunization reduces amphibian susceptibility to the chytrid fungus. Nature Ecology &amp; Evolution. https://doi.org/10.1038/s41559-026-03221-z"
   data-topicname="Ecology &amp; Biodiversity" data-journal="Nature Ecology &amp; Evolution" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p28" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Chytrid-infected_female_Atelopus_limosus_%285421621532%29.jpg/960px-Chytrid-infected_female_Atelopus_limosus_%285421621532%29.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="life"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span>Ecology &amp; Biodiversity</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Chytrid-infected_female_Atelopus_limosus_%285421621532%29.jpg/960px-Chytrid-infected_female_Atelopus_limosus_%285421621532%29.jpg" alt="Chytrid infected frog" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1174,7 +1260,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Chytrid infected frog · Brian Gratwicke from DC, USA, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1187,11 +1272,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Chung, M. J., Duncan, R. P., Noble, D. W. A., Scheele, B. C., &amp; Clulow, S. (2026). Meta-analysis shows that immunization reduces amphibian susceptibility to the chytrid fungus. <em>Nature Ecology &amp; Evolution</em>. https://doi.org/10.1038/s41559-026-03221-z<br><a href="https://doi.org/10.1038/s41559-026-03221-z" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Clinical &amp; Disease Research</h3><div class="grid">
-<details class="card" id="p17" data-topic="clinical" data-editors="0" data-rank="17" data-score="7"
+<article class="card" id="p17" data-topic="clinical" data-editors="0" data-rank="17" data-score="7"
   data-key="https://doi.org/10.1016/j.cell.2026.10.051" data-headline="85,000 virus genomes show who actually spread COVID, and where" data-url="https://doi.org/10.1016/j.cell.2026.10.051" data-cite="Moreno, G. K., Brock-Fisher, T., Krasilnikova, L. A., Schaffner, S. F., Burns, M., Casiello, C. E., Messer, K. S., Petros, B., Specht, I., DeRuff, K. C., Siddle, K. J., Loreth, C., Fitzgerald, N. A., Rooke, H. M., Gabriel, S. B., Smole, S., Wohl, S., Park, D. J., Madoff, L. C., ... Sabeti, P. C. (2026). Genomic surveillance reveals age-structured SARS-CoV-2 transmission across settings. Cell. https://doi.org/10.1016/j.cell.2026.10.051"
   data-topicname="Clinical &amp; Disease Research" data-journal="Cell" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p17" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Coes-microcefalias---informe-epidemiol--gico---se-47.jpg/500px-Coes-microcefalias---informe-epidemiol--gico---se-47.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Clinical &amp; Disease Research</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Coes-microcefalias---informe-epidemiol--gico---se-47.jpg/500px-Coes-microcefalias---informe-epidemiol--gico---se-47.jpg" alt="Acompanhamento microcefalia 28/11/2015 - Dados do Ministério da Saúde" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1209,7 +1298,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Acompanhamento microcefalia 28/11/2015 - Dados do Ministério da Saúde · Poligamix, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1222,11 +1310,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Moreno, G. K., Brock-Fisher, T., Krasilnikova, L. A., Schaffner, S. F., Burns, M., Casiello, C. E., Messer, K. S., Petros, B., Specht, I., DeRuff, K. C., Siddle, K. J., Loreth, C., Fitzgerald, N. A., Rooke, H. M., Gabriel, S. B., Smole, S., Wohl, S., Park, D. J., Madoff, L. C., ... Sabeti, P. C. (2026). Genomic surveillance reveals age-structured SARS-CoV-2 transmission across settings. <em>Cell</em>. https://doi.org/10.1016/j.cell.2026.10.051<br><a href="https://doi.org/10.1016/j.cell.2026.10.051" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1016/j.cell.2026.10.051" target="_blank" rel="noopener">Free to read: Published version</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p18" data-topic="clinical" data-editors="0" data-rank="18" data-score="7"
+<article class="card" id="p18" data-topic="clinical" data-editors="0" data-rank="18" data-score="7"
   data-key="https://doi.org/10.1016/j.cell.2026.07.057" data-headline="Jumping-gene insertion cripples a key gene in a rare movement disorder" data-url="https://doi.org/10.1016/j.cell.2026.07.057" data-cite="Zhang, W., Zhao, Y., Prakash, P., Appleby, H., Barriball, K., Capponi, S., Jiang, Q., Wudzinska, A. M., Westerdahl, J. R., Maza, A. M., Mangiameli, K., Vaine, C. A., Ellis, G., Rahman, N., Markovic, S., Mishkit, O., Limberg, K. C., Maurano, M. T., Wadghiri, Y. Z., ... Boeke, J. D. (2026). Genome writing reveals SVA retrotransposon consequences in X-linked dystonia-parkinsonism. Cell. https://doi.org/10.1016/j.cell.2026.07.057"
   data-topicname="Clinical &amp; Disease Research" data-journal="Cell" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p18" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Regulation_of_the_core_and_extended_pluripotency_networks_in_mouse_embryonic_stem_cells.png/960px-Regulation_of_the_core_and_extended_pluripotency_networks_in_mouse_embryonic_stem_cells.png">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Clinical &amp; Disease Research</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Regulation_of_the_core_and_extended_pluripotency_networks_in_mouse_embryonic_stem_cells.png/960px-Regulation_of_the_core_and_extended_pluripotency_networks_in_mouse_embryonic_stem_cells.png" alt="Mouse embryonic stem cells" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1244,7 +1336,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Mouse embryonic stem cells · Rachel A. Shparberg, Hannah J. Glover, Michael B. Morris, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1257,11 +1348,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Zhang, W., Zhao, Y., Prakash, P., Appleby, H., Barriball, K., Capponi, S., Jiang, Q., Wudzinska, A. M., Westerdahl, J. R., Maza, A. M., Mangiameli, K., Vaine, C. A., Ellis, G., Rahman, N., Markovic, S., Mishkit, O., Limberg, K. C., Maurano, M. T., Wadghiri, Y. Z., ... Boeke, J. D. (2026). Genome writing reveals SVA retrotransposon consequences in X-linked dystonia-parkinsonism. <em>Cell</em>. https://doi.org/10.1016/j.cell.2026.07.057<br><a href="https://doi.org/10.1016/j.cell.2026.07.057" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1101/2025.10.07.680816" target="_blank" rel="noopener">Free to read: Preprint (before peer review)</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Therapeutics &amp; Care</h3><div class="grid">
-<details class="card" id="p19" data-topic="therapeutics" data-editors="0" data-rank="19" data-score="7"
+<article class="card" id="p19" data-topic="therapeutics" data-editors="0" data-rank="19" data-score="7"
   data-key="https://doi.org/10.1001/jama.2026.18828" data-headline="Vitamin B3 supplement failed to slow early Parkinson disease in large trial" data-url="https://doi.org/10.1001/jama.2026.18828" data-cite="Brakedal, B., Skeie, G. O., Derad, C., Alstadhaug, K. B., Anundskås, I., Berven, H., Biermann, M., Bjørnarå, K. A., Cleuren, Y. N. T., Dalbro, S. E. J., Eidelberg, D., Foldnes, K., Fortes, G., Haugarvoll, K., Herlofson, K., Hustad, E., HogenEsch, R. I., Johanson, G. A. S., Johnsen, S. H., ... Tzoulis, C. (2026). Nicotinamide Riboside for Patients With Early-Stage Parkinson Disease. JAMA, 336(19), 1723. https://doi.org/10.1001/jama.2026.18828"
   data-topicname="Therapeutics &amp; Care" data-journal="JAMA" data-date="Nov 17, 2026"
   data-report="reports/2026-11-21.html#p19" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Vitamin_B12_capsule.jpg/500px-Vitamin_B12_capsule.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Therapeutics &amp; Care</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Vitamin_B12_capsule.jpg/500px-Vitamin_B12_capsule.jpg" alt="A Swedish vegan Vitamin 12 brand" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1279,7 +1374,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. A Swedish vegan Vitamin 12 brand · Épine, via Wikimedia Commons · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1292,11 +1386,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Brakedal, B., Skeie, G. O., Derad, C., Alstadhaug, K. B., Anundskås, I., Berven, H., Biermann, M., Bjørnarå, K. A., Cleuren, Y. N. T., Dalbro, S. E. J., Eidelberg, D., Foldnes, K., Fortes, G., Haugarvoll, K., Herlofson, K., Hustad, E., HogenEsch, R. I., Johanson, G. A. S., Johnsen, S. H., ... Tzoulis, C. (2026). Nicotinamide Riboside for Patients With Early-Stage Parkinson Disease. <em>JAMA</em>, 336(19), 1723. https://doi.org/10.1001/jama.2026.18828<br><a href="https://doi.org/10.1001/jama.2026.18828" target="_blank" rel="noopener">Read the original</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13650695/" target="_blank" rel="noopener">Free to read: Preprint (before peer review)</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p29" data-topic="therapeutics" data-editors="0" data-rank="29" data-score="6"
+<article class="card" id="p29" data-topic="therapeutics" data-editors="0" data-rank="29" data-score="6"
   data-key="https://doi.org/10.1126/sciadv.aeg5378" data-headline="A PEG substitute for mRNA nanoparticles shifts delivery away from the liver" data-url="https://doi.org/10.1126/sciadv.aeg5378" data-cite="Basham, C., Haney, M., Zhao, Y., Hutsell, H., Kornahrens, R., Palchak, L., Lukyanov, K. A., Kim, K., Baysal, A., Brown, M. C., Kabanov, A. V., &amp; Ramsey, J. D. (2026). PEG-free tunable poly(2-oxazoline) lipids modulate mRNA-LNP biodistribution and expression in vivo. Science Advances, 12(47), eaeg5378. https://doi.org/10.1126/sciadv.aeg5378"
   data-topicname="Therapeutics &amp; Care" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p29" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Bio-inspired_hybrid_multifunctional_drug_delivery_system_%28cropped%29.png/960px-Bio-inspired_hybrid_multifunctional_drug_delivery_system_%28cropped%29.png">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Therapeutics &amp; Care</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Bio-inspired_hybrid_multifunctional_drug_delivery_system_%28cropped%29.png/960px-Bio-inspired_hybrid_multifunctional_drug_delivery_system_%28cropped%29.png" alt="Drug delivery" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1314,7 +1412,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Drug delivery · Joachim Delasoie, Philippe Schiel, Sandra Vojnovic, Jasmina Nikodinovic-Runic and Fabio Zobi, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1327,11 +1424,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Basham, C., Haney, M., Zhao, Y., Hutsell, H., Kornahrens, R., Palchak, L., Lukyanov, K. A., Kim, K., Baysal, A., Brown, M. C., Kabanov, A. V., &amp; Ramsey, J. D. (2026). PEG-free tunable poly(2-oxazoline) lipids modulate mRNA-LNP biodistribution and expression in vivo. <em>Science Advances</em>, 12(47), eaeg5378. https://doi.org/10.1126/sciadv.aeg5378<br><a href="https://doi.org/10.1126/sciadv.aeg5378" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Behavioral &amp; Mental Health</h3><div class="grid">
-<details class="card" id="p30" data-topic="behavioral" data-editors="0" data-rank="30" data-score="6"
+<article class="card" id="p30" data-topic="behavioral" data-editors="0" data-rank="30" data-score="6"
   data-key="https://doi.org/10.1126/sciadv.aeb3041" data-headline="Psilocybin and ketamine make mice slower but more accurate decision-makers" data-url="https://doi.org/10.1126/sciadv.aeb3041" data-cite="Delgado-Sallent, C., Ahmed, S. A., Khawaja-Lopez, A., Lee, B. S., Mishra, U., Senne, R. A., Ramirez, S., &amp; Scott, B. B. (2026). Psychedelics shift decision strategies and reconfigure orbitofrontal dynamics. Science Advances, 12(47), eaeb3041. https://doi.org/10.1126/sciadv.aeb3041"
   data-topicname="Behavioral &amp; Mental Health" data-journal="Science Advances" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p30" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Behavioral &amp; Mental Health</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg/960px-Researcher_holding_a_lab_mouse_-_Crimean_Federal_University_-_ANDY7392.jpg" alt="Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1349,7 +1450,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Students of the V.I. Vernadsky Crimean Federal University carry out experiments on laboratory mice · Andrey Chernogorodov, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1362,11 +1462,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Delgado-Sallent, C., Ahmed, S. A., Khawaja-Lopez, A., Lee, B. S., Mishra, U., Senne, R. A., Ramirez, S., &amp; Scott, B. B. (2026). Psychedelics shift decision strategies and reconfigure orbitofrontal dynamics. <em>Science Advances</em>, 12(47), eaeb3041. https://doi.org/10.1126/sciadv.aeb3041<br><a href="https://doi.org/10.1126/sciadv.aeb3041" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p31" data-topic="behavioral" data-editors="0" data-rank="31" data-score="6"
+<article class="card" id="p31" data-topic="behavioral" data-editors="0" data-rank="31" data-score="6"
   data-key="https://doi.org/10.7554/eLife.111304" data-headline="Brain ripples in the hippocampus grow while people hold images in short-term memory" data-url="https://doi.org/10.7554/eLife.111304" data-cite="Yang, C., Xue, G., Liu, J., Axmacher, N., Zhang, S., He, X., &amp; Cai, Y. (2026). Ramping-up hippocampal ripples and their neocortical coupling support human visual short-term memory. eLife. https://doi.org/10.7554/eLife.111304"
   data-topicname="Behavioral &amp; Mental Health" data-journal="eLife" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p31" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/An_Introduction_to_Mind%2C_Language_and_Cognitive_Science.jpg/960px-An_Introduction_to_Mind%2C_Language_and_Cognitive_Science.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="health"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/><path d="M9 11.5h2l1-2 1.5 4 1-2h1.5"/></svg><span>Behavioral &amp; Mental Health</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/An_Introduction_to_Mind%2C_Language_and_Cognitive_Science.jpg/960px-An_Introduction_to_Mind%2C_Language_and_Cognitive_Science.jpg" alt="For those whom interested in Cognitive Science, Psychology, Language and Logic." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1384,7 +1488,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. For those whom interested in Cognitive Science, Psychology, Language and Logic. · Or.taheri, via Wikimedia Commons · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1397,11 +1500,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Yang, C., Xue, G., Liu, J., Axmacher, N., Zhang, S., He, X., &amp; Cai, Y. (2026). Ramping-up hippocampal ripples and their neocortical coupling support human visual short-term memory. eLife. https://doi.org/10.7554/<em>eLife</em>.111304<br><a href="https://doi.org/10.7554/eLife.111304" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.7554/elife.111304" target="_blank" rel="noopener">Free to read: Preprint (before peer review)</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Earth &amp; Water</h3><div class="grid">
-<details class="card" id="p32" data-topic="earth_water" data-editors="0" data-rank="32" data-score="6"
+<article class="card" id="p32" data-topic="earth_water" data-editors="0" data-rank="32" data-score="6"
   data-key="https://doi.org/10.1038/s41561-026-02137-4" data-headline="Satellites catch an Ethiopian volcano releasing record amounts of methane without erupting" data-url="https://doi.org/10.1038/s41561-026-02137-4" data-cite="Dualeh, E. W., Biggs, J., Sharma, S., Stix, J., Hutchison, W., Etiope, G., Jervis, D., Way, L., Dogniaux, M., Maasakkers, J. D., Aveni, S., Cusworth, D., Ireland, B., Grandin, R., Girard, M., Ramier, A., Zheng, W., Davis, T., Howell, K., ... Lewi, E. (2026). Methane outburst driven by magma–sediment interactions at Fentale Volcano detected by satellite. Nature Geoscience. https://doi.org/10.1038/s41561-026-02137-4"
   data-topicname="Earth &amp; Water" data-journal="Nature Geoscience" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p32" data-image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fentale_aerial.jpg/500px-Fentale_aerial.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Earth &amp; Water</span></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fentale_aerial.jpg/500px-Fentale_aerial.jpg" alt="Fentale volcano ethiopia" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1419,7 +1526,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Fentale volcano ethiopia · Imperial Highway Authority of Ethiopia, via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1432,11 +1538,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Dualeh, E. W., Biggs, J., Sharma, S., Stix, J., Hutchison, W., Etiope, G., Jervis, D., Way, L., Dogniaux, M., Maasakkers, J. D., Aveni, S., Cusworth, D., Ireland, B., Grandin, R., Girard, M., Ramier, A., Zheng, W., Davis, T., Howell, K., ... Lewi, E. (2026). Methane outburst driven by magma–sediment interactions at Fentale Volcano detected by satellite. <em>Nature Geoscience</em>. https://doi.org/10.1038/s41561-026-02137-4<br><a href="https://doi.org/10.1038/s41561-026-02137-4" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1038/s41561-026-02137-4" target="_blank" rel="noopener">Free to read: Published version</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p33" data-topic="earth_water" data-editors="0" data-rank="33" data-score="6"
+<article class="card" id="p33" data-topic="earth_water" data-editors="0" data-rank="33" data-score="6"
   data-key="https://doi.org/10.1038/s41561-026-02143-6" data-headline="Pacific low-oxygen zone barely changed through the last three ice ages" data-url="https://doi.org/10.1038/s41561-026-02143-6" data-cite="Lacerra, M. L., Villacorta, S., Akiba, S., Farmer, J. R., Wang, X. T., Oleynik, S., Studer, A. S., Martínez-García, A., Haug, G. H., &amp; Sigman, D. M. (2026). Insensitivity of the North Pacific oxygen-deficient zone to recent ice age cycle climate changes. Nature Geoscience. https://doi.org/10.1038/s41561-026-02143-6"
   data-topicname="Earth &amp; Water" data-journal="Nature Geoscience" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p33" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg/960px-Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Earth &amp; Water</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg/960px-Marine_biogenous_aragonite_sand_%28modern%3B_sandy_beach_at_French_Bay%2C_San_Salvador_Island%2C_Bahamas%29_%2848739969587%29.jpg" alt="Foraminifera shells microscope" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1454,7 +1564,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Foraminifera shells microscope · James St. John, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1467,11 +1576,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Lacerra, M. L., Villacorta, S., Akiba, S., Farmer, J. R., Wang, X. T., Oleynik, S., Studer, A. S., Martínez-García, A., Haug, G. H., &amp; Sigman, D. M. (2026). Insensitivity of the North Pacific oxygen-deficient zone to recent ice age cycle climate changes. <em>Nature Geoscience</em>. https://doi.org/10.1038/s41561-026-02143-6<br><a href="https://doi.org/10.1038/s41561-026-02143-6" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1038/s41561-026-02143-6" target="_blank" rel="noopener">Free to read: Published version</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Climate &amp; Environment</h3><div class="grid">
-<details class="card" id="p34" data-topic="climate" data-editors="0" data-rank="34" data-score="6"
+<article class="card" id="p34" data-topic="climate" data-editors="0" data-rank="34" data-score="6"
   data-key="https://doi.org/10.1038/s41467-026-79817-7" data-headline="More realistic plankton in climate models predict a bigger drop in ocean carbon storage" data-url="https://doi.org/10.1038/s41467-026-79817-7" data-cite="Lin, F., Le, C., Chen, Y., Negrete-García, G., Luo, J. Y., Henson, S., &amp; Dutkiewicz, S. (2026). Plankton ecological complexity amplifies climate-driven weakening of the ocean biological pump. Nature Communications. https://doi.org/10.1038/s41467-026-79817-7"
   data-topicname="Climate &amp; Environment" data-journal="Nature Communications" data-date="Nov 21, 2026"
   data-report="reports/2026-11-21.html#p34" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Fish1857_-_Flickr_-_NOAA_Photo_Library.jpg/960px-Fish1857_-_Flickr_-_NOAA_Photo_Library.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Climate &amp; Environment</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Fish1857_-_Flickr_-_NOAA_Photo_Library.jpg/960px-Fish1857_-_Flickr_-_NOAA_Photo_Library.jpg" alt="Scientist at microscope studying plankton obtained during Bongo net tow." loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1489,7 +1602,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Scientist at microscope studying plankton obtained during Bongo net tow. · Matt Wilson/Jay Clark, NOAA NMFS AFSC., via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1502,11 +1614,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Lin, F., Le, C., Chen, Y., Negrete-García, G., Luo, J. Y., Henson, S., &amp; Dutkiewicz, S. (2026). Plankton ecological complexity amplifies climate-driven weakening of the ocean biological pump. <em>Nature Communications</em>. https://doi.org/10.1038/s41467-026-79817-7<br><a href="https://doi.org/10.1038/s41467-026-79817-7" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p35" data-topic="climate" data-editors="0" data-rank="35" data-score="6"
+<article class="card" id="p35" data-topic="climate" data-editors="0" data-rank="35" data-score="6"
   data-key="https://doi.org/10.1038/s41560-026-02171-x" data-headline="Cutting carbon helps health and nature but may not ease resource demands" data-url="https://doi.org/10.1038/s41560-026-02171-x" data-cite="Menacho, A. J. H., Bantje, D., Bauer, C., Bauer, N., Daioglou, V., Krey, V., Luderer, G., Maczek, F., McKenna, R., &amp; Sacchi, R. (2026). Environmental and material implications of global climate mitigation pathways. Nature Energy. https://doi.org/10.1038/s41560-026-02171-x"
   data-topicname="Climate &amp; Environment" data-journal="Nature Energy" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p35" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Elshitsa-open-pit-copper-mine.jpg/960px-Elshitsa-open-pit-copper-mine.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="earth"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg><span>Climate &amp; Environment</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Elshitsa-open-pit-copper-mine.jpg/960px-Elshitsa-open-pit-copper-mine.jpg" alt="Elshitsa open-pit closed copper mine, Bulgaria" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1524,7 +1640,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Elshitsa open-pit closed copper mine, Bulgaria · Edal Anton Lefterov, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1537,11 +1652,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Menacho, A. J. H., Bantje, D., Bauer, C., Bauer, N., Daioglou, V., Krey, V., Luderer, G., Maczek, F., McKenna, R., &amp; Sacchi, R. (2026). Environmental and material implications of global climate mitigation pathways. <em>Nature Energy</em>. https://doi.org/10.1038/s41560-026-02171-x<br><a href="https://doi.org/10.1038/s41560-026-02171-x" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Social &amp; Economic Sciences</h3><div class="grid">
-<details class="card" id="p36" data-topic="social_economic" data-editors="0" data-rank="36" data-score="6"
+<article class="card" id="p36" data-topic="social_economic" data-editors="0" data-rank="36" data-score="6"
   data-key="https://doi.org/10.1038/s41560-026-02155-x" data-headline="Switching California homes from gas to electric pays off mainly where AC exists" data-url="https://doi.org/10.1038/s41560-026-02155-x" data-cite="Montañés, C. C., Elmallah, S., &amp; Callaway, D. (2026). Exploring the distributional implications of targeted residential electrification in California. Nature Energy. https://doi.org/10.1038/s41560-026-02155-x"
   data-topicname="Social &amp; Economic Sciences" data-journal="Nature Energy" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p36" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg/960px-Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="society"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3.5 19c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5M15 14.4c2.6-.4 4.8 1.1 5.5 4.6"/></svg><span>Social &amp; Economic Sciences</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg/960px-Outdoor_air_conditioner_unit_installed_in_residential_garden_space.jpg" alt="Residential heat pump unit" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1559,7 +1678,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Residential heat pump unit · Shixart1985, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1572,11 +1690,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Montañés, C. C., Elmallah, S., &amp; Callaway, D. (2026). Exploring the distributional implications of targeted residential electrification in California. <em>Nature Energy</em>. https://doi.org/10.1038/s41560-026-02155-x<br><a href="https://doi.org/10.1038/s41560-026-02155-x" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.21203/rs.3.rs-6406798/v1" target="_blank" rel="noopener">Free to read: Preprint (before peer review)</a></div>
   </div>
 </details>
+</article>
 </div></section><section class="topic-section"><h3>Resource &amp; Applied Fields</h3><div class="grid">
-<details class="card" id="p37" data-topic="resources" data-editors="0" data-rank="37" data-score="6"
+<article class="card" id="p37" data-topic="resources" data-editors="0" data-rank="37" data-score="6"
   data-key="https://doi.org/10.1371/journal.pbio.3004091" data-headline="Thin air on the Tibetan Plateau stops Varroa mites from breeding" data-url="https://doi.org/10.1371/journal.pbio.3004091" data-cite="Wei, R., Yang, S., Chen, X., Lu, Y., Liu, Y., Hu, F., Martin, S. J., Zha, L., &amp; Zheng, H. (2026). Altitude-induced hypoxia suppresses Varroa mite reproduction in Tibetan honey bees. PLOS Biology. https://doi.org/10.1371/journal.pbio.3004091"
   data-topicname="Resource &amp; Applied Fields" data-journal="PLOS Biology" data-date="Nov 19, 2026"
   data-report="reports/2026-11-21.html#p37" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Varroa_destructor_on_honeybee_host.jpg/960px-Varroa_destructor_on_honeybee_host.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="society"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3.5 19c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5M15 14.4c2.6-.4 4.8 1.1 5.5 4.6"/></svg><span>Resource &amp; Applied Fields</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Varroa_destructor_on_honeybee_host.jpg/960px-Varroa_destructor_on_honeybee_host.jpg" alt="Varroa mite honey bee" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1594,7 +1716,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Varroa mite honey bee · Courtesy, Eric Erbe, Christopher Pooley: USDA, ARS, EMU., via Wikimedia Commons · Public domain</div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1607,11 +1728,15 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Wei, R., Yang, S., Chen, X., Lu, Y., Liu, Y., Hu, F., Martin, S. J., Zha, L., &amp; Zheng, H. (2026). Altitude-induced hypoxia suppresses Varroa mite reproduction in Tibetan honey bees. <em>PLOS Biology</em>. https://doi.org/10.1371/journal.pbio.3004091<br><a href="https://doi.org/10.1371/journal.pbio.3004091" target="_blank" rel="noopener">Read the original</a> · <a href="https://doi.org/10.1371/journal.pbio.3004091" target="_blank" rel="noopener">Free to read: Published version</a></div>
   </div>
 </details>
+</article>
 
-<details class="card" id="p39" data-topic="resources" data-editors="0" data-rank="39" data-score="5"
+<article class="card" id="p39" data-topic="resources" data-editors="0" data-rank="39" data-score="5"
   data-key="https://doi.org/10.1038/s41893-026-01978-6" data-headline="Light-activated carbon dots made from plants target a major wheat fungus" data-url="https://doi.org/10.1038/s41893-026-01978-6" data-cite="Zhu, Y., Zhao, W., Li, B., Liu, K., Chi, Q., Xu, H., Guan, P., Sun, H., Zhang, S., Cui, D., Yu, B., Wang, E., Wang, Y., Zhan, J., Ma, R., Jiao, Z., &amp; Shan, C. (2026). Plant-derived photocatalytic carbon dots for crop disease management. Nature Sustainability. https://doi.org/10.1038/s41893-026-01978-6"
   data-topicname="Resource &amp; Applied Fields" data-journal="Nature Sustainability" data-date="Nov 20, 2026"
   data-report="reports/2026-11-21.html#p39" data-image="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/CSIRO_ScienceImage_11243_Fusarium_head_blight_of_barley.jpg/960px-CSIRO_ScienceImage_11243_Fusarium_head_blight_of_barley.jpg">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="society"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.4"/><path d="M3.5 19c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5M15 14.4c2.6-.4 4.8 1.1 5.5 4.6"/></svg><span>Resource &amp; Applied Fields</span></div><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/CSIRO_ScienceImage_11243_Fusarium_head_blight_of_barley.jpg/960px-CSIRO_ScienceImage_11243_Fusarium_head_blight_of_barley.jpg" alt="Wheat fusarium head blight" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative"></div>
     <div class="body">
@@ -1629,7 +1754,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   <div class="credit">Illustration, not from the paper. Wheat fusarium head blight · division, CSIRO, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noopener">CC BY 3.0</a></div>
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -1642,6 +1766,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">Zhu, Y., Zhao, W., Li, B., Liu, K., Chi, Q., Xu, H., Guan, P., Sun, H., Zhang, S., Cui, D., Yu, B., Wang, E., Wang, Y., Zhan, J., Ma, R., Jiao, Z., &amp; Shan, C. (2026). Plant-derived photocatalytic carbon dots for crop disease management. <em>Nature Sustainability</em>. https://doi.org/10.1038/s41893-026-01978-6<br><a href="https://doi.org/10.1038/s41893-026-01978-6" target="_blank" rel="noopener">Read the original</a></div>
   </div>
 </details>
+</article>
 </div></section>
 
 </div>
@@ -1789,11 +1914,11 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 <script>window.SCIDIGEST={"build": "Nov 24, 2026", "ideaUrl": "", "legalVersion": "2026-11-22", "page": "report", "root": "../", "topics": {"applied_tech": "Applied \u0026 Emerging Tech", "astronomy": "Astronomy \u0026 Planetary Science", "behavioral": "Behavioral \u0026 Mental Health", "cell_molecular": "Cellular \u0026 Molecular", "chemistry": "Chemistry", "climate": "Climate \u0026 Environment", "clinical": "Clinical \u0026 Disease Research", "computing": "Computer Science \u0026 IT", "core_engineering": "Core Engineering", "earth_water": "Earth \u0026 Water", "ecology": "Ecology \u0026 Biodiversity", "materials": "Materials \u0026 Nanoscience", "math_stats": "Mathematics \u0026 Statistics", "organismal": "Organismal \u0026 Systems", "physics": "Physics", "resources": "Resource \u0026 Applied Fields", "social_economic": "Social \u0026 Economic Sciences", "therapeutics": "Therapeutics \u0026 Care"}};</script>
 <script src="../app.js" defer></script>
 <script>
-document.querySelectorAll("details.card").forEach(function(d){d.addEventListener("toggle",function(){d.classList.toggle("open",d.open)})});
+document.querySelectorAll(".card > details").forEach(function(d){d.addEventListener("toggle",function(){d.parentNode.classList.toggle("open",d.open)})});
 (function(){var KEY="scidigest-topic",btns=[].slice.call(document.querySelectorAll(".chips button"));if(!btns.length)return;
 function apply(t){btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.topic===t))});
-document.querySelectorAll("details.card").forEach(function(c){c.classList.toggle("hidden",!!t&&c.dataset.topic!==t)});
-document.querySelectorAll(".topic-section").forEach(function(s){s.classList.toggle("hidden",!s.querySelector("details.card:not(.hidden)"))});
+document.querySelectorAll("article.card").forEach(function(c){c.classList.toggle("hidden",!!t&&c.dataset.topic!==t)});
+document.querySelectorAll(".topic-section").forEach(function(s){s.classList.toggle("hidden",!s.querySelector("article.card:not(.hidden)"))});
 document.querySelectorAll("h2.by-topic").forEach(function(h){h.classList.toggle("hidden",!document.querySelector(".topic-section:not(.hidden)"))});
 try{localStorage.setItem(KEY,t)}catch(e){}}
 btns.forEach(function(b){b.addEventListener("click",function(){apply(b.dataset.topic)})});

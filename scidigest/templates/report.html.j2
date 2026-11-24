@@ -15,7 +15,7 @@ h1{font-size:2.1rem;line-height:1.12;letter-spacing:-.025em;margin:4px 0 6px}
 .chips button{flex:none;border:1px solid var(--glass-border);background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);color:var(--soft);padding:8px 14px;border-radius:999px;font:inherit;font-size:.85rem;cursor:pointer}
 .chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:transparent}
 h2{font-size:1.2rem;letter-spacing:-.015em;margin:32px 0 12px}
-h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:22px 0 10px}
+.topic-section>h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:22px 0 10px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px;align-items:start}
 .card{border-radius:24px;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-2px);box-shadow:0 1px 0 rgba(255,255,255,.65) inset,0 16px 40px rgba(30,41,59,.14)}
@@ -23,7 +23,7 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .card summary{list-style:none;cursor:pointer;display:block}
 .card summary::-webkit-details-marker{display:none}
 .thumb{aspect-ratio:16/9;background:var(--ph);overflow:hidden;position:relative;margin:8px 8px 0;border-radius:18px}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;color:transparent;font-size:0}
 .thumb{--g:#0d7a70}.thumb[data-group=physical]{--g:#6366f1}.thumb[data-group=engineering]{--g:#ea580c}.thumb[data-group=life]{--g:#16a34a}
 .thumb[data-group=health]{--g:#db2777}.thumb[data-group=earth]{--g:#0891b2}.thumb[data-group=society]{--g:#9333ea}
 .thumb .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--g);
@@ -37,7 +37,7 @@ h3{font-size:.76rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mu
 .topic{color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
 .pill{padding:2px 8px;border-radius:999px;font-weight:600}
 .pill.pre{background:var(--warn-bg);color:var(--warn)}.pill.full{background:var(--ok-bg);color:var(--ok)}.pill.rep{background:var(--accent-bg);color:var(--accent)}
-.card .ct{font-size:1.1rem;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .ct{font-size:1.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:-.015em;text-transform:none;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .card.open .ct{display:block;font-size:1.35rem}
 .lede{color:var(--soft);font-size:.93rem;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .meta{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.8rem;margin-top:12px}
@@ -59,6 +59,14 @@ sup a{text-decoration:none;font-size:.7rem}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
 .act{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--ink);padding:8px 13px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:500;cursor:pointer}
 .act svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card{position:relative}
+.qsave{position:absolute;top:16px;right:16px;z-index:2;width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:50%;
+  border:1px solid var(--glass-border);background:var(--glass-strong);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);
+  color:var(--ink);cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.15);transition:transform .15s}
+.qsave:hover{transform:scale(1.06)}.qsave:active{transform:scale(.94)}
+.qsave svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.card.is-saved .qsave{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.card.is-saved .qsave svg{fill:currentColor}
 .card.is-saved .act[data-act=save]{background:var(--accent-bg);color:var(--accent);border-color:transparent}
 .card.is-saved .act[data-act=save] svg{fill:currentColor}
 .card.is-saved .kicker::after{content:"Saved";padding:2px 8px;border-radius:999px;background:var(--accent-bg);color:var(--accent)}
@@ -86,10 +94,13 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 
 {% from "_icons.html.j2" import icon %}
 {% macro card(e) %}
-<details class="card" id="p{{ e.n }}" data-topic="{{ e.topic }}" data-editors="{{ 1 if e.editors_pick else 0 }}" data-rank="{{ e.n }}" data-score="{{ e.pick.score }}"
+<article class="card" id="p{{ e.n }}" data-topic="{{ e.topic }}" data-editors="{{ 1 if e.editors_pick else 0 }}" data-rank="{{ e.n }}" data-score="{{ e.pick.score }}"
   data-key="{{ e.url }}" data-headline="{{ e.s.headline }}" data-url="{{ e.url }}" data-cite="{{ e.citation|replace('*', '') }}"
   data-topicname="{{ e.topic_name }}" data-journal="{{ e.article.journal }}" data-date="{{ e.published_label|replace('Published ', '') }}"
   data-report="reports/{{ report_id }}.html#p{{ e.n }}" data-image="{{ e.image.url if e.image else '' }}">
+ <button type="button" class="qsave act" data-act="save" aria-pressed="false" aria-label="Save this paper" title="Save">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></button>
+ <details class="cd">
   <summary>
     <div class="thumb" data-group="{{ e.group }}"><div class="ph" aria-hidden="true">{{ icon("g-" ~ e.group) }}<span>{{ e.topic_name }}</span></div>{% if e.image %}<img src="{{ e.image.url }}" alt="{{ e.image.caption or e.s.headline }}" loading="lazy" decoding="async" onerror="sdImgErr(this)" style="position:relative">{% endif %}</div>
     <div class="body">
@@ -107,7 +118,6 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
   {% if e.image %}<div class="credit">{% if e.image.kind == "illustration" %}Illustration, not from the paper. {% endif %}{{ e.image.caption }} · {{ e.image.credit }}{% if e.image.license %} · {% if e.image.license_url %}<a href="{{ e.image.license_url }}" target="_blank" rel="noopener">{{ e.image.license }}</a>{% else %}{{ e.image.license }}{% endif %}{% endif %}</div>{% endif %}
   <div class="full">
     <div class="actions">
-      <button type="button" class="act" data-act="save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg><span>Save</span></button>
       <button type="button" class="act" data-act="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Share</span></button>
       <button type="button" class="act" data-act="cite"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span>Copy citation</span></button>
     </div>
@@ -120,6 +130,7 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
     <div class="src">{{ e.citation|md_italics }}<br><a href="{{ e.url }}" target="_blank" rel="noopener">Read the original</a>{% if e.free %} · <a href="{{ e.free.url }}" target="_blank" rel="noopener">Free to read: {{ e.free.version }}</a>{% endif %}</div>
   </div>
 </details>
+</article>
 {% endmacro %}
 
 <div id="report-body">
@@ -141,11 +152,11 @@ html[data-dimread] .card.is-read:not(.open):hover{opacity:1}
 </div>
 {% include "_settings.html.j2" %}
 <script>
-document.querySelectorAll("details.card").forEach(function(d){d.addEventListener("toggle",function(){d.classList.toggle("open",d.open)})});
+document.querySelectorAll(".card > details").forEach(function(d){d.addEventListener("toggle",function(){d.parentNode.classList.toggle("open",d.open)})});
 (function(){var KEY="scidigest-topic",btns=[].slice.call(document.querySelectorAll(".chips button"));if(!btns.length)return;
 function apply(t){btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.topic===t))});
-document.querySelectorAll("details.card").forEach(function(c){c.classList.toggle("hidden",!!t&&c.dataset.topic!==t)});
-document.querySelectorAll(".topic-section").forEach(function(s){s.classList.toggle("hidden",!s.querySelector("details.card:not(.hidden)"))});
+document.querySelectorAll("article.card").forEach(function(c){c.classList.toggle("hidden",!!t&&c.dataset.topic!==t)});
+document.querySelectorAll(".topic-section").forEach(function(s){s.classList.toggle("hidden",!s.querySelector("article.card:not(.hidden)"))});
 document.querySelectorAll("h2.by-topic").forEach(function(h){h.classList.toggle("hidden",!document.querySelector(".topic-section:not(.hidden)"))});
 try{localStorage.setItem(KEY,t)}catch(e){}}
 btns.forEach(function(b){b.addEventListener("click",function(){apply(b.dataset.topic)})});

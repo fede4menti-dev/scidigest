@@ -409,7 +409,7 @@
   // ------------------------------------------------------------- report pages
   var main = $("#report-body");
   if (main && S.topics.length) {
-    var cards = $$("details.card", main);
+    var cards = $$("article.card", main);
     var mine = cards.filter(function (c) { return S.topics.indexOf(c.dataset.topic) >= 0; });
     mine.sort(function (a, b) {
       var ea = a.dataset.editors === "1", eb = b.dataset.editors === "1";
@@ -423,31 +423,37 @@
     main.insertBefore(sec, main.firstChild);
     var eh = $("h2.editors", main), eg = $(".editors-grid", main);
     if (eh) { if (eg && eg.children.length) eh.textContent = "Also worth reading"; else { eh.classList.add("hidden"); if (eg) eg.classList.add("hidden"); } }
-    $$(".topic-section", main).forEach(function (s) { if (!$("details.card", s)) s.classList.add("hidden"); });
+    $$(".topic-section", main).forEach(function (s) { if (!$("article.card", s)) s.classList.add("hidden"); });
     var bt = $("h2.by-topic", main); if (bt && !$(".topic-section:not(.hidden)", main)) bt.classList.add("hidden");
     var chips = $(".chips"); if (chips) chips.classList.add("hidden");
   }
 
+  // Cards: <article class="card" data-...> holding a <details> (the expandable summary) and a
+  // quick Save button that works without opening the card.
   function cardInfo(c) {
     return { h: c.dataset.headline, u: c.dataset.url, c: c.dataset.cite, t: c.dataset.topicname, j: c.dataset.journal,
              d: c.dataset.date, r: c.dataset.report, i: c.dataset.image, at: Date.now() };
   }
   function markCards() {
-    $$("details.card").forEach(function (c) {
-      c.classList.toggle("is-saved", !!S.saved[c.dataset.key]);
+    $$("article.card").forEach(function (c) {
+      var saved = !!S.saved[c.dataset.key];
+      c.classList.toggle("is-saved", saved);
       c.classList.toggle("is-read", !!S.read[c.dataset.key]);
-      var b = $(".act[data-act=save] span", c); if (b) b.textContent = S.saved[c.dataset.key] ? "Saved" : "Save";
+      var q = $(".qsave", c);
+      if (q) { q.setAttribute("aria-pressed", String(saved)); q.setAttribute("aria-label", saved ? "Saved. Tap to remove from Saved" : "Save this paper"); q.title = saved ? "Saved" : "Save"; }
     });
   }
   markCards();
-  $$("details.card").forEach(function (c) {
-    c.addEventListener("toggle", function () {
-      if (c.open && !S.read[c.dataset.key]) { S.read[c.dataset.key] = Date.now(); commit(); c.classList.add("is-read"); }
+  $$("article.card > details").forEach(function (d) {
+    d.addEventListener("toggle", function () {
+      var c = d.parentNode;
+      if (d.open && !S.read[c.dataset.key]) { S.read[c.dataset.key] = Date.now(); commit(); c.classList.add("is-read"); }
     });
   });
   document.addEventListener("click", function (ev) {
     var btn = ev.target.closest && ev.target.closest(".act[data-act]"); if (!btn) return;
-    var c = btn.closest("details.card"); if (!c) return;
+    var c = btn.closest("article.card"); if (!c) return;
+    ev.preventDefault();
     var k = c.dataset.key, act = btn.dataset.act;
     if (act === "save") {
       if (S.saved[k]) { delete S.saved[k]; toast("Removed from Saved"); } else { S.saved[k] = cardInfo(c); toast("Saved. Find it in the Saved tab."); }
@@ -462,12 +468,14 @@
   });
   // Tapping outside an expanded card (or pressing Esc) closes it, like a pop-up.
   function closeCards(except) {
-    $$("details.card[open]").forEach(function (c) { if (c !== except) { c.open = false; c.classList.toggle("open", false); } });
+    $$("article.card > details[open]").forEach(function (d) {
+      if (d.parentNode !== except) { d.open = false; d.parentNode.classList.toggle("open", false); }
+    });
   }
   document.addEventListener("click", function (ev) {
-    if (!$("details.card[open]")) return;
+    if (!$("article.card > details[open]")) return;
     var t = ev.target;
-    var inCard = t.closest && t.closest("details.card");
+    var inCard = t.closest && t.closest("article.card");
     if (inCard) { if (t.closest("summary")) closeCards(inCard); return; }   // opening one card closes the others
     if (t.closest && (t.closest("dialog") || t.closest(".tabbar") || t.closest(".topbar"))) return;
     closeCards();
@@ -478,8 +486,8 @@
 
   // Open the card a shared link points to.
   if (location.hash && /^#p\d+$/.test(location.hash)) {
-    var target = $(location.hash);
-    if (target && target.tagName === "DETAILS") { target.open = true; target.classList.add("open"); setTimeout(function () { target.scrollIntoView({ block: "start" }); }, 50); }
+    var target = $(location.hash), det = target && $("details", target);
+    if (det) { det.open = true; target.classList.add("open"); setTimeout(function () { target.scrollIntoView({ block: "start" }); }, 50); }
   }
 
   // ------------------------------------------------------------- shared API for other pages

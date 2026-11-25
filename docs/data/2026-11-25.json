@@ -1,0 +1,2858 @@
+{
+ "format": 1,
+ "kind": "daily",
+ "id": "2026-11-25",
+ "title": "Daily Science Digest",
+ "date": "2026-11-25",
+ "period_start": "2026-11-25",
+ "period_end": "2026-11-25",
+ "generated_at": "2026-11-25T11:30:10+00:00",
+ "scanned": 618,
+ "journals": [
+  "Cell",
+  "JAMA",
+  "Nature",
+  "Nature Astronomy",
+  "Nature Biotechnology",
+  "Nature Cell Biology",
+  "Nature Chemistry",
+  "Nature Climate Change",
+  "Nature Communications",
+  "Nature Computational Science",
+  "Nature Ecology & Evolution",
+  "Nature Electronics",
+  "Nature Energy",
+  "Nature Food",
+  "Nature Genetics",
+  "Nature Geoscience",
+  "Nature Human Behaviour",
+  "Nature Machine Intelligence",
+  "Nature Materials",
+  "Nature Medicine",
+  "Nature Microbiology",
+  "Nature Nanotechnology",
+  "Nature Neuroscience",
+  "Nature Physics",
+  "Nature Plants",
+  "Nature Sustainability",
+  "Nature Water",
+  "PLOS Biology",
+  "PLOS Medicine",
+  "PNAS",
+  "Physical Review Letters",
+  "Science",
+  "Science Advances",
+  "Science Robotics",
+  "Science Translational Medicine",
+  "The Lancet",
+  "The New England Journal of Medicine",
+  "arXiv (Computer Science)",
+  "arXiv (Economics & Finance)",
+  "arXiv (Mathematics)",
+  "arXiv (Robotics & Control)",
+  "arXiv (Statistics)",
+  "eLife"
+ ],
+ "ai_summaries": true,
+ "intro": "",
+ "papers": [
+  {
+   "rank": 1,
+   "headline": "People born more recently enter old age with sharper memory that fades more slowly",
+   "original_title": "Later-born generations have better memory and lose it more slowly",
+   "journal": "Nature Medicine",
+   "field": "Cognitive Aging & Dementia Epidemiology",
+   "significance": 9,
+   "reason": "A 30-year analysis of about 219,000 people finds that later-born generations start old age with more cognitive capacity and lose it more slowly, enough to explain falling dementia incidence.",
+   "summary": "For decades, the chance of developing dementia at any given age has been dropping, but it has not been clear why. This study asked whether people born in later generations simply have healthier thinking skills as they age than those born earlier. The researchers analysed data on roughly 219,000 people, some of whom were tracked for as long as 30 years, and compared cognitive performance across birth generations.\n\nThey found two linked advantages for more recently born generations. These people reached old age with a higher level of mental ability, and that ability declined more slowly over time than it did in earlier generations. According to the authors, these two benefits together are large enough to explain the observed fall in how often new dementia cases appear.",
+   "why_it_matters": "The result offers an explanation for why age-specific dementia rates have been falling: newer generations both start from a higher baseline and lose ground more slowly. Understanding this trend could help forecast future dementia numbers and point toward the generational changes worth studying further.",
+   "limitations": "This is an observational analysis, so the summary does not show what causes the generational improvement. The short description also doesn't say which countries or populations were studied, or how memory was measured.",
+   "key_terms": [
+    {
+     "term": "Dementia incidence",
+     "meaning": "How often new cases of dementia appear in a population over a set period."
+    },
+    {
+     "term": "Cognitive capacity",
+     "meaning": "A person's overall level of mental ability, such as memory and thinking skills."
+    },
+    {
+     "term": "Later-born generations (birth cohorts)",
+     "meaning": "Groups of people born in more recent years, compared with groups born earlier."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [],
+   "published": "2026-11-25T00:00:00+00:00",
+   "doi": "10.1038/s41591-026-04758-z",
+   "url": "https://doi.org/10.1038/s41591-026-04758-z",
+   "citation": "Later-born generations have better memory and lose it more slowly. (2026). Nature Medicine. https://doi.org/10.1038/s41591-026-04758-z",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Handle_hand-pump_of_elderly_organ%2C_Caxton_%28177613453%29.jpg/960px-Handle_hand-pump_of_elderly_organ%2C_Caxton_%28177613453%29.jpg",
+    "caption": "Handle hand-pump of elderly organ, Caxton (177613453)",
+    "credit": "Andy / Andrew Fogg from near Cambridge, UK, via Wikimedia Commons",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Handle_hand-pump_of_elderly_organ,_Caxton_(177613453).jpg"
+   },
+   "image_query": "elderly hands puzzle",
+   "category": "behavioral",
+   "category_name": "Behavioral & Mental Health",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 2,
+   "headline": "Lupus autoantibodies come from constantly renewed short-lived cells, mouse study finds",
+   "original_title": "Autoantibody origins in lupus and upon recurrence post CAR-T therapy",
+   "journal": "Cell",
+   "field": "Clinical Immunology",
+   "significance": 9,
+   "reason": "Overturns the view that lupus is sustained by long-lived plasma cells, showing that autoantibody-producing cells are short-lived and continuously replenished, which explains CAR-T remissions and relapses.",
+   "summary": "Lupus is an autoimmune disease in which the immune system makes antibodies against the body's own molecules, such as DNA. A long-standing idea was that these harmful antibodies are kept going by plasma cells (the antibody-making factories of the immune system) that live for a very long time. But a treatment called anti-CD19 CAR-T therapy, which wipes out B cells (the precursors of plasma cells), can produce deep remissions in lupus, which hints that the old idea may be incomplete. The researchers used mouse models of a childhood-onset form of lupus caused by a single gene defect. They applied a molecular tagging method that let them trace where antibodies came from over time.\n\nIn these mice, the plasma cells making self-targeting antibodies were short-lived. They had to be constantly replaced by new cells arising from long-lived groups of B cells, through an intermediate step that depends on a protein called T-bet. The spleen was a major store of these plasma cells, and the team also saw plasma cells clustered around blood vessels in the spleens of lupus patients. Two types of CAR-T therapy, one targeting CD19 and one targeting BCMA, both removed anti-DNA antibodies. When autoantibodies came back after anti-CD19 treatment, they came only from newly made B cells. After anti-BCMA treatment, some returning antibodies also came from cell lines that had survived the therapy.",
+   "why_it_matters": "The findings suggest lupus is driven mainly by B cells continually turning into plasma cells, not by plasma cells that live for years. This changes how researchers think about which cells to target, and it offers a basis for choosing and improving CAR-T therapies for lupus.",
+   "limitations": "Most of the tracing work was done in mouse models of a rare single-gene form of lupus. The human evidence described here is limited to observations of plasma cells in patients' spleens, so it is not yet clear how fully these findings apply to common lupus in people.",
+   "key_terms": [
+    {
+     "term": "CAR-T therapy",
+     "meaning": "A treatment in which a patient's T cells are engineered to recognise and kill cells carrying a chosen surface marker."
+    },
+    {
+     "term": "CD19",
+     "meaning": "A surface protein found on B cells. Anti-CD19 CAR-T cells destroy B cells."
+    },
+    {
+     "term": "BCMA (B-cell maturation antigen)",
+     "meaning": "A surface protein found mainly on plasma cells and late-stage B cells. It is the target of anti-BCMA CAR-T therapy."
+    },
+    {
+     "term": "Plasma cell",
+     "meaning": "A mature form of B cell that releases large amounts of antibody."
+    },
+    {
+     "term": "Autoantibody",
+     "meaning": "An antibody that wrongly targets the body's own molecules, such as DNA in lupus."
+    },
+    {
+     "term": "T-bet",
+     "meaning": "A protein that controls gene activity. Here, the precursor cells that become autoantibody-making plasma cells depend on it."
+    },
+    {
+     "term": "Monogenic lupus",
+     "meaning": "A rare form of lupus caused by a defect in a single gene, often starting in childhood."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Amalie Grenov",
+    "Jongwon Yoon",
+    "Vasileios A. Samelis",
+    "Daniel M. Snell",
+    "Anna Mikolajczak",
+    "Hao Wang",
+    "Erdem Gürel",
+    "Ana Rodriguez-Ronchel",
+    "Gülçin Yegen",
+    "Rocco D’Antuono",
+    "Max Emmerich",
+    "Samra Turajlić",
+    "Lydia Lee",
+    "Bahar Artim Esen",
+    "Anisur Rahman",
+    "Paul Maciocia",
+    "Carola G. Vinuesa"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1016/j.cell.2026.10.045",
+   "url": "https://doi.org/10.1016/j.cell.2026.10.045",
+   "citation": "Grenov, A., Yoon, J., Samelis, V. A., Snell, D. M., Mikolajczak, A., Wang, H., Gürel, E., Rodriguez-Ronchel, A., Yegen, G., D’Antuono, R., Emmerich, M., Turajlić, S., Lee, L., Esen, B. A., Rahman, A., Maciocia, P., & Vinuesa, C. G. (2026). Autoantibody origins in lupus and upon recurrence post CAR-T therapy. Cell. https://doi.org/10.1016/j.cell.2026.10.045",
+   "free_copy": {
+    "url": "https://doi.org/10.1016/j.cell.2026.10.045",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/The_liver_is_a_unique_niche_for_tissue_resident_memory_cells.png/960px-The_liver_is_a_unique_niche_for_tissue_resident_memory_cells.png",
+    "caption": "The liver is a unique niche for tissue resident memory cells",
+    "credit": "Ghilas, S.; Valencia-Hernandez, A.-M.; Enders, M.H.; Heath, W.R.; Fernandez-Ruiz, D., via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:The_liver_is_a_unique_niche_for_tissue_resident_memory_cells.png"
+   },
+   "image_query": "human spleen tissue",
+   "category": "clinical",
+   "category_name": "Clinical & Disease Research",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 3,
+   "headline": "A cleaner way to build peptides, in the same direction as cells",
+   "original_title": "Continuous N-to-C Peptide Synthesis",
+   "journal": "Nature",
+   "field": "Synthetic Chemistry",
+   "significance": 9,
+   "reason": "A ribosome-like continuous N-to-C peptide synthesis from unprotected amino acids could make peptide drug manufacturing more efficient and sustainable.",
+   "summary": "Peptide drugs (short chains of amino acids) are in high demand, but the standard chemical way of making them is wasteful. Conventional synthesis builds the chain from the C-terminus toward the N-terminus and needs 'protecting groups' — temporary chemical caps that stop unwanted reactions and must be added and removed, generating solvent waste and requiring many purification steps. Ribosomes in living cells, by contrast, build peptides in the opposite direction (N-to-C) from plain, uncapped amino acids.\n\nThe authors report a chemical method that also runs N-to-C using amino acids or peptide fragments with neither end protected, and that runs continuously without isolating each intermediate. They report at least 95% average yield per coupling step and no more than 1.0% epimerization (scrambling of an amino acid's 3D handedness), with seven couplings performed in a row. The approach worked with all 20 standard amino acids plus many non-standard ones, and they report roughly ten times fewer isolation steps and up to about a hundred times less waste. They also built a flow-based synthesizer and used the method to make several real targets, including a fragment of tirzepatide, degarelix, a 14-residue macrocyclic peptide, and semaglutide.",
+   "why_it_matters": "Peptide medicines such as semaglutide are being prescribed in huge quantities, and manufacturing capacity and solvent waste are real bottlenecks. A route that skips protecting groups and most purification steps could cut cost, time and environmental impact. It is also notable as chemistry that mimics the direction biology uses.",
+   "limitations": "The abstract reports up to seven consecutive couplings directly, with longer peptides assembled by joining fragments; how the approach performs at full industrial scale and across a wider set of targets remains to be shown.",
+   "key_terms": [
+    {
+     "term": "Peptide",
+     "meaning": "A short chain of amino acids linked by amide (peptide) bonds; many modern drugs are peptides."
+    },
+    {
+     "term": "N-to-C synthesis",
+     "meaning": "Growing the chain by adding each new amino acid at the carboxyl end, the direction ribosomes use; standard chemistry goes the other way."
+    },
+    {
+     "term": "Protecting group",
+     "meaning": "A temporary chemical cap placed on a reactive part of a molecule, then removed later; it adds steps and waste."
+    },
+    {
+     "term": "Epimerization",
+     "meaning": "Unwanted flipping of an amino acid's three-dimensional handedness, which can ruin a drug's activity."
+    },
+    {
+     "term": "Fmoc amino acid",
+     "meaning": "A pre-protected amino acid building block used in conventional peptide synthesis, which itself takes steps to prepare."
+    },
+    {
+     "term": "Flow synthesis",
+     "meaning": "Running reactions as a continuous stream through tubing rather than in separate batches."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Jingjun Yin",
+    "Ji Qi",
+    "Zhiyan Song",
+    "Baoqiang Wan",
+    "Jin Zhang",
+    "Fangzhou Xie",
+    "Enkai Wang",
+    "Yang Cao",
+    "Hongming Li",
+    "Qixue Yuan",
+    "Jinxiang He",
+    "Xiao Wang",
+    "Liwen Xu",
+    "Chunrui Sun",
+    "Kai-Jiong Xiao",
+    "Feng Peng",
+    "Shishi Lin",
+    "Gao Shang",
+    "Lu Wang",
+    "Jing Xu",
+    "Jiwen Jiang",
+    "Xiupeng Duan",
+    "Donghong Li",
+    "Mengli Zhang",
+    "Haijiang Nan",
+    "Like Chen",
+    "Fang Wang",
+    "Tong Kang",
+    "Minyi Feng",
+    "Guiquan Liu",
+    "Louis-Charles Campeau"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41586-026-11448-w",
+   "url": "https://doi.org/10.1038/s41586-026-11448-w",
+   "citation": "Yin, J., Qi, J., Song, Z., Wan, B., Zhang, J., Xie, F., Wang, E., Cao, Y., Li, H., Yuan, Q., He, J., Wang, X., Xu, L., Sun, C., Xiao, K., Peng, F., Lin, S., Shang, G., Wang, L., ... Campeau, L. (2026). Continuous N-to-C Peptide Synthesis. Nature. https://doi.org/10.1038/s41586-026-11448-w",
+   "free_copy": {
+    "url": "https://doi.org/10.26434/chemrxiv-2025-9zf56/v2",
+    "version": "Preprint (before peer review)",
+    "host": "repository",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Peptide_synthesizer.jpg/960px-Peptide_synthesizer.jpg",
+    "caption": "An ABI Synergy peptide synthesizer",
+    "credit": "Michael Pereckas from Milwaukee, WI, USA, via Wikimedia Commons",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Peptide_synthesizer.jpg"
+   },
+   "image_query": "peptide synthesis laboratory",
+   "category": "chemistry",
+   "category_name": "Chemistry",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 4,
+   "headline": "HPV vaccination in Britain sharply cut high-risk HPV infections, but not equally",
+   "original_title": "Human papillomavirus (HPV) infection, vaccination, and cervical screening in Britain from 1999 to 2024: findings from the repeated cross-sectional National Surveys of Sexual Attitudes and Lifestyles (Natsal)",
+   "journal": "The Lancet",
+   "field": "Public Health",
+   "significance": 8,
+   "reason": "National survey data show a dramatic HPV-16/18 decline after Britain's vaccination programme, though ethnic and religious minority groups remain under-reached.",
+   "summary": "Human papillomavirus (HPV) is a common sexually transmitted virus, and two types, HPV-16 and HPV-18, cause most cervical cancers. Britain began vaccinating young people against HPV and also offers cervical screening to catch early disease. This study used Natsal, a series of large national surveys of sexual attitudes and lifestyles carried out repeatedly between 1999 and 2024. The researchers drew on these surveys to track how common HPV infection was over time, alongside who was vaccinated and who attended screening.\n\nThey report that the vaccination programme has been followed by a steep drop in how common HPV-16/18 infection is. If this continues, Britain as a whole may be able to meet the World Health Organization's targets for eliminating cervical cancer. However, women from minority ethnic groups, women from religious groups, and women born outside the UK were less likely to have been vaccinated or screened, even though they are still at risk of the disease.",
+   "why_it_matters": "The findings suggest that a national vaccination programme can greatly reduce the main cancer-causing HPV types across a population. They also show that national progress can hide gaps, so some groups may continue to face higher cervical cancer risk unless prevention reaches them better.",
+   "limitations": "The summary gives no detail on sample sizes or effect sizes. Whether elimination targets are met depends on the decline continuing, so reaching them is a possibility, not a certainty.",
+   "key_terms": [
+    {
+     "term": "HPV-16/18",
+     "meaning": "Two high-risk types of human papillomavirus that are responsible for most cervical cancers and are targeted by the vaccine."
+    },
+    {
+     "term": "Prevalence",
+     "meaning": "The share of people in a population who have an infection or condition at a given time."
+    },
+    {
+     "term": "Repeated cross-sectional survey",
+     "meaning": "A study that questions a fresh sample of the population at several points in time, rather than following the same people, to see how things change."
+    },
+    {
+     "term": "Cervical screening",
+     "meaning": "Routine testing of the cervix to find HPV or early cell changes before they turn into cancer."
+    },
+    {
+     "term": "WHO elimination targets",
+     "meaning": "World Health Organization goals for reducing cervical cancer to the point where it is no longer a major public health problem."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Emily Trickett",
+    "Kate Soldan",
+    "Simon Beddows",
+    "Claudia Gascoyne",
+    "Kavita Panwar",
+    "Andrew Copas",
+    "Elise Paul",
+    "Jo Gibbs",
+    "Clare Tanton",
+    "Amy Hough",
+    "Neha Pathak",
+    "Zohar Preminger",
+    "Anika Knuppel",
+    "Soazig Clifton",
+    "Katharine Sadler",
+    "Chris Bonell",
+    "Kirstin R Mitchell",
+    "Catherine H Mercer",
+    "Magnus Unemo",
+    "Nigel Field",
+    "Pam Sonnenberg"
+   ],
+   "published": "2026-11-24T23:30:01+00:00",
+   "doi": "10.1016/S0140-6736(26)01554-0",
+   "url": "https://doi.org/10.1016/S0140-6736(26)01554-0",
+   "citation": "Trickett, E., Soldan, K., Beddows, S., Gascoyne, C., Panwar, K., Copas, A., Paul, E., Gibbs, J., Tanton, C., Hough, A., Pathak, N., Preminger, Z., Knuppel, A., Clifton, S., Sadler, K., Bonell, C., Mitchell, K. R., Mercer, C. H., Unemo, M., ... Sonnenberg, P. (2026). Human papillomavirus (HPV) infection, vaccination, and cervical screening in Britain from 1999 to 2024: findings from the repeated cross-sectional National Surveys of Sexual Attitudes and Lifestyles (Natsal). The Lancet. https://doi.org/10.1016/S0140-6736(26)01554-0",
+   "free_copy": {
+    "url": "https://doi.org/10.1016/s0140-6736(26)01554-0",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/HPV-vaccine-_Gardasil2016JAPAN.jpg/960px-HPV-vaccine-_Gardasil2016JAPAN.jpg",
+    "caption": "HPV-vaccine \" Gardasil\" 2016 JAPAN",
+    "credit": "melvil, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:HPV-vaccine-_Gardasil2016JAPAN.jpg"
+   },
+   "image_query": "HPV vaccine vial",
+   "category": "therapeutics",
+   "category_name": "Therapeutics & Care",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 5,
+   "headline": "TB bacteria build cords by sharing one continuous membrane",
+   "original_title": "A shared interbacterial membrane underlies mycobacterial cording",
+   "journal": "Cell",
+   "field": "Microbiology",
+   "significance": 8,
+   "reason": "Cryo-ET reveals that a shared interbacterial membrane explains mycobacterial cording, a century-old virulence trait of tuberculosis bacteria.",
+   "summary": "Mycobacteria, including the species that causes tuberculosis, have long been known to grow into twisted, rope-like bundles called cords, a feature linked to their ability to cause disease. For about a century it was unclear what physically holds these cords together. Using cryo-electron tomography (freezing cells and imaging them in 3D at near-molecular detail) together with light microscopy, the researchers looked closely at how the bacteria are joined.\n\nThey found that when a mycobacterium divides, it does not fully separate from its daughter cell. Instead, the membrane remains continuous between neighbouring bacteria, so cells in a cord effectively share one membrane. This shared envelope explains how cords form and hold together, why they resist mechanical stress, and suggests that the mycobacterial outer layer (the mycomembrane) is organised differently in these multicellular-like structures than in free-floating single cells.",
+   "why_it_matters": "Cording has been used as a laboratory signature of virulent tuberculosis bacteria since the early 20th century, but its physical basis was unknown. Showing that the cells remain physically joined through a shared membrane changes how we picture the bacterial surface in clumped, tissue-like arrangements, which is also the surface drugs and immune cells must get through. That could matter for understanding why mycobacteria are so hard to treat.",
+   "limitations": "The abstract summarises imaging of bacteria in culture; it does not state how membrane sharing affects infection in a host or whether it could be targeted therapeutically.",
+   "key_terms": [
+    {
+     "term": "Cording",
+     "meaning": "The tendency of certain mycobacteria to grow in twisted, rope-like bundles rather than as separate cells."
+    },
+    {
+     "term": "CryoET (cryo-electron tomography)",
+     "meaning": "An imaging method where samples are flash-frozen and tilted in an electron microscope to build a 3D picture at very fine detail."
+    },
+    {
+     "term": "Mycomembrane",
+     "meaning": "The waxy outer membrane unique to mycobacteria, which contributes to their toughness and drug resistance."
+    },
+    {
+     "term": "Virulence trait",
+     "meaning": "A feature of a microbe that helps it cause disease."
+    },
+    {
+     "term": "Planktonic bacteria",
+     "meaning": "Bacteria living as free-floating individual cells rather than in attached or clumped communities."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Marlen Petersen",
+    "Richa Mishra",
+    "Miriam S. Weber",
+    "Anna Rafalik",
+    "Bibek Acharya",
+    "Turner P. Brown",
+    "Vera Lechner",
+    "Clément Bousquet",
+    "Melanie Hoos",
+    "Alexandra Kummer",
+    "Eugenia Guerrero Aruffo",
+    "Casey Papson",
+    "Alex Aboagye",
+    "Bei Shi Lee",
+    "Sönke Sdunnus",
+    "Michael Berney",
+    "Melanie Hannebelle",
+    "Margot Riggi",
+    "Benjamin M. Swarts",
+    "Matthieu Chavent",
+    "Wonpil Im",
+    "Gregor L. Weiss",
+    "Vivek V. Thacker"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1016/j.cell.2026.11.002",
+   "url": "https://doi.org/10.1016/j.cell.2026.11.002",
+   "citation": "Petersen, M., Mishra, R., Weber, M. S., Rafalik, A., Acharya, B., Brown, T. P., Lechner, V., Bousquet, C., Hoos, M., Kummer, A., Aruffo, E. G., Papson, C., Aboagye, A., Lee, B. S., Sdunnus, S., Berney, M., Hannebelle, M., Riggi, M., Swarts, B. M., ... Thacker, V. V. (2026). A shared interbacterial membrane underlies mycobacterial cording. Cell. https://doi.org/10.1016/j.cell.2026.11.002",
+   "free_copy": {
+    "url": "https://doi.org/10.1016/j.cell.2026.11.002",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Epithelioid_cells_of_mice_in_the_cell_culture.jpg/960px-Epithelioid_cells_of_mice_in_the_cell_culture.jpg",
+    "caption": "Epithelioid cells of mice in the cell culture",
+    "credit": "ArkhipovSergey, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Epithelioid_cells_of_mice_in_the_cell_culture.jpg"
+   },
+   "image_query": "mycobacteria microscopy culture",
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 6,
+   "headline": "Two electron qubits floating on solid neon made to work together",
+   "original_title": "Coherent manipulation of interacting electron qubits on solid neon",
+   "journal": "Nature Physics",
+   "field": "Quantum Computing",
+   "significance": 8,
+   "reason": "First two-qubit gates with electrons on solid neon, advancing a promising new qubit platform.",
+   "summary": "Quantum computers are built from qubits, units of information that can hold combinations of 0 and 1 at once. One proposed platform traps single electrons just above the surface of frozen neon, and earlier work showed that individual electrons held this way can act as good-quality qubits. The open question was whether two such electrons could be made to interact in a controlled way, which any useful quantum computer needs.\n\nIn this study, researchers held two electrons close to each other on solid neon, where they interact strongly. Using that coupling, they carried out two-qubit gates, operations in which the state of one qubit affects the other. According to the publisher's summary, this shows that the electrons can be coherently controlled as an interacting pair, not only one at a time.",
+   "why_it_matters": "Single good qubits are not enough. A quantum computer also needs reliable operations between qubits, so showing two-qubit gates is a necessary step for the electron-on-neon approach. The clean, simple surface of solid neon may help keep the electrons' quantum states from being disturbed.",
+   "limitations": "The short description gives no figures on how accurate the gates are or how long the qubits last, and it covers only two qubits. Scaling up to many qubits remains to be shown.",
+   "key_terms": [
+    {
+     "term": "Qubit",
+     "meaning": "The basic unit of a quantum computer. Unlike an ordinary bit, it can exist in a blend of 0 and 1."
+    },
+    {
+     "term": "Two-qubit gate",
+     "meaning": "An operation in which the state of one qubit changes depending on another. It is needed to entangle qubits and run quantum algorithms."
+    },
+    {
+     "term": "Coherent manipulation",
+     "meaning": "Controlling a quantum system without destroying its fragile quantum behaviour."
+    },
+    {
+     "term": "Solid neon",
+     "meaning": "Neon gas frozen at very low temperature. Its surface can hold single electrons in place."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Xinhao Li",
+    "Yizhong Huang",
+    "Xu Han",
+    "Xianjing Zhou",
+    "Amir Yacoby",
+    "Dafei Jin"
+   ],
+   "published": "2026-11-25T00:00:00+00:00",
+   "doi": "10.1038/s41567-026-03529-4",
+   "url": "https://doi.org/10.1038/s41567-026-03529-4",
+   "citation": "Li, X., Huang, Y., Han, X., Zhou, X., Yacoby, A., & Jin, D. (2026). Coherent manipulation of interacting electron qubits on solid neon. Nature Physics. https://doi.org/10.1038/s41567-026-03529-4",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Helium_dilution_cryostat.jpg/960px-Helium_dilution_cryostat.jpg",
+    "caption": "A helium dilution cryostat, or dilution refrigerator",
+    "credit": "User:Wiso, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Helium_dilution_cryostat.jpg"
+   },
+   "image_query": "dilution refrigerator cryostat",
+   "category": "physics",
+   "category_name": "Physics",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 7,
+   "headline": "Inside vaccinia virus: transcription machines paired up and an mRNA exit gate",
+   "original_title": "Architecture of the poxvirus early-transcription machinery and portal complex",
+   "journal": "Nature",
+   "field": "Structural Virology",
+   "significance": 8,
+   "reason": "Reveals the native in-virion architecture of the poxvirus transcription machinery and the portal through which mRNAs leave the viral core.",
+   "summary": "Poxviruses like vaccinia carry their own transcription equipment packed inside a protein-walled compartment called the core, so that as soon as the core enters a cell it can start making early messenger RNAs. Previous structures of the viral RNA polymerase (the enzyme that copies DNA into RNA) came from purified, isolated protein, leaving open how the machinery is actually arranged inside an intact virus and how it connects to the viral genome.\n\nThe researchers used cryo-electron tomography (freezing samples and imaging them from many angles to build 3D maps) plus averaging of many copies of the same structure, applied to purified vaccinia virus cores. They found the polymerase sits inside not as a single copy but as a roughly 1.8-megadalton pair, held together by an early transcription factor (VETF) that appears fully folded in this state. A fraction of these pairs also carry a viral kinase (VPK2) and the core protein L4, which seem to anchor the polymerase pairs to the packaged DNA close to the inner wall. They also resolved, at better than nanometre detail, a candidate exit gate built into the core wall: a six-part E8 crown, a six-part E6 hub, and a twelve-part L3 channel wide enough to pass nucleic acid.",
+   "why_it_matters": "Poxviruses include the virus used in smallpox vaccines and relatives such as mpox, so knowing how their transcription machinery is built and positioned could point to new drug targets. The work also shows the polymerase is stored in a paired, apparently resting arrangement, raising questions about how it is switched on. The proposed RNA exit portal gives a concrete structure for how a virus moves its messages out of a sealed compartment.",
+   "limitations": "The portal complex is identified as a likely, not proven, route for mRNA export, and the study used purified cores rather than viruses actively transcribing inside living cells, so how the resting polymerase pairs become active remains open.",
+   "key_terms": [
+    {
+     "term": "cryo-electron tomography",
+     "meaning": "Imaging frozen samples from many tilt angles to reconstruct a 3D picture of molecules in place."
+    },
+    {
+     "term": "sub-tomogram averaging",
+     "meaning": "Combining thousands of 3D images of the same structure to sharpen detail."
+    },
+    {
+     "term": "vRNAP",
+     "meaning": "The virus's own DNA-dependent RNA polymerase, the enzyme that reads DNA and makes RNA."
+    },
+    {
+     "term": "VETF",
+     "meaning": "Vaccinia early transcription factor, a protein needed to start transcription of the virus's first genes."
+    },
+    {
+     "term": "megadalton (MDa)",
+     "meaning": "A unit of molecular mass; 1.8 MDa is a very large protein assembly."
+    },
+    {
+     "term": "viral core",
+     "meaning": "The protein-walled compartment inside the virus holding its double-stranded DNA genome and transcription machinery."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Benoît Arragain",
+    "Lukas W. Bauer",
+    "Victor-Valentin Hodirnau",
+    "Florian K. M. Schur"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41586-026-11458-8",
+   "url": "https://doi.org/10.1038/s41586-026-11458-8",
+   "citation": "Arragain, B., Bauer, L. W., Hodirnau, V., & Schur, F. K. M. (2026). Architecture of the poxvirus early-transcription machinery and portal complex. Nature. https://doi.org/10.1038/s41586-026-11458-8",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cryo_TEM_%28NIH_BioArt_94%29.png/500px-Cryo_TEM_%28NIH_BioArt_94%29.png",
+    "caption": "Cryo-Transmission Electron Microscope",
+    "credit": "Courtesy of NIAID Ryan Kissinger, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cryo_TEM_(NIH_BioArt_94).png"
+   },
+   "image_query": "cryo electron microscope",
+   "category": "cell_molecular",
+   "category_name": "Cellular & Molecular",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 8,
+   "headline": "Tiny heart-cell packages in blood offer a window into the living heart",
+   "original_title": "Cardiomyocyte-derived circulating extracellular vesicles enable a non-invasive liquid biopsy of human myocardium",
+   "journal": "Cell",
+   "field": "Cardiology",
+   "significance": 8,
+   "reason": "Capturing heart-muscle-derived vesicles from blood provides a non-invasive liquid biopsy that tracks the molecular state of human myocardium.",
+   "summary": "Studying what genes are active inside human heart muscle usually requires a tissue sample, which means an invasive biopsy. This study asked whether a simple blood draw could do the job instead. Heart muscle cells (cardiomyocytes) release extracellular vesicles, small membrane-wrapped packages that carry RNA and other molecules into the bloodstream. The researchers built a method to pull out, from blood plasma, only the vesicles that come from these heart cells; they call them 'cardiovesicles'.\n\nThey then examined the RNA inside the captured cardiovesicles. According to the abstract, this RNA follows changes in which genes heart cells are switching on in specific diseases, shifting as the condition changes. It also reflects a person's inherited risk for cardiovascular disease. Together, this suggests cardiovesicles can work as a 'liquid biopsy', a blood-based readout of the heart's molecular state.",
+   "why_it_matters": "If heart gene activity can be read from a blood sample, doctors and researchers could track heart disease over time without cutting out tissue. This could eventually help tailor treatment to each patient's own heart biology.",
+   "limitations": "The short summary does not say how many people were studied, how accurate or specific the capture method is, or how it compares with existing heart tests. The authors present personalized medicine as a possible future direction, not something already shown.",
+   "key_terms": [
+    {
+     "term": "Cardiomyocyte",
+     "meaning": "A heart muscle cell, the cell type that makes the heart contract."
+    },
+    {
+     "term": "Extracellular vesicle",
+     "meaning": "A tiny bubble of membrane released by cells that carries molecules such as RNA and proteins, and can travel in the blood."
+    },
+    {
+     "term": "Liquid biopsy",
+     "meaning": "Getting information about a tissue from a body fluid such as blood, instead of removing a piece of the tissue."
+    },
+    {
+     "term": "Transcriptional state",
+     "meaning": "The pattern of which genes a cell is actively copying into RNA at a given time."
+    },
+    {
+     "term": "Genetic liability",
+     "meaning": "Inherited genetic risk of developing a disease."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Priyanka Gokulnath",
+    "Michail Spanos",
+    "Elizabeth Hutchins",
+    "Bessie Meechoovet",
+    "Quanhu Sheng",
+    "Phillip Lin",
+    "Michael J. Betti",
+    "Kaushik V. Amancherla",
+    "Emeli Chatterjee",
+    "Marta Garcia-Contreras",
+    "Ritin Sharma",
+    "Natacha Carnel-Amar",
+    "Balazs Kazala",
+    "Claire Lin",
+    "Sameeksha Tiwari",
+    "Sary F. Aranki",
+    "Joshua M. Gorham",
+    "Christopher Azzam",
+    "Ima Ghaeli",
+    "José Fabian Victorino",
+    "Krystine Garcia-Mansfield",
+    "Ryan Pfeffer",
+    "Parul Sahu",
+    "Brian R. Lindman",
+    "Sammy Elmariah",
+    "Xavier Bledsoe",
+    "Michelle L. Lance",
+    "Tarek Absi",
+    "Yan Ru Su",
+    "Ngoc Do",
+    "Dimitrios Varrias",
+    "Michail Kladas",
+    "Miroslav Radulovic",
+    "Dimitris Tsiachris",
+    "Anastasios Spanos",
+    "Konstantinos Tsioufis",
+    "Jonathan G. Seidman",
+    "Christine E. Seidman",
+    "Patrick T. Ellinor",
+    "Nathan R. Tucker",
+    "James L. Januzzi",
+    "Patrick Pirrotte",
+    "Tijana Jovanovic-Talisman",
+    "Jochen D. Muehlschlegel",
+    "Guoping Li",
+    "Eric R. Gamazon",
+    "Kendall Van Keuren-Jensen",
+    "Ravi Shah",
+    "Saumya Das"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1016/j.cell.2026.10.050",
+   "url": "https://doi.org/10.1016/j.cell.2026.10.050",
+   "citation": "Gokulnath, P., Spanos, M., Hutchins, E., Meechoovet, B., Sheng, Q., Lin, P., Betti, M. J., Amancherla, K. V., Chatterjee, E., Garcia-Contreras, M., Sharma, R., Carnel-Amar, N., Kazala, B., Lin, C., Tiwari, S., Aranki, S. F., Gorham, J. M., Azzam, C., Ghaeli, I., ... Das, S. (2026). Cardiomyocyte-derived circulating extracellular vesicles enable a non-invasive liquid biopsy of human myocardium. Cell. https://doi.org/10.1016/j.cell.2026.10.050",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Plasma-lamp.jpg/960px-Plasma-lamp.jpg",
+    "caption": "Plasma globe",
+    "credit": "Luc Viatour, via Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Plasma-lamp.jpg"
+   },
+   "image_query": "blood plasma sample tube",
+   "category": "clinical",
+   "category_name": "Clinical & Disease Research",
+   "editors_pick": true,
+   "preprint": false
+  },
+  {
+   "rank": 9,
+   "headline": "Changing how tungsten is spread inside fuel capsules improves fusion yields",
+   "original_title": "Improved Fusion Yields at the National Ignition Facility via Ramped-Profile Capsule Doping",
+   "journal": "Physical Review Letters",
+   "field": "Inertial Confinement Fusion",
+   "significance": 7,
+   "reason": "Ramped-profile tungsten doping of capsules improved fusion yields at the National Ignition Facility.",
+   "summary": "At the National Ignition Facility (NIF), powerful lasers heat a tiny gold container, which produces x-rays that crush a small fuel capsule until the fuel inside fuses. The capsule's outer shell is made of very dense carbon (similar to diamond). Some of the x-rays are especially energetic and can heat the fuel too early, before it is compressed, which makes it harder to squeeze. To block them, designers mix a small amount of tungsten into a thin buried layer of the shell, with the tungsten spread evenly through that layer.\n\nComputer simulations had suggested that this even layer might not be the best arrangement. The team instead tried a 'ramped' profile, where the tungsten concentration changes gradually across the shell rather than sitting in one uniform band. According to the paper's title, capsules built this way produced higher fusion yields at NIF. The publisher's summary is cut short, so the exact size of the gain and the experimental details are not available here.",
+   "why_it_matters": "NIF has shown that laser-driven fusion can release more energy than the laser delivers to the target, and further gains depend on small details of capsule design. A change to how a dopant is distributed is a fairly simple adjustment, yet it may help get more energy out of each shot. This matters both for fusion energy research and for the physics questions NIF is built to study.",
+   "limitations": "The available summary is truncated, so the amount of improvement, the number of experiments and how the ramped design compares to other factors cannot be judged from this text.",
+   "key_terms": [
+    {
+     "term": "Inertial confinement fusion (ICF)",
+     "meaning": "A way of producing fusion by rapidly compressing and heating a small fuel pellet so that it fuses before it can fly apart."
+    },
+    {
+     "term": "National Ignition Facility (NIF)",
+     "meaning": "A large laser facility in the US used for fusion experiments."
+    },
+    {
+     "term": "Doping",
+     "meaning": "Adding a small amount of another element to a material to change how it behaves. Here, tungsten is added to carbon to absorb x-rays."
+    },
+    {
+     "term": "X-ray preheating",
+     "meaning": "Unwanted early heating of the fuel by high-energy x-rays, which makes the fuel harder to compress."
+    },
+    {
+     "term": "Ramped profile",
+     "meaning": "A dopant concentration that changes gradually with depth through the shell instead of staying constant within one layer."
+    },
+    {
+     "term": "Radiation-hydrodynamics simulation",
+     "meaning": "A computer model that tracks how radiation and moving, compressing material affect each other."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "D. S. Clark",
+    "M. Hohenberger",
+    "A. Pak",
+    "S. Hayes",
+    "T. Döppner",
+    "A. Allen",
+    "B. Bachmann",
+    "S. H. Baxamusa",
+    "J. Biener",
+    "R. M. Bionta",
+    "T. Braun",
+    "T. M. Briggs",
+    "D. T. Casey",
+    "T. Chapman",
+    "C. R. Danly",
+    "S. Davidovits",
+    "T. R. Dittrich",
+    "L. Divol",
+    "A. Do",
+    "M. Durocher",
+    "R. H. Dwyer",
+    "T. Fehrenbach",
+    "M. Gatu Johnson",
+    "H. Geppert-Kleinrath",
+    "V. Geppert-Kleinrath",
+    "S. W. Haan",
+    "K. D. Hahn",
+    "K. D. Humbird",
+    "O. A. Hurricane",
+    "S. F. Khan",
+    "C. W. Kong",
+    "B. Kozioziemski",
+    "A. L. Kritcher",
+    "O. L. Landen",
+    "X. Lepro-Chavez",
+    "B. J. MacGowan",
+    "S. A. MacLaren",
+    "K. Meaney",
+    "R. Merlo",
+    "A. S. Moore",
+    "A. Nikroo",
+    "R. C. Nora",
+    "J. E. Ralph",
+    "M. Ratledge",
+    "S. A. Ricketts",
+    "M. S. Rubery",
+    "D. J. Schlossberg",
+    "A. Schwartz",
+    "M. P. Selwood",
+    "V. A. Smalyuk",
+    "M. Stadermann",
+    "S. Stoupin",
+    "C. Trosseille",
+    "C. R. Weber",
+    "C. Wild",
+    "C. Wilde",
+    "B. N. Woodworth",
+    "C. V. Young"
+   ],
+   "published": "2026-11-24T10:00:00+00:00",
+   "doi": "10.1103/2jhg-pclg",
+   "url": "https://doi.org/10.1103/2jhg-pclg",
+   "citation": "Clark, D. S., Hohenberger, M., Pak, A., Hayes, S., Döppner, T., Allen, A., Bachmann, B., Baxamusa, S. H., Biener, J., Bionta, R. M., Braun, T., Briggs, T. M., Casey, D. T., Chapman, T., Danly, C. R., Davidovits, S., Dittrich, T. R., Divol, L., Do, A., ... Young, C. V. (2026). Improved Fusion Yields at the National Ignition Facility via Ramped-Profile Capsule Doping. Physical Review Letters, 137(22), 225101. https://doi.org/10.1103/2jhg-pclg",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/VULCAN_target_chamber_2003.jpg/960px-VULCAN_target_chamber_2003.jpg",
+    "caption": "VULCAN target chamber 2003",
+    "credit": "Colin N. Danson et al., via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:VULCAN_target_chamber_2003.jpg"
+   },
+   "image_query": "laser fusion target chamber",
+   "category": "physics",
+   "category_name": "Physics",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 10,
+   "headline": "Excitons trapped in a lattice form several kinds of supersolid",
+   "original_title": "Supersolid crystals of dipolar excitons in a lattice",
+   "journal": "Nature Physics",
+   "field": "Condensed Matter Physics",
+   "significance": 7,
+   "reason": "Demonstrates several supersolid phases in a strongly correlated lattice system of dipolar excitons.",
+   "summary": "A supersolid is an unusual state of matter that combines two seemingly opposite properties: its particles sit in a regular, crystal-like pattern, yet they can also flow without friction, like a superfluid. Until now, supersolids had only been seen in systems where the particles interact with each other weakly. The researchers asked whether such states could also appear when the particles interact strongly and their behaviour is tightly linked, which physicists call a strongly correlated system.\n\nTo test this, they used dipolar excitons. These are bound pairs of an electron and a missing electron (a 'hole') that behave like single particles and carry a built-in electric dipole, so they push on each other over long distances. The excitons were confined to a lattice, a regular grid of sites, where they could hop between sites that were not just nearest neighbours. According to the publisher's summary, the team observed several distinct supersolid phases in this setup. The short description gives no details of the measurements or the exact conditions.",
+   "why_it_matters": "Showing supersolids in a strongly interacting system broadens where this odd state of matter can exist, beyond the weakly interacting cases studied before. Exciton lattices could offer a controllable platform for exploring how crystal order and frictionless flow coexist when interactions are strong.",
+   "limitations": "Only a brief summary is available, so the experimental methods, the strength of the evidence, and how each supersolid phase was identified cannot be judged here.",
+   "key_terms": [
+    {
+     "term": "Supersolid",
+     "meaning": "A phase of matter whose particles form an ordered, crystal-like pattern while also flowing without resistance."
+    },
+    {
+     "term": "Exciton",
+     "meaning": "A bound pair of an electron and a hole (a missing electron) in a material, which acts like a single particle."
+    },
+    {
+     "term": "Dipolar exciton",
+     "meaning": "An exciton whose electron and hole are separated, giving it an electric dipole so it interacts with others over long ranges."
+    },
+    {
+     "term": "Strongly correlated system",
+     "meaning": "A system where particles interact so strongly that each one's behaviour depends heavily on the others."
+    },
+    {
+     "term": "Long-range hopping",
+     "meaning": "Particles moving between lattice sites that are farther apart than immediate neighbours."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "C. Morin",
+    "C. Lagoin",
+    "T. Gupta",
+    "N. Reinić",
+    "A. Gupta",
+    "K. Baldwin",
+    "L. Pfeiffer",
+    "G. Pupillo",
+    "F. Dubin"
+   ],
+   "published": "2026-11-25T00:00:00+00:00",
+   "doi": "10.1038/s41567-026-03522-x",
+   "url": "https://doi.org/10.1038/s41567-026-03522-x",
+   "citation": "Morin, C., Lagoin, C., Gupta, T., Reinić, N., Gupta, A., Baldwin, K., Pfeiffer, L., Pupillo, G., & Dubin, F. (2026). Supersolid crystals of dipolar excitons in a lattice. Nature Physics. https://doi.org/10.1038/s41567-026-03522-x",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/SemiconductorCrystalLattice.png/960px-SemiconductorCrystalLattice.png",
+    "caption": "Halbleiter",
+    "credit": "stefan, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:SemiconductorCrystalLattice.png"
+   },
+   "image_query": "semiconductor crystal lattice",
+   "category": "physics",
+   "category_name": "Physics",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 11,
+   "headline": "A modular way to build benzene rings carrying six different groups",
+   "original_title": "Hexa-substituted benzene synthesis with non-classical carbocations",
+   "journal": "Nature",
+   "field": "Organic Chemistry",
+   "significance": 7,
+   "reason": "Regiocontrolled synthesis of hexa-substituted benzenes via non-classical carbocations opens uncharted aromatic chemical space for drug discovery.",
+   "summary": "Benzene rings show up in more drug molecules than any other ring, yet benzenes with something attached at all six corners are almost never found in compound collections. They are hard to make, and few suitable starting materials can be bought. The researchers wanted a reliable method that builds such rings while letting chemists decide in advance which group ends up at each position.\n\nTheir method joins two pieces: cyclopropenium cations, which are small positively charged aromatic three-carbon rings, and allenes carrying a trialkylsilyl group. The groups placed on these two starting materials determine all six positions of the finished benzene, and the reaction delivers them to predictable spots. Computer modelling with density functional theory suggests why. The reaction passes through an unusual 'non-classical' carbocation, a positively charged intermediate in which four atoms share four electrons in one bond, and this intermediate reacts in only one direction. The team used the method to make new versions of two drugs with five or six substituents on a ring: the anticancer drug sonidegib and the blood-pressure drug telmisartan. They also made the multi-ring hydrocarbon triphenylene. Starting from allenes of a single handedness, they obtained biaryls (two linked aromatic rings) that were enriched in one mirror-image form.",
+   "why_it_matters": "Medicinal chemists tune drug candidates by changing the groups on aromatic rings, but fully substituted benzenes have been largely out of reach. A predictable, programmable route opens up new structures to test when refining leads, as shown here with modified versions of existing drugs.",
+   "limitations": "The explanation for the selectivity comes from computer calculations, not direct observation. The summary does not report yields, how wide the substrate range is, or whether the new drug analogues have any biological activity.",
+   "key_terms": [
+    {
+     "term": "Hexa-substituted benzene",
+     "meaning": "A benzene ring where all six carbon atoms carry a group other than hydrogen."
+    },
+    {
+     "term": "Regioselectivity",
+     "meaning": "Control over which position on a molecule a particular group ends up at."
+    },
+    {
+     "term": "Cyclopropenium cation",
+     "meaning": "The smallest aromatic ring: three carbons sharing a positive charge, which makes it unusually stable."
+    },
+    {
+     "term": "Allene",
+     "meaning": "A molecule with two carbon–carbon double bonds that share one central carbon (C=C=C)."
+    },
+    {
+     "term": "Non-classical carbocation",
+     "meaning": "A positively charged carbon species whose bonding is spread over several atoms, here four atoms sharing four electrons, instead of a normal two-electron bond."
+    },
+    {
+     "term": "Density functional theory (DFT)",
+     "meaning": "A quantum-mechanical computer method used to model electrons and predict how reactions proceed."
+    },
+    {
+     "term": "Memory of chirality",
+     "meaning": "When the 'handedness' of a starting material is carried through a reaction into the product, even though the original chiral centre is lost."
+    },
+    {
+     "term": "Benzannulation",
+     "meaning": "A reaction that builds a new benzene ring from non-benzene pieces."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Guillaume Mollaert",
+    "Hang-Fei Tu",
+    "Jacob R. King",
+    "Mihai V. Popescu",
+    "Zexian Li",
+    "Quan Zhang",
+    "Eric Palomo",
+    "Robert S. Paton",
+    "Marcos G. Suero"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41586-026-11449-9",
+   "url": "https://doi.org/10.1038/s41586-026-11449-9",
+   "citation": "Mollaert, G., Tu, H., King, J. R., Popescu, M. V., Li, Z., Zhang, Q., Palomo, E., Paton, R. S., & Suero, M. G. (2026). Hexa-substituted benzene synthesis with non-classical carbocations. Nature. https://doi.org/10.1038/s41586-026-11449-9",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Periodic_Table_Organic_Chemistry_01.png/500px-Periodic_Table_Organic_Chemistry_01.png",
+    "caption": "Periodic Table Organic Chemistry 01",
+    "credit": "Naturwiki, via Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Periodic_Table_Organic_Chemistry_01.png"
+   },
+   "image_query": "organic chemistry lab glassware",
+   "category": "chemistry",
+   "category_name": "Chemistry",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 12,
+   "headline": "Testing four AI systems on real research-level maths problems",
+   "original_title": "Harness design matters for AI capabilities in mathematics",
+   "journal": "PNAS",
+   "field": "Artificial Intelligence",
+   "significance": 7,
+   "reason": "A new benchmark shows that the harness design around an AI system strongly affects its measured capability in mathematical research.",
+   "summary": "Can today's AI systems correctly solve the kind of mathematics problems that working researchers actually run into? To find out, the authors gathered ten problems that had come up naturally during the contributors' own research, spanning many different areas of mathematics. They then gave these problems to four different AI systems.\n\nThe AI-written solutions were checked by human reviewers, who wrote referee-style reports on them, much as journal referees judge a submitted paper. The authors also tracked how much running each system cost. They describe their testing method and the results, and they share the human solutions, the AI solutions, the referee reports and the AI run logs as supplementary material. The title suggests a central takeaway: how the AI is set up and run (its 'harness') affects how well it performs. The abstract itself does not give specific success rates.",
+   "why_it_matters": "Most AI maths benchmarks use contest-style or textbook problems, which may not reflect real research work. Testing on problems that arose in actual research, with expert human checking and cost reporting, gives a more realistic picture of what these tools can and cannot do. Sharing all solutions and logs also lets others examine the results directly.",
+   "limitations": "Only ten problems and four AI systems were tested, so the results are a small snapshot rather than a broad measure. The abstract does not report how many problems each system solved correctly.",
+   "key_terms": [
+    {
+     "term": "Harness",
+     "meaning": "The software setup wrapped around an AI model, such as how prompts are given, whether it can use tools, retry, or check its own work. It shapes how the model is actually run on a task."
+    },
+    {
+     "term": "Research-level mathematics",
+     "meaning": "Problems that come up while doing new mathematical research, as opposed to exercises or competition puzzles with known answers."
+    },
+    {
+     "term": "Referee report",
+     "meaning": "A written evaluation by an expert judging whether a mathematical argument is correct and complete, like the review a journal paper receives."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Mohammed Abouzaid",
+    "Nikhil Srivastava",
+    "Rachel Ward",
+    "Lauren Williams"
+   ],
+   "published": "2026-11-20T08:00:00+00:00",
+   "doi": "10.1073/pnas.2627448123",
+   "url": "https://doi.org/10.1073/pnas.2627448123",
+   "citation": "Abouzaid, M., Srivastava, N., Ward, R., & Williams, L. (2026). Harness design matters for AI capabilities in mathematics. PNAS, 123(47), e2627448123. https://doi.org/10.1073/pnas.2627448123",
+   "free_copy": {
+    "url": "https://doi.org/10.1073/pnas.2627448123",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by-nc-nd"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Example_absolute_value.jpg/960px-Example_absolute_value.jpg",
+    "caption": "Example",
+    "credit": "Manuelzapata04, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Example_absolute_value.jpg"
+   },
+   "image_query": "chalkboard mathematical equations",
+   "category": "computing",
+   "category_name": "Computer Science & IT",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 13,
+   "headline": "Pairing ruthenium and chromium atoms keeps an acid-water-splitting catalyst from dissolving",
+   "original_title": "Proximal single atoms for stable electrocatalysts",
+   "journal": "Nature Materials",
+   "field": "Electrocatalysis",
+   "significance": 7,
+   "reason": "Proximal Ru–O–Cr single-atom motifs suppress ruthenium dissolution, improving catalyst durability in acidic water electrolysers for green hydrogen.",
+   "summary": "Splitting water into hydrogen and oxygen in acidic electrolysers needs a catalyst for the oxygen-producing half of the reaction, known as the oxygen evolution reaction. Ruthenium is an active choice for this, but under these harsh, strongly oxidizing acidic conditions it tends to get oxidized and dissolve away. This short publisher summary describes a way to make it last longer.\n\nThe researchers placed individual ruthenium and chromium atoms close to one another on a manganese dioxide (MnO2) support, so that they form linked ruthenium–oxygen–chromium units. According to the summary, this arrangement holds back the oxidation-driven loss of ruthenium, and the catalyst stays durable for longer while producing oxygen in acidic electrolysers.",
+   "why_it_matters": "Acidic water electrolysers are one route to producing clean hydrogen fuel, but their oxygen-side catalysts tend to wear out quickly. Making ruthenium-based catalysts more stable could reduce how often costly materials must be replaced.",
+   "limitations": "The source is only a one-sentence summary, so it gives no figures for activity, how much longer the catalyst lasts, or how it compares with commercial catalysts. It also does not say whether the approach works at industrial scale.",
+   "key_terms": [
+    {
+     "term": "Oxygen evolution reaction (OER)",
+     "meaning": "The half of water splitting where water is converted into oxygen gas at the positive electrode; it is often the slow, hard step."
+    },
+    {
+     "term": "Single-atom catalyst",
+     "meaning": "A catalyst in which the active metal is spread out as isolated individual atoms on a support, rather than as clumps or particles."
+    },
+    {
+     "term": "Ru–O–Cr motif",
+     "meaning": "A small structural unit where a ruthenium atom and a chromium atom are linked through a shared oxygen atom."
+    },
+    {
+     "term": "Electrolyser",
+     "meaning": "A device that uses electricity to split water into hydrogen and oxygen."
+    },
+    {
+     "term": "Dissolution",
+     "meaning": "Here, the catalyst metal being oxidized and leaching into the acidic liquid, which gradually destroys the catalyst."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Rafael Guzman-Soriano",
+    "Yao Yang"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41563-026-02796-z",
+   "url": "https://doi.org/10.1038/s41563-026-02796-z",
+   "citation": "Guzman-Soriano, R., & Yang, Y. (2026). Proximal single atoms for stable electrocatalysts. Nature Materials, 25(12), 2127-2128. https://doi.org/10.1038/s41563-026-02796-z",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Hydrogen_electrolyser_-_Science_Museum%2C_London.jpg/960px-Hydrogen_electrolyser_-_Science_Museum%2C_London.jpg",
+    "caption": "Hydrogen electrolyser - Science Museum, London",
+    "credit": "The wub, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Hydrogen_electrolyser_-_Science_Museum,_London.jpg"
+   },
+   "image_query": "water electrolyser hydrogen",
+   "category": "materials",
+   "category_name": "Materials & Nanoscience",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 14,
+   "headline": "Archaea use a newly found oscillating protein trio to find their middle before dividing",
+   "original_title": "A conserved oscillatory system that positions the divisome in Archaea",
+   "journal": "Nature Microbiology",
+   "field": "Cell Biology",
+   "significance": 7,
+   "reason": "Identifies a conserved oscillating three-protein system that positions the cell-division machinery in archaea, a long-standing gap in understanding.",
+   "summary": "Dividing cells must build their division machinery (the divisome) in the right place, usually the middle. Many bacteria do this with the Min system, a set of proteins that bounce back and forth between the cell ends so that a division-blocking signal is weakest at midcell. Archaea, the third domain of life, mostly lack a working version of this, so how they find their middle was unknown. Working in the salt-loving archaeon Haloferax volcanii, the researchers studied three neighbouring genes and named their products DipA, DipB and DipC (divisome positioning proteins).\n\nDeleting any of the three genes made cells pinch at random places, producing many tiny 'minicells', some with no DNA. Key division proteins such as FtsZ1 and SepF were scattered instead of forming a single ring at midcell. Overproducing the Dip proteins also disrupted division. Glowing protein tags showed that all three Dip proteins swing from pole to pole. DipA cycles roughly every 200 seconds, and DipB and DipC cycle faster. DipB and DipC also form rings at midcell. DipA and DipB each need the other to oscillate. Tests with purified proteins from a related heat-loving archaeon showed that DipA breaks down GTP and binds membranes when GTP is attached, and DipB partly pulls DipA off membranes. Gene searches found the Dip system in many archaeal groups, but only in those that divide using FtsZ.",
+   "why_it_matters": "This gives a first mechanism for how many archaea place their division machinery. The Dip system works much like the bacterial Min system, yet its sequences are unrelated, which suggests that two domains of life evolved the same oscillating strategy independently.",
+   "limitations": "The enzyme and membrane experiments used proteins from a different archaeon (Archaeoglobus fulgidus) because the H. volcanii DipA was unstable in the test tube. Exactly how DipB removes DipA from membranes, and how the oscillation controls FtsZ, remains unresolved.",
+   "key_terms": [
+    {
+     "term": "Divisome",
+     "meaning": "The group of proteins that assembles where a cell will split and carries out division."
+    },
+    {
+     "term": "FtsZ",
+     "meaning": "A protein related to tubulin that forms a ring at the division site and organises other division proteins."
+    },
+    {
+     "term": "GTPase",
+     "meaning": "An enzyme that binds and breaks down the energy molecule GTP, often switching between active and inactive states."
+    },
+    {
+     "term": "Min system",
+     "meaning": "A set of bacterial proteins that oscillate between cell poles so that division is steered to the middle."
+    },
+    {
+     "term": "Minicell",
+     "meaning": "An abnormally small cell made when division happens too close to a cell end."
+    },
+    {
+     "term": "Convergent evolution",
+     "meaning": "When unrelated lineages independently evolve similar solutions to the same problem."
+    }
+   ],
+   "based_on": "full text",
+   "authors": [
+    "Wei He",
+    "Ryusei Yoshida",
+    "Phillip Nußbaum",
+    "Kartikeyan Premrajka",
+    "Shamphavi Sivabalasarma",
+    "Chris van der Does",
+    "Marc Bramkamp",
+    "Sonja-Verena Albers"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41564-026-02551-9",
+   "url": "https://doi.org/10.1038/s41564-026-02551-9",
+   "citation": "He, W., Yoshida, R., Nußbaum, P., Premrajka, K., Sivabalasarma, S., Does, C. v. d., Bramkamp, M., & Albers, S. (2026). A conserved oscillatory system that positions the divisome in Archaea. Nature Microbiology. https://doi.org/10.1038/s41564-026-02551-9",
+   "free_copy": {
+    "url": "https://doi.org/10.1038/s41564-026-02551-9",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Dedication_to_Plant_Cell_Biology_Second_Edition%2C_Elsevier_2019.jpg/960px-Dedication_to_Plant_Cell_Biology_Second_Edition%2C_Elsevier_2019.jpg",
+    "caption": "Erwin Chargaff was a pioneer in the study of DNA",
+    "credit": "BinaryPhoton, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Dedication_to_Plant_Cell_Biology_Second_Edition,_Elsevier_2019.jpg"
+   },
+   "image_query": "halophilic archaea salt pond",
+   "category": "cell_molecular",
+   "category_name": "Cellular & Molecular",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 15,
+   "headline": "TB bacterium's fatty sugar molecule can trigger coughing",
+   "original_title": "Mycobacterial phenolic glycolipid triggers ATP-mediated neuronal signalling and cough",
+   "journal": "Nature Microbiology",
+   "field": "Microbiology",
+   "significance": 7,
+   "reason": "A tuberculosis cell-wall glycolipid activates sensory neurons via ATP signalling to trigger cough, a likely mechanism promoting transmission.",
+   "summary": "Tuberculosis spreads when people cough, but it has been unclear whether the bacterium itself makes chemicals that deliberately provoke the cough reflex. The researchers had previously found one such molecule (sulfolipid-1) and here looked at a second: phenolic glycolipid (PGL), a sugar-and-fat molecule made by the Beijing-lineage strain HN878, which spreads unusually well. Lineage 4 lab strains such as Erdman cannot make PGL because the gene is broken.\n\nUsing calcium imaging of pain-sensing (nociceptive) neurons, the team showed that PGL activates a mouse neuron cell line, primary mouse neurons from both dorsal root and nodose ganglia (which supply the airways), and neurons from two human donors; patch-clamp recordings showed some human neurons depolarised and even fired. PGL was potent (half-maximal effect around 30 picomolar) and worked together with sulfolipid-1 to give a stronger response than either alone. Deleting the pks1-15 gene removed the activity and restoring it brought it back. Chemically synthesised versions showed the sugar chain, not the long lipid tail, carries the activity, with longer sugar chains being more potent. Nebulised purified PGL made healthy guinea pigs cough at the higher dose tested. Mechanistically, stimulated neurons release ATP outside the cell through pannexin channels, which then acts on P2X3 receptors; the cough-drug candidate gefapixant, a P2X3 blocker, stopped the effect.",
+   "why_it_matters": "If TB bacteria actively trigger coughing, they may be manipulating their host to help themselves spread through the air. That suggests drugs that block this nerve pathway, such as existing P2X3 receptor blockers, might reduce transmission alongside standard antibiotics. It also helps explain why some bacterial lineages spread more readily than others.",
+   "limitations": "Cough was measured in guinea pigs given purified lipid, not in animals or people with actual TB infection, and the human neuron work used cells from only two donors. Whether blocking P2X3 would actually reduce TB transmission remains untested.",
+   "key_terms": [
+    {
+     "term": "Phenolic glycolipid (PGL)",
+     "meaning": "A molecule in the mycobacterial cell envelope made of a long fatty scaffold linked to a phenol group and a short sugar chain."
+    },
+    {
+     "term": "Nociceptive neuron",
+     "meaning": "A sensory nerve cell that detects irritants, chemicals or damage and can trigger protective reflexes such as coughing."
+    },
+    {
+     "term": "ATP signalling / P2X3 receptor",
+     "meaning": "ATP released outside cells acts as a messenger; P2X3 is a nerve-cell receptor it binds to, known to be involved in cough."
+    },
+    {
+     "term": "EC50",
+     "meaning": "The concentration of a compound that produces half of its maximum effect; lower means more potent."
+    },
+    {
+     "term": "Plethysmography",
+     "meaning": "A chamber method that records pressure changes from breathing to count coughs in awake animals."
+    }
+   ],
+   "based_on": "full text",
+   "authors": [
+    "Kubra F. Naqvi",
+    "Lois L. Warden",
+    "J. Hessel M. van Dijk",
+    "Dhananjay K. Naik",
+    "Felipe Espinosa",
+    "Ifunanya M. Okolie",
+    "Vincent F. H. Verhoeks",
+    "Daniel Smith",
+    "Jeffrey G. McDonald",
+    "Giaochau Nguyen",
+    "Kathryn C. Rahlwes",
+    "Christopher P. Xavier",
+    "Jeroen D. C. Codee",
+    "Theodore J. Price",
+    "Michael U. Shiloh"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41564-026-02533-x",
+   "url": "https://doi.org/10.1038/s41564-026-02533-x",
+   "citation": "Naqvi, K. F., Warden, L. L., Dijk, J. H. M. v., Naik, D. K., Espinosa, F., Okolie, I. M., Verhoeks, V. F. H., Smith, D., McDonald, J. G., Nguyen, G., Rahlwes, K. C., Xavier, C. P., Codee, J. D. C., Price, T. J., & Shiloh, M. U. (2026). Mycobacterial phenolic glycolipid triggers ATP-mediated neuronal signalling and cough. Nature Microbiology. https://doi.org/10.1038/s41564-026-02533-x",
+   "free_copy": {
+    "url": "https://doi.org/10.1038/s41564-026-02533-x",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by-nc-nd"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Mycobacterium_tuberculosis.jpg/960px-Mycobacterium_tuberculosis.jpg",
+    "caption": "Mycobacterium tuberculosis",
+    "credit": "Unknown author, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Mycobacterium_tuberculosis.jpg"
+   },
+   "image_query": "Mycobacterium tuberculosis bacteria",
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 16,
+   "headline": "Hippocampus neurons blend each word's meaning with the words before it",
+   "original_title": "Linguistic contextualization in the human hippocampus",
+   "journal": "Nature Human Behaviour",
+   "field": "Neuroscience",
+   "significance": 7,
+   "reason": "Single-neuron recordings show the human hippocampus contextualizes word meaning in a way reminiscent of transformer self-attention.",
+   "summary": "The meaning of a word shifts depending on the words around it. The researchers took inspiration from AI language models such as chatbots, which use a step called self-attention to mix each word's basic representation with weighted contributions from neighbouring words. They asked whether the brain does something similar. They recorded the activity of individual neurons in the hippocampus of 10 people while those people listened to podcasts. The hippocampus is a brain region linked to meaning and context.\n\nHippocampal neurons tracked where a word sat within a clause. They did this in two ways: by simple counting order, and by a rhythm-like (frequency-based) code. A neuron's response to a given word also reflected two things. One was the word's own dictionary-style meaning. The other was a weighted combination of the meanings of the words that came before it. How much weight each earlier word got matched the attention weights that a large language model gave those same words.",
+   "why_it_matters": "The study suggests the brain may build meaning in context by nudging a word's representation toward its neighbours, in a way that partly resembles how AI language models work. It also points to the hippocampus and nearby temporal-lobe areas as active parts of the brain's language system, not just memory centres.",
+   "limitations": "The study is small, with only 10 participants, and the match to language models is a correlation, showing resemblance rather than proof that the brain uses the same mechanism.",
+   "key_terms": [
+    {
+     "term": "Single unit activity",
+     "meaning": "Electrical signals recorded from individual neurons, rather than averaged activity from large brain areas."
+    },
+    {
+     "term": "Self-attention",
+     "meaning": "A step in transformer AI models where each word's representation is updated using a weighted mix of other words in the text."
+    },
+    {
+     "term": "Embedding",
+     "meaning": "A list of numbers (a vector) that represents a word's meaning, so that similar words have similar vectors."
+    },
+    {
+     "term": "Positional encoding",
+     "meaning": "A way of representing where a word falls in a sequence, either by counting order or with repeating wave-like patterns."
+    },
+    {
+     "term": "Lexical semantics",
+     "meaning": "The basic meaning of a word on its own, separate from its context."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Kalman A. Katlowitz",
+    "James L. Belanger",
+    "Taha Ismail",
+    "Ana G. Chavez",
+    "Assia Chericoni",
+    "Melissa Franch",
+    "Elizabeth A. Mickiewicz",
+    "Raissa K. Mathura",
+    "Alica M. Goldman",
+    "Vaishnav Krishnan",
+    "Atul Maheshwari",
+    "Mohammed Hasen",
+    "Danika L. Paulo",
+    "Andrew J. Watrous",
+    "Eleonora Bartoli",
+    "Steven T. Piantadosi",
+    "Nicole R. Provenza",
+    "Sameer A. Sheth",
+    "Benjamin Y. Hayden"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41562-026-02543-z",
+   "url": "https://doi.org/10.1038/s41562-026-02543-z",
+   "citation": "Katlowitz, K. A., Belanger, J. L., Ismail, T., Chavez, A. G., Chericoni, A., Franch, M., Mickiewicz, E. A., Mathura, R. K., Goldman, A. M., Krishnan, V., Maheshwari, A., Hasen, M., Paulo, D. L., Watrous, A. J., Bartoli, E., Piantadosi, S. T., Provenza, N. R., Sheth, S. A., & Hayden, B. Y. (2026). Linguistic contextualization in the human hippocampus. Nature Human Behaviour. https://doi.org/10.1038/s41562-026-02543-z",
+   "free_copy": {
+    "url": "https://doi.org/10.1101/2025.06.23.661103",
+    "version": "Preprint (before peer review)",
+    "host": "repository",
+    "license": null
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Enregistrement_d%27un_podcast.jpg/960px-Enregistrement_d%27un_podcast.jpg",
+    "caption": "Enregistrement d'un podcast",
+    "credit": "Guillaume Bonzoms, via Wikimedia Commons",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Enregistrement_d%27un_podcast.jpg"
+   },
+   "image_query": "podcast headphones microphone",
+   "category": "organismal",
+   "category_name": "Organismal & Systems",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 17,
+   "headline": "Rituximab no better than azathioprine for keeping a rare vasculitis in remission",
+   "original_title": "Rituximab vs Azathioprine for Eosinophilic Granulomatosis With Polyangiitis Maintenance",
+   "journal": "JAMA",
+   "field": "Rheumatology",
+   "significance": 7,
+   "reason": "A double-blind randomized trial directly compares rituximab and azathioprine maintenance therapy for the rare vasculitis EGPA.",
+   "summary": "Eosinophilic granulomatosis with polyangiitis (EGPA) is a rare disease in which small blood vessels become inflamed, usually alongside asthma and high levels of eosinophils, a type of white blood cell. Once patients reach remission with standard treatment, doctors often add a 'maintenance' drug to keep the disease quiet while steroid (prednisone) doses are lowered. Little evidence existed on which maintenance drug works best, so French researchers ran a randomized trial comparing rituximab, an antibody drug given by drip every 6 months that removes antibody-producing B cells, with azathioprine, a daily immune-suppressing pill.\n\nThe trial enrolled 98 adults across 36 French hospitals who had recently reached remission. Half got rituximab plus a dummy pill, and half got azathioprine plus a dummy drip, so neither patients nor doctors knew who received what. All followed the same prednisone taper. Over 28 months, the average time spent in remission on a low prednisone dose (7.5 mg a day or less) was about 91 weeks with rituximab and 96 weeks with azathioprine, a difference that could easily be due to chance. Rates of vasculitis relapse and of asthma or sinus flare-ups were also similar. Serious infections were more common with rituximab (about 47% vs 25% of patients), mostly severe COVID-19. One azathioprine patient died of COVID-19 before vaccines were available.",
+   "why_it_matters": "This is one of the few head-to-head trials of maintenance drugs for EGPA. It found no evidence that the costlier infusion drug rituximab keeps patients in remission longer than azathioprine, and it suggests rituximab may bring more serious infections, which can help doctors and patients weigh treatment choices.",
+   "limitations": "The trial was fairly small (98 people), so it may have missed modest differences between the drugs. It ran partly during the COVID-19 pandemic before vaccines, which likely inflated the infection numbers, especially in the rituximab group.",
+   "key_terms": [
+    {
+     "term": "Eosinophilic granulomatosis with polyangiitis (EGPA)",
+     "meaning": "A rare autoimmune disease that inflames small blood vessels, often with asthma, sinus problems and high eosinophil counts."
+    },
+    {
+     "term": "Maintenance therapy",
+     "meaning": "Ongoing treatment given after a disease is brought under control, aimed at preventing it from flaring up again."
+    },
+    {
+     "term": "Double-blind, double-dummy",
+     "meaning": "A trial design in which every patient gets both an infusion and a pill, one real and one placebo, so nobody can tell which treatment they received."
+    },
+    {
+     "term": "Superiority trial",
+     "meaning": "A study designed to test whether one treatment is better than another, not just equally good."
+    },
+    {
+     "term": "Birmingham Vasculitis Activity Score",
+     "meaning": "A clinical scoring system for vasculitis activity. A score of 0 means no active disease, i.e., remission."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Xavier Puéchal",
+    "Grégory Pugnet",
+    "Benjamin Thoreau",
+    "Claire de Moreuil",
+    "Stéphane Jouneau",
+    "Thomas Quéméneur",
+    "Gabriel Baron",
+    "Perrine Smets",
+    "Antoine Néel",
+    "Thomas Le Gallou",
+    "Nicolas Noël",
+    "Yurdagül Uzunhan",
+    "Chloé Comarmond-Ortoli",
+    "Geoffrey Urbanski",
+    "Ygal Benhamou",
+    "Alice Bérezné",
+    "Arsène Mekinian",
+    "Mohamed Hamidou",
+    "Julien Campagne",
+    "Noémie Abisror",
+    "Pascal Cohen",
+    "Loïc Guillevin",
+    "Philippe Ravaud",
+    "Benjamin Terrier",
+    "French Vasculitis Study Group",
+    "Elisabeth DIOT",
+    "Jonathan LONDON",
+    "Paul LEGENDRE",
+    "Antoine DOSSIER",
+    "Nicolas SCHLEINITZ",
+    "Mikaël EBBO",
+    "Achille AOUBA",
+    "Alexandre NGUYEN",
+    "Divi CORNEC",
+    "Laurent SAILLER",
+    "Dominique CHAUVEAU",
+    "Pierre DUFFAU",
+    "Jean-François VIALLARD",
+    "Carine GREIB",
+    "Cécile DURANT",
+    "Sabine REVUZ",
+    "François MAURIER",
+    "Kim Heang LY",
+    "Nicolas LIMAL",
+    "Maxime SAMSON",
+    "Bernard BONNOTTE",
+    "Eric OZIOL",
+    "Renaud FELTEN",
+    "Nicolas GIRSZYN",
+    "Salim TRAD",
+    "Julie TRACLET",
+    "Mathieu VAUTIER",
+    "Antoine FROISSART",
+    "Inès AUREAU",
+    "Julien DESBLACHE",
+    "Charles FAISANT",
+    "Richard DAMADE",
+    "Laure SWIADER",
+    "Stanislas FAGUER",
+    "Vivien GUILLOTIN",
+    "Christian AGARD",
+    "Antoine BAUDET",
+    "Eric LIOZON",
+    "Marc ULRICH",
+    "Guillaume ARMENGOL",
+    "Alexandre LEJONCOUR",
+    "Philippe REMY",
+    "Alexandre KARRAS",
+    "Jean-Jacques BOFFA"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1001/jama.2026.15278",
+   "url": "https://doi.org/10.1001/jama.2026.15278",
+   "citation": "Puéchal, X., Pugnet, G., Thoreau, B., Moreuil, C. d., Jouneau, S., Quéméneur, T., Baron, G., Smets, P., Néel, A., Gallou, T. L., Noël, N., Uzunhan, Y., Comarmond-Ortoli, C., Urbanski, G., Benhamou, Y., Bérezné, A., Mekinian, A., Hamidou, M., Campagne, J., ... BOFFA, J. (2026). Rituximab vs Azathioprine for Eosinophilic Granulomatosis With Polyangiitis Maintenance. JAMA, 336(20), 1857. https://doi.org/10.1001/jama.2026.15278",
+   "free_copy": {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13691917/",
+    "version": "Preprint (before peer review)",
+    "host": "repository",
+    "license": null
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/ICU_IV_1.jpg/960px-ICU_IV_1.jpg",
+    "caption": "Neutron(TM) Catheter Patency Device",
+    "credit": "Calleamanecer, via Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:ICU_IV_1.jpg"
+   },
+   "image_query": "intravenous infusion drip",
+   "category": "clinical",
+   "category_name": "Clinical & Disease Research",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 18,
+   "headline": "Nasal flu vaccine for regular seasons protected ferrets from deadly cow-linked H5N1",
+   "original_title": "Protective effect of seasonal vaccines against human-derived bovine H5N1 influenza virus",
+   "journal": "Nature Communications",
+   "field": "Infectious Diseases",
+   "significance": 7,
+   "reason": "Timely as flu season begins: in ferrets, seasonal live-attenuated influenza vaccination cross-protected against lethal infection with a human-derived bovine H5N1 virus.",
+   "summary": "H5N1 bird flu has spread into dairy cattle, and a version of the virus taken from an infected person has raised concern about a possible human outbreak. Because no vaccine is matched to this exact strain, the researchers asked whether ordinary seasonal flu vaccines, designed against different flu strains, could still offer some protection.\n\nWorking in ferrets, a standard animal model for human flu, they found that a seasonal live-attenuated vaccine (a weakened, living flu virus usually given as a nasal spray) protected the animals against an otherwise lethal infection with the cattle-derived H5N1 virus. This happened even though the H5N1 virus looks quite different to the immune system from the vaccine strains. The authors suggest the protection may come from immune cells active in the airways rather than mainly from antibodies.",
+   "why_it_matters": "If existing seasonal vaccines provide some cross-protection against H5N1, they could help buy time during an early outbreak before a matched vaccine is available. The result also points to airway immune cells as a possible target when designing broader flu vaccines.",
+   "limitations": "These results come from ferrets, not people, so it is unknown whether seasonal vaccines would protect humans the same way. The role of airway cellular immunity is described as a possible mechanism, not a proven one.",
+   "key_terms": [
+    {
+     "term": "H5N1",
+     "meaning": "A subtype of influenza A virus, usually found in birds, that has recently spread to dairy cows and occasionally infected people."
+    },
+    {
+     "term": "Live-attenuated influenza vaccine",
+     "meaning": "A vaccine made from a weakened flu virus that can still replicate a little, typically sprayed into the nose to trigger immunity in the airways."
+    },
+    {
+     "term": "Antigenically distinct",
+     "meaning": "Different enough in its surface features that the immune system does not readily recognize it as the same virus."
+    },
+    {
+     "term": "Cross-protection",
+     "meaning": "Protection against one strain of a pathogen gained from exposure or vaccination against a different strain."
+    },
+    {
+     "term": "Cellular immune response",
+     "meaning": "Immunity driven by immune cells such as T cells, which can recognize and kill infected cells, as opposed to antibodies."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Ryuta Uraki",
+    "Kiyoko Iwatsuki-Horimoto",
+    "Maki Kiso",
+    "Mutsumi Ito",
+    "Seiya Yamayoshi",
+    "Masaki Imai",
+    "Yoshihiro Kawaoka"
+   ],
+   "published": "2026-11-25T00:00:00+00:00",
+   "doi": "10.1038/s41467-026-79529-y",
+   "url": "https://doi.org/10.1038/s41467-026-79529-y",
+   "citation": "Uraki, R., Iwatsuki-Horimoto, K., Kiso, M., Ito, M., Yamayoshi, S., Imai, M., & Kawaoka, Y. (2026). Protective effect of seasonal vaccines against human-derived bovine H5N1 influenza virus. Nature Communications, 17(1), 11796. https://doi.org/10.1038/s41467-026-79529-y",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/CSIRO_ScienceImage_7961_A_ferret_at_AAHL.jpg/960px-CSIRO_ScienceImage_7961_A_ferret_at_AAHL.jpg",
+    "caption": "CSIRO ScienceImage 7961 A ferret at AAHL",
+    "credit": "Frank Filippi, CSIRO, via Wikimedia Commons",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_7961_A_ferret_at_AAHL.jpg"
+   },
+   "image_query": "laboratory ferret",
+   "category": "clinical",
+   "category_name": "Clinical & Disease Research",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 19,
+   "headline": "Narrowing climate model forecasts for when northern lands lose their snow",
+   "original_title": "Observationally-constrained CMIP6 projections of a snow-free Northern Hemisphere",
+   "journal": "Nature Communications",
+   "field": "Climate Science",
+   "significance": 7,
+   "reason": "Observationally constrained CMIP6 projections find snow-free Arctic summers by the 2040s under high emissions, a relevant result as the Northern Hemisphere snow season begins.",
+   "summary": "Climate models disagree about how quickly snow cover in the Northern Hemisphere will shrink as the planet warms. This study used the CMIP6 collection of global climate models and applied an \"emergent constraint\": a statistical link, found across the models, between something we can already observe (here, warming measured so far) and something we want to predict (future snow loss). Models whose past warming fits observations better are given more weight, which reduces the spread between model projections. The authors did this month by month.\n\nWith this constraint, the projections became less scattered. Under a high-emissions scenario (SSP5-8.5), summer snow cover in the Arctic is projected to disappear by the 2040s. Under a low-emissions scenario (SSP1-2.6), the loss of snow in vulnerable regions and months is pushed back by 7 to 34 years compared with high emissions.",
+   "why_it_matters": "Snow reflects sunlight, stores water that rivers and people rely on, and shapes ecosystems, so knowing when it may vanish matters for planning. Narrowing the range of model forecasts makes these timelines more useful, and the gap between the two scenarios shows how much cutting emissions could delay snow loss.",
+   "limitations": "These are model-based projections adjusted with observations, so they rely on the assumption that the link between past warming and future snow loss in the models holds in reality. The short summary does not say how large the remaining uncertainty is.",
+   "key_terms": [
+    {
+     "term": "CMIP6",
+     "meaning": "The sixth phase of an international project that runs and compares many global climate models under shared scenarios."
+    },
+    {
+     "term": "Emergent constraint",
+     "meaning": "A method that uses a relationship seen across many models between an observable quantity and a future outcome, then uses real observations to narrow the predicted range."
+    },
+    {
+     "term": "Inter-model variance",
+     "meaning": "How much the predictions of different climate models disagree with each other."
+    },
+    {
+     "term": "SSP5-8.5",
+     "meaning": "A future scenario with very high greenhouse gas emissions driven by fossil fuels."
+    },
+    {
+     "term": "SSP1-2.6",
+     "meaning": "A future scenario with low emissions and strong climate action."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Yi Shen",
+    "Ting Wei",
+    "Bing Chen"
+   ],
+   "published": "2026-11-25T00:00:00+00:00",
+   "doi": "10.1038/s41467-026-79797-8",
+   "url": "https://doi.org/10.1038/s41467-026-79797-8",
+   "citation": "Shen, Y., Wei, T., & Chen, B. (2026). Observationally-constrained CMIP6 projections of a snow-free Northern Hemisphere. Nature Communications. https://doi.org/10.1038/s41467-026-79797-8",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Textures_of_snow_on_the_tundra_%2852828310883%29.jpg/960px-Textures_of_snow_on_the_tundra_%2852828310883%29.jpg",
+    "caption": "Snow patterns and spruce trees near Selawik National Wildlife Refuge. Credit: Lisa Hupp/USFWS",
+    "credit": "USFWSAlaska, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Textures_of_snow_on_the_tundra_(52828310883).jpg"
+   },
+   "image_query": "Arctic snow tundra",
+   "category": "climate",
+   "category_name": "Climate & Environment",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 20,
+   "headline": "Building plastic-like chains one unit at a time with light-driven chemistry",
+   "original_title": "Molar-mass- and sequence-defined vinyl macromolecules via iterative photoredox decarboxylative addition of α-substituted acrylates",
+   "journal": "Nature Chemistry",
+   "field": "Polymer Chemistry",
+   "significance": 6,
+   "reason": "Iterative photoredox addition yields vinyl macromolecules with exactly defined molar mass and monomer sequence.",
+   "summary": "Many everyday plastics are made by free-radical polymerization, where small building blocks called vinyl monomers link up in a fast chain reaction. This process gives little control over how long each chain grows or in what order different monomers are joined, so the product is a mixture of chains of varying sizes and random sequences. The researchers asked whether such vinyl chains could instead be assembled precisely, one building block at a time.\n\nThey used a light-driven reaction (photoredox catalysis) in which a carboxylic acid group is removed to create a reactive radical that then adds to an acrylate monomer. By choosing acrylates carrying a bulky group on the carbon next to the ester, they found that exactly one monomer was added per step, with essentially complete conversion and no runaway chain growth. Repeating this step, and running it in a continuous-flow setup, let them rapidly make non-repeating chains with a defined length and a defined monomer order.",
+   "why_it_matters": "Precise control over chain length and sequence is something nature achieves with proteins and DNA, but it has been hard to reach for common vinyl-type polymers. A fast, repeatable way to write chosen sequences into these chains could help chemists study how sequence affects material properties and could enable designed functional materials.",
+   "limitations": "The summary does not say how long the chains can be made, how general the method is beyond bulky α-substituted acrylates, or how the resulting materials behave.",
+   "key_terms": [
+    {
+     "term": "Vinyl monomer",
+     "meaning": "A small molecule with a carbon–carbon double bond that can link with others to form many common plastics."
+    },
+    {
+     "term": "Free-radical polymerization",
+     "meaning": "A chain reaction where reactive species with an unpaired electron rapidly join monomers together, usually with little control over chain length or order."
+    },
+    {
+     "term": "Photoredox catalysis",
+     "meaning": "Using a light-absorbing catalyst to move electrons and generate reactive intermediates under mild conditions."
+    },
+    {
+     "term": "Decarboxylative addition",
+     "meaning": "A reaction where a carboxylic acid loses CO2 to form a radical, which then bonds to a double bond."
+    },
+    {
+     "term": "α-Substituted acrylate",
+     "meaning": "An acrylate monomer with an extra group on the carbon next to the ester; here a bulky group helps stop more than one unit adding at a time."
+    },
+    {
+     "term": "Sequence-defined macromolecule",
+     "meaning": "A large molecule whose building blocks are arranged in an exact, chosen order and with a single exact size."
+    },
+    {
+     "term": "Continuous flow",
+     "meaning": "Running reactions as liquids pumped through tubes rather than in a single flask, which can speed up and automate repeated steps."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Dogyun Kim",
+    "Dongkyu Kim",
+    "Gyeonghun Jeong",
+    "Kyoung Taek Kim"
+   ],
+   "published": "2026-11-25T00:00:00+00:00",
+   "doi": "10.1038/s41557-026-02303-6",
+   "url": "https://doi.org/10.1038/s41557-026-02303-6",
+   "citation": "Kim, D., Kim, D., Jeong, G., & Kim, K. T. (2026). Molar-mass- and sequence-defined vinyl macromolecules via iterative photoredox decarboxylative addition of α-substituted acrylates. Nature Chemistry. https://doi.org/10.1038/s41557-026-02303-6",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/IUPAC_definition_for_average_degree_of_polymerization_in_polymer_chemistry.png/500px-IUPAC_definition_for_average_degree_of_polymerization_in_polymer_chemistry.png",
+    "caption": "Any average, X¯k, of the degree of polymerization, where k specifies the type of average.",
+    "credit": "International Union of Pure and Applied Chemistry (IUPAC), via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:IUPAC_definition_for_average_degree_of_polymerization_in_polymer_chemistry.png"
+   },
+   "image_query": "photochemical flow reactor",
+   "category": "chemistry",
+   "category_name": "Chemistry",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 21,
+   "headline": "When can one experiment reveal the equations behind a system?",
+   "original_title": "A zero-one law for one-shot system identification",
+   "journal": "PNAS",
+   "field": "Applied Mathematics",
+   "significance": 6,
+   "reason": "A zero-one law addressing when a linearly parameterized analytic model, such as a PDE or dynamical system, can be identified from a single input-response experiment.",
+   "summary": "Scientists often want to work out the equations governing a system, such as a set of differential equations, from measured data. This paper asks whether a single experiment, meaning one input and the response it produces, is enough. The authors focus on models written as a weighted sum of candidate building blocks taken from a fixed list, or \"dictionary\" (for example, different derivative terms in a partial differential equation). The task is to find the weights. They show that one experiment pins down the weights exactly when the dictionary terms, evaluated on that particular input, are linearly independent, meaning none can be built from the others.\n\nTheir main result is a mathematical proof of an all-or-nothing rule. Either no input could ever identify the weights uniquely, or almost every random input does, where the inputs are drawn from a suitably spread-out Gaussian distribution. So the hard question shrinks to understanding a few special \"bad\" inputs. Without measurement noise, the independence condition can also be checked after the experiment, which confirms whether recovery succeeded. In numerical tests, the method recovered dynamical systems, nonlinear partial differential equations and structured families of matrices from a single trajectory. It also flagged cases where a second experiment was needed.",
+   "why_it_matters": "Experiments can be costly or impossible to repeat, so knowing when one run is enough to identify a model saves effort and builds confidence in the result. The all-or-nothing rule tells researchers that a randomly chosen input will almost always work whenever identification is possible at all.",
+   "limitations": "The guarantees are proven for analytic models that depend linearly on their coefficients, and the after-the-fact certificate applies only to noise-free data. Real noisy measurements may behave differently.",
+   "key_terms": [
+    {
+     "term": "System identification",
+     "meaning": "Inferring the equations or parameters of a system from observations of how it responds to inputs."
+    },
+    {
+     "term": "Dictionary terms",
+     "meaning": "A pre-chosen list of candidate mathematical pieces, such as derivatives or nonlinear terms, whose weighted sum forms the model."
+    },
+    {
+     "term": "Linearly independent",
+     "meaning": "No item in a set can be written as a weighted combination of the others."
+    },
+    {
+     "term": "Zero-one law",
+     "meaning": "A result stating that an event has probability either 0 or 1, with nothing in between."
+    },
+    {
+     "term": "Nondegenerate Gaussian measure",
+     "meaning": "A bell-curve-type random distribution that spreads over all directions rather than being squeezed into a lower-dimensional subset."
+    },
+    {
+     "term": "A posteriori certificate",
+     "meaning": "A check done after collecting data that confirms the answer is uniquely determined."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Nicolas Boullé",
+    "Diana Halikias",
+    "Samuel E. Otto",
+    "Alex Townsend"
+   ],
+   "published": "2026-11-20T08:00:00+00:00",
+   "doi": "10.1073/pnas.2624491123",
+   "url": "https://doi.org/10.1073/pnas.2624491123",
+   "citation": "Boullé, N., Halikias, D., Otto, S. E., & Townsend, A. (2026). A zero-one law for one-shot system identification. PNAS, 123(47), e2624491123. https://doi.org/10.1073/pnas.2624491123",
+   "free_copy": {
+    "url": "https://doi.org/10.1073/pnas.2624491123",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Oscilloscope_APL.JPG/960px-Oscilloscope_APL.JPG",
+    "caption": "Oscilloscope APL",
+    "credit": "Tourbillon, via Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Oscilloscope_APL.JPG"
+   },
+   "image_query": "laboratory oscilloscope signal",
+   "category": "math_stats",
+   "category_name": "Mathematics & Statistics",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 22,
+   "headline": "Treating AI chatbot teams like computer networks predicts when teamwork helps",
+   "original_title": "Language model teams as distributed systems",
+   "journal": "PNAS",
+   "field": "Multi-agent AI Systems",
+   "significance": 6,
+   "reason": "Casting LLM agent teams as distributed systems offers a framework for understanding coordination failures and wasted resources at scale.",
+   "summary": "Large language models (LLMs), the AI systems behind chatbots, have limits on how well a single model can reason, remember and perform. One popular workaround is to have several models work together as a team, but there is little guidance on when a team actually helps, how many models to include, or how to organize them. Builders mostly rely on trial and error. This paper asks whether an existing branch of computer science, the study of distributed systems (many computers cooperating on one job), can supply that missing theory.\n\nThe authors use distributed systems ideas as a formal framework and derive predictions about how the structure of a task and the layout of a team should affect results. They then test these predictions. They report that adding more models to a team gives gains that follow classic laws from distributed computing, with the size of the benefit depending on how the task is structured. They also find that centralized teams (one coordinator directing others) and decentralized teams (models working as peers) have different weak points, as distributed systems theory expects.",
+   "why_it_matters": "As companies deploy groups of AI models at large scale, a theory that predicts performance could save cost and effort compared with guesswork. It also connects a new technology to decades of established computer science, so known lessons about coordination and failure can be reused.",
+   "limitations": "The abstract does not say which tasks, models or team sizes were tested, so it is unclear how broadly the predictions hold across real-world uses.",
+   "key_terms": [
+    {
+     "term": "Large language model (LLM)",
+     "meaning": "An AI system trained on huge amounts of text to understand and generate language, such as the models behind chatbots."
+    },
+    {
+     "term": "Distributed system",
+     "meaning": "A set of separate computers or processes that coordinate to complete a shared task."
+    },
+    {
+     "term": "Centralized architecture",
+     "meaning": "A team layout where one coordinator assigns work and gathers results from the others."
+    },
+    {
+     "term": "Decentralized architecture",
+     "meaning": "A team layout where members work as peers and coordinate directly without a single leader."
+    },
+    {
+     "term": "Scaling law",
+     "meaning": "A rule describing how performance changes as you add more resources, such as more team members."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Elizabeth Mieczkowski",
+    "Katherine M. Collins",
+    "Ilia Sucholutsky",
+    "Natalia Vélez",
+    "Thomas L. Griffiths"
+   ],
+   "published": "2026-11-18T08:00:00+00:00",
+   "doi": "10.1073/pnas.2612825123",
+   "url": "https://doi.org/10.1073/pnas.2612825123",
+   "citation": "Mieczkowski, E., Collins, K. M., Sucholutsky, I., Vélez, N., & Griffiths, T. L. (2026). Language model teams as distributed systems. PNAS, 123(47), e2612825123. https://doi.org/10.1073/pnas.2612825123",
+   "free_copy": {
+    "url": "https://doi.org/10.1073/pnas.2612825123",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by-nc-nd"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/139_Server_Room_01.jpg/960px-139_Server_Room_01.jpg",
+    "caption": "Indian Railway 139 Server Room.",
+    "credit": "Indrajit Das, via Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:139_Server_Room_01.jpg"
+   },
+   "image_query": "computer server room",
+   "category": "computing",
+   "category_name": "Computer Science & IT",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 23,
+   "headline": "Pulsar timing arrays may not reveal whether gravitational-wave background is Gaussian",
+   "original_title": "Are Pulsar Timing Array Measurements Sensitive to Gravitational Wave Non-Gaussianities?",
+   "journal": "Physical Review Letters",
+   "field": "Gravitational-Wave Astrophysics",
+   "significance": 6,
+   "reason": "Shows that pulsar timing array tests cannot model-agnostically distinguish Gaussian from non-Gaussian gravitational-wave backgrounds, tempering hopes for a key discriminator between astrophysical and cosmological origins.",
+   "summary": "Pulsar timing arrays (PTAs) watch many fast-spinning neutron stars whose radio pulses arrive like clockwork. Tiny shifts in pulse arrival times, called timing residuals, have revealed a background of very low-frequency gravitational waves. Where this background comes from is still open: it could be many merging supermassive black hole pairs (astrophysical) or processes in the early universe (cosmological). Some researchers hoped to tell these apart by checking whether the wave amplitudes follow a bell-shaped Gaussian distribution or show non-Gaussian features, such as a few unusually loud sources.\n\nThe authors tested this idea theoretically, imagining a best-case situation where the gravitational-wave signal dominates the noise. They first removed correlations from the data, which is needed so statistical tests do not raise false alarms. After this step, they found that standard statistical tests could not separate a Gaussian amplitude distribution from a non-Gaussian one unless strong assumptions are made about the wave spectrum or about the population of sources. Without such assumptions, the telltale non-Gaussian signatures get blurred out.",
+   "why_it_matters": "The result warns against relying on non-Gaussianity tests as a simple, assumption-free way to learn whether the PTA signal is astrophysical or cosmological. Future attempts will likely need detailed source models built into the analysis.",
+   "limitations": "The conclusion concerns tests made without strong assumptions; analyses that do assume a particular spectrum or source population might still detect non-Gaussian features. The work is a theoretical analysis in an idealized setup rather than a study of real data.",
+   "key_terms": [
+    {
+     "term": "Pulsar timing array (PTA)",
+     "meaning": "A set of precisely timed pulsars used as a galaxy-sized detector for very long-wavelength gravitational waves."
+    },
+    {
+     "term": "Timing residuals",
+     "meaning": "The differences between when pulsar pulses are expected to arrive and when they actually arrive."
+    },
+    {
+     "term": "Gravitational wave background",
+     "meaning": "A combined, random-looking signal from many overlapping gravitational-wave sources."
+    },
+    {
+     "term": "Non-Gaussianity",
+     "meaning": "A departure from the bell-curve (Gaussian) pattern in how signal strengths are distributed."
+    },
+    {
+     "term": "Decorrelating",
+     "meaning": "Transforming data so that its data points are statistically independent, preventing tests from mistaking correlations for real features."
+    },
+    {
+     "term": "Model-agnostic",
+     "meaning": "Not depending on a specific assumed theory or model of the sources."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Chiara Cecchini",
+    "Jonas El Gammal",
+    "Gabriele Franciolini",
+    "Mauro Pieroni"
+   ],
+   "published": "2026-11-24T10:00:00+00:00",
+   "doi": "10.1103/kcr9-nbjk",
+   "url": "https://doi.org/10.1103/kcr9-nbjk",
+   "citation": "Cecchini, C., Gammal, J. E., Franciolini, G., & Pieroni, M. (2026). Are Pulsar Timing Array Measurements Sensitive to Gravitational Wave Non-Gaussianities?. Physical Review Letters, 137(22), 221401. https://doi.org/10.1103/kcr9-nbjk",
+   "free_copy": {
+    "url": "https://doi.org/10.1103/kcr9-nbjk",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Radio_telescope_The_Dish.jpg/960px-Radio_telescope_The_Dish.jpg",
+    "caption": "Radio telescope The Dish",
+    "credit": "Steve Jurvetson from Menlo Park, USA, via Wikimedia Commons",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Radio_telescope_The_Dish.jpg"
+   },
+   "image_query": "radio telescope dish",
+   "category": "astronomy",
+   "category_name": "Astronomy & Planetary Science",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 24,
+   "headline": "Rearrangeable defect lines in liquid crystals could store information",
+   "original_title": "Encoding information into an embroidery of topological defects in liquid crystals",
+   "journal": "Nature Materials",
+   "field": "Soft Matter",
+   "significance": 6,
+   "reason": "Optically rearranged topological defect lines in liquid crystals can store information in a vast number of states.",
+   "summary": "Liquid crystals, the materials used in many displays, are made of rod-like molecules that tend to point in the same direction. Where that common direction breaks down, lines called topological defects form. The researchers asked whether such defect lines could be controlled precisely enough to serve as a way to store information.\n\nThey used light to pattern a surface coating (an alignment layer) that sets which way the liquid crystal molecules point. The pattern was a repeating grid of swirling vortex arrangements. Defect lines in the liquid crystal became anchored, or 'pinned', to this patterned surface, a little like threads stitched through fabric. Using light, the team could move the defect lines into different arrangements. They report that the number of possible arrangements is very large, so each arrangement could represent stored data.",
+   "why_it_matters": "The work points to a new kind of soft-matter memory in which information is held in the geometry of defect lines rather than in electric charge or magnetism. It also shows that defects, usually treated as flaws, can be deliberately designed and switched with light.",
+   "limitations": "The short description gives no details on how stable the stored states are, how fast they can be written or read, or how practical the approach would be compared with existing memory technologies.",
+   "key_terms": [
+    {
+     "term": "Liquid crystal",
+     "meaning": "A material that flows like a liquid but whose molecules line up in a shared direction, as a crystal's would."
+    },
+    {
+     "term": "Topological defect line",
+     "meaning": "A line inside the liquid crystal where the molecules' preferred direction cannot be smoothly defined. It is stable because the surrounding molecules are twisted around it."
+    },
+    {
+     "term": "Photopatterned alignment layer",
+     "meaning": "A surface coating patterned with light so that it tells nearby liquid crystal molecules which way to point at each spot."
+    },
+    {
+     "term": "Vortex",
+     "meaning": "Here, a spot where the preferred molecular direction swirls around a central point."
+    },
+    {
+     "term": "Pinned",
+     "meaning": "Held in place at particular positions by the patterned surface."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Simon Čopar",
+    "Slobodan Žumer"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1038/s41563-026-02798-x",
+   "url": "https://doi.org/10.1038/s41563-026-02798-x",
+   "citation": "Čopar, S., & Žumer, S. (2026). Encoding information into an embroidery of topological defects in liquid crystals. Nature Materials, 25(12), 2133-2134. https://doi.org/10.1038/s41563-026-02798-x",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ferroelectric_liquid_crystal_image_from_a_polarizing_microscope.jpg/960px-Ferroelectric_liquid_crystal_image_from_a_polarizing_microscope.jpg",
+    "caption": "Ferroelectric liquid crystal image from a polarizing microscope",
+    "credit": "Ingo Dierking, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Ferroelectric_liquid_crystal_image_from_a_polarizing_microscope.jpg"
+   },
+   "image_query": "liquid crystal microscope",
+   "category": "materials",
+   "category_name": "Materials & Nanoscience",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 25,
+   "headline": "Keeping two laser beams aligned lets 3D printing reach nanoscale detail deep inside material",
+   "original_title": "Depth-robust super-resolution nanofabrication for 3D mesoscopic photonic structures",
+   "journal": "Nature Nanotechnology",
+   "field": "Optical Nanofabrication",
+   "significance": 6,
+   "reason": "Keeping excitation and depletion beams axially aligned enables super-resolution laser writing of 3D photonic structures at depth.",
+   "summary": "Tiny optical parts such as miniature lenses and on-chip light routers are often made by direct laser writing, a form of 3D printing where a focused laser hardens a light-sensitive material point by point. A refinement called STED (stimulated emission depletion) adds a second, doughnut-like 'depletion' beam that switches off the reaction around the edge of the focus, shrinking the written spot below the usual optical limit. The problem is that deep inside the material, absorption, scattering and focusing distortions (caused by mismatched refractive indices) warp the depletion beam, so the fine detail is lost.\n\nThe researchers argued that the key is keeping the depletion zone lined up along the beam axis with the main writing focus. They used a Bessel beam, a type of beam that stays narrow over a long distance, and made its axial position adjustable so it stays matched to the ordinary (Gaussian) writing focus as depth changes. With this approach they wrote isolated lines about 56 nm wide and gratings with 150-nm spacing and 110-nm lines at 160 micrometres deep, and still achieved lines about 167 nm wide at 1.4 millimetres deep. They then built several deep optical devices, including 4f imaging systems, vortex phase plates, tiny microscope objectives and arrays of microlenses.",
+   "why_it_matters": "Many compact optical and quantum devices need fine features spread through tall 3D structures, not just a thin surface layer. A printing method that keeps nanoscale resolution over more than a millimetre of depth could let such multi-part optical systems be made in one piece rather than assembled.",
+   "limitations": "The abstract reports line widths and example devices but does not give details on their optical performance, fabrication speed or which materials the method works with.",
+   "key_terms": [
+    {
+     "term": "Direct laser writing",
+     "meaning": "3D printing with a tightly focused laser that solidifies a light-sensitive resin only at the focal spot."
+    },
+    {
+     "term": "Stimulated emission depletion (STED)",
+     "meaning": "A trick using a second laser to deactivate molecules around the edge of the focus, so only a smaller central region reacts, beating the normal resolution limit."
+    },
+    {
+     "term": "Bessel beam",
+     "meaning": "A laser beam shape whose central core stays narrow over a long distance along its path."
+    },
+    {
+     "term": "Numerical aperture",
+     "meaning": "A measure of how sharply a lens can focus light; higher values give smaller focal spots."
+    },
+    {
+     "term": "4f system",
+     "meaning": "A standard two-lens arrangement used to relay or process images."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Ziyu Li",
+    "Yue Wang",
+    "Chendi Shao",
+    "Jian Xu",
+    "Dashan Dong",
+    "Shulei Zhou",
+    "Xiaoshuai Huang",
+    "Hong Yang",
+    "Yujie Sun",
+    "Kebin Shi"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41565-026-02335-6",
+   "url": "https://doi.org/10.1038/s41565-026-02335-6",
+   "citation": "Li, Z., Wang, Y., Shao, C., Xu, J., Dong, D., Zhou, S., Huang, X., Yang, H., Sun, Y., & Shi, K. (2026). Depth-robust super-resolution nanofabrication for 3D mesoscopic photonic structures. Nature Nanotechnology. https://doi.org/10.1038/s41565-026-02335-6",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Integral_spectroscopy_Microlens-Fibre.jpg/960px-Integral_spectroscopy_Microlens-Fibre.jpg",
+    "caption": "Integral spectroscopy Microlens-Fibre",
+    "credit": "ESO, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Integral_spectroscopy_Microlens-Fibre.jpg"
+   },
+   "image_query": "microlens array",
+   "category": "core_engineering",
+   "category_name": "Core Engineering",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 26,
+   "headline": "A single statistical toolkit finds cell-type-specific spatial signals across many tissue-mapping data types",
+   "original_title": "A unified framework for scalable differential testing for spatial omics",
+   "journal": "Nature Biotechnology",
+   "field": "Biotechnology & Spatial Omics",
+   "significance": 6,
+   "reason": "spotGLM and SPARROW provide scalable, cell-type-specific differential testing across many spatial omics data types.",
+   "summary": "Spatial omics methods measure molecules (RNA, RNA variants, or open DNA regions) at thousands to millions of locations within a tissue slice. A recurring question is whether a molecular feature in a given cell type changes depending on its neighbourhood, or 'niche'. Two problems make this hard: each measured spot usually blends several cell types, and today's datasets are so large that full analyses can take days to weeks. Earlier tools also only handled count data such as gene expression. The authors built spotGLM, which treats each spot's reading as a weighted mixture of cell-type-specific statistical models. It supports counts, proportions (for example, how often an exon is kept) and continuous scores. They also built SPARROW, which picks a smaller subset of spots chosen to keep as much ability to detect real effects (statistical power) as possible.\n\nIn benchmarks on four large real datasets, SPARROW kept far more of the full-data discoveries than random sampling, geometric sketching or rasterization. For example, on a colorectal cancer dataset of 750,000 cells it recovered over 90% of the signals using only 10% of the data, while the other methods recovered under 70%. It does this partly by keeping rare cell-type and location combinations that the other approaches tended to drop. In simulations of up to 5 million points, the size of the subset it needed eventually levelled off, so runtime stopped growing. The authors then applied the framework to several datasets. Colorectal cancer results were checked against an adjacent tissue slice measured on a separate single-cell-resolution platform. They also analysed mouse kidney along a salt-concentration gradient, RNA isoform switching in the mouse olfactory bulb, and DNA regulatory-motif accessibility in mouse brain.",
+   "why_it_matters": "Researchers can use one consistent method to ask how a cell's surroundings affect its gene activity, splicing or chromatin, without being misled by mixed-cell measurements. The data-reduction step could keep analyses practical as spatial datasets grow to millions of locations.",
+   "limitations": "Benchmark accuracy was judged against results from the full dataset rather than known true effects. spotGLM also depends on separate deconvolution and niche-definition steps, which the user must choose.",
+   "key_terms": [
+    {
+     "term": "Spatial omics",
+     "meaning": "Techniques that measure many molecules while recording where in a tissue each measurement came from."
+    },
+    {
+     "term": "Generalized linear model (GLM)",
+     "meaning": "A regression approach that links predictors to outcomes of different types (counts, proportions, continuous values) through a chosen transformation called a link function."
+    },
+    {
+     "term": "Cellular niche",
+     "meaning": "The local surroundings of a cell, such as which other cell types are nearby or where it sits in a tissue region."
+    },
+    {
+     "term": "Deconvolution",
+     "meaning": "Estimating what fraction of each cell type contributes to a mixed measurement at one spot."
+    },
+    {
+     "term": "Isoform switching",
+     "meaning": "A change in which version of a gene's RNA is made, caused by different ways of splicing the RNA."
+    },
+    {
+     "term": "Spatial ATAC-seq",
+     "meaning": "A method that maps which DNA regions are open and accessible to regulatory proteins at each tissue location."
+    },
+    {
+     "term": "Recall",
+     "meaning": "The fraction of discoveries made with the full dataset that are still found using the reduced subset."
+    }
+   ],
+   "based_on": "full text",
+   "authors": [
+    "Kaishu Mason",
+    "Yijia Jiang",
+    "Konstantin A. Klötzer",
+    "Sijia Huang",
+    "Nancy R. Zhang"
+   ],
+   "published": "2026-11-23T00:00:00+00:00",
+   "doi": "10.1038/s41587-026-03284-0",
+   "url": "https://doi.org/10.1038/s41587-026-03284-0",
+   "citation": "Mason, K., Jiang, Y., Klötzer, K. A., Huang, S., & Zhang, N. R. (2026). A unified framework for scalable differential testing for spatial omics. Nature Biotechnology. https://doi.org/10.1038/s41587-026-03284-0",
+   "free_copy": {
+    "url": "https://doi.org/10.1038/s41587-026-03284-0",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by-nc-nd"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Histological_section_of_small_intestine_epithelial_tissue%2C_zoom.jpg/960px-Histological_section_of_small_intestine_epithelial_tissue%2C_zoom.jpg",
+    "caption": "Histological section of small intestine epithelial tissue, zoom",
+    "credit": "Otávio Astor Vaz Costa, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Histological_section_of_small_intestine_epithelial_tissue,_zoom.jpg"
+   },
+   "image_query": "tissue section microscope slide",
+   "category": "applied_tech",
+   "category_name": "Applied & Emerging Tech",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 27,
+   "headline": "Heart enzyme SMYD1 tags myosin to keep heart-cell contraction in check",
+   "original_title": "SMYD1 trimethylates myosin K129 to restrain cardiomyocyte hypercontractility",
+   "journal": "Nature Communications",
+   "field": "Molecular Cardiology",
+   "significance": 6,
+   "reason": "SMYD1 trimethylation of myosin restrains heart-cell contraction, linking loss of this activity to hypertrophic cardiomyopathy.",
+   "summary": "Heart muscle cells contract thanks to myosin, a motor protein that pulls on other filaments to shorten the cell. SMYD1 is an enzyme found only in muscle, and it has been linked to inherited heart disease, but how it influences heartbeat strength was not understood. The title of this study points to a specific answer: SMYD1 attaches three methyl groups (small chemical tags) to one particular spot on myosin, a lysine amino acid at position 129.\n\nAccording to the publisher's summary, this chemical change acts as a brake that stops heart muscle cells from contracting too strongly. When SMYD1 cannot carry out this tagging, the cells become overactive, and the authors connect this loss to hypertrophic cardiomyopathy, an inherited condition in which the heart muscle thickens. The short description does not say which experimental systems were used, such as cells, animals or patient samples.",
+   "why_it_matters": "Hypertrophic cardiomyopathy is a common inherited heart disease, and excess contraction is thought to help drive it. Finding a natural chemical brake on myosin could explain some cases of the disease and suggest new targets for treatment.",
+   "limitations": "Only a brief summary was available, so the experimental models, the size of the effect, and how strong the link to human disease is cannot be judged from this text.",
+   "key_terms": [
+    {
+     "term": "SMYD1",
+     "meaning": "A muscle-specific enzyme that adds methyl groups to proteins."
+    },
+    {
+     "term": "Trimethylation",
+     "meaning": "Attaching three small methyl (CH3) groups to one site on a protein, which can change how the protein behaves."
+    },
+    {
+     "term": "Myosin K129",
+     "meaning": "The lysine amino acid (abbreviated K) at position 129 in the myosin motor protein, the site SMYD1 modifies."
+    },
+    {
+     "term": "Hypercontractility",
+     "meaning": "Abnormally strong or excessive contraction of muscle cells."
+    },
+    {
+     "term": "Hypertrophic cardiomyopathy",
+     "meaning": "An inherited heart disease in which the heart muscle becomes abnormally thick, making it harder for the heart to work properly."
+    },
+    {
+     "term": "Cardiomyocyte",
+     "meaning": "A heart muscle cell."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Lichao Liu",
+    "Eric Cordeiro-Spinetti",
+    "Hong Zeng",
+    "Kamilla Børve Nygård",
+    "Neha Nandwani",
+    "Shuo Liu",
+    "Wenshu Zeng",
+    "Hyeon Yu Kim",
+    "Sara Weirich",
+    "Jędrzej M. Małecki",
+    "Rama Reddy Goluguri",
+    "Erna Davydova",
+    "Aiping Dong",
+    "Juhyung Park",
+    "Rui Dong",
+    "Hanyang Dong",
+    "Emily Zahn",
+    "Xuchao Lyu",
+    "Xu Cao",
+    "Katrin F. Chua",
+    "Michael S. Kapiloff",
+    "Benjamin A. Garcia",
+    "James A. Spudich",
+    "Katherine M. Ruppel",
+    "Albert Jeltsch",
+    "Scott B. Rothbart",
+    "Levon Halabelian",
+    "Pål Ø. Falnes",
+    "Joseph C. Wu",
+    "Or Gozani"
+   ],
+   "published": "2026-11-25T00:00:00+00:00",
+   "doi": "10.1038/s41467-026-79720-1",
+   "url": "https://doi.org/10.1038/s41467-026-79720-1",
+   "citation": "Liu, L., Cordeiro-Spinetti, E., Zeng, H., Nygård, K. B., Nandwani, N., Liu, S., Zeng, W., Kim, H. Y., Weirich, S., Małecki, J. M., Goluguri, R. R., Davydova, E., Dong, A., Park, J., Dong, R., Dong, H., Zahn, E., Lyu, X., Cao, X., ... Gozani, O. (2026). SMYD1 trimethylates myosin K129 to restrain cardiomyocyte hypercontractility. Nature Communications. https://doi.org/10.1038/s41467-026-79720-1",
+   "free_copy": {
+    "url": "https://doi.org/10.1038/s41467-026-79720-1",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by-nc-nd"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Cardiac_Muscle-es.png/960px-Cardiac_Muscle-es.png",
+    "caption": "Músculo cardíaco",
+    "credit": "BruceBlaus, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Cardiac_Muscle-es.png"
+   },
+   "image_query": "heart muscle tissue",
+   "category": "cell_molecular",
+   "category_name": "Cellular & Molecular",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 28,
+   "headline": "More bird species mean more shared warnings about predators",
+   "original_title": "Species diversity increases information flow about predation in bird communities",
+   "journal": "PLOS Biology",
+   "field": "Behavioral Ecology",
+   "significance": 6,
+   "reason": "Extends biodiversity-ecosystem functioning ideas to animal signalling, finding that more diverse bird communities pass on more predation information.",
+   "summary": "Ecologists know that having many species in an ecosystem tends to help it work well, but this idea has rarely been applied to animal behaviour. Birds often eavesdrop on other species' warning calls about predators, so the researchers asked whether richer bird communities produce more of this cross-species signalling. Using model predators at 10 nature reserves spread along a north–south gradient, they found that reserves with more bird species gave more predator-related calls, both for mobbing (birds gathering and calling noisily at a threat, which is relatively low risk) and for alarm calls (higher-risk warnings). A similar pattern appeared across forest fragments of different sizes within one reserve.\n\nTo work out why, they ran a playback experiment in that reserve, broadcasting mobbing calls from one, two, four or eight species. The recordings were built in two ways: either with the total call rate held constant, or with the call rate rising as more species were added, as happens in nature. As the number of species in the playback increased, more species and more individual birds joined in, and they called faster, were more likely to call within the first minute, and used a wider range of pitches. The effect was stronger when call rate was allowed to rise. The results suggest that species' calls carry different, complementary information and that more calling adds up. There was little sign that any single key species drove the effect.",
+   "why_it_matters": "The study extends the link between biodiversity and ecosystem function into communication, suggesting that losing species could weaken the warning networks that help birds avoid predators. It also points to specific reasons why diverse communities share more information.",
+   "limitations": "The reserve comparisons are correlational, and the playback experiment was carried out in a single reserve, so it is unclear how well the mechanisms apply to other communities.",
+   "key_terms": [
+    {
+     "term": "Biodiversity-Ecosystem Functioning (BEF)",
+     "meaning": "A field of research on how the number and variety of species affects how well ecosystems perform."
+    },
+    {
+     "term": "Mobbing",
+     "meaning": "When birds gather around a predator and call loudly to harass it and draw attention to it."
+    },
+    {
+     "term": "Alarm call",
+     "meaning": "A warning sound given when a predator poses a more immediate danger."
+    },
+    {
+     "term": "Heterospecific",
+     "meaning": "Belonging to a different species."
+    },
+    {
+     "term": "Playback experiment",
+     "meaning": "Playing recorded animal sounds through a speaker to see how wild animals respond."
+    },
+    {
+     "term": "Keystone species",
+     "meaning": "A species whose presence has an outsized effect on the rest of the community."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Agnishikhe Kumar",
+    "Jiahao Wu",
+    "Ping Ding",
+    "Jakob Bro-Jørgensen",
+    "Mylène Dutour",
+    "Ari E. Martínez",
+    "Xingfeng Si",
+    "Qiang Zhang",
+    "Eben Goodale"
+   ],
+   "published": "2026-11-24T14:00:00+00:00",
+   "doi": "10.1371/journal.pbio.3003805",
+   "url": "https://doi.org/10.1371/journal.pbio.3003805",
+   "citation": "Kumar, A., Wu, J., Ding, P., Bro-Jørgensen, J., Dutour, M., Martínez, A. E., Si, X., Zhang, Q., & Goodale, E. (2026). Species diversity increases information flow about predation in bird communities. PLOS Biology, 24(11), e3003805. https://doi.org/10.1371/journal.pbio.3003805",
+   "free_copy": {
+    "url": "https://doi.org/10.1371/journal.pbio.3003805",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Egg_Retrieval_Behavior_by_Maternal_Geese.png/500px-Egg_Retrieval_Behavior_by_Maternal_Geese.png",
+    "caption": "Egg Retrieval Behavior by Maternal Geese",
+    "credit": "Profprestos, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Egg_Retrieval_Behavior_by_Maternal_Geese.png"
+   },
+   "image_query": "songbirds mobbing owl",
+   "category": "ecology",
+   "category_name": "Ecology & Biodiversity",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 29,
+   "headline": "Dolphins with steadier, bigger social lives tend to live longer",
+   "original_title": "Distinct trajectories and predictability of individual grouping patterns in dolphins link social ageing to longevity",
+   "journal": "PLOS Biology",
+   "field": "Animal Behavior",
+   "significance": 6,
+   "reason": "Forty years of dolphin data link individual social ageing trajectories to longevity.",
+   "summary": "Earlier work across many animals has shown that average sociability tends to fall with age, often differently for males and females. But averages can hide how individuals differ. This study asked how both the typical group size of individual Indo-Pacific bottlenose dolphins and the consistency of that group size change over a lifetime, and whether these patterns relate to how long dolphins live. The researchers used 40 years of field observations and a statistical approach that models an individual's average behaviour and its variability side by side.\n\nAcross the population, and for most individual dolphins, group size rose and then fell in later life. The late-life drop was steeper in males, although males were in larger and more consistent groups than females at every age. Group size became more predictable as dolphins aged, which fits the idea that social preferences firm up over time. Dolphins that were very sociable also tended to be very predictable, and both traits appeared linked to living longer. The authors suggest dolphins may build 'social competence' by becoming choosier about their companions with experience.",
+   "why_it_matters": "The study shows that how consistent an animal's social behaviour is, and not only its average level, can change with age and may relate to survival. This offers a new way to study social ageing in wild animals, including how individuals adapt their social lives over time.",
+   "limitations": "The links between sociability, predictability and longevity are correlations from observational data, and the idea that dolphins gain social competence through selective choices is a hypothesis the authors propose rather than test directly.",
+   "key_terms": [
+    {
+     "term": "Social ageing",
+     "meaning": "Changes in an animal's social behaviour and relationships as it grows older."
+    },
+    {
+     "term": "Repeatability",
+     "meaning": "How consistently individuals differ from one another in their average behaviour, here group size."
+    },
+    {
+     "term": "Predictability",
+     "meaning": "How little an individual's behaviour varies around its own average; a highly predictable dolphin is usually seen in similar-sized groups."
+    },
+    {
+     "term": "Plasticity and malleability",
+     "meaning": "Plasticity is a change in an individual's average behaviour (e.g. with age); malleability is a change in how variable that behaviour is."
+    },
+    {
+     "term": "Double hierarchical location-scale model",
+     "meaning": "A statistical model that estimates both the average (location) and the spread (scale) of a trait, at population and individual levels."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Kelley C. Meehan",
+    "Barbara Class",
+    "Shinichi Nakagawa",
+    "Meredith MacQueeney",
+    "Vivienne Foroughirad",
+    "Janet Mann",
+    "Celine H. Frère"
+   ],
+   "published": "2026-11-24T14:00:00+00:00",
+   "doi": "10.1371/journal.pbio.3004022",
+   "url": "https://doi.org/10.1371/journal.pbio.3004022",
+   "citation": "Meehan, K. C., Class, B., Nakagawa, S., MacQueeney, M., Foroughirad, V., Mann, J., & Frère, C. H. (2026). Distinct trajectories and predictability of individual grouping patterns in dolphins link social ageing to longevity. PLOS Biology, 24(11), e3004022. https://doi.org/10.1371/journal.pbio.3004022",
+   "free_copy": {
+    "url": "https://doi.org/10.1371/journal.pbio.3004022",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/A_pod_of_spinner_dolphins_in_the_Red_Sea.jpg/960px-A_pod_of_spinner_dolphins_in_the_Red_Sea.jpg",
+    "caption": "A pod of spinner dolphins ( Stenella longirostris ) in the Red Sea",
+    "credit": "Alexander Vasenin, via Wikimedia Commons",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:A_pod_of_spinner_dolphins_in_the_Red_Sea.jpg"
+   },
+   "image_query": "bottlenose dolphin pod",
+   "category": "ecology",
+   "category_name": "Ecology & Biodiversity",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 30,
+   "headline": "Cash rewards helped more underserved smokers quit around lung cancer screening",
+   "original_title": "Smoking Cessation Among Underserved Patients Referred for Lung Cancer Screening",
+   "journal": "JAMA",
+   "field": "Public Health",
+   "significance": 6,
+   "reason": "A randomized trial compares four smoking-cessation strategies for medically underserved patients referred for lung cancer screening.",
+   "summary": "US health insurers require hospitals to offer help quitting smoking to people who come in for lung cancer screening, but it is unclear what kind of help works best for medically underserved groups. This large randomized clinical trial enrolled 3,259 current smokers referred for screening at five centers in four US health systems. All of them were Black, Hispanic, rural residents, or people with low income or social status. Each person was randomly assigned to one of four approaches. The first was standard care, where staff ask about smoking, advise quitting, and refer the person to quit services. The second added free stop-smoking medicines. The third added free medicines plus cash payments of up to $600 for quitting, confirmed by a lab test. The fourth added medicines, cash, and a phone-based tool encouraging people to think about their future health.\n\nThe main measure was whether people stayed off tobacco for 6 months, checked by chemical tests rather than self-report. Quit rates were low overall. They were 4.3% with standard care, 5.1% with free medicines, 8.8% with cash rewards, and 7.2% with cash plus the mobile tool. Cash rewards raised the quit rate by about 4 to 5 percentage points compared with standard care or free medicines alone, and these differences were statistically reliable. Free medicines on their own did not clearly beat standard care.",
+   "why_it_matters": "Lung cancer screening is a moment when smokers are in contact with the health system, so it is a chance to help them quit. This trial suggests that paying people for confirmed quitting is more effective than simply offering free medication for groups who are often underserved by healthcare. That information could shape how screening programs design their quit-smoking services.",
+   "limitations": "Even in the best group fewer than 1 in 10 people stayed quit, and the follow-up described covers only 6 months. Longer-term quitting and effects on lung cancer outcomes are not reported in the abstract.",
+   "key_terms": [
+    {
+     "term": "Randomized clinical trial",
+     "meaning": "A study where participants are assigned to groups by chance, so differences in outcomes can be attributed to the treatment rather than to who chose it."
+    },
+    {
+     "term": "Ask-advise-refer",
+     "meaning": "A brief standard approach: ask patients if they smoke, advise them to quit, and refer them to quit-smoking services."
+    },
+    {
+     "term": "Pharmacotherapy",
+     "meaning": "Treatment with medicines. Here it meant nicotine replacement products, or reimbursement for the quit-smoking drugs varenicline or bupropion."
+    },
+    {
+     "term": "Biochemically confirmed abstinence",
+     "meaning": "Not smoking, verified by measuring tobacco-related chemicals in the body (such as cotinine, anabasine, or carbon monoxide bound to blood) rather than trusting self-report."
+    },
+    {
+     "term": "Medically underserved",
+     "meaning": "Groups with poorer access to healthcare. In this study that meant Black, Hispanic, rural, or low-socioeconomic-status patients."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Joanna L. Hart",
+    "Anil Vachani",
+    "Christine M. Neslund-Dudas",
+    "Michael K. Gould",
+    "Matthew A. Facktor",
+    "Shira Blady",
+    "Brian A. Bayes",
+    "Dorothy Sheu",
+    "Vanessa L. Madden",
+    "Emma Britez Ferrante",
+    "Nirali Patel",
+    "Jenny Tian",
+    "Casey Whitman",
+    "Beth Creekmur",
+    "Rachel Kohn",
+    "Michael J. Simoff",
+    "Kevin G. Volpp",
+    "Dylan Small",
+    "Michael E. Scott",
+    "Amanda L. Holm",
+    "Alisa J. Stephens Shields",
+    "Scott D. Halpern"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1001/jama.2026.17192",
+   "url": "https://doi.org/10.1001/jama.2026.17192",
+   "citation": "Hart, J. L., Vachani, A., Neslund-Dudas, C. M., Gould, M. K., Facktor, M. A., Blady, S., Bayes, B. A., Sheu, D., Madden, V. L., Ferrante, E. B., Patel, N., Tian, J., Whitman, C., Creekmur, B., Kohn, R., Simoff, M. J., Volpp, K. G., Small, D., Scott, M. E., ... Halpern, S. D. (2026). Smoking Cessation Among Underserved Patients Referred for Lung Cancer Screening. JAMA, 336(20), 1815. https://doi.org/10.1001/jama.2026.17192",
+   "free_copy": {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13639801/",
+    "version": "Preprint (before peer review)",
+    "host": "repository",
+    "license": null
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Standing_ashtray_full_of_cigarette_butts.jpg/960px-Standing_ashtray_full_of_cigarette_butts.jpg",
+    "caption": "내가 쓴 것들은 별 것도 아니라는 걸 이미 알고 있었는데, 인정할 수는 없었다.",
+    "credit": "Park taeho, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Standing_ashtray_full_of_cigarette_butts.jpg"
+   },
+   "image_query": "cigarette ashtray",
+   "category": "therapeutics",
+   "category_name": "Therapeutics & Care",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 31,
+   "headline": "AI reading routine heart tracings flags patients likely to have a treatable amyloid heart disease",
+   "original_title": "Electrocardiogram-Based Deep Learning to Prioritize Testing for Transthyretin Amyloid Cardiomyopathy",
+   "journal": "JAMA",
+   "field": "Medical Informatics",
+   "significance": 6,
+   "reason": "A locally deployable AI model reads routine ECG images to prioritize patients for testing for treatable transthyretin amyloid cardiomyopathy.",
+   "summary": "Transthyretin amyloid cardiomyopathy (ATTR-CM) is a condition in which a misfolded blood protein builds up in the heart muscle and causes heart failure. It can be treated, but doctors often recognise it late, especially where specialised heart imaging is hard to get. The researchers asked whether an artificial intelligence (AI) model could look at ordinary electrocardiogram (ECG) images, the standard printout of the heart's electrical activity, and point out which patients deserve further testing. They built the model using about 28,000 ECGs from roughly 11,300 patients at Yale New Haven Health (293 with the disease). They then tested it on later Yale patients, on five cohorts from several countries, and on three screening groups: older Black and Hispanic adults with heart failure, and adults who had previously had carpal tunnel surgery.\n\nIn the later Yale group of over 44,000 patients, the model scored 0.84 on a 0–1 accuracy scale (AUROC). At its preset cutoff it caught 72% of true cases and correctly cleared 86% of people without the disease. Performance held up reasonably well in patients whose hearts can mimic the disease, such as those with thickened heart walls or a narrowed aortic valve (0.81). Across the outside cohorts, scores ranged from 0.78 to 0.89, and in the screening groups from 0.76 to 0.91. In an exploratory analysis, the team followed the ECG model with a second AI tool that reads heart ultrasound. This raised the share of flagged patients who truly had the disease from 24% to 66%. The trade-off was that the share of all cases caught fell from 84% to 68%.",
+   "why_it_matters": "ECGs are cheap, routine and available almost everywhere, so a tool that reads their images could help find a treatable cause of heart failure that is often missed. Because the model can be run locally, hospitals without advanced imaging might use it as a first filter to decide who should get ultrasound and confirmatory scans.",
+   "limitations": "Most of the data were retrospective, meaning they came from past records rather than a new trial. The authors say prospective studies are still needed to define exactly how the tool should be used and to calibrate its cutoffs. Some screening cohorts were small, and the second AI step improved precision at the cost of missing more cases.",
+   "key_terms": [
+    {
+     "term": "ATTR-CM",
+     "meaning": "Transthyretin amyloid cardiomyopathy: heart muscle disease caused by deposits of a misfolded protein called transthyretin."
+    },
+    {
+     "term": "AUROC",
+     "meaning": "Area under the receiver operating characteristic curve. It measures how well a test separates people with and without a disease: 0.5 is chance and 1.0 is perfect."
+    },
+    {
+     "term": "Sensitivity / specificity",
+     "meaning": "Sensitivity is the share of people with the disease that the test correctly flags. Specificity is the share of people without the disease that the test correctly clears."
+    },
+    {
+     "term": "Positive predictive value",
+     "meaning": "Among people the test flags as positive, the fraction who really have the disease."
+    },
+    {
+     "term": "Cardiac amyloid radionuclide imaging (CARI)",
+     "meaning": "A nuclear medicine scan used to confirm amyloid deposits in the heart."
+    },
+    {
+     "term": "Echocardiography",
+     "meaning": "An ultrasound scan of the heart."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Philip M. Croon",
+    "Bruno Batinica",
+    "Lovedeep S. Dhingra",
+    "Ryan B. Choi",
+    "Evangelos K. Oikonomou",
+    "Sumukh V. Shankar",
+    "Veer Sangha",
+    "Robert M. A. van der Boon",
+    "Michelle Michels",
+    "Maarten van Ettinger",
+    "Peter-Paul Zwetsloot",
+    "Sergio Teruya",
+    "Cesia Gallegos Kattan",
+    "Edward J. Miller",
+    "Navid Noory",
+    "Oscar M. Westin",
+    "Sie K. Fensman",
+    "Steen Hvitfeldt Poulsen",
+    "Avneet Singh",
+    "Sudarshan Balla",
+    "Anouk Achten",
+    "Charalambos Vlachopoulos",
+    "Alexios S. Antonopoulos",
+    "Nico Bruining",
+    "Julian D. Gillmore",
+    "Mathew S. Maurer",
+    "Frederick L. Ruberg",
+    "Marianna Fontana",
+    "Rohan Khera"
+   ],
+   "published": "2026-11-24T00:00:00+00:00",
+   "doi": "10.1001/jama.2026.16785",
+   "url": "https://doi.org/10.1001/jama.2026.16785",
+   "citation": "Croon, P. M., Batinica, B., Dhingra, L. S., Choi, R. B., Oikonomou, E. K., Shankar, S. V., Sangha, V., Boon, R. M. A. v. d., Michels, M., Ettinger, M. v., Zwetsloot, P., Teruya, S., Kattan, C. G., Miller, E. J., Noory, N., Westin, O. M., Fensman, S. K., Poulsen, S. H., Singh, A., ... Khera, R. (2026). Electrocardiogram-Based Deep Learning to Prioritize Testing for Transthyretin Amyloid Cardiomyopathy. JAMA, 336(20), 1825. https://doi.org/10.1001/jama.2026.16785",
+   "free_copy": {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13525484/",
+    "version": "Preprint (before peer review)",
+    "host": "repository",
+    "license": null
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Medical_Billing_Infographic.jpg/500px-Medical_Billing_Infographic.jpg",
+    "caption": "Infographic describing role of medical billers Medicare supplement companies",
+    "credit": "Dynamas2002, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Medical_Billing_Infographic.jpg"
+   },
+   "image_query": "electrocardiogram printout",
+   "category": "therapeutics",
+   "category_name": "Therapeutics & Care",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 32,
+   "headline": "Four national surveys trace how sexual behaviour in Britain has changed since 1990",
+   "original_title": "Prevalence and trends in sexual behaviour in Britain from 1990 to 2024: findings from the repeated cross-sectional National Surveys of Sexual Attitudes and Lifestyles (Natsal)",
+   "journal": "The Lancet",
+   "field": "Sexual Behaviour Research",
+   "significance": 6,
+   "reason": "Three decades of national survey data document declining sexual experience among young people and rising reports of same-sex attraction in Britain.",
+   "summary": "How have the sexual lives of people in Britain changed over roughly three decades? This paper draws on Natsal, a set of large national surveys about sexual attitudes and lifestyles repeated at intervals from 1990 to 2024. Each round questions a fresh sample of people, so researchers can compare the population at different points in time rather than following the same individuals.\n\nThe authors report clear shifts in behaviour since 1990. In recent years fewer young people report having had sexual experience. Across every age group, more people now report attraction to, or sexual activity with, people of the same sex. The publisher's summary does not give specific figures.",
+   "why_it_matters": "Sexual and reproductive health services need to be planned around how people actually live, and these surveys are among the main sources of that information in Britain. The authors argue that policies and services must keep adjusting to changing needs, including new risks such as staying safe during sexual activity online.",
+   "limitations": "The summary gives no numbers or methods. Because the data are self-reported, some of the rise in reported same-sex attraction and behaviour could reflect people being more willing to disclose it, not only changes in behaviour.",
+   "key_terms": [
+    {
+     "term": "Repeated cross-sectional survey",
+     "meaning": "A study that questions a new sample of people at each time point, allowing comparisons between eras but not tracking changes within the same individuals."
+    },
+    {
+     "term": "Prevalence",
+     "meaning": "The share of a population that has a particular characteristic or behaviour at a given time."
+    },
+    {
+     "term": "Natsal",
+     "meaning": "The National Surveys of Sexual Attitudes and Lifestyles, a long-running series of large British surveys on sexual behaviour and health."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Soazig Clifton",
+    "Luke Muschialli",
+    "Elise Paul",
+    "Anika Knuppel",
+    "Kirstin R Mitchell",
+    "Ruth Lewis",
+    "Chris Bonell",
+    "Nigel Field",
+    "Wendy Macdowall",
+    "Neha Pathak",
+    "Katharine Sadler",
+    "Clare Tanton",
+    "Jo Gibbs",
+    "Magnus Unemo",
+    "Rob Aldridge",
+    "Laura L Oakley",
+    "Rebecca Light",
+    "Beattie Sturrock",
+    "Emily Trickett",
+    "Victoria L Parsons",
+    "Andrew Copas",
+    "Pam Sonnenberg",
+    "Catherine H Mercer"
+   ],
+   "published": "2026-11-24T23:30:01+00:00",
+   "doi": "10.1016/S0140-6736(26)01766-6",
+   "url": "https://doi.org/10.1016/S0140-6736(26)01766-6",
+   "citation": "Clifton, S., Muschialli, L., Paul, E., Knuppel, A., Mitchell, K. R., Lewis, R., Bonell, C., Field, N., Macdowall, W., Pathak, N., Sadler, K., Tanton, C., Gibbs, J., Unemo, M., Aldridge, R., Oakley, L. L., Light, R., Sturrock, B., Trickett, E., ... Mercer, C. H. (2026). Prevalence and trends in sexual behaviour in Britain from 1990 to 2024: findings from the repeated cross-sectional National Surveys of Sexual Attitudes and Lifestyles (Natsal). The Lancet. https://doi.org/10.1016/S0140-6736(26)01766-6",
+   "free_copy": {
+    "url": "https://doi.org/10.1016/s0140-6736(26)01766-6",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Closed_sexual_health_clinic_-_geograph.org.uk_-_6352371.jpg/500px-Closed_sexual_health_clinic_-_geograph.org.uk_-_6352371.jpg",
+    "caption": "Closed sexual health clinic",
+    "credit": "Chris Allen, via Wikimedia Commons",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Closed_sexual_health_clinic_-_geograph.org.uk_-_6352371.jpg"
+   },
+   "image_query": "sexual health clinic",
+   "category": "behavioral",
+   "category_name": "Behavioral & Mental Health",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 33,
+   "headline": "People who break rules for moral reasons are less deterred by punishment",
+   "original_title": "Morally motivated crimes are less sensitive to punishment",
+   "journal": "PNAS",
+   "field": "Social Psychology",
+   "significance": 6,
+   "reason": "Shows that crimes motivated by moral sentiments are less deterred by punishment, with implications for criminal justice policy.",
+   "summary": "Legal systems in Western countries generally assume that punishment works by making crime costly, so a rational person will avoid it. In practice, though, punishment often does little to lower crime or reoffending. The researchers asked whether one reason is motivation: when someone believes a criminalized act is morally right, perhaps the threat of punishment matters less to them.\n\nThey tested this in 10 studies of three kinds, with participants from the general public and people with criminal histories. Three studies used federal records on more than 30,000 offenders. In these, the more participants judged a crime type to be driven by moral motives, the higher its reoffending rate; crimes judged to be driven by material gain (such as money) showed the opposite pattern. Five judgment studies covered many kinds of crime and kept the action itself the same while changing only the stated motive. Morally motivated crimes were seen as less responsive to punishment, the effect held for different kinds of penalties, and it was specific to moral motives. Two economic-game studies found that players who took money from others for moral reasons were less discouraged by fines.",
+   "why_it_matters": "If moral conviction weakens deterrence, then harsher penalties may do little to stop offenders who think they are doing the right thing. This could help explain why punishment often works poorly. It also points toward other approaches, such as restorative justice, which focuses on repairing harm through dialogue rather than adding costs.",
+   "limitations": "The large-scale offender evidence is correlational and relies on participants' estimates of offenders' motives, not offenders' own reports. The other evidence comes from hypothetical judgments and lab games, which may not fully reflect real criminal decisions.",
+   "key_terms": [
+    {
+     "term": "Deterrence",
+     "meaning": "The idea that the threat of punishment discourages people from committing crimes."
+    },
+    {
+     "term": "Recidivism",
+     "meaning": "Reoffending: committing another crime after being convicted or punished before."
+    },
+    {
+     "term": "Expected utility",
+     "meaning": "The overall benefit a person expects from an action once its likely gains and costs are weighed."
+    },
+    {
+     "term": "Economic game",
+     "meaning": "A lab task where participants make real or simulated choices about money, used to study decision-making under controlled rules."
+    },
+    {
+     "term": "Restorative justice",
+     "meaning": "An approach to crime that focuses on repairing harm and reconciling offenders with victims and communities, rather than only punishing."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Raihan Alam",
+    "Tage S. Rai"
+   ],
+   "published": "2026-11-19T08:00:00+00:00",
+   "doi": "10.1073/pnas.2624057123",
+   "url": "https://doi.org/10.1073/pnas.2624057123",
+   "citation": "Alam, R., & Rai, T. S. (2026). Morally motivated crimes are less sensitive to punishment. PNAS, 123(47), e2624057123. https://doi.org/10.1073/pnas.2624057123",
+   "free_copy": {
+    "url": "https://doi.org/10.1073/pnas.2624057123",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Courtroom_One_Gavel_-_Flickr_-_Joe_Gratz.jpg/960px-Courtroom_One_Gavel_-_Flickr_-_Joe_Gratz.jpg",
+    "caption": "Courtroom One Gavel",
+    "credit": "Joe Gratz, via Wikimedia Commons",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Courtroom_One_Gavel_-_Flickr_-_Joe_Gratz.jpg"
+   },
+   "image_query": "courtroom gavel",
+   "category": "behavioral",
+   "category_name": "Behavioral & Mental Health",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 34,
+   "headline": "How randomly built geometric functions spread their size and zeros evenly",
+   "original_title": "Mass equidistribution and fluctuations for random holomorphic sections of big line bundles with continuous metrics",
+   "journal": "arXiv (Mathematics)",
+   "field": "Complex Geometry & Probability",
+   "significance": 5,
+   "reason": "Establishes sharp moment conditions for mass equidistribution of random holomorphic sections under continuous metrics (preprint).",
+   "summary": "This pure-mathematics preprint (not yet peer reviewed) looks at random \"holomorphic sections\", which you can think of as smooth complex-valued functions living on a curved space (a compact complex manifold) and built from a line bundle, a structure that tells you how such functions can twist across the space. Each random section is made by adding up basis functions with random coefficients. The question is whether, as the degree grows, the \"mass\" of a random section (how its squared size is distributed over the space) spreads out in a predictable, even way, and how much it wobbles around that average.\n\nThe authors work in a general setting: \"big\" line bundles, metrics that are only continuous rather than smooth, and a broad family of reference measures. For random coefficients that average to zero and are independent with the same distribution, they find sharp conditions on the coefficients' moments (averages of powers) that guarantee mass equidistribution. These conditions cover Gaussian coefficients and some discrete ones, such as coin-flip-type values. On Kähler manifolds (spaces with especially compatible geometry), they show that even spreading of mass also forces the zeros of the sections to spread evenly, provided a natural condition holds. They also prove central limit theorems (bell-curve behaviour of fluctuations) for non-Gaussian coefficients. They show these fluctuations can depend on which orthonormal basis is used, and they compute the limiting variances for almost every randomly chosen sequence of bases.",
+   "why_it_matters": "Random polynomials and their higher-dimensional cousins are a basic model for studying where zeros of functions tend to lie, with links to quantum chaos and statistical physics. Extending results beyond smooth metrics and Gaussian randomness shows how robust these patterns are. It also shows where these results stop holding, for example in their dependence on the choice of basis.",
+   "limitations": "This is a theoretical preprint that has not been peer reviewed. The zero-equidistribution result needs a Kähler manifold and an extra condition on the equilibrium measure, and the variance formulas hold only for almost every sequence of bases, not every one.",
+   "key_terms": [
+    {
+     "term": "Holomorphic section",
+     "meaning": "A complex-differentiable function-like object defined on a curved complex space, taking values in a line bundle."
+    },
+    {
+     "term": "Big line bundle",
+     "meaning": "A line bundle with many sections, whose number grows as fast as possible with the degree. It is a weaker requirement than the usual 'positive' assumption."
+    },
+    {
+     "term": "Mass equidistribution",
+     "meaning": "The squared size of random sections spreads out over the space according to a fixed limiting distribution."
+    },
+    {
+     "term": "Bernstein-Markov measure",
+     "meaning": "A reference measure good enough that sizes measured by averaging are comparable to maximum sizes, up to slowly growing factors."
+    },
+    {
+     "term": "Equilibrium measure",
+     "meaning": "The limiting distribution describing where mass and zeros settle, determined by the geometry and the metric."
+    },
+    {
+     "term": "Central limit theorem",
+     "meaning": "A result saying that fluctuations, once suitably rescaled, follow a bell-shaped (normal) distribution."
+    },
+    {
+     "term": "Haar-almost every",
+     "meaning": "True for all choices except a negligible set, when bases are picked uniformly at random from all possible rotations."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Turgay Bayraktar",
+    "Afrim Bojnik"
+   ],
+   "published": "2026-11-25T05:00:00+00:00",
+   "doi": "10.48550/arXiv.2611.31280",
+   "url": "https://doi.org/10.48550/arXiv.2611.31280",
+   "citation": "Bayraktar, T., & Bojnik, A. (2026). Mass equidistribution and fluctuations for random holomorphic sections of big line bundles with continuous metrics. arXiv (Mathematics). https://doi.org/10.48550/arXiv.2611.31280",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Tangenza-falda-iperboloide-ellissoide.jpg/500px-Tangenza-falda-iperboloide-ellissoide.jpg",
+    "caption": "Tangenza-falda-iperboloide-ellissoide",
+    "credit": "Hasanisawi, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Tangenza-falda-iperboloide-ellissoide.jpg"
+   },
+   "image_query": "complex surface mathematical model",
+   "category": "math_stats",
+   "category_name": "Mathematics & Statistics",
+   "editors_pick": false,
+   "preprint": true
+  },
+  {
+   "rank": 35,
+   "headline": "Algae's own sticky chemicals help float blooms out of water without pumped air",
+   "original_title": "Carbon-neutral algal bloom management via algal organic matter repurposing",
+   "journal": "Nature Communications",
+   "field": "Environmental Engineering",
+   "significance": 5,
+   "reason": "Repurposing algal organic matter as a crosslinker enables self-driven flotation that removes harmful algal blooms with a lower carbon footprint.",
+   "summary": "When algae bloom in lakes and reservoirs, they release algal organic matter (AOM), a mix of dissolved compounds usually treated as a pollutant. Standard cleanup adds chemicals that clump algae together (flocculation) and then blows in air bubbles to lift the clumps to the surface (flotation). That process uses a lot of energy and has a large carbon footprint. The researchers asked whether AOM itself could be put to work instead. They found that its acid (-COOH) and alcohol (-OH) chemical groups can bind with small doses of aluminium or iron coagulants, forming layered gel-like clumps that contain tiny crystals of aluminium oxide and iron oxyhydroxide.\n\nThese clumps trapped algal cells. They also pulled oxygen already dissolved in the water toward their surfaces, and with gentle stirring that oxygen formed microbubbles there. The bubbles carried the clumps upward without any added air. In laboratory tests the method removed 82–95% of algal cells, 86–95% of cloudiness and 45–79% of AOM within 2 minutes. Compared with existing methods, the authors report carbon footprint cuts of about 66–97%, treatment time cuts of about 72–96% and cost cuts of about 51–98%. Leftover metal levels stayed well under drinking-water limits. Computer simulations suggested that particular four-sided aluminium- and iron-oxygen structures in the crystals bind oxygen strongly, which would explain the bubble formation.",
+   "why_it_matters": "Algal blooms threaten drinking-water supplies around the world, and cleaning them up is costly and energy-hungry. Turning a nuisance substance into part of the solution, and using oxygen already in the water, could make bloom treatment cheaper and lower in emissions.",
+   "limitations": "The abstract does not say whether the method was tested at full treatment-plant scale or across different algal species and natural water conditions. The claims of universal use and carbon neutrality still need confirmation in real-world operation.",
+   "key_terms": [
+    {
+     "term": "Algal organic matter (AOM)",
+     "meaning": "Organic compounds released by algae into the water, normally treated as a contaminant."
+    },
+    {
+     "term": "Flocculation-flotation",
+     "meaning": "A water-treatment method that clumps particles together, then lifts the clumps to the surface with bubbles so they can be skimmed off."
+    },
+    {
+     "term": "Coagulant",
+     "meaning": "A chemical, often an aluminium or iron salt, added to water so that small particles stick together."
+    },
+    {
+     "term": "Dissolved oxygen (DO)",
+     "meaning": "Oxygen gas naturally dissolved in water."
+    },
+    {
+     "term": "Gas nucleation",
+     "meaning": "The first formation of tiny gas bubbles at a surface or point in a liquid."
+    },
+    {
+     "term": "Density functional theory (DFT)",
+     "meaning": "A computational method that uses quantum physics to predict how atoms and molecules interact."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Jianguo Zhang",
+    "Wenlin Jia",
+    "Yunxiao Jian",
+    "Lulu Qu",
+    "Shuang Zhao"
+   ],
+   "published": "2026-11-25T00:00:00+00:00",
+   "doi": "10.1038/s41467-026-79713-0",
+   "url": "https://doi.org/10.1038/s41467-026-79713-0",
+   "citation": "Zhang, J., Jia, W., Jian, Y., Qu, L., & Zhao, S. (2026). Carbon-neutral algal bloom management via algal organic matter repurposing. Nature Communications. https://doi.org/10.1038/s41467-026-79713-0",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Blue-gree_algae_bloom_Lake_Erie.png/500px-Blue-gree_algae_bloom_Lake_Erie.png",
+    "caption": "Blue green algae bloom on the shore of Catawaba Island, Ohio in Lake Erie. Summer 2009.",
+    "credit": "NOAA, via Wikimedia Commons",
+    "license": "Public domain",
+    "license_url": null,
+    "source_url": "https://commons.wikimedia.org/wiki/File:Blue-gree_algae_bloom_Lake_Erie.png"
+   },
+   "image_query": "green algal bloom lake",
+   "category": "climate",
+   "category_name": "Climate & Environment",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 36,
+   "headline": "Papers that open 'holes' between ideas pay off slowly but strongly",
+   "original_title": "Knowledge gaps and scientific progress",
+   "journal": "PNAS",
+   "field": "Science of Science",
+   "significance": 5,
+   "reason": "Finds that concept combinations creating structural gaps in the knowledge landscape are especially generative for scientific progress.",
+   "summary": "New science often comes from combining existing ideas, but some combinations turn out far more fruitful than others. This study asked whether one kind of combination stands out: linking concepts in a way that leaves an empty region in the map of ideas, a so-called knowledge gap that may draw researchers toward connections nobody has explored yet. The authors used computational topology, a branch of maths that detects shapes such as loops and holes in networks, to find these gaps automatically. They built networks of scientific concepts that grow over time and flagged a gap whenever a new link closed a loop. They applied this to more than 34 million papers in the Microsoft Academic Graph, covering 1900 to 2020.\n\nThey compared gap-opening papers with papers that also paired concepts for the first time but did not open a gap. Gap-opening papers were cited less in their first five years but more over twenty years. They were also more disruptive, meaning they tended to redirect attention away from earlier work, and they more often showed delayed recognition. The links to high citations and disruption held up in five other databases (including OpenAlex, PubMed-based data, physics journals and US patents) and across eight different ways of defining concepts, some drawn straight from paper text.",
+   "why_it_matters": "The work suggests a measurable, structural signature of research that may prove especially generative, which could help in understanding how fields grow. It also shows that judging papers by short-term citations can undervalue work that opens new territory.",
+   "limitations": "This is an observational analysis of publication data, so it shows associations between gap opening and later impact rather than proof that opening gaps causes impact. Citations and disruption scores are also only indirect measures of scientific value.",
+   "key_terms": [
+    {
+     "term": "Knowledge gap",
+     "meaning": "An empty region in the network of scientific concepts, formed when new links surround a space that has not yet been filled in by research."
+    },
+    {
+     "term": "Computational topology",
+     "meaning": "Mathematical tools for detecting shapes like loops and holes in data or networks."
+    },
+    {
+     "term": "Concept network",
+     "meaning": "A map where nodes are scientific ideas and links join ideas that appear together in papers, changing as new papers are published."
+    },
+    {
+     "term": "Disruption",
+     "meaning": "A citation-based measure of how much a paper replaces, rather than builds on, the earlier work it cites."
+    },
+    {
+     "term": "Delayed recognition",
+     "meaning": "When a paper gets little attention at first but becomes widely cited years later."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Kara Kedrick",
+    "Wenlong Yang",
+    "Thomas Gebhart",
+    "Yang Wang",
+    "Russell J. Funk"
+   ],
+   "published": "2026-11-20T08:00:00+00:00",
+   "doi": "10.1073/pnas.2527345123",
+   "url": "https://doi.org/10.1073/pnas.2527345123",
+   "citation": "Kedrick, K., Yang, W., Gebhart, T., Wang, Y., & Funk, R. J. (2026). Knowledge gaps and scientific progress. PNAS, 123(47), e2527345123. https://doi.org/10.1073/pnas.2527345123",
+   "free_copy": {
+    "url": "https://doi.org/10.1073/pnas.2527345123",
+    "version": "Published version",
+    "host": "publisher",
+    "license": "cc-by-nc-nd"
+   },
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Journal_of_the_Polynesian_Society_20250125_112711.jpg/960px-Journal_of_the_Polynesian_Society_20250125_112711.jpg",
+    "caption": "The Journal of the Polynesian Society on the shelves of the Auckland Museum Research Library.",
+    "credit": "Prosperosity, via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Journal_of_the_Polynesian_Society_20250125_112711.jpg"
+   },
+   "image_query": "library journal shelves",
+   "category": "social_economic",
+   "category_name": "Social & Economic Sciences",
+   "editors_pick": false,
+   "preprint": false
+  },
+  {
+   "rank": 37,
+   "headline": "A fabric brightener helps pesticides form nanoparticles, and structure predicts which will",
+   "original_title": "Quantitative prediction model of FB-113-driven self-assembly nanopesticides",
+   "journal": "Nature Communications",
+   "field": "Agricultural Science",
+   "significance": 5,
+   "reason": "A fluorescent brightener drives pesticides to self-assemble into nanopesticides, and their assembly propensity can be predicted from molecular structure.",
+   "summary": "Nanopesticides are pesticides packaged as tiny particles, billionths of a metre across, which can make them work better than conventional sprays. One easy way to make them is self-assembly, where molecules cluster into particles on their own. The difficulty is that it has been hard to know in advance which pesticides will actually form such particles.\n\nIn this study the researchers found that FB-113, a fluorescent brightener (a dye-like chemical that makes materials look whiter), causes a range of different pesticides to self-assemble into nanoparticles. They also built a model showing that how readily each pesticide does this can be predicted, in numbers, from the structure of the pesticide molecule. The short publisher summary does not give the model's details, how many pesticides were tested, or how accurate the predictions were.",
+   "why_it_matters": "If chemists can predict from a molecule's structure whether it will form nanoparticles, they can screen candidate pesticides on paper first and avoid much trial and error in the lab. This could speed up the design of pesticide formulations that perform better.",
+   "limitations": "The summary does not say how well the model performs on new pesticides. It also does not say whether the nanoparticles were tested on crops or pests, or whether FB-113 itself raises safety or environmental concerns.",
+   "key_terms": [
+    {
+     "term": "Nanopesticide",
+     "meaning": "A pesticide made or delivered as particles only billionths of a metre in size."
+    },
+    {
+     "term": "Self-assembly",
+     "meaning": "When molecules spontaneously arrange themselves into larger organised structures without being built step by step."
+    },
+    {
+     "term": "Fluorescent brightener",
+     "meaning": "A compound that absorbs ultraviolet light and gives off blue light, often used to make fabrics and paper look whiter."
+    },
+    {
+     "term": "Quantitative prediction model",
+     "meaning": "A mathematical tool that gives a numerical estimate of a property, here how likely a pesticide is to self-assemble, based on its molecular features."
+    }
+   ],
+   "based_on": "abstract",
+   "authors": [
+    "Hui Zhang",
+    "Jiao Liu",
+    "Jikang Cheng",
+    "Xingnan Wang",
+    "Xinran Yu",
+    "Chengshuai He",
+    "Shuo Zhang",
+    "Hao Wu",
+    "Yongsong Cao",
+    "Congfen Gao",
+    "Yunhao Gao"
+   ],
+   "published": "2026-11-25T00:00:00+00:00",
+   "doi": "10.1038/s41467-026-79718-9",
+   "url": "https://doi.org/10.1038/s41467-026-79718-9",
+   "citation": "Zhang, H., Liu, J., Cheng, J., Wang, X., Yu, X., He, C., Zhang, S., Wu, H., Cao, Y., Gao, C., & Gao, Y. (2026). Quantitative prediction model of FB-113-driven self-assembly nanopesticides. Nature Communications. https://doi.org/10.1038/s41467-026-79718-9",
+   "free_copy": null,
+   "featured_on": [],
+   "image": {
+    "kind": "illustration",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Pesticide_Spraying.jpg/500px-Pesticide_Spraying.jpg",
+    "caption": "Pesticide Spraying",
+    "credit": "Dineshvdh, via Wikimedia Commons",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Pesticide_Spraying.jpg"
+   },
+   "image_query": "crop spraying pesticide",
+   "category": "resources",
+   "category_name": "Resource & Applied Fields",
+   "editors_pick": false,
+   "preprint": false
+  }
+ ]
+}
